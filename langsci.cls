@@ -1,20 +1,29 @@
 \NeedsTeXFormat{LaTeX2e}\ProvidesClass{langsci}[2013/06/02 v0.1 Language Science Publications]
 
+
+\newcommand{\lsSeriesNumber}{1}
+\newcommand{\lsISBN}{98000000}
+\newcommand{\lsSeries}{eotms}
+
 \RequirePackage{kvoptions}		% for key-value options
 \SetupKeyvalOptions{
 	family=langsci,
 	prefix=langsci@ }
-\DeclareStringOption[1]{number}[1]
+\DeclareStringOption{number}[1]
 	\define@key{langsci}{number}{%
-		\newcommand{\lsSeriesNumber}{#1}}
-\DeclareStringOption[eotms]{series}[eotms]
+		\renewcommand{\lsSeriesNumber}{#1}}
+\DeclareStringOption{isbn}[98000000]
+	\define@key{langsci}{isbn}{%
+		\renewcommand{\lsISBN}{#1}}
+\DeclareStringOption{series}[eotms]
 	\define@key{langsci}{series}{%
-		\newcommand{\lsSeries}{#1}}
+		\renewcommand{\lsSeries}{#1}}
 \DeclareVoidOption{blackandwhite}{
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{printondemand}{
 	\newcommand{\printondemand}{}}
 \ProcessKeyvalOptions{langsci}
+
 
 % TODO
 % PrintOnDemand wo die leeren Innenblätter und das eine Blatt mit dem bunten Text eingefügt werden
@@ -81,6 +90,20 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Special commands for authors:
+
+% defaults:
+\newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un
+myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li
+lingues differe solmen in li grammatica, li pronunciation e li plu commun vo-
+cabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa
+continuar payar custosi traductores.}
+\newcommand{\lsBackTitle}{Back Title}
+
+\newcommand{\BackBody}[1]{\renewcommand{\lsBackBody}{#1}} 
+\newcommand{\BackTitle}[1]{\renewcommand{\lsBackTitle}{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series information:
 
 \newcommand{\eotms}{eotms}
@@ -133,39 +156,28 @@
 \end{textblock}
 
 \begin{textblock}{33}(124.6,205)
-\raggedright\includegraphics{logo_rz_buch.pdf} % TODO \InputIfFileExists{logo_rz_buch.pdf}{}{}
+\raggedright\IfFileExists{logo_rz_buch.pdf}{\includegraphics{logo_rz_buch.pdf}}{langsci logo}  
 \end{textblock}
 }
 
-\newcommand{\lsBackPage}{
+\newcommand{\lsBackPage}{		% Back page
 \lsTitleBlock
 
 \begin{textblock}{115}(15,30)
 \color{white}
 {\raggedright
- \lsBackTitleFont Back Title \\ \null} % TODO Back page title should be included with command \lsBackTitle or so.
+ \lsBackTitleFont 
+ \lsBackTitle \\ \null} 
 
-% TODO Back page text should be included with command \lsBackBody or so.
 \lsBackBodyFont
-\noindent Europan lingues es membres del sam familie. Lor separat existentie es un
-myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li
-lingues differe solmen in li grammatica, li pronunciation e li plu commun vo-
-cabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa
-continuar payar custosi traductores. At solmen va esser necessi far uniform
-grammatica, pronunciation e plu sommun paroles. Ma quande lingues coa-
-lesce, li grammatica del resultant lingue es plu simplic e regulari quam ti del
-coalescent lingues. Li nov lingua franca va esser plu simplic e regulari quam
-li existent Europan lingues. It va esser tam simplic quam Occidental in fact, it
-va esser Occidental. A un Angleso it va semblar un simplificat Angles, quam
-un skeptic Cambridge amico dit me que Occidental es.Li Europan lingues es
-membres del sam familie. Lor separat existentie es un myth. Por scientie, mu-
-sica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in
-li grammatica, li pronunciation e li plu commun vocabules.
+
+\noindent 
+\lsBackBody
 \end{textblock}
 
 \begin{textblock}{30}(115,212.5)
 \lsBackBodyFont
-ISBN 98000000			% TODO To be included with command \lsISBN or so.
+ISBN \lsISBN			
 \end{textblock}
 }
 
@@ -245,7 +257,7 @@ www.langsci-press.org \\[3ex]
 
 ein Projekt der FU Berlin \\[3ex]  	% TODO \InputIfFileExists{logo_rz_buch.pdf}{}{}
 
-FU-Logo \\
+\IfFileExists{fu_logo.pdf}{\includegraphics{fu_logo.pdf}}{FU-Logo} \\
 \end{center}
 }
 
@@ -259,7 +271,8 @@ FU-Logo \\
 \ihead{\headmark}
 \cfoot{}
 \ofoot[]{}
-\ifoot{} 
+\ifoot{}
+\renewcommand*{\partpagestyle}{empty}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
