@@ -1,10 +1,13 @@
-\NeedsTeXFormat{LaTeX2e}\ProvidesClass{langsci}[2013/06/02 v0.1 Language Science Publications]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{langsci}[2013/06/03 Language Science Publications]
 
-
+% Default values:
 \newcommand{\lsSeriesNumber}{1}
 \newcommand{\lsISBN}{98000000}
 \newcommand{\lsSeries}{eotms}
+\newcommand{\lsSpineBreadth}{20mm}
 
+% Option handling:
 \RequirePackage{kvoptions}		% for key-value options
 \SetupKeyvalOptions{
 	family=langsci,
@@ -44,33 +47,42 @@
 			%,showframe,pass
 			]{geometry}
 
-% for absolute positioning in titlepage
-\usepackage[absolute 
+\usepackage[absolute 		% for absolute positioning in titlepage
 			%,showboxes
 			]{textpos}
 \setlength{\TPHorizModule}{1mm}
 \setlength{\TPVertModule}{\TPHorizModule}
 \textblockorigin{0mm}{0mm}
+
+\usepackage{pbox}   % boxes with maximum width
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fonts and graphics:
 
-\RequirePackage{libertine}	% TODO difference between RequirePackage and usepackage?
-
+% TODO difference between RequirePackage and usepackage?
 \usepackage[utf8]{inputenc}
-\usepackage{mathptmx,helvet} % times and helvetia
+\RequirePackage{libertine}		% To be placed before times and helvetica to preserve the KOMA style.
+\usepackage{mathptmx,helvet} 	% times and helvetica
+\usepackage{tgtermes}
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 
 \usepackage{graphicx}
 
-\newcommand{\lsCoverTitleFont}{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont}
-\newcommand{\lsCoverAuthorFont}{\fontfamily{ptm}\fontsize{25pt}{12.5mm}\selectfont}
+\newcommand{\lsCoverTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont}
+\newcommand{\lsCoverAuthorFont}{\fontfamily{qtm}\fontsize{25pt}{12.5mm}\selectfont}
 \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
 \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
 \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{10.5pt}{5mm}\selectfont}
 \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
 \newcommand{\lsBackBodyFont}{\lsInsideFont}
+\newcommand{\lsSpineAuthorFont}{\fontfamily{qtm}\fontsize{12pt}{14pt}\selectfont}
+\newcommand{\lsSpineTitleFont}{\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
+
+% qtm = tgtermes
+% ptm = times
+% phv = helvet
+% fxlj = libertine
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -100,22 +112,54 @@ cabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa
 continuar payar custosi traductores.}
 \newcommand{\lsBackTitle}{Back Title}
 
-\newcommand{\BackBody}[1]{\renewcommand{\lsBackBody}{#1}} 
 \newcommand{\BackTitle}[1]{\renewcommand{\lsBackTitle}{#1}}
+\newcommand{\BackBody}[1]{\renewcommand{\lsBackBody}{#1}} 
+
+\newcommand{\newlineCover}{\\}	% \newline only on cover
+\newcommand{\newlineSpine}{\\}	% \newline only on spine
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series information:
 
 \newcommand{\eotms}{eotms}
+\newcommand{\eotmsig}{eotmsig}
+\newcommand{\sidl}{sidl}
+\newcommand{\algad}{algad}
+\newcommand{\tamnlp}{tamnlp}
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
  	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, number \lsSeriesNumber}
  	\@ifundefined{blackandwhite}
- 		{\newcommand{\lsSeriesColor}{lsLightBlue}}
+ 		{\newcommand{\lsSeriesColor}{lsMidBlue}}
  		{\newcommand{\lsSeriesColor}{black}}
-%\else
 \fi
+\ifx\lsSeries\eotmsig
+ 	\newcommand{\lsSeriesTitle}{Implemented Grammars, number \lsSeriesNumber}
+ 	\@ifundefined{blackandwhite}
+ 		{\newcommand{\lsSeriesColor}{lsMidBlue}}
+ 		{\newcommand{\lsSeriesColor}{black}}
+\fi
+\ifx\lsSeries\sidl
+ 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, number \lsSeriesNumber}
+ 	\@ifundefined{blackandwhite}
+ 		{\newcommand{\lsSeriesColor}{lsDarkGreen}}
+ 		{\newcommand{\lsSeriesColor}{black}}
+\fi
+\ifx\lsSeries\algad
+ 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, number \lsSeriesNumber}
+ 	\@ifundefined{blackandwhite}
+ 		{\newcommand{\lsSeriesColor}{lsOrange}}
+ 		{\newcommand{\lsSeriesColor}{black}}
+\fi
+\ifx\lsSeries\tamnlp
+ 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , number \lsSeriesNumber}
+ 	\@ifundefined{blackandwhite}
+ 		{\newcommand{\lsSeriesColor}{lsWine}}
+ 		{\newcommand{\lsSeriesColor}{black}}
+\fi	
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,17 +175,20 @@ continuar payar custosi traductores.}
 \end{textblock}
 }
 
-\newcommand{\lsTitlePage}{
+\newcommand{\lsTitlePage}{		% Title page
+\renewcommand{\newlineSpine}{}
 \lsTitleBlock
 
 \begin{textblock}{140}(15,17.5)
 \color{\lsTitleFontColor}
 \raggedright
-\textls[-60]{\lsCoverTitleFont  
+\textls[-16]{\lsCoverTitleFont  
 	\@title\\} 
+% Times uses fake small caps:
+% \textls[-60]{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont \@title\\}
 
 \vspace{11.2mm} % 20mm - 25pt
-
+ 
 \raggedright
 {\lsCoverAuthorFont 
 	\@author\\}
@@ -181,6 +228,25 @@ ISBN \lsISBN
 \end{textblock}
 }
 
+\newcommand{\lsSpine}{			% Book spine
+\renewcommand{\newlineSpine}{\\}
+\renewcommand{\newlineCover}{}
+\begin{textblock}{40}(65,0)
+\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
+	\color{\lsSeriesColor}
+	\hspace{7.5mm}
+	\IfFileExists{logo_spine_color.pdf}{\includegraphics{logo_spine_color.pdf}}{logo}
+	\hspace{10mm}
+ 	{\lsSpineTitleFont
+		\pbox{100mm}{\@title}  
+ 	}
+	\hspace{10mm}
+	{\lsSpineAuthorFont 
+		\pbox{100mm}{\@author}}
+\end{minipage}}} 
+\end{textblock}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \renewcommand{\maketitle}{
@@ -194,16 +260,24 @@ ISBN \lsISBN
 \newpage\thispagestyle{empty}
 \null\newpage\thispagestyle{empty}
 
-% First titlepage:
+% Back page:
 {\lsBackPage}
 %%%%%%%%%%%%%%%%%%%
+
+
+\newpage\thispagestyle{empty}
+\null\newpage\thispagestyle{empty}
+
+% Book spine:
+{\lsSpine}
+%%%%%%%%%%%%%%%%
 
 \newpage\thispagestyle{empty}
 \null\newpage\thispagestyle{empty}
 
 
 % Series information:
-\lsSeriesHistory
+{\lsSeriesHistory}
 %%%%%%%%%%%%%%%%%%%%%
 
 \null\newpage\thispagestyle{empty}
@@ -218,7 +292,7 @@ ISBN \lsISBN
 
 
 \null\newpage\thispagestyle{empty}
-\hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% hyperref
+\hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 \color{black}
 \lsInsideFont
 
@@ -255,7 +329,7 @@ Titelgestaltung und Designkonzept: \\
 Ulrike Harbort \\
 www.langsci-press.org \\[3ex]
 
-ein Projekt der FU Berlin \\[3ex]  	% TODO \InputIfFileExists{logo_rz_buch.pdf}{}{}
+ein Projekt der FU Berlin \\[3ex]  	
 
 \IfFileExists{fu_logo.pdf}{\includegraphics{fu_logo.pdf}}{FU-Logo} \\
 \end{center}
@@ -291,7 +365,7 @@ ein Projekt der FU Berlin \\[3ex]  	% TODO \InputIfFileExists{logo_rz_buch.pdf}{
   pdfauthor={},%
   pdfkeywords={},%
   ps2pdf=true]{hyperref}
-\usepackage{breakurl} 	% Must apeear begin hyperref! 
+\usepackage{breakurl} 	
  
 
 
