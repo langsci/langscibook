@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/06/11 Language Science Publications]
+\ProvidesClass{langsci}[2013/06/12 Language Science Publications]
 
 \usepackage{epstopdf}
 
@@ -9,6 +9,7 @@
 \newcommand{\lsISBN}{98000000}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
+\newcommand{\lsOutput}{printondemand}
 
 % Option handling:
 \RequirePackage{kvoptions}		% for key-value options
@@ -24,6 +25,9 @@
 \DeclareStringOption{series}[eotms]
 	\define@key{langsci}{series}{%
 		\renewcommand{\lsSeries}{#1}}
+\DeclareStringOption{output}[printondemand]
+	\define@key{langsci}{output}{%
+		\renewcommand{\lsOutput}{#1}}
 \DeclareVoidOption{blackandwhite}{
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{printondemand}{
@@ -187,130 +191,139 @@ continuar payar custosi traductores.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Titlepage:
+% Cover:
 
-\newcommand{\lsTitleFontColor}{white}
-\newcommand{\lsTitleBlockColor}{\lsSeriesColor}
+\newcommand{\lsCoverFontColor}{white}
+\newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 
-\newcommand{\lsTitleBlock}{
-\begin{textblock}{155}(7.5,7.5)
-\color{\lsTitleBlockColor}
-\raggedright\rule{155mm}{225mm}
-\end{textblock}
-}
+\newcommand{\lsCoverBlock}{
+	\begin{textblock}{155}(7.5,7.5)
+	\color{\lsCoverBlockColor}
+	\raggedright\rule{155mm}{225mm}
+	\end{textblock}}
 
-\newcommand{\lsTitlePage}{		% Title page
-\renewcommand{\newlineSpine}{}
-\lsTitleBlock
+\newcommand{\lsCoverTitleAuthor}{
+	\renewcommand{\newlineSpine}{}
+	\lsCoverBlock
 
-\begin{textblock}{140}(15,17.5)
-\color{\lsTitleFontColor}
-\raggedright
-{\lsCoverTitleFont{\@title\\}}
+	\begin{textblock}{140}(15,17.5)
+	\color{\lsCoverFontColor}
+	\raggedright
+	{\lsCoverTitleFont{\@title\\}}
 
-\vspace{11.2mm} % 20mm - 25pt
+	\vspace{11.2mm} % 20mm - 25pt
  
-\raggedright
-{\lsCoverAuthorFont 
-	\@author\\}
-\end{textblock}
+	\raggedright
+	{\lsCoverAuthorFont 
+		\@author\\}
+	\end{textblock}}
 
+\newcommand{\lsCoverSeries}{
+	\begin{textblock}{95}(7.4,209)
+	\color{\lsCoverFontColor}
+	\raggedright\rule{3.6mm}{3.5mm}
+	\hspace{3mm}\parbox[t]{85mm}{\raggedright\lsCoverSeriesFont   
+		\lsSeriesTitle\\}
+	\end{textblock}}
 
-\begin{textblock}{95}(7.4,209)
-\color{\lsTitleFontColor}
-\raggedright\rule{3.6mm}{3.5mm}
-\hspace{3mm}\parbox[t]{85mm}{\raggedright\lsCoverSeriesFont   
-	\lsSeriesTitle\\}
-\end{textblock}
+\newcommand{\lsCoverLogo}{		
+	\begin{textblock}{33}(124.6,205)
+	\raggedright\IfFileExists{logo_rz_buch.eps}{\includegraphics{logo_rz_buch.eps}}{langsci logo}  
+	\end{textblock}}
 
-\begin{textblock}{33}(124.6,205)
-\raggedright\IfFileExists{logo_rz_buch.eps}{\includegraphics{logo_rz_buch.eps}}{langsci logo}  
-\end{textblock}
-}
+\newcommand{\lsFrontPage}{		% Front page
+	\lsCoverBlock
+	\lsCoverTitleAuthor
+	\lsCoverSeries
+	\lsCoverLogo}
+
+\newcommand{\lsSchmutztitel}{	% Schmutztitel
+	\lsCoverBlock
+	\lsCoverTitleAuthor
+	\lsCoverLogo}
 
 \newcommand{\lsBackPage}{		% Back page
-\lsTitleBlock
+	\lsCoverBlock
 
-\begin{textblock}{115}(15,30)
-\color{white}
-{\raggedright
- \lsBackTitleFont 
- \lsBackTitle \\ \null} 
+	\begin{textblock}{115}(15,30)
+	\color{white}
+	{\raggedright
+	 \lsBackTitleFont 
+	 \lsBackTitle \\ \null} 
 
-\lsBackBodyFont
+	\lsBackBodyFont
 
-\noindent 
-\lsBackBody
-\end{textblock}
+	\noindent 
+	\lsBackBody
+	\end{textblock}
 
-\begin{textblock}{30}(115,212.5)
-\lsBackBodyFont
-ISBN \lsISBN			
-\end{textblock}
-}
+	\begin{textblock}{30}(115,212.5)
+	\lsBackBodyFont
+	ISBN \lsISBN			
+	\end{textblock}}
 
 \newcommand{\lsSpine}{			% Book spine
-\renewcommand{\newlineSpine}{\\}
-\renewcommand{\newlineCover}{}
-\begin{textblock}{40}(65,0)
-\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
-	\color{\lsSeriesColor}
-	\hspace{7.5mm}
-	\IfFileExists{logo_spine_color.pdf}{\includegraphics{logo_spine_color.pdf}}{logo}
-	\hspace{10mm}
- 	{\lsSpineTitleFont
-		\pbox{100mm}{\@title}  
- 	}
-	\hspace{10mm}
-	{\lsSpineAuthorFont 
-		\pbox{100mm}{\@author}}
-\end{minipage}}} 
-\end{textblock}
-}
+	\renewcommand{\newlineSpine}{\\}
+	\renewcommand{\newlineCover}{}
+	\begin{textblock}{40}(65,0)
+	\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
+		\color{\lsSeriesColor}
+		\hspace{7.5mm}
+		\IfFileExists{logo_spine_color.pdf}{\includegraphics{logo_spine_color.pdf}}{logo}
+		\hspace{10mm}
+ 		{\lsSpineTitleFont
+			\pbox{100mm}{\@title}  }
+		\hspace{10mm}
+		{\lsSpineAuthorFont 
+			\pbox{100mm}{\@author}}
+	\end{minipage}}} 
+	\end{textblock}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\lsOutputPrintondemand}{printondemand}
+\newcommand{\lsOutputShort}{short}
+\newcommand{\lsOutputProof}{proof}
+
 
 \renewcommand{\maketitle}{
 \begin{titlepage}
 \thispagestyle{empty}
 
-\@ifundefined{printondemand}{}{		% <begin> only if printondemand option is activated
-% First titlepage:
-{\lsTitlePage}
-%%%%%%%%%%%%%%%%%%%
+%\@ifundefined{printondemand}{}{		
+\ifx\lsOutput\lsOutputPrintondemand		% only if output=printondemand 
+	% First titlepage:
+	{\lsFrontPage}
+	%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	\null\newpage\thispagestyle{empty}
+	% Back page:
+	{\lsBackPage}
+	%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	\null\newpage\thispagestyle{empty}
+	% Book spine:
+	{\lsSpine}
+	%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	\null\newpage\thispagestyle{empty}
+	% Series information:
+	{\lsSeriesHistory}
+	%%%%%%%%%%%%%%%%%%%%%
+	\null\newpage\thispagestyle{empty}
+	% Schmutztitel:
+	{\renewcommand{\lsCoverBlockColor}{white}
+	 \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+	\lsSchmutztitel}
+	%%%%%%%%%%%%%%%%%%%%
+\fi										
 
-\newpage\thispagestyle{empty}
-\null\newpage\thispagestyle{empty}
+\ifx\lsOutput\lsOutputProof				% only if output=proof
+  	{\renewcommand{\lsCoverBlockColor}{white}
+  	 \renewcommand{\lsCoverFontColor}{black}
+  	 \lsFrontPage}
+\fi
 
-% Back page:
-{\lsBackPage}
-%%%%%%%%%%%%%%%%%%%
-
-
-\newpage\thispagestyle{empty}
-\null\newpage\thispagestyle{empty}
-
-% Book spine:
-{\lsSpine}
-%%%%%%%%%%%%%%%%
-
-\newpage\thispagestyle{empty}
-\null\newpage\thispagestyle{empty}
-
-
-% Series information:
-{\lsSeriesHistory}
-%%%%%%%%%%%%%%%%%%%%%
-
-\null\newpage\thispagestyle{empty}
-}									% <end> only if printondemand option is activated
-
-% Second titlepage:
-{\renewcommand{\lsTitleBlockColor}{white}
-\renewcommand{\lsTitleFontColor}{\lsSeriesColor}
-\lsTitlePage
-\setcounter{page}{1}}
-%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{1}
 \end{titlepage}
 
 
