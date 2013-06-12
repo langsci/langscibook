@@ -60,19 +60,46 @@
 \usepackage{pbox}   % boxes with maximum width
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fonts and graphics:
+% Fonts, language and graphics:
 
-% TODO difference between RequirePackage and usepackage?
-\usepackage[utf8]{inputenc}
-\RequirePackage{libertine}		% To be placed before times and helvetica to preserve the KOMA style.
-\usepackage{mathptmx,helvet} 	% times and helvetica
-\usepackage{tgtermes}
-\usepackage[T1]{fontenc}
+\usepackage{ifxetex}
+\ifxetex				
+  \usepackage{fontspec}
+  %\setmainfont[Scale=0.95,Ligatures={TeX,Common}]{Charis SIL}
+  %\setmainfont[Ligatures={TeX,Common},Numbers={OldStyle}]{Linux Libertine B}
+  %\setmainfont[Ligatures={TeX,Common}]{FreeSerif}
+  \setmainfont{FreeSerif}
+  
+  %\usepackage{unicode-math}
+  %\setmathfont{TG Termes Math}
+
+  %\setsansfont[Ligatures={TeX,Common},Scale=MatchLowercase]{FreeSans}
+  %\setmonofont[Ligatures={TeX},Scale=MatchLowercase]{FreeMono}
+  \setsansfont{FreeSans}
+  \setmonofont{FreeMono}
+
+  %\usepackage{polyglossia}
+  %\setdefaultlanguage{british}
+\else
+  \usepackage{ucs}  % extended UTF8 support TODO remove this?
+  \usepackage[utf8]{inputenc}
+  \usepackage{libertine}		% To be placed before times and helvetica to preserve the KOMA style.
+  \usepackage{mathptmx,helvet} 	% times and helvetica
+  \usepackage{tgtermes}
+  \usepackage[T1]{fontenc}
+  %\usepackage[british]{babel}   % TODO remove this?
+\fi
+
 \usepackage{microtype}
-
 \usepackage{graphicx}
 
-\newcommand{\lsCoverTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont}
+\ifxetex
+  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
+\else
+  \newcommand{\lsCoverTitleFont}[1]{\textls[-16]{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}}
+  % Times uses fake small caps:
+  % \textls[-60]{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont \@title\\}
+\fi
 \newcommand{\lsCoverAuthorFont}{\fontfamily{qtm}\fontsize{25pt}{12.5mm}\selectfont}
 \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
 \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
@@ -179,10 +206,7 @@ continuar payar custosi traductores.}
 \begin{textblock}{140}(15,17.5)
 \color{\lsTitleFontColor}
 \raggedright
-\textls[-16]{\lsCoverTitleFont  
-	\@title\\} 
-% Times uses fake small caps:
-% \textls[-60]{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont \@title\\}
+{\lsCoverTitleFont{\@title\\}}
 
 \vspace{11.2mm} % 20mm - 25pt
  
