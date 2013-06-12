@@ -321,13 +321,13 @@ ISBN \lsISBN
 Info Info Info \\
 Info Info Info \\
 Info Info Info \\
-Titelgestaltung und Designkonzept: \\
+Cover and concept of design: \\
 Ulrike Harbort \\
 www.langsci-press.org \\[3ex]
 
-ein Projekt der FU Berlin \\[3ex]  	
+Storage and catalogueing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{fu_logo.pdf}{\includegraphics{fu_logo.pdf}}{FU-Logo} \\
+\IfFileExists{FULogo_sw_RGB.pdf}{\includegraphics[width=5cm]{FULogo_sw_RGB.pdf}}{FU-Logo} \\
 \end{center}
 }
 
