@@ -359,8 +359,10 @@ ein Projekt der FU Berlin \\[3ex]
   breaklinks=true,
   draft=false,plainpages=false,
   pdfauthor={},%
-  pdfkeywords={},%
-  ps2pdf=true]{hyperref}
+  pdfkeywords={}
+%,%
+%  ps2pdf=true
+]{hyperref}
 \usepackage{breakurl} 	
  
 
