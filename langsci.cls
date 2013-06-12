@@ -1,6 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{langsci}[2013/06/11 Language Science Publications]
 
+\usepackage{epstopdf}
+
+
 % Default values:
 \newcommand{\lsSeriesNumber}{1}
 \newcommand{\lsISBN}{98000000}
@@ -197,7 +200,7 @@ continuar payar custosi traductores.}
 \end{textblock}
 
 \begin{textblock}{33}(124.6,205)
-\raggedright\IfFileExists{logo_rz_buch.pdf}{\includegraphics{logo_rz_buch.pdf}}{langsci logo}  
+\raggedright\IfFileExists{logo_rz_buch.eps}{\includegraphics{logo_rz_buch.eps}}{langsci logo}  
 \end{textblock}
 }
 
@@ -315,6 +318,7 @@ ISBN \lsISBN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Impressum:
 
+
 \newcommand{\lsImpressum}{
 \begin{center}
 {\bf Impressum} \\
@@ -327,7 +331,7 @@ www.langsci-press.org \\[3ex]
 
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{FULogo_sw_RGB.pdf}{\includegraphics[width=5cm]{FULogo_sw_RGB.pdf}}{FU-Logo} \\
+\IfFileExists{FULogo_sw_RGB.eps}{\includegraphics[width=5cm]{FULogo_sw_RGB.eps}}{FU-Logo} \\
 \end{center}
 }
 
@@ -361,10 +365,18 @@ Storage and catalogueing done by FU Berlin \\[3ex]
   pdfauthor={},%
   pdfkeywords={}
 %,%
-%  ps2pdf=true
+  ,ps2pdf=true
 ]{hyperref}
-\usepackage{breakurl} 	
+
+% xelatex hates this.
+%\usepackage{breakurl} 	
+
  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% footnotes:
+
+\raggedbottom
+\deffootnote{5mm}{0mm}{\textsuperscript{\normalfont\thefootnotemark}}
 
 
 \endinput

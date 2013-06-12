@@ -1,0 +1,1519 @@
+\documentclass[ number=45
+			   ,series=eotms
+			   ,printondemand
+			   %,blackandwhite
+			   %,draft=yes
+			  ]{langsci}                          
+
+\usepackage{etex}
+                               
+\usepackage{layout}
+\usepackage{lipsum}                                                                             
+
+
+\usepackage{ngerman}\selectlanguage{german}
+\usepackage[german]{varioref}
+% do not stop and warn! This will be tested in the final version
+%\vrefwarning
+
+
+\usepackage{graphicx}
+
+
+
+
+\usepackage{article-ex,makros.2e,
+de-date,de-commands,tree-dvips,pstricks,pst-node,
+datefooter,float,my-theorems,mycommands}
+
+
+\usepackage{index}
+\makeatletter
+% Wie im Stylefile, aber ohne \MakeUppercase
+   \renewenvironment{theindex}{%
+        \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+        \if@twocolumn
+            \@restonecolfalse
+        \else
+            \@restonecoltrue
+        \fi
+        \columnseprule \z@
+        \columnsep 35\p@
+        \twocolumn[%
+            \@makeschapterhead{\indexname}%
+            \ifx\index@prologue\@empty\else
+                \index@prologue
+                \bigskip
+            \fi
+        ]%
+%        \@mkboth{\MakeUppercase\indexname}%
+%                {\MakeUppercase\indexname}%
+        \@mkboth{\indexname}%
+                {\indexname}%
+        \thispagestyle{plain}%
+        \parindent\z@
+        \parskip\z@ \@plus .3\p@\relax
+        \let\item\@idxitem
+    }{%
+        \if@restonecol
+            \onecolumn
+        \else
+            \clearpage
+        \fi
+    }
+\makeatother
+
+\makeindex
+\newindex{aut}{adx}{and}{Namensverzeichnis}
+\newindex{lan}{ldx}{lnd}{Verzeichnis der Sprachen}
+\renewindex{default}{idx}{ind}{Sachregister}
+\usepackage{my-index-shortcuts}
+
+\usepackage{authorindex}
+
+\let\mc=\multicolumn
+
+% use article style since csli does not want new numbers in every chapter
+\usepackage{my-gb4e-article}
+\exewidth{\exnrfont (34)}
+
+%\def\ea{\ifnum\@xnumdepth=0\begin{exe}[(234)]\else\begin{xlist}[iv.]\fi\ex}
+%\def\ea{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\\ex}
+%\def\eas{\begin{samepage}\ifnum\@xnumdepth=0\begin{exe}[(234)]\else\begin{xlist}[\iv.]\fi\ex}
+%\def\eal{\begin{exe}[(234)]\ex\begin{xlist}[iv.]}
+
+\nodemargin5pt%\treelinewidth2pt\arrowwidth6pt\arrowlength10pt
+\psset{nodesep=5pt} %,linewidth=0.8pt,arrowscale=2}
+\psset{linewidth=0.5pt}
+\setcounter{secnumdepth}{4}
+
+\newcommand{\page}{S.\,}
+\let\citew=\citealp
+\newcommand{\NOTE}[1]{}
+%\newcommand{\NOTE}[1]{\marginpar{#1}}
+\newcommand{\LATER}[1]{}
+
+
+\title{Danish in \newlineCover Head-Driven \newlineCover\newlineSpine Phrase Structure \newlineCover Grammar  }                        
+\author{Stefan M\"uller, \newlineCover Pollet Samvelian, \newlineCover Olivier Bonami}
+%\BackTitle{title text of the back page}
+%\BackBody{body text of the back page}                                            
+ 
+\begin{document}              
+       
+                
+      
+\maketitle                
+
+\tableofcontents
+
+
+\pagestyle{scrheadings}
+  
+\part{Part Title}	               
+
+
+
+\chapter{Einleitung und Grundbegriffe}
+\label{Kapitel-Grundbegriffe}
+
+In diesem Kapitel soll erklärt werden, warum man sich überhaupt mit Syntax beschäftigt
+(Abschnitt~\ref{sec-wozu-syntax}) und warum es sinnvoll ist, die Erkenntnisse zu formalisieren
+(Abschnitt~\ref{sec-formal}).  Einige Grundbegriffe werden in den
+Abschnitten~\ref{konstituententests}--\ref{sec-topo} eingeführt: Abschnitt~\ref{konstituententests}
+beschäftigt sich mit Kriterien für die Unterteilung von Äußerungen in kleinere
+Einheiten. Abschnitt~\ref{Abschnitt-Wortarten} zeigt, wie man Wörter in Klassen einteilen kann,
+\dash, es werden Kriterien dafür vorgestellt, wann ein Wort einer Wortart wie \zb Verb oder Adjektiv
+zugeordnet werden kann.  Abschnitt~\ref{Abschnitt-Kopf} stellt den Kopf"=Begriff vor, in
+Abschnitt~\ref{Abschnitt-Argument-Adjunkt} wird der Unterschied zwischen Argumenten und Adjunkten
+erklärt, Abschnitt~\ref{Abschnitt-GF} definiert grammatische Funktionen und
+Abschnitt~\ref{Abschnitt-Toplogie} führt die topologischen Felder zur Bezeichnung von Satzbereichen
+ein.
+
+Leider ist die Linguistik eine Wissenschaft, in der es ein unglaubliches terminologisches Chaos
+gibt. Das liegt zum Teil daran, dass Begriffe für einzelne Sprachen (\zb Latein\il{Latein}, Englisch\il{Englisch})
+definiert und dann einfach für die Beschreibung anderer Sprachen übernommen wurden. Da sich
+Sprachen mitunter stark unterscheiden und auch ständig verändern, ist das nicht immer
+angebracht. Wegen der sich daraus ergebenden Probleme werden die Begriffe dann anders verwendet,
+oder es werden neue erfunden. 
+%
+Bei der Einführung neuer Begriffe werde ich deshalb auf verwandte Begriffe oder abweichende
+Verwendung des jeweils eingeführten Begriffs hinweisen, damit der Leser die Verbindung zu anderer
+Literatur herstellen kann. 
+
+\section{Wozu Syntax?}
+\label{sec-wozu-syntax}
+
+Die\il{Deutsch|(} sprachlichen Ausdrücke, die wir verwenden, haben eine Bedeutung. Es handelt
+sich um sogenannte Form"=Bedeutungs"=Paare \citep{Saussure16a}. Dem Wort \emph{Baum}
+mit seiner bestimmten orthographischen Form oder einer entsprechenden Aussprache
+wird die Bedeutung \relation{baum} zugeordnet. Aus kleineren sprachlichen Einheiten
+können größere gebildet werden: Wörter können zu Wortgruppen verbunden werden
+und diese zu Sätzen.
+
+Die Frage, die sich nun stellt, ist folgende: Braucht man ein formales System, das
+diesen Sätzen eine Struktur zuordnet? Würde es nicht ausreichen, so wie wir
+für \emph{Baum} ein Form"=Bedeutungs"=Paar haben, entsprechende Form"=Bedeutungs"=Paare
+für vollständig ausformulierte Sätze aufzuschreiben? Das wäre im Prinzip möglich, wenn eine Sprache eine
+endliche Aufzählung von Wortfolgen wäre. Nimmt man an,
+dass es eine maximale Satzlänge und eine maximale Wortlänge und somit eine endliche
+Anzahl von Wörtern gibt, so ist die Anzahl der bildbaren Sätze endlich.
+Allerdings ist die Zahl der bildbaren Sätze selbst bei Begrenzung der Satzlänge riesig.
+Und die Frage, die man dann beantworten muss, ist: Was ist die Maximallänge für
+Sätze? Zum Beispiel kann man die Sätze in (\mex{1}) verlängern:
+\eal
+\ex Dieser Satz geht weiter und weiter und weiter und weiter \ldots
+\ex {}[Ein Satz ist ein Satz] ist ein Satz.
+\ex\label{einbettung-dass-Saetze} dass Max glaubt, dass Julius weiß, dass Otto behauptet, dass Karl vermutet, dass Richard bestätigt,
+dass Friederike lacht
+\zl
+In (\mex{0}b) wird etwas über die Wortgruppe \emph{ein Satz ist ein Satz} ausgesagt, nämlich dass sie
+ein Satz ist. Genau dasselbe kann man natürlich auch vom gesamten Satz (\mex{0}b) behaupten und den Satz
+entsprechend um \emph{ist ein Satz} erweitern. Der Satz in (\mex{0}c) wurde gebildet, indem
+\emph{dass Friederike lacht} mit \emph{dass}, \emph{Richard} und \emph{bestätigt} kombiniert
+wurde. Das Ergebnis dieser Kombination ist ein neuer Satz \emph{dass Richard bestätigt,
+dass Friederike lacht}. Dieser wurde analog mit \emph{dass}, \emph{Karl} und \emph{vermutet}
+verlängert. Auf diese Weise erhält man einen sehr komplexen Satz, der einen weniger komplexen
+Teilsatz einbettet. Dieser Teilsatz enthält wieder einen Teilsatz usw. (\mex{0}c) gleicht einer
+Matrjoschka\is{Matrjoschka}: Eine Matrjoschka enthält jeweils kleinere Matrjoschkas, die sich in der Bemalung von
+der sie umgebenden Matrjoschka unterscheiden können. Genauso enthält der Satz in (\mex{0}c) Teile,
+die ihm ähneln, aber kürzer sind und sich in Verben und Nomen unterscheiden. Man kann das durch
+Verwendung von Klammern wie folgt deutlich machen:
+\ea
+dass Max glaubt, [dass Julius weiß, [dass Otto behauptet, [dass Karl vermutet, [dass Richard bestätigt,
+[dass Friederike lacht]]]]]
+\z
+
+\noindent
+Durch Erweiterungen wie die in (\mex{-1}) können wir enorm lange und komplexe Sätze bilden.\footnote{
+ Manchmal wird behauptet, dass wir in der Lage wären, unendlich lange Sätze zu bilden (\citealp*[\page
+ 117]{NKN2001a}; \citealp[\page 3]{KS2008a-u}). Das ist nicht richtig, da jeder Satz irgendwann einmal enden
+ muss. Auch in der Theorie der formalen Sprachen in der Chomskyschen Tradition gibt es keinen
+ unendlich langen Satz, vielmehr wird von bestimmten formalen Grammatiken eine Menge mit unendlich
+ vielen endlichen Sätzen beschrieben (\citealp[\page 13]{Chomsky57a}). Zu Rekursion\is{Rekursion} in
+ der Grammatik und Behauptungen zur Unendlichkeit unserer Sprache siehe auch \citew{PS2010a} und
+ Abschnitt~\ref{Abschnitt-Rekursion}.
+}
+Die Festsetzung einer Grenze, bis zu der solche Kombinationen zu unserer Sprache gehören, wäre
+willkürlich (\citealp[\page 208]{Harris57a}; \citealp[\page 23]{Chomsky57a}). Auch ist die Annahme, dass
+solche komplexen Sätze als Gesamtheit in unserem Gehirn gespeichert sind, unplausibel. Man kann für
+hochfrequente Muster bzw.\ idiomatische Kombinationen mit psycholinguistischen Experimenten zeigen,
+dass sie als ganze Einheit gespeichert sind, das ist für Sätze wie die in (\mex{-1}) jedoch nicht der
+Fall. Auch sind wir in der Lage, Äußerungen zu produzieren, die wir vorher noch nie gehört haben
+und die auch nie vorher gesprochen oder geschrieben wurden. Es muss also eine Strukturierung der
+Äußerungen, es muss bestimmte wiederkehrende Muster geben. Wir als Menschen können solche
+komplexen Strukturen aus einfacheren aufbauen und umgekehrt auch komplexe Äußerungen in ihre Teile
+zerlegen. Dass wir Menschen von Regeln zur Kombination von Wörtern zu größeren Einheiten Gebrauch
+machen, konnte inzwischen auch durch die Hirnforschung nachgewiesen werden \citep[\page 170]{Pulvermueller2010a}.
+
+Dass wir sprachliches Material nach Regeln kombinieren, wird besonders augenfällig, wenn die Regeln
+verletzt werden. Kinder erwerben\is{Spracherwerb} sprachliche Regeln durch Generalisierungen aus dem
+Input, den sie zur Verfügung haben, und produzieren dabei mitunter Äußerungen, die sie nie gehört
+haben können:\is{Verb!Partikel-} 
+\ea
+Ich festhalte die. (Friederike, 2;6)
+\z
+Friederike ist dabei, die Regel für die Verbstellung zu erwerben, hat aber das gesamte Verb
+an der zweiten Stelle platziert, anstatt die Verbpartikel \emph{fest} am Satzende zu belassen.
+
+Wenn man nicht annehmen will, dass Sprache nur eine Liste von Form"=Bedeutungs"=Paaren
+ist, dann muss es ein Verfahren geben, die Bedeutung komplexer Äußerungen aus
+den Bedeutungen der Bestandteile der Äußerungen zu ermitteln.
+Die Syntax sagt etwas über die Art und Weise der Kombination der beteiligten
+Wörter aus, etwas über die Struktur einer Äußerung.
+So hilft uns zum Beispiel das Wissen über Subjekt"=Verb"=Kongruenz\is{Kongruenz} bei der Interpretation
+der Sätze in (\mex{1}c,d):
+\eal
+\label{Beispiel-mit-Kongruenz}
+\ex Die Frau schläft.
+\ex Die Mädchen schlafen.
+\ex Die Frau kennt  die Mädchen.
+\ex Die Frau kennen die Mädchen.
+\zl
+Die Sätze in (\mex{0}a,b) zeigen, dass ein Subjekt im Singular bzw.\ Plural
+ein entsprechend flektiertes Verb braucht. In (\mex{0}a,b) verlangt das Verb nur ein
+Argument, so dass die Funktion von \emph{die Frau} bzw.\ \emph{die Mädchen} klar ist.
+In (\mex{0}c,d) verlangt das Verb zwei Argumente, und \emph{die Frau} und \emph{die Mädchen}
+könnten an beiden Argumentstellen auf"|treten. Die Sätze könnten also bedeuten, dass
+die Frau jemanden kennt oder dass jemand die Frau kennt. Durch die Flexion des Verbs und
+Kenntnis der syntaktischen Gesetzmäßigkeiten des Deutschen weiß der Hörer
+aber, dass es für (\mex{0}c,d) jeweils nur eine Lesart gibt.
+
+Regeln, Muster und Strukturen in unserer Sprache aufzudecken, zu beschreiben und zu erklären, ist
+die Aufgabe der Syntax. 
+
+
+\section{Warum formal?}
+\label{sec-formal}
+
+Die\is{Formalisierung|(} folgenden beiden Zitate geben eine Begründung für die Notwendigkeit
+formaler Beschreibung von Sprache:  
+\begin{quote}
+\label{quote-Chomsky-Formalisierung}%
+Precisely constructed models for linguistic structure can play an
+important role, both negative and positive, in the process of discovery 
+itself. By pushing a precise but inadequate formulation to
+an unacceptable conclusion, we can often expose the exact source
+of this inadequacy and, consequently, gain a deeper understanding
+of the linguistic data. More positively, a formalized theory may 
+automatically provide solutions for many problems other than those
+for which it was explicitly designed. Obscure and intuition-bound
+notions can neither lead to absurd conclusions nor provide new and
+correct ones, and hence they fail to be useful in two important respects. 
+I think that some of those linguists who have questioned
+the value of precise and technical development of linguistic theory
+have failed to recognize the productive potential in the method
+of rigorously stating a proposed theory and applying it strictly to
+linguistic material with no attempt to avoid unacceptable conclusions 
+by ad hoc adjustments or loose formulation.
+\citep[\page5]{Chomsky57a}
+\end{quote}
+
+\begin{quote}
+As is frequently pointed out but cannot be overemphasized, an important goal
+of formalization in linguistics is to enable subsequent researchers to see the defects
+of an analysis as clearly as its merits; only then can progress be made efficiently.
+\citep[\page322]{Dowty79a}
+\end{quote}
+%
+Wenn wir linguistische Beschreibungen formalisieren, können wir leichter erkennen, was genau eine
+Analyse bedeutet. Wir können feststellen, welche Vorhersagen sie macht, und wir können alternative
+Analysen ausschließen. Ein weiterer Vorteil präzise formulierter Theorien ist, dass sie sich so
+aufschreiben lassen, dass sie von Computerprogrammen verarbeitet werden können. Bei einer Umsetzung
+von theoretischen Arbeiten in computerverarbeitbare Grammatikfragmente fallen Inkonsistenzen sofort
+auf. Die implementierten Grammatiken kann man dann dazu verwenden, große Textsammlungen, sogenannte
+Korpora\is{Korpus}, zu verarbeiten, und kann dabei feststellen, welche Sätze eine Grammatik nicht
+analysieren kann bzw.\ welchen Sätzen eine falsche Struktur zugeordnet wird. Zum Nutzen von
+Computerimplementationen für die Linguistik siehe \citew*[\page 163]{Bierwisch63},
+\citew[Kapitel~22]{Mueller99a} und \citew{Bender2008c} und Abschnitt~\ref{Asbchnitt-GB-Formalisierung}.
+\is{Formalisierung|)}
+
+
+
+
+
+
+\section{Konstituenten}
+\label{konstituententests}
+
+Betrachtet man den Satz in (\ref{Beispiel-Alle-Studenten-lesen}), so hat man das Gefühl, dass bestimmte Wörter zu einer
+Einheit gehören.
+\ea
+\label{Beispiel-Alle-Studenten-lesen}
+Alle Studenten lesen während dieser Zeit Bücher.
+\z
+So gehören die Wörter \emph{alle} und \emph{Studenten} zu einer Einheit, die etwas darüber
+aussagt, wer liest. \emph{während}, \emph{dieser} und {\emph{Zeit} bilden eine Einheit, die sich
+auf einen Zeitraum bezieht, in dem das Lesen stattfindet, und \emph{Bücher} sagt etwas darüber aus,
+was gelesen wird. Die erste Einheit besteht wieder selbst aus zwei Teilen, nämlich aus \emph{alle}
+und \emph{Studenten}, die Einheit \emph{während dieser Zeit} kann man auch in zwei Teile
+unterteilen: \emph{während} und \emph{dieser Zeit}. \emph{dieser Zeit} besteht wie \emph{alle
+  Studenten} aus zwei Teilen. 
+
+Im Zusammenhang mit (\ref{einbettung-dass-Saetze}) haben wir von Matrjoschkas\is{Matrjoschka}
+gesprochen. Auch bei der Zerlegung von (\mex{0}) sind zerlegbare Einheiten Bestandteile von größeren
+Einheiten. Im Unterschied zu Matrjoschkas gibt es jedoch nicht nur jeweils eine kleinere Einheit,
+die in einer anderen enthalten ist, sondern es gibt mitunter mehrere Einheiten, die in einer
+zusammengefasst sind. Man kann sich das ganze am besten als ein System aus Schachteln vorstellen:
+Eine große Schachtel enthält den gesamten Satz. In dieser Schachtel gibt es vier Schachteln, die
+jeweils \emph{alle Studenten}, \emph{lesen}, \emph{während dieser Zeit} bzw.\ \emph{Bücher}
+enthalten. Abbildung~\vref{Abbildung-Schachteln} zeigt das im Überblick.
+
+\begin{figure}[htbp]
+\centerline{%
+\begin{pspicture}(0,0)(11,1.8)
+     \rput[bl](0,0){%
+\psset{fillstyle=solid, framearc=0.25,framesep=5pt}
+\psframebox{%
+\psframebox{%
+       \psframebox{alle}
+       \psframebox{Studenten}}
+\psframebox{lesen}
+\psframebox{%
+       \psframebox{während}
+       \psframebox{%
+           \psframebox{dieser}
+           \psframebox{Zeit}}}
+\psframebox{Bücher}}}
+%\psgrid
+    \end{pspicture}}
+\caption{\label{Abbildung-Schachteln}Wörter und Wortgruppen in Schachteln}
+\end{figure}
+
+\noindent
+In diesem Abschnitt sollen Tests vorgestellt werden, die Indizien für eine engere
+Zusammengehörigkeit von Wörtern darstellen. Wenn von einer \emph{Wortfolge}\is{Wortfolge}
+die Rede ist, ist eine beliebige linear zusammenhängende Folge von Wörtern gemeint, 
+die nicht unbedingt syntaktisch oder semantisch zusammengehörig sein müssen, \zb
+\emph{Studenten lesen während} in~(\mex{0}). Mehrere Wörter, die eine strukturelle Einheit bilden,
+werden dagegen als \emph{Wortgruppe}\is{Wortgruppe}, \emph{Konstituente}\is{Konstituente}
+oder \emph{Phrase}\is{Phrase} bezeichnet. Den Trivialfall stellen immer einzelne Wörter dar, die
+natürlich immer eine strukturelle Einheit aus einem einzelnen Element bilden.
+
+In der traditionellen Grammatik spricht man auch von \emph{Satzgliedern}\is{Satzglied} bzw.\
+\emph{Gliedteilen}\is{Gliedteil}. Die Satzglieder sind dabei die unmittelbaren Einheiten, aus denen
+der Satz besteht, im Beispiel also \emph{alle Studenten}, \emph{während dieser Zeit} und
+\emph{Bücher}. Die Teile, aus denen die Satzglieder bestehen, werden \emph{Gliedteil} genannt.
+
+\citet{Bussmann2002a} zählt auch finite Verben zu den Satzgliedern, \dash, \emph{lesen} gilt als
+Satzglied. In der Duden"=Grammatik \citeyearpar[\page 783]{Duden2005} ist Satzglied
+allerdings anders definiert: Ein Satzglied ist hier eine Einheit des Satzes, die allein die Position vor
+dem finiten Verb besetzen kann. Nach dieser Definition kann das finite Verb kein Satzglied sein. Wie
+ich im Abschnitt~\ref{sec-konst-test-probleme-voranstellung} zeigen werde, führt dieser Satzgliedbegriff zu erheblichen Problemen. Ich
+verwende daher die Begriffe \emph{Satzglied} und \emph{Gliedteil} in diesem Buch nicht, sondern
+benutze den allgemeineren Begriff der Konstituente. 
+
+Nach diesen Vorbemerkungen sollen nun Tests besprochen werden, die uns helfen, festzustellen, ob
+eine Wortfolge eine Konstituente ist oder nicht.
+
+\subsection{Konstituententests}
+
+Für den Konstituentenstatus einer Wortfolge gibt es Tests, die in den folgenden Abschnitten vorgestellt werden.
+Wie im Abschnitt~\ref{sec-status-der-ktests} gezeigt werden wird, gibt es Fälle, bei denen die
+blinde Anwendung der Tests zu unerwünschten Resultaten führt.
+
+\subsubsection{Ersetzungstest}
+
+Kann man eine Wortfolge %einer bestimmten Kategorie 
+in einem Satz gegen eine andere Wortfolge so
+austauschen,\is{Ersetzungstest}\is{Austauschtest}\is{Substitutionstest} dass 
+wieder ein akzeptabler Satz entsteht, so ist das ein Indiz dafür, dass 
+die beiden Wortfolgen Konstituenten bilden.
+
+In (\mex{1}) kann man \emph{den Mann} durch \emph{eine Frau} ersetzen, was ein Indiz dafür
+ist, dass beide Wortfolgen Konstituenten sind.
+\eal
+\ex Er kennt [den Mann].
+\ex Er kennt [eine Frau].
+\zl
+
+\noindent
+Genauso kann man in (\mex{1}a) die Wortfolge \emph{das Buch zu lesen} durch
+\emph{der Frau das Buch zu geben} ersetzen.
+\eal
+\ex Er versucht, [das Buch zu lesen].\label{ex-das-buch-zu-lesen}
+\ex Er versucht, [der Frau das Buch zu geben].
+\zl
+%
+Der Test wird \emph{Ersetzungstest} oder auch \emph{Substitutionstest} genannt.
+
+\subsubsection{Pronominalisierungstest}
+
+Alles,\is{Pronominalisierungstest}
+worauf man sich mit einem Pronomen beziehen kann, ist eine Konstituente. 
+In (\mex{1}) kann man sich \zb mit \emph{er} auf die Wortfolge \emph{der Mann} beziehen:
+\eal
+\ex {}[Der Mann] schläft.
+\ex Er schläft.
+\zl
+
+\noindent
+Auch auf Konstituenten wie \emph{das Buch zu lesen} in \pref{ex-das-buch-zu-lesen}
+kann man sich mit einem Pronomen beziehen, wie (\mex{1}) zeigt:
+\eal
+\ex Peter versucht, [das Buch zu lesen].
+\ex Klaus versucht das auch.
+\zl
+
+\noindent
+Der Pronominalisierungstest ist ein Spezialfall des Ersetzungstests.
+
+\subsubsection{Fragetest}
+
+Was\is{Fragetest} sich erfragen lässt, ist eine Konstituente.
+        \eal
+        \ex {}[Der Mann] arbeitet.
+        \ex Wer arbeitet?
+        \zl
+Der Fragetest ist ein Spezialfall des Pronominalisierungstests: Man bezieht sich mit einer
+bestimmten Art von Pronomen, nämlich mit einem Fragepronomen, auf eine Wortfolge.
+
+Auch Konstituenten wie \emph{das Buch zu lesen} in \pref{ex-das-buch-zu-lesen} kann man erfragen,
+wie (\mex{1}) zeigt:
+\ea
+Was versucht er?
+\z
+
+\subsubsection{Verschiebetest}
+
+Wenn Wortfolgen\is{Permutationstest|(}\is{Verschiebetest|(}\is{Umstelltest|(} ohne Beeinträchtigung der Akzeptabilität des Satzes verschoben
+bzw.\ umgestellt werden können, ist das ein Indiz dafür, dass sie eine Konstituente bilden.
+
+In (\mex{1}) sind \emph{keiner} und \emph{diese Frau} auf verschiedene Weisen angeordnet,
+was dafür spricht, \emph{diese} und \emph{Frau} als zusammengehörig zu betrachten.
+\eal
+\ex[]{
+  dass keiner [diese Frau] kennt
+  }
+\ex[]{
+  dass [diese Frau] keiner kennt
+  }
+\zl
+Es ist jedoch nicht sinnvoll, \emph{keiner diese} als Konstituente von (\mex{0}a) zu analysieren,
+da die Sätze in (\mex{1}) und auch andere vorstellbare Abfolgen, die durch
+Umstellung von \emph{keiner diese} gebildet werden können, unakzeptabel sind:\footnote{
+  Ich verwende folgende Markierungen für Sätze: `*'\is{*} wenn ein Satz ungrammatisch ist,
+  `\#'\is{\#} wenn der Satz eine Lesart hat, die nicht der relevanten Lesart entspricht und
+  `\S'\is{\S} wenn der Satz aus semantischen oder informationsstrukturellen Gründen abweichend ist,
+  \zb weil das Subjekt belebt sein müsste, aber im Satz unbelebt ist, oder weil es einen
+  Konflikt gibt zwischen der Anordnung der Wörter im Satz und der Markierung bekannter
+  Information durch die Verwendung von Pronomina.%
+}
+\eal
+\ex[*]{
+dass Frau keiner diese kennt
+}
+\ex[*]{
+dass Frau kennt keiner diese
+}
+\zl
+
+\noindent
+Auch Konstituenten wie \emph{das Buch zu lesen} in \pref{ex-das-buch-zu-lesen}
+sind umstellbar:
+\eal
+\ex Er hat noch nicht [das Buch zu lesen] versucht.
+\ex Er hat [das Buch zu lesen] noch nicht versucht.
+\ex Er hat noch nicht versucht, [das Buch zu lesen].
+\zl
+\is{Permutationstest|)}\is{Verschiebetest|)}\is{Umstelltest|)}
+
+\subsubsection{Voranstellungstest}
+
+Eine\is{Voranstellungstest|(} besondere Form der Umstellung bildet die Voranstellung. Normalerweise steht
+in Aussagesätzen genau eine Konstituente vor dem finiten Verb:
+\eal
+\label{bsp-v2}
+\ex[]{
+[Alle Studenten] lesen während der vorlesungsfreien Zeit Bücher.
+}
+\ex[]{
+[Bücher] lesen alle Studenten während der vorlesungsfreien Zeit.
+}
+\ex[*]{
+[Alle Studenten] [Bücher] lesen während der vorlesungsfreien Zeit.
+}
+\ex[*]{
+[Bücher] [alle Studenten] lesen während der vorlesungsfreien Zeit.
+}
+\zl
+Die Voranstellbarkeit einer Wortfolge ist als starkes Indiz für deren Konstituentenstatus
+zu werten.\is{Voranstellungstest|)}
+
+\subsubsection{Koordinationstest}
+
+Lassen\is{Koordination!-stest} sich Wortfolgen koordinieren, so ist das ein Indiz dafür, dass die
+koordinierten Wortfolgen jeweils Konstituenten sind.
+
+In (\mex{1}) werden \emph{der Mann} und \emph{die Frau} koordinativ verknüpft.
+Die gesamte Koordination ist dann das Subjekt von \emph{arbeiten}.
+Das ist ein Indiz dafür, dass \emph{der Mann}
+und \emph{die Frau} Konstituenten bilden.
+\ea
+{}[Der Mann] und [die Frau] arbeiten.
+\z
+Das Beispiel in (\mex{1}) zeigt, dass sich auch Wortgruppen mit \zui koordinieren lassen:
+\ea
+Er hat versucht, [das Buch zu lesen] und [es dann unauffällig verschwinden zu lassen].
+\z
+
+\subsection{Bemerkungen zum Status der Tests}
+\label{sec-status-der-ktests}
+
+Es wäre schön, wenn die vorgestellten Tests immer eindeutige Ergebnisse liefern würden,
+weil dadurch die empirischen Grundlagen, auf denen Theorien aufgebaut werden, klarer
+wären. Leider ist dem aber nicht so. Vielmehr gibt es bei jedem der Tests Probleme,
+auf die ich im Folgenden eingehen will.\LATER{AL: \citew{GHS87a-u-gekauft,Welke2007a-u}}
+
+\subsubsection{Expletiva}
+\is{Pronomen!Expletiv-|(}
+
+Es gibt eine besondere Klasse von Pronomina, die sogenannten Expletiva, die sich nicht
+auf Dinge oder Personen beziehen, also nicht referieren\is{Referenz}. Ein Beispiel ist das \emph{es} in
+(\mex{1}).
+\eal
+\ex[]{
+Es regnet.
+}
+\ex[]{
+Regnet es?
+}
+\ex[]{\label{bsp-dass-es-jetzt-regnet}
+dass es jetzt regnet
+}
+\zl
+Wie die Beispiele in (\mex{0}) zeigen, kann das \emph{es} am Satzanfang
+oder nach dem Verb stehen. Es kann auch durch ein Adverb vom Verb getrennt sein.
+Dies spricht dafür, \emph{es} als eigenständige Einheit zu betrachten.
+
+Allerdings gibt es Probleme mit den Tests: Zum einen ist \emph{es} nicht
+uneingeschränkt umstellbar, wie (\mex{1}a) und (\mex{2}b) zeigen.
+\eal
+\ex[*]{\label{bsp-dass-jetzt-es-regnet}
+dass jetzt es regnet
+}
+\ex[]{
+dass jetzt keiner klatscht
+}
+\zl
+\eal
+\ex[]{\label{bsp-er-sah-es-regnen}
+Er sah es regnen.
+}
+\ex[*]{\label{bsp-es-sah-er-regnen}
+Es sah er regnen.
+}
+\ex[]{
+Er sah einen Mann klatschen.
+}
+\ex[]{
+Einen Mann sah er klatschen.
+}
+\zl
+Im Gegensatz zum Akkusativobjekt \emph{einen Mann} in (\mex{0}c,d) kann das Expletivum in (\mex{0}b) nicht
+vorangestellt werden.
+
+Zum anderen schlagen auch Substitutions- und Fragetest fehl:
+\eal
+\ex[*]{
+Der Mann/er regnet.
+}
+\ex[*]{
+Wer/was regnet?
+}
+\zl
+
+\noindent
+Genauso liefert der Koordinationstest ein negatives Ergebnis:
+\ea[*]{
+Es und der Mann regnet/regnen.
+}
+\z
+Dieses Fehlschlagen der Tests lässt sich leicht erklären: Schwach betonte
+Pronomina wie \emph{es} stehen bevorzugt vor anderen Argumenten, direkt nach
+der Konjunktion (\emph{dass} in (\ref{bsp-dass-es-jetzt-regnet})) bzw.\
+direkt nach dem finiten Verb (\ref{bsp-er-sah-es-regnen}) (siehe \citew[\page 570]{Abraham95a-u}). Wird, wie
+in (\ref{bsp-dass-jetzt-es-regnet}), ein Element vor das Expletivum gestellt,
+wird der Satz ungrammatisch. Der Grund für die Ungrammatikalität von
+(\ref{bsp-es-sah-er-regnen}) liegt in einer generellen Abneigung des 
+Akkusativ"=\emph{es} dagegen, die erste Stelle im Satz einzunehmen. Es gibt zwar Belege für
+solche Muster, aber in diesen ist das \emph{es} immer referentiell (\citealt[\page162]{Lenerz94a};
+\citealp[\page4]{GS97a}).
+
+%        \citet[\page162]{Lenerz94a} schreibt (\ref{bsp-geld-weg}) Peter Gallmann\aimention{Peter Gallmann}
+%        zu. (\ref{bsp-experten}) stammt von Santorini und ist nach \citew[\page4]{GS97a} zitiert.%
+%
+Dass auch der Substitutionstest und der Fragetest fehlschlagen, ist ebenfalls
+nicht weiter verwunderlich, denn das \emph{es} ist nicht referentiell.
+Man kann es höchstens durch ein anderes Expletivum wie \emph{das} ersetzen.
+Wenn wir das Expletivum durch etwas Referentielles ersetzen, bekommen wir semantische Abweichungen.
+Natürlich ist es auch nicht sinnvoll, nach etwas semantisch Leerem zu fragen oder
+sich darauf mit einem Pronomen zu beziehen.
+\is{Pronomen!Expletiv-|)}
+
+
+Daraus folgt: Nicht alle Tests müssen positiv ausfallen, damit eine Wortfolge als Konstituente gelten kann,
+\dash, die Tests stellen keine notwendige Bedingung dar.
+
+%% \subsubsection{Pronominalisierung}
+
+%% Der Pronominalisierungstest sagt, dass alles, worauf man sich mit einem Pronomen beziehen kann,
+%% eine Konstituente ist. Betrachtet man den folgenden kleinen Text, so sieht man, dass
+%% der Pronominalisierungstest nicht unproblematisch ist.
+%% \ea
+%% Über Mozart hat er schon viele Bücher gelesen. Sie waren alle interessant.
+%% \z
+%% Das Personalpronomen \emph{sie} bezieht sich auf \emph{viele Bücher über Mozart},
+%% in (\mex{0}) stehen die Bestandteile von \emph{viele Bücher über Mozart} aber nicht zusammen.
+%% Man kann über (\mex{1}) sagen, dass \emph{viele Bücher über Mozart} eine Konstituente
+%% bilden, aber in (\mex{0}) ist ein Bestandteil dieser Wortgruppe vorangestellt worden.
+%% \ea
+%% Hat er schon viele Bücher über Mozart gelesen?
+%% \z
+%%
+%% diskontinuierliche Konstituente
+
+
+\subsubsection{Der Verschiebetest}
+
+Der Verschiebetest\is{Verschiebetest} ist in Sprachen mit relativ freier Konstituentenstellung problematisch, da sich
+nicht immer ohne weiteres sagen lässt, was verschoben wurde. Zum Beispiel stehen die Wörter
+\emph{gestern dem Mann} in (\mex{1}) an jeweils unterschiedlichen Positionen:
+\eal
+\ex weil keiner gestern dem Mann geholfen hat
+\ex weil gestern dem Mann keiner geholfen hat
+\zl
+Man könnte also annehmen, dass \emph{gestern} gemeinsam mit \emph{dem Mann} umgestellt wurde. Eine
+alternative Erklärung für die Abfolgevarianten in (\mex{0}) liegt aber darin anzunehmen, dass
+Adverbien an beliebiger Stelle im Satz stehen können und dass in (\mex{0}b) nur \emph{dem Mann} vor
+\emph{keiner} gestellt wurde. Man sieht auf jeden Fall, dass \emph{gestern} und \emph{dem Mann} nicht
+in einer semantischen Beziehung stehen und dass man sich auch nicht mit einem Pronomen auf die
+gesamte Wortfolge beziehen kann. Obwohl es so aussieht, als sei das Material zusammen umgestellt
+worden, ist es also nicht sinnvoll anzunehmen, dass es sich bei \emph{gestern dem Mann} um eine
+Konstituente handelt.
+
+% Engel94a:148  Ich mag es. -> keine Umstellung möglich
+
+% zu kompliziert
+%% \eal
+%% \ex Der Hund bellt oft.
+%% \ex (dass) oft der Hund bellt
+%% \zl
+
+
+
+\subsubsection{Der Voranstellungstest}
+\label{sec-konst-test-probleme-voranstellung} 
+
+Wie\is{Vorfeld!-besetzung|(}\is{Voranstellungstest|(}
+ bei der Diskussion von (\ref{bsp-v2}) erwähnt, steht im Deutschen normalerweise
+eine Konstituente vor dem Finitum. Voranstellbarkeit vor das finite Verb wird mitunter
+sogar als ausschlaggebendes Kriterium für Konstituentenstatus genannt bzw.\ in der Definition des
+Begriffs Satzglied verwendet \citep[\page 783]{Duden2005}. Als Beispiel sei
+hier die Definition aus \citew{Bussmann83a} aufgeführt, die in \citew{Bussmann90a}
+nicht mehr enthalten ist:
+\begin{quote}
+{\bf Satzgliedtest}\is{Satzglied} [Auch: Konstituententest]. Auf der $\to$ Topikalisierung
+beruhendes Verfahren zur Analyse komplexer Konstituenten. Da bei Topikalisierung
+jeweils nur eine Konstituente bzw.\ ein $\to$ Satzglied an den Anfang gerückt werden kann,
+lassen sich komplexe Abfolgen von Konstituenten (\zb Adverbialphrasen) als
+ein oder mehrere Satzglieder ausweisen; in \textit{Ein Taxi quält sich im Schrittempo
+durch den Verkehr} sind \textit{im Schrittempo} und \textit{durch den Verkehr}
+zwei Satzglieder, da sie beide unabhängig voneinander in Anfangsposition gerückt werden
+können. \citep[\page446]{Bussmann83a}
+\end{quote}
+
+\noindent
+Aus dem Zitat ergeben sich die beiden folgenden Implikationen:
+\begin{itemize}
+\item Teile des Materials können einzeln vorangestellt werden. $\to$\\
+      Das Material bildet keine Konstituente.
+\item Material kann zusammen vorangestellt werden. $\to$\\
+      Das Material bildet eine Konstituente.
+\end{itemize}
+Wie ich zeigen werde, sind beide problematisch.
+
+Die erste ist wegen Beispielen wie (\mex{1}) problematisch:
+\eal
+\ex Keine Einigung erreichten Schröder und Chirac über den Abbau der Agrarsubventionen.\footnote{tagesschau, 15.10.2002, 20:00.}
+\ex Über den Abbau der Agrarsubventionen erreichten Schröder und Chirac keine Einigung.
+\zl
+Obwohl Teile der Nominalphrase \emph{keine Einigung über den Abbau der Agrarsubventionen}
+einzeln vorangestellt werden können, wollen wir die Wortfolge als eine Nominalphrase (NP) analysieren,
+wenn sie wie in (\mex{1}) nicht vorangestellt ist.
+\ea
+Schröder und Chirac erreichten [keine Einigung über den Abbau der Agrarsubventionen].
+\z
+Die Präpositionalphrase \emph{über den Abbau der Agrarsubventionen} hängt semantisch von \emph{Einigung}
+ab (\emph{sie einigen sich über die Agrarsubventionen}).
+
+Diese Wortgruppe kann auch gemeinsam vorangestellt werden:
+\ea
+Keine Einigung über den Abbau der Agrarsubventionen erreichten Schröder und Chirac.
+\z
+In theoretischen Erklärungsversuchen geht man davon aus, dass \emph{keine Einigung über den Abbau
+  der Agrarsubventionen} eine Konstituente ist, die unter gewissen Umständen
+aufgespalten\is{NP"=Aufspaltung} werden kann. In solchen Fällen können die einzelnen
+% Fanselow88 sagt, dass es zwei Phrasen sind, eine mit pro
+Teilkonstituenten wie in (\mex{-2}) unabhängig voneinander umgestellt werden \citep{deKuthy2002a}. 
+
+
+
+Die zweite Implikation ist ebenfalls problematisch, da es Sätze
+wie die in (\mex{1}) gibt:
+\eal
+\label{bsp-mehr-vf}
+\ex\label{bsp-trocken-durch-die-stadt}
+{}[Trocken] [durch die Stadt] kommt man am Wochenende auch mit der BVG.\footnote{
+        taz berlin, 10.07.1998, S.\,22.
+      }
+\ex {}[Wenig] [mit Sprachgeschichte] hat der dritte Beitrag in dieser Rubrik zu tun, [\ldots]\footnote{
+  Zeitschrift für Dialektologie und Linguistik, LXIX, 3/2002, S.\,339.
+}
+\zl
+In (\mex{0}) befinden sich mehrere Konstituenten vor dem finiten Verb, die nicht in einer syntaktischen
+oder semantischen
+%\NOTE{JB: intuitiv doch} 
+Beziehung zueinander stehen. Was es genau heißt,
+in einer syntaktischen bzw.\ semantischen Beziehung zueinander zu stehen, wird in den folgenden
+Kapiteln noch genauer erklärt. Beispielhaft sei hier nur
+für (\mex{0}a) gesagt, dass \emph{trocken} ein Adjektiv ist, das in (\mex{0}a) \emph{man}
+als Subjekt hat und außerdem etwas über den Vorgang des Durch"=die"=Stadt"=Kommens aussagt,
+sich also auf das Verb bezieht. Wie (\mex{1}b) zeigt, kann \emph{durch die Stadt} nicht
+mit dem Adjektiv \emph{trocken} kombiniert werden:
+\eal
+\ex[]{
+Man ist/bleibt trocken.
+}
+\ex[*]{
+Man ist/bleibt trocken durch die Stadt.
+}
+\zl
+Genauso ist \emph{durch die Stadt} eine Richtungsangabe, die syntaktisch vollständig ist
+und nicht mit einem Adjektiv kombiniert werden kann:
+\eal
+\ex[]{
+der Weg durch die Stadt
+}
+\ex[*]{
+der Weg trocken durch die Stadt
+}
+\zl
+Das Adjektiv \emph{trocken} hat also weder syntaktisch noch semantisch etwas mit 
+der Präpositionalphrase \emph{durch die Stadt} zu tun. Beide Phrasen haben jedoch gemeinsam,
+dass sie sich auf das Verb beziehen bzw.\ von diesem abhängen.
+
+Man mag dazu neigen, die Beispiele in (\ref{bsp-mehr-vf}) als Ausnahmen
+abzutun. Das ist jedoch nicht gerechtfertigt, wie ich in einer breit angelegten empirischen
+Studie gezeigt habe \citep{Mueller2003b}.
+
+Würde man \emph{trocken durch die Stadt} aufgrund des Testergebnisses als Konstituente bezeichnen
+und annehmen, dass \emph{trocken durch die Stadt} wegen der Existenz von (\ref{bsp-trocken-durch-die-stadt})
+auch in (\mex{1}) als Konstituente zu behandeln ist, 
+wäre der Konstituentenbegriff entwertet, da man mit den Konstituententests ja gerade semantisch
+bzw.\ syntaktisch zusammengehörige Wortfolgen ermitteln will.%\NOTE{Johannes Bubenzer: Unverständlich! Wieso?}
+\footnote{
+  Die Daten kann man mit einem leeren verbalen Kopf\is{Spur!Verb-}\is{leeres Element} vor dem finiten Verb analysieren,
+  so dass letztendlich wieder genau eine Konstituente vor dem Finitum steht \citep{Mueller2005d}.
+  Trotzdem sind die Daten für Konstituententests problematisch, da die Konstituententests
+  ja entwickelt wurden, um zu bestimmen, ob \zb \emph{trocken} und \emph{durch die Stadt}
+  bzw.\ \emph{wenig} und \emph{mit Sprachgeschichte} in (\mex{1}) Konstituenten bilden.%
+}
+
+\eal
+\ex Man kommt am Wochenende auch mit der BVG trocken durch die Stadt.
+\ex Der dritte Beitrag in dieser Rubrik hat wenig mit Sprachgeschichte zu tun.
+\zl
+Voranstellbarkeit ist also nicht hinreichend für Konstituentenstatus.
+
+Wir haben auch gesehen, dass es sinnvoll ist, Expletiva als Konstituenten zu behandeln,
+obwohl diese im Akkusativ nicht voranstellbar sind (siehe auch (\ref{bsp-er-sah-es-regnen})):
+\eal
+\ex[]{
+Er bringt es bis zum Professor.
+}
+\ex[\#]{
+Es bringt er bis zum Professor.
+} 
+\zl
+Es gibt weitere Elemente, die ebenfalls nicht vorangestellt werden können. Als Beispiel
+seien noch die mit inhärent reflexiven Verben\is{Verb!inhärent reflexives} verwendeten Reflexivpronomina\is{Pronomen!Reflexiv-} genannt:
+\eal
+\ex[]{
+Karl hat sich nicht erholt.
+}
+\ex[*]{
+Sich hat Karl nicht erholt.
+}
+\zl
+Daraus folgt, dass Voranstellbarkeit kein notwendiges Kriterium für den Konstituentenstatus
+ist. Somit ist Voranstellbarkeit weder hinreichend noch notwendig.
+\is{Vorfeld!-besetzung|)}\is{Voranstellungstest|)}
+
+
+\subsubsection{Koordination}
+\label{Abschnitt-K-Tests-Koordination}
+
+Koordinationsstrukturen\is{Koordination|(}\is{Koordination!-stest} wie die in (\mex{1}) sind ebenfalls problematisch:
+\ea
+\label{ex-gapping}
+%Peter gab ihm einen Apfel und ihr eine Tomate.
+Deshalb kaufte der Mann einen Esel und die Frau ein Pferd.
+\z
+Auf den ersten Blick scheinen in (\mex{0}) \emph{der Mann einen Esel} und \emph{die Frau ein Pferd}
+koordiniert worden zu sein. Bilden \emph{der Mann einen Esel} und \emph{die Frau ein Pferd} nun jeweils Konstituenten?
+
+Wie andere Konstituententests zeigen, ist die Annahme von Konstituentenstatus für diese Wortfolgen
+nicht sinnvoll. Die Wörter kann man nicht gemeinsam umstellen:\footnote{
+  Der Bereich vor dem finiten Verb wird auch \emph{Vorfeld}\is{Feld!Vor-} genannt (siehe Abschnitt~\ref{Abschnitt-Toplogie}).
+  Scheinbar mehrfache Vorfeldbesetzung ist im Deutschen unter bestimmten
+  Bedingungen möglich. Siehe dazu auch den vorigen Abschnitt, insbesondere
+  die Diskussion der Beispiele in (\ref{bsp-mehr-vf}) auf Seite~\pageref{bsp-mehr-vf}.
+  Das Beispiel in (\mex{1}) ist jedoch bewusst so konstruiert worden, 
+  dass sich ein Subjekt mit im Vorfeld befindet, was aus Gründen, die 
+  mit den informationsstrukturellen Eigenschaften solcher Vorfeldbesetzungen
+  zusammenhängen, bei Verben wie \emph{kaufen} nicht möglich ist. Siehe auch
+  \citew{dKM2003a}
+%,Cook-sub} 
+zu Subjekten in vorangestellten Verbalphrasen.%
+}
+\ea[*]{
+Der Mann einen Esel kaufte deshalb.
+}
+\z
+
+\noindent
+Eine Ersetzung durch Pronomina ist nicht ohne Ellipse möglich:
+\eal
+\ex[\#]{
+Deshalb kaufte er.
+}
+\ex[*]{
+Deshalb kaufte ihn.
+}
+\zl
+Die Pronomina stehen nicht für die zwei logischen Argumente von \emph{kaufen}, die
+in (\ref{ex-gapping})  \zb durch \emph{der Mann} und \emph{einen Esel} realisiert sind,
+sondern nur für jeweils eins. In der Tat wurden auch Analysen für Sätze wie (\ref{ex-gapping}) vorgeschlagen,
+in denen zwei Verben \emph{kauft} vorkommen, von denen jedoch nur eins sichtbar
+ist \citep{Crysmann2003c}. (\ref{ex-gapping}) entspricht also (\mex{1}):
+\ea
+Deshalb kaufte der Mann einen Esel und kaufte die Frau ein Pferd.
+\z
+Das heißt, obwohl es so aussieht als seien \emph{der Mann einen Esel} und \emph{die Frau ein Pferd}
+koordiniert, sind \emph{kauft der Mann einen Esel} und \emph{(kauft) die Frau ein Pferd} koordiniert.
+\is{Koordination|)}
+
+Daraus folgt: Auch wenn einige Tests erfüllt sind bzw.\ auf den ersten Blick erfüllt zu sein
+scheinen, muss es noch lange nicht sinnvoll sein, eine Wortfolge als Konstituente einzustufen, \dash,
+die Tests stellen keine hinreichende Bedingung dar.
+
+
+
+Zusammenfassend kann man sagen, dass die Konstituententests, wenn man sie ohne Wenn und Aber
+anwendet, nur Indizien liefern. Ist man sich der erwähnten problematischen Fälle bewusst,
+kann man mit den Tests aber doch einigermaßen klare Vorstellungen davon bekommen, welche
+Wörter als Einheit analysiert werden sollten.
+
+
+
+\section{Wortarten}
+\label{Abschnitt-Wortarten}
+
+Die Wörter in (\mex{1}) unterscheiden sich in ihrer Bedeutung, aber auch in anderen Eigenschaften.
+\ea
+Der dicke Mann lacht jetzt.
+\z
+Jedes der Wörter unterliegt eigenen Gesetzmäßigkeiten beim Zusammenbau von Sätzen. Man bildet
+Klassen von Wörtern, die wesentliche Eigenschaften teilen. So gehört \emph{der} zu den Artikeln\is{Artikel},
+\emph{Mann} zu den Nomina\is{Nomen}, \emph{lacht} zu den Verben\is{Verb} und \emph{jetzt} zu den
+Adverben\is{Adverb}. Wie (\mex{1}) zeigt, kann man die Wörter in (\mex{0}) durch Wörter der gleichen
+Wortart ersetzen.
+\ea
+Die dünne Frau lächelt immer.
+\z
+Das ist nicht immer gegeben, \zb lässt sich \emph{erholt} oder \emph{lächelst} nicht in (\mex{0})
+einsetzen. Die Kategorisierung von Wörtern nach der Wortart ist also eine grobe, und wir müssen
+noch viel mehr über die Eigenschaften von Wörtern sagen. In diesem Abschnitt sollen die
+verschiedenen Wortarten vorgestellt werden, die anderen Eigenschaften werden dann in anderen
+Abschnitten dieses Einleitungskapitels besprochen.
+
+Die wichtigsten Wortarten sind \emph{Verb}, \emph{Nomen}\is{Nomen}, \emph{Adjektiv}\is{Adjektiv}, \emph{Präposition}\is{Pr"aposition} und
+\emph{Adverb}\is{Adverb}. Statt Nomen wird auch der Begriff \emph{Substantiv}\is{Substantiv}
+verwendet. In den vergangen Jahrhunderten hat man auch von Dingwörtern, Tätigkeitswörtern und Eigenschaftswörtern
+gesprochen, aber diese Bezeichnungen sind problematisch, wie die folgenden Beispiele verdeutlichen
+sollen:
+\eal
+\ex die \emph{Idee}
+\ex die \emph{Stunde}
+\ex das laute \emph{Sprechen}
+\ex Die \emph{Erörterung} der Lage dauerte mehrere Stunden.
+\zl
+Bei (\mex{0}a) handelt es sich nicht um ein konkretes Ding, (\mex{0}b) bezeichnet ein Zeitintervall,
+in (\mex{0}c) und (\mex{0}d) geht es um Handlungen. Man sieht, dass \emph{Idee}, \emph{Stunde},
+\emph{Sprechen} und \emph{Erörterung} von ihrer Bedeutung her sehr unterschiedlich sind. Diese
+Wörter verhalten sich aber dennoch in vielerlei Hinsicht wie \emph{Mann} und \emph{Frau} und werden
+deshalb zu den Nomina gezählt.
+
+Auch\is{Verb|(} der Begriff Tätigkeitswort wird inzwischen in der wissenschaftlichen Grammatik nicht mehr
+benutzt, da Verben nicht unbedingt Tätigkeiten beschreiben müssen:
+\eal
+\ex Ihm gefällt das Buch.
+\ex Das Eis schmilzt.
+\ex Es regnet.
+\zl
+Auch müsste man \emph{Erörterung} wohl als Tätigkeitswort einordnen.\is{Verb|)}
+
+Adjektive\is{Adjektiv|(} geben nicht immer Eigenschaften von Objekten an. Im folgenden Beispiel ist sogar das
+Gegenteil der Fall: Die Eigenschaft, Mörder zu sein, wird durch das Adjektiv als wahrscheinlich
+oder möglich dargestellt.
+\eal
+\ex der mutmaßliche Mörder
+\ex Soldaten sind potentielle Mörder.
+\zl
+Die Adjektive selbst steuern in (\mex{1}) keine Information über Eigenschaften bei. Auch möchte man \emph{lachende} in (\mex{1})
+wohl als Adjektiv einordnen.
+\ea
+der lachende Mann
+\z
+Klassifiziert man jedoch nach Eigenschaft und Tätigkeit, müsste \emph{lachend} ein Tätigkeitswort sein.\is{Adjektiv|)}
+
+Statt\is{Flexion|(} semantischer Kriterien verwendet man heutzutage für die Bestimmung der meisten
+Wortarten formale Kriterien: Man betrachtet einfach die Formen, in denen ein Wort vorkommen kann. So
+gibt es \zb bei \emph{lacht} die Formen in (\mex{1}). 
+\eal
+\ex Ich lache.
+\ex Du lachst.
+\ex Er lacht.
+\ex Wir lachen.
+\ex Ihr lacht.
+\ex Sie lachen.
+\zl
+Zusätzlich gibt es Formen für das Präteritum, den Imperativ, Konjunktiv I, Konjunktiv II und
+infinite Formen (Partizipien und Infinitiv mit und ohne \emph{zu}). All diese Formen bilden das
+Flexionsparadigma\is{Flexion!-sparadigma} eines Verbs. Im Flexionsparadigma spielen
+Tempus\is{Tempus}  (Präsens\is{Pr"asens}, Präteritum\is{Pr"ateritum}, Futur\is{Futur}),
+Modus\is{Modus} (Indikativ\is{Indikativ}, Konjunktiv\is{Konjunktiv}, Imperativ\is{Imperativ}),
+Person\is{Person} (1., 2., 3.) und Numerus (Singular\is{Singular}, Plural\is{Plural}) eine Rolle. 
+Wie (\mex{0}) zeigt, können in einem Paradigma Formen zusammenfallen.
+
+Genauso wie Verben haben Nomina\is{Nomen} ein Flexionsparadigma:
+\eal
+\ex der Mann
+\ex des Mannes
+\ex dem Mann
+\ex den Mann
+\ex die Männer
+\ex der Männer
+\ex den Männern
+\ex die Männer
+\zl
+Nomina kann man nach Genus\is{Genus} (feminin, maskulin, neutrum) unterscheiden. Diese Unterscheidungen sind
+formaler Natur und haben nur bedingt etwas mit dem Geschlecht von Personen oder der Tatsache, dass ein
+Gegenstand bezeichnet wird, zu tun:
+\eal
+\ex die Tüte
+\ex der Krampf
+\ex das Kind
+\zl
+Die Begriffe \emph{männlich}, \emph{weiblich} und \emph{sächlich} sollte man deshalb vermeiden.
+\emph{Genus} steht für \emph{Art}. In Bantu"=Sprachen gibt es 7--10 Genera \citep{Corbett2008a}.
+
+Im nominalen Paradigma sind neben dem Genus auch Kasus\is{Kasus} (Nominativ\is{Kasus!Nominativ},
+Genitiv\is{Kasus!Genitiv}, Dativ\is{Kasus!Dativ}, Akkusativ\is{Kasus!Akkusativ}) und Numerus\is{Numerus} wichtig. 
+
+Adjektive\is{Adjektiv} flektieren wie Nomina nach Genus, Kasus, Numerus. Sie unterscheiden sich jedoch darin von
+Nomina, dass das Genus bei Adjektiven nicht fest ist. Adjektive können in allen drei Genera
+gebraucht werden:
+\eal
+\ex eine kluge Frau
+\ex ein kluger Mann
+\ex ein kluges Kind
+\zl
+Zusätzlich zu Genus, Kasus und Numerus unterscheidet man noch verschiedene
+Flexionsklassen. Traditionell unterscheidet man zwischen starker, gemischter und schwacher Flexion
+des Adjektivs. Welche Flexionsklasse\is{Flexionsklasse}\label{page-Flexionsklasse-Wunderlich}
+gewählt werden muss, hängt von der Form bzw.\ dem Vorhandensein eines Artikels ab:\footnote{
+Dieter Wunderlich\aimention{Dieter Wunderlich} hat in einem unveröffentlichten Aufsatz gezeigt, dass
+man mit den Flexionsklassen stark und schwach auskommen kann. Zu den Details siehe
+\citew[Abschnitt~2.2.5]{ps2} oder \citew[Abschnitt~13.2]{MuellerLehrbuch1}. 
+}
+\eal
+\ex ein alter Wein
+\ex der alte Wein
+\ex alter Wein
+\zl
+
+\noindent
+Außerdem sind Adjektive für gewöhnlich steigerbar:
+\eal
+\ex klug
+\ex klüger
+\ex am klügsten
+\zl
+Das ist nicht immer gegeben. Insbesondere bei Adjektiven, die auf einen Endpunkt Bezug nehmen, sind
+Steigerungsformen nicht sinnvoll: Wenn eine Lösung optimal ist, gibt es keine bessere, also kann man
+auch nicht von einer optimaleren Lösung sprechen. Genauso kann man nicht töter als tot sein. 
+%
+% Anke Lüdeling:16.05.2010
+% hm. das steht zwar überall so, ist aber höchstens semantisch problematisch, morphologisch
+% überhaupt nicht. morphologisch und semantisch problematisch hingegen sind komposita wie eiskalt,
+% mausetot etc. die einen vergleich enthalten. hier würden viele argumentieren, dass die
+% steigerungsformen ungrammatisch sind.  generell ist gradation wahrscheinlich eher wortbildung als
+% flexion und daher eh für die wortartzuweisung problematisch
+
+Es gibt einige Sonderfälle wie \zb die Adjektive \emph{lila} und \emph{rosa}. Diese können flektiert
+werden, es gibt neben der flektierten Form in (\mex{1}a) aber auch die unflektierte:
+\eal
+\ex eine lilane Blume
+\ex eine lila Blume
+\zl
+\emph{lila} wird in beiden Fällen zu den Adjektiven gezählt. Man begründet diese Einordnung damit,
+dass das Wort an denselben Stellen vorkommt wie Adjektive, die eindeutig an ihrer Flexion als
+Adjektive zu erkennen sind.\is{Flexion|)}
+
+
+Die bisher besprochenen Wortarten konnten alle aufgrund ihrer Flexionseigenschaften unterschieden
+werden. Bei den nicht flektierbaren Wörtern muss man andere Kriterien heranziehen. Hier teilt man
+die Wörter -- wie auch die schon erwähnten nicht flektierten Adjektive -- nach ihrem syntaktischen
+Kontext in Klassen ein. Man unterscheidet Präpositionen\is{Pr"aposition}, Adverbien\is{Adverb},
+Konjunktionen\is{Konjunktion}, Interjektionen\is{Interjektion} und mitunter auch Partikeln\is{Partikel}.
+Präpositionen sind Wörter, die zusammen mit einer Nominalgruppe vorkommen, deren Kasus sie
+bestimmen:
+\eal
+\ex in diesen Raum
+\ex in diesem Raum
+\zl
+\emph{wegen} wird auch oft der Klasse der Präpositionen zugerechnet, obwohl es auch nach dem Nomen
+stehen kann und dann Postposition\is{Postposition} genannt werden müsste:
+\ea
+des Geldes wegen
+\z
+Man spricht gelegentlich auch von Adpositionen\is{Adposition}, wenn man sich nicht auf die Stellung des Wortes
+festlegen will.
+
+Adverbien\is{Adverb} verlangen im Gegensatz zu Präpositionen keine Nominalgruppe:
+\eal
+\ex Er schläft in diesem Raum.
+\ex Er schläft dort.
+\zl
+Mitunter werden die Adverbien einfach den Präpositionen zugeordnet (siehe S.~\pageref{Seite-Adverbien-PP}). Die Begründung dafür ist, dass
+Präpositionalgruppen wie \emph{in diesem Raum} sich genauso verhalten wie entsprechende
+Adverbien. \emph{in} unterscheidet sich von \emph{dort} nur dadurch, dass es noch eine Nominalgruppe
+braucht. Aber solche Unterschiede gibt es auch innerhalb der verschiedenen Klassen der flektierbaren
+Wörter. So verlangt \emph{schlafen} nur eine Nominalgruppe, \emph{erkennen} dagegen zwei.
+\eal
+\ex Er schläft.
+\ex Peter erkennt ihn.
+\zl
+
+\noindent
+Die Konjunktionen\is{Konjunktion} unterteilt man in neben- bzw.\ beiordnende und unterordnende. Zu den nebenordnenden Konjunktionen
+zählen \emph{und} und \emph{oder}. In koordinativen Verknüpfungen werden meist zwei Wortgruppen mit
+gleichen syntaktischen Eigenschaften verbunden. Sie stehen nebeneinander. \emph{dass} und
+\emph{weil} sind unterordnende Konjunktionen, da mit diesen Konjunktionen eingeleitete Sätze Teile
+eines größeren Satzes sind.
+\eal
+\ex Klaus glaubt, dass er lügt.
+\ex Klaus glaubt ihm nicht, weil er lügt.
+\zl
+Die unterordnenden Konjunktionen werden auch \emph{Subjunktion}\is{Subjunktion} genannt.
+
+Interjektionen\is{Interjektion} sind satzwertige Ausdrücke, wie \emph{Ja!}, \emph{Bitte!}, \emph{Hallo!},
+\emph{Hurra!}, \emph{Bravo!}, \emph{Pst!}, \emph{Plumps!}.
+
+Wenn Adverbien und Präpositionen nicht in eine Klasse eingeordnet werden, dann werden die Adverbien
+normalerweise als Restkategorie verwendet, \dash, dass alle Nichtflektierbaren, die keine
+Präpositionen, Konjunktionen oder Interjektionen sind, Adverbien sind.  Mitunter wird die Restklasse
+auch noch weiter unterteilt: Nur die Wörter werden Adverb genannt, die -- wenn sie als Satzglied
+verwendet werden -- vor das finite Verb gestellt werden können. Die Wörter, die nicht voranstellbar
+sind, werden dagegen \emph{Partikel}\is{Partikel} genannt. Die Partikeln
+werden dann nach ihrer Funktion in verschiedene Klassen wie Gradpartikel\is{Partikel!Grad-} und
+Abtönungspartikel\is{Partikel!Abt"onungs-} eingeteilt. Da in diese nach der Funktion bestimmten
+Klassen aber auch Wörter fallen, die zu den Adjektiven zählen, mache ich diese Unterscheidung nicht
+und spreche einfach von Adverbien.
+
+
+Wir haben bereits einen wesentlichen Teil der flektierbaren Wörter nach Wortarten klassifiziert. Wenn
+man vor der Aufgabe steht, ein bestimmtes Wort einzuordnen, kann man den Entscheidungsbaum in
+Abbildung~\vref{Abbildung-Wortarten} verwenden, den ich der Duden"=Grammatik \citeyearpar[\page 133]{Duden2005}
+% in der neuen Ausgabe ist die Grafik auf der Umschlagseite
+entnommen habe.
+\begin{figure}[htbp]
+\centerline{%
+\begin{tabular}{@{}ccccc@{}}
+\multicolumn{5}{@{}c@{}}{\node{wortart}{Wortart}}\\[5ex]
+\multicolumn{2}{@{}c@{}}{\node{flektierbar}{flektierbar}} &&& \node{nicht}{nicht}\\
+                               & & & & \node{nflektierbar}{flektierbar}\\
+%
+\node{Tempus}{nach Tempus} & \multicolumn{2}{@{}c@{}}{\node{Kasus}{nach Kasus}}\\[3ex]
+            & \node{fGenus}{festes Genus} & \multicolumn{2}{@{}c@{}}{\node{vGenus}{veränderbares Genus}}\\[3ex]
+%
+            &              & \node{nk}{nicht komparierbar} & \node{k}{komparierbar}\\[3ex]
+%
+\node{Verb}{Verb}        & \node{Nomen}{Nomen}        & \node{Artikel}{Artikelwort}        & \node{Adjektiv}{Adjektiv} & \node{nichtflektierbare}{Nichtflektierbare}\\
+            &              & \node{Pronomen}{Pronomen}\\
+\end{tabular}}
+\nodeconnect{wortart}{flektierbar}\nodeconnect{wortart}{nicht}%
+\nodeconnect{flektierbar}{Tempus}\nodeconnect{flektierbar}{Kasus}%
+\nodeconnect{Kasus}{fGenus}\nodeconnect{Kasus}{vGenus}%
+\nodeconnect{vGenus}{nk}\nodeconnect{vGenus}{k}%
+\nodeconnect{nflektierbar}{nichtflektierbare}%
+\nodeconnect{Tempus}{Verb}\nodeconnect{fGenus}{Nomen}\nodeconnect{nk}{Artikel}\nodeconnect{k}{Adjektiv}%
+%\nodeconnect{nichtflektierbare}{Praeposition}%
+%\nodeconnect{Pronomen}{Personalp}\nodeconnect{Adjektiv}{attributiv}%
+\caption{\label{Abbildung-Wortarten}Entscheidungsbaum zur Bestimmung von Wortarten nach \citew[\page 133]{Duden2005}}
+\end{figure}
+Wenn ein Wort mit Tempus\is{Tempus} flektiert, ist es ein Verb\is{Verb}, wenn es verschiedene
+Kasusformen\is{Kasus} hat, muss man überprüfen, ob es ein festes Genus\is{Genus} hat. Ist das der
+Fall, handelt es sich um ein Nomen\is{Nomen}. Bei Wörtern mit veränderbarem Genus wird überprüft, ob sie
+komparierbar\is{Komparation} sind. Wenn ja, handelt es sich um Adjektive\is{Adjektiv}. Alle anderen Wörter kommen in eine Restkategorie, die der Duden Pronomina\is{Pronomen}/Artikelwörter\is{Artikelwort}
+nennt. In dieser Restkategorie werden genauso wie bei den nicht flektierbaren Wörtern in
+Abhängigkeit vom syntaktischen Verhalten Klassen gebildet. Der Duden unterscheidet Pronomina und
+Artikelwörter. Die Pronomina sind nach dieser Klassifikation Wörter, die für eine gesamte Nominalgruppe wie
+\emph{der Mann} stehen, die Artikelwörter werden dagegen normalerweise mit einem Nomen kombiniert.
+In der lateinischen Grammatik schließt der Pronomenbegriff Pronomina im obigen Sinn und
+Artikelwörter ein, da die Formen mit und ohne Nomen identisch sind. Im Laufe der Jahrhunderte haben
+sich aber die Formen auseinander entwickelt, so dass man in den heutigen romanischen
+Sprachen unterscheiden kann zwischen solchen, die für eine ganze Nominalgruppe
+stehen können, und solchen, die zusammen mit einem Nomen auf"|treten müssen. Elemente der
+letztgenannten Klasse werden auch \emph{Determinator}\is{Determinator} genannt. 
+%
+% Auch im Deutschen gibt es bei einigen Formen einen Unterschied
+% zwischen dem Demonstrativpronomen und dem definiten Artikel:
+% \eal
+% \ex Wir gedenken der Opfer.
+% \ex Wir gedenken derer.
+% \ex Wir helfen den Männern.
+% \ex Wir helfen denen.
+% \zl
+
+
+Folgt\is{Pronomen|(} man diesem Entscheidungsbaum, landen \zb das Personalpronomen mit seinen Formen
+\emph{ich}, \emph{du}, \emph{er}, \emph{sie}, \emph{es}, \emph{wir}, \emph{ihr}, \emph{sie} und das
+Possessivpronomen mit den Formen \emph{mein}, \emph{dein}, \emph{sein}, \emph{unser}, \emph{euer},
+\emph{ihr} und entsprechend flektierten Varianten in der Kategorie Artikelwort/""Pronomen.  Das
+Reflexivpronomen mit den Formen \emph{mich}, \emph{dich}, \emph{sich}, \emph{uns}, \emph{euch} und
+das Reziprokpronomen \emph{einander} müssen dagegen als Sonderfall betrachtet werden, denn es gibt
+für \emph{sich} und \emph{einander} keine ausdifferenzierten Formen mit verschiedenen Genera. Kasus
+äußert sich beim Reziprokpronomen nicht morphologisch, man kann nur durch das Einsetzen von
+\emph{einander} in Sätze, die einen Genitiv, Dativ bzw.\ Akkusativ verlangen, feststellen, dass es eine
+Genitiv, Dativ- und eine Akkusativvariante geben muss, die aber formengleich sind:
+
+\eal
+\ex Sie gedenken seiner/einander.
+\ex Sie helfen ihm/einander.
+\ex Sie lieben ihn/einander.
+\zl
+%
+Auch sogenannte Pronominaladverbien\is{Adverb!Pronaminal-} wie \emph{darauf}, \emph{darin}, \emph{worauf}, \emph{worin}
+sind problematisch. Diese Formen sind aus einer Präposition und den Elementen \emph{da} und
+\emph{wo} zusammengesetzt. Der Begriff \emph{Pronominaladverb} legt nun nahe, dass es in diesen
+Wörtern etwas Pronominales gibt. Das kann nur \emph{da} bzw.\ \emph{wo} sein. \emph{da} und
+\emph{wo} sind aber nicht flektierbar, werden also nach dem Entscheidungsbaum nicht bei den
+Pronomina eingeordnet. 
+
+Dasselbe gilt für Relativwörter wie \emph{wo} in (\mex{1}):
+\eal
+\ex Ich komme eben aus der Stadt, \emph{wo} ich Zeuge eines Unglücks gewesen bin.\footnote{
+ 	\citew*[\page 672]{Duden84}.
+ 	}\label{bsp-wo-ich-zeuge}
+\ex Studien haben gezeigt, daß mehr Unfälle in Städten passieren, \emph{wo}\iw{wo!Relativpronomen}
+      die Zebrastreifen abgebaut werden, weil die Autofahrer unaufmerksam werden.\footnote{
+        taz berlin, 03.11.1997, S.\,23.
+        }
+\ex Zufällig war ich in dem Augenblick zugegen, \emph{wo} der Steppenwolf 
+      zum erstenmal unser Haus betrat und bei meiner Tante sich einmietete.\footnote{
+                Herman Hesse, \emph{Der Steppenwolf}. Berlin und Weimar: Auf"|bau-Verlag. 1986, S.\,6.
+	}
+\zl
+Sie sind nicht flektierbar, können also nach dem Entscheidungsbaum nicht in die Klasse der Pronomina
+eingeordnet werden. \citet[\page 233]{Eisenberg2004a} stellt fest, dass \emph{wo} eine Art nicht flektierbares
+Relativpronomen\is{Pronomen!Relativ-} ist (in Anführungszeichen) und merkt an, dass diese Bezeichnung der ausschließlichen
+Verwendung des Begriffes für nominale, also flektierende Elemente zuwiderläuft. Er benutzt deshalb
+die Bezeichnung \emph{Relativadverb}\is{Adverb!Relativ-} (siehe auch \citew[\S 856, \S 857]{Duden2005}).
+
+% Der Duden sagt dazu nichts Genaues. Gallmann 2009, C.3.2 führt dessen, deren, derer als Langform von der
+% die das auf. Auch Block I S. 3 
+% Die Genitivformen dessen und deren können possessiven
+% Artikelwörtern nahe kommen:
+% (7) Der Hofnarr bewunderte den Kaiser und [ [dessen] neue Kleider].
+%
+Auch gibt es Verwendungen des Relativwortes \emph{dessen} und des Fragewortes \emph{wessen} in
+Kombination mit einem Nomen:
+\eal
+\ex der Mann, dessen Schwester ich kenne
+\ex Ich möchte wissen, wessen Schwester du kennst.
+\zl
+Nach der Dudenklassifikation müsste man diese Elemente Relativartikelwort und
+Interrogativartikelwort nennen.
+Sie werden jedoch meist zu den Relativpronomina und Fragepronomina
+gezählt (siehe \zb \citew[\page 229]{Eisenberg2004a}).
+In Eisenbergs Terminologie ist das ganz problemlos, denn er unterscheidet nicht zwischen
+Artikelwörtern, Pronomina und Nomina sondern teilt alle in die Klasse der Nomina ein. Aber auch
+Autoren, die zwischen Artikeln und Pronomina unterscheiden, sprechen mitunter von Fragepronomina,
+wenn sie Wörter meinen, die in Artikelfunktion oder statt einer kompletten Nominalgruppe vorkommen.
+
+Man sollte insgesamt darauf gefasst sein, dass der Begriff \emph{Pronomen} einfach für Wörter
+verwendet wird, die auf andere Einheiten verweisen, und zwar nicht in der Art, wie das Nomina wie
+\emph{Buch} oder Eigennamen wie \emph{Klaus} tun, sondern kontextabhängig. \Zb kann man mit dem Personalpronomen \emph{er}
+auf einen Tisch oder einen Mann verweisen. Diese Verwendung des Begriffs \emph{Pronomen} liegt quer
+zum Entscheidungsbaum in Abbildung~\ref{Abbildung-Wortarten} und schließt Nichtflektierbare wie
+\emph{da} und \emph{wo} ein. 
+%
+% Anke Lüdeling: 16.05.2010
+% ganz wichtig ist bei pronomina, dass sie nicht auf ein Nomen, sondern auf einen Diskursreferenten verweisen. 
+
+Expletivpronomina\is{Pronomen!Expletiv-} wie \emph{es} und \emph{das} und das \emph{sich} inhärent
+reflexiver Verben\is{Verb!inhärent reflexives} beziehen sich
+natürlich nicht auf andere Objekte. Sie werden aufgrund der Formengleichheit mit zu den Pronomina
+gezählt. So muss man übrigens auch bei Annahme des engen Pronomenbegriffs verfahren, denn bei Expletivpronomina
+gibt es keine Formunterschiede für verschiedene Kasus und auch keine Genus- oder
+Numerusvarianten. Ginge man nach Schema F vor, würden die Expletiva in der Klasse der
+Nichtflektierbaren landen. Nimmt man an, dass \emph{es} wie das Personalpronomen eine Nominativ- und
+eine Akkusativvariante mit gleicher Form hat, landet man im nominalen Bereich, man muss dann aber
+eingestehen, dass die Annahme von Genus für \emph{es} nicht sinnvoll ist bzw.\ muss \emph{es} zu den
+Nomina zählen, wenn man in Analogie zum Personalpronomen das Genus Neutrum annehmen will.%
+\is{Pronomen|)}
+
+Wir haben noch nicht besprochen, wie mit den kursiv gesetzten Wörtern in (\mex{1}) verfahren wird:
+\eal
+\ex das \emph{geliebte} Spielzeug
+\ex das \emph{schlafende} Kind
+\ex die Frage des \emph{Sprechens} und \emph{Schreibens} über Gefühle
+\ex Auf dem Europa-Parteitag fordern die \emph{Grünen} einen ökosozialen Politikwechsel.
+\ex\label{Wortart-adverbiales-Adjektiv} Max lacht \emph{laut}.
+\ex\label{Wortart-Satzadverb-Adjektiv} Max würde \emph{wahrscheinlich} lachen.
+\zl
+\emph{geliebte} und \emph{schlafende} sind Partizipformen von \emph{lieben} bzw.\
+\emph{schlafen}. Diese Formen werden traditionell mit zum verbalen Paradigma gezählt. In diesem
+Sinne sind \emph{geliebte} und \emph{schlafende} Verben. Man spricht hier von der lexikalischen
+Wortart. In diesem Zusammenhang ist auch der Begriff \emph{Lexem}\is{Lexem} relevant. Zu einem Lexem gehören
+alle Wortformen eines Flexionsparadigmas.\is{Flexion}\is{Paradigma} Im klassischen Verständnis
+dieses Begriffs gehören auch 
+alle regelmäßig abgeleiteten Formen dazu, \dash, dass bei Verben die Partizipien und auch
+nominalisierte Infinitive zu verbalen Lexemen gehören. Diese Auf"|fassung wird nicht von allen
+Sprachwissenschaftlern geteilt. Insbesondere ist problematisch, dass man hier verbale mit nominalen
+und adjektivischen Flexionsparadigmen mischt, denn \emph{Sprechens} steht im Genitiv und auch die
+adjektivischen Partizipien flektieren nach Kasus, Numerus und Genus. Auch bleibt unklar, warum
+\emph{schlafende} zum verbalen Lexem gezählt wird, \emph{Störung} dagegen ein eigenes nominales
+nicht zum Lexem \emph{stören} gehörendes Lexem bilden soll. Ich folge der neueren Grammatikforschung
+und nehme an, dass bei Prozessen, in denen sich die Wortart ändert, ein neues Lexem
+entsteht. In diesem Sinne gehört \emph{schlafende} nicht zum Lexem \emph{schlafen}, sondern ist eine
+Form des Lexems \emph{schlafend}. Dieses Lexem hat die Wortart Adjektiv und flektiert auch entsprechend. 
+
+Wo genau die Grenze zwischen Flexion und Derivation\is{Derivation} (der Bildung neuer Lexeme) zu ziehen ist, ist,
+wie gesagt, umstritten. So zählen \citet*[\page263--264]{SWB2003a} die Bildung des Present Participle (\emph{standing})
+und des Past Participle (\emph{eaten}) im Englischen\il{Englisch} zur Derivation, weil diese Formen im
+Französischen\il{Französisch} noch für Genus und Numerus flektiert werden müssen. 
+
+Adjektive wie \emph{Grünen} in (\mex{0}d) werden nominalisierte Adjektive genannt und auch
+wie Nomina groß geschrieben, wenn es kein Nomen gibt, das aus dem unmittelbaren Kontext ergänzt
+werden kann:
+\ea
+A: Willst du den roten Ball haben?\\
+B: Nein, gib mir bitte den grünen.
+\z
+In der Antwort in (\mex{0}) ist das Nomen \emph{Ball} ausgelassen worden. Eine solche Auslassung
+liegt in (\mex{-1}d}) nicht vor. Man könnte hier nun genauso annehmen, dass ein einfacher
+Wortartenwechsel stattgefunden hat. Wortartenwechsel ohne ein sichtbares Affix nennt man
+\emph{Konversion}\is{Konversion}. Die Konversion wird von einigen Wissenschaftlern als Unterart der
+Derivation\is{Derivation} behandelt. 
+Das Problem ist jedoch, dass \emph{Grüne} genau wie ein Adjektiv flektiert ist und auch das
+Genus in Abhängigkeit vom Bezugsobjekt variiert:
+\eal
+\ex ein Grüner hat vorgeschlagen, \ldots
+\ex eine Grüne hat vorgeschlagen, \ldots
+\zl
+Man hat also hier eine Situation, in der ein Wort zweierlei Eigenschaften hat. Man hilft sich, indem
+man von einem nominalisierten Adjektiv spricht: Die lexikalische Wortart\is{Wortart!lexikalische} ist Adjektiv, die
+syntaktische Wortart\is{Wortart!syntaktische} ist Nomen.
+
+Das Wort in (\ref{Wortart-adverbiales-Adjektiv}) ist wie ein Adjektiv flektierbar, sollte also nach
+unseren Tests auch als Adjektiv eingeordnet werden. Mitunter werden solche Adjektive aber dennoch zu
+den Adverbien gezählt. Der Grund hierfür ist, dass diese unflektierten Adjektive sich so ähnlich
+wie Adverbien verhalten:
+\ea
+Max lacht immer/oft/laut.
+\z
+Man sagt dann, dass die lexikalische Wortart Adjektiv und die syntaktische Wortart Adverb ist. Die
+Einordnung von Adjektiven wie \emph{laut} in (\mex{0}) in die Klasse der Adverbien wird nicht von
+allen Autoren angenommen. Stattdessen spricht man von einem adverbial verwendeten Adjektiv, \dash,
+dass man annimmt, dass auch die syntaktische Wortart Adjektiv ist, dass es jedoch eine
+Verwendungsweise gibt, die der der Adverbien entspricht (siehe \zb
+\citew[Abschnitt~7.3]{Eisenberg2004a}). Das ist parallel zu den Präpositionen, die auch in
+verschiedenen syntaktischen Kontexten auf"|treten können: 
+\eal
+\ex Peter schläft im Büro.
+\ex der Tisch im Büro
+\zl
+In beiden Beispielen in (\mex{0}) liegen Präpositionalgruppen vor, aber in (\mex{0}a) modifiziert
+\emph{im Büro} wie ein Adverb das Verb \emph{schläft} und in (\mex{0}b) bezieht sich \emph{im Büro}
+auf das Nomen \emph{Tisch}. Genauso kann sich \emph{laut} wie in (\mex{1}) auf ein Nomen oder wie in
+(\mex{-1}) auf ein Verb beziehen.
+\ea
+die laute Musik
+\z 
+
+\noindent
+Als letzten kniffligen Fall möchte ich (\ref{Wortart-Satzadverb-Adjektiv}) besprechen. Wörter wie
+\emph{wahrscheinlich}, \emph{hoffentlich} und \emph{glücklicherweise} werden Satzadverbien\is{Satzadverb}
+genannt. Sie beziehen sich auf die gesamte Aussage und geben die Sprecherhaltung wieder. Zu dieser
+semantisch begründeten Klasse gehören auch Flektierbare wie \emph{vermutlich} und eben
+\emph{wahrscheinlich}. Wenn man all diese Wörter Adverb nennen will, dann muss man davon
+ausgehen, dass bei Wörtern wie \emph{wahrscheinlich} eine Konversion stattgefunden hat, \dash, dass
+\emph{wahrscheinlich} die lexikalische Wortart Adjektiv und die syntaktische Wortart Adverb hat.
+
+
+
+\section{Köpfe}
+\label{Abschnitt-Kopf}
+
+% Der Kopf"=Begriff spielt in der Kopfgesteuerten Phrasenstrukturgrammatik
+% eine wichtige Rolle, wie man unschwer am Namen der Theorie erkennen kann.
+%
+Der\is{Kopf|(} Kopf einer Wortgruppe/""Konstituente/""Phrase ist dasjenige Element,
+das die wichtigsten Eigenschaften der Wortgruppe/""Konstituente/""Phrase bestimmt.
+Gleichzeitig steuert der Kopf den Aufbau der Phrase, \dash, der Kopf verlangt
+die Anwesenheit bestimmter anderer Elemente in seiner Phrase. Die Köpfe sind
+in den folgenden Beispielen kursiv gesetzt:
+\eal
+\ex \emph{Träumt} dieser Mann?
+\ex \emph{Erwartet} er diesen Mann?
+\ex \emph{Hilft} er diesem Mann?
+\ex \emph{in} diesem Haus
+\ex ein \emph{Mann}
+\zl
+Die Verben bestimmen den Kasus ihrer jeweiligen Argumente (der Subjekte und Objekte).
+In (\mex{0}d) bestimmt die Präposition den Kasus der Nominalphrase \emph{diesem Haus} und
+leistet auch den semantischen Hauptbeitrag: Ein Ort wird beschrieben. (\mex{0}e)
+ist umstritten: Es gibt sowohl Wissenschaftler, die annehmen, dass der Determinator
+der Kopf ist (\zb\LATER{\cite{Brame81a,Brame82a} \citealp[\page 90]{Hudson84a};
+}\citealp{Hellan86a,Abney87a,Netter94,Netter98a}), als auch solche, die annehmen, dass das Nomen der
+Kopf ist (\zb \citew{vanLangendonck94a}; \citealp[\page 49]{ps2}; \citealp{Demske2001a};
+\citealp[Abschnitt~6.6.1]{MuellerLehrbuch1}; \citew{Hudson2004a}). 
+
+
+Die Kombination eines Kopfes mit einer anderen Konstituente wird \emph{Projektion
+des Kopfes}\is{Projektion} genannt. Eine Projektion, die alle notwendigen Bestandteile zur Bildung
+einer vollständigen Phrase enthält, wird \emph{Maximalprojektion}\is{Projektion!Maximal-}
+genannt. Ein Satz\is{Satz} ist die Maximalprojektion eines finiten Verbs.
+
+Abbildung~\vref{Abbildung-beschriftete-Schachteln} zeigt die Struktur von (\mex{1}) im
+Schachtelmodell.
+\ea
+Der Mann liest einen Aufsatz.
+\z
+Im Gegensatz zu Abbildung~\ref{Abbildung-Schachteln} sind die Schachteln beschriftet worden.
+\begin{figure}[htbp]
+\centerline{%
+\begin{pspicture}(0,0)(7.8,3.4)
+     \rput[bl](0,0){%
+\psset{fillstyle=solid, framearc=0.25,framesep=5pt}
+\psframebox{%
+\begin{tabular}{@{}l@{}}
+VP\\
+\psframebox{%
+\begin{tabular}{@{}l@{}}
+NP\\[2mm]
+       \psframebox{\begin{tabular}{@{}l@{}}
+                   Det\\der
+                   \end{tabular}}
+       \psframebox{\begin{tabular}{@{}l@{}}
+                   N\\Mann
+                   \end{tabular}}
+\end{tabular}}
+\psframebox{\begin{tabular}{@{}l@{}}
+                   V\\liest
+                   \end{tabular}}
+\psframebox{%
+\begin{tabular}{@{}l@{}}
+NP\\[2mm]
+           \psframebox{\begin{tabular}{@{}l@{}}
+                   Det\\einen
+                   \end{tabular}}
+           \psframebox{\begin{tabular}{@{}l@{}}
+                   N\\Aufsatz
+                   \end{tabular}}
+\end{tabular}}
+\end{tabular}}}
+%\psgrid
+    \end{pspicture}}
+\caption{\label{Abbildung-beschriftete-Schachteln}Wörter und Wortgruppen in beschrifteten Schachteln}
+\end{figure}
+Die Beschriftung enthält die Wortart des wichtigsten Elements in der Schachtel. VP steht für
+Verbalphrase und NP für Nominalphrase. VP und NP sind die Maximalprojektionen der jeweiligen Köpfe.
+
+Jeder, der schon einmal verzweifelt im Andenkenschrank die Photos von der Hochzeit seiner Schwester gesucht hat, wird
+nachvollziehen können, dass es sinnvoll ist, die Kisten in solchen Schränken und auch die darin
+enthaltenen Photoalben zu beschriften.
+
+Interessant ist nun, dass der genaue Inhalt der Schachteln mit sprachlichem Material für das
+Einsetzen in größere Schachteln nicht unbedingt wichtig ist. So kann man zum Beispiel die
+Nominalphrase \emph{der Mann} durch \emph{er} oder auch durch etwas viel Komplexeres wie \emph{der
+  Mann aus Stuttgart, der das Seminar zur Entwicklung der Zebrafinken besucht} ersetzen. Es ist
+jedoch nicht möglich, an dieser Stelle \emph{die Männer} oder \emph{des Mannes} einzusetzen: 
+\eal 
+\ex[*]{ 
+Die Männer liest einen Aufsatz.  
+} 
+\ex[*]{ Des Mannes liest einen Aufsatz.  
+} 
+\zl 
+Das liegt daran, dass \emph{die Männer} Plural ist, das Verb
+\emph{liest} aber im Singular steht. \emph{des Mannes} ist Genitiv, an dieser Stelle ist aber nur
+ein Nominativ zulässig. Man beschriftet deshalb die Schachteln immer mit aller Information, die für
+das Einsetzen in größere Schachteln wichtig
+ist. Abbildung~\vref{Abbildung-ausfuehrlich-beschriftete-Schachteln} zeigt unser Beispiel mit 
+ausführlichen Beschriftungen.
+\begin{figure}[htbp]
+\oneline{%
+\begin{pspicture}(0,0)(14.2,3.4)
+     \rput[bl](0,0){%
+\psset{fillstyle=solid, framearc=0.25,framesep=5pt}
+\psframebox{%
+\begin{tabular}{@{}l@{}}
+VP, fin\\[2mm]
+\psframebox{%
+\begin{tabular}{@{}l@{}}
+NP, nom, 3, sg\\[2mm]
+       \psframebox{\begin{tabular}{@{}l@{}}
+                   Det, nom, mas, sg\\der
+                   \end{tabular}}
+       \psframebox{\begin{tabular}{@{}l@{}}
+                   N, nom, mas, sg\\Mann
+                   \end{tabular}}
+\end{tabular}}
+\psframebox{\begin{tabular}{@{}l@{}}
+                   V, fin\\liest
+                   \end{tabular}}
+\psframebox{%
+\begin{tabular}{@{}l@{}}
+NP, akk, 3, sg\\[2mm]
+           \psframebox{\begin{tabular}{@{}l@{}}
+                   Det, akk, mas, sg\\einen
+                   \end{tabular}}
+           \psframebox{\begin{tabular}{@{}l@{}}
+                   N, akk, mas, sg\\Aufsatz
+                   \end{tabular}}
+\end{tabular}}
+\end{tabular}}}
+%\psgrid
+    \end{pspicture}}
+\caption{\label{Abbildung-ausfuehrlich-beschriftete-Schachteln}Wörter und Wortgruppen in ausführlich beschrifteten Schachteln}
+\end{figure}
+Die Merkmale des Kopfes, die für die Bestimmung der Kontexte, in denen eine Phrase verwendet werden
+kann, relevant sind, werden auch \emph{Kopfmerkmale}\is{Kopfmerkmal} genannt. Man sagt, dass diese Merkmale vom Kopf
+projiziert werden.
+\is{Kopf|)}
+
+
+
+                                                    
+        
+\lipsum 
+\lipsum[3-10]  
+
+\newpage
+
+\layout
+
+
+\backmatter
+\bibliographystyle{natbib.myfullname}
+\bibliography{bib-abbr,biblio}
+
+
+
+%\cleardoublepage
+%\printglossary
+
+\cleardoublepage
+\small
+%\addcontentsline{toc}{chapter}{Index} 
+
+%\pdfbookmark[0]{Index}{Index}
+
+%\printindex{autind}{Index der Namen}
+%
+%\printindex{wordind}{Index der Beispielwörter}
+%
+%\printindex{rev-wordind}{Reverse Index of Expressions}
+%
+%\printindex{langind}{Index of Languages and Dialects}
+%
+%\printindex{subind}{Index der Termini}
+
+%\addcontentsline{toc}{chapter}{Namensregister}
+\pdfbookmark[0]{Namensregister}{Namensregister}
+\printindex[aut]
+%\addcontentsline{toc}{chapter}{Verzeichnis der Sprachen}
+\pdfbookmark[0]{Verzeichnis der Sprachen}{Verzeichnis-der-Sprachen}
+\printindex[lan]
+%\addcontentsline{toc}{chapter}{Sachregister}
+\pdfbookmark[0]{Sachregister}{Sachregister}
+\printindex
+
+\end{document}
+
+      

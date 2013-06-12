@@ -16,3 +16,19 @@ test.ps
 *.toc
 
 *.log
+
+*.adx
+
+*.aux
+
+*.bbl
+
+*.blg
+
+*.dvi
+
+*.idx
+
+*.ldx
+
+*.out
