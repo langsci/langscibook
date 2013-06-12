@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/06/03 Language Science Publications]
+\ProvidesClass{langsci}[2013/06/11 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{1}
@@ -25,12 +25,10 @@
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{printondemand}{
 	\newcommand{\printondemand}{}}
+\DeclareStringOption{draft}[yes]		% pass the draft option to scrbook, TODO does not work?
+	\define@key{langsci}{draft}{
+	\PassOptionsToClass{draft=#1}{scrbook}}
 \ProcessKeyvalOptions{langsci}
-
-
-% TODO
-% PrintOnDemand wo die leeren Innenblätter und das eine Blatt mit dem bunten Text eingefügt werden
-% Draft-Option an scrbook weiterreichen
 
 \LoadClass[
 	fontsize=10.5pt%,
@@ -46,6 +44,8 @@
 			,outer=25mm
 			%,showframe,pass
 			]{geometry}
+			
+\setlength{\marginparwidth}{50pt}
 
 \usepackage[absolute 		% for absolute positioning in titlepage
 			%,showboxes
@@ -130,34 +130,28 @@ continuar payar custosi traductores.}
 
 \ifx\lsSeries\eotms
  	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, number \lsSeriesNumber}
- 	\@ifundefined{blackandwhite}
- 		{\newcommand{\lsSeriesColor}{lsMidBlue}}
- 		{\newcommand{\lsSeriesColor}{black}}
+ 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\eotmsig
  	\newcommand{\lsSeriesTitle}{Implemented Grammars, number \lsSeriesNumber}
- 	\@ifundefined{blackandwhite}
- 		{\newcommand{\lsSeriesColor}{lsMidBlue}}
- 		{\newcommand{\lsSeriesColor}{black}}
+	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\sidl
  	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, number \lsSeriesNumber}
- 	\@ifundefined{blackandwhite}
- 		{\newcommand{\lsSeriesColor}{lsDarkGreen}}
- 		{\newcommand{\lsSeriesColor}{black}}
+ 	\newcommand{\lsSeriesColor}{lsDarkGreen}
 \fi
 \ifx\lsSeries\algad
  	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, number \lsSeriesNumber}
- 	\@ifundefined{blackandwhite}
- 		{\newcommand{\lsSeriesColor}{lsOrange}}
- 		{\newcommand{\lsSeriesColor}{black}}
+ 	\newcommand{\lsSeriesColor}{lsOrange}
 \fi
 \ifx\lsSeries\tamnlp
  	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , number \lsSeriesNumber}
- 	\@ifundefined{blackandwhite}
- 		{\newcommand{\lsSeriesColor}{lsWine}}
- 		{\newcommand{\lsSeriesColor}{black}}
+ 	\newcommand{\lsSeriesColor}{lsWine}
 \fi	
+
+\@ifundefined{blackandwhite}
+ 	{}
+ 	{\renewcommand{\lsSeriesColor}{black}}
 
 
 
@@ -253,6 +247,7 @@ ISBN \lsISBN
 \begin{titlepage}
 \thispagestyle{empty}
 
+\@ifundefined{printondemand}{}{		% <begin> only if printondemand option is activated
 % First titlepage:
 {\lsTitlePage}
 %%%%%%%%%%%%%%%%%%%
@@ -281,6 +276,7 @@ ISBN \lsISBN
 %%%%%%%%%%%%%%%%%%%%%
 
 \null\newpage\thispagestyle{empty}
+}									% <end> only if printondemand option is activated
 
 % Second titlepage:
 {\renewcommand{\lsTitleBlockColor}{white}
