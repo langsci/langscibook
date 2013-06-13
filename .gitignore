@@ -32,3 +32,11 @@ test.ps
 *.ldx
 
 *.out
+
+*.tex#
+
+*.cls#
+
+.#gt-test.tex
+
+.#langsci.cls

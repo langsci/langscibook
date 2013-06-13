@@ -74,8 +74,9 @@
   %\setmainfont[Ligatures={TeX,Common}]{FreeSerif}
   \setmainfont{FreeSerif}
   
-  %\usepackage{unicode-math}
+  \usepackage{unicode-math}
   %\setmathfont{TG Termes Math}
+  \setmathfont{texgyretermes-math.otf}
 
   %\setsansfont[Ligatures={TeX,Common},Scale=MatchLowercase]{FreeSans}
   %\setmonofont[Ligatures={TeX},Scale=MatchLowercase]{FreeMono}
@@ -98,7 +99,8 @@
 \usepackage{graphicx}
 
 \ifxetex
-  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
+%  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
+  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{texgyretermes-regular.otf}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
 \else
   \newcommand{\lsCoverTitleFont}[1]{\textls[-16]{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}}
   % Times uses fake small caps:
@@ -228,7 +230,7 @@ continuar payar custosi traductores.}
 
 \newcommand{\lsCoverLogo}{		
 	\begin{textblock}{33}(124.6,205)
-	\raggedright\IfFileExists{logo_rz_buch.eps}{\includegraphics{logo_rz_buch.eps}}{langsci logo}  
+	\raggedright\IfFileExists{logo_rz_buch.pdf}{\includegraphics{logo_rz_buch}}{langsci logo}  
 	\end{textblock}}
 
 \newcommand{\lsFrontPage}{		% Front page
@@ -368,7 +370,7 @@ www.langsci-press.org \\[3ex]
 
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{FULogo_sw_RGB.eps}{\includegraphics[width=5cm]{FULogo_sw_RGB.eps}}{FU-Logo} \\
+\IfFileExists{FULogo_sw_RGB.pdf}{\includegraphics[width=5cm]{FULogo_sw_RGB}}{FU-Logo} \\
 \end{center}
 }
 
@@ -401,8 +403,7 @@ Storage and catalogueing done by FU Berlin \\[3ex]
   draft=false,plainpages=false,
   pdfauthor={},%
   pdfkeywords={}
-%,%
-  ,ps2pdf=true
+%  ,ps2pdf=true
 ]{hyperref}
 
 % xelatex hates this.
