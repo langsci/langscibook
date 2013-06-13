@@ -389,6 +389,8 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \ifoot{}
 \renewcommand*{\partpagestyle}{empty}
 
+\pagestyle{scrheadings}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Citation:
