@@ -31,7 +31,7 @@
 \DeclareVoidOption{blackandwhite}{
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{printondemand}{
-	\newcommand{\printondemand}{}}
+	\renewcommand{\lsOutput}{printondemand}}
 \DeclareStringOption{draft}[yes]		% pass the draft option to scrbook, TODO does not work?
 	\define@key{langsci}{draft}{
 	\PassOptionsToClass{draft=#1}{scrbook}}
@@ -66,54 +66,56 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fonts, language and graphics:
 
+\newcommand{\fontpath}{./fonts/}
+
 \usepackage{ifxetex}
 \ifxetex				
   \usepackage{fontspec}
   %\setmainfont[Scale=0.95,Ligatures={TeX,Common}]{Charis SIL}
   %\setmainfont[Ligatures={TeX,Common},Numbers={OldStyle}]{Linux Libertine B}
   %\setmainfont[Ligatures={TeX,Common}]{FreeSerif}
-  \setmainfont{FreeSerif}
+  \setmainfont[Ligatures={TeX,Common},Path=\fontpath]{FreeSerif_B.otf}
   
   \usepackage{unicode-math}
-  %\setmathfont{TG Termes Math}
-  \setmathfont{texgyretermes-math.otf}
+  \setmathfont[Path=\fontpath]{texgyretermes-math.otf}
 
-  %\setsansfont[Ligatures={TeX,Common},Scale=MatchLowercase]{FreeSans}
-  %\setmonofont[Ligatures={TeX},Scale=MatchLowercase]{FreeMono}
-  \setsansfont{FreeSans}
-  \setmonofont{FreeMono}
+  \setsansfont[Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath]{FreeSans_B.otf}
+  \setmonofont[Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath]{FreeMono_B.otf}
 
   %\usepackage{polyglossia}
   %\setdefaultlanguage{british}
 \else
-  \usepackage{ucs}  % extended UTF8 support TODO remove this?
-  \usepackage[utf8]{inputenc}
+  \usepackage{ucs}  			% extended UTF8 support TODO remove this?
+  \usepackage[utf8x]{inputenc}
+  \usepackage[T1]{fontenc}
   \usepackage{libertine}		% To be placed before times and helvetica to preserve the KOMA style.
   \usepackage{mathptmx,helvet} 	% times and helvetica
   \usepackage{tgtermes}
-  \usepackage[T1]{fontenc}
   %\usepackage[british]{babel}   % TODO remove this?
 \fi
+
+
 
 \usepackage{microtype}
 \usepackage{graphicx}
 
 \ifxetex
 %  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
-  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{texgyretermes-regular.otf}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
+  \newcommand{\lsCoverTitleFont}[1]{\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
 \else
   \newcommand{\lsCoverTitleFont}[1]{\textls[-16]{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}}
   % Times uses fake small caps:
   % \textls[-60]{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont \@title\\}
 \fi
-\newcommand{\lsCoverAuthorFont}{\fontfamily{qtm}\fontsize{25pt}{12.5mm}\selectfont}
+\newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{qtm}\fontsize{25pt}{12.5mm}\selectfont}
 \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
 \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
 \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{10.5pt}{5mm}\selectfont}
 \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
 \newcommand{\lsBackBodyFont}{\lsInsideFont}
-\newcommand{\lsSpineAuthorFont}{\fontfamily{qtm}\fontsize{12pt}{14pt}\selectfont}
-\newcommand{\lsSpineTitleFont}{\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
+\newcommand{\lsSpineAuthorFont}{\fontencoding{T1}\fontfamily{qtm}\fontsize{12pt}{14pt}\selectfont}
+\newcommand{\lsSpineTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
+
 
 % qtm = tgtermes
 % ptm = times
