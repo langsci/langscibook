@@ -1,8 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{langsci}[2013/06/12 Language Science Publications]
 
-\usepackage{epstopdf}
-
+%\usepackage[pdftex]{graphicx}\usepackage{epstopdf}
 
 % Default values:
 \newcommand{\lsSeriesNumber}{1}
@@ -359,7 +358,6 @@ continuar payar custosi traductores.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Impressum:
 
-
 \newcommand{\lsImpressum}{
 \begin{center}
 {\bf Impressum} \\
@@ -372,7 +370,7 @@ www.langsci-press.org \\[3ex]
 
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{FULogo_sw_RGB.pdf}{\includegraphics[width=5cm]{FULogo_sw_RGB}}{FU-Logo} \\
+\IfFileExists{FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{FULogo_sw_CMYK.pdf}}{FU-Logo} \\
 \end{center}
 }
 
