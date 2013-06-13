@@ -68,7 +68,8 @@
 \newcommand{\fontpath}{./fonts/}
 
 \usepackage{ifxetex}
-\ifxetex				
+\ifxetex	
+  \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
   %\setmainfont[Scale=0.95,Ligatures={TeX,Common}]{Charis SIL}
   %\setmainfont[Ligatures={TeX,Common},Numbers={OldStyle}]{Linux Libertine B}
@@ -417,6 +418,25 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 \raggedbottom
 \deffootnote{5mm}{0mm}{\textsuperscript{\normalfont\thefootnotemark}}
+
+
+% this should be removed here, temporary
+\newif\if@noftnote\@noftnotetrue
+\newif\if@xrec\@xrecfalse
+\@definecounter{fnx}
+
+%%%% adapted from latex.tex to get examples in footnotes right
+\long\def\@footnotetext#1{%
+    \@noftnotefalse\setcounter{fnx}{0}%
+    \insert\footins{\reset@font\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      #1\strut}}\@noftnotetrue}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
