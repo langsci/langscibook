@@ -421,4 +421,26 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \deffootnote{5mm}{0mm}{\textsuperscript{\normalfont\thefootnotemark}}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% footnotes:
+
+\setcounter{secnumdepth}{4} % und (f"urs Inhaltsverzeichnis)
+% \setcounter{tocdepth}{4} (oder so) angegeben werden.
+
+\def\subsubsubsection{\@startsection{paragraph}{3}{\z@}{-3.25ex plus
+    -1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+%
+\let\subsubsubsectionmark\@gobble
+%
+
+\def\subsubsubsubsection{\@startsection{subparagraph}{3}{\z@}{-3.25ex plus
+    -1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+%
+\let\subsubsubsubsectionmark\@gobble
+% needed for hyperref
+\def\toclevel@subsubsubsection{4}
+%    
+
+
+
 \endinput
