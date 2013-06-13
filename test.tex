@@ -7,7 +7,10 @@
                                
 \usepackage{layout}
 \usepackage{lipsum} 
-\usepackage{tree-dvips}                                                          
+%\usepackage{tree-dvips}                                                          
+
+% this has side effects on footnote ...
+\usepackage{styles/my-gb4e-article}
 
 \title{Danish in \newlineCover Head-Driven \newlineCover\newlineSpine Phrase Structure \newlineCover Grammar  }                        
 %\author{Stefan Müller, \newlineCover Pollet Samvelian, \newlineCover Olivier Bonami}
@@ -53,7 +56,16 @@ Berlin. Bjarne Ørsnes is Associate Professor at the Copenhagen Business School.
 \subsubsection{Subsubsection Title}       
 \subsubsubsection{Subsubsubsection Title}       
                                                    
-         
+
+Hey, this is another text that is written by me, not be \LaTeX{}. It is much nicer, although the,
+English may be broken and the interpuction incorrect.\footnote{
+  The point of writing this text is that I can insert this footnote here so that Ulrike can see how
+  a footnote looks like. The lipsum package does not insert footnotes.
+}$^,$\footnote{
+  And if they did not die, the wrote another footnote.
+}
+
+
 \lipsum 
 \lipsum[3-10]  
 

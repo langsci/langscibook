@@ -422,7 +422,7 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% footnotes:
+% subsubsubsection:
 
 \setcounter{secnumdepth}{4} % und (f"urs Inhaltsverzeichnis)
 % \setcounter{tocdepth}{4} (oder so) angegeben werden.
