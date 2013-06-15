@@ -88,12 +88,12 @@
   %\usepackage{polyglossia}
   %\setdefaultlanguage{british}
 \else
+  \usepackage[T1]{fontenc}
   \usepackage{ucs}  				% extended UTF8 support TODO remove this?
   \usepackage[utf8x]{inputenc}
-  \usepackage[T1]{fontenc}
-  \usepackage{libertine}			% To be placed before times and helvetica to preserve the KOMA style.
+  %\usepackage{libertine}			% To be placed before times and helvetica to preserve the KOMA style.
   \usepackage{mathptmx,helvet} 	% times and helvetica
-  \usepackage{tgtermes}
+  %\usepackage{tgtermes}
   %\usepackage[british]{babel}   	% TODO remove this?
 \fi
 
@@ -228,14 +228,16 @@ continuar payar custosi traductores.}
 %\usepackage{breakurl} 	
 
 
+\ifxetex
 \usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, \ldots
-
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
+\setcounter{page}{-3}
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.5,7.5)
@@ -366,7 +368,6 @@ continuar payar custosi traductores.}
 
 \setcounter{page}{1}
 \end{titlepage}
-
 
 \null\newpage\thispagestyle{empty}
 \hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
