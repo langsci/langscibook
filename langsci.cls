@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/06/12 Language Science Publications]
+\ProvidesClass{langsci}[2013/06/15 Language Science Publications]
 
 %\usepackage[pdftex]{graphicx}\usepackage{epstopdf}
 
@@ -67,10 +67,13 @@
 
 \newcommand{\fontpath}{./fonts/}
 
+
 \usepackage{ifxetex}
-\ifxetex	
+\ifxetex
+ 	
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
+  
   %\setmainfont[Scale=0.95,Ligatures={TeX,Common}]{Charis SIL}
   %\setmainfont[Ligatures={TeX,Common},Numbers={OldStyle}]{Linux Libertine B}
   %\setmainfont[Ligatures={TeX,Common}]{FreeSerif}
@@ -85,13 +88,13 @@
   %\usepackage{polyglossia}
   %\setdefaultlanguage{british}
 \else
-  \usepackage{ucs}  			% extended UTF8 support TODO remove this?
+  \usepackage{ucs}  				% extended UTF8 support TODO remove this?
   \usepackage[utf8x]{inputenc}
   \usepackage[T1]{fontenc}
-  \usepackage{libertine}		% To be placed before times and helvetica to preserve the KOMA style.
+  \usepackage{libertine}			% To be placed before times and helvetica to preserve the KOMA style.
   \usepackage{mathptmx,helvet} 	% times and helvetica
   \usepackage{tgtermes}
-  %\usepackage[british]{babel}   % TODO remove this?
+  %\usepackage[british]{babel}   	% TODO remove this?
 \fi
 
 
@@ -115,7 +118,6 @@
 \newcommand{\lsBackBodyFont}{\lsInsideFont}
 \newcommand{\lsSpineAuthorFont}{\fontencoding{T1}\fontfamily{qtm}\fontsize{12pt}{14pt}\selectfont}
 \newcommand{\lsSpineTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
-
 
 % qtm = tgtermes
 % ptm = times
@@ -191,7 +193,42 @@ continuar payar custosi traductores.}
  	{}
  	{\renewcommand{\lsSeriesColor}{black}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header and footer:
 
+\usepackage{scrpage2}
+\ohead{\pagemark}
+\ihead{\headmark}
+\cfoot{}
+\ofoot[]{}
+\ifoot{}
+\renewcommand*{\partpagestyle}{empty}
+
+\pagestyle{scrheadings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Citation:
+
+\usepackage{natbib}
+\setcitestyle{notesep={:}}   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperref:
+
+\usepackage[bookmarks=true,bookmarksopen=true,%
+  hyperindex=true,%
+  breaklinks=true,
+  draft=false,plainpages=false,
+  pdfauthor={},%
+  pdfkeywords={}
+%  ,ps2pdf=true
+]{hyperref}
+
+% xelatex hates this.
+%\usepackage{breakurl} 	
+
+
+\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, \ldots
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -347,6 +384,7 @@ continuar payar custosi traductores.}
 }
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series history:
 
@@ -377,42 +415,8 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Header and footer:
-
-\usepackage{scrpage2}
-\ohead{\pagemark}
-\ihead{\headmark}
-\cfoot{}
-\ofoot[]{}
-\ifoot{}
-\renewcommand*{\partpagestyle}{empty}
-
-\pagestyle{scrheadings}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Citation:
-
-\usepackage{natbib}
-\setcitestyle{notesep={:}}   
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Hyperref:
-
-\usepackage[bookmarks=true,bookmarksopen=true,%
-  hyperindex=true,%
-  breaklinks=true,
-  draft=false,plainpages=false,
-  pdfauthor={},%
-  pdfkeywords={}
-%  ,ps2pdf=true
-]{hyperref}
-
-% xelatex hates this.
-%\usepackage{breakurl} 	
-
- 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % footnotes:
 
@@ -458,6 +462,7 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 % needed for hyperref
 \def\toclevel@subsubsubsection{4}
 %    
+
 
 
 

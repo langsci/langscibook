@@ -7,16 +7,18 @@
                                
 \usepackage{layout}
 \usepackage{lipsum} 
-%\usepackage{tree-dvips}                                                          
-
-\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
-\usepackage{bidi}
-\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
-
-
-
+%\usepackage{tree-dvips}                                                           
+       
+ 
+%\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+\newfontfamily\Parsifont[Script=Arabic,Path=\fontpath]{XBNiloofar.ttf}
+%\newfontfamily\Parsifont[Script=Arabic]{Scheherazade}
+\newcommand{\PRL}[1]{\RL{\Parsifont #1}} 
+   
+ 
+ 
 %\title{Danish in \newlineCover Head-Driven \newlineCover\newlineSpine Phrase Structure \newlineCover  Grammar  }                        
-\title{Ɓasaá in \newlineCover Head-driven \newlineCover\newlineSpine Phrase Structure Grammar}
+\title{Ɓasaá in \newlineCover Head-driven \newlineCover\newlineSpine Phrase Structure Grammar \newlineCover \PRL{او مرد را دوست داشت.} }
 %\title{Le language des fulɓe dans le cadre de la grammaire des syntagmes guidés par les têtes}
 
 %\author{Stefan Müller, \newlineCover Pollet Samvelian, \newlineCover Olivier Bonami}
@@ -61,7 +63,7 @@ Berlin. Bjarne Ørsnes is Associate Professor at the Copenhagen Business School.
 \subsection{Subsection Title}
 \subsubsection{Subsubsection Title}       
 \subsubsubsection{Subsubsubsection Title}       
-                                                   
+  
 
 Hey, this is another text that is written by me, not be \LaTeX{}. It is much nicer, although the,
 English may be broken and the interpuction incorrect.\footnote{
