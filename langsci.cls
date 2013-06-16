@@ -140,7 +140,7 @@
   \newcommand{\lsCoverAuthorFont}{\freeserif\fontsize{25pt}{12.5mm}\selectfont}
   \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
-  \newcommand{\lsInsideFont}{}
+  \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\freeserif\fontsize{12pt}{14pt}\selectfont}
@@ -159,6 +159,7 @@
   \newcommand{\lsSpineTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
 \fi
 
+\setkomafont{sectioning}{\normalcolor\bfseries}
 
 % qtm = tgtermes
 % ptm = times
