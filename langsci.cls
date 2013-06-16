@@ -138,7 +138,8 @@
 %  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
   \newcommand{\lsCoverTitleFont}[1]{\freeserif\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
   \newcommand{\lsCoverAuthorFont}{\freeserif\fontsize{25pt}{12.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
+  \newcommand{\lsCoverSeriesFont}{\freeserif\fontshape{sc}\fontsize{14pt}{7.5mm}\selectfont}
+  	%\newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
@@ -150,7 +151,8 @@
   % Times uses fake small caps:
   % \textls[-60]{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont \@title\\}
   \newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{qtm}\fontsize{25pt}{12.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
+  \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{qtm}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
+    %\newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{10.5pt}{5mm}\selectfont}
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
@@ -211,23 +213,23 @@ continuar payar custosi traductores.}
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
- 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, number \lsSeriesNumber}
+ 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\eotmsig
- 	\newcommand{\lsSeriesTitle}{Implemented Grammars, number \lsSeriesNumber}
+ 	\newcommand{\lsSeriesTitle}{Implemented Grammars, No \lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\sidl
- 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, number \lsSeriesNumber}
+ 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsDarkGreen}
 \fi
 \ifx\lsSeries\algad
- 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, number \lsSeriesNumber}
+ 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsOrange}
 \fi
 \ifx\lsSeries\tamnlp
- 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , number \lsSeriesNumber}
+ 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsWine}
 \fi	
 
@@ -354,13 +356,13 @@ continuar payar custosi traductores.}
 	\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
 		\color{\lsSeriesColor}
 		\hspace{7.5mm}
-		\IfFileExists{logo_spine_color.pdf}{\includegraphics{logo_spine_color.pdf}}{logo}
-		\hspace{10mm}
+		\IfFileExists{logo_spine_color.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{logo_spine_color.pdf}}}}{logo}
+		\hspace{15mm} 
  		{\lsSpineTitleFont
-			\pbox{100mm}{\@title}  }
-		\hspace{10mm}
+			\pbox[c]{100mm}{\@title}  }
+		\hspace{13mm}
 		{\lsSpineAuthorFont 
-			\pbox{100mm}{\@author}}
+			\pbox[c]{100mm}{\@author}}
 	\end{minipage}}} 
 	\end{textblock}}
 
