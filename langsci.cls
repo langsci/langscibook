@@ -240,12 +240,13 @@ continuar payar custosi traductores.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Header and footer:
 
+\usepackage{datetime}
 \usepackage{scrpage2}
-\ohead{\pagemark}
-\ihead{\headmark}
+\ohead{\headmark}
+\ihead{}
 \cfoot{}
-\ofoot[]{}
-\ifoot{}
+\ofoot[]{\pagemark}
+\ifoot{Draft of \today, \currenttime}
 \renewcommand*{\partpagestyle}{empty}
 
 \pagestyle{scrheadings}
