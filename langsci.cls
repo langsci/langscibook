@@ -316,7 +316,8 @@ continuar payar custosi traductores.}
 
 \newcommand{\lsCoverLogo}{		
 	\begin{textblock}{33}(124.6,205)
-	\raggedright\IfFileExists{logo_rz_buch.pdf}{\includegraphics{logo_rz_buch}}{langsci logo}  
+	%\raggedright\IfFileExists{logo_rz_buch.pdf}{\includegraphics{logo_rz_buch}}{langsci logo}
+	\raggedright\IfFileExists{langsci_logo_nocolor.pdf}{\includegraphics{langsci_logo_nocolor.pdf}}{langsci logo}  
 	\end{textblock}}
 
 \newcommand{\lsFrontPage}{		% Front page
@@ -357,7 +358,7 @@ continuar payar custosi traductores.}
 	\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
 		\color{\lsSeriesColor}
 		\hspace{7.5mm}
-		\IfFileExists{logo_spine_color.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{logo_spine_color.pdf}}}}{logo}
+		\IfFileExists{langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{langsci_spinelogo_nocolor.pdf}}}$}{logo}
 		\hspace{15mm} 
  		{\lsSpineTitleFont
 			\pbox[c]{100mm}{\@title}  }
