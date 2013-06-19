@@ -4,6 +4,8 @@
 			   %,blackandwhite
 			   %,draft=yes
 			  ]{langsci}                          
+
+\usepackage{avm}
                                
 \usepackage{layout}
 \usepackage{lipsum} 
@@ -59,15 +61,57 @@ Berlin. Bjarne Ørsnes is Associate Professor at the Copenhagen Business School.
                                                    
 
 Hey, this is another text that is written by me, not be \LaTeX{}. It is much nicer, although the,
-English may be broken and the interpuction incorrect.\footnote{
+English may be broken and the interpuction incorrect.\footnote{%
   The point of writing this text is that I can insert this footnote here so that Ulrike can see how
   a footnote looks like. The lipsum package does not insert footnotes.
-}$^,$\footnote{
+
+  This is a new paragraph in the footnote.
+}\footnote{%
   And if they did not die, the wrote another footnote.
-}$^,$\footnote{
+
+  This is another new paragraph, but it is longer. It may stretch to the next line if I add some
+  more words.
+}\footnote{%
   The point of writing this text is that I can insert this footnote here so that Ulrike can see how
   a footnote looks like. The lipsum package does not insert footnotes.
 }
+
+
+\begin{itemize}
+\item AVMs with math operators
+
+  \begin{avm}
+    {\it word\/} $\rightarrow$
+    \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
+    morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
+    rules & \< \[morphs & \@{e_1}\\mud & \@{m_1}\\ morsyn & \@0\],\ldots,
+    \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
+    \]
+  \end{avm}
+  
+
+
+
+
+\item Old-style figures (or not) in attribute names:
+
+ \begin{avm}
+    \[c-cont & \[hook & \[index & \@e \\
+    ltop & \@t\]\\
+    rels & \<\[pred & hortative-rel\\
+    lbl & \@t\\
+    arg1 & \@h
+    \]\>\\
+    hcons & \< \@h $=_q$ \@l \>
+    \]\\
+    dtrs & \< \[ss\|l\|cont & \[hook & \[index & \@e \[tam & \textit{subj}\]\\
+    ltop & \@l\]\\
+    rels & \< ... \[arg0 & \@e\\
+    lbl & \@l\] ... \>\]\] \>\]
+  \end{avm}
+
+
+\end{itemize}
 
 
 \lipsum 

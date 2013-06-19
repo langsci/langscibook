@@ -37,7 +37,8 @@
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
-	fontsize=10.5pt%,
+	fontsize=10.5pt,
+        footnotes=multiple,
 	%draft=yes,
 	]{scrbook}
 	
@@ -105,6 +106,8 @@
   			BoldFont = FreeSerifBold_B.otf ,
 			ItalicFont = FreeSerifItalic_B.otf ,
 			BoldItalicFont = FreeSerifBoldItalic_B.otf ]{FreeSerif_B.otf}
+
+%  \usepackage[libertine]{newtxmath}
 
   \usepackage{unicode-math}
   \setmathfont[Path=\fontpath]{texgyretermes-math.otf}
@@ -268,6 +271,8 @@ continuar payar custosi traductores.}
   pdfkeywords={}
 %  ,ps2pdf=true
 ]{hyperref}
+
+\KOMAoptions{footnotes=multiple}
 
 % xelatex hates this.
 %\usepackage{breakurl} 	
@@ -468,25 +473,29 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 % footnotes:
 
 \raggedbottom
-\deffootnote{5mm}{0mm}{\textsuperscript{\normalfont\thefootnotemark}}
+\deffootnote[1.5em]{1.5em}{0mm}{\textsuperscript{\normalfont\thefootnotemark}\ }
 
+\KOMAoptions{footnotes=multiple}
 
-% this should be removed here, temporary
-\newif\if@noftnote\@noftnotetrue
-\newif\if@xrec\@xrecfalse
-\@definecounter{fnx}
+%\deffootnote{1.5em}{1em}{% 
+%    \makebox[1.5em][l]{\thefootnotemark}}
 
-%%%% adapted from latex.tex to get examples in footnotes right
-\long\def\@footnotetext#1{%
-    \@noftnotefalse\setcounter{fnx}{0}%
-    \insert\footins{\reset@font\footnotesize
-    \interlinepenalty\interfootnotelinepenalty
-    \splittopskip\footnotesep
-    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
-    \hsize\columnwidth \@parboxrestore
-   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
-    {\rule{\z@}{\footnotesep}\ignorespaces
-      #1\strut}}\@noftnotetrue}
+%% % this should be removed here, temporary
+%% \newif\if@noftnote\@noftnotetrue
+%% \newif\if@xrec\@xrecfalse
+%% \@definecounter{fnx}
+
+%% %%%% adapted from latex.tex to get examples in footnotes right
+%% \long\def\@footnotetext#1{%
+%%     \@noftnotefalse\setcounter{fnx}{0}%
+%%     \insert\footins{\reset@font\footnotesize
+%%     \interlinepenalty\interfootnotelinepenalty
+%%     \splittopskip\footnotesep
+%%     \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+%%     \hsize\columnwidth \@parboxrestore
+%%    \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+%%     {\rule{\z@}{\footnotesep}\ignorespaces
+%%       #1\strut}}\@noftnotetrue}
 
 
 
