@@ -38,7 +38,8 @@
 
 \LoadClass[
 	fontsize=10.5pt,
-        footnotes=multiple,
+    footnotes=multiple,
+    pointlessnumbers		% no point after last number of chapters/sections
 	%draft=yes,
 	]{scrbook}
 	
@@ -84,7 +85,6 @@
 			]
 			{FreeSans_B.otf}
 			
-  %\newfontfamily\freemono
   \setmonofont[
   			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
 			BoldFont = FreeMonoBold_B.otf ,
@@ -93,12 +93,18 @@
 			]
 			{FreeMono_B.otf}
 
-  %\newfontfamily\linuxlibertine
   \setmainfont[
   			Ligatures={TeX,Common},Path=\fontpath,
 			BoldFont = LinLibertine_RB_B.otf ,
 			ItalicFont = LinLibertine_RI_B.otf ,
 			BoldItalicFont = LinLibertine_RBI_B.otf ]
+			{LinLibertine_R_B.otf}
+
+  \newfontfamily\headerfont[					% for headers: uses semibold fontshape
+  			Ligatures={TeX,Common},Path=\fontpath,
+			BoldFont = LinLibertine_RZ_B.otf ,
+			ItalicFont = LinLibertine_RI_B.otf ,
+			BoldItalicFont = LinLibertine_RZI_B.otf ]
 			{LinLibertine_R_B.otf}
 
   \newfontfamily\freeserif[
@@ -107,19 +113,10 @@
 			ItalicFont = FreeSerifItalic_B.otf ,
 			BoldItalicFont = FreeSerifBoldItalic_B.otf ]{FreeSerif_B.otf}
 
-%  \usepackage[libertine]{newtxmath}
+  \usepackage[libertine]{newtxmath}
 
-  \usepackage{unicode-math}
-  \setmathfont[Path=\fontpath]{texgyretermes-math.otf}
-
-  %\setmainfont[Scale=0.95,Ligatures={TeX,Common}]{Charis SIL}
-  %\setmainfont[Ligatures={TeX,Common},Numbers={OldStyle}]{Linux Libertine B}
-  %\setmainfont[Ligatures={TeX,Common}]{FreeSerif}			 	
-  %\setmainfont[Ligatures={TeX,Common},Path=\fontpath]{FreeSerif_B.otf}
-  %\setmainfont[Ligatures={TeX,Common},Path=\fontpath]{LinLibertine_R_B.otf}
-  %\setsansfont[Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath]{FreeSans_B.otf}
-  %\setmonofont[Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath]{FreeMono_B.otf}
-
+  %\usepackage{unicode-math} 	% Does it support LinuxLibertine?
+ 
   %\usepackage{polyglossia}
   %\setdefaultlanguage{british}
 \else
@@ -164,7 +161,7 @@
   \newcommand{\lsSpineTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
 \fi
 
-\setkomafont{sectioning}{\normalcolor\bfseries}
+\setkomafont{sectioning}{\normalcolor\headerfont\bfseries}
 
 % qtm = tgtermes
 % ptm = times
