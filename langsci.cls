@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/06/15 Language Science Publications]
+\ProvidesClass{langsci}[2013/06/19 Language Science Publications]
 
 %\usepackage[pdftex]{graphicx}\usepackage{epstopdf}
 
@@ -39,7 +39,7 @@
 \LoadClass[
 	fontsize=10.5pt,
     footnotes=multiple,
-    pointlessnumbers		% no point after last number of chapters/sections
+    numbers=noenddot		% no point after last number of chapters/sections
 	%draft=yes,
 	]{scrbook}
 	
@@ -77,13 +77,20 @@
   \usepackage{fontspec}
 			
   %\newfontfamily\freesans
+%   \setsansfont[
+%   			Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath,
+%             BoldFont = FreeSansBold_B.otf ,
+% 			SlantedFont = FreeSansOblique_B.otf ,				
+% 			BoldSlantedFont = FreeSansBoldOblique_B.otf 		
+% 			]
+% 			{FreeSans_B.otf}
   \setsansfont[
   			Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath,
-            BoldFont = FreeSansBold_B.otf ,
-			SlantedFont = FreeSansOblique_B.otf ,				
-			BoldSlantedFont = FreeSansBoldOblique_B.otf 		
+            BoldFont = Arimo-Bold_B.otf ,
+			ItalicFont = Arimo-Italic_B.otf ,				
+			BoldItalicFont = Arimo-BoldItalic_B.otf 		
 			]
-			{FreeSans_B.otf}
+			{Arimo_B.otf}
 			
   \setmonofont[
   			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
@@ -115,6 +122,12 @@
 
   \usepackage[libertine]{newtxmath}
 
+
+  % TODO:  Und noch einmal Pingel: Wir sollten Minuskelziffern im Fließtext verwenden
+  % (Numbers={OldStyle,Proportional}).Schließlich unterstützt die Libertine
+  % sowas. Damit passen dann Ziffern in Attributnamen auch gleich viel besser.
+  % Für Tabellen dann auf Numbers={Monospaced,Lining} wechseln.
+
   %\usepackage{unicode-math} 	% Does it support LinuxLibertine?
  
   %\usepackage{polyglossia}
@@ -129,23 +142,27 @@
   %\usepackage[british]{babel}   	% TODO remove this?
 \fi
 
-
+ 
 
 \usepackage{microtype}
 \usepackage{graphicx}
 
 \ifxetex
 %  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
-  \newcommand{\lsCoverTitleFont}[1]{\freeserif\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
-  \newcommand{\lsCoverAuthorFont}{\freeserif\fontsize{25pt}{12.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\freeserif\fontshape{sc}\fontsize{14pt}{7.5mm}\selectfont}
+  \newcommand{\lsCoverTitleFont}[1]{\addfontfeature{LetterSpace=-1}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
+ 	 %\newcommand{\lsCoverAuthorFont}{\freeserif\fontsize{25pt}{12.5mm}\selectfont}
+  \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
+  	%\newcommand{\lsCoverSeriesFont}{\freeserif\fontshape{sc}\fontsize{14pt}{7.5mm}\selectfont}
+  \newcommand{\lsCoverSeriesFont}{\fontsize{14pt}{7.5mm}\selectfont}
   	%\newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
-  \newcommand{\lsSpineAuthorFont}{\freeserif\fontsize{12pt}{14pt}\selectfont}
-  \newcommand{\lsSpineTitleFont}{\freeserif\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
+  	%\newcommand{\lsSpineAuthorFont}{\freeserif\fontsize{12pt}{14pt}\selectfont}
+  \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
+  	%\newcommand{\lsSpineTitleFont}{\freeserif\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
+  \newcommand{\lsSpineTitleFont}{\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
 \else
   \newcommand{\lsCoverTitleFont}[1]{\textls[-16]{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}}
   % Times uses fake small caps:
