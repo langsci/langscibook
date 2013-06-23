@@ -86,11 +86,11 @@
 % 			{FreeSans_B.otf}
   \setsansfont[
   			Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath,
-            BoldFont = Arimo-Bold_B.otf ,
-			ItalicFont = Arimo-Italic_B.otf ,				
-			BoldItalicFont = Arimo-BoldItalic_B.otf 		
+            BoldFont = Arimo-Bold_B.ttf ,
+			ItalicFont = Arimo-Italic_B.ttf ,				
+			BoldItalicFont = Arimo-BoldItalic_B.ttf 		
 			]
-			{Arimo_B.otf}
+			{Arimo_B.ttf}
 			
   \setmonofont[
   			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
