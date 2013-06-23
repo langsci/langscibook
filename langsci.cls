@@ -76,14 +76,6 @@
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
 			
-  %\newfontfamily\freesans
-%   \setsansfont[
-%   			Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath,
-%             BoldFont = FreeSansBold_B.otf ,
-% 			SlantedFont = FreeSansOblique_B.otf ,				
-% 			BoldSlantedFont = FreeSansBoldOblique_B.otf 		
-% 			]
-% 			{FreeSans_B.otf}
   \setsansfont[
   			Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath,
             BoldFont = Arimo-Bold_B.ttf ,
@@ -102,23 +94,10 @@
 
   \setmainfont[
   			Ligatures={TeX,Common},Path=\fontpath,
-			BoldFont = LinLibertine_RB_B.otf ,
-			ItalicFont = LinLibertine_RI_B.otf ,
-			BoldItalicFont = LinLibertine_RBI_B.otf ]
+			BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
+			ItalicFont = LinLibertine_RI_B.otf ,			
+			BoldItalicFont = LinLibertine_RZI_B.otf ]		% semi-bold
 			{LinLibertine_R_B.otf}
-
-  \newfontfamily\headerfont[					% for headers: uses semibold fontshape
-  			Ligatures={TeX,Common},Path=\fontpath,
-			BoldFont = LinLibertine_RZ_B.otf ,
-			ItalicFont = LinLibertine_RI_B.otf ,
-			BoldItalicFont = LinLibertine_RZI_B.otf ]
-			{LinLibertine_R_B.otf}
-
-  \newfontfamily\freeserif[
-  			Ligatures={TeX,Common},Path=\fontpath,           
-  			BoldFont = FreeSerifBold_B.otf ,
-			ItalicFont = FreeSerifItalic_B.otf ,
-			BoldItalicFont = FreeSerifBoldItalic_B.otf ]{FreeSerif_B.otf}
 
   \usepackage[libertine]{newtxmath}
 
@@ -136,49 +115,39 @@
   \usepackage[T1]{fontenc}
   \usepackage{ucs}  				% extended UTF8 support TODO remove this?
   \usepackage[utf8x]{inputenc}
-  %\usepackage{libertine}			% To be placed before times and helvetica to preserve the KOMA style.
-  \usepackage{mathptmx,helvet} 	% times and helvetica
-  %\usepackage{tgtermes}
+  \usepackage{libertine}			
+  %\usepackage{mathptmx,helvet} 	% times and helvetica
   %\usepackage[british]{babel}   	% TODO remove this?
 \fi
-
- 
 
 \usepackage{microtype}
 \usepackage{graphicx}
 
 \ifxetex
-%  \newcommand{\lsCoverTitleFont}[1]{\fontspec[LetterSpace=-2.0]{TeXGyreTermes}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
-  \newcommand{\lsCoverTitleFont}[1]{\addfontfeature{LetterSpace=-1}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}
- 	 %\newcommand{\lsCoverAuthorFont}{\freeserif\fontsize{25pt}{12.5mm}\selectfont}
+  \newcommand{\lsCoverTitleFont}[1]{\sffamily\fontsize{52pt}{16.75mm}\selectfont #1}
   \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
-  	%\newcommand{\lsCoverSeriesFont}{\freeserif\fontshape{sc}\fontsize{14pt}{7.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\fontsize{14pt}{7.5mm}\selectfont}
-  	%\newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
+  \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
+  \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
-  \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
+  \newcommand{\lsBackTitleFont}{\sffamily\lsCoverAuthorFont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
-  	%\newcommand{\lsSpineAuthorFont}{\freeserif\fontsize{12pt}{14pt}\selectfont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
-  	%\newcommand{\lsSpineTitleFont}{\freeserif\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
-  \newcommand{\lsSpineTitleFont}{\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
-\else
-  \newcommand{\lsCoverTitleFont}[1]{\textls[-16]{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont #1}}
-  % Times uses fake small caps:
-  % \textls[-60]{\fontencoding{T1}\fontfamily{ptm}\fontshape{sc}\fontsize{52pt}{16.75mm}\selectfont \@title\\}
-  \newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{qtm}\fontsize{25pt}{12.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{qtm}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
-    %\newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{14pt}{7.5mm}\selectfont}
+  \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
+\else 	% PDFLaTeX:
+  \newcommand{\lsCoverTitleFont}[1]{\sffamily\fontfamily{fxlj}\fontsize{52pt}{16.75mm}\selectfont #1}
+  \newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{25pt}{12.5mm}\selectfont}
+  \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{10.5pt}{5mm}\selectfont}
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
-  \newcommand{\lsSpineAuthorFont}{\fontencoding{T1}\fontfamily{qtm}\fontsize{12pt}{14pt}\selectfont}
-  \newcommand{\lsSpineTitleFont}{\fontencoding{T1}\fontfamily{qtm}\fontshape{sc}\fontsize{16pt}{14pt}\selectfont}
+  \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
+  \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
+  
+  \renewcommand{\bfseries}{\textsb}  	% bold -> semibold
 \fi
 
-\setkomafont{sectioning}{\normalcolor\headerfont\bfseries}
+\setkomafont{sectioning}{\normalcolor\bfseries}
 
 % qtm = tgtermes
 % ptm = times
@@ -380,10 +349,10 @@ continuar payar custosi traductores.}
 		\IfFileExists{langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{langsci_spinelogo_nocolor.pdf}}}$}{logo}
 		\hspace{15mm} 
  		{\lsSpineTitleFont
-			\pbox[c]{100mm}{\@title}  }
+			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\@title}}}
 		\hspace{13mm}
 		{\lsSpineAuthorFont 
-			\pbox[c]{100mm}{\@author}}
+			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\@author}}}
 	\end{minipage}}} 
 	\end{textblock}}
 
