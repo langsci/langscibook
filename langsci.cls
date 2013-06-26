@@ -147,7 +147,7 @@
   \renewcommand{\bfseries}{\textsb}  	% bold -> semibold
 \fi
 
-\setkomafont{sectioning}{\normalcolor\bfseries}
+\setkomafont{sectioning}{\normalcolor\sffamily\bfseries}
 
 % qtm = tgtermes
 % ptm = times
@@ -336,6 +336,7 @@ continuar payar custosi traductores.}
 
 	\begin{textblock}{30}(115,212.5)
 	\lsBackBodyFont
+	\sffamily
 	ISBN \lsISBN			
 	\end{textblock}}
 
