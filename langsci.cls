@@ -67,17 +67,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fonts, language and graphics:
 
-\newcommand{\fontpath}{./fonts/}
-
-
 \usepackage{ifxetex}
 \ifxetex
  	
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
+  \newcommand{\fontpath}{./fonts/}
 			
   \setsansfont[
-  			Ligatures={TeX,Common},Scale=MatchLowercase,Path=\fontpath,
+  			%Ligatures={TeX,Common},		% not supported by ttf
+  			Scale=MatchLowercase,Path=\fontpath,
             BoldFont = Arimo-Bold_B.ttf ,
 			ItalicFont = Arimo-Italic_B.ttf ,				
 			BoldItalicFont = Arimo-BoldItalic_B.ttf 		
@@ -88,38 +87,34 @@
   			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
 			BoldFont = FreeMonoBold_B.otf ,
 			SlantedFont = FreeMonoOblique_B.otf ,				
-			BoldSlantedFont = FreeSansBoldOblique_B.otf 		
+			BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
 			]
 			{FreeMono_B.otf}
 
   \setmainfont[
   			Ligatures={TeX,Common},Path=\fontpath,
+  			Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
 			BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
 			ItalicFont = LinLibertine_RI_B.otf ,			
 			BoldItalicFont = LinLibertine_RZI_B.otf ]		% semi-bold
-			{LinLibertine_R_B.otf}
-
+			{LinLibertine_R_B.otf}			
+  
   \usepackage[libertine]{newtxmath}
-
-
-  % TODO:  Und noch einmal Pingel: Wir sollten Minuskelziffern im Fließtext verwenden
-  % (Numbers={OldStyle,Proportional}).Schließlich unterstützt die Libertine
-  % sowas. Damit passen dann Ziffern in Attributnamen auch gleich viel besser.
-  % Für Tabellen dann auf Numbers={Monospaced,Lining} wechseln.
-
+ 
   %\usepackage{unicode-math} 	% Does it support LinuxLibertine?
  
-  %\usepackage{polyglossia}
+  %\usepackage{polyglossia}		% TODO remove this?
   %\setdefaultlanguage{british}
 \else
   \usepackage[T1]{fontenc}
   \usepackage{ucs}  				% extended UTF8 support TODO remove this?
   \usepackage[utf8x]{inputenc}
   \usepackage{libertine}			
-  %\usepackage{mathptmx,helvet} 	% times and helvetica
+  
   %\usepackage[british]{babel}   	% TODO remove this?
 \fi
 
+\frenchspacing
 \usepackage{microtype}
 \usepackage{graphicx}
 
@@ -129,7 +124,7 @@
   \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
   \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
-  \newcommand{\lsBackTitleFont}{\sffamily\lsCoverAuthorFont}
+  \newcommand{\lsBackTitleFont}{\sffamily\fontsize{25pt}{12.5mm}\selectfont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
@@ -148,12 +143,12 @@
 \fi
 
 \setkomafont{sectioning}{\normalcolor\sffamily\bfseries}
+%\setkomafont{sectioning}{\normalcolor\bfseries}
 
 % qtm = tgtermes
 % ptm = times
 % phv = helvet
 % fxlj = libertine
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Colors:
