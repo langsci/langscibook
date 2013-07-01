@@ -124,7 +124,7 @@
   \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
   \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
-  \newcommand{\lsBackTitleFont}{\sffamily\fontsize{25pt}{12.5mm}\selectfont}
+  \newcommand{\lsBackTitleFont}{\sffamily\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
@@ -317,7 +317,7 @@ continuar payar custosi traductores.}
 \newcommand{\lsBackPage}{		% Back page
 	\lsCoverBlock
 
-	\begin{textblock}{115}(15,30)
+	\begin{textblock}{115}(15,24)  % 30mm-6mm
 	\color{white}
 	{\raggedright
 	 \lsBackTitleFont 
