@@ -15,6 +15,7 @@
 \usepackage{lipsum}  
 %\usepackage{tree-dvips}                                                          
 
+\usepackage{fontspec}\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
 
 \title{Danish in \newlineCover Head-Driven \newlineCover Phrase Structure \newlineCover  Grammar  }                        
 %\title{Ɓasaá in \newlineCover Head-driven \newlineCover\newlineSpine Phrase Structure Grammar}
@@ -121,6 +122,8 @@ English may be broken and the interpuction incorrect.\footnote{%
 
 \item Sansserif test: \textsf{Text} \textsf{\textbf{Text}} \textsf{\textit{Text}} \textsf{\textbf{\textit{Text}}}, \textsf{123456789}
 \item Number test: Text123456789  
+
+\item Persian test: \PRL{مرد را دوست نداشت.}
     
 \end{itemize}
 

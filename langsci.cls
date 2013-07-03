@@ -268,6 +268,8 @@ continuar payar custosi traductores.}
 \usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, \ldots
 \fi
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
@@ -463,6 +465,16 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \deffootnote[1.5em]{1.5em}{0mm}{\textsuperscript{\normalfont\thefootnotemark}\ }
 
 \KOMAoptions{footnotes=multiple}
+
+% http://tex.stackexchange.com/questions/28465/multiple-footnotes-at-one-point/71015#71015
+\let\oldFootnote\footnote
+\newcommand\nextToken\relax
+
+\renewcommand\footnote[1]{%
+    \oldFootnote{#1}\futurelet\nextToken\isFootnote}
+
+\newcommand\isFootnote{%
+    \ifx\footnote\nextToken\textsuperscript{,}\fi}
 
 %\deffootnote{1.5em}{1em}{% 
 %    \makebox[1.5em][l]{\thefootnotemark}}
