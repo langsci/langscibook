@@ -76,7 +76,8 @@
 			
   \setsansfont[
   			%Ligatures={TeX,Common},		% not supported by ttf
-  			Scale=MatchLowercase,Path=\fontpath,
+  			Scale=MatchLowercase,
+  			Path=\fontpath,
             BoldFont = Arimo-Bold_B.ttf ,
 			ItalicFont = Arimo-Italic_B.ttf ,				
 			BoldItalicFont = Arimo-BoldItalic_B.ttf 		
@@ -119,12 +120,12 @@
 \usepackage{graphicx}
 
 \ifxetex
-  \newcommand{\lsCoverTitleFont}[1]{\sffamily\fontsize{52pt}{16.75mm}\selectfont #1}
+  \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
   \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
   \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
   \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
-  \newcommand{\lsBackTitleFont}{\sffamily\fontsize{25pt}{10mm}\selectfont}
+  \newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
