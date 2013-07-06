@@ -224,17 +224,17 @@ continuar payar custosi traductores.}
 
 \usepackage{datetime}
 \usepackage{scrpage2}
-%% \ohead{\upshape{\headmark}}
-%% \ihead{}
-%% \cfoot{}
-%% \ofoot[]{\pagemark}
-%% \ifoot{\upshape{Draft of \today, \currenttime}}
-
-\ihead{\upshape{\headmark}}
-\ohead{\pagemark}
+\ohead{\headmark}
+\ihead{}
 \cfoot{}
-\ifoot[]{}
-\ofoot{\upshape{Draft of \today, \currenttime}}
+\ofoot[]{\pagemark}
+\ifoot{Draft of \today, \currenttime}
+
+%% \ihead{\upshape{\headmark}}
+%% \ohead{\pagemark}
+%% \cfoot{}
+%% \ifoot[]{}
+%% \ofoot{\upshape{Draft of \today, \currenttime}}
 
 
 \renewcommand*{\partpagestyle}{empty}
