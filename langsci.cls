@@ -245,7 +245,18 @@ continuar payar custosi traductores.}
 % Citation:
 
 \usepackage{natbib}
-\setcitestyle{notesep={:}}   
+% make language dependent?, class option needed
+\bibliographystyle{bst/langsci.en} 
+% This does not work ...
+%% \setcitestyle{
+%% notesep={: }, % 2002: 125
+%% aysep={~}     % Gazdar 2002
+%% }
+
+\bibpunct[: ]{(}{)}{;}{a}{}{,}
+\let\citew=\citet
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperref:
