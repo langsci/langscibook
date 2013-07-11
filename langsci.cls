@@ -1,7 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/06/19 Language Science Publications]
-
-%\usepackage[pdftex]{graphicx}\usepackage{epstopdf}
+\ProvidesClass{langsci}[2013/07/11 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{1}
@@ -9,6 +7,8 @@
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{printondemand}
+\newif\iflsDraft
+\lsDraftfalse
 
 % Option handling:
 \RequirePackage{kvoptions}		% for key-value options
@@ -33,7 +33,8 @@
 	\renewcommand{\lsOutput}{printondemand}}
 \DeclareStringOption{draft}[yes]		% pass the draft option to scrbook, TODO does not work?
 	\define@key{langsci}{draft}{
-	\PassOptionsToClass{draft=#1}{scrbook}}
+	 \lsDrafttrue
+	 \PassOptionsToClass{draft=#1}{scrbook}}
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
@@ -92,8 +93,12 @@
 			]
 			{FreeMono_B.otf}
 
+
+
   \setmainfont[
-  			Ligatures={TeX,Common},Path=\fontpath,
+  			Ligatures={TeX,Common},
+  			Path=\fontpath,
+  			PunctuationSpace=0,							
   			Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
 			BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
 			ItalicFont = LinLibertine_RI_B.otf ,			
@@ -115,7 +120,7 @@
   %\usepackage[british]{babel}   	% TODO remove this?
 \fi
 
-\frenchspacing
+%\frenchspacing			
 \usepackage{microtype}
 \usepackage{graphicx}
 
@@ -143,8 +148,7 @@
   \renewcommand{\bfseries}{\textsb}  	% bold -> semibold
 \fi
 
-\setkomafont{sectioning}{\normalcolor\sffamily\bfseries}
-%\setkomafont{sectioning}{\normalcolor\bfseries}
+\setkomafont{sectioning}{\normalcolor\bfseries}
 
 % qtm = tgtermes
 % ptm = times
@@ -228,8 +232,9 @@ continuar payar custosi traductores.}
 \ihead{}
 \cfoot{}
 \ofoot[]{\pagemark}
-\ifoot{Draft of \today, \currenttime}
-
+\iflsDraft
+  \ifoot{Draft of \today, \currenttime}
+\fi
 %% \ihead{\upshape{\headmark}}
 %% \ohead{\pagemark}
 %% \cfoot{}
@@ -277,7 +282,7 @@ continuar payar custosi traductores.}
 
 
 \ifxetex
-\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, \ldots
+\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, ...
 \fi
 
 
@@ -290,7 +295,7 @@ continuar payar custosi traductores.}
 \setcounter{page}{-3}
 
 \newcommand{\lsCoverBlock}{
-	\begin{textblock}{155}(7.5,7.5)
+	\begin{textblock}{155}(7.6,7.5)
 	\color{\lsCoverBlockColor}
 	\raggedright\rule{155mm}{225mm}
 	\end{textblock}}
@@ -321,8 +326,7 @@ continuar payar custosi traductores.}
 
 \newcommand{\lsCoverLogo}{		
 	\begin{textblock}{33}(124.6,205)
-	%\raggedright\IfFileExists{logo_rz_buch.pdf}{\includegraphics{logo_rz_buch}}{langsci logo}
-	\raggedright\IfFileExists{langsci_logo_nocolor.pdf}{\includegraphics{langsci_logo_nocolor.pdf}}{langsci logo}  
+		\raggedright\IfFileExists{langsci_logo_nocolor.pdf}{\includegraphics{langsci_logo_nocolor.pdf}}{langsci logo}  
 	\end{textblock}}
 
 \newcommand{\lsFrontPage}{		% Front page
@@ -444,7 +448,7 @@ continuar payar custosi traductores.}
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
- TODO Series information: name, editors, previous numbers
+ Series information: name, editors, previous numbers
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

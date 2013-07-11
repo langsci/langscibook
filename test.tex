@@ -2,7 +2,7 @@
 			   ,series=eotms
 			   ,output=printondemand %  proof|printondemand   
 			   %,blackandwhite
-			   %,draft=yes
+			   %,draft
 			  ]{langsci}                          
 
        
@@ -10,52 +10,17 @@
 \usepackage{styles/avm}
 \avmfont{\sc}
 \avmvalfont{\it}
-                                                   
-\usepackage{layout}
+                                                      
+\usepackage{layout} 
 \usepackage{lipsum}  
-%\usepackage{tree-dvips}                                                          
-
-\usepackage{fontspec}\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
-
-\title{Danish in \newlineCover Head-Driven \newlineCover Phrase Structure \newlineCover  Grammar  }                        
-%\title{Ɓasaá in \newlineCover Head-driven \newlineCover\newlineSpine Phrase Structure Grammar}
-%\title{Le language des fulɓe dans le cadre de la grammaire des syntagmes guidés par les têtes}
-%\title{Constraint-Based Coanalysis: \newlineCover Portuguese \newlineSpine Cliticisation and Morphology-Syntax Interaction in HPSG}
-  
-%\author{Stefan Müller, \newlineCover Pollet Samvelian, \newlineCover Olivier Bonami}
-\author{Stefan Müller, \newlineCover Bjarne Ørsnes}
-      
-    
-\BackTitle{Danish in Head-Driven Phrase Structure Grammar}                                       
-%\BackTitle{Constraint-Based Coanalysis: Portuguese Cliticisation and Morphology-Syntax Interaction in HPSG}
-\BackBody{This book describes a fragment of the Danish language that is formalized in the framework of
-Head-Driven Phrase Structure Grammar. Each chapter consist of a large empirical part that uses
-corpus data for the discussion of phenomena whenever this is appropriate. The description is
-theory-driven but the formulations of the insights are as theory-neutral as possible.
-     
-After a brief introduction into the basic assumptions that are made in HPSG, we provide a
-topological model of the Danish clause. This topological model is used to explain the basic clause
-structure of Danish (SVO) and to set up the HPSG analysis of these rather basic facts. After this
-rather basic part detailed descriptions and analyses of the following phenomena are provided: object
-and negation shift, copula constructions, including specificational structures and the relation to
-left dilocation and question tag formation, extraposition, passive, raising passives, in which
-objects of embedded verbs are raised to subject, preposed negation, extraction (V2), the insertion
-of positional expletives in extraction contexts, and \emph{Do}-Support.
-
-The grammar that is described in this book is computerprocessable and hence internally
-consistent. It was developed in the CoreGram project, which develops grammars of various languages
-and tries to find crosslinguistic generalizations. This is also reflected in the book, which
-contains sections that compare the analyses for Danish with those for German and English.
-
-\bigskip
-
-Stefan Müller is professor for German and General Linguistics at the Freie Universität
-Berlin. Bjarne Ørsnes is Associate Professor at the Copenhagen Business School. 
-}                                            
    
+\title{Τέχνη \newlineCover γραμματική}  
+
+\author{Dionysios Thrax \newlineCover et al.}
+         
 \begin{document}               
          
-                                        
+                                                                
                                 
 \maketitle                
 
@@ -68,26 +33,11 @@ Berlin. Bjarne Ørsnes is Associate Professor at the Copenhagen Business School.
 \subsubsection{Subsubsection Title: Ɓasaá, fulɓe, move-α, and the \textrm{\textsc{head}} Feature}       
 \subsubsubsection{Subsubsubsection Title: Ɓasaá, fulɓe, move-α, and the \textsc{head} Feature}       
                                                      
-   
-Hey, this is \textbf{another} text that is written by me, not be \LaTeX{}. It is much nicer, although the,
-English may be broken and the interpuction incorrect.\footnote{%
-  The point of writing this text is that I can insert this footnote here so that Ulrike can see how
-  a footnote looks like. The lipsum package does not insert footnotes.
- 
-  This is a new paragraph in the footnote.
-}\footnote{%
-  And if they did not die, the wrote another footnote.
-
-  This is another new paragraph, but it is longer. It may stretch to the next line if I add some
-  more words.
-}\footnote{%
-  The point of writing this text is that I can insert this footnote here so that Ulrike can see how
-  a footnote looks like. The lipsum package does not insert footnotes.
-}
-
+\lipsum 
+\lipsum[3-10]  
 
 \begin{itemize}
-\item AVMs with math operators
+\item AVMs with math operators\footnote{This is a footnote.}
 
   \begin{avm}
     {\it word\/} $\rightarrow$
@@ -97,40 +47,7 @@ English may be broken and the interpuction incorrect.\footnote{%
     \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
     \]
   \end{avm}
-  
-   
-
-
-
-\item Old-style figures (or not) in attribute names:
-
- \begin{avm}
-    \[c-cont & \[hook & \[index & \@e \\
-    ltop & \@t\]\\
-    rels & \<\[pred & hortative-rel\\
-    lbl & \@t\\
-    arg1 & \@h
-    \]\>\\
-    hcons & \< \@h $=_q$ \@l \>
-    \]\\
-    dtrs & \< \[ss\|l\|cont & \[hook & \[index & \@e \[tam & \textit{subj}\]\\
-    ltop & \@l\]\\
-    rels & \< ... \[arg0 & \@e\\
-    lbl & \@l\] ... \>\]\] \>\]
-  \end{avm}
-
-
-\item Sansserif test: \textsf{Text} \textsf{\textbf{Text}} \textsf{\textit{Text}} \textsf{\textbf{\textit{Text}}}, \textsf{123456789}
-\item Number test: Text123456789  
-
-\item Persian test: \PRL{مرد را دوست نداشت.}
-    
 \end{itemize}
-
-
-\lipsum 
-\lipsum[3-10]  
-
  
 %% \begin{tabular}{ccc}
 %% \multicolumn{2}{c}{\node{0}{S}} \\[2ex]
@@ -143,11 +60,10 @@ English may be broken and the interpuction incorrect.\footnote{%
 
 \newpage
 
-\layout
-
 \nocite{*}
 
 \bibliography{test}
+
                               
 \end{document}
       
