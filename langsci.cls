@@ -115,7 +115,7 @@
   \usepackage[T1]{fontenc}
   \usepackage{ucs}  				% extended UTF8 support TODO remove this?
   \usepackage[utf8x]{inputenc}
-  \usepackage{libertine}			
+  \usepackage{libertine}			% TODO 
   
   %\usepackage[british]{babel}   	% TODO remove this?
 \fi
@@ -139,7 +139,7 @@
   \newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{25pt}{12.5mm}\selectfont}
   \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
-  \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{10.5pt}{5mm}\selectfont}
+  \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\selectfont}
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
