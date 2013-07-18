@@ -43,6 +43,9 @@
     numbers=noenddot		% no point after last number of chapters/sections
 	%draft=yes,
 	]{scrbook}
+
+
+\usepackage{etex}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Page size and text area:
@@ -195,7 +198,7 @@ continuar payar custosi traductores.}
 \newcommand{\eotmsig}{eotmsig}
 \newcommand{\sidl}{sidl}
 \newcommand{\algad}{algad}
-\newcommand{\tamnlp}{tamnlp}
+\newcommand{\tmnlp}{tmnlp}
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
@@ -214,7 +217,7 @@ continuar payar custosi traductores.}
  	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsOrange}
 \fi
-\ifx\lsSeries\tamnlp
+\ifx\lsSeries\tmnlp
  	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsWine}
 \fi	
@@ -251,7 +254,8 @@ continuar payar custosi traductores.}
 
 \usepackage{natbib}
 % make language dependent?, class option needed
-\bibliographystyle{bst/langsci.en} 
+% put directory in BST_INPUTS
+\bibliographystyle{langsci.en} 
 % This does not work ...
 %% \setcitestyle{
 %% notesep={: }, % 2002: 125
@@ -281,9 +285,6 @@ continuar payar custosi traductores.}
 %\usepackage{breakurl} 	
 
 
-\ifxetex
-\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, ...
-\fi
 
 
 
@@ -534,7 +535,10 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \def\toclevel@subsubsubsection{4}
 %    
 
-
+% bidi has to be loaded in the individual documents
+%\ifxetex
+%\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, ...
+%\fi
 
 
 \endinput
