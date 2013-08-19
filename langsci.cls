@@ -1,12 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/07/11 Language Science Publications]
+\ProvidesClass{langsci}[2013/08/19 Language Science Publications]
 
 % Default values:
-\newcommand{\lsSeriesNumber}{1}
-\newcommand{\lsISBN}{98000000}
+\newcommand{\lsSeriesNumber}{??}
+\newcommand{\lsISBN}{????????}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
-\newcommand{\lsOutput}{printondemand}
+\newcommand{\lsOutput}{long}
 \newif\iflsDraft
 \lsDraftfalse
 
@@ -15,22 +15,22 @@
 \SetupKeyvalOptions{
 	family=langsci,
 	prefix=langsci@ }
-\DeclareStringOption{number}[1]
+\DeclareStringOption{number}[??]
 	\define@key{langsci}{number}{%
 		\renewcommand{\lsSeriesNumber}{#1}}
-\DeclareStringOption{isbn}[98000000]
+\DeclareStringOption{isbn}[????????]
 	\define@key{langsci}{isbn}{%
 		\renewcommand{\lsISBN}{#1}}
 \DeclareStringOption{series}[eotms]
 	\define@key{langsci}{series}{%
 		\renewcommand{\lsSeries}{#1}}
-\DeclareStringOption{output}[printondemand]
+\DeclareStringOption{output}[long]
 	\define@key{langsci}{output}{%
 		\renewcommand{\lsOutput}{#1}}
 \DeclareVoidOption{blackandwhite}{
 	\newcommand{\blackandwhite}{}}
-\DeclareVoidOption{printondemand}{
-	\renewcommand{\lsOutput}{printondemand}}
+\DeclareVoidOption{long}{
+	\renewcommand{\lsOutput}{long}}
 \DeclareStringOption{draft}[yes]		% pass the draft option to scrbook, TODO does not work?
 	\define@key{langsci}{draft}{
 	 \lsDrafttrue
@@ -266,7 +266,6 @@ continuar payar custosi traductores.}
 \let\citew=\citet
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperref:
 
@@ -285,15 +284,15 @@ continuar payar custosi traductores.}
 %\usepackage{breakurl} 	
 
 
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \setcounter{page}{-3}
+\iflsDraft
+  \usepackage[firstpage]{draftwatermark}
+\fi
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
@@ -380,17 +379,17 @@ continuar payar custosi traductores.}
 	\end{textblock}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\lsOutputPrintondemand}{printondemand}
+\newcommand{\lsOutputLong}{long}
 \newcommand{\lsOutputShort}{short}
-\newcommand{\lsOutputProof}{proof}
+\newcommand{\lsOutputInprep}{inprep}
 
 
 \renewcommand{\maketitle}{
 \begin{titlepage}
 \thispagestyle{empty}
 
-%\@ifundefined{printondemand}{}{		
-\ifx\lsOutput\lsOutputPrintondemand		% only if output=printondemand 
+%\@ifundefined{long}{}{		
+\ifx\lsOutput\lsOutputLong				% only if output=long
 	% First titlepage:
 	{\lsFrontPage}
 	%%%%%%%%%%%%%%%%%%%
@@ -415,13 +414,21 @@ continuar payar custosi traductores.}
 	 \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
 	\lsSchmutztitel}
 	%%%%%%%%%%%%%%%%%%%%
-\fi										
+\fi		
 
-\ifx\lsOutput\lsOutputProof				% only if output=proof
+\ifx\lsOutput\lsOutputShort				% only if output=short
   	{\renewcommand{\lsCoverBlockColor}{white}
   	 \renewcommand{\lsCoverFontColor}{black}
   	 \lsFrontPage}
 \fi
+
+\ifx\lsOutput\lsOutputInprep				% only if output=inprep
+	{\renewcommand{\lsCoverBlockColor}{white}
+  	 \renewcommand{\lsCoverFontColor}{black}
+  	 \lsCoverBlock
+	 \lsCoverTitleAuthor}
+\fi								
+
 
 \setcounter{page}{1}
 \end{titlepage}
@@ -434,7 +441,11 @@ continuar payar custosi traductores.}
 \null\vfill
 
 % Impressum:
-\lsImpressum
+\ifx\lsOutput\lsOutputInprep
+	{}
+\else
+	{\lsImpressum}
+\fi
 %%%%%%%%%%%%%
 
 \null\clearpage\thispagestyle{plain}
