@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/08/19 Language Science Publications]
+\ProvidesClass{langsci}[2013/08/20 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
@@ -31,16 +31,17 @@
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{long}{
 	\renewcommand{\lsOutput}{long}}
-\DeclareStringOption{draft}[yes]		% pass the draft option to scrbook, TODO does not work?
-	\define@key{langsci}{draft}{
+\DeclareStringOption{draftmode}[yes]		% 'draftmode' instead of 'draft' due to undesirable side efects	
+	\define@key{langsci}{draftmode}{			
 	 \lsDrafttrue
-	 \PassOptionsToClass{draft=#1}{scrbook}}
+	 %\PassOptionsToClass{draft=#1}{scrbook}  % pass the draft option to scrbook, TODO does not work?
+	 }
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
 	fontsize=10.5pt,
     footnotes=multiple,
-    numbers=noenddot		% no point after last number of chapters/sections
+    numbers=noenddot,		% no point after last number of chapters/sections
 	%draft=yes,
 	]{scrbook}
 
@@ -124,8 +125,10 @@
 \fi
 
 %\frenchspacing			
-\usepackage{microtype}
+\usepackage[final]{microtype}
 \usepackage{graphicx}
+
+
 
 \ifxetex
   \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
@@ -272,7 +275,8 @@ continuar payar custosi traductores.}
 \usepackage[bookmarks=true,bookmarksopen=true,%
   hyperindex=true,%
   breaklinks=true,
-  draft=false,plainpages=false,
+  draft=false,
+  plainpages=false,
   pdfauthor={},%
   pdfkeywords={}
 %  ,ps2pdf=true
