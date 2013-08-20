@@ -272,6 +272,10 @@ continuar payar custosi traductores.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperref:
 
+% Xelatex likes this:
+\usepackage[hyphens]{url}
+\urlstyle{same}
+
 \usepackage[bookmarks=true,bookmarksopen=true,%
   hyperindex=true,%
   breaklinks=true,
