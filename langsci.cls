@@ -175,6 +175,7 @@
 \definecolor{lsLightGreen}{cmyk}{0.4,0,1,0}
 \definecolor{lsMidGreen}{cmyk}{0.55,0,0.9,0.1}
 \definecolor{lsDarkGreen}{cmyk}{0.6,0,0.9,0.35}
+\definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -298,15 +299,22 @@ continuar payar custosi traductores.}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \setcounter{page}{-3}
-\iflsDraft
-  \usepackage[firstpage]{draftwatermark}
-\fi
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
 	\color{\lsCoverBlockColor}
 	\raggedright\rule{155mm}{225mm}
-	\end{textblock}}
+	\end{textblock}
+    \iflsDraft
+       \begin{textblock}{155}(30,80)
+         \color{lsLightGray}
+         \rotatebox{40}{
+       		\begin{tabular}{c}
+       		\scalebox{10}{DRAFT}\\
+       		of \today, \currenttime
+       		\end{tabular}}
+       \end{textblock}
+    \fi}
 
 \newcommand{\lsCoverTitleAuthor}{
 	\renewcommand{\newlineSpine}{}
