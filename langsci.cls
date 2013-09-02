@@ -257,15 +257,17 @@ continuar payar custosi traductores.}
 % Citation:
 
 \usepackage{natbib}
-% make language dependent?, class option needed
+% unified style sheet for linguistics journals
 % put directory in BST_INPUTS
-\bibliographystyle{langsci.en} 
+% http://celxj.org/downloads/unified.bst
+\bibliographystyle{unified} 
 % This does not work ...
 %% \setcitestyle{
 %% notesep={: }, % 2002: 125
 %% aysep={~}     % Gazdar 2002
 %% }
 
+% check what the unified people have to say on this.
 \bibpunct[: ]{(}{)}{;}{a}{}{,}
 \let\citew=\citet
 
@@ -277,7 +279,7 @@ continuar payar custosi traductores.}
 \usepackage[hyphens]{url}
 \urlstyle{same}
 
-\usepackage[bookmarks=true,bookmarksopen=true,%
+\usepackage[bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
   hyperindex=true,%
   breaklinks=true,
   draft=false,
@@ -566,6 +568,10 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 %\ifxetex
 %\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, ...
 %\fi
+
+
+
+\usepackage[figuresright]{rotating}
 
 
 \endinput
