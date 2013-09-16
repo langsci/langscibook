@@ -223,7 +223,7 @@ continuar payar custosi traductores.}
 \fi
 \ifx\lsSeries\tmnlp
  	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsWine}
+ 	\newcommand{\lsSeriesColor}{lsDarkBlue}
 \fi	
 
 \@ifundefined{blackandwhite}
