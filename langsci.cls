@@ -203,6 +203,8 @@ continuar payar custosi traductores.}
 \newcommand{\sidl}{sidl}
 \newcommand{\algad}{algad}
 \newcommand{\tmnlp}{tmnlp}
+\newcommand{\nc}{nc}%Niger Congo
+\newcommand{\lnls}{lnls}%Lecture Notes in Language Sciences
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
@@ -222,8 +224,17 @@ continuar payar custosi traductores.}
  	\newcommand{\lsSeriesColor}{lsOrange}
 \fi
 \ifx\lsSeries\tmnlp
- 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing , No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsDarkBlue}
+\fi	
+\fi
+\ifx\lsSeries\lnls
+ 	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsYello}
+\fi	
+\ifx\lsSeries\nc
+ 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsRed}
 \fi	
 
 \@ifundefined{blackandwhite}
