@@ -226,7 +226,6 @@ continuar payar custosi traductores.}
 \ifx\lsSeries\tmnlp
  	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsDarkBlue}
-\fi	
 \fi
 \ifx\lsSeries\lnls
  	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences, No \lsSeriesNumber}
