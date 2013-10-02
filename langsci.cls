@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/08/20 Language Science Publications]
+\ProvidesClass{langsci}[2013/10/02 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
@@ -308,6 +308,7 @@ continuar payar custosi traductores.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
+\newcommand{\logopath}{./logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \setcounter{page}{-3}
@@ -354,7 +355,7 @@ continuar payar custosi traductores.}
 
 \newcommand{\lsCoverLogo}{		
 	\begin{textblock}{33}(124.6,205)
-		\raggedright\IfFileExists{langsci_logo_nocolor.pdf}{\includegraphics{langsci_logo_nocolor.pdf}}{langsci logo}  
+		\raggedright\IfFileExists{\logopath/langsci_logo_nocolor.pdf}{\includegraphics{\logopath/langsci_logo_nocolor.pdf}}{langsci logo}  
 	\end{textblock}}
 
 \newcommand{\lsFrontPage}{		% Front page
@@ -396,7 +397,7 @@ continuar payar custosi traductores.}
 	\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
 		\color{\lsSeriesColor}
 		\hspace{7.5mm}
-		\IfFileExists{langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{langsci_spinelogo_nocolor.pdf}}}$}{logo}
+		\IfFileExists{\logopath/langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{\logopath/langsci_spinelogo_nocolor.pdf}}}$}{logo}
 		\hspace{15mm} 
  		{\lsSpineTitleFont
 			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\@title}}}
@@ -506,7 +507,7 @@ www.langsci-press.org \\[3ex]
 
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{FULogo_sw_CMYK.pdf}}{FU-Logo} \\
+\IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\
 \end{center}
 }
 
