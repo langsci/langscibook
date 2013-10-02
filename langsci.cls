@@ -270,7 +270,7 @@ continuar payar custosi traductores.}
 % unified style sheet for linguistics journals
 % put directory in BST_INPUTS
 % http://celxj.org/downloads/unified.bst
-\bibliographystyle{unified} 
+\bibliographystyle{./bst/unified} 
 % This does not work ...
 %% \setcitestyle{
 %% notesep={: }, % 2002: 125
