@@ -39,7 +39,7 @@
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
-	fontsize=10.5pt,
+	fontsize=11pt, %fontsize=10.5pt,
     footnotes=multiple,
     numbers=noenddot,		% no point after last number of chapters/sections
 	%draft=yes,
@@ -279,6 +279,9 @@ continuar payar custosi traductores.}
 
 % check what the unified people have to say on this.
 \bibpunct[: ]{(}{)}{;}{a}{}{,}
+% They do not say anything about citations in the running text.
+% As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
+% This is what De Gruyter does:
 \let\citew=\citet
 
 
@@ -584,5 +587,12 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 \usepackage[figuresright]{rotating}
 
+%???
+%\usepackage{varioref}
+
+% gets rid of the warnings:
+% Failed to convert input string to UTF16
+% http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
+\hypersetup{unicode,pdfencoding=auto}
 
 \endinput
