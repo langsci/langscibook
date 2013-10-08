@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/10/02 Language Science Publications]
+\ProvidesClass{langsci}[2013/10/08 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
@@ -7,6 +7,7 @@
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{long}
+\newcommand{\lsFontsize}{11pt}
 \newif\iflsDraft
 \lsDraftfalse
 
@@ -31,6 +32,8 @@
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{long}{
 	\renewcommand{\lsOutput}{long}}
+\DeclareVoidOption{smallfont}{
+	\renewcommand{\lsFontsize}{10pt}}
 \DeclareStringOption{draftmode}[yes]		% 'draftmode' instead of 'draft' due to undesirable side efects	
 	\define@key{langsci}{draftmode}{			
 	 \lsDrafttrue
@@ -39,7 +42,7 @@
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
-	fontsize=11pt, %fontsize=10.5pt,
+	fontsize=\lsFontsize, % default is 11pt
     footnotes=multiple,
     numbers=noenddot,		% no point after last number of chapters/sections
 	%draft=yes,
