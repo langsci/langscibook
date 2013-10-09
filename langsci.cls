@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/10/08 Language Science Publications]
+\ProvidesClass{langsci}[2013/10/09 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
@@ -37,7 +37,7 @@
 \DeclareStringOption{draftmode}[yes]		% 'draftmode' instead of 'draft' due to undesirable side efects	
 	\define@key{langsci}{draftmode}{			
 	 \lsDrafttrue
-	 %\PassOptionsToClass{draft=#1}{scrbook}  % pass the draft option to scrbook, TODO does not work?
+ 	 \overfullrule=5pt		% to indicate overfull hboxes
 	 }
 \ProcessKeyvalOptions{langsci}
 
