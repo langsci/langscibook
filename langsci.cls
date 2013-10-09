@@ -135,6 +135,7 @@
 
 \ifxetex
   \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
+  \newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
   \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
   \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
@@ -145,6 +146,7 @@
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
 \else 	% PDFLaTeX:
   \newcommand{\lsCoverTitleFont}[1]{\sffamily\fontfamily{fxlj}\fontsize{52pt}{16.75mm}\selectfont #1}
+  \newcommand{\lsCoverSubTitleFont}{\sffamily\fontfamily{fxlj}\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{25pt}{12.5mm}\selectfont}
   \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
@@ -343,6 +345,10 @@ continuar payar custosi traductores.}
 	\color{\lsCoverFontColor}
 	\raggedright
 	{\lsCoverTitleFont{\@title\\}}
+
+ 	\ifx\@subtitle\empty
+ 	\else \vspace{8mm} {\lsCoverSubTitleFont \@subtitle\\}
+ 	\fi
 
 	\vspace{11.2mm} % 20mm - 25pt
  
