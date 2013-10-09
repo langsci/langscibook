@@ -484,7 +484,7 @@ continuar payar custosi traductores.}
 %%%%%%%%%%%%%
 
 \null\clearpage\thispagestyle{plain}
-%\pagenumbering{roman}	% TODO pagenumbering (Change \tableofcontents?)
+\pagenumbering{roman}	
 }
 
 
