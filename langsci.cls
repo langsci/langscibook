@@ -210,6 +210,7 @@ continuar payar custosi traductores.}
 \newcommand{\tmnlp}{tmnlp}
 \newcommand{\nc}{nc}%Niger Congo
 \newcommand{\lnls}{lnls}%Lecture Notes in Language Sciences
+\newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
@@ -239,6 +240,10 @@ continuar payar custosi traductores.}
 \ifx\lsSeries\nc
  	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsRed}
+\fi	
+\ifx\lsSeries\labphon
+ 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsWine}
 \fi	
 
 \@ifundefined{blackandwhite}
@@ -287,7 +292,8 @@ continuar payar custosi traductores.}
 % They do not say anything about citations in the running text.
 % As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
 % This is what De Gruyter does:
-\let\citew=\citet
+% \let\citew=\citet
+\let\citew=\citealt
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
