@@ -1,3 +1,4 @@
+%% -*- coding:utf-8 -*-
 \documentclass[ number=??
 			   ,series=lnls,
 			   ,output=long    % long|short|inprep              
@@ -7,15 +8,31 @@
 			  ]{langsci}                          
 
           
+\hypersetup{pdfdisplaydoctitle=true}
+
+\usepackage{xspace}
+\newcommand{\latex}{\LaTeX\xspace}
 
 \usepackage{styles/avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
                                                       
-\usepackage{layout} 
-\usepackage{lipsum}  
    
 \title{How to Write a Book for Language Science Press}  
+\subtitle{Guidelines for Authors and \latex Recommendations}
+\BackTitle{How to Write a Book for Language Science Press}
+\BackBody{This book contains the guidelines for Language Science Press authors. For those who want
+  to help keeping the production costs low and therefore decided to use \latex it also contains
+  descriptions of packages that can be used for typesetting trees, Attribute Value Matrices, OT-tableaux, Categorial
+  Grammar proofs, LFG analyses, and much more. The setup of typesetting script with special fonts as
+  for instance right to left scripts like Arabic is explained. The \latex chapter also contains sections
+  concerning the efficient workflow in professional typesetting environments using \latex.
+
+Stefan Müller is an experience \latex user who has typeset four published books and several book
+manuscripts and journal articles.
+}
+
+\dedication{This book is dedicated to everybody who cannot afford buying books by profit oriented publishers.}
 
 \author{Stefan Müller}
          
@@ -26,51 +43,15 @@
 \maketitle                
 
 \tableofcontents      
-         
 
-\chapter{Guidelines}
+\mainmatter         
 
-
-\section{Figures}
-
-\section{Tables}
-
-\section{References}
-
-\chapter{\LaTeX}
-
-\section{Workflow}
-
-\section{Document Structure}
-
-\section{Packages specific for Linguistics}
-
-\begin{itemize}
-\item AVMs with math operators\footnote{This is a footnote.}
-
-  \begin{avm}
-    {\it word\/} $\rightarrow$
-    \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
-    morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
-    rules & \< \[morphs & \@{e_1}\\mud & \@{m_1}\\ morsyn & \@0\],\ldots,
-    \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
-    \]
-  \end{avm}
-
-\item test reference: \cite{Jespersen1924a-u} 
-\end{itemize}
-  
-\section{Bells and Whistles}
-
-\section{Software}
-
-\begin{itemize}
-\item BibDesk
-\item JabRef
-\end{itemize}
+\include{lsp-authors}
+\include{lsp-latex}
+\include{lsp-publication}
 
 
-\section{Proper Installation}
+\backmatter
 
 \addcontentsline{toc}{chapter}{Bibliography} 
 \bibliography{lsp-guidelines}
@@ -78,3 +59,4 @@
                               
 \end{document}
       
+%      <!-- Local IspellDict: en_US-w_accents -->

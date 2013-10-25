@@ -189,9 +189,8 @@
 % defaults:
 \newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un
 myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li
-lingues differe solmen in li grammatica, li pronunciation e li plu commun vo-
-cabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa
-continuar payar custosi traductores.}
+lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe
+al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.}
 \newcommand{\lsBackTitle}{Back Title}
 
 \newcommand{\BackTitle}[1]{\renewcommand{\lsBackTitle}{#1}}
@@ -303,17 +302,22 @@ continuar payar custosi traductores.}
 \usepackage[hyphens]{url}
 \urlstyle{same}
 
+
 \usepackage[bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
   hyperindex=true,%
   breaklinks=true,
   draft=false,
   plainpages=false,
-  pdfauthor={},%
+  pdfusetitle=true,  % puts author and title in automatically, maybe only in final mode?
   pdfkeywords={}
 %  ,ps2pdf=true
 ]{hyperref}
 
+
+
 \KOMAoptions{footnotes=multiple}
+
+
 
 % xelatex hates this.
 %\usepackage{breakurl} 	
@@ -507,7 +511,11 @@ continuar payar custosi traductores.}
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
+\ifx\lsSeries\lnls
+\input lnls-info.tex
+\else
  Series information: name, editors, previous numbers
+\fi
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
