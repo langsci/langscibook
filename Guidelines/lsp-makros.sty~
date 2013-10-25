@@ -28,18 +28,3 @@
   \endgroup
 }
 
-
-% Helps to fit verbatim onto one line:
-% http://tex.stackexchange.com/questions/140593/shrinking-verbatim-text/
-\usepackage{fancyvrb}
-\newenvironment{fitverb}
- {\SaveVerbatim{rlwv}}
- {\endSaveVerbatim
-  \sbox0{\BUseVerbatim{rlwv}}
-  \begingroup\center % don't add indentation
-  \ifdim\wd0>\linewidth
-    \resizebox{\linewidth}{!}{\copy0}%
-  \else
-    \copy0
-  \fi
-  \endcenter\endgroup}

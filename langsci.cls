@@ -522,7 +522,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
-<<<<<<< HEAD
 %{\Large \lsSeriesTitle}
 %\bigskip
 \ifx\lsSeries\lnls
@@ -530,11 +529,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \else
  Series information: name, editors, previous numbers
 \fi
-=======
 \IfFileExists{series.tex}{\include{series}}{
   Series information: series.tex not found!
 } 
->>>>>>> c96d803505f6ad2a6d6c4c751e5b93b78f968c6e
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

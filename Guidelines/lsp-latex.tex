@@ -57,7 +57,7 @@ xelatex yourfilename.tex
 \hand & candidate 3     &            &           &  *       \\ \hline
 \end{tabular}
 
-\oneline{%
+\begin{fitverb}
 \begin{verbatim}
 \begin{tabular}
        {|lc|c|c|c|}\hline   
@@ -67,7 +67,7 @@ xelatex yourfilename.tex
 \hand & candidate 3     &            &           &  *       \\ \hline
 \end{tabular}
 \end{verbatim}
-}
+\end{fitverb}
 
 \verb+\hand+ ist wie folgt definiert:
 
@@ -86,7 +86,7 @@ xelatex yourfilename.tex
 \hand & candidate 3    &              &              &  *           \\ \hline
 \end{tabular*}
 
-\oneline{%
+\begin{fitverb}
 \begin{verbatim}
 \begin{tabular*}{0.95\textwidth}
     {@{\extracolsep{\fill}}|rl||c|c|c|}\hline   
@@ -96,7 +96,7 @@ xelatex yourfilename.tex
 \hand & candidate 3    &              &              &  *           \\ \hline
 \end{tabular*}
 \end{verbatim}
-}
+\end{fitverb}
 
 \begin{tabular}[t]{r|c|c|c|}
 \cline{2-4}
@@ -108,7 +108,7 @@ xelatex yourfilename.tex
 \ECC
 \end{tabular}
 
-\oneline{%
+\begin{fitverb}
 \begin{verbatim}
 \usepackage{pstricks,colortab}
 
@@ -122,7 +122,7 @@ xelatex yourfilename.tex
 \ECC
 \end{tabular}
 \end{verbatim}
-}
+\end{fitverb}
 
 
 
