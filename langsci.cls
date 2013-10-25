@@ -527,11 +527,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\lnls
 \input lnls-info.tex
 \else
- Series information: name, editors, previous numbers
-\fi
 \IfFileExists{series.tex}{\include{series}}{
   Series information: series.tex not found!
-} 
+}
+\fi 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
