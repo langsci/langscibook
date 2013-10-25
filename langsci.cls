@@ -507,7 +507,9 @@ continuar payar custosi traductores.}
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
- Series information: name, editors, previous numbers
+\IfFileExists{series.tex}{\include{series}}{
+  Series information: series.tex not found!
+} 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
