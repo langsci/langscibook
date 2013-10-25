@@ -6,6 +6,9 @@
 The \latex class for typesetting Language Science Press books was developed by Timm Lichte with
 help be Berthold Crysmann and me. It can be downloded from the GitHUB repository at: \url{https://github.com/langsci/latex}
 
+Place all files and subdirectories from this repository into your local working directory (for
+advanced installations see Section~\ref{sec-advanced-latex-installation}).
+
 \section{Using the \texttt{langsci} Class}
 
 Once you installed the classes in your system, you may look at the file \texttt{test.tex} to see how
@@ -45,6 +48,119 @@ xelatex yourfilename.tex
 
 \subsection{OT Tableaux}
 
+
+\begin{tabular}
+       {|lc|c|c|c|}\hline   
+      & \textbf{Input}  & Cnstrnt 1  &  Cnstrnt 2& Cnstrnt 3\\ \hline\hline
+      & candidate 1     & *!         &           &          \\ \hline
+      & candidate 2     &            &  *        &          \\ \hline
+\hand & candidate 3     &            &           &  *       \\ \hline
+\end{tabular}
+
+\oneline{%
+\begin{verbatim}
+\begin{tabular}
+       {|lc|c|c|c|}\hline   
+      & \textbf{Input}  & Cnstrnt 1  &  Cnstrnt 2& Cnstrnt 3\\ \hline\hline
+      & candidate 1     & *!         &           &          \\ \hline
+      & candidate 2     &            &  *        &          \\ \hline
+\hand & candidate 3     &            &           &  *       \\ \hline
+\end{tabular}
+\end{verbatim}
+}
+
+\verb+\hand+ ist wie folgt definiert:
+
+\begin{verbatim}
+\usepackage{pifont}
+\newcommand{\hand}{\ding{43}}
+\end{verbatim}
+ 
+
+
+\begin{tabular*}{0.95\textwidth}
+    {@{\extracolsep{\fill}}|rl||c|c|c|}\hline   
+      & \textbf{Input} & Constraint 1 & Constraint 2 & Constraint 3 \\ \hline\hline
+      & candidate 1    & *!           &              &              \\ \hline
+      & candidate 2    &              &  *           &              \\ \hline
+\hand & candidate 3    &              &              &  *           \\ \hline
+\end{tabular*}
+
+\oneline{%
+\begin{verbatim}
+\begin{tabular*}{0.95\textwidth}
+    {@{\extracolsep{\fill}}|rl||c|c|c|}\hline   
+      & \textbf{Input} & Constraint 1 & Constraint 2 & Constraint 3 \\ \hline\hline
+      & candidate 1    & *!           &              &              \\ \hline
+      & candidate 2    &              &  *           &              \\ \hline
+\hand & candidate 3    &              &              &  *           \\ \hline
+\end{tabular*}
+\end{verbatim}
+}
+
+\begin{tabular}[t]{r|c|c|c|}
+\cline{2-4}
+      & /qi/  & qi    & qi         \\
+\LCC 
+      &       &       & \lightgray \\ \cline{2-4}
+\hand & [qi]  &       & *          \\ \cline{2-4}
+      & [*qi] & *!    &            \\ \cline{2-4}
+\ECC
+\end{tabular}
+
+\oneline{%
+\begin{verbatim}
+\usepackage{pstricks,colortab}
+
+\begin{tabular}[t]{r|c|c|c|}
+\cline{2-4}
+      & /qi/  & qi    & qi         \\
+\LCC 
+      &       &       & \lightgray \\ \cline{2-4}
+\hand & [qi]  &       & *          \\ \cline{2-4}
+      & [*qi] & *!    &            \\ \cline{2-4}
+\ECC
+\end{tabular}
+\end{verbatim}
+}
+
+
+
+
+
+%% \begin{frame}[fragile]
+%% \frametitle{OT-Tableaux (IV)}
+
+%% %Funktioniert nicht (direkt) mit \LaTeX-Beamer:
+
+%% \vfill
+%% \includegraphics{PS-Figures/ot-tableaux-vo.eps}
+
+%% \vfill
+
+%% {\scriptsize
+%% \begin{verbatim}
+%% \begin{tabular}{|l||c|c|} \hline
+%%           &VO          &OV         \\ \hline\hline
+%% \LCC
+%%           &            &\lightgray \\ \hline
+%% prefixing &Tagalog     &Ma'a       \\ \hline
+%% \ECC
+%% \LCC
+%%            &\lightgray &            \\ \hline
+%% suffixing  &Kwakwala   &Japanese    \\ \hline
+%% \ECC
+%% \end{tabular}
+
+
+%% \end{verbatim}
+%% }
+
+%% \vfill
+
+%% \end{frame}
+
+
 \subsection{Font Issues and Right to Left Scripts}
 
 
@@ -63,9 +179,12 @@ xelatex yourfilename.tex
 \end{itemize}
 
 
-\section{Proper Installation}
+\section{Advanced Installation}
+\label{sec-advanced-latex-installation}
 
-
+If you typeset many books for \lsp, put the fonts that are contained in the directory \texttt{fonts}
+into your local font directory that is used by \xelatex. Put the logos from \texttt{logos} into the
+search path for images. 
 
 
 %      <!-- Local IspellDict: en_US-w_accents -->

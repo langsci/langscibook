@@ -13,11 +13,27 @@
 \usepackage{xspace}
 \newcommand{\latex}{\LaTeX\xspace}
 
+% just for the XeLaTeX logo
+\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}
+\newcommand{\bibtex}{\BibTeX\xspace}
+
+\newcommand{\lsp}{Language Science Press\xspace}
+
+\usepackage{lsp-makros}
+
+% AVMs
+
 \usepackage{styles/avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
-                                                      
-   
+      
+% OT pointing hand
+\usepackage{pifont}
+\newcommand{\hand}{\ding{43}}
+
+% OT tableaux                                                
+\usepackage{pstricks,colortab}   
+
 \title{How to Write a Book for Language Science Press}  
 \subtitle{Guidelines for Authors and \latex Recommendations}
 \BackTitle{How to Write a Book for Language Science Press}

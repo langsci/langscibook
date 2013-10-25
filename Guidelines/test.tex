@@ -1,0 +1,33 @@
+%% -*- coding:utf-8 -*-
+    \documentclass{article}
+    \usepackage{graphicx}
+
+    \newcommand*{\restrictlinewidthbox}[1]{%
+      \begingroup
+        \lrbox0{#1}%
+        \ifdim\wd0>\linewidth
+          \resizebox{\linewidth}{!}{\copy0}%
+        \else
+          \copy0 %
+        \fi
+      \endgroup
+    }
+
+    \setlength{\parindent}{0pt}
+
+    \begin{document}
+
+    \restrictlinewidthbox{%
+    \begin{verbatim}
+    \begin{tabular}
+           {|lc|c|c|c|}\hline   
+          & \textbf{Input}  & Cnstrnt 1  &  Cnstrnt 2& Cnstrnt 3\\ \hline\hline
+          & candidate 1     & *!         &           &          \\ \hline
+          & candidate 2     &            &  *        &          \\ \hline
+    \hand & candidate 3     &            &           &  *       \\ \hline
+    \end{tabular}
+    \end{verbatim}
+    }
+
+
+    \end{document}

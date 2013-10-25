@@ -536,12 +536,12 @@ Habelschwerdter Allee 45\\
 
 \bigskip
 
-\url{www.langsci-press.org}
+\href{http://langsci-press.org}{langsci-press.org}
 
 \bigskip
 
 This title can be downloaded at:\\
-\url{http://www.langsci-press.org}
+\url{http://langsci-press.org}
 
 It is published under the Creative Commons Licence CC-BY. 
 
@@ -550,8 +550,7 @@ ISBN: \lsISBN
 \bigskip
  
 Cover and concept of design: \\
-Ulrike Harbort \\
-www.langsci-press.org \\[3ex]
+Ulrike Harbort \\[3ex]
 
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
