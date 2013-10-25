@@ -511,6 +511,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
+%{\Large \lsSeriesTitle}
+%\bigskip
 \ifx\lsSeries\lnls
 \input lnls-info.tex
 \else
@@ -523,10 +525,30 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \newcommand{\lsImpressum}{
 \begin{center}
-{\bf Impressum} \\
-Info Info Info \\
-Info Info Info \\
-Info Info Info \\
+Language Sciene Press\\
+Berlin, Leipzig\\
+
+\bigskip
+
+Language Sciene Press\\
+Habelschwerdter Allee 45\\
+14 195 Berlin, Germany
+
+\bigskip
+
+\url{www.langsci-press.org}
+
+\bigskip
+
+This title can be downloaded at:\\
+\url{http://www.langsci-press.org}
+
+It is published under the Creative Commons Licence CC-BY. 
+
+ISBN: \lsISBN 
+
+\bigskip
+ 
 Cover and concept of design: \\
 Ulrike Harbort \\
 www.langsci-press.org \\[3ex]
