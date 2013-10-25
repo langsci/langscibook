@@ -201,6 +201,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\newlineCover}{\\}	% \newline only on cover
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
 
+
+% neutralized commands
+\renewcommand{\mainmatter}{}
+\renewcommand{\frontmatter}{}
+\renewcommand{\backmatter}{}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series information:
 
@@ -522,19 +528,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
-<<<<<<< HEAD
-%{\Large \lsSeriesTitle}
-%\bigskip
+
 \ifx\lsSeries\lnls
-\input lnls-info.tex
+\IfFileExists{lnls-info.tex}{\input{lnls-info}}{
+  Series information: series.tex not found!} 
 \else
  Series information: name, editors, previous numbers
 \fi
-=======
-\IfFileExists{series.tex}{\include{series}}{
-  Series information: series.tex not found!
-} 
->>>>>>> c96d803505f6ad2a6d6c4c751e5b93b78f968c6e
+
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
