@@ -235,7 +235,7 @@ continuar payar custosi traductores.}
 \fi
 \ifx\lsSeries\lnls
  	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsYello}
+ 	\newcommand{\lsSeriesColor}{lsYellow}
 \fi	
 \ifx\lsSeries\nc
  	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo, No \lsSeriesNumber}

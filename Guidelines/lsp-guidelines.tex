@@ -1,0 +1,80 @@
+\documentclass[ number=??
+			   ,series=lnls,
+			   ,output=long    % long|short|inprep              
+			   %,blackandwhite
+			   %,smallfont
+			   ,draftmode  
+			  ]{langsci}                          
+
+          
+
+\usepackage{styles/avm}
+\avmfont{\sc} 
+\avmvalfont{\it}
+                                                      
+\usepackage{layout} 
+\usepackage{lipsum}  
+   
+\title{How to Write a Book for Language Science Press}  
+
+\author{Stefan Müller}
+         
+\begin{document}               
+         
+                                                                           
+                                  
+\maketitle                
+
+\tableofcontents      
+         
+
+\chapter{Guidelines}
+
+
+\section{Figures}
+
+\section{Tables}
+
+\section{References}
+
+\chapter{\LaTeX}
+
+\section{Workflow}
+
+\section{Document Structure}
+
+\section{Packages specific for Linguistics}
+
+\begin{itemize}
+\item AVMs with math operators\footnote{This is a footnote.}
+
+  \begin{avm}
+    {\it word\/} $\rightarrow$
+    \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
+    morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
+    rules & \< \[morphs & \@{e_1}\\mud & \@{m_1}\\ morsyn & \@0\],\ldots,
+    \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
+    \]
+  \end{avm}
+
+\item test reference: \cite{Jespersen1924a-u} 
+\end{itemize}
+  
+\section{Bells and Whistles}
+
+\section{Software}
+
+\begin{itemize}
+\item BibDesk
+\item JabRef
+\end{itemize}
+
+
+\section{Proper Installation}
+
+\addcontentsline{toc}{chapter}{Bibliography} 
+\bibliography{lsp-guidelines}
+
+                              
+\end{document}
+      
