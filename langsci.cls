@@ -140,6 +140,7 @@
   \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
   \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
+  \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
   \newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
@@ -151,6 +152,7 @@
   \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
   \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
   \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\selectfont}
+  \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
   \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
@@ -455,6 +457,7 @@ continuar payar custosi traductores.}
 	% Series information:
 	{\lsSeriesHistory}
 	%%%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
 	\null\newpage\thispagestyle{empty}
 	% Schmutztitel:
 	{\renewcommand{\lsCoverBlockColor}{white}
@@ -476,10 +479,9 @@ continuar payar custosi traductores.}
 	 \lsCoverTitleAuthor}
 \fi								
 
-
-\setcounter{page}{1}
 \end{titlepage}
 
+\setcounter{page}{1}
 \null\newpage\thispagestyle{empty}
 \hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 \color{black}
@@ -496,7 +498,16 @@ continuar payar custosi traductores.}
 %%%%%%%%%%%%%
 
 \null\clearpage\thispagestyle{plain}
-\pagenumbering{roman}	
+\pagenumbering{roman}
+
+
+% Dedication:
+\ifx\@dedication\empty
+	{}
+\else{\lsDedication}
+\fi
+%%%%%%%%%%%%%%%%
+	
 }
 
 
@@ -531,7 +542,17 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \end{center}
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dedication:
 
+\newcommand{\lsDedication}{
+	\vspace*{.2\textheight}	
+	\begin{center}
+		{\lsDedicationFont
+		 \@dedication }
+	\end{center}
+	\vfill
+	\clearpage}
 
 
 
