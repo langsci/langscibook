@@ -201,12 +201,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\newlineCover}{\\}	% \newline only on cover
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
 
-% neutralized commands
-% St.Mü. but we need this for the page numbers
-%% \renewcommand{\mainmatter}{}
-%% \renewcommand{\frontmatter}{}
-%% \renewcommand{\backmatter}{}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series information:
@@ -509,7 +503,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%
 
 \null\clearpage\thispagestyle{plain}
-\pagenumbering{roman}
+%\pagenumbering{roman}		% or \frontmatter
 
 
 % Dedication:
