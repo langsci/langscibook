@@ -533,7 +533,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \IfFileExists{lnls-info.tex}{\input{lnls-info}}{
   Series information: lnls-info.tex not found!} 
 \else
-  Series information: name, editors, previous numbers
+\IfFileExists{series.tex}{\include{series}}{
+  Series information: series.tex not found!
+}
 \fi
 
 }
