@@ -332,7 +332,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\logopath}{./logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
-\setcounter{page}{-3}
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
@@ -444,6 +443,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 %\@ifundefined{long}{}{		
 \ifx\lsOutput\lsOutputLong				% only if output=long
+	\setcounter{page}{-5}
 	% First titlepage:
 	{\lsFrontPage}
 	%%%%%%%%%%%%%%%%%%%
@@ -463,7 +463,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	{\lsSeriesHistory}
 	%%%%%%%%%%%%%%%%%%%%%
 	\newpage\thispagestyle{empty}
-	\null\newpage\thispagestyle{empty}
 	% Schmutztitel:
 	{\renewcommand{\lsCoverBlockColor}{white}
 	 \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
@@ -486,13 +485,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \end{titlepage}
 
-\setcounter{page}{1}
+
+\frontmatter
+\renewcommand{\frontmatter}{}
+
 \null\newpage\thispagestyle{empty}
 \hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 \color{black}
 \lsInsideFont
-
-\null\vfill
 
 % Impressum:
 \ifx\lsOutput\lsOutputInprep
@@ -502,7 +502,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 %%%%%%%%%%%%%
 
-\null\clearpage\thispagestyle{plain}
+\null\newpage\thispagestyle{plain}
 %\pagenumbering{roman}		% or \frontmatter
 
 
@@ -512,7 +512,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \else{\lsDedication}
 \fi
 %%%%%%%%%%%%%%%%
-	
+		
 }
 
 
@@ -539,6 +539,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % Impressum:
 
 \newcommand{\lsImpressum}{
+\null\vfill
 \begin{center}
 Language Sciene Press\\
 Berlin, Leipzig\\
