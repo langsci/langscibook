@@ -48,6 +48,12 @@
 \usepackage[indentfirst=false]{xeCJK}
 \setCJKmainfont{SimSun}
 
+% bidirectional text and support for Arabic/Persian
+%% \usepackage{fontspec}
+\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+%\usepackage{bidi}
+%\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
+
 
 \usepackage{lsp-gb4e}
 
@@ -70,12 +76,10 @@ manuscripts and journal articles.
 \author{Stefan Müller}
 
 
-% bidirectional text and support for Arabic/Persian
-%% \usepackage{fontspec}
-\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
-%\usepackage{bidi}
-\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
 
+\makeatletter
+\def\verbatim@font{\scriptsize\ttfamily}
+\makeatother
          
 \begin{document}               
          
