@@ -166,6 +166,37 @@ suffixing  &Kwakwala   &Japanese    \\ \hline
 
 \subsection{Font Issues and Right to Left Scripts}
 
+Since we are using \xelatex, all fonts that are installed in the cannonical font directories can be
+used. We are using the font \texttt{Linux Libertine}, which is unicode-based and contains a lot of
+the characters linguists want to use.
+
+\subsubsection{Chinese}
+
+\begin{verbatim}
+\usepackage[indentfirst=false]{xeCJK}
+\setCJKmainfont{SimSun}
+\end{verbatim}
+
+\ea
+\glll 狗       叫     了。\\
+      gou3     jiao4   le\\
+      dog      bark    ASP/CRS\\
+\glt `The dog is barking/The dogs are barking.'
+\z
+
+
+\subsubsection{Arabic Script}
+
+\ea{
+\label{ex-persian}
+\PRL{او مرد را دوست نخواهد داشت.}\\
+ \gll   U mard rā dust naxāhad dāšt.\\
+   He/she man {\sc dom} friend {\sc neg}.want have\\
+\glt `He/she will not love the man.'
+}
+\z
+
+\subsubsection{IPA Symbols}
 
   
 \section{Bells and Whistles}
