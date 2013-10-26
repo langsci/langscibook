@@ -202,9 +202,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
 
 % neutralized commands
-\renewcommand{\mainmatter}{}
-\renewcommand{\frontmatter}{}
-\renewcommand{\backmatter}{}
+% St.Mü. but we need this for the page numbers
+%% \renewcommand{\mainmatter}{}
+%% \renewcommand{\frontmatter}{}
+%% \renewcommand{\backmatter}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
