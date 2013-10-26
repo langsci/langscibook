@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/10/09 Language Science Publications]
+\ProvidesClass{langsci}[2013/10/26 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
@@ -200,6 +200,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \newcommand{\newlineCover}{\\}	% \newline only on cover
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
+
+% neutralized commands
+\renewcommand{\mainmatter}{}
+\renewcommand{\frontmatter}{}
+\renewcommand{\backmatter}{}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series information:
@@ -522,15 +528,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSeriesHistory}{
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
-%{\Large \lsSeriesTitle}
-%\bigskip
+
 \ifx\lsSeries\lnls
-\input lnls-info.tex
+\IfFileExists{lnls-info.tex}{\input{lnls-info}}{
+  Series information: lnls-info.tex not found!} 
 \else
-\IfFileExists{series.tex}{\include{series}}{
-  Series information: series.tex not found!
-}
-\fi 
+  Series information: name, editors, previous numbers
+\fi
+
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
