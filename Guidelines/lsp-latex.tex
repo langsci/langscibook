@@ -64,7 +64,6 @@ xelatex yourfilename.tex
 \end{tabular}
 
 \begin{fitverb}
-\begin{verbatim}
 \begin{tabular}
        {|lc|c|c|c|}\hline   
       & \textbf{Input}  & Cnstrnt 1  &  Cnstrnt 2& Cnstrnt 3\\ \hline\hline
@@ -72,7 +71,6 @@ xelatex yourfilename.tex
       & candidate 2     &            &  *        &          \\ \hline
 \hand & candidate 3     &            &           &  *       \\ \hline
 \end{tabular}
-\end{verbatim}
 \end{fitverb}
 
 \verb+\hand+ ist wie folgt definiert:
@@ -93,7 +91,6 @@ xelatex yourfilename.tex
 \end{tabular*}
 
 \begin{fitverb}
-\begin{verbatim}
 \begin{tabular*}{0.95\textwidth}
     {@{\extracolsep{\fill}}|rl||c|c|c|}\hline   
       & \textbf{Input} & Constraint 1 & Constraint 2 & Constraint 3 \\ \hline\hline
@@ -101,7 +98,6 @@ xelatex yourfilename.tex
       & candidate 2    &              &  *           &              \\ \hline
 \hand & candidate 3    &              &              &  *           \\ \hline
 \end{tabular*}
-\end{verbatim}
 \end{fitverb}
 
 \begin{tabular}[t]{r|c|c|c|}
@@ -172,10 +168,6 @@ the characters linguists want to use.
 
 \subsubsection{Chinese}
 
-\begin{verbatim}
-\usepackage[indentfirst=false]{xeCJK}
-\setCJKmainfont{SimSun}
-\end{verbatim}
 
 \ea
 \glll 狗       叫     了。\\
@@ -184,17 +176,45 @@ the characters linguists want to use.
 \glt `The dog is barking/The dogs are barking.'
 \z
 
+{\scriptsize
+\begin{verbatim}
+\usepackage[indentfirst=false]{xeCJK}
+\setCJKmainfont{SimSun}
+
+\ea
+\glll 狗       叫     了。\\
+      gou3     jiao4   le\\
+      dog      bark    ASP/CRS\\
+\glt `The dog is barking/The dogs are barking.'
+\z
+\end{verbatim}
+}
+
 
 \subsubsection{Arabic Script}
 
-\ea{
+
+
+\ea
 \label{ex-persian}
 \PRL{او مرد را دوست نخواهد داشت.}\\
  \gll   U mard rā dust naxāhad dāšt.\\
    He/she man {\sc dom} friend {\sc neg}.want have\\
 \glt `He/she will not love the man.'
-}
 \z
+
+\begin{fitverb}
+\usepackage{fontspec}\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+\usepackage{bidi}
+\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
+
+\ea
+\PRL{او مرد را دوست نخواهد داشت.}\\
+ \gll   U mard rā dust naxāhad dāšt.\\
+   He/she man {\sc dom} friend {\sc neg}.want have\\
+\glt `He/she will not love the man.'
+\z
+\end{fitverb}
 
 \subsubsection{IPA Symbols}
 
@@ -221,6 +241,12 @@ the characters linguists want to use.
 If you typeset many books for \lsp, put the fonts that are contained in the directory \texttt{fonts}
 into your local font directory that is used by \xelatex. Put the logos from the directory \texttt{logos} into the
 search path for images. 
+
+
+\subsection{Style Files and Multiple Projects}
+
+Pathes, shell variables \ldots
+
 
 
 %      <!-- Local IspellDict: en_US-w_accents -->

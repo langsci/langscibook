@@ -44,11 +44,16 @@
  
 \usepackage{lipsum}  
 
+% Chinese
+\usepackage[indentfirst=false]{xeCJK}
+\setCJKmainfont{SimSun}
+
 % bidirectional text and support for Arabic/Persian
 \usepackage{fontspec}\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
 \usepackage{bidi}
 \newcommand{\PRL}[1]{\RL{\Parsifont #1}}
 
+\usepackage{lsp-gb4e}
 
 \title{How to Write a Book for Language Science Press}  
 \subtitle{Guidelines for Authors and \latex Recommendations}
