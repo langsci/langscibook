@@ -21,6 +21,7 @@
 
 \usepackage{lsp-makros}
 
+\usepackage{german}\selectlanguage{USenglish}
 % AVMs
 
 \usepackage{styles/avm}
@@ -33,6 +34,11 @@
 
 % OT tableaux                                                
 \usepackage{pstricks,colortab}   
+
+
+ 
+\usepackage{lipsum}  
+
 
 \title{How to Write a Book for Language Science Press}  
 \subtitle{Guidelines for Authors and \latex Recommendations}
@@ -57,6 +63,30 @@ manuscripts and journal articles.
                                                                            
                                   
 \maketitle                
+
+\frontmatter
+
+\chapter*{Vorwort}
+
+\lipsum[3-10]  
+
+\section*{Acknowledgements}
+
+%% David Reitter danke ich für die \LaTeX"=Makros für Combinatorial
+%% Categorial Grammar, Mary Dalrymple und Jonas Kuhn für die LFG"=Makros und Beispielstrukturen, und
+%% Laura Kallmeyer für die \LaTeX"=Quelltexte der meisten TAG"=Analysen. Ohne diese
+%% Originalmakros/-texte wären die Darstellungen in den jeweiligen Kapiteln sicher nicht halb so schön
+%% geworden. 
+
+This book is typeset with \LaTeX. We thank the \LaTeX{} developers for their work and the members of the German \textit{German
+  Language TeX Users Group Communication List} and those replying at \url{http://tex.stackexchange.com} for many usefull hints and suggestions.
+
+
+\bigskip
+
+\noindent
+Berlin, \today\hfill Stefan Müller
+
 
 \tableofcontents      
 

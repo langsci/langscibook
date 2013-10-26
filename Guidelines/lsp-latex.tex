@@ -33,6 +33,12 @@ xelatex yourfilename.tex
 
 \section{Packages specific for Linguistics}
 
+\subsection{Glossed Examples}
+
+
+\subsection{\texttt{jambox}}
+
+
 \subsection{AVMs}
 
   \begin{avm}
@@ -108,7 +114,8 @@ xelatex yourfilename.tex
 \ECC
 \end{tabular}
 
-\begin{fitverb}
+
+{\scriptsize
 \begin{verbatim}
 \usepackage{pstricks,colortab}
 
@@ -122,43 +129,39 @@ xelatex yourfilename.tex
 \ECC
 \end{tabular}
 \end{verbatim}
-\end{fitverb}
+}
 
 
+\begin{tabular}{|l||c|c|} \hline
+          &VO          &OV         \\ \hline\hline
+\LCC
+          &            &\lightgray \\ \hline
+prefixing &Tagalog     &Ma'a       \\ \hline
+\ECC
+\LCC
+           &\lightgray &            \\ \hline
+suffixing  &Kwakwala   &Japanese    \\ \hline
+\ECC
+\end{tabular}
+
+{\scriptsize
+\begin{verbatim}
+\begin{tabular}{|l||c|c|} \hline
+          &VO          &OV         \\ \hline\hline
+\LCC
+          &            &\lightgray \\ \hline
+prefixing &Tagalog     &Ma'a       \\ \hline
+\ECC
+\LCC
+           &\lightgray &            \\ \hline
+suffixing  &Kwakwala   &Japanese    \\ \hline
+\ECC
+\end{tabular}
 
 
+\end{verbatim}
+}
 
-%% \begin{frame}[fragile]
-%% \frametitle{OT-Tableaux (IV)}
-
-%% %Funktioniert nicht (direkt) mit \LaTeX-Beamer:
-
-%% \vfill
-%% \includegraphics{PS-Figures/ot-tableaux-vo.eps}
-
-%% \vfill
-
-%% {\scriptsize
-%% \begin{verbatim}
-%% \begin{tabular}{|l||c|c|} \hline
-%%           &VO          &OV         \\ \hline\hline
-%% \LCC
-%%           &            &\lightgray \\ \hline
-%% prefixing &Tagalog     &Ma'a       \\ \hline
-%% \ECC
-%% \LCC
-%%            &\lightgray &            \\ \hline
-%% suffixing  &Kwakwala   &Japanese    \\ \hline
-%% \ECC
-%% \end{tabular}
-
-
-%% \end{verbatim}
-%% }
-
-%% \vfill
-
-%% \end{frame}
 
 
 \subsection{Font Issues and Right to Left Scripts}
@@ -183,7 +186,7 @@ xelatex yourfilename.tex
 \label{sec-advanced-latex-installation}
 
 If you typeset many books for \lsp, put the fonts that are contained in the directory \texttt{fonts}
-into your local font directory that is used by \xelatex. Put the logos from \texttt{logos} into the
+into your local font directory that is used by \xelatex. Put the logos from the directory \texttt{logos} into the
 search path for images. 
 
 
