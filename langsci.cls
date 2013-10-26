@@ -436,7 +436,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputShort}{short}
 \newcommand{\lsOutputInprep}{inprep}
 
-
+\AtBeginDocument{
 \renewcommand{\maketitle}{
 \begin{titlepage}
 \thispagestyle{empty}
@@ -513,6 +513,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 %%%%%%%%%%%%%%%%
 		
+}
 }
 
 
