@@ -39,6 +39,59 @@ xelatex yourfilename.tex
 \subsection{\texttt{jambox}}
 
 
+The package \texttt{jambox} can be used to provide information about the language of an example or
+about a certain other aspect to be highlighted.
+\settowidth\jamwidth{VSO}
+\eal
+\ex[]{
+\gll Ingrid kiel-et il-mazzit-a.\\
+     Ingrid eat-3fsg def-black.pudding-fsg\\ \jambox{(SVO)}
+\glt `Ingread ate black pudding.'
+}
+\ex[]{
+Kielet il-mazzita Ingrid. \jambox{(VOS)}
+}
+\ex[*]{
+Kielet Ingrid il-mazzita. \jambox{(VSO)}
+}
+\ex[]{\label{ex-sov}
+Ingrid il-mazzita kielet. \jambox{(SOV)}
+}
+\ex[]{\label{ex-osv}
+Il-mazzita Ingrid kielet. \jambox{(OSV)}
+}
+\ex[]{
+Il-mazzita kielet Ingrid. \jambox{(OVS)}
+}
+\zl
+
+The call of \verb+\jambox+ has to follow the linebreak after the gloss:
+\begin{verbatim}
+\ex[]{
+\gll Ingrid kiel-et il-mazzit-a.\\
+     Ingrid eat-3fsg def-black.pudding-fsg\\ \jambox{(SVO)}
+\glt `Ingread ate black pudding.'
+}
+\end{verbatim}
+The distance from the right margin can be specified by passing the largest object to be placed in a
+jambox to \verb+\settowidth+:
+
+\eal
+\settowidth\jamwidth{(German)}
+\ex The man reads the book.    \jambox{(English)}
+\ex Manden læser bogen.        \jambox{(Danish)}
+\ex Der Mann liest das Buch.   \jambox{(German)}
+\zl
+
+\begin{verbatim}
+\eal
+\settowidth\jamwidth{(German)}
+\ex The man reads the book.    \jambox{(English)}
+\ex Manden læser bogen.        \jambox{(Danish)}
+\ex Der Mann liest das Buch.   \jambox{(German)}
+\zl
+\end{verbatim}
+
 \subsection{AVMs}
 
   \begin{avm}
@@ -168,7 +221,7 @@ the characters linguists want to use.
 \glll 狗       叫     了。\\
       gou3     jiao4   le\\
       dog      bark    ASP/CRS\\
-\glt `The dog is barking/The dogs are barking.'
+\glt `The dog is barking.'/`The dogs are barking.'
 \z
 
 \begin{verbatim}
@@ -179,7 +232,7 @@ the characters linguists want to use.
 \glll 狗       叫     了。\\
       gou3     jiao4   le\\
       dog      bark    ASP/CRS\\
-\glt `The dog is barking/The dogs are barking.'
+\glt `The dog is barking.'/`The dogs are barking.'
 \z
 \end{verbatim}
 
@@ -189,24 +242,27 @@ the characters linguists want to use.
 
 
 \ea
-%\PRL{او مرد را دوست نخواهد داشت.}\\
- \gll   U mard rā dust naxāhad dāšt.\\
-   He/she man {\sc dom} friend {\sc neg}.want have\\
-\glt `He/she will not love the man.'
-\z
-
-\begin{fitverb}
-\usepackage{fontspec}\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
-\usepackage{bidi}
-\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
-
-\ea
 \PRL{او مرد را دوست نخواهد داشت.}\\
  \gll   U mard rā dust naxāhad dāšt.\\
    He/she man {\sc dom} friend {\sc neg}.want have\\
 \glt `He/she will not love the man.'
 \z
-\end{fitverb}
+
+%\begin{rtlverbatim}
+%\usepackage{fontspec}
+\begin{verbatim}
+\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+\usepackage{bidi}
+\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
+
+\ea
+\PRL{او مرد را دوست نخواهد داشت.}\\
+\gll U      mard rā       dust   naxāhad        dāšt.\\
+     He/she man {\sc dom} friend {\sc neg}.want have\\
+\glt `He/she will not love the man.'
+\z
+\end{verbatim}
+%\end{rtlverbatim}
 
 \subsubsection{IPA Symbols}
 
@@ -216,6 +272,88 @@ the characters linguists want to use.
 \subsection{\texttt{varioref}}
 
 \subsection{\texttt{german} for Hyphenation}
+
+If you write things like \verb+head-driven+ or very long pathes like
+{\sc snysem$|$""loc$|$""cat$|$""head$|$""mod$|$""loc}, \LaTeX{} does not do hyphenation
+(in the part following the dash).
+
+\verb+german.sty+ provides additional markup that allows for proper hyphenation:
+\begin{verbatim}
+head"=driven
+
+{\sc snysem$|$""loc$|$""cat$|$""head$|$""mod$|$""loc}
+\end{verbatim}
+With this markup even long pathes like {\sc snysem$|$loc$|$cat$|$""head$|$""mod$|$""loc$|$""cat$|$""head}
+are typeset properly. Alternatively you my write
+\begin{verbatim}
+{\sc snysem$|$\-loc$|$\-cat$|$\-head$|$\-mod}
+\end{verbatim}
+which introduces a dash at the place of the linebreak:
+{\sc snysem$|$\-loc$|$\-cat$|$\-head$|$\-mod$|$\-loc$|$\-cat$|$\-head}.
+
+If you use \verb+german.sty+ for a book whose primary language is not German, do not forget to
+specify the language you are using. For example, if your book is in US English you have to specify
+the following:
+\begin{verbatim}
+\selectlanguage{USenglish}
+\end{verbatim}
+Otherwise the section name for references comes out in German.
+
+\subsection{Resizing Large Objects}
+
+Trees or AVMs often are too big to fit onto one page. The \texttt{langsci} comes with commands for
+shrinking large objects. You may pass your complex object as an argument to \texttt{\oneline} and
+this will scale the object to \verb+\linewidth+ (the remaining space on the current line). There is
+a more clever version of this command: \verb+\centerfit+. This command checks whether there is
+enough space for an object and if this is the case it centers it in the line. If the object is
+larger than the \verb+\linewidth+, it is resized to fit the line. This is very handy for typesetting
+figures. You may copy and paste figures to other documents with a different text width without any
+adaptions.
+
+
+%% \begin{figure}[htb]
+%% \centerfit{%
+%% \begin{tikzpicture}
+%% \tikzset{level 1+/.style={level distance=3\baselineskip}}
+%% \tikzset{level 2+/.style={level distance=5\baselineskip}}
+%% \tikzset{level 3+/.style={level distance=6\baselineskip}}
+%% \tikzset{level 4/.style={level distance=7\baselineskip}}
+%% \tikzset{level 5+/.style={level distance=5\baselineskip}}
+%% \tikzset{frontier/.style={distance from root=26\baselineskip}}
+%% %% \Tree[.{\ms[np-passive-cx]{ vform & passive \\
+%% %%                             subj & \sliste{ NP\ind{1} }\\[2mm]
+%% %%                             comps & \sliste{ (PP[\type{by}]\ind{2}) }\\
+%% %%                           } }
+%% %%         \ms{ vform & psp \\
+%% %%              subj & \sliste{ NP\ind{2} }\\[2mm]
+%% %%              comps & \sliste{ NP\ind{1} } 
+%% %%            } ]
+%% \Tree[.S
+%%        [.{\ibox{1} NP\ind{2}} \edge[roof]; {the boy} ]
+%%        [.VP\feattab{
+%%                  \subj  \sliste{ \ibox{1} NP\ind{2} },\\
+%%                  \comps  \sliste{  }}
+%%          [.V\feattab{
+%%                  \subj  \sliste{ \ibox{1} NP\ind{2} },\\
+%%                  \comps  \sliste{ \ibox{3} }} was ]
+%%          [.{\ibox{3} VP\feattab{
+%%                  \vform \type{passive},\\
+%%                  \subj  \sliste{ \ibox{1} NP\ind{2} },\\
+%%                  \comps  \sliste{ }}} \edge node[auto=left]{Passive Construction};
+%%            [.V\feattab{
+%%                  \vform \type{psp},\\
+%%                  \subj  \sliste{ NP },\\
+%%                  \comps  \sliste{ NP\ind{2} }} 
+%%              [.V\feattab{
+%%                  \vform \type{psp},\\
+%%                  \subj  \sliste{ NP },\\
+%%                  \comps  \sliste{ NP\ind{2}, \ibox{4} }} given ] \edge node[auto=left]{Schema for Passive Participles};
+%%              [.{\ibox{4} NP} \edge[roof]; { the ball } ] ] ] ] ] 
+%% \end{tikzpicture}
+%% }
+%% \caption{\label{fig-the-boy-was-given-the-ball-tseng}Analysis of \emph{The boy was given the ball} according to \citet{Tseng2007a}}
+%% \end{figure}
+ 
 
 \subsection{\texttt{xspace} and Abbreviations}
 

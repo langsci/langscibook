@@ -13,6 +13,8 @@
 \usepackage{xspace}
 \newcommand{\latex}{\LaTeX\xspace}
 
+
+
 % just for the XeLaTeX logo
 \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \newcommand{\bibtex}{\BibTeX\xspace}
@@ -22,8 +24,9 @@
 \usepackage{lsp-makros}
 
 \usepackage{german}\selectlanguage{USenglish}
-% AVMs
 
+
+% AVMs
 \usepackage{styles/avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
@@ -41,6 +44,7 @@
 %\tikzset{every tree node/.style={align=left, anchor=north}}
 \tikzset{every roof node/.append style={inner sep=0.1pt,text height=2ex,text depth=0.3ex}}
 
+\usepackage{jambox}
  
 \usepackage{lipsum}  
 
@@ -51,11 +55,14 @@
 % bidirectional text and support for Arabic/Persian
 %% \usepackage{fontspec}
 \newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
-%\usepackage{bidi}
-%\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
-
+\usepackage{bidi}
+\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
 
 \usepackage{lsp-gb4e}
+
+\usepackage{todonotes}
+\newcommand{\todostefan}[1]{\todo[color=green!40]{\footnotesize #1}\xspace}
+
 
 \title{How to Write a Book for Language Science Press}  
 \subtitle{Guidelines for Authors and \latex Recommendations}
