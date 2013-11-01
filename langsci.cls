@@ -497,10 +497,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \lsInsideFont
 
 % Impressum:
-\ifx\lsOutput\lsOutputInprep
-	{}
-\else
-	{\lsImpressum}
+\ifx\lsOutput\lsOutputInprep{}
+\else{\lsImpressum}
 \fi
 %%%%%%%%%%%%%
 
@@ -509,14 +507,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 % Dedication:
-\ifx\@dedication\empty
-	{}
+\ifx\@dedication\empty{}
 \else{\lsDedication}
 \fi
 %%%%%%%%%%%%%%%%
+
+\g@addto@macro{\tableofcontents}{\mainmatter}
 		
 }
-}
+}	% \AtBeginDocument
 
 
 
