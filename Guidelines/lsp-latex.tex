@@ -58,7 +58,8 @@ references are broken. Furthermore the standard referencing mechanism creates hy
 example sentences and depending on your viewer this gives you a nice preview of the referenced
 material, which you do not get with \verb+\mex+. See Figure~\vref{fig-preview-of-hyperlink-with-skim} for an example for such a preview.
 \begin{figure}[htbp]
-\caption{\label{fig-preview-of-hyperlink-with-skim}}
+\includegraphics[width=\linewidth]{crossref.png}
+\caption{\label{fig-preview-of-hyperlink-with-skim}Hyperlinked reference allow a preview in some viewers}
 \end{figure}
 
 
@@ -68,6 +69,23 @@ much space when material is distributed in a line.
 
 \subsection{Indexes}
 
+The \lsp class is set up in a way that an author index is created automatically. If you want to add
+an author that is not cited (for instance in the acknowledgements), you can do this by calling
+\aimention{Zappa, Frank}.
+
+You may enter items into the subejct index by calling \verb+\is+, for example 
+\begin{verbatim}
+\is{word}
+\end{verbatim}
+If you mention a language, you may add it to the language index: 
+\begin{verbatim}
+\il{Mandarin Chinese}
+\end{verbatim}
+If you are working in a theory that uses features (like LFG or HPSG), you may use \verb+\isfeat+ to enter
+features into the subject index. \verb+\isfeat{comps}+\isfeat{comps} would enter the \compsf into the subject
+index. The typesetting of the feature name in {\sc small caps} will be done automatically.
+
+All index entries are hyper-linked to the respective pages.
 
 \subsection{Hyphenation}
 
@@ -103,6 +121,13 @@ weath-er
 
 
 \section{Packages Specific for Linguistics}
+
+There is a huge amount of packages that can be used for various purposes. \citew{GMS2013a} is a good
+reference book. This section discusses some aspects of some packages that are relevant for
+linguistics. Every \latex package comes with a documentation and users should consult these
+documentations too. The purpose of this section is to point users to the packages that we think
+serve their purpose best and that are compatible with other packages and the \lsp classes, as this
+book proves.
 
 \subsection{Glossed Examples}
 
@@ -152,7 +177,7 @@ Lists of examples can be typeset with \verb+\eal+ and \verb+\zl+ respectively. T
 \zl
 \end{fitverb}
 
-If you want to add a footnote that provides the source of an example as in (\mex{1}), you can do
+If you want to add a footnote\is{footnote|(} that provides the source of an example as in (\mex{1}), you can do
 this as follows:
 \ea
 \gll Piloten         fik frataget    sit certifikat\footnotemark\\
@@ -169,7 +194,27 @@ this as follows:
 \z 
 \end{verbatim}
 Please call the \verb+\footnotetext+ command before the translation, since otherwise the
-footnotetext may be typeset on a page that is different from the one where the footnotemark is set.
+footnotetext may be typeset on a page that is different from the one where the footnotemark is set.\is{footnote|)}
+
+For the typesetting of an additional line with the original script, one may use \verb+\glll+ rather
+than \verb+\gll+. (\mex{1}) shows a Chinese example:
+\ea
+\label{ex-chinese}
+\glll 狗       叫     了。\\
+      gou3     jiao4   le\\
+      dog      bark    ASP/CRS\\
+\glt `The dog is barking.'/`The dogs are barking.'
+\z
+
+\begin{verbatim}
+\ea
+\glll 狗       叫     了。\\
+      gou3     jiao4   le\\
+      dog      bark    ASP/CRS\\
+\glt `The dog is barking.'/`The dogs are barking.'
+\z
+\end{verbatim}
+
 
 
 \subsection{\texttt{jambox}}
@@ -247,6 +292,8 @@ jambox to \verb+\settowidth+:
 \subsection{OT Tableaux}
 
 \is{Oprimality Theory|(}
+This section just provides some examples of how Optimality Tableaux can be typeset.
+
 \begin{tabular}
        {|lc|c|c|c|}\hline   
       & \textbf{Input}  & Cnstrnt 1  &  Cnstrnt 2& Cnstrnt 3\\ \hline\hline
@@ -265,7 +312,7 @@ jambox to \verb+\settowidth+:
 \end{tabular}
 \end{fitverb}
 
-\verb+\hand+ ist wie folgt definiert:
+\verb+\hand+ is defined as follows:
 
 \begin{verbatim}
 \usepackage{pifont}
@@ -356,25 +403,12 @@ the characters linguists want to use.
 \subsubsection{Chinese}
 
 You can enter Chinese\il{Chinese} characters directly and mix them with ASCII text without any further markup
-provided you load the \texttt{xeCJK} package. (\mex{1}) provides an example and the following
-verbatim text shows how this is encoded in \xelatex.
-\ea
-\glll 狗       叫     了。\\
-      gou3     jiao4   le\\
-      dog      bark    ASP/CRS\\
-\glt `The dog is barking.'/`The dogs are barking.'
-\z
-
+provided you load the \texttt{xeCJK} package. We already saw an example in (\ref{ex-chinese}) on
+page~\pageref{ex-chinese}. In order to type Chinese text, one has to load the \texttt{xeCJK} package
+with the option \verb+indentfirst+ set to \verb+false+ and select an appropriate font:
 \begin{verbatim}
 \usepackage[indentfirst=false]{xeCJK}
 \setCJKmainfont{SimSun}
-
-\ea
-\glll 狗       叫     了。\\
-      gou3     jiao4   le\\
-      dog      bark    ASP/CRS\\
-\glt `The dog is barking.'/`The dogs are barking.'
-\z
 \end{verbatim}
 
 
@@ -424,6 +458,16 @@ If you find symbols that are not covered by the font, please use the \texttt{tip
 \section{Bells and Whistles}
 
 \subsection{\texttt{varioref}}
+
+\texttt{varioref} is loaded by the \lsp class file. You can use \verb+\vref+ to refer to floating
+objects like figures and tables. \latex automatically determines whether the floating object is on
+the same page or further away. If the float is on the next page and the next page is to the right of
+the current page, \latex will insert an appropriate text like \emph{on the facing page}. If we are
+on a right page, \latex will insert something like \emph{on the next page}. If the float is further
+away, a page number will be provided.
+
+%Please use \verb+\vref+ for the first reference to a float only.
+
 
 \subsection{\texttt{german} for Hyphenation}
 
