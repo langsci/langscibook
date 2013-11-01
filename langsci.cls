@@ -813,4 +813,16 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 
 \usepackage{./lsp-styles/lsp-eng-hyp}
+
+
+% The following allows for a quick reference to following or preceeding examples (\mex{1}) or
+% (\mex{0}) but also (\mex{-1})
+% taken from covington.sty (check)
+\newcounter{lsptempcnt}
+
+\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+\addtocounter{lsptempcnt}{#1}%
+\arabic{lsptempcnt}}%
+
+
 \endinput

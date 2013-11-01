@@ -53,12 +53,10 @@
 
 
 
-% taken from covington.sty (check)
-% The \ex definition
-\newcounter{lsptempcnt}
-
-\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-\addtocounter{lsptempcnt}{#1}%
-\arabic{lsptempcnt}}%
-
+\newcommand{\ispackage}[1]{\if@noftnote%
+\index{package!{\sc #1}}%
+\else%
+\index{package!{\sc #1}|fn{*}}%
+\fi%
+}
 

@@ -16,8 +16,8 @@ If you are using \texttt{git}, you can update your installation by executing the
 git pull origin
 \end{verbatim}
 
-Place all files and subdirectories from this repository into your local working directory (for
-advanced installations see Section~\ref{sec-advanced-latex-installation}).
+Place all files and subdirectories from this repository into your local working directory. For
+advanced installations see Section~\ref{sec-advanced-latex-installation}.
 
 \section{Using the \texttt{langsci} Class}
 
@@ -132,9 +132,9 @@ book proves.
 \subsection{Glossed Examples}
 
 Glossed examples are typeset with a modified version of the \texttt{gb4e} package by Craig
-Thiersch. The modified package is called \texttt{lsp-gb4e}. It is contained in the styles directory
+Thiersch\aimention{Craig Thiersch}. The modified package is called \texttt{lsp-gb4e}. It is contained in the styles directory
 that is delivered with the \lsp \latex calsses. It differs from the original package in loading a
-version of \texttt{gloss} that was modified by Alexis Dimitriadis in order to be compatible with
+version of \texttt{gloss} that was modified by Alexis Dimitriadis\aimention{Alexis Dimitriadis} in order to be compatible with
 \texttt{jambox} (see Section~\ref{sec-jambox}).
 
 Simple examples like (\mex{1}) can be typeset as shown below.
@@ -221,7 +221,7 @@ than \verb+\gll+. (\mex{1}) shows a Chinese example:
 \label{sec-jambox}
 
 
-The package \texttt{jambox} can be used to provide information about the language of an example or
+The\index{package!\texttt{jambox}|(} package \texttt{jambox} by Alexis Dimitriadis\aimention{Alexis Dimitriadis} can be used to provide information about the language of an example or
 about a certain other aspect to be highlighted.\il{Maltese}
 \settowidth\jamwidth{VSO}
 \eal
@@ -275,6 +275,105 @@ jambox to \verb+\settowidth+:
 \ex Der Mann liest das Buch.   \jambox{(German)}
 \zl
 \end{verbatim}
+\index{package!\texttt{jambox}|)}
+
+
+\subsection{Trees: \texttt{tikz-qtree}}
+
+Several tree-drawing packages are around and all have their advantages and disadvantages. I
+used \texttt{tree-dvips} for decades, but it is incompatible with \xelatex, since it creates
+PostScript rather than PDF. Exploring the options I discovered \texttt{tikz-qtree}, which is a
+tikz-based\is{tikz} reimplementation of Alexis Dimitriadis'\aimention{Alexis Dimitriadis} \texttt{q-tree}
+package. The syntax for drawing trees is rather simple and in comparison to \texttt{tree-dvips} drawing trees
+is considerably speeded up. Figure~\vref{fig-the-dog-barks} shows a simple example.
+\begin{figure}[htbp]
+\centerline{%
+\begin{tikzpicture}
+\tikzset{level 1+/.style={level distance=2\baselineskip}}
+\tikzset{frontier/.style={distance from root=6\baselineskip}}
+\Tree[.S
+       [.NP 
+         [.Det the ]
+         [.N   dog ] ]
+       [.VP barks ] ]
+\end{tikzpicture}
+}
+\caption{\label{fig-the-dog-barks}Tree for \emph{The dog barks.} drawn with \texttt{tikz-qtree}}
+\end{figure}
+\begin{verbatim}
+\begin{tikzpicture}
+\tikzset{level 1+/.style={level distance=2\baselineskip}}
+\tikzset{frontier/.style={distance from root=6\baselineskip}}
+\Tree[.S
+       [.NP 
+         [.Det the ]
+         [.N   dog ] ]
+       [.VP barks ] ]
+\end{tikzpicture}
+\end{verbatim}
+
+The code below shows how words below a certain node can be put under a triangle as in Figure~\vref{fig-the-dog-barks-abbreviated}.
+\begin{figure}[htbp]
+\centerline{%
+\begin{tikzpicture}
+\tikzset{level 1+/.style={level distance=2\baselineskip}}
+\tikzset{frontier/.style={distance from root=5\baselineskip}}
+\Tree[.S
+       [.NP  \edge[roof]; {the dog} ]
+       [.VP barks ] ]
+\end{tikzpicture}
+}
+\caption{\label{fig-the-dog-barks-abbreviated}Tree for \emph{The dog barks.} with abbreviated NP}
+\end{figure}
+
+\begin{samepage}
+\begin{verbatim}
+\begin{tikzpicture}
+\tikzset{level 1+/.style={level distance=2\baselineskip}}
+\tikzset{frontier/.style={distance from root=5\baselineskip}}
+\Tree[.S
+       [.NP  \edge[roof]; {the dog} ]
+       [.VP barks ] ]
+\end{tikzpicture}
+\end{verbatim}
+\end{samepage}
+
+\subsection{DRSes: \texttt{drs}}
+
+DRSes can be typeset using the \texttt{drs} package by Alexis Dimitriadis\aimention{Alexis
+  Dimitriadis}. There are various commands that let you typeset simple DRSes, ones with implications
+and DRSes with quantifiers. Some examples from the manual are given below:
+
+\bigskip
+
+\drs{x y}{Jones(x) \\ Ulysses(y) \\ x owns y}
+
+\begin{verbatim}
+\drs{x y}{Jones(x) \\ Ulysses(y) \\ x owns y}
+\end{verbatim}
+
+
+\drs{x}{Jones(x) \\
+      \ifdrs{y}{donkey(y)\\x owns y}
+            {z w}{z = x\\ w = y\\ z feeds w}}
+
+\begin{verbatim}
+\drs{x}{Jones(x) \\
+      \ifdrs{y}{donkey(y)\\x owns y}
+            {z w}{z = x\\ w = y\\ z feeds w}}
+\end{verbatim}
+
+\drs{X}{ the lawyers(X) \\
+        \qdrs{x}{x $\in$ X}
+             {every}{x}
+             {y}{secretary(y) \\ x hired y}}
+
+\begin{verbatim}
+\drs{X}{ the lawyers(X) \\
+        \qdrs{x}{x $\in$ X}
+             {every}{x}
+             {y}{secretary(y) \\ x hired y}}
+\end{verbatim}
 
 \subsection{AVMs}
 
@@ -287,7 +386,6 @@ jambox to \verb+\settowidth+:
     \]
   \end{avm}
 
-\subsection{Trees}
 
 \subsection{OT Tableaux}
 
@@ -551,6 +649,9 @@ adaptions.
 %% }
 %% \caption{\label{fig-the-boy-was-given-the-ball-tseng}Analysis of \emph{The boy was given the ball} according to \citet{Tseng2007a}}
 %% \end{figure}
+
+
+\subsection{Rotating Figures and Tables}
  
 
 \subsection{\texttt{xspace} and Abbreviations}
