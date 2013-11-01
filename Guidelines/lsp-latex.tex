@@ -5,6 +5,16 @@
 
 The \latex class for typesetting Language Science Press books was developed by Timm Lichte with
 help be Berthold Crysmann and me. It can be downloded from the GitHUB repository at: \url{https://github.com/langsci/latex}
+You can download the classes directly from the given web page or use the following git commands to
+create a local copy of the repository:
+\begin{verbatim}
+git init
+git clone https://github.com/langsci/latex.git 
+\end{verbatim}
+If you are using \texttt{git}, you can update your installation by executing the following command:
+\begin{verbatim}
+git pull origin
+\end{verbatim}
 
 Place all files and subdirectories from this repository into your local working directory (for
 advanced installations see Section~\ref{sec-advanced-latex-installation}).
@@ -27,47 +37,176 @@ xelatex yourfilename.tex
 
 \subsection{Using Includes}
 
+\subsection{Version Control}
+
 
 \section{Document Structure}
 
 
-\section{Packages specific for Linguistics}
+
+
+\subsection{References}
+
+\lsp uses the \texttt{natbib} package together with \bibtex and the \bibtex style \texttt{unified.bst}.
+
+\subsection{Crossreferencing}
+
+You may use \verb+(\mex{1})+ to refer to the following example and \verb+(\mex{0})+ to the preceeding
+example. You can also pass smaller numbers or larger numbers to \verb+\mex+ but I would suggest not
+to do this since often text blocks are inserted between the example and its description and then
+references are broken. Furthermore the standard referencing mechanism creates hyperlinks to the
+example sentences and depending on your viewer this gives you a nice preview of the referenced
+material, which you do not get with \verb+\mex+. See Figure~\vref{fig-preview-of-hyperlink-with-skim} for an example for such a preview.
+\begin{figure}[htbp]
+\caption{\label{fig-preview-of-hyperlink-with-skim}}
+\end{figure}
+
+
+There should not be a linebreak in something like \emph{Section~4}. This is achieved by using an explicit
+whitespace: \verb+Section~\ref{sec-examples}+ This also makes sure that \latex is not inserting too
+much space when material is distributed in a line.
+
+\subsection{Indexes}
+
+
+\subsection{Hyphenation}
+
+There is a special draft mode that can be used for the preparation of manuscripts. It can be enabled
+by passing the option \texttt{draftmode} to the langsci class. In draftmode words that could not be
+hyphenated automatically stick out in the right margin. Such problematic words are marked with a
+black box so that they can be detected easily. You can fix such problems by inserting explicit
+hyphenation rules in a word. This is done by \verb+\-+, for example \verb+weath\-er+. However, this
+method is dispreferred since it only affects one occurance of the word rather than all occurences in
+the current and further documents. The right way to deal with hyphenation issues is to put your
+hyphenation preferences into a file and include this file in all your publications. 
+
+\begin{verbatim}
+\hyphenation{
+Ajd-ukie-wicz
+Prze-piór-kow-ski
+To-ma-sel-lo
+To-ron-to
+trans-for-ma-tions-gram-ma-ti-sches
+Tü-bing-en
+Um-welt-ver-gif-tung
+Ver-lags-buch-hand-lung
+West-deut-scher
+Wis-sen-schaft-liche
+weath-er
+}
+\end{verbatim}
+
+%xxx xxxxxxxxxxxxxxxxx xxxxxxxxxxxx xxx xxxxxxxxxx xxxxxxxxxxx Wirtschaftswunder.
+%
+%xxx xxxxxxxxxxxxxxxxx xxxxxxxxxxxx xxx xxxxxxxxxx xxxxxxxxxxx Wissenschaftliche.
+
+
+
+\section{Packages Specific for Linguistics}
 
 \subsection{Glossed Examples}
 
+Glossed examples are typeset with a modified version of the \texttt{gb4e} package by Craig
+Thiersch. The modified package is called \texttt{lsp-gb4e}. It is contained in the styles directory
+that is delivered with the \lsp \latex calsses. It differs from the original package in loading a
+version of \texttt{gloss} that was modified by Alexis Dimitriadis in order to be compatible with
+\texttt{jambox} (see Section~\ref{sec-jambox}).
+
+Simple examples like (\mex{1}) can be typeset as shown below.
+\ea
+\gll Der Mann schläft.\\
+     the man  sleeps\\
+\glt `The man sleeps.'
+\z
+\begin{verbatim}
+\ea
+\gll Der Mann schläft.\\
+     the man  sleeps\\
+\glt `The man sleeps.'
+\z
+\end{verbatim}
+Lists of examples can be typeset with \verb+\eal+ and \verb+\zl+ respectively. The example in
+(\mex{1}) shows how the sentences can be aligned properly:
+\eal
+\ex[]{
+\gll Ich glaube dem Linguisten nicht, einen Nobelpreis gewonnen zu haben.\\
+     I believe the linguist not a Nobel.prize won to have\\
+\glt  `I don't believe linguist's claim that he won a Nobel prize.'
+}
+\ex[*]{
+\gll Dem Linguisten einen Nobelpreis  glaube  ich nicht gewonnen zu haben.\\
+     the linguist   a     Nobel.price believe I   not   won      to have\\
+}
+\zl
+\begin{fitverb}
+\eal
+\ex[]{
+\gll Ich glaube  dem Linguisten nicht, einen Nobelpreis  gewonnen zu haben.\\
+     I   believe the linguist   not    a     Nobel.prize won      to have\\
+\glt  `I don't believe linguist's claim that he won a Nobel prize.'
+}
+\ex[*]{
+\gll Dem Linguisten einen Nobelpreis  glaube  ich nicht gewonnen zu haben.\\
+     the linguist   a     Nobel.price believe I   not   won      to have\\
+}
+\zl
+\end{fitverb}
+
+If you want to add a footnote that provides the source of an example as in (\mex{1}), you can do
+this as follows:
+\ea
+\gll Piloten         fik frataget    sit certifikat\footnotemark\\
+     pilot.{\sc def} got deprived.of his license\\
+\footnotetext{KorpusDK.}
+\glt `The pilot was deprived of his license to fly.'
+\z 
+\begin{verbatim}
+\ea
+\gll Piloten         fik frataget    sit certifikat\footnotemark\\
+     pilot.{\sc def} got deprived.of his license\\
+\footnotetext{KorpusDK.}
+\glt `The pilot was deprived of his license to fly.'
+\z 
+\end{verbatim}
+Please call the \verb+\footnotetext+ command before the translation, since otherwise the
+footnotetext may be typeset on a page that is different from the one where the footnotemark is set.
+
 
 \subsection{\texttt{jambox}}
+\label{sec-jambox}
 
 
 The package \texttt{jambox} can be used to provide information about the language of an example or
-about a certain other aspect to be highlighted.
+about a certain other aspect to be highlighted.\il{Maltese}
 \settowidth\jamwidth{VSO}
 \eal
 \ex[]{
+\label{ex-ingrid-kielet-ilmazzita}
 \gll Ingrid kiel-et il-mazzit-a.\\
-     Ingrid eat-3fsg def-black.pudding-fsg\\ \jambox{(SVO)}
+     Ingrid eat-{\sc 3sg.f} {\sc def}-black.pudding-{\sc sg.f}\\ \jambox{(SVO)}
 \glt `Ingread ate black pudding.'
 }
 \ex[]{
-Kielet il-mazzita Ingrid. \jambox{(VOS)}
+Kielet ilmazzita Ingrid. \jambox{(VOS)}
 }
 \ex[*]{
-Kielet Ingrid il-mazzita. \jambox{(VSO)}
+Kielet Ingrid ilmazzita. \jambox{(VSO)}
 }
 \ex[]{\label{ex-sov}
-Ingrid il-mazzita kielet. \jambox{(SOV)}
+Ingrid ilmazzita kielet. \jambox{(SOV)}
 }
 \ex[]{\label{ex-osv}
-Il-mazzita Ingrid kielet. \jambox{(OSV)}
+Ilmazzita Ingrid kielet. \jambox{(OSV)}
 }
 \ex[]{
-Il-mazzita kielet Ingrid. \jambox{(OVS)}
+Ilmazzita kielet Ingrid. \jambox{(OVS)}
 }
 \zl
 
 The call of \verb+\jambox+ has to follow the linebreak after the gloss:
 \begin{verbatim}
 \ex[]{
+\label{ex-ingrid-kielet-ilmazzita}
 \gll Ingrid kiel-et il-mazzit-a.\\
      Ingrid eat-3fsg def-black.pudding-fsg\\ \jambox{(SVO)}
 \glt `Ingread ate black pudding.'
@@ -107,7 +246,7 @@ jambox to \verb+\settowidth+:
 
 \subsection{OT Tableaux}
 
-
+\is{Oprimality Theory|(}
 \begin{tabular}
        {|lc|c|c|c|}\hline   
       & \textbf{Input}  & Cnstrnt 1  &  Cnstrnt 2& Cnstrnt 3\\ \hline\hline
@@ -204,7 +343,7 @@ suffixing  &Kwakwala   &Japanese    \\ \hline
 \ECC
 \end{tabular}
 \end{verbatim}
-
+\is{Oprimality Theory|)}
 
 
 
@@ -216,7 +355,9 @@ the characters linguists want to use.
 
 \subsubsection{Chinese}
 
-
+You can enter Chinese\il{Chinese} characters directly and mix them with ASCII text without any further markup
+provided you load the \texttt{xeCJK} package. (\mex{1}) provides an example and the following
+verbatim text shows how this is encoded in \xelatex.
 \ea
 \glll 狗       叫     了。\\
       gou3     jiao4   le\\
@@ -239,7 +380,12 @@ the characters linguists want to use.
 
 \subsubsection{Arabic Script}
 
-
+Arbaic script\is{Arabic Script}\il{Persian} is the most challenging script for typesetting since it is written from right to left
+and contains ligatures. If you load the \texttt{bidi} package, you can mix right to left and left to
+right text.\footnote{
+  Please have a look at the source code. The verbatim environment has difficulties to display Arabic
+  text and hence the call to \texttt{$\backslash$PRL} comes out scrambled.
+}
 
 \ea
 \PRL{او مرد را دوست نخواهد داشت.}\\
@@ -266,7 +412,15 @@ the characters linguists want to use.
 
 \subsubsection{IPA Symbols}
 
-  
+The IPA symbols are part of the Linux Libertine font and hence can be entered into the document
+directly. The IPA unicode symbols can be created online at
+\url{http://ipa.typeit.org/full/}. (\mex{1}) shows some examples:
+\ea
+ɓ ɐ ʁ ɾ ɻ ʃ ʂ θ t͡ʃ  t͡s  ʈ ʊ ʊ̈ ʉ ʌ ʋ ʍ ɯ ɰ χ ʎ ɣ ʏ ɤ ʒ ʐ ʑ ʔ ʕ ʢ ʡ ɑ̃ ɔ ˧ ˨ ˩ ˩˥ ˥˩ ˦˥
+\z
+% ⱱ does not work  
+If you find symbols that are not covered by the font, please use the \texttt{tipa} package.
+
 \section{Bells and Whistles}
 
 \subsection{\texttt{varioref}}
@@ -379,6 +533,10 @@ search path for images.
 
 Pathes, shell variables \ldots
 
+\section{Things You Should Not Do}
+
+Please do not use explicit linebreaks to mark a new paragraph. Paragraphs are marked by an empty
+line in the text.
 
 \section{Checklist for Typesetters/Authors Using \latex}
 \label{sec-check-typesetters}

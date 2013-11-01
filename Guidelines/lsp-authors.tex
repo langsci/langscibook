@@ -7,7 +7,10 @@ The following sections describe the layout of various items that play a role in 
 
 Please gloss all examples and provide them with translations. The glossing should be done according
 to the Leipzig Glossing Rules. If you need special abbreviations that are not defined by the Leipzig
-Glossing Rules\todo{provide an example}, put the in footnote at the first occurance. If you
+Glossing Rules\footnote{
+\url{http://www.eva.mpg.de/lingua/resources/glossing-rules.php}. 27.10.2013.
+}
+\todo{provide an example}, put the in footnote at the first occurance. If you
 define several new abbreviations, put them in a table in the appendix.
 
 
@@ -21,6 +24,8 @@ Please use the crossreferenceing mechanisms of your text editing/type setting so
 crossreferencing mechanisms is less error-prone when you shift text blocks around and in addition
 all these crossreferences will be turned into hyperlinks between document parts, which makes the
 final documents much more useful.
+
+If you have numbered example sentence, please start with (1) for every new chapter.
 
 \section{References}
 
@@ -37,13 +42,23 @@ observe in the main text. Please cite as shown in Table~\ref{tab-citation}.
 
 \begin{table}[htbp]
 \begin{tabular}{ll}
-Author & As \citet[215]{Saussure16a} has shown\\
+Author & As \citet[215]{MZ85a} has shown\\
+       & As \citet[215]{MZ85a} and \citet{Bloomfield33a} have shown\\
 Work   & As was shown in \citew[215]{Saussure16a}, this is a problem for \ldots\\
+Work   & This is not true \citep{Saussure16a,Bloomfield33a}.
 \end{tabular}
 \caption{\label{tab-citation}Citation style for \lsp}
 \end{table}
 
+%% Table~\ref{tab-various-publication-types} provides examples for different publication types (book,
+%% journal article, paper in an edited volume, and so on). Please refer to the bibliography at the end
+%% of this book to see how the respective items are formated.
 
+If you have an enummeration of references in the text as in \emph{As X, Y, and Z have shown}, please use
+the normal punctuation of the respective language rather then special markup like `;'.
+
+\noindent
+\inlinetodostefan{Say something about decapitalization.}
 
 \section{Checklist}
 

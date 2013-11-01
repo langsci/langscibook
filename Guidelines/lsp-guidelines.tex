@@ -25,6 +25,8 @@
 
 \usepackage{german}\selectlanguage{USenglish}
 
+\usepackage{lsp-eng-hyp}
+
 
 % AVMs
 \usepackage{styles/avm}
@@ -48,6 +50,11 @@
  
 \usepackage{lipsum}  
 
+\usepackage{todonotes}
+\newcommand{\todostefan}[1]{\todo[color=green!40]{\footnotesize #1}\xspace}
+\newcommand{\inlinetodostefan}[1]{\todo[color=green!40,inline]{\footnotesize #1}\xspace}
+
+
 % Chinese
 \usepackage[indentfirst=false]{xeCJK}
 \setCJKmainfont{SimSun}
@@ -60,8 +67,6 @@
 
 \usepackage{lsp-gb4e}
 
-\usepackage{todonotes}
-\newcommand{\todostefan}[1]{\todo[color=green!40]{\footnotesize #1}\xspace}
 
 
 \title{How to Write a Book for Language Science Press}  
@@ -74,7 +79,7 @@
   for instance right to left scripts like Arabic is explained. The \latex chapter also contains sections
   concerning the efficient workflow in professional typesetting environments using \latex.
 
-Stefan Müller is an experience \latex user who has typeset four published books and several book
+Stefan Müller is an experienced \latex user who has typeset four published books and several book
 manuscripts and journal articles.
 }
 
@@ -94,13 +99,21 @@ manuscripts and journal articles.
                                   
 \maketitle                
 
-\frontmatter
+%\frontmatter
 
-\chapter*{Vorwort}
+\chapter*{Preface}
 
 \lipsum[3-10]  
 
+The purpose of this book is twofold: it contains a guideline with some style recommodations for all
+authors. The second part is for authors who use \latex or who want to learn \latex in order to
+support \lsp. The second part is also a reference for those who volunteered to help typesetting
+manuscripts that were not submitted in \latex. See \citew{MuellerOA} and \citew{MH2013a} for an overview of the
+general setup of the project.
+
 \section*{Acknowledgements}
+
+
 
 %% David Reitter danke ich für die \LaTeX"=Makros für Combinatorial
 %% Categorial Grammar, Mary Dalrymple und Jonas Kuhn für die LFG"=Makros und Beispielstrukturen, und
@@ -122,6 +135,7 @@ Berlin, \today\hfill Stefan Müller
 
 \mainmatter         
 
+\include{lsp-setup}
 \include{lsp-authors}
 \include{lsp-latex}
 \include{lsp-publication}
@@ -129,8 +143,29 @@ Berlin, \today\hfill Stefan Müller
 
 \backmatter
 
-\addcontentsline{toc}{chapter}{Bibliography} 
 \bibliography{lsp-guidelines}
+
+\pdfbookmark[0]{Index}{Index}
+
+%\printindex{autind}{Index der Namen}
+%
+%\printindex{wordind}{Index der Beispielwörter}
+%
+%\printindex{rev-wordind}{Reverse Index of Expressions}
+%
+%\printindex{langind}{Index of Languages and Dialects}
+%
+%\printindex{subind}{Index der Termini}
+
+%\addcontentsline{toc}{chapter}{Namensregister}
+\pdfbookmark[1]{Index of Names}{Index of Names}
+\printindex[aut]
+%\addcontentsline{toc}{chapter}{Verzeichnis der Sprachen}
+\pdfbookmark[1]{Index of Languages}{Index of Languages}
+\printindex[lan]
+%\addcontentsline{toc}{chapter}{Sachregister}
+\pdfbookmark[1]{Index of Subjects}{Index of Subjects}
+\printindex
 
                               
 \end{document}

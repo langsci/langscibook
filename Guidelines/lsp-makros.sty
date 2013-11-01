@@ -49,4 +49,16 @@
 % http://tex.stackexchange.com/questions/73464/inserting-rtl-text-in-verbatim-environment?rq=1
 % verbatim with RTL text
 
-\DefineVerbatimEnvironment{rtlverbatim}{Verbatim}{commandchars=+\[\]}
+%\DefineVerbatimEnvironment{rtlverbatim}{Verbatim}{commandchars=+\[\]}
+
+
+
+% taken from covington.sty (check)
+% The \ex definition
+\newcounter{lsptempcnt}
+
+\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+\addtocounter{lsptempcnt}{#1}%
+\arabic{lsptempcnt}}%
+
+
