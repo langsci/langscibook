@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/10/26 Language Science Publications]
+\ProvidesClass{langsci}[2013/11/27 Language Science Publications]
 
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
@@ -115,8 +115,12 @@
 			{LinLibertine_R_B.otf}			
   
   \usepackage[libertine]{newtxmath}
- 
-  %\usepackage{unicode-math} 	% Does it support LinuxLibertine?
+  
+  \let\oldtabular\tabular	% number in tabulars
+  \let\endoldtabular\endtabular
+  \renewenvironment{tabular}{\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
+
+  \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnotes
  
   %\usepackage{polyglossia}		% TODO remove this?
   %\setdefaultlanguage{british}
@@ -656,6 +660,9 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 %\fi
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% miscellaneous:
+
 
 \usepackage[figuresright]{rotating}
 
@@ -669,17 +676,17 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 \usepackage{varioref}
 
-\iflanguage{german}{%
-% die Standardversionen sind ein bißchen doof ...
-\def\reftextfaceafter{auf der \reftextvario{gegen\"uberliegenden}{n\"achsten} Seite}%
-\def\reftextfacebefore{auf der \reftextvario{gegen\"uberliegenden}{vorigen} Seite}%
-\def\reftextafter{auf der \reftextvario{n\"achsten}{folgenden} Seite}%
-\def\reftextbefore{auf der vorigen Seite}%
-\def\reftextcurrent{auf dieser Seite}%
-\def\reftextfaraway#1{auf Seite~\pageref{#1}}%
-\def\reftextpagerange#1#2{auf den Seiten~\pageref{#1}--\pageref{#2}}%
-\def\reftextlabelrange#1#2{\ref{#1} bis~\ref{#2}}%
-}{}
+% \iflanguage{german}{%
+% % die Standardversionen sind ein bißchen doof ...
+% \def\reftextfaceafter{auf der \reftextvario{gegen\"uberliegenden}{n\"achsten} Seite}%
+% \def\reftextfacebefore{auf der \reftextvario{gegen\"uberliegenden}{vorigen} Seite}%
+% \def\reftextafter{auf der \reftextvario{n\"achsten}{folgenden} Seite}%
+% \def\reftextbefore{auf der vorigen Seite}%
+% \def\reftextcurrent{auf dieser Seite}%
+% \def\reftextfaraway#1{auf Seite~\pageref{#1}}%
+% \def\reftextpagerange#1#2{auf den Seiten~\pageref{#1}--\pageref{#2}}%
+% \def\reftextlabelrange#1#2{\ref{#1} bis~\ref{#2}}%
+% }{}
 
 \iflsDraft
 % do not stop and warn! This will be tested in the final version
@@ -751,52 +758,52 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 }
 
 
-\iflanguage{german}{%
-\newcommand{\isfeat}[1]{\if@noftnote%
-\index{Merkmal!{\sc #1}}%
-\else%
-%\index{Merkmal!{\sc #1}|fn{\thefootnote}}%
-\index{Merkmal!{\sc #1}|fn{*}}%
-\fi%
-}}{%
-\newcommand{\isfeat}[1]{\if@noftnote%
-\index{feature!{\sc #1}}%
-\else%
-%\index{feature!{\sc #1}|fn{\thefootnote}}%
-\index{feature!{\sc #1}|fn{*}}%
-\fi%
-}}
+% \iflanguage{german}{%
+% \newcommand{\isfeat}[1]{\if@noftnote%
+% \index{Merkmal!{\sc #1}}%
+% \else%
+% %\index{Merkmal!{\sc #1}|fn{\thefootnote}}%
+% \index{Merkmal!{\sc #1}|fn{*}}%
+% \fi%
+% }}{%
+% \newcommand{\isfeat}[1]{\if@noftnote%
+% \index{feature!{\sc #1}}%
+% \else%
+% %\index{feature!{\sc #1}|fn{\thefootnote}}%
+% \index{feature!{\sc #1}|fn{*}}%
+% \fi%
+% }}
 
-\iflanguage{german}{%
-\newcommand{\istype}[1]{\if@noftnote%
-\index{Typ!#1@\type{#1}}%
-\else%
-%\index{Typ!{\it #1}|fn{\thefootnote}}%
-\index{Typ!#1@\type{#1}|fn{*}}%
-\fi%
-}}{%
-\newcommand{\istype}[1]{\if@noftnote%
-\index{type!#1@\type{#1}}%
-\else%
-%\index{type!{\it #1}|fn{\thefootnote}}
-\index{type!#1@\type{#1}|fn{*}}%
-\fi%
-}}
+% \iflanguage{german}{%
+% \newcommand{\istype}[1]{\if@noftnote%
+% \index{Typ!#1@\type{#1}}%
+% \else%
+% %\index{Typ!{\it #1}|fn{\thefootnote}}%
+% \index{Typ!#1@\type{#1}|fn{*}}%
+% \fi%
+% }}{%
+% \newcommand{\istype}[1]{\if@noftnote%
+% \index{type!#1@\type{#1}}%
+% \else%
+% %\index{type!{\it #1}|fn{\thefootnote}}
+% \index{type!#1@\type{#1}|fn{*}}%
+% \fi%
+% }}
 
 
-\iflanguage{german}{%
-\newcommand{\isrel}[1]{\if@noftnote%
-\index{Relation!\emph{#1}}%
-\else%
-\index{Relation!\emph{#1}|fn{*}}%
-\fi%
-}}{%
-\newcommand{\isrel}[1]{\if@noftnote%
-\index{relation!\emph{#1}}%
-\else%
-\index{relation!\emph{#1}|fn{*}}%
-\fi%
-}}
+% \iflanguage{german}{%
+% \newcommand{\isrel}[1]{\if@noftnote%
+% \index{Relation!\emph{#1}}%
+% \else%
+% \index{Relation!\emph{#1}|fn{*}}%
+% \fi%
+% }}{%
+% \newcommand{\isrel}[1]{\if@noftnote%
+% \index{relation!\emph{#1}}%
+% \else%
+% \index{relation!\emph{#1}|fn{*}}%
+% \fi%
+% }}
 
 
 % \index[lan] für Einträge in separaten Index
@@ -812,7 +819,7 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \usepackage{authorindex}
 
 
-\usepackage{./lsp-styles/lsp-eng-hyp}
+\usepackage{./styles/lsp-eng-hyp}
 
 
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or

@@ -14,6 +14,13 @@
                                                       
 \usepackage{layout} 
 \usepackage{lipsum}  
+
+% \let\oldtabular\tabular
+% \let\endoldtabular\endtabular
+% \renewenvironment{tabular}{\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
+% 
+% \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}}
+
    
 \title{Τέχνη \newlineCover γραμματική}
 \subtitle{2000+ Years of Language Science and no End in Sight}  
@@ -25,7 +32,7 @@
                                      
 \maketitle  
  
-\frontmatter
+\frontmatter 
 
 \chapter*{Preface}
 
@@ -45,7 +52,7 @@
 \lipsum[3-10]  
 
 \begin{itemize}
-\item AVMs with math operators\footnote{This is a footnote.}
+\item AVMs with math operators\footnote{This is a footnote with number 12345.}
 
   \begin{avm}
     {\it word\/} $\rightarrow$
@@ -58,7 +65,16 @@
 
 \item test reference: \cite{Jespersen1924a-u}
 \item draftmode test: too loooooooooooooooooooooooooooooooooooooooooooooooong
-\end{itemize}   
+\item mathmode $1+1=11$ 
+\end{itemize}  
+
+Tabular:\footnote{Another footnote.}\footnote{Another footnote.}\\
+\begin{tabular}{ccc}
+\hline
+123 & 456 & 789 \\
+\hline
+\end{tabular}
+Behind: 12345
   
   
   
