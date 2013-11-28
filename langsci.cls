@@ -125,8 +125,6 @@
   \let\oldtabular\tabular	% number in tabulars
   \let\endoldtabular\endtabular
   \renewenvironment{tabular}{\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
-
-  \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnotes
  
   %\usepackage{polyglossia}		% TODO remove this?
   %\setdefaultlanguage{british}
@@ -327,10 +325,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
   pdfkeywords={}
 %  ,ps2pdf=true
 ]{hyperref}
-
-
-
-\KOMAoptions{footnotes=multiple}
 
 
 
@@ -623,8 +617,14 @@ guarantee the accuracy of such information thereafter.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % footnotes:
 
+\ifxetex
+\addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}} 			% numbers in footnotes
+\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote labels
+%\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote references
+\fi
+
 \raggedbottom
-\deffootnote[1.5em]{1.5em}{0mm}{\textsuperscript{\normalfont\thefootnotemark}\ }
+\deffootnote[1.5em]{1.5em}{0mm}{\textsuperscript{\thefootnotemark}\ }
 
 \KOMAoptions{footnotes=multiple}
 
