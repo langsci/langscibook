@@ -2,6 +2,8 @@
 \ProvidesClass{langsci}[2013/11/27 Language Science Publications]
 
 % Default values:
+\usepackage{xspace}
+\newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
 \newcommand{\lsISBN}{????????}
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
