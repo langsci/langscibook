@@ -4,6 +4,7 @@
 % Default values:
 \newcommand{\lsSeriesNumber}{??}
 \newcommand{\lsISBN}{????????}
+\newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{long}
@@ -22,6 +23,9 @@
 \DeclareStringOption{isbn}[????????]
 	\define@key{langsci}{isbn}{%
 		\renewcommand{\lsISBN}{#1}}
+\DeclareStringOption{url}[http://langsci-press.org/catalog]
+	\define@key{langsci}{url}{%
+		\renewcommand{\lsURL}{#1}}
 \DeclareStringOption{series}[eotms]
 	\define@key{langsci}{series}{%
 		\renewcommand{\lsSeries}{#1}}
@@ -519,6 +523,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \g@addto@macro{\tableofcontents}{\mainmatter}
 		
 }
+
+\ifx\lsSeries\sidl
+%\ifx\lsSeries\lnls
+\AtBeginDocument{
+\def\exfont{\normalsize\it}
+}
+\fi
+
+
 }	% \AtBeginDocument
 
 
@@ -563,7 +576,7 @@ Habelschwerdter Allee 45\\
 \bigskip
 
 This title can be downloaded at:\\
-\url{http://langsci-press.org}
+\url{\lsURL}
 
 It is published under the Creative Commons Licence CC-BY. 
 
@@ -578,6 +591,17 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 
 \IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\
 \end{center}
+
+\vfill
+
+\noindent
+\lsp has no responsibility for the persistence or accuracy of URLs for
+external or third-party Internet websites referred to in this
+publication, and does not guarantee that any content on such websites
+is, or will remain, accurate or appropriate. Information regarding
+prices, travel timetables and other factual information given in this
+work are correct at the time of first publication but \lsp does not
+guarantee the accuracy of such information thereafter. 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -694,7 +718,6 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \fi
 
 \usepackage{index}
-\makeatletter
 % Wie im Stylefile, aber ohne \MakeUppercase
    \renewenvironment{theindex}{%
         \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
@@ -727,7 +750,6 @@ Storage and catalogueing done by FU Berlin \\[3ex]
             \clearpage
         \fi
     }
-\makeatother
 
 \makeindex
 \newindex{lan}{ldx}{lnd}{Index of Languages}
@@ -831,5 +853,11 @@ Storage and catalogueing done by FU Berlin \\[3ex]
 \addtocounter{lsptempcnt}{#1}%
 \arabic{lsptempcnt}}%
 
+% quotes are indented at one side only.
+\renewenvironment{quote}
+               {\list{}{\rightmargin0pt\leftmargin8mm}%{\rightmargin\leftmargin}%
+                \item\relax}
+               {\endlist}
 
 \endinput
+

@@ -28,6 +28,8 @@ you set up your \latex files you can compile them by calling
 xelatex yourfilename.tex
 \end{verbatim}
 
+%\DescribeMacro{\BackTitle}
+
 
 \section{Workflow}
 
@@ -71,7 +73,7 @@ much space when material is distributed in a line.
 
 The \lsp class is set up in a way that an author index is created automatically. If you want to add
 an author that is not cited (for instance in the acknowledgements), you can do this by calling
-\aimention{Zappa, Frank}.
+\verb+\aimention{Zappa, Frank}+.\aimention{Zappa, Frank}
 
 You may enter items into the subejct index by calling \verb+\is+, for example 
 \begin{verbatim}
@@ -122,7 +124,7 @@ weath-er
 
 \section{Packages Specific for Linguistics}
 
-There is a huge amount of packages that can be used for various purposes. \citew{GMS2013a} is a good
+There is a huge amount of packages that can be used for various purposes. \citew{MG2013a} is a good
 reference book. This section discusses some aspects of some packages that are relevant for
 linguistics. Every \latex package comes with a documentation and users should consult these
 documentations too. The purpose of this section is to point users to the packages that we think
@@ -277,6 +279,10 @@ jambox to \verb+\settowidth+:
 \end{verbatim}
 \index{package!\texttt{jambox}|)}
 
+\inlinetodostefan{
+The translation should not be separated from the glossed example by a page break.
+}
+
 
 \subsection{Trees: \texttt{tikz-qtree}}
 
@@ -300,7 +306,7 @@ is considerably speeded up. Figure~\vref{fig-the-dog-barks} shows a simple examp
 }
 \caption{\label{fig-the-dog-barks}Tree for \emph{The dog barks.} drawn with \texttt{tikz-qtree}}
 \end{figure}
-\begin{verbatim}
+\begin{fitverb}
 \begin{tikzpicture}
 \tikzset{level 1+/.style={level distance=2\baselineskip}}
 \tikzset{frontier/.style={distance from root=6\baselineskip}}
@@ -310,7 +316,7 @@ is considerably speeded up. Figure~\vref{fig-the-dog-barks} shows a simple examp
          [.N   dog ] ]
        [.VP barks ] ]
 \end{tikzpicture}
-\end{verbatim}
+\end{fitverb}
 
 The code below shows how words below a certain node can be put under a triangle as in Figure~\vref{fig-the-dog-barks-abbreviated}.
 \begin{figure}[htbp]
@@ -327,7 +333,7 @@ The code below shows how words below a certain node can be put under a triangle 
 \end{figure}
 
 \begin{samepage}
-\begin{verbatim}
+\begin{fitverb}
 \begin{tikzpicture}
 \tikzset{level 1+/.style={level distance=2\baselineskip}}
 \tikzset{frontier/.style={distance from root=5\baselineskip}}
@@ -335,45 +341,45 @@ The code below shows how words below a certain node can be put under a triangle 
        [.NP  \edge[roof]; {the dog} ]
        [.VP barks ] ]
 \end{tikzpicture}
-\end{verbatim}
+\end{fitverb}
 \end{samepage}
 
-\subsection{DRSes: \texttt{drs}}
+%% \subsection{DRSes: \texttt{drs}}
 
-DRSes can be typeset using the \texttt{drs} package by Alexis Dimitriadis\aimention{Alexis
-  Dimitriadis}. There are various commands that let you typeset simple DRSes, ones with implications
-and DRSes with quantifiers. Some examples from the manual are given below:
+%% DRSes can be typeset using the \texttt{drs} package by Alexis Dimitriadis\aimention{Alexis
+%%   Dimitriadis}. There are various commands that let you typeset simple DRSes, ones with implications
+%% and DRSes with quantifiers. Some examples from the manual are given below:
 
-\bigskip
+%% \bigskip
 
-\drs{x y}{Jones(x) \\ Ulysses(y) \\ x owns y}
+%% \drs{x y}{Jones(x) \\ Ulysses(y) \\ x owns y}
 
-\begin{verbatim}
-\drs{x y}{Jones(x) \\ Ulysses(y) \\ x owns y}
-\end{verbatim}
+%% \begin{verbatim}
+%% \drs{x y}{Jones(x) \\ Ulysses(y) \\ x owns y}
+%% \end{verbatim}
 
 
-\drs{x}{Jones(x) \\
-      \ifdrs{y}{donkey(y)\\x owns y}
-            {z w}{z = x\\ w = y\\ z feeds w}}
+%% \drs{x}{Jones(x) \\
+%%       \ifdrs{y}{donkey(y)\\x owns y}
+%%             {z w}{z = x\\ w = y\\ z feeds w}}
 
-\begin{verbatim}
-\drs{x}{Jones(x) \\
-      \ifdrs{y}{donkey(y)\\x owns y}
-            {z w}{z = x\\ w = y\\ z feeds w}}
-\end{verbatim}
+%% \begin{verbatim}
+%% \drs{x}{Jones(x) \\
+%%       \ifdrs{y}{donkey(y)\\x owns y}
+%%             {z w}{z = x\\ w = y\\ z feeds w}}
+%% \end{verbatim}
 
-\drs{X}{ the lawyers(X) \\
-        \qdrs{x}{x $\in$ X}
-             {every}{x}
-             {y}{secretary(y) \\ x hired y}}
+%% \drs{X}{ the lawyers(X) \\
+%%         \qdrs{x}{x $\in$ X}
+%%              {every}{x}
+%%              {y}{secretary(y) \\ x hired y}}
 
-\begin{verbatim}
-\drs{X}{ the lawyers(X) \\
-        \qdrs{x}{x $\in$ X}
-             {every}{x}
-             {y}{secretary(y) \\ x hired y}}
-\end{verbatim}
+%% \begin{verbatim}
+%% \drs{X}{ the lawyers(X) \\
+%%         \qdrs{x}{x $\in$ X}
+%%              {every}{x}
+%%              {y}{secretary(y) \\ x hired y}}
+%% \end{verbatim}
 
 \subsection{AVMs}
 
@@ -499,6 +505,7 @@ used. We are using the font \texttt{Linux Libertine}, which is unicode-based and
 the characters linguists want to use.
 
 \subsubsection{Chinese}
+\label{sec-Chinese}
 
 You can enter Chinese\il{Chinese} characters directly and mix them with ASCII text without any further markup
 provided you load the \texttt{xeCJK} package. We already saw an example in (\ref{ex-chinese}) on
@@ -521,8 +528,10 @@ right text.\footnote{
 
 \ea
 \PRL{او مرد را دوست نخواهد داشت.}\\
- \gll   U mard rā dust naxāhad dāšt.\\
-   He/she man {\sc dom} friend {\sc neg}.want have\\
+
+\PRL{او مرد را دوست نخواهد داشت. و مرد را دوست نخواهد داشت. و مرد را دوست نخواهد داشت. و مرد را دوست نخواهد داشت.}\\
+ \gll U      mard rā        dust   naxāhad        dāšt.\\
+      He/she man  {\sc dom} friend {\sc neg}.want have\\
 \glt `He/she will not love the man.'
 \z
 
@@ -542,13 +551,32 @@ right text.\footnote{
 \end{verbatim}
 %\end{rtlverbatim}
 
+\subsubsection{Hebrew}
+
+Hebrew is also written from right to left. The characters are part of Linux Libertine, so no extra
+font has to be loaded to set examples like (\mex{1}):
+\ea
+\glll \RL{האישה קוראת ספר.}\\
+       ha-'iša          qore't	                          sefer.\\
+       {\sc def}-woman  read.{\sc pres}.{\sc f}.{\sc sg}  book\\
+\glt `The woman is reading a book.'
+\z
+\begin{fitverb}
+\ea
+\glll \RL{האישה קוראת ספר.}\\
+       ha-'iša          qore't                            sefer.\\
+       {\sc def}-woman  read.{\sc pres}.{\sc f}.{\sc sg}  book\\
+\glt `The woman is reading a book.'
+\z
+\end{fitverb}
+
 \subsubsection{IPA Symbols}
 
 The IPA symbols are part of the Linux Libertine font and hence can be entered into the document
 directly. The IPA unicode symbols can be created online at
 \url{http://ipa.typeit.org/full/}. (\mex{1}) shows some examples:
 \ea
-ɓ ɐ ʁ ɾ ɻ ʃ ʂ θ t͡ʃ  t͡s  ʈ ʊ ʊ̈ ʉ ʌ ʋ ʍ ɯ ɰ χ ʎ ɣ ʏ ɤ ʒ ʐ ʑ ʔ ʕ ʢ ʡ ɑ̃ ɔ ˧ ˨ ˩ ˩˥ ˥˩ ˦˥
+ɓ ɐ ʁ ɾ ɻ ʃ ʂ θ~  t͡ʃ~  t͡s  ʈ ʊ ʊ̈ ʉ ʌ ʋ ʍ ɯ ɰ χ ʎ ɣ ʏ ɤ ʒ ʐ ʑ ʔ ʕ ʢ ʡ ɑ̃ ɔ ˧ ˨ ˩ ˩˥ ˥˩ ˦˥
 \z
 % ⱱ does not work  
 If you find symbols that are not covered by the font, please use the \texttt{tipa} package.
@@ -658,12 +686,12 @@ adaptions.
 
 \subsection{\texttt{todonotes}}
 
-\section{Software}
+%% \section{Software}
 
-\begin{itemize}
-\item BibDesk
-\item JabRef
-\end{itemize}
+%% \begin{itemize}
+%% \item BibDesk
+%% \item JabRef
+%% \end{itemize}
 
 
 \section{Advanced Installation}
