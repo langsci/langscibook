@@ -1,12 +1,13 @@
 %% -*- coding:utf-8 -*-
 \documentclass[ number=??
-			   ,series=lnls,
-			   ,output=long    % long|short|inprep              
-                           ,isbn=xxx-x-xxxxxx-xx-x,
-			   %,blackandwhite
-			   %,smallfont
-			   ,draftmode  
-			  ]{langsci}                          
+                ,series=lnls,
+                ,isbn=xxx-x-xxxxxx-xx-x,
+                ,url=http://langsci-press.org/catalog/book/14,
+	        ,output=long    % long|short|inprep              
+	        %,blackandwhite
+	        %,smallfont
+	        ,draftmode  
+		  ]{langsci}                          
 
           
 \hypersetup{pdfdisplaydoctitle=true}
@@ -30,6 +31,7 @@
 
 \usepackage{abbrev}
 
+
 % AVMs
 \usepackage{lsp-styles/avm}
 \avmfont{\sc} 
@@ -43,7 +45,9 @@
 \usepackage{pstricks,colortab}   
 
 % DRS package by Alexis Dimitriadis
-\usepackage{drs}
+%\usepackage{drs}
+
+\usepackage{tabularx}
 
 
 \usepackage{tikz-qtree}
@@ -55,9 +59,10 @@
  
 \usepackage{lipsum}  
 
-\usepackage{todonotes}
-\newcommand{\todostefan}[1]{\todo[color=green!40]{\footnotesize #1}\xspace}
-\newcommand{\inlinetodostefan}[1]{\todo[color=green!40,inline]{\footnotesize #1}\xspace}
+\setlength{\marginparwidth}{1.5cm}
+\usepackage[textsize=tiny,textwidth=1.5cm]{todonotes}
+\newcommand{\todostefan}[1]{\todo[color=green!40]{#1\xspace}}
+\newcommand{\inlinetodostefan}[1]{\todo[color=green!40,inline]{{\normalsize #1}}}
 
 
 % Chinese
@@ -67,9 +72,10 @@
 % bidirectional text and support for Arabic/Persian
 %% \usepackage{fontspec}
 \newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
-\usepackage{bidi}
+%\usepackage{bidi}
+\usepackage{lsp-bidi}
 \newcommand{\PRL}[1]{\RL{\Parsifont #1}}
-
+%\TeXXeTOff
 \usepackage{lsp-gb4e}
 
 
@@ -98,6 +104,10 @@ manuscripts and journal articles.
 \def\verbatim@font{\scriptsize\ttfamily}
 \makeatother
          
+%\renewcommand{\eachwordone}{\it}
+%\renewcommand{\exfont}{\it}
+%\def\exfont{\it}
+
 \begin{document}               
          
                                                                            
@@ -108,7 +118,7 @@ manuscripts and journal articles.
 
 \chapter*{Preface}
 
-\lipsum[3-10]  
+%\lipsum[3-10]  
 
 The purpose of this book is twofold: it contains a guideline with some style recommodations for all
 authors. The second part is for authors who use \latex or who want to learn \latex in order to
@@ -126,9 +136,12 @@ general setup of the project.
 %% Originalmakros/-texte wären die Darstellungen in den jeweiligen Kapiteln sicher nicht halb so schön
 %% geworden. 
 
-This book is typeset with \LaTeX. We thank the \LaTeX{} developers for their work and the members of the German \textit{German
+This book is typeset with \xelatex. We thank the \latex developers for their work and the members of the German \textit{German
   Language TeX Users Group Communication List} and those replying at \url{http://tex.stackexchange.com} for many usefull hints and suggestions.
 
+I thank Matthias Hüning\aimention{Matthias H{\"u}ning} for comments on an earlier version of this document and Corinna Handschuh\aimention{Corinna Handschuh}
+and Francesco Cangemi\aimention{Francesco Cangemi} for being the first ones using the new \latex classes and providing feedback
+to us.
 
 \bigskip
 
@@ -148,21 +161,12 @@ Berlin, \today\hfill Stefan Müller
 
 \backmatter
 
-\bibliography{lsp-guidelines}
+\bibliography{lsp-abbrev,lsp-guidelines}
 
+%\cleardoublepage
+
+\clearpage
 \pdfbookmark[0]{Index}{Index}
-
-%\printindex{autind}{Index der Namen}
-%
-%\printindex{wordind}{Index der Beispielwörter}
-%
-%\printindex{rev-wordind}{Reverse Index of Expressions}
-%
-%\printindex{langind}{Index of Languages and Dialects}
-%
-%\printindex{subind}{Index der Termini}
-
-%\addcontentsline{toc}{chapter}{Namensregister}
 \pdfbookmark[1]{Index of Names}{Index of Names}
 \printindex[aut]
 %\addcontentsline{toc}{chapter}{Verzeichnis der Sprachen}
