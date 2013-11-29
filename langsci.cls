@@ -692,32 +692,10 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage[figuresright]{rotating}
 
-%???
-%\usepackage{varioref}
-
 % gets rid of the warnings:
 % Failed to convert input string to UTF16
 % http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto}
-
-\usepackage{varioref}
-
-% \iflanguage{german}{%
-% % die Standardversionen sind ein bißchen doof ...
-% \def\reftextfaceafter{auf der \reftextvario{gegen\"uberliegenden}{n\"achsten} Seite}%
-% \def\reftextfacebefore{auf der \reftextvario{gegen\"uberliegenden}{vorigen} Seite}%
-% \def\reftextafter{auf der \reftextvario{n\"achsten}{folgenden} Seite}%
-% \def\reftextbefore{auf der vorigen Seite}%
-% \def\reftextcurrent{auf dieser Seite}%
-% \def\reftextfaraway#1{auf Seite~\pageref{#1}}%
-% \def\reftextpagerange#1#2{auf den Seiten~\pageref{#1}--\pageref{#2}}%
-% \def\reftextlabelrange#1#2{\ref{#1} bis~\ref{#2}}%
-% }{}
-
-\iflsDraft
-% do not stop and warn! This will be tested in the final version
-\vrefwarning
-\fi
 
 \usepackage{index}
 % Wie im Stylefile, aber ohne \MakeUppercase
@@ -781,55 +759,6 @@ guarantee the accuracy of such information thereafter.
 \fi%
 }
 
-
-% \iflanguage{german}{%
-% \newcommand{\isfeat}[1]{\if@noftnote%
-% \index{Merkmal!{\sc #1}}%
-% \else%
-% %\index{Merkmal!{\sc #1}|fn{\thefootnote}}%
-% \index{Merkmal!{\sc #1}|fn{*}}%
-% \fi%
-% }}{%
-% \newcommand{\isfeat}[1]{\if@noftnote%
-% \index{feature!{\sc #1}}%
-% \else%
-% %\index{feature!{\sc #1}|fn{\thefootnote}}%
-% \index{feature!{\sc #1}|fn{*}}%
-% \fi%
-% }}
-
-% \iflanguage{german}{%
-% \newcommand{\istype}[1]{\if@noftnote%
-% \index{Typ!#1@\type{#1}}%
-% \else%
-% %\index{Typ!{\it #1}|fn{\thefootnote}}%
-% \index{Typ!#1@\type{#1}|fn{*}}%
-% \fi%
-% }}{%
-% \newcommand{\istype}[1]{\if@noftnote%
-% \index{type!#1@\type{#1}}%
-% \else%
-% %\index{type!{\it #1}|fn{\thefootnote}}
-% \index{type!#1@\type{#1}|fn{*}}%
-% \fi%
-% }}
-
-
-% \iflanguage{german}{%
-% \newcommand{\isrel}[1]{\if@noftnote%
-% \index{Relation!\emph{#1}}%
-% \else%
-% \index{Relation!\emph{#1}|fn{*}}%
-% \fi%
-% }}{%
-% \newcommand{\isrel}[1]{\if@noftnote%
-% \index{relation!\emph{#1}}%
-% \else%
-% \index{relation!\emph{#1}|fn{*}}%
-% \fi%
-% }}
-
-
 % \index[lan] für Einträge in separaten Index
 
 \newcommand{\il}[1]{%
@@ -842,18 +771,6 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage{authorindex}
 
-
-\usepackage{./lsp-styles/lsp-eng-hyp}
-
-
-% The following allows for a quick reference to following or preceeding examples (\mex{1}) or
-% (\mex{0}) but also (\mex{-1})
-% taken from covington.sty (check)
-\newcounter{lsptempcnt}
-
-\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-\addtocounter{lsptempcnt}{#1}%
-\arabic{lsptempcnt}}%
 
 % quotes are indented at one side only.
 \renewenvironment{quote}

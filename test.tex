@@ -7,8 +7,8 @@
 			  ]{langsci}                          
 
               
-
-\usepackage{styles/avm}
+%\usepackage{lsp-styles/lsp-gb4e}		% verhindert Komma bei mehrfachen Fußnoten?
+\usepackage{lsp-styles/avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
                                                       
@@ -49,7 +49,7 @@
 
   \begin{avm}
     {\it word\/} $\rightarrow$
-    \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
+    \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\  
     morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
     rules & \< \[morphs & \@{e_1}\\mud & \@{m_1}\\ morsyn & \@0\],\ldots,
     \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
@@ -62,14 +62,20 @@
 \end{itemize}  
 
 Tabular:\footnote{Another footnote.}\footnote{Another footnote.}\\
-\begin{tabular}{ccc}
+\begin{tabular}{ccc}	
 \hline
 123 & 456 & 789 \\
 \hline
-\end{tabular}
+\end{tabular} 
 Behind: 12345
 
-  
+% Simple examples like (\mex{1}) can be typeset as shown below.
+% \ea
+% \gll Der Mann schläft.\\
+%      the man  sleeps\\
+% \glt `The man sleeps.'
+% \z
+%   
   
 %% \begin{tabular}{ccc}
 %% \multicolumn{2}{c}{\node{0}{S}} \\[2ex]
