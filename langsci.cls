@@ -88,7 +88,7 @@
  	
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
-  \newcommand{\fontpath}{./fonts/}
+  \newcommand{\fontpath}{./lsp-fonts/}
 			
   \setsansfont[
   			%Ligatures={TeX,Common},		% not supported by ttf
@@ -292,7 +292,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % unified style sheet for linguistics journals
 % put directory in BST_INPUTS
 % http://celxj.org/downloads/unified.bst
-\bibliographystyle{./bst/unified} 
+\bibliographystyle{./lsp-bst/unified} 
 % This does not work ...
 %% \setcitestyle{
 %% notesep={: }, % 2002: 125
@@ -326,7 +326,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %  ,ps2pdf=true
 ]{hyperref}
 
-
+%\KOMAoptions{footnotes=multiple}
 
 % xelatex hates this.
 %\usepackage{breakurl} 	
@@ -335,7 +335,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
-\newcommand{\logopath}{./logos}
+\newcommand{\logopath}{./lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 
@@ -619,7 +619,7 @@ guarantee the accuracy of such information thereafter.
 
 \ifxetex
 \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}} 			% numbers in footnotes
-\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote labels
+%\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote labels
 %\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote references
 \fi
 
@@ -843,7 +843,7 @@ guarantee the accuracy of such information thereafter.
 \usepackage{authorindex}
 
 
-\usepackage{./styles/lsp-eng-hyp}
+\usepackage{./lsp-styles/lsp-eng-hyp}
 
 
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
