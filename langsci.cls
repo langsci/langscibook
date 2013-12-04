@@ -539,14 +539,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\ifx\lsSeries\lnls
-\IfFileExists{lnls-info.tex}{\input{lnls-info}}{
-  Series information: lnls-info.tex not found!} 
-\else
-\IfFileExists{series.tex}{\include{series}}{
-  Series information: series.tex not found!
-}
-\fi
+\IfFileExists{./lsp-seriesinfo/\lsSeries-info.tex}{\input{./lsp-seriesinfo/\lsSeries-info}}{
+  Series information: ./lsp-seriesinfo/\lsSeries-info.tex not found!} 
 
 }
 
