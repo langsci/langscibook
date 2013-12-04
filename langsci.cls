@@ -810,5 +810,8 @@ guarantee the accuracy of such information thereafter.
                 \item\relax}
                {\endlist}
 
+
+\usepackage{varioref}
+
 \endinput
 
