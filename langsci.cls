@@ -88,7 +88,7 @@
  	
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
-  \newcommand{\fontpath}{./fonts/}
+  \newcommand{\fontpath}{./lsp-fonts/}
 			
   \setsansfont[
   			%Ligatures={TeX,Common},		% not supported by ttf
@@ -292,7 +292,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % unified style sheet for linguistics journals
 % put directory in BST_INPUTS
 % http://celxj.org/downloads/unified.bst
-\bibliographystyle{./bst/unified} 
+\bibliographystyle{./lsp-bst/unified} 
 % This does not work ...
 %% \setcitestyle{
 %% notesep={: }, % 2002: 125
@@ -326,7 +326,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %  ,ps2pdf=true
 ]{hyperref}
 
-
+%\KOMAoptions{footnotes=multiple}
 
 % xelatex hates this.
 %\usepackage{breakurl} 	
@@ -335,7 +335,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
-\newcommand{\logopath}{./logos}
+\newcommand{\logopath}{./lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 
@@ -541,14 +541,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\ifx\lsSeries\lnls
-\IfFileExists{lnls-info.tex}{\input{lnls-info}}{
-  Series information: lnls-info.tex not found!} 
-\else
-\IfFileExists{series.tex}{\include{series}}{
-  Series information: series.tex not found!
-}
-\fi
+\IfFileExists{./lsp-seriesinfo/\lsSeries-info.tex}{\input{./lsp-seriesinfo/\lsSeries-info}}{
+  Series information: ./lsp-seriesinfo/\lsSeries-info.tex not found!} 
 
 }
 
@@ -621,7 +615,7 @@ guarantee the accuracy of such information thereafter.
 
 \ifxetex
 \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}} 			% numbers in footnotes
-\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote labels
+%\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote labels
 %\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}} 	% numbers in footnote references
 \fi
 
@@ -694,30 +688,10 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage[figuresright]{rotating}
 
-
 % gets rid of the warnings:
 % Failed to convert input string to UTF16
 % http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto}
-
-\usepackage{varioref}
-
-% \iflanguage{german}{%
-% % die Standardversionen sind ein bißchen doof ...
-% \def\reftextfaceafter{auf der \reftextvario{gegen\"uberliegenden}{n\"achsten} Seite}%
-% \def\reftextfacebefore{auf der \reftextvario{gegen\"uberliegenden}{vorigen} Seite}%
-% \def\reftextafter{auf der \reftextvario{n\"achsten}{folgenden} Seite}%
-% \def\reftextbefore{auf der vorigen Seite}%
-% \def\reftextcurrent{auf dieser Seite}%
-% \def\reftextfaraway#1{auf Seite~\pageref{#1}}%
-% \def\reftextpagerange#1#2{auf den Seiten~\pageref{#1}--\pageref{#2}}%
-% \def\reftextlabelrange#1#2{\ref{#1} bis~\ref{#2}}%
-% }{}
-
-\iflsDraft
-% do not stop and warn! This will be tested in the final version
-\vrefwarning
-\fi
 
 \usepackage{index}
 % Wie im Stylefile, aber ohne \MakeUppercase
@@ -780,7 +754,6 @@ guarantee the accuracy of such information thereafter.
 %\indexftn{#1}{\value{footnotemark}}%
 \fi%
 }
-
 
 \newcommand{\isfeat}[1]{\if@noftnote%
 \index{feature!{\sc #1}}%
