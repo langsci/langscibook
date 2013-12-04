@@ -520,6 +520,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		
 }
 
+% for those who like the example in numbered example sentences to be typeset in italics
+% this is possible for a complete series only.
 \ifx\lsSeries\sidl
 %\ifx\lsSeries\lnls
 \AtBeginDocument{
@@ -692,8 +694,6 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage[figuresright]{rotating}
 
-%???
-%\usepackage{varioref}
 
 % gets rid of the warnings:
 % Failed to convert input string to UTF16
