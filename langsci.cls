@@ -782,52 +782,28 @@ guarantee the accuracy of such information thereafter.
 }
 
 
-% \iflanguage{german}{%
-% \newcommand{\isfeat}[1]{\if@noftnote%
-% \index{Merkmal!{\sc #1}}%
-% \else%
-% %\index{Merkmal!{\sc #1}|fn{\thefootnote}}%
-% \index{Merkmal!{\sc #1}|fn{*}}%
-% \fi%
-% }}{%
-% \newcommand{\isfeat}[1]{\if@noftnote%
-% \index{feature!{\sc #1}}%
-% \else%
-% %\index{feature!{\sc #1}|fn{\thefootnote}}%
-% \index{feature!{\sc #1}|fn{*}}%
-% \fi%
-% }}
+\newcommand{\isfeat}[1]{\if@noftnote%
+\index{feature!{\sc #1}}%
+\else%
+%\index{feature!{\sc #1}|fn{\thefootnote}}%
+\index{feature!{\sc #1}|fn{*}}%
+\fi%
+}
 
-% \iflanguage{german}{%
-% \newcommand{\istype}[1]{\if@noftnote%
-% \index{Typ!#1@\type{#1}}%
-% \else%
-% %\index{Typ!{\it #1}|fn{\thefootnote}}%
-% \index{Typ!#1@\type{#1}|fn{*}}%
-% \fi%
-% }}{%
-% \newcommand{\istype}[1]{\if@noftnote%
-% \index{type!#1@\type{#1}}%
-% \else%
-% %\index{type!{\it #1}|fn{\thefootnote}}
-% \index{type!#1@\type{#1}|fn{*}}%
-% \fi%
-% }}
+\newcommand{\istype}[1]{\if@noftnote%
+\index{type!#1@\type{#1}}%
+\else%
+%\index{type!{\it #1}|fn{\thefootnote}}
+\index{type!#1@\type{#1}|fn{*}}%
+\fi%
+}
 
-
-% \iflanguage{german}{%
-% \newcommand{\isrel}[1]{\if@noftnote%
-% \index{Relation!\emph{#1}}%
-% \else%
-% \index{Relation!\emph{#1}|fn{*}}%
-% \fi%
-% }}{%
-% \newcommand{\isrel}[1]{\if@noftnote%
-% \index{relation!\emph{#1}}%
-% \else%
-% \index{relation!\emph{#1}|fn{*}}%
-% \fi%
-% }}
+\newcommand{\isrel}[1]{\if@noftnote%
+\index{relation!\emph{#1}}%
+\else%
+\index{relation!\emph{#1}|fn{*}}%
+\fi%
+}
 
 
 % \index[lan] für Einträge in separaten Index
@@ -843,7 +819,7 @@ guarantee the accuracy of such information thereafter.
 \usepackage{authorindex}
 
 
-\usepackage{./styles/lsp-eng-hyp}
+\usepackage{./lsp-styles/lsp-eng-hyp}
 
 
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or

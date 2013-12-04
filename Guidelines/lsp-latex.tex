@@ -31,6 +31,99 @@ xelatex yourfilename.tex
 %\DescribeMacro{\BackTitle}
 
 
+\subsection{Class Options}
+
+A \latex document starts with a specification of a document class. Usually this is a class for
+books, articles, or technical reports. \lsp has a special class that is called \emph{langsci} and is
+based on the book class from the KomaScript package. Several options can be passed to the class. The
+following code shows how the class is loaded and how options are set. 
+
+
+\begin{verbatim}
+\documentclass[series=labphon,
+               number=1,
+               isbn=978-3-944675-01-5,
+               url=http://langsci-press.org/catalog/book/16,
+               output=long]{langsci}            
+\end{verbatim}
+
+The options are explained in the following paragraphs.
+
+
+\subsubsection{series}
+
+You have to pass the name of your series to the langsci package. This will ensure that the name of
+the series is put on the cover and the right color for your series will be
+selected. Table~\vref{table-series} provides an overview of the series that are established as of
+\today.
+\begin{table}[htbp]
+\caption{\label{table-series}Series of \lsp as of \today}
+\begin{tabularx}{\linewidth}{ll}\hline\hline
+Option  & Full Name\\\hline
+eotms   & Empirically Oriented Theoretical Morphology and Syntax\\
+eotmsig & Implemented Grammars\\
+sidl    & Studies in Diversity Linguistics\\
+algad   & African Language Grammars and Dictionaries\\
+tmnlp   & Translation and Multilingual Natural Language Processing\\
+lnls    & Lecture Notes in Language Sciences\\
+nc      & Monographs on Comparative Niger-Congo\\
+labphon & Studies in Laboratory Phonology\\
+\hline\hline
+\end{tabularx}
+
+\end{table}
+
+
+
+\subsubsection{number}
+
+Authors will be informed by their editor about the number that their book has in the series. This
+number is passed with the \emph{number} option to the langsci class.
+
+\subsubsection{isbn}
+
+Once a manuscript is accepted, authors have to sign a publication agreement with the FU Library (see
+Chapter~\ref{chap-publication}). Then they will get an ISBN, which has to be passed to the langsci class.
+
+\subsubsection{url}
+
+When a manuscript is submitted to \lsp the submission gets a number and there will be a
+corresponding URL. This URL has to be passed to the langsci class, since it will be part of the
+impressum of your book.
+
+\subsubsection{output}
+
+There are three options for output: \emph{long}, \emph{short}, and \emph{inprep}. If you pass
+\emph{long} to the langsci class, all pages are printed. This includes front and backpane of the
+cover and also its spine. If the option \emph{short} is used, the cover pages are omitted. This
+document version is much more printer friendly since the colored pages are not included.
+
+The option \emph{inprep} suppresses everything that refers to \lsp. This gives authors the
+possibility to write their book using the \lsp classes and styles prior to submission. They may then
+distribute the manuscript without revealing their intention to submit to \lsp.
+
+\subsubsection{draftmode}
+
+Since \lsp does not have any commercial intrest you can put your book on webpages and distribute it
+freely. We encourage authors to do this in order to discuss the work and improve it before final
+publication. If authors want to circulate prefinal versions, they can use the option
+\emph{draftmode}. This prints a large watermark onto the first page and adds a footer to ever page
+that informs the reader about the fact that he is reading a draft and the date and time of the
+creation of the draft.
+
+
+
+
+\subsection{Commands}
+
+You can specify a title with the \verb+\title+ command (\latex standard). In addition the langsci
+class provides a command for specifying a subtitle (\verb+\subtitle+). The author of a book is
+specified by \verb+\author+. A separate page with a dedication can be inserted by \verb+\dedication+.
+
+The title of the book that goes to the back of the book is specified by \verb+\BackTitle+ and the
+cover text on the back is provided by \verb+\BackBody+.
+
+
 \section{Workflow}
 
 \subsection{Compiling the Document}
@@ -232,6 +325,10 @@ variant without italics.
 % of course this is not true for the code above ...
 The series editor decided whether italics is used or not.
 
+\inlinetodostefan{
+The translation should not be separated from the glossed example by a page break.
+}
+
 
 \subsection{\texttt{jambox}}
 \label{sec-jambox}
@@ -293,9 +390,6 @@ jambox to \verb+\settowidth+:
 \end{verbatim}
 \index{package!\texttt{jambox}|)}
 
-\inlinetodostefan{
-The translation should not be separated from the glossed example by a page break.
-}
 
 
 \subsection{Trees: \texttt{tikz-qtree}}
