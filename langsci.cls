@@ -519,6 +519,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		
 }
 
+% for those who like the example in numbered example sentences to be typeset in italics
+% this is possible for a complete series only.
 \ifx\lsSeries\sidl
 %\ifx\lsSeries\lnls
 \AtBeginDocument{
@@ -752,6 +754,30 @@ guarantee the accuracy of such information thereafter.
 \fi%
 }
 
+\newcommand{\isfeat}[1]{\if@noftnote%
+\index{feature!{\sc #1}}%
+\else%
+%\index{feature!{\sc #1}|fn{\thefootnote}}%
+\index{feature!{\sc #1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\istype}[1]{\if@noftnote%
+\index{type!#1@\type{#1}}%
+\else%
+%\index{type!{\it #1}|fn{\thefootnote}}
+\index{type!#1@\type{#1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\isrel}[1]{\if@noftnote%
+\index{relation!\emph{#1}}%
+\else%
+\index{relation!\emph{#1}|fn{*}}%
+\fi%
+}
+
+
 % \index[lan] für Einträge in separaten Index
 
 \newcommand{\il}[1]{%
@@ -765,11 +791,26 @@ guarantee the accuracy of such information thereafter.
 \usepackage{authorindex}
 
 
+\usepackage{./lsp-styles/lsp-eng-hyp}
+
+
+% The following allows for a quick reference to following or preceeding examples (\mex{1}) or
+% (\mex{0}) but also (\mex{-1})
+% taken from covington.sty (check)
+\newcounter{lsptempcnt}
+
+\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+\addtocounter{lsptempcnt}{#1}%
+\arabic{lsptempcnt}}%
+
 % quotes are indented at one side only.
 \renewenvironment{quote}
                {\list{}{\rightmargin0pt\leftmargin8mm}%{\rightmargin\leftmargin}%
                 \item\relax}
                {\endlist}
+
+
+\usepackage{varioref}
 
 \endinput
 
