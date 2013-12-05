@@ -413,7 +413,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsBackBody
 	\end{textblock}
 
-	\begin{textblock}{30}(115,212.5)
+	\begin{textblock}{40}(115,212.5)
 	\lsBackBodyFont
 	\sffamily
 	ISBN \lsISBN			
