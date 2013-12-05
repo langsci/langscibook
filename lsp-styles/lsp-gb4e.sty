@@ -468,8 +468,9 @@
 \def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]\raggedright}
 \def\eanoraggedright{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
 
-\renewcommand\trans{\nopagebreak\vskip.25\baselineskip\transfont\parindent0ex}
+%\renewcommand\trans{\nopagebreak\vskip.17\baselineskip\transfont\parindent0ex}
 % Note that we have also set parindent to 0 in our redefinition of \trans
+\def\glt{\nopagebreak\vskip.17\baselineskip\transfont\parindent0ex}
 
 \renewcommand{\eachwordone}{\exfont}
 \renewcommand{\eachwordtwo}{\glossfont}

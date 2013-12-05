@@ -54,9 +54,9 @@
 
 
 \newcommand{\ispackage}[1]{\if@noftnote%
-\index{package!{\sc #1}}%
+\index{package!\texttt{#1}}%
 \else%
-\index{package!{\sc #1}|fn{*}}%
+\index{package!\texttt{#1}|fn{*}}%
 \fi%
 }
 
@@ -64,5 +64,16 @@
 %\usepackage{doc}
 
 
+
+\newcommand{\ispackageb}[1]{
+\index{package!\texttt{#1}|(}
+}
+\newcommand{\ispackagee}[1]{
+\index{package!\texttt{#1}|)}
+}
+
+
+
 \newcommand\displaycmd[2]{%
   \DescribeMacro{#2}\centerline{\cmd{#1}}}
+
