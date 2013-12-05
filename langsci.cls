@@ -109,7 +109,6 @@
 			{FreeMono_B.otf}
 
 
-
   \setmainfont[
   			Ligatures={TeX,Common},
   			Path=\fontpath,
@@ -124,7 +123,7 @@
   
   \let\oldtabular\tabular	% number in tabulars
   \let\endoldtabular\endtabular
-  \renewenvironment{tabular}{\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
+  \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
  
   %\usepackage{polyglossia}		% TODO remove this?
   %\setdefaultlanguage{british}
