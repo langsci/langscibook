@@ -316,6 +316,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 \usepackage[bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
+  bookmarksdepth=5,
   hyperindex=true,%
   breaklinks=true,
   draft=false,
