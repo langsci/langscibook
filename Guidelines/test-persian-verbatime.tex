@@ -1,0 +1,31 @@
+%% -*- coding:utf-8 -*-
+    \documentclass{article}
+
+    \usepackage{fontspec}
+    \newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+
+    \usepackage{fancyvrb}
+    \usepackage{xepersian}
+
+    \usepackage{bidi}
+    \newcommand{\PRL}[1]{\RL{\Parsifont #1}}
+
+
+    \DefineVerbatimEnvironment{rtlverbatim}{Verbatim}{commandchars=+\[\]}
+
+    \begin{document}
+
+    \PRL{او مرد را دوست نخواهد داشت.}
+    
+    \begin{latin}
+    \begin{verbatim}
+    \usepackage{fontspec}\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+    \usepackage{bidi}
+    \newcommand{\PRL}[1]{\RL{\Parsifont #1}}
+
+    \PRL{او مرد را دوست نخواهد داشت.}
+    \end{verbatim}
+    \end{latin}
+
+
+    \end{document}

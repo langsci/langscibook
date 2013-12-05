@@ -1,0 +1,36 @@
+%% -*- coding:utf-8 -*-
+    \documentclass{scrbook}
+
+    \usepackage{natbib}
+    \bibliographystyle{unified} 
+
+    \usepackage[hyphens]{url}
+    \urlstyle{same}
+
+
+    \usepackage{hyperref}
+
+%    \usepackage{lsp-bidi}
+\usepackage{bidi}
+%\TeXXeTstate=0
+
+    \usepackage{filecontents}
+
+    \begin{filecontents}{SM.bib}
+    @book{GMS2013a,
+            Address = {Boston},
+            Author = {Frank {Mit\-tel\-bach} and Michael Goossens},
+            Edition = {2},
+            Publisher = {Addison-Wesley},
+            Title = {The {\LaTeX} Companion},
+            Year = {2013}}
+    \end{filecontents}
+
+    \begin{document}
+
+    Xx There is a huge amount of packages that can be used for various purposes. \citet{GMS2013a} is a good
+    reference book.
+
+    \bibliography{SM}
+
+    \end{document}

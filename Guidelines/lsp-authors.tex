@@ -1,5 +1,5 @@
 %% -*- coding:utf-8 -*-
-\chapter{Guidelines for Authors}
+\chapter{Guidelines for authors}
 
 The following sections describe the layout of various items that play a role in typesetting. 
 
@@ -19,7 +19,7 @@ there should be a good motivation for going beyond four levels.
 If you want to \emph{emphazize} terms, please use \emph{italics}. Bold face has to be avoided under
 any circumstances. The only place where boldfase is used is section headings.
 
-\section{Glossed Examples}
+\section{Glossed examples}
 
 Please gloss all examples and provide them with translations. The glossing should be done according
 to the Leipzig Glossing Rules. If you need special abbreviations that are not defined by the Leipzig
@@ -30,27 +30,42 @@ Glossing Rules\footnote{
 monograph. In case of edited volumes the tables with abbreviations should be placed immedeately
 before the references.
 
-\section{Figures and Tables}
+\section{Figures and tables}
 
-Figures and tables should come with a caption that is set below them. The caption should be in
+Figures and tables should come with a caption. Captions are set below figures and above tables. The caption should be in
 normal spelling, that is without capitalization of content words. Please number figures and
 tables. The number should consist of the chapter number and a number that starts with one for every
-new chapter. There has to be one counter for figures and another one for tables:
+new chapter. There has to be one counter for figures and another one for
+tables. Figure~\vref{fig-example-fig-the-dog-barks} is an example of a figure and
+Table~\vref{tab-example-croft} is an example of a table.
 
 \begin{figure}[htbp]
-\caption{An example of a figure}
+\centerline{%
+\begin{tikzpicture}
+\tikzset{level 1+/.style={level distance=2\baselineskip}}
+\tikzset{frontier/.style={distance from root=6\baselineskip}}
+\Tree[.S
+       [.NP 
+         [.Det the ]
+         [.N   dog ] ]
+       [.VP barks ] ]
+\end{tikzpicture}
+}
+\caption{\label{fig-example-fig-the-dog-barks}An example of a figure: Analysis of the sentence \emph{The dog barks.}}
 \end{figure}
 
 \begin{table}[htbp]
-\caption{An example of a table taken from \citew[214]{Croft2003a}}
-\begin{tabularx}{\linewidth}{llX}\hline\hline
+\caption{\label{tab-example-croft}An example of a table taken from \citew[214]{Croft2003a}}
+\centerline{
+\begin{tabular}{llp{5cm}}\hline\hline
           & Low categoriality unit      & Unit with wich it clusters\\\hline
 `Noun'    & low referentiality NP       & forgrounded verb\\
           & attached body part noun     & forgrounded verb\\
-          & anaphoric NP                &  forgrounded verb, emphasized element\\
+          & anaphoric NP                & forgrounded verb, emphasized\newline element\\
 `Verb'    & tense/aspect/mood auxiliary & forgrounded verb\\ 
 \hline\hline
-\end{tabularx}
+\end{tabular}
+}
 \end{table}
 
 \section{Footnotes}
@@ -95,7 +110,7 @@ correct ones}.
 If you quote text that is not in the language of the book provide a translation. Short quotes should
 be translated inline, long quotes should be translated in a footnote.
 
-\section{Crossreferences in the Text}
+\section{Crossreferences in the text}
 
 Please use the crossreferenceing mechanisms of your text editing/type setting software. Using such
 crossreferencing mechanisms is less error-prone when you shift text blocks around and in addition
@@ -126,13 +141,16 @@ The references in your \bibtex file will be typeset correctly automatically. So,
 observe in the main text. Please cite as shown in Table~\ref{tab-citation}.
 
 \begin{table}[htbp]
-\begin{tabular}{ll}
-Author & As \citet[215]{MZ85a} have shown\\
-       & As \citet[215]{MZ85a} and \citet{Bloomfield33a} have shown\\
-Work   & As was shown in \citew[215]{Saussure16a}, this is a problem for \ldots\\
-Work   & This is not true \citep{Saussure16a,Bloomfield33a}.
-\end{tabular}
 \caption{\label{tab-citation}Citation style for \lsp}
+\centerline{%
+\begin{tabular}{lp{9cm}}\hline\hline
+citation type & example\\\hline
+author & As \citet[215]{MZ85a} have shown\\
+       & As \citet[215]{MZ85a} and \citet{Bloomfield33a} have shown\\
+work   & As was shown in \citew[215]{Saussure16a}, this is a problem for theories that \ldots\\
+work   & This is not true \citep{Saussure16a,Bloomfield33a}.\\\hline\hline
+\end{tabular}
+}
 \end{table}
 
 %% Table~\ref{tab-various-publication-types} provides examples for different publication types (book,
@@ -146,7 +164,7 @@ the normal punctuation of the respective language rather then special markup lik
 \inlinetodostefan{Say something about decapitalization.}
 
 
-\section{Edited Volumes}
+\section{Edited volumes}
 
 Papers in edited volumes should start with an abstract.
 
