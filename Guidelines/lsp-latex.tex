@@ -3,8 +3,9 @@
 
 \section{Installation of the \texttt{langsci} class}
 
-The \latex class for typesetting Language Science Press books was developed by Timm Lichte with
-help be Berthold Crysmann and me. It can be downloded from the GitHUB repository at: \url{https://github.com/langsci/latex}
+The \latex class for typesetting Language Science Press books was developed by Timm
+Lichte\aimention{Timm Lichte} with
+help be Berthold Crysmann\aimention{Berthold Crysmann} and me\aimention{Stefan Müller}. It can be downloded from the GitHUB\is{GitHUB} repository at: \url{https://github.com/langsci/latex}
 You can download the classes directly from the given web page or use the following git commands to
 create a local copy of the repository:
 \begin{verbatim}
@@ -16,8 +17,7 @@ If you are using \texttt{git}, you can update your installation by executing the
 git pull origin
 \end{verbatim}
 
-Place all files and subdirectories from this repository into your local working directory. For
-advanced installations see Section~\ref{sec-advanced-latex-installation}.
+Place all files and subdirectories from this repository into your local working directory.
 
 \section{Using the \texttt{langsci} class}
 
@@ -52,7 +52,7 @@ The options are explained in the following paragraphs.
 
 \subsubsection{\texttt{series}}
 
-You have to pass the name of your series to the langsci package. This will ensure that the name of
+The\isoption{series} name of the series in which a book is published has to be passed to the langsci package. This will ensure that the name of
 the series is put on the cover and the right color for your series will be
 selected. Table~\vref{table-series} provides an overview of the series that are established as of
 \today.
@@ -78,23 +78,23 @@ labphon & Studies in Laboratory Phonology\\
 
 \subsubsection{\texttt{number}}
 
-Authors will be informed by their editor about the number that their book has in the series. This
+Authors\isoption{number} will be informed by their editor about the number that their book has in the series. This
 number is passed with the \texttt{number} option to the langsci class.
 
 \subsubsection{\texttt{isbn}}
 
-Once a manuscript is accepted, authors have to sign a publication agreement with the FU Library (see
+Once\isoption{isbn} a manuscript is accepted, authors have to sign a publication agreement with the FU Library (see
 Chapter~\ref{chap-publication}). Then they will get an ISBN, which has to be passed to the langsci class.
 
 \subsubsection{\texttt{url}}
 
-When a manuscript is submitted to \lsp the submission gets a number and there will be a
+When\isoption{url} a manuscript is submitted to \lsp the submission gets a number and there will be a
 corresponding URL. This URL has to be passed to the langsci class, since it will be part of the
 impressum of your book.
 
 \subsubsection{\texttt{output}}
 
-There are three options for output: \texttt{long}, \texttt{short}, and \texttt{inprep}. If you pass
+There\isoption{output} are three options for output: \texttt{long}, \texttt{short}, and \texttt{inprep}. If you pass
 \texttt{long} to the langsci class, all pages are printed. This includes front and backpane of the
 cover and also its spine. If the option \texttt{short} is used, the cover pages are omitted. This
 document version is much more printer friendly since the colored pages are not included.
@@ -105,12 +105,12 @@ distribute the manuscript without revealing their intention to submit to \lsp.
 
 \subsubsection{\texttt{smallfont}}
 
-\lsp books are typeset with an 11pt font. Those books that would be longer than 500 pages should be
+\lsp\isoption{smallfont} books are typeset with an 11pt font. Those books that would be longer than 500 pages should be
 typeset with the \texttt{smallfont} option, which selects a 10pt font.
 
 \subsubsection{\texttt{draftmode}}
 
-Since \lsp does not have any commercial intrest you can put your book on webpages and distribute it
+Since\isoption{draftmode} \lsp does not have any commercial interest you can put your book on webpages and distribute it
 freely. We encourage authors to do this in order to discuss the work and improve it before final
 publication. If authors want to circulate prefinal versions, they can use the option
 \texttt{draftmode}. This prints a large watermark onto the first page and adds a footer to ever page
@@ -122,12 +122,12 @@ creation of the draft.
 
 \subsection{Commands}
 
-You can specify a title with the \verb+\title+ command (\latex standard). In addition the langsci
-class provides a command for specifying a subtitle (\verb+\subtitle+). The author of a book is
-specified by \verb+\author+. A separate page with a dedication can be inserted by \verb+\dedication+.
+You can specify a title with the \verb+\title+\iscommand{title} command (\latex standard). In addition the langsci
+class provides a command for specifying a subtitle (\verb+\subtitle+\iscommand{subtitle}). The author of a book is
+specified by \verb+\author+\iscommand{author}. A separate page with a dedication can be inserted by \verb+\dedication+\isoption{dedication}.
 
-The title of the book that goes to the back of the book is specified by \verb+\BackTitle+ and the
-cover text on the back is provided by \verb+\BackBody+.
+The title of the book that goes to the back of the book is specified by \iscommand{BackTitle}\verb+\BackTitle+ and the
+cover text on the back is provided by \verb+\BackBody+\iscommand{BackBody}.
 
 
 \section{Workflow}
@@ -148,11 +148,11 @@ cover text on the back is provided by \verb+\BackBody+.
 
 \subsection{References}
 
-\lsp uses the \texttt{natbib}\ispackage{natbib} package together with \bibtex and the \bibtex style \texttt{unified.bst}.
+\lsp uses the \texttt{natbib}\ispackage{natbib} package together with \bibtex\is{bibtex@\bibtex} and the \bibtex style \texttt{unified.bst}.
 
 \subsection{Crossreferencing}
 
-You may use \verb+(\mex{1})+ to refer to the following example and \verb+(\mex{0})+ to the preceeding
+You may use \verb+(\mex{1})+\iscommand{mex} to refer to the following example and \verb+(\mex{0})+ to the preceeding
 example. You can also pass smaller numbers or larger numbers to \verb+\mex+ but I would suggest not
 to do this since often text blocks are inserted between the example and its description and then
 references are broken. Furthermore the standard referencing mechanism creates hyperlinks to the
@@ -172,7 +172,7 @@ much space when material is distributed in a line.
 
 The\is{index|(} \lsp class is set up in a way that an author index is created automatically. If you want to add
 an author that is not cited (for instance in the acknowledgements), you can do this by calling
-\verb+\aimention{Zappa, Frank}+.\aimention{Zappa, Frank}
+\verb+\aimention{Zappa, Frank}+.\aimention{Zappa, Frank}\iscommand{aimention}
 
 You may enter items into the subejct index by calling \verb+\is+, for example 
 \begin{verbatim}
@@ -195,6 +195,17 @@ features into the subject index. \verb+\isfeat{comps}+\isfeat{comps} would enter
 index. The typesetting of the feature name in {\sc small caps} will be done automatically.
 
 All index entries are hyper-linked to the respective pages.
+
+While working at a manuscript it can be practical to see index entries in the margins. Index entries may be
+switched on by specifying \verb+\proofmodetrue+ in the preamble of the
+document.\iscommand{proofmodetrue} The following specification checks whether the option
+\texttt{draftmode}\isoption{draftmode} of the \texttt{langsci} is used and displays the index entries in the margin if
+this is the case:
+\begin{verbatim}
+\iflsDraft
+\proofmodetrue
+\fi
+\end{verbatim}
 \is{index|)}
 
 \subsection{Hyphenation}
@@ -345,11 +356,11 @@ The series editor decided whether italics is used or not.
 %% }
 
 
-\subsection{\texttt{jambox}}
+\subsection{\texttt{jam\-box}}
 \label{sec-jambox}
 
 
-The\ispackageb{jambox} package \texttt{jambox} by Alexis Dimitriadis\aimention{Alexis Dimitriadis} can be used to provide information about the language of an example or
+The\ispackageb{jam\-box} package \texttt{jambox} by Alexis Dimitriadis\aimention{Alexis Dimitriadis} can be used to provide information about the language of an example or
 about a certain other aspect to be highlighted.\il{Maltese}
 \settowidth\jamwidth{VSO}
 \eal
@@ -403,13 +414,13 @@ jambox to \verb+\settowidth+:
 \ex Der Mann liest das Buch.   \jambox{(German)}
 \zl
 \end{verbatim}
-\ispackagee{jambox}
+\ispackagee{jam\-box}
 
 
 
 \subsection{Trees: \texttt{tikz-qtree}}
 
-Several\index{package!\texttt{tikz-qtree}|(} tree-drawing packages are around and all have their advantages and disadvantages. I
+Several\ispackageb{tikz-qtree} tree-drawing packages are around and all have their advantages and disadvantages. I
 used \texttt{tree-dvips} for decades, but it is incompatible with \xelatex, since it creates
 PostScript rather than PDF. Exploring the options I discovered \texttt{tikz-qtree}, which is a
 tikz-based\ispackage{tikz} reimplementation of Alexis Dimitriadis'\aimention{Alexis Dimitriadis} \texttt{q-tree}
@@ -466,11 +477,11 @@ The code below shows how words below a certain node can be put under a triangle 
 \end{tikzpicture}
 \end{fitverb}
 \end{samepage}
-\index{package!\texttt{tikz-qtree}|)} 
+\ispackagee{tikz-qtree} 
 
 \subsection{DRSes: \texttt{drs}}
 
-DRSes can be typeset using the \texttt{drs} package by Alexis Dimitriadis\aimention{Alexis
+DRSes\ispackageb{drs} can be typeset using the \texttt{drs} package by Alexis Dimitriadis\aimention{Alexis
   Dimitriadis}. There are various commands that let you typeset simple DRSes, ones with implications
 and DRSes with quantifiers. Some examples from the manual are given below:
 
@@ -504,9 +515,13 @@ and DRSes with quantifiers. Some examples from the manual are given below:
              {every}{x}
              {y}{secretary(y) \\ x hired y}}
 \end{verbatim}
+\ispackagee{drs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{AVMs}
 
+\ispackageb{avm}
   \begin{avm}
     {\it word\/} $\rightarrow$
     \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
@@ -515,12 +530,12 @@ and DRSes with quantifiers. Some examples from the manual are given below:
     \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
     \]
   \end{avm}
-
+\ispackagee{avm}
 
 \subsection{OT tableaux}
 
-\is{Optimality Theory|(}
-This section just provides some examples of how Optimality Tableaux can be typeset.
+
+This\is{Optimality Theory|(}\is{tabular} section just provides some examples of how Optimality Tableaux can be typeset.
 
 \begin{tabular}
        {|lc|c|c|c|}\hline   
@@ -711,12 +726,13 @@ If you find symbols that are not covered by the font, please use the \texttt{tip
 
 \subsection{\texttt{varioref}}
 
-\texttt{varioref} is loaded by the \lsp class file. You can use \verb+\vref+ to refer to floating
+\texttt{varioref}\ispackageb{varioref} is loaded by the \lsp class file. You can use \verb+\vref+\iscommand{vref} to refer to floating
 objects like figures and tables. \latex automatically determines whether the floating object is on
 the same page or further away. If the float is on the next page and the next page is to the right of
 the current page, \latex will insert an appropriate text like \emph{on the facing page}. If we are
-on a right page, \latex will insert something like \emph{on the next page}. If the float is further
+on a right page, \latex will insert something like \emph{on the next page} or \emph{on the facing page}. If the float is further
 away, a page number will be provided.
+\ispackagee{varioref}
 
 %Please use \verb+\vref+ for the first reference to a float only.
 
@@ -752,7 +768,7 @@ Otherwise the section name for references comes out in German.
 
 \subsection{Resizing large objects}
 
-Trees or AVMs often are too big to fit onto one page. The \texttt{langsci} comes with commands for
+Trees and AVMs often are too big to fit onto one page. The \texttt{langsci} comes with commands for
 shrinking large objects. You may pass your complex object as an argument to \texttt{\oneline} and
 this will scale the object to \verb+\linewidth+ (the remaining space on the current line). There is
 a more clever version of this command: \verb+\centerfit+. This command checks whether there is
@@ -811,7 +827,11 @@ adaptions.
 
 \subsection{\texttt{xspace} and abbreviations}
 
+\ispackage{xspace}
+
 \subsection{\texttt{todonotes}}
+
+\ispackage{todonotes}
 
 %% \section{Software}
 
@@ -819,14 +839,6 @@ adaptions.
 %% \item BibDesk
 %% \item JabRef
 %% \end{itemize}
-
-
-%% \section{Advanced installation}
-%% \label{sec-advanced-latex-installation}
-
-%% If you typeset many books for \lsp, put the fonts that are contained in the directory \texttt{fonts}
-%% into your local font directory that is used by \xelatex. Put the logos from the directory \texttt{logos} into the
-%% search path for images. 
 
 
 \subsection{Style files and multiple projects}

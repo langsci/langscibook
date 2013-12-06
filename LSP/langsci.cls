@@ -307,6 +307,111 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \let\citew=\citealt
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Indexes:
+
+
+\usepackage{index}
+% Wie im Stylefile, aber ohne \MakeUppercase
+   \renewenvironment{theindex}{%
+        \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+        \if@twocolumn
+            \@restonecolfalse
+        \else
+            \@restonecoltrue
+        \fi
+        \columnseprule \z@
+        \columnsep 35\p@
+        \twocolumn[%
+            \@makeschapterhead{\indexname}%
+            \ifx\index@prologue\@empty\else
+                \index@prologue
+                \bigskip
+            \fi
+        ]%
+%        \@mkboth{\MakeUppercase\indexname}%
+%                {\MakeUppercase\indexname}%
+        \@mkboth{\indexname}%
+                {\indexname}%
+        \thispagestyle{plain}%
+        \parindent\z@
+        \parskip\z@ \@plus .3\p@\relax
+        \let\item\@idxitem
+    }{%
+        \if@restonecol
+            \onecolumn
+        \else
+            \clearpage
+        \fi
+    }
+
+\makeindex
+\newindex{lan}{ldx}{lnd}{Index of Languages}
+\newindex{aut}{adx}{and}{Index of Names}
+\renewindex{default}{idx}{ind}{Index of Subjects}
+
+\indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
+
+\def\fn#1#2{%
+\hyperpage{#2}$^{#1}$%
+}%
+
+
+\newcommand{\ia}[1]{\if@noftnote%
+\index{autind}{#1}%
+\else%
+\index{autind}{#1|fn{\thefootnote}}%
+\fi%
+}
+
+\newcommand{\is}[1]{\if@noftnote%
+\index{#1}%
+\else%
+% irgendwie muss man ihn dazu bringen den Wert für footnote auch einzusetzen
+\index{#1|fn{*}}%
+%\indexftn{#1}{\value{footnotemark}}%
+\fi%
+}
+
+\newcommand{\isfeat}[1]{\if@noftnote%
+\index{feature!{\sc #1}}%
+\else%
+%\index{feature!{\sc #1}|fn{\thefootnote}}%
+\index{feature!{\sc #1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\istype}[1]{\if@noftnote%
+\index{type!#1@\type{#1}}%
+\else%
+%\index{type!{\it #1}|fn{\thefootnote}}
+\index{type!#1@\type{#1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\isrel}[1]{\if@noftnote%
+\index{relation!\emph{#1}}%
+\else%
+\index{relation!\emph{#1}|fn{*}}%
+\fi%
+}
+
+
+% \index[lan] für Einträge in separaten Index
+
+\newcommand{\il}[1]{%
+\if@noftnote%
+\index[lan]{#1}%
+\else%
+\index[lan]{#1|fn{*}}%
+\fi%
+}
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperref:
 
@@ -692,111 +797,6 @@ guarantee the accuracy of such information thereafter.
 % Failed to convert input string to UTF16
 % http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto}
-
-\usepackage{index}
-% Wie im Stylefile, aber ohne \MakeUppercase
-   \renewenvironment{theindex}{%
-        \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
-        \if@twocolumn
-            \@restonecolfalse
-        \else
-            \@restonecoltrue
-        \fi
-        \columnseprule \z@
-        \columnsep 35\p@
-        \twocolumn[%
-            \@makeschapterhead{\indexname}%
-            \ifx\index@prologue\@empty\else
-                \index@prologue
-                \bigskip
-            \fi
-        ]%
-%        \@mkboth{\MakeUppercase\indexname}%
-%                {\MakeUppercase\indexname}%
-        \@mkboth{\indexname}%
-                {\indexname}%
-        \thispagestyle{plain}%
-        \parindent\z@
-        \parskip\z@ \@plus .3\p@\relax
-        \let\item\@idxitem
-    }{%
-        \if@restonecol
-            \onecolumn
-        \else
-            \clearpage
-        \fi
-    }
-
-\makeindex
-\newindex{lan}{ldx}{lnd}{Index of Languages}
-\newindex{aut}{adx}{and}{Index of Names}
-\renewindex{default}{idx}{ind}{Index of Subjects}
-
-
-\def\fn#1#2{%
-\hyperpage{#2}$^{#1}$%
-}%
-
-
-%% % http://tex.stackexchange.com/questions/32234/visualize-index-entries-in-the-text
-%% \usepackage{etoolbox}
-
-%% \def\margin@index#1{\marginpar{\texttt{\detokenize{#1}}}}
-%% \iflsDraft
-%% \else
-%% {\let\margin@index\@gobble}
-%% \fi
-%% \pretocmd{\@wrindex}{\margin@index{#1}}
-
-\newcommand{\ia}[1]{\if@noftnote%
-\index{autind}{#1}%
-\else%
-\index{autind}{#1|fn{\thefootnote}}%
-\fi%
-}
-
-\newcommand{\is}[1]{\if@noftnote%
-\index{#1}%
-\else%
-% irgendwie muss man ihn dazu bringen den Wert für footnote auch einzusetzen
-\index{#1|fn{*}}%
-%\indexftn{#1}{\value{footnotemark}}%
-\fi%
-}
-
-\newcommand{\isfeat}[1]{\if@noftnote%
-\index{feature!{\sc #1}}%
-\else%
-%\index{feature!{\sc #1}|fn{\thefootnote}}%
-\index{feature!{\sc #1}|fn{*}}%
-\fi%
-}
-
-\newcommand{\istype}[1]{\if@noftnote%
-\index{type!#1@\type{#1}}%
-\else%
-%\index{type!{\it #1}|fn{\thefootnote}}
-\index{type!#1@\type{#1}|fn{*}}%
-\fi%
-}
-
-\newcommand{\isrel}[1]{\if@noftnote%
-\index{relation!\emph{#1}}%
-\else%
-\index{relation!\emph{#1}|fn{*}}%
-\fi%
-}
-
-
-% \index[lan] für Einträge in separaten Index
-
-\newcommand{\il}[1]{%
-\if@noftnote%
-\index[lan]{#1}%
-\else%
-\index[lan]{#1|fn{*}}%
-\fi%
-}
 
 
 % this is required by authorindex

@@ -72,6 +72,19 @@
 \index{package!\texttt{#1}|)}
 }
 
+\newcommand{\isoption}[1]{\if@noftnote%
+\index{option!\texttt{#1}}%
+\else%
+\index{option!\texttt{#1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\iscommand}[1]{\if@noftnote%
+\index{#1@{\ttfamily $\backslash$#1}}%
+\else%
+\index{{#1@\ttfamily $\backslash$#1}|fn{*}}%
+\fi%
+}
 
 
 \newcommand\displaycmd[2]{%

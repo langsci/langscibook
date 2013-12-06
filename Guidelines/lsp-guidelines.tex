@@ -7,7 +7,7 @@
 	        %,blackandwhite
 	        %,smallfont
 	        ,draftmode  
-		  ]{langsci}                          
+		  ]{LSP/langsci}                          
 
           
 \hypersetup{pdfdisplaydoctitle=true}
@@ -80,7 +80,12 @@
 \iflsDraft
 \proofmodetrue
 \fi
-\indexproofstyle{\footnotesize}
+
+% This is needed to allow for hyphenation in \texttt
+% http://tex.stackexchange.com/questions/44361/how-to-automatically-hyphenate-within-texttt
+% usually this is not required, but since we show index entries for packages in the margin and since
+% the package names a re typeset in tt, we need the hyphenation.
+\DeclareFontFamily{OT1}{cmtt}{\hyphenchar \font=-1}
 
 
 \title{How to write a book for Language Science Press}  
