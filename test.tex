@@ -1,26 +1,30 @@
 \documentclass[ number=??
 			   ,series=sidl
+			   ,isbn=xxx-x-xxxxxx-xx-x
 			   ,output=long   % long|short|inprep              
 			   %,blackandwhite
 			   %,smallfont
-			   ,draftmode  
-			  ]{langsci}                          
+			   ,draftmode   
+			  ]{LSP/langsci}                          
+
 
               
-%\usepackage{lsp-styles/lsp-gb4e}		% verhindert Komma bei mehrfachen Fußnoten?
-\usepackage{lsp-styles/avm}
+\usepackage{LSP/lsp-styles/lsp-gb4e}		% verhindert Komma bei mehrfachen Fußnoten?
+\usepackage{LSP/lsp-styles/avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
                                                       
-\usepackage{layout} 
+\usepackage{layout}  
 \usepackage{lipsum}   
-   
-\title{Τέχνη \newlineCover γραμματική}
+ 
+\title{M Typology of \\ Marked-S Languages}  
+%\title{Τέχνη \newlineCover γραμματική}
 \subtitle{2000+ Years of Language Science and no End in Sight}  
 \author{Dionysios Thrax \newlineCover et al.}
 \dedication{Thanks! }
              
-\begin{document}               
+\begin{document} 
+             
                                                                                     
                                      
 \maketitle  
@@ -56,7 +60,7 @@
     \]
   \end{avm}
 
-\item test reference: \cite{Jespersen1924a-u}
+\item test reference: llllllllllllllllllllllllllllllllllllllllllllll oooooooooo\cite[123]{Jespersen1924a-u}
 \item draftmode test: too loooooooooooooooooooooooooooooooooooooooooooooooong
 \item mathmode $1+1=11$ 
 \end{itemize}  
@@ -67,7 +71,30 @@ Tabular:\footnote{Another footnote.}\footnote{Another footnote.}\\
 123 & 456 & 789 \\
 \hline
 \end{tabular} 
-Behind: 12345
+Behind: 12345 (4) (35) $\left(\mbox{4}\right)$ (g) \\
+
+\eal
+\ex
+\gll On s''-el\textsc{pf} jabloko za čas. \\
+	 he S-eat.\textsc{past} apple.\textsc{acc} in hour \\
+\glt `He ate a/the (whole) apple in an hour.'\footnote{ List of abbreviations: \textsc{acc}: accusative, \textsc{aux}: auxiliary, \textsc{cop}: copular, \textsc{def}: definite, \textsc{gen}: genitive, \textsc{impf}: imperfective, \textsc{loc}: locative, \textsc{neg}: negation, \textsc{part}: particle, \textsc{pf}: perfective, \textsc{pl}: plural, \textsc{prep}: preposition, \textsc{sg}: singular.} 
+%%%
+\ex
+\gll On el\textsc{impf} jabloko {(*}$\!$ za čas).\\
+	he eat.\textsc{past} apple.\textsc{acc} {} in hour\\
+\glt `He ate/was eating an/the apple.'
+%%%
+\ex
+\gll On vy-pil\textsc{pf} vod-u za čas.\\
+	he VY-drink.\textsc{past} water-\textsc{acc} in hour\\
+\glt `He drank (all) the water in an hour.'
+%%%
+\ex
+\gll On pil\textsc{impf} vod-u {(*}$\!$ za čas).\\
+	he drink.\textsc{past} water-\textsc{acc} in hour\\
+\glt `He drank/was drinking water.'
+\zl
+
 
 % Simple examples like (\mex{1}) can be typeset as shown below.
 % \ea

@@ -88,7 +88,7 @@
  	
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
-  \newcommand{\fontpath}{./lsp-fonts/}
+  \newcommand{\fontpath}{./LSP/lsp-fonts/}
 			
   \setsansfont[
   			%Ligatures={TeX,Common},		% not supported by ttf
@@ -291,7 +291,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % unified style sheet for linguistics journals
 % put directory in BST_INPUTS
 % http://celxj.org/downloads/unified.bst
-\bibliographystyle{./lsp-bst/unified} 
+\bibliographystyle{./LSP/lsp-bst/unified} 
 % This does not work ...
 %% \setcitestyle{
 %% notesep={: }, % 2002: 125
@@ -335,7 +335,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cover:
 
-\newcommand{\logopath}{./lsp-logos}
+\newcommand{\logopath}{./LSP/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 
@@ -541,8 +541,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{./lsp-seriesinfo/\lsSeries-info.tex}{\input{./lsp-seriesinfo/\lsSeries-info}}{
-  Series information: ./lsp-seriesinfo/\lsSeries-info.tex not found!} 
+\IfFileExists{./LSP/lsp-seriesinfo/\lsSeries-info.tex}{\input{./LSP/lsp-seriesinfo/\lsSeries-info}}{
+  Series information: ./LSP/lsp-seriesinfo/\lsSeries-info.tex not found!} 
 
 }
 
@@ -805,7 +805,7 @@ guarantee the accuracy of such information thereafter.
 \usepackage{authorindex}
 
 
-\usepackage{./lsp-styles/lsp-eng-hyp}
+\usepackage{./LSP/lsp-styles/lsp-eng-hyp}
 
 
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
