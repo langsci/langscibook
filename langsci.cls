@@ -67,9 +67,9 @@
 			,inner=20mm, 
 			,outer=25mm
 			%,showframe,pass
+                        ,marginparwidth=50pt
 			]{geometry}
 			
-\setlength{\marginparwidth}{50pt}
 
 \usepackage[absolute 		% for absolute positioning in titlepage
 			%,showboxes
@@ -737,7 +737,16 @@ guarantee the accuracy of such information thereafter.
 \hyperpage{#2}$^{#1}$%
 }%
 
-\newif\ifshowindex \showindexfalse
+
+%% % http://tex.stackexchange.com/questions/32234/visualize-index-entries-in-the-text
+%% \usepackage{etoolbox}
+
+%% \def\margin@index#1{\marginpar{\texttt{\detokenize{#1}}}}
+%% \iflsDraft
+%% \else
+%% {\let\margin@index\@gobble}
+%% \fi
+%% \pretocmd{\@wrindex}{\margin@index{#1}}
 
 \newcommand{\ia}[1]{\if@noftnote%
 \index{autind}{#1}%
@@ -789,6 +798,10 @@ guarantee the accuracy of such information thereafter.
 \fi%
 }
 
+
+% this is required by authorindex
+\newif\ifshowindex \showindexfalse
+
 \usepackage{authorindex}
 
 
@@ -811,7 +824,7 @@ guarantee the accuracy of such information thereafter.
                {\endlist}
 
 
-\usepackage{varioref}
+\usepackage[english]{varioref}
 
 \endinput
 
