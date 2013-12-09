@@ -194,7 +194,37 @@ If you are working in a theory that uses features (like LFG or HPSG), you may us
 features into the subject index. \verb+\isfeat{comps}+\isfeat{comps} would enter the \compsf into the subject
 index. The typesetting of the feature name in {\sc small caps} will be done automatically.
 
+Words (or stems) can be entered into a special index by using \verb+\iw+. For instance,
+\verb+\iw{Mann}+ enters the word \emph{Mann}\iw{Mann} in to the index of expressions.
+
+Authors working in the area of morphology may find a reverse index of expressions useful. For
+instance, if one wants to find all references to words ending on \suffix{ung} (as for instance \emph{Besprechung}\iw{Besprechung}, \emph{Lesung}\iw{Lesung},
+\emph{Sitzung}\iw{Sitzung}, or \emph{Vorlesung}\iw{Vorlesung}), one can look them up
+in the reverse index of expressions easily.
+
+All these index commands can also be used in footnotes.\footnote{
+  The commands are set up in a way that automatically distinguishes between index entries in
+  footnotes and outside of footnotes. For instance the call of \texttt{$\backslash$iw\{Mann\}} for the word
+  \emph{Mann}\iw{Mann} causes a special marking in the expression index.
+}
+
 All index entries are hyper-linked to the respective pages.
+
+Indexes are inserted at the end of the document by specifying a subset of the following calls:
+\begin{verbatim}
+\clearpage
+\pdfbookmark[0]{Index}{Index}
+\pdfbookmark[1]{Expression index}{Expression index}
+\printindex[wrd]
+\pdfbookmark[1]{Reverse expression index}{Reverse expression index}
+\printindex[rwrd]
+\pdfbookmark[1]{Name index}{Name index}
+\printindex[aut]
+\pdfbookmark[1]{Language index}{Language index}
+\printindex[lan]
+\pdfbookmark[1]{Subject index}{Subject index}
+\printindex
+\end{verbatim}
 
 While working at a manuscript it can be practical to see index entries in the margins. Index entries may be
 switched on by specifying \verb+\proofmodetrue+ in the preamble of the
@@ -206,6 +236,8 @@ this is the case:
 \proofmodetrue
 \fi
 \end{verbatim}
+
+
 \is{index|)}
 
 \subsection{Hyphenation}
@@ -260,6 +292,7 @@ version of \texttt{gloss} that was modified by Alexis Dimitriadis\aimention{Alex
 
 Simple examples like (\mex{1}) can be typeset as shown below.
 \ea
+\iw{Mann}\iw{schlafen}
 \gll Der Mann schläft.\\
      the man  sleeps\\
 \glt `The man sleeps.'
@@ -275,6 +308,7 @@ Lists of examples can be typeset with \verb+\eal+ and \verb+\zl+ respectively. T
 (\mex{1}) shows how the sentences can be aligned properly:
 \eal
 \ex[]{
+\iw{Linguist}\iw{Nobelpreis}\iw{glauben}
 \gll Ich glaube dem Linguisten nicht, einen Nobelpreis gewonnen zu haben.\\
      I believe the linguist not a Nobel.prize won to have\\
 \glt  `I don't believe linguist's claim that he won a Nobel prize.'

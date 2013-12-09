@@ -1,5 +1,6 @@
-% avm.sty  --  for attribute-value matrices -- mar 29, 1992; rev. dec 6, 1993
-% (c) 1992 christopher manning (manning@csli.stanford.edu) -- see avm.doc.tex
+% avm.sty  --  for attribute-value matrices -- v 1.00 mar 29, 1992
+% v 1.01 dec 6, 1993; v 1.02 jan 5, 2006
+% (c) 1992 christopher manning (manning@csli.stanford.edu) -- see avm-doc.tex
 
 \newif\ifavmactive\newif\ifavmsorted\newif\ifavmlabeled
 \newif\ifavmcenter\newif\ifavmbottom
@@ -101,7 +102,11 @@
 \fi	% end not active
 %
 \ifx\LaTeX\undefined\def\\{\cr}% running under TeX
-\else \def\\{\@tabularcr}% Leverage off LaTeX's \\*[dimen] options
+\else \ifx\@tabularcr\relax
+\def\\{\@arraycr}	% fix for the Mainz array package
+\else
+\def\\{\@tabularcr}% Leverage off LaTeX's \\*[dimen] options
+\fi
 \fi
 \def\!{\node}%
 \long\def\avmjsort{\dimen2=\ht2\advance\dimen2 by -.25\baselineskip
@@ -121,6 +126,7 @@
 	\fi\fi\fi}%
 \long\def\osort##1##2{\setbox2=\hbox{##2}\setbox
 	\avmboxthree=\hbox{\avmjsortfont ##1\/}\avmjsort}%
+\def\asort##1{\avmspan{\avmjsortfont ##1}\\}
 \def\avml{\avmjprolog.}%
 \def\avmr{\avmjpostlog.}%
 \def\avmb##1{\node{##1}{\lbrack\;\rbrack}}%

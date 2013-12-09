@@ -347,9 +347,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
     }
 
 \makeindex
-\newindex{lan}{ldx}{lnd}{Index of Languages}
-\newindex{aut}{adx}{and}{Index of Names}
-\renewindex{default}{idx}{ind}{Index of Subjects}
+\newindex{lan}{ldx}{lnd}{Language index}
+\newindex{aut}{adx}{and}{Name index}
+\renewindex{default}{idx}{ind}{Subject index}
+\newindex{wrd}{wdx}{wnd}{Expression index}
+\newindex{rwrd}{rdx}{rnd}{Revers expression index}
 
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
@@ -408,6 +410,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi%
 }
 
+% index entries for words
+\newcommand{\iw}[1]{%
+\if@noftnote%
+\index[wrd]{#1}%
+\else%
+\index[wrd]{#1|fn{*}}%
+\fi%
+}
 
 
 

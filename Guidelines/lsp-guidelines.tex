@@ -41,10 +41,10 @@
 % DRS package by Alexis Dimitriadis
 \usepackage{drs}
 
-%\usepackage{tabularx}
+\usepackage{tabularx}
 
 % AVMs
-\usepackage{lsp-styles/avm}
+\usepackage{avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
 
@@ -175,13 +175,15 @@ Berlin, \today\hfill Stefan Müller
 
 \clearpage
 \pdfbookmark[0]{Index}{Index}
-\pdfbookmark[1]{Index of Names}{Index of Names}
+\pdfbookmark[1]{Expression index}{Expression index}
+\printindex[wrd]
+\pdfbookmark[1]{Reverse expression index}{Reverse expression index}
+\printindex[rwrd]
+\pdfbookmark[1]{Name index}{Name index}
 \printindex[aut]
-%\addcontentsline{toc}{chapter}{Verzeichnis der Sprachen}
-\pdfbookmark[1]{Index of Languages}{Index of Languages}
+\pdfbookmark[1]{Language index}{Language index}
 \printindex[lan]
-%\addcontentsline{toc}{chapter}{Sachregister}
-\pdfbookmark[1]{Index of Subjects}{Index of Subjects}
+\pdfbookmark[1]{Subject index}{Subject index}
 \printindex
 
                               
