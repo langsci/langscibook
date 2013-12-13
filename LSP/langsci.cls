@@ -833,6 +833,15 @@ guarantee the accuracy of such information thereafter.
                 \item\relax}
                {\endlist}
 
+% quotations are indented at one side only
+% there is no indentation at the beginning of the quote
+\renewenvironment{quotation}
+               {\list{}{\listparindent 1.5em%
+                        %\itemindent    \listparindent
+                        %\rightmargin   \leftmargin
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax}
+               {\endlist}
 
 \usepackage[english]{varioref}
 
