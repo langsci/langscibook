@@ -5,7 +5,7 @@
 
 The \latex class for typesetting Language Science Press books was developed by Timm
 Lichte\aimention{Timm Lichte} with
-help be Berthold Crysmann\aimention{Berthold Crysmann} and me\aimention{Stefan Müller}. It can be downloded from the GitHUB\is{GitHUB} repository at: \url{https://github.com/langsci/latex}
+help be Berthold Crysmann\aimention{Berthold Crysmann} and me\aimention{Stefan M{\"u}ller}. It can be downloded from the GitHUB\is{GitHUB} repository at: \url{https://github.com/langsci/latex}
 You can download the classes directly from the given web page or use the following git commands to
 create a local copy of the repository:
 \begin{verbatim}
@@ -149,6 +149,30 @@ cover text on the back is provided by \verb+\BackBody+\iscommand{BackBody}.
 \subsection{References}
 
 \lsp uses the \texttt{natbib}\ispackage{natbib} package together with \bibtex\is{bibtex@\bibtex} and the \bibtex style \texttt{unified.bst}.
+
+
+\subsection{Citation}
+
+As was explained in Section~\ref{sec-references-authors} citations that provide a page number are
+given required to be in the format Author (1975: 312) rather than Author (1975: p.\,312). If authors
+want their text to be copy-and-safe-proof, they can define the command \verb+\page+ and cite as
+follows:
+\begin{verbatim}
+\citet[\page 312]{Author1975a}
+\end{verbatim}
+For \lsp \verb+\page+ would be:
+\begin{verbatim}
+\newcommand{\page}{}
+\end{verbatim}
+For other publications authors can use the following
+\begin{verbatim}
+\newcommand{\page}{p.\,}
+\end{verbatim}
+In case several pages are cited, the page numbers should be passed to cite as follows:
+\begin{verbatim}
+\citet[\page 312, 740, 756--758]{Author1975a}
+\end{verbatim}
+
 
 \subsection{Crossreferencing}
 
@@ -889,6 +913,11 @@ line in the text.
 
 \section{Checklist for typesetters/authors using \latex}
 \label{sec-check-typesetters}
+
+\begin{itemize}
+\item Does your book compile without error messages? (Sounds trivial, but some tools just skip
+  \latex errors)
+\end{itemize}
 
 
 %      <!-- Local IspellDict: en_US-w_accents -->
