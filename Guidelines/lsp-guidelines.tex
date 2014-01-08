@@ -21,6 +21,8 @@
 \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \newcommand{\bibtex}{\BibTeX\xspace}
 
+\usepackage{lsp-avm}
+
 \usepackage{lsp-makros}
 
 \usepackage{german}\selectlanguage{USenglish}
@@ -47,6 +49,13 @@
 \usepackage{avm}
 \avmfont{\sc} 
 \avmvalfont{\it}
+
+% command to fontify the type values of an avm 
+\newcommand{\tpv}[1]{{\avmjvalfont #1}}
+
+% command to fontify the type of an avm and avmspan it
+\newcommand{\tp}[1]{\avmspan{\tpv{#1}}}
+
 
 \usepackage{tikz-qtree}
 % has strange side effects

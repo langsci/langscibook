@@ -579,16 +579,130 @@ and DRSes with quantifiers. Some examples from the manual are given below:
 
 \subsection{AVMs}
 
-\ispackageb{avm}
+The package for typesetting AVMs that is most widely used is the package \texttt{avm}\ispackage{avm}
+by Chris Manning\aimention{Chris Manning}. 
+
+%% This package is described in the following
+%% subsection. Section~\ref{sec-lsp-avm} describes AVM macros that were put together by Markus Duda\aimention{Markus Duda}.
+
+%% \subsubsection{\texttt{avm}}
+
+(\mex{1})\ispackageb{avm} shows an example of an AVM typeset with the \texttt{avm} package:
+\ea
+\label{ex-avm-avm}
+\begin{avm}
+\[phon   & \< {\it porcupine\/} \>\\
+  feat-a & \@{10} \[feat-aa & type-aa\\
+                    feat-ab & \< \[ synsem|loc|cat|head & type-aba\\
+                                    feat-abc \tpv{type-abc} 
+                                  \],
+                                  \textup{NP} \>\\
+                    \tp{type-a}
+                  \]\\
+ feat-b & \@{10} type-b\\ 
+ \tp{some-type}
+\]
+\end{avm}
+\z
+
+
+
+\begin{verbatim}
+\begin{avm}
+\[phon   & \< {\it porcupine\/} \>\\
+  feat-a & \@{10} \[feat-aa & type-aa\\
+                    feat-ab & \< \[ synsem|loc|cat|head & type-aba\\
+                                    feat-abc \tpv{type-abc} 
+                                  \],
+                                  \textup{NP} \>\\
+                    \tp{type-a}
+                  \]\\
+ feat-b & \@{10} type-b\\ 
+ \tp{some-type}
+\]
+\end{avm}
+\end{verbatim}
+%
+The command \verb+\tp+ is defined as follows (the code is taken from Detmar
+Meurers'\aimention{Detmar Meurers} \texttt{avm+}\ispackage{avm+}):
+\begin{verbatim}
+% command to fontify the type values of an avm 
+\newcommand{\tpv}[1]{{\avmjvalfont #1}}
+
+% command to fontify the type of an avm and avmspan it
+\newcommand{\tp}[1]{\avmspan{\tpv{#1}}}
+\end{verbatim}
+
+A more complex example is given in (\mex{1}):
+\ea
+\label{ex-avm-avm}
   \begin{avm}
     {\it word\/} $\rightarrow$
-    \[morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
-    morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
-    rules & \< \[morphs & \@{e_1}\\mud & \@{m_1}\\ morsyn & \@0\],\ldots,
-    \[morphs & \@{e_n}\\mud & \@{m_n}\\ morsyn & \@0\] \>
+    \[ morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
+       morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
+       rules  & \< \[ morphs & \@{e_1}\\
+                      mud & \@{m_1}\\ 
+                      morsyn & \@0\], \ldots ,
+                    \[morphs & \@{e_n}\\
+                      mud    & \@{m_n}\\ 
+                      morsyn & \@0\] \>
     \]
   \end{avm}
+\z
+
+
+The code is given below:
+\begin{verbatim}
+  \begin{avm}
+    {\it word\/} $\rightarrow$
+    \[ morphs & $\@{e_1}\bigcirc\cdots\bigcirc\@{e_n}$\\
+       morsyn & \@0 $(\@{m_1}\uplus\cdots\uplus\@{m_n})$\\
+       rules  & \< \[ morphs & \@{e_1}\\
+                      mud & \@{m_1}\\ 
+                      morsyn & \@0\], \ldots,
+                    \[morphs & \@{e_n}\\
+                      mud    & \@{m_n}\\ 
+                      morsyn & \@0\] \>
+    \]
+  \end{avm}
+\end{verbatim}
+With the \texttt{avm} package it is possible to use brackets as they are used in AVMs.
+
+The package has a good documentation and we will not repeat all the details here.
 \ispackagee{avm}
+
+%% \subsubsection{\texttt{lsp-avm}}
+%% \label{sec-lsp-avm}
+
+%% An alternative way to typeset AVMs is provided in the \lsp style file \texttt{lsp-avm} that contains
+%% code by Markus Duda\aimention{Markus Duda} with some adaptions by Stefan Müller\aimention{Stefan
+%%   M{\"u}ller}. The AVM in (\ref{ex-avm-avm}) is typeset as follows:
+
+%% \ea
+%% \ms[some-type]{
+%%   phon   & \phonliste{ porcupine } \\
+%%   feat-a & \ibox{10} \ms[type-a]{ feat-aa & type-aa\\
+%%                                   feat-ab & \liste{ \onems{ synsem|loc|cat|head \type{type-aba}\\
+%%                                                             feat-abc \type{type-abc} },
+%%                                   NP }\\ }\\
+%%  feat-b & \ibox{10} type-b\\ 
+%% }
+%% \z
+
+%% %\ea
+%% \begin{verbatim}
+%% {\it word\/} $\rightarrow$
+%%     \ms{ morphs & $\ibox{e_1}\bigcirc\cdots\bigcirc\ibox{e_n}$\\
+%%          morsyn & \ibox{0} $(\ibox{m_1}\uplus\cdots\uplus\ibox{m_n})$\\
+%%          rules  & \liste{ \ms{ morphs & \ibox{e_1}\\
+%%                                mud & \ibox{m_1}\\ 
+%%                                morsyn & \ibox{0} }, \ldots ,
+%%                           \ms{ morphs & \ibox{e_n}\\
+%%                                mud    & \ibox{m_n}\\ 
+%%                                morsyn & \ibox{0} } }
+%%       }
+%% \end{verbatim}
+
 
 \subsection{OT tableaux}
 
