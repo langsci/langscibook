@@ -288,6 +288,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % Citation:
 
 \usepackage{natbib}
+\setlength{\bibsep}{0mm}
 % unified style sheet for linguistics journals
 % put directory in BST_INPUTS
 % http://celxj.org/downloads/unified.bst
@@ -351,7 +352,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newindex{aut}{adx}{and}{Name index}
 \renewindex{default}{idx}{ind}{Subject index}
 \newindex{wrd}{wdx}{wnd}{Expression index}
-\newindex{rwrd}{rdx}{rnd}{Revers expression index}
+\newindex{rwrd}{rdx}{rnd}{Reverse expression index}
 
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 

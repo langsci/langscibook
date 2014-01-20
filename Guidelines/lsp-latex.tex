@@ -1,6 +1,9 @@
 %% -*- coding:utf-8 -*-
 \chapter{\LaTeX}
 
+\newcommand{\logo}{\raisebox{-1.25em}{\resizebox{2cm}{!}{\color{\lsSeriesColor}\includegraphics{LSP/lsp-logos/langsci_logo_nocolor.pdf}}}}
+\cfoot[\raggedright\rm\scriptsize \logo\begin{tabular}{l@{}}In Joan Bresnan(ed.), \emph{The mental representation of grammatical relations}\\  Empirically Oriented Theoretical Morphology and Syntax, 282–390.\\Berlin: Language Science Press. http://langsci-press.org/catalog/book/18\end{tabular}]{} 
+
 \section{Installation of the \texttt{langsci} class}
 
 The \latex class for typesetting Language Science Press books was developed by Timm
@@ -90,7 +93,7 @@ Chapter~\ref{chap-publication}). Then they will get an ISBN, which has to be pas
 
 When\isoption{url} a manuscript is submitted to \lsp the submission gets a number and there will be a
 corresponding URL. This URL has to be passed to the langsci class, since it will be part of the
-impressum of your book.
+copyright information of the book.
 
 \subsubsection{\texttt{output}}
 
@@ -155,7 +158,7 @@ cover text on the back is provided by \verb+\BackBody+\iscommand{BackBody}.
 
 As was explained in Section~\ref{sec-references-authors} citations that provide a page number are
 given required to be in the format Author (1975: 312) rather than Author (1975: p.\,312). If authors
-want their text to be copy-and-safe-proof, they can define the command \verb+\page+ and cite as
+want their text to be copy\&paste-proof, they can define the command \verb+\page+ and cite as
 follows:
 \begin{verbatim}
 \citet[\page 312]{Author1975a}
@@ -867,15 +870,15 @@ right text.\footnote{
 Hebrew\il{Hebrew|(} is also written from right to left. The characters are part of Linux Libertine, so no extra
 font has to be loaded to set examples like (\mex{1}):
 \ea
-\glll \RL{האישה קוראת ספר.}\\
-       ha-'iša          qore't	                          sefer.\\
+\RL{האישה קוראת ספר.}\\
+\gll   ha-'iša          qore't                            sefer.\\
        {\sc def}-woman  read.{\sc pres}.{\sc f}.{\sc sg}  book\\
 \glt `The woman is reading a book.'
 \z
 \begin{fitverb}
 \ea
-\glll \RL{האישה קוראת ספר.}\\
-       ha-'iša          qore't                            sefer.\\
+\RL{האישה קוראת ספר.}\\
+\gll   ha-'iša          qore't                            sefer.\\
        {\sc def}-woman  read.{\sc pres}.{\sc f}.{\sc sg}  book\\
 \glt `The woman is reading a book.'
 \z
