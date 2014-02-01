@@ -272,7 +272,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
  	\newcommand{\lsSeriesColor}{lsLightWine}
 \fi	
 \ifx\lsSeries\dummyseries
- 	\newcommand{\lsSeriesTitle}{}
+ 	\newcommand{\lsSeriesTitle}{~}
  	\newcommand{\lsSeriesColor}{lsLightWine}
 \fi	
 
