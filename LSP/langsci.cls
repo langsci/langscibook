@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci}[2013/11/27 Language Science Publications]
+\ProvidesClass{LSP/langsci}[2014/02/01 Language Science Publications]
 
 % Default values:
 \usepackage{xspace}
@@ -11,6 +11,7 @@
 \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{long}
 \newcommand{\lsFontsize}{11pt}
+\newcommand{\lsCopyright}{CC-BY}
 \newif\iflsDraft
 \lsDraftfalse
 
@@ -34,6 +35,9 @@
 \DeclareStringOption{output}[long]
 	\define@key{langsci}{output}{%
 		\renewcommand{\lsOutput}{#1}}
+\DeclareStringOption{copyright}[CC-BY]
+	\define@key{langsci}{copyright}{%
+		\renewcommand{\lsCopyright}{#1}}
 \DeclareVoidOption{blackandwhite}{
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{long}{
@@ -687,7 +691,7 @@ Habelschwerdter Allee 45\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
-It is published under the Creative Commons Licence CC-BY. 
+It is published under the Creative Commons Licence \lsCopyright. 
 
 ISBN: \lsISBN 
 
