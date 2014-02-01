@@ -411,6 +411,22 @@ Authors do not have to care for this. The code for typesetting this is exactly t
 variant without italics.
 % of course this is not true for the code above ...
 The series editor decided whether italics is used or not.
+
+If the series decides to use italics, it has to be ensured that structural markup like brackets are
+not typeset in italics:
+\ea
+\def\exfont{\normalsize\it}
+\gll ein {\rm[}interessantes       Beispiel{\rm]}\\
+     an  \hspaceThis{[}interesting example\\
+\glt `an interesting example'
+\z 
+\begin{verbatim}
+\ea
+\gll ein {\rm[}interessantes       Beispiel{\rm]}\\
+     an  \hspaceThis{[}interesting example\\
+\glt `an interesting example'
+\z 
+\end{verbatim}
 \is{glossing|)}\ispackagee{lsp-gb4e}
 %% \inlinetodostefan{
 %% The translation should not be separated from the glossed example by a page break.

@@ -304,8 +304,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % They do not say anything about citations in the running text.
 % As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
 % This is what De Gruyter does:
-% \let\citew=\citet
-\let\citew=\citealt
+\let\citew=\citet
+% This is what Stefan did:
+%\let\citew=\citealt
 
 
 
@@ -845,6 +846,13 @@ guarantee the accuracy of such information thereafter.
                {\endlist}
 
 \usepackage[english]{varioref}
+
+
+% usefull commands for glossings:
+\newlength{\stmueTmp}
+% a) hspace over width of something without showing it
+\newcommand*{\hspaceThis}[1]{\settowidth{\stmueTmp}{#1}\hspace*{\stmueTmp}}
+
 
 \endinput
 
