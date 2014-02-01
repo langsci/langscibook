@@ -187,14 +187,24 @@
 \usepackage{xcolor}
 \definecolor{lsLightBlue}{cmyk}{0.6,0.05,0.05,0}
 \definecolor{lsMidBlue}{cmyk}{0.75,0.15,0,0}
+\definecolor{lsMidDarkBlue}{cmyk}{0.9,0.4,0.05,0}
 \definecolor{lsDarkBlue}{cmyk}{0.9,0.5,0.15,0.3}
+\definecolor{lsNightBlue}{cmyk}{1,0.47,0.22,0.68}
 \definecolor{lsYellow}{cmyk}{0,0.25,1,0}
-\definecolor{lsOrange}{cmyk}{0,0.50,1,0}
+\definecolor{lsLightOrange}{cmyk}{0,0.50,1,0}
+\definecolor{lsMidOrange}{cmyk}{0,0.64,1,0}
+\definecolor{lsDarkOrange}{cmyk}{0,0.78,1,0}
 \definecolor{lsRed}{cmyk}{0.05,1,0.8,0}
-\definecolor{lsWine}{cmyk}{0.3,1,0.6,0}
+\definecolor{lsLightWine}{cmyk}{0.3,1,0.6,0}
+\definecolor{lsMidWine}{cmyk}{0.54,1,0.65,0.1}
+\definecolor{lsDarkWine}{cmyk}{0.58,1,0.70,0.35}
+\definecolor{lsSoftGreen}{cmyk}{0.32,0.02,0.72,0}
 \definecolor{lsLightGreen}{cmyk}{0.4,0,1,0}
 \definecolor{lsMidGreen}{cmyk}{0.55,0,0.9,0.1}
-\definecolor{lsDarkGreen}{cmyk}{0.6,0,0.9,0.35}
+\definecolor{lsRichGreen}{cmyk}{0.6,0,0.9,0.35}
+\definecolor{lsDarkGreen1}{cmyk}{0.85,0.02,0.95,0.38}
+\definecolor{lsDarkGreen2}{cmyk}{0.85,0.05,1,0.5}
+\definecolor{lsNightGreen}{cmyk}{0.85,0.05,1,0.5}
 \definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
 
 
@@ -226,6 +236,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\nc}{nc}%Niger Congo
 \newcommand{\lnls}{lnls}%Lecture Notes in Language Sciences
 \newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
+\newcommand{\dummyseries}{dummyseries}
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
@@ -238,11 +249,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 \ifx\lsSeries\sidl
  	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsDarkGreen}
+ 	\newcommand{\lsSeriesColor}{lsRichGreen}
 \fi
 \ifx\lsSeries\algad
  	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsOrange}
+ 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
 \ifx\lsSeries\tmnlp
  	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
@@ -258,7 +269,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi	
 \ifx\lsSeries\labphon
  	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsWine}
+ 	\newcommand{\lsSeriesColor}{lsLightWine}
+\fi	
+\ifx\lsSeries\dummyseries
+ 	\newcommand{\lsSeriesTitle}{}
+ 	\newcommand{\lsSeriesColor}{lsLightWine}
 \fi	
 
 \@ifundefined{blackandwhite}
