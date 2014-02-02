@@ -204,7 +204,7 @@
 \definecolor{lsRichGreen}{cmyk}{0.6,0,0.9,0.35}
 \definecolor{lsDarkGreen1}{cmyk}{0.85,0.02,0.95,0.38}
 \definecolor{lsDarkGreen2}{cmyk}{0.85,0.05,1,0.5}
-\definecolor{lsNightGreen}{cmyk}{0.85,0.05,1,0.5}
+\definecolor{lsNightGreen}{cmyk}{0.88,0.15,1,0.66}
 \definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
 
 
@@ -273,7 +273,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi	
 \ifx\lsSeries\dummyseries
  	\newcommand{\lsSeriesTitle}{~}
- 	\newcommand{\lsSeriesColor}{lsLightWine}
+ 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 
 \@ifundefined{blackandwhite}
