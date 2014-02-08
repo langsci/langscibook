@@ -233,9 +233,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\sidl}{sidl}
 \newcommand{\algad}{algad}
 \newcommand{\tmnlp}{tmnlp}
-\newcommand{\nc}{nc}%Niger Congo
-\newcommand{\lnls}{lnls}%Lecture Notes in Language Sciences
+\newcommand{\nc}{nc}			%Niger Congo
+\newcommand{\lnls}{lnls}		%Lecture Notes in Language Sciences
 \newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
+\newcommand{\tdgi}{tdgi}		%Topics at the Discourse Grammar Interface
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\lsSeriesFontColor}{white}
 
@@ -270,6 +271,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\labphon
  	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsLightWine}
+\fi	
+\ifx\lsSeries\tdgi
+ 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
 \fi	
 \ifx\lsSeries\dummyseries
  	\newcommand{\lsSeriesTitle}{~}
