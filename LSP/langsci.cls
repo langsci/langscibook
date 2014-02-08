@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/02/01 Language Science Publications]
+\ProvidesClass{LSP/langsci}[2014/02/08 Language Science Publications]
 
 % Default values:
 \usepackage{xspace}
@@ -12,8 +12,9 @@
 \newcommand{\lsOutput}{long}
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
-\newif\iflsDraft
-\lsDraftfalse
+\newif\iflsDraft \lsDraftfalse
+\newif\iflsIndex \lsIndextrue
+
 
 % Option handling:
 \RequirePackage{kvoptions}		% for key-value options
@@ -42,13 +43,13 @@
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{long}{
 	\renewcommand{\lsOutput}{long}}
-\DeclareVoidOption{smallfont}{
+\DeclareVoidOption{smallfont}{  			
 	\renewcommand{\lsFontsize}{10pt}}
-\DeclareStringOption{draftmode}[yes]		% 'draftmode' instead of 'draft' due to undesirable side efects	
-	\define@key{langsci}{draftmode}{			
+\DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
 	 \lsDrafttrue
- 	 \overfullrule=5pt		% to indicate overfull hboxes
-	 }
+ 	 \overfullrule=5pt	}	% to indicate overfull hboxes
+\DeclareVoidOption{noindex}{  			
+	\lsIndexfalse }
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
@@ -337,7 +338,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Indexes:
 
-
+\iflsIndex
 \usepackage{index}
 % Wie im Stylefile, aber ohne \MakeUppercase
    \renewenvironment{theindex}{%
@@ -384,7 +385,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \def\fn#1#2{%
 \hyperpage{#2}$^{#1}$%
 }%
-
+\fi
 
 \newcommand{\ia}[1]{\if@noftnote%
 \index{autind}{#1}%
@@ -444,7 +445,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \index[wrd]{#1|fn{*}}%
 \fi%
 }
-
 
 
 
