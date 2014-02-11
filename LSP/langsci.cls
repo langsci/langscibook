@@ -868,9 +868,9 @@ guarantee the accuracy of such information thereafter.
 
 
 % usefull commands for glossings:
-\newlength{\stmueTmp}
+\newlength{\LSPTmp}
 % a) hspace over width of something without showing it
-\newcommand*{\hspaceThis}[1]{\settowidth{\stmueTmp}{#1}\hspace*{\stmueTmp}}
+\newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
 
 
 \endinput
