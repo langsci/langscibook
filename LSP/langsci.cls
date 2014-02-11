@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/02/01 Language Science Publications]
+\ProvidesClass{LSP/langsci}[2014/02/08 Language Science Publications]
 
 % Default values:
 \usepackage{xspace}
@@ -12,8 +12,9 @@
 \newcommand{\lsOutput}{long}
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
-\newif\iflsDraft
-\lsDraftfalse
+\newif\iflsDraft \lsDraftfalse
+\newif\iflsIndex \lsIndextrue
+
 
 % Option handling:
 \RequirePackage{kvoptions}		% for key-value options
@@ -42,13 +43,13 @@
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{long}{
 	\renewcommand{\lsOutput}{long}}
-\DeclareVoidOption{smallfont}{
+\DeclareVoidOption{smallfont}{  			
 	\renewcommand{\lsFontsize}{10pt}}
-\DeclareStringOption{draftmode}[yes]		% 'draftmode' instead of 'draft' due to undesirable side efects	
-	\define@key{langsci}{draftmode}{			
+\DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
 	 \lsDrafttrue
- 	 \overfullrule=5pt		% to indicate overfull hboxes
-	 }
+ 	 \overfullrule=5pt	}	% to indicate overfull hboxes
+\DeclareVoidOption{noindex}{  			
+	\lsIndexfalse }
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
@@ -204,7 +205,7 @@
 \definecolor{lsRichGreen}{cmyk}{0.6,0,0.9,0.35}
 \definecolor{lsDarkGreen1}{cmyk}{0.85,0.02,0.95,0.38}
 \definecolor{lsDarkGreen2}{cmyk}{0.85,0.05,1,0.5}
-\definecolor{lsNightGreen}{cmyk}{0.85,0.05,1,0.5}
+\definecolor{lsNightGreen}{cmyk}{0.88,0.15,1,0.66}
 \definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
 
 
@@ -233,9 +234,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\sidl}{sidl}
 \newcommand{\algad}{algad}
 \newcommand{\tmnlp}{tmnlp}
-\newcommand{\nc}{nc}%Niger Congo
-\newcommand{\lnls}{lnls}%Lecture Notes in Language Sciences
+\newcommand{\nc}{nc}			%Niger Congo
+\newcommand{\lnls}{lnls}		%Lecture Notes in Language Sciences
 \newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
+\newcommand{\tdgi}{tdgi}		%Topics at the Discourse Grammar Interface
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\lsSeriesFontColor}{white}
 
@@ -271,9 +273,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
  	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsLightWine}
 \fi	
+\ifx\lsSeries\tdgi
+ 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+\fi	
 \ifx\lsSeries\dummyseries
  	\newcommand{\lsSeriesTitle}{~}
- 	\newcommand{\lsSeriesColor}{lsLightWine}
+ 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 
 \@ifundefined{blackandwhite}
@@ -332,7 +338,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Indexes:
 
-
+\iflsIndex
 \usepackage{index}
 % Wie im Stylefile, aber ohne \MakeUppercase
    \renewenvironment{theindex}{%
@@ -379,7 +385,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \def\fn#1#2{%
 \hyperpage{#2}$^{#1}$%
 }%
-
+\fi
 
 \newcommand{\ia}[1]{\if@noftnote%
 \index{autind}{#1}%
@@ -439,7 +445,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \index[wrd]{#1|fn{*}}%
 \fi%
 }
-
 
 
 
