@@ -225,6 +225,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\newlineCover}{\\}	% \newline only on cover
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
 
+\def\typesetter#1{\gdef\@typesetter{#1}}
+\typesetter{}
+\def\proofreader#1{\gdef\@proofreader{#1}}
+\proofreader{}
+%\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Series information:
@@ -718,7 +723,17 @@ ISBN: \lsISBN
 \bigskip
  
 Cover and concept of design: \\
-Ulrike Harbort \\[3ex]
+Ulrike Harbort \\
+\if\@typesetter\empty\else
+Typesetting:\\
+\@typesetter \\
+\fi
+\if\@proofreader\empty\else
+Proofreading: \\
+\@proofreader \\
+\fi
+
+\vspace{3ex}
 
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
