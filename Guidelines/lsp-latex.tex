@@ -1,8 +1,6 @@
 %% -*- coding:utf-8 -*-
 \chapter{\LaTeX}
 
-\newcommand{\logo}{\raisebox{-1.25em}{\resizebox{2cm}{!}{\color{\lsSeriesColor}\includegraphics{LSP/lsp-logos/langsci_logo_nocolor.pdf}}}}
-\cfoot[\raggedright\rm\scriptsize \logo\begin{tabular}{l@{}}In Joan Bresnan(ed.), \emph{The mental representation of grammatical relations}\\  Empirically Oriented Theoretical Morphology and Syntax, 282–390.\\Berlin: Language Science Press. http://langsci-press.org/catalog/book/18\end{tabular}]{} 
 
 \section{Installation of the \texttt{langsci} class}
 
@@ -146,8 +144,54 @@ cover text on the back is provided by \verb+\BackBody+\iscommand{BackBody}.
 \section{Workflow}
 
 \subsection{Compiling the document}
+\label{sec-latex-compilation}
+
+There are various tools for all existing platforms that help authors/typesetters compiling the
+documents and creating indices and references. The following commands can be called explicitly from
+the commandline in Unix-based systems:
+\begin{fitverb}
+xelatex -no-pdf yourfilename
+bibtex -min-crossrefs=200 yourfilename
+xelatex -no-pdf yourfilename
+bibtex -min-crossrefs=200 yourfilename
+xelatex yourfilename -no-pdf
+correct-toappear
+correct-index
+makeindex -o yourfilename.ind yourfilename.idx
+makeindex -o yourfilename.lnd yourfilename.ldx
+makeindex -o yourfilename.wnd yourfilename.wdx
+LSP/bin/reverse-index <yourfilename.wdx >yourfilename.rdx
+makeindex -o yourfilename.rnd yourfilename.rdx
+\rm yourfilename.adx
+authorindex -i -p yourfilename.aux > yourfilename.adx
+sed -e 's/}{/|hyperpage}{/g' yourfilename.adx > yourfilename.adx.hyp
+makeindex -o yourfilename.and yourfilename.adx.hyp
+xelatex yourfilename
+\end{fitverb}
+
+\noindent
+These commands do the following: they run the documents through \xelatex, call \bibtex, create the
+indices using \texttt{makeindex}, and create an reverse index of expressions and an author index.
+
+Everytime \xelatex is run it writes information about the sections and figures and son on auxiliary
+files. These auxiliary files are read in when \xelatex runs again. They are used by \xelatex to create a
+table of contents and by \bibtex to create the list of references. Due to the insertion of a table of
+contents the page numbering may change. Therefore it is necessary to run \xelatex several times to
+get a stable document.
+
+We decided not to use the crossreferencing\is{crossreferencing} facility that \bibtex provides. Crossreferencing saves
+space if several papers in the same edited volume are cited, but is opaque for indexing tools like
+google scholar. Crossreferencing is disabled by the command option \verb+-min-crossrefs=200+ that is
+passed to the \texttt{bibtex} command.
 
 \subsection{Makefiles}
+
+Of course nobody wants to type in the commands mentioned in Section~\ref{sec-latex-compilation} by
+hand. Instead a Makefile\is{Makefile}\is{make} can be used. You will find an example Makefile in the
+github repository in the directory that also contains the code for this book.\footnote{
+  \url{https://github.com/langsci/latex/tree/master/Guidelines}, 16.02.2014.
+}
+
 
 \subsection{Using includes}
 

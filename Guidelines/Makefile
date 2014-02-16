@@ -1,12 +1,10 @@
-MKINDEX=makeindex -gs index.format   # dfki (German Order)
-DVIPS_OPTIONS=-j0 -Pwww
-#DVIPS_OPTIONS=-Ppdf
-
+# specify your main target here:
 all: lsp-guidelines.pdf
 
-check: check-danish.2.ps
-
-SOURCE=lsp-guidelines.tex lsp-guidelines.bib lsp-authors.tex lsp-latex.tex lsp-makros.sty LSP/langsci.cls
+# specify teh main file and all the files that you are including
+SOURCE=lsp-guidelines.tex lsp-guidelines.bib lsp-authors.tex lsp-latex.tex \
+	lsp-abbrev.bib lsp-guidelines.bib \
+	lsp-makros.sty LSP/langsci.cls 
 
 # irgendwie braucht man vier mal latex, weil sonst die Seiten nicht stimmen
 
@@ -20,9 +18,9 @@ SOURCE=lsp-guidelines.tex lsp-guidelines.bib lsp-authors.tex lsp-latex.tex lsp-m
 
 %.pdf: %.tex $(SOURCE)
 	xelatex -no-pdf $* |grep -v math
-	bibtex $*
+	bibtex -min-crossrefs=200 $*
 	xelatex -no-pdf $* |grep -v math
-	bibtex $*
+	bibtex -min-crossrefs=200 $*
 	xelatex $* -no-pdf |egrep -v 'math|PDFDocEncod' |egrep 'Warning|label|aux'
 	correct-toappear
 	correct-index
@@ -55,35 +53,15 @@ public: lsp-guidelines.pdf
 
 
 commit:
-	svn commit -m "automatic commit before submission to the web page"
-	(cd Bibliography; svn commit -m "automatic commit before submission of Danish to the web page")
-	(cd Implemented-Grammars-common; svn commit -m "automatic commit before submission of Danish to the web page")
-	(cd styles; svn commit -m "automatic commit before submission of Danish to the web page")
 
 
-o-public: /Users/stefan/public_html/Pub/danish.pdf /Users/stefan/public_html/Pub/danish.2.pdf commit
-	scp -p /Users/stefan/public_html/Pub/danish.pdf /Users/stefan/public_html/Pub/danish.2.pdf home.hpsg.fu-berlin.de:public_html/Pub/
+o-public: /Users/stefan/public_html/Pub/lsp-guidelines.pdf /Users/stefan/public_html/Pub/lsp-guidelines.2.pdf commit
+	scp -p /Users/stefan/public_html/Pub/lsp-guidelines.pdf /Users/stefan/public_html/Pub/lsp-guidelines.2.pdf home.hpsg.fu-berlin.de:public_html/Pub/
 
-
-code-public: o-public
-	tar cjvf /tmp/danish.tbz *.tex Makefile \
-/home/stefan/.LaTeX/tree-dvips/ /home/stefan/.LaTeX/authorindex/ \
-~/.LaTeX/makros.2e.sty \
-~/.LaTeX/de-commands.sty \
-~/.LaTeX/mycommands.sty \
-~/.LaTeX/eng-date.sty \
-~/.LaTeX/Ling/short-long-ex.sty \
-~/.LaTeX/Ling/article-ex.sty \
-~/.LaTeX/Ling/my-gb4e-article.sty \
-~/.LaTeX/Ling/my-cgloss4e.sty 
-
-	scp -p /tmp/danish.tbz stat2.cl.uni-bremen.de:/Users/stefan/public_html/Pub/
-	cp  -p /tmp/danish.tbz                        /Users/stefan/public_html/Pub/
 
 clean:
-	rm -f *.bak *~ *.log *.blg *.bbl *.aux *.toc *.cut *.out *.tmp *.tpm *.adx *.idx *.ilg *.ind *.and *.glg *.glo *.gls
-check-clean:
-	rm -f *.bak *~ *.log *.blg
+	rm -f *.bak *~ *.log *.blg *.bbl *.aux *.toc *.cut *.out *.tmp *.tpm *.adx *.adx.hyp *.idx *.ilg *.ind \
+	*.and *.glg *.glo *.gls *.wdx *.wnd *.wrd *.wdv *.ldx *.lnd *.rdx *.rnd *.xdv 
 
 realclean: clean
 	rm -f *.dvi *.ps *.pdf
