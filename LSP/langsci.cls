@@ -696,8 +696,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % Impressum:
 
 \newcommand{\lsImpressum}{
+\raggedright
 \null\vfill
-\begin{center}
 Language Sciene Press\\
 Berlin, Leipzig\\
 
@@ -738,7 +738,6 @@ Proofreading: \\
 Storage and catalogueing done by FU Berlin \\[3ex]  	
 
 \IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\
-\end{center}
 
 \vfill
 
