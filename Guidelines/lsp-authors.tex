@@ -46,9 +46,9 @@ before the references.
 The formating of linguistic examples in typological series follows the format that is used by the
 World Atlas of Language Structures \citep{DM2013a-ed}: If there is just one example, the language name and references
 follow the example number as in (\mex{1}):
-{\def\exfont{\normalsize\it}
-\ea
-{\rm Mising \citep[69]{Prasad91a}}\\
+{\def\exfont{\normalsize\itshape}
+\ea\label{ex-typology}
+{\rm Mising\il{Mising} \citep[69]{Prasad91a}}\\
 \gll azɔ́në dɔ́luŋ\\
      small village\\ 
 \glt `a small village' 
@@ -60,11 +60,11 @@ both examples.\footnote{
 If an example consists of several subexamples, the language and references follow the letters as in
 (\mex{1}):
 \eal
-\ex {\rm Apatani \citep[23]{Abraham85a}}\\
+\ex {\rm Apatani\il{Apanti} \citep[23]{Abraham85a}}\\
 \gll aki atu\\ 
      dog small\\ 
 \glt ‘the small dog’ 
-\ex {\rm Temiar \citep[155]{Benjamin76a}}\\ 
+\ex {\rm Temiar\il{Temiar} \citep[155]{Benjamin76a}}\\ 
 \gll dēk mənūʔ\\
      house big\\
 \glt ‘big house’ 
@@ -145,9 +145,9 @@ by ad hoc adjustments or loose formulation.
 \citep[5]{Chomsky57a}
 \end{quotation}
 %
-Short passages should be quoted inline in italics: \citet[5]{Chomsky57a} stated that \emph{[o]bscure
+Short passages should be quoted inline using quotes: \citet[5]{Chomsky57a} stated that ``[o]bscure
   and intuition-bound notions can neither lead to absurd conclusions nor provide new and
-correct ones}.
+correct ones''.
 
 If you quote text that is not in the language of the book provide a translation. Short quotes should
 be translated inline, long quotes should be translated in a footnote.
@@ -161,10 +161,9 @@ final documents much more useful.
 
 If you have numbered example sentence, please start with (1) for every new chapter.
 
-Please use capitals if you refer to specific sections, tables, or figures: \emph{As we have shown in
+Please use capitals if you refer to numbered chapters, sections, tables, figure, or footnotes: \emph{As we have shown in
   Section~3.1}, \emph{As Figure~3.5 shows}. Do not capitalize without a number: \emph{In the
-  following section we will discuss}.\todostefan{What about footnotes? I usually do not
-  capitalize. Seems inconsistent.}
+  following section we will discuss}.
 Depending on the series and the langauge the book is published in authors may also use the § sign
 instead of the word \emph{Section}. So the above sentence would read: \emph{As we have shown in
   §3.1}.
@@ -180,7 +179,13 @@ We use the \emph{Unified Style Sheet for Linguistics}, which is described here:
 \url{http://celxj.org/downloads/UnifiedStyleSheet.pdf}. The \bibtex file is contained in the \latex
 classes that are used for typesetting \lsp books. Please deliver a \bibtex file with all your
 references together with your submissions. \bibtex can be exported from all common bibliography
-tools (We recommend BibDesk for the Mac and JabRef for all other platforms).
+tools (We recommend BibDesk for the Mac and JabRef for all other platforms). Please make sure that
+all \bibtex fields are complete. Please provide all first and last names of all authros and
+editors. It is always possible to let a \bibtex style insert ``et.\,al.'', but of course it is
+impossible to have the \bibtex style guess what the names of the editors are if this information is
+not provided. For names like ``von Stechow'', ``Van Eynde'', and ``de Hoop'' make sure that these
+family names are contained in curly brackets. These authors will then be cited as
+\citet{VanEynde2006a} and \citet{vonStechow84a}.
 
 The references in your \bibtex file will be typeset correctly automatically. So, provided the
 \bibtex file is correct, authors do not have to worry about this. But there are some things to
