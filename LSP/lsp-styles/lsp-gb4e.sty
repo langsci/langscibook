@@ -458,7 +458,7 @@
 % -------------------
 
 % define internal commands relative to these new font specifications
-\def\ex{\@ifnextchar [{\exnrfont\@ex}{\item\exfont}}
+\def\ex{\@ifnextchar [{\exnrfont\@ex}{\exnrfont\item\exfont}}
 \def\@ex[#1]#2{\item\@exj[#1]{\exfont#2}}
 
 \def\@exjbg#1{\begin{list}{{\exnrfont#1}}{\@subex{\@jwidth}{.5ex}{0em}}\item}
