@@ -1,36 +1,91 @@
 %% -*- coding:utf-8 -*-
 \chapter{Style rules for authors}
 
-\inlinetodostefan{How to submit a book}
+Authors can submit books after registering as an author at
+\url{http://langsci-press.org/user/register}. \lsp only publishes books that are assigned to a
+series. It is suggested that authors contact the series editor informally before an official submission.
+The submission has to be in PDF format to make proper
+reviewing (reference to page numbers) possible. The first submission does not have to correspond to
+the format specification that is outlined in this chapter, but if it does this is good since it
+enables series editors to get some idea about the length of the book and so on. If authors submit an
+almost final version in the proper layout, this speeds up production, since comments on form can be
+provided in the first reviewing steps.
 
-%\section{How to submit a book}
-
-%OMP account
-
-%Contact the series editor informally.
 
 
+The following sections describe the layout of various items that play a role in typesetting. Many of
+these things are covered automatically by the Word Template\footnote{
+\url{https://github.com/langsci/word}, 19.02.2014.
+} or by our \latex classes\footnote{
+\url{https://github.com/langsci/latex}, 19.02.2014.
+}. Authors who start a new book project are strongly recommended to use \latex from the very beginning.
 
-The following sections describe the layout of various items that play a role in typesetting. 
 
-\section{Headings}
+\section{Front matter}
 
-Please provide the headings of chapters and sections in normal spelling. If you are writing English,
-please do not capitalize content words unless capitalization is required by orthographical rules. 
+Every book begins with a table of contents, labeled Contents or Table of contents. (However, the
+table of contents may be preceded by a dedication page that contains a short dedication.) The table
+of contents lists chapter titles, section headings and subsection headings, each preceded by its
+number.  Next comes an optional section with notational conventions (perhaps labeled Abbreviations
+and notational conventions).  This is followed by an optional section labeled Acknowledgements or
+Preface.  (Note that there is no list of figures and no list of tables.) The introductory chapter is
+chapter 1, even if it is short.  In edited volumes, there is an obligatory section called Notes on
+contributors, with biosketches of all contributors (as is usual in OUP volumes). This follows the
+table of contents directly, preceding the section with notational conventions.
 
-Your document may use structures up to six levels, that is there may be a section with
-the number 1.2.3.4.5.6.\footnote{
+
+
+\section{Back matter}
+
+The last chapter is followed by an optional section with appendices (labeled Appendix A, Appendix B,
+\ldots).  The appendices are followed by an obligatory section called Bibliography.  The book is
+concluded by two or three indexes: an Author index (obligatory), a Subject index (obligatory), and a
+Language index (advisable if the book talks about a larger number of languages).  
+
+\section{Chapters}
+
+Every book is divided into consecutively numbered chapters. In addition to chapters, a book may also
+have superordinate parts (numbered I, II, III). Chapter numbering is not restarted within parts.
+
+
+
+
+\section{Sections and headings}
+
+All sections (= parts of chapters) have headings and are numbered. You may use structures with up to
+six levels, that is there may be a section with the number 1.2.3.4.5.6.\footnote{
   See page~\pageref{sec-Chinese} for an actual use of subsubsections.%
-} However, such elaborated structures may be difficult for the readers, so
-there should be a good motivation for going beyond four levels.
+} However, such elaborated
+structures may be difficult for the readers, so there should be a good motivation for going beyond
+three or four levels.
 
-%\subsubsubsubsection{Test}
+Sections and subsections must be minimally two and must be exhaustive, i.e. all text in a chapter
+must belong to some section, and all text within a section must belong to some subsection (etc.). A
+short intro paragraph is allowed by way of exception, as in the current section 3 (see the intro
+paragraph above section 3.1).
 
-\section{Emphasizing}
+Please write the headings of chapters and sections without special capitalization. This also applies
+to the title (and subtitle) of the book itself and to the bibliographical references. Language
+Science Press never uses special capitalization, as it potentially introduces ambiguity, and there
+are no clear rules for special capitalization in English anyway.
 
-If you want to \emph{emphazize} terms, please use \emph{italics}. Bold face should be avoided if
-possible.
-% Small Caps
+
+\section{Emphasis and punctuation}
+
+To emphasize terms, please use \emph{italics}. Boldface should be avoided if
+possible. New terms should be set in {\sc small caps}.
+
+EN-dashes are used for ranges (e.g.\ 1985–1995).
+
+Double quotation marks can be used for distancing, as in the following:
+\ea
+This is sometimes called „pseudo-conservatism“, but I will not use this term here, as it could lead
+to confusion.
+\z
+Single quotation marks are used exclusively for linguistic meanings, as in the following:
+\ea
+Latin habere ‚have’ is not cognate with Old English hafian ‚have’.
+\z
 
 \section{Glossed examples}
 
@@ -73,8 +128,9 @@ If an example consists of several subexamples, the language and references follo
 
 \section{Figures and tables}
 
-Figures and tables should come with a caption. Captions are set below figures and above tables. The caption should be in
-normal spelling, that is without capitalization of content words. Please number figures and
+Figures and tables should come with a caption. Captions are set below figures and above tables. 
+Like headings, the caption should not use special capitalization.
+Please number figures and
 tables. The number should consist of the chapter number and a number that starts with one for every
 new chapter. There has to be one counter for figures and another one for
 tables. Figure~\vref{fig-example-fig-the-dog-barks} is an example of a figure and
@@ -119,7 +175,9 @@ unless they refer to a specific word or phrase.\footnote{
 Please do not use footnotes in tables or figures\footnote{
   This is a footnote that refers to the word \emph{figures}. If only there was something interesting
   to say about figures apart from the fact that they are floating objects.
-} but attach them to the text preceeding or following them.
+} but attach them to the text preceding or following them.
+
+\inlinetodostefan{Martin: [COMMENT: Manchmal braucht man solche Tabellen-internen Fußnoten; dann verwendet man manchmal Buchstaben a, b, c als Fußnotenzeichen]}
 
 
 \section{Quotations}
@@ -159,7 +217,10 @@ crossreferencing mechanisms is less error-prone when you shift text blocks aroun
 all these crossreferences will be turned into hyperlinks between document parts, which makes the
 final documents much more useful.
 
-If you have numbered example sentence, please start with (1) for every new chapter.
+%If you have numbered example sentence, please start with (1) for every new chapter.
+%%
+%% Alternatively, you may put the chapter number in front of the example number (thus starting with (7.1), (7.2), ... in chapter 7, for example).
+%% [COMMENT: Bei Grammatiken ist es durchaus üblich, dass alle Beispiele im Buch durchnummeriert werden. Auch in Rießlers Arbeit sind die Beispiele komplett durchnummeriert. Ich bin mir nicht sicher, wie wichtig diese Regelung ist, und ob wir nicht Volldurchnummerierung auch erlauben sollten.]
 
 Please use capitals if you refer to numbered chapters, sections, tables, figure, or footnotes: \emph{As we have shown in
   Section~3.1}, \emph{As Figure~3.5 shows}. Do not capitalize without a number: \emph{In the
@@ -168,10 +229,12 @@ Depending on the series and the langauge the book is published in authors may al
 instead of the word \emph{Section}. So the above sentence would read: \emph{As we have shown in
   §3.1}.
 
-\section{References}
+\section{Citations and references}
 \label{sec-references-authors}
 
-If books or larger articles are cited, exact page numbers should be provided. This is both good for
+A citation is author-year information (optionally with page number or other more detailed information) in the text. A bibliographical reference is metadata about a work that is cited.
+
+If books or larger articles are cited for a smaller point, exact page numbers should be provided. This is both good for
 authors since it helps them to keep track of their source and enables them to find and reread the
 referenced passages and it is a good service to the readers.
 
@@ -210,7 +273,7 @@ work   & This is not true \citep{Saussure16a,Bloomfield33a}.\\\hline\hline
 %% of this book to see how the respective items are formated.
 
 If you have an enumeration of references in the text as in \emph{As X, Y, and Z have shown}, please use
-the normal punctuation of the respective language rather then special markup like `;'.
+the normal punctuation of the respective language rather than special markup like `;'.
 
 If you refer to regions in a text, for instance 111--112, please do not use 111f.\ or 111ff.\ but provide the
 full information. 
@@ -236,9 +299,17 @@ Please use interpunction consistently. If you use initial adverbial clauses, ple
 Monographs and articles that are authored by a single author should use the pronoun \emph{I} rather
 than \emph{we} as in \emph{As we showed in Section~3}.
 
-\section{Edited volumes}
+\section{Special guidelines for edited volumes}
 
-Papers in edited volumes should start with an abstract.
+
+Some special rules apply to the chapter of edited volumes:
+\begin{itemize}
+\item Each paper has its own list of references (unnumbered section labeled References).
+\item Each paper should start with a short abstract, printed in smaller typeface like a block quotation.
+\item A paper may have a special unnumbered section Acknowledgements just after the last numbered section. This is preferable to putting the acknowledgements into the footnotes.
+\item A paper may have a special unnumbered section Abbreviations (or similar) just before the References. This is strongly preferred to listing the abbreviations in a fotnote.
+\item Chapter numbers should not be used in numbering tables and figures within such chapters.
+\end{itemize}
 
 
 \section{Checklist}
@@ -248,8 +319,17 @@ checklist for advanced authors/typesetters in Section~\ref{sec-check-typesetters
 
 
 
+\section{Other}
 
-
+Running heads:
+\begin{itemize}
+\item Monographs
+left-hand side: chapter number and chapter heading 
+right-hand side: section number and section heading
+\item Edited volumes:
+left-hand side: author name
+right-hand side: (chapter number and) chapter name
+\end{itemize}
 
 
 
