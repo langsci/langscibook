@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/02/08 Language Science Publications]
+\ProvidesClass{LSP/langsci}[2014/02/08 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -225,6 +225,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\newlineCover}{\\}	% \newline only on cover
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
 
+\def\translator#1{\gdef\@translator{#1}}
+\translator{}
 \def\typesetter#1{\gdef\@typesetter{#1}}
 \typesetter{}
 \def\proofreader#1{\gdef\@proofreader{#1}}
@@ -698,12 +700,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsImpressum}{
 \raggedright
 \null\vfill
-Language Sciene Press\\
-Berlin, Leipzig\\
+Language Science Press\\
+Berlin\\
 
 \bigskip
 
-Language Sciene Press\\
+Language Science Press\\
 Habelschwerdter Allee 45\\
 14 195 Berlin, Germany
 
@@ -724,6 +726,10 @@ ISBN: \lsISBN
  
 Cover and concept of design: \\
 Ulrike Harbort \\
+\if\@translator\empty\else
+Translator:\\
+\@translator \\
+\fi
 \if\@typesetter\empty\else
 Typesetting:\\
 \@typesetter \\
@@ -735,7 +741,7 @@ Proofreading: \\
 
 \vspace{3ex}
 
-Storage and catalogueing done by FU Berlin \\[3ex]  	
+Storage and cataloguing done by FU Berlin \\[3ex]  	
 
 \IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\
 
