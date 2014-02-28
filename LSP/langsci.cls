@@ -664,7 +664,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 %%%%%%%%%%%%%%%%
 
-\g@addto@macro{\tableofcontents}{\mainmatter}
+%\g@addto@macro{\tableofcontents}{\mainmatter}  % TODO: remove?
 		
 }
 
