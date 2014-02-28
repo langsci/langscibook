@@ -68,34 +68,52 @@
 \defbeamertemplate*{headline}{lsp theme}
 {%
   \pgfuseshading{beamer@treeshade}%
-  \vskip-17ex%
-  \hspace{.8cm}
-  \parbox{2cm}{    
-    \includegraphics[width=2cm]{lsp-logo-darkblue}
-  }
-  \hskip6.5cm
-  \parbox{5cm}{
-\vspace{.2cm}
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
-      leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}
-      \usebeamerfont{title in head/foot}{\scriptsize $|$~\insertsectionhead}
-    \end{beamercolorbox}
-\vspace{.05cm}
+  \vskip-7ex% 
+  \begin{tabular}{p{.5cm}p{2cm}p{5.5cm}p{4cm}}
+   &
+  \vspace{-.7cm}
+  \includegraphics[width=2cm]{lsp-logo-darkblue} 
+  &
+  \par{{\Large\insertframetitle}}
+  &
+  \parbox{2cm}{
+
+    \vspace{.2cm} 
+
     \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
       leftskip=.3cm,rightskip=.3cm plus1fil]{section in head/foot}
-      \usebeamerfont{section in head/foot}%
-      \hskip12pt{\scriptsize $|$~\insertsubsectionhead }
+      \usebeamerfont{title in head/foot}{\scriptsize $|$~\insertsectionhead}
     \end{beamercolorbox}
-\vspace{.cm}
-    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
-	leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
-      \usebeamerfont{subsection in head/foot}%
-      \hskip24pt{\scriptsize $|$~\insertsubsubsectionhead }
-    \end{beamercolorbox}
-\vspace{.4cm}
-  }  
 
-\hskip5ex\includegraphics[width=.95\textwidth,height=.04cm]{colorbar.png} 
+    \vspace{.05cm}
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+      \usebeamerfont{section in head/foot}% 
+      \ifx\insertsubsectionhead\@empty%
+        \strut\par%
+      \else
+        \par{\hskip12pt{\scriptsize $|$~\insertsubsectionhead}\strut\par}% 
+      \fi%%
+    \end{beamercolorbox}
+
+    \vspace{.05cm}
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
+	leftskip=.3cm,rightskip=.3cm plus1fil]{subsubsection in head/foot}
+      \usebeamerfont{subsection in head/foot}%
+      \ifx\insertsubsubsectionhead\@empty%
+        \strut\par%
+      \else
+        \par{\hskip24pt{\scriptsize $|$~\insertsubsubsectionhead}\strut\par}% 
+      \fi%%
+    \end{beamercolorbox}
+
+    \vspace{.4cm}
+  }  
+\end{tabular}
+
+\hspace{.4cm}\includegraphics[width=.95\textwidth,height=.04cm]{colorbar.png} 
 }
 
 
