@@ -664,7 +664,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 %%%%%%%%%%%%%%%%
 
-\g@addto@macro{\tableofcontents}{\mainmatter}
+%\g@addto@macro{\tableofcontents}{\mainmatter}  % TODO: remove?
 		
 }
 
@@ -718,7 +718,15 @@ Habelschwerdter Allee 45\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
-It is published under the Creative Commons Licence \lsCopyright. 
+\newcommand{\ccby}{CC-BY} 
+\ifx\lsCopyright\ccby 
+Published under the Creative Commons Attribution 4.0 License (CC BY 4.0):
+http://creativecommons.org/licenses/by/4.0/ 
+\else
+Published under the Creative Commons Attribution-NoDerivatives 4.0 License (CC BY-ND 4.0):
+http://creativecommons.org/licenses/by-nd/4.0/ 
+\fi
+ 
 
 ISBN: \lsISBN 
 
