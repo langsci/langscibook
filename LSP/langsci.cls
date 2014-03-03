@@ -732,18 +732,18 @@ ISBN: \lsISBN
 
 \bigskip
  
-Cover and concept of design: \\
+Cover and concept of design:
 Ulrike Harbort \\
 \if\@translator\empty\else
-Translator:\\
+Translator:
 \@translator \\
 \fi
 \if\@typesetter\empty\else
-Typesetting:\\
+Typesetting:
 \@typesetter \\
 \fi
 \if\@proofreader\empty\else
-Proofreading: \\
+Proofreading:
 \@proofreader \\
 \fi
 
