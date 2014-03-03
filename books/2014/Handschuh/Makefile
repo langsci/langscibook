@@ -2,7 +2,7 @@
 all: SIDL01.pdf
 
 # specify teh main file and all the files that you are including
-SOURCE=SIDL01.tex LSP/langsci.cls 
+SOURCE=SIDL01.tex LSP/langsci.cls introSDL.tex methodSDL.tex nompredSDL.tex exlocSDL.tex expsSDL.tex othclSDL.tex exsynSDL.tex typolSDL.tex conclSDL.tex
 
 
 %.pdf: %.tex $(SOURCE)
