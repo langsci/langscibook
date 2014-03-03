@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/02/08 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/03/03 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -707,7 +707,7 @@ Berlin\\
 
 Language Science Press\\
 Habelschwerdter Allee 45\\
-14 195 Berlin, Germany
+14195 Berlin, Germany
 
 \bigskip
 
@@ -720,10 +720,10 @@ This title can be downloaded at:\\
 
 \newcommand{\ccby}{CC-BY} 
 \ifx\lsCopyright\ccby 
-Published under the Creative Commons Attribution 4.0 License (CC BY 4.0):
+Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
 http://creativecommons.org/licenses/by/4.0/ 
 \else
-Published under the Creative Commons Attribution-NoDerivatives 4.0 License (CC BY-ND 4.0):
+Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
 http://creativecommons.org/licenses/by-nd/4.0/ 
 \fi
  
