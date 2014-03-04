@@ -5,6 +5,13 @@
 \usepackage{german}
 \selectlanguage{USenglish}
 
+
+
+% DD.MM.YY
+\def\two@digits#1{\ifnum#1<10 0\fi\number#1}
+\def\mytoday{\two@digits{\number\day}.\two@digits{\number\month}.\number\year}
+
+
 \usepackage{xspace,multicol}
 \newcommand{\latex}{\LaTeX\xspace}
 
