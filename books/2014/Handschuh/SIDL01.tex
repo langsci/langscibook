@@ -5,7 +5,7 @@
 			   ,output=long   % long|short|inprep              
 			   %,blackandwhite
 			   %,smallfont
-			   ,draftmode   
+%			   ,draftmode   
 			  ]{LSP/langsci}                          
               
 \usepackage{LSP/lsp-styles/lsp-gb4e}		% verhindert Komma bei mehrfachen Fußnoten?
@@ -30,7 +30,7 @@
 \usepackage{multicol,amssymb,latexsym}
 \def\exfont{\normalsize\it}
 \let\eachwordone=\it
-
+\renewcommand{\fnexfont}{\footnotesize\it}
 
 \defcitealias{Tucker:1955}{Tucker \& Mpaayei 1955} %changes the the in text citation of that entry to the value given behind
 %\bibpunct[:]{(}{)}{,}{,}{}{,}
@@ -191,10 +191,39 @@
 \typesetter{Corinna Handschuh}
 \proofreader{Eitan Grossman, Daniel W. Hieber, Aaron Sonnenschein}
 
-\BackTitle{The study of a rare case-system}
-\BackBody
-{A typological study of the rare marked-S language type which overtly marks the single argument of intransitive verbs (S) while one of the arguments of transitive verbs (either A or P) is left zero-coded. The formal (overt versus zero-coding) as well as functional aspects (range of uses of individual case forms) of the phenomenon are treated. The book covers languages from the Afro-Asiatic and Nilo-Saharan languages of Africa and of the North America Pacific Northwest and Pacific regions.}
+\BackTitle{A typology of marked-S languages}
 
+\BackBody{%
+Case"=systems all over the world exhibit striking similarities.  In most languages
+  intransitive subjects (S) receives less overt marking than one of the two transitive arguments
+  (agent"=like A or patient"=like P); the other one of these two arguments is usually encoded by the
+  same form as S. In some languages the amount of overt marking is identical between S, A, and
+  P. But hardly ever does the S argument receive more overt marking than A or P.  Yet there are a
+  some languages that do not follow this general pattern.  This book is about those languages that
+  behave differently, the marked"=S languages.
+
+
+Marked"=S languages are well"=known to be found in East Africa, where they occure in two different
+language families, Afro"=Asiatic and Nilo"=Saharan. They can also be found in North"=Western America
+and the Pacific region. This book is the first investigation of marked S"=languages that treats the
+phenomenon on a global scale.
+
+
+The study examines the functional distribution of the two main case"=forms, the form used for S
+(S"=case) and the case"=form of the transitive argument which receives less marking (the zero"=case). It offers a very fine"=grained perspective considering a wide range of constructions.  The
+contexts in which the case"=marking patterns are investigated include nominal, existential and
+locational predication, subjects in special discourse function (e.g. focused constituents), subjects
+of passives and dependent clauses, as well as the forms used for addressing someone (vocative form)
+and for using a noun in isolation (citation form).
+
+
+Apart from the functional distribution of case forms, the formal means of marking are also
+considered. The main focus is on the synchronic description and comparison of marked"=S languages,
+but, historical explanations for the unusual case"=marking pattern are also discussed.
+}
+
+
+%\includeonly{AcknowledgmentsSDL,AbbreviationsSDL,introSDL,methodSDL,nompredSDL,exlocSDL,expsSDL,othclSDL,exsynSDL,typolSDL}
 %\includeonly{introSDL}
 %\includeonly{methodSDL}
 %\includeonly{nompredSDL}
@@ -204,6 +233,8 @@
 %\includeonly{exsynSDL}
 %\includeonly{typolSDL}
 %\includeonly{conclSDL}
+
+\hypersetup{bookmarksopenlevel=0}
   
 \begin{document}             
                                     
@@ -266,7 +297,8 @@
 \is{pro-drop|see{argument, omission of}}
 \is{passive|see{valency-decreasing construction, passive}}
 \is{antipassive|see{valency-decreasing construction, antipassive}}
-\is{impersonal construction|see{valency-decreasing construction, impersonal construction}}
+%\is{impersonal construction|see{valency-decreasing construction, impersonal construction}} äh?
+\is{impersonal construction|see{valency-decreasing construction}}
 \is{language change|see{marked-S languages, historical explanations}} 
 \is{subordinate clause|see{clause-type, dependent}}
 \is{nominal mutation|see{case-marking, via nominal mutation}}
@@ -282,8 +314,10 @@
 \pdfbookmark[1]{Index of Languages}{Index of Languages}
 \printindex[lan]
 %\addcontentsline{toc}{chapter}{Sachregister}
+%\begin{sloppypar}
 \pdfbookmark[1]{Index of Subjects}{Index of Subjects}
 \printindex
+%\end{sloppypar}
                               
 \end{document}
       
