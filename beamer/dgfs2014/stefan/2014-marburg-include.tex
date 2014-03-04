@@ -1,19 +1,33 @@
 %% -*- coding:utf-8 -*-
- 
+
+\usepackage[utf8x]{inputenc}
+
+\usepackage{german}
+\selectlanguage{USenglish}
+
+\usepackage{xspace,multicol}
+\newcommand{\latex}{\LaTeX\xspace}
 
 
+\newcounter{lastpagemainpart}
+\footnotesep0pt
+\renewcommand{\footnoterule}{}
+\usefootnotetemplate{
+  \noindent
+  \insertfootnotemark\insertfootnotetext}
 
-\newcommand{\latex}{\LaTeX}
+\let\beamerfn=\footnote
+\renewcommand{\footnote}[1]{%
+\let\oldfnsize=\footnotesize%
+\let\footnotesize=\tiny%
+\beamerfn<\thebeamerpauses->{#1}%
+\let\footnotesize=\oldfnsize}
 
-\logo{}
 
-\date{24.01.2014}
+\date{05.03.2014}
 
-% \fuberlinlogon{0.78cm}
-
-% \usepackage{eurosym} % UG
-% \usepackage{ogonek}
-
+\usepackage{eurosym} 
+\usepackage{ogonek}  % Dabrowska
 
 % Irgendein Font definiert mir das \dh wieder über.
 \renewcommand{\dh}{d.\,h.\xspace}        % was macht dh sonst??
@@ -27,8 +41,7 @@
 \begin{document}
 \hypersetup{bookmarksopen=false}
 
-% \fuberlintitlepage[22pt]
-
+%\fuberlintitlepage[22pt]
 \lspbeamertitle
 
 \section{Hintergrund}
@@ -151,7 +164,7 @@ Stefan Müller, Berthold Crysmann, Laura Kallmeyer
 \frame{
 \frametitle{Reihen zweiter Teil}
 
-\begin{itemize}
+\begin{itemize}[<+->]
 
 
 \item
@@ -171,13 +184,18 @@ Philippa Cook, Anke Holler, Cathrine Fabricius-Hansen
 Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 
 \end{itemize}
+}
 
-\pause
+\frame{
+\frametitle{Reihen under submission/""review}
 
-Under review:
-\begin{itemize}
+
+\begin{itemize}[<+->]
 \item Computational models of language evolution\\
       Luc Steels, Remi van Trijp
+
+\item Language Variation\\
+      John Nerbonne, Remco Knooihuizen, Nanna Haug Hilton
 
 \end{itemize}
 
@@ -232,6 +250,7 @@ Under review:
 \item Projektkoordination: Sebastian Nordhoff (seit 25.02.2014)
 \item Design: Dipl.-Des. Ulrike Harbort (Buch-Layout, Web-Konzept, Poster)
 \item Design-Beratung: Prof.\ Barbara Schmidt
+\item Web-Blog: Frank Richter (\href{http://www.frank-m-richter.de/freescienceblog/}{Free Science Blog})
 \item Web-Design: Robert Forkel (CSS)
 \item \latex: Timm Lichte, Berthold Crysmann, Stefan Müller
 \item Proofreader: Eitan Grossman, Daniel W. Hieber, Aron Sonnenschein
@@ -276,12 +295,14 @@ Under review:
 \frametitle{Stellen}
 
 
-\begin{itemize}
+\begin{itemize}[<+->]
 \item 1 Stelle: \latex/XML
 \item 1 Stelle: Open Monograph Press-Erweiterungen
 \item 1/2 Stelle: Support/Betreuung von Herausgebern/Autoren an der CEDIS
 \item 1/2 Stelle: BWLer: Dokumentation der Kosten, Geschäftsmodell\\
-      (optinales Author Pays, optionale Bibliotheksbeiträge, Micropayment-Spenden, \ldots)
+      (optionales Author Pays, optionale Bibliotheksbeiträge, Micropayment-Spenden, \ldots)
+\bigskip
+\item Ausschreibung in den nächsten Tagen
 \end{itemize}
 
 }
@@ -305,20 +326,31 @@ Under review:
 \end{itemize}
 
 }
-
+\nocite{Shieber2012a}
+\makeatletter
+\setcounter{lastpagemainpart}{\the\c@framenumber}
+\makeatother
 
 
 \appendix
 
 
 \frame{
-\frametitle{Preisliste}
+\frametitle{Preisliste für ein Open-Access-Buch}
 
 \begin{itemize}
-\item De Gruyter Open: 10.000€ pro Buch\\
+\item Palgrave Macmillan: 11,000£ (17,500\$)\footnote{
+\url{http://poynder.blogspot.co.uk/2013/09/de-gruyters-sven-fund-on-state-of-open.html}. 04.03.2014.
+}
+\item Springer: ca.\, 15,000€\footnote{
+\url{http://poynder.blogspot.co.uk/2013/09/de-gruyters-sven-fund-on-state-of-open.html}. 04.03.2014.
+\newline
+Lustigerwiese steht das nicht in der FAQ: \url{http://www.springeropen.com/about/faq/chargesbooks}. 04.03.2014.
+}
+\item De Gruyter Open: 10.000€ (p.\,M.\ 02/2014)\\
       (1.500€ bei normalen Büchern, wenn nicht selbst gesetzt)
 \item Brill: 5.000€ pro Buch
-\item Language Science Press: 0€ pro Buch\\
+\item Language Science Press: 0€\\
       (Spenden und Publikationsmittel aus Projektgeldern willkommen)
 \end{itemize}
 
@@ -426,7 +458,8 @@ Anglia
 \nocite{MuellerOA}
 
 % muß immer geladen werden, wegen Referenzen
-% \input{fu-literatur}
+\input{lsp-literatur}
 
+\setcounter{framenumber}{\thelastpagemainpart}
 
 \end{document}
