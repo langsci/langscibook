@@ -252,6 +252,7 @@ Daniel, Michael \& Andrew Spencer. 2009.
 \newblock \emph{La langue de {H}ouailou ({N}ouvelle-{C}al{\'e}donie):
   {D}escription phonologique et description syntaxique}.
 \newblock Paris: SELAF.
+\enlargethispage{\baselineskip}
 
 \bibitem[{Detges(2009)}]{Detges:2009}
 Detges, Ulrich. 2009.
@@ -368,6 +369,8 @@ Fillmore, {\relax Ch}arles~J. 1968.
 \newblock In Emmon Bach \& Robert~T. Harms (eds.), \emph{Universals in
   linguistic theory}, 1--88. New York and others: Holt, Rinehart and Winston
   Inc.
+\enlargethispage{\baselineskip}
+
 
 \bibitem[{Frajzyngier \& Shay(2003)}]{Frajzyngier:2003}
 Frajzyngier, Zygmunt \& Erin Shay. 2003.
@@ -658,6 +661,8 @@ Langdon, Margaret \& Pamela Munro. 1979.
 Legendre, G{\'e}raldine, Jane Grimshaw \& Stan Vikner (eds.). 2001.
 \newblock \emph{Optimality theoretic syntax}.
 \newblock Stanford, CA: MIT Press.
+\enlargethispage{\baselineskip}
+
 
 \bibitem[{Lehmann(1974)}]{Lehmann:1974}
 Lehmann, Winfred~P. 1974.
@@ -752,6 +757,8 @@ Mel'\v{c}uk, Igor. 1997.
 Merlan, Francesca. 1989.
 \newblock \emph{{M}angarayi}.
 \newblock London, New York: Routledge.
+\enlargethispage{\baselineskip}
+
 
 \bibitem[{Miestamo(2009)}]{Miestamo:2008}
 Miestamo, Matti. 2009.
@@ -847,6 +854,7 @@ Pensalfini, Rob. 1999.
 \newblock The rise of case suffixes as discourse markers in {J}ingulu---a case
   study of innovation in an obsolescent language.
 \newblock \emph{Australian Journal of Linguistics} 19(2). 225--240.
+\enlargethispage{2\baselineskip}
 
 \bibitem[{Plank(1985)}]{Plank:1985}
 Plank, Frans. 1985.
@@ -1033,6 +1041,7 @@ Vennemann, Theo. 1975.
 \newblock An explanation of drift.
 \newblock In {\relax Ch}arles~N. Li (ed.), \emph{Word order and word order
   change}, 264--306. Austin, TX: University of Texas Press.
+\enlargethispage{\baselineskip}
 
 \bibitem[{Ward \& Birner(2001)}]{Ward:2001}
 Ward, Gregory \& Betty Birner. 2001.
