@@ -7,9 +7,7 @@ SOURCE=SIDL01.tex LSP/langsci.cls introSDL.tex methodSDL.tex nompredSDL.tex exlo
 
 %.pdf: %.tex $(SOURCE)
 	xelatex -no-pdf $* |grep -v math
-	bibtex -min-crossrefs=200 $*
 	xelatex -no-pdf $* |grep -v math
-	bibtex -min-crossrefs=200 $*
 	xelatex $* -no-pdf |egrep -v 'math|PDFDocEncod' |egrep 'Warning|label|aux'
 	correct-toappear
 	correct-index
@@ -23,6 +21,26 @@ SOURCE=SIDL01.tex LSP/langsci.cls introSDL.tex methodSDL.tex nompredSDL.tex exlo
 	sed -e 's/}{/|hyperpage}{/g' $*.adx > $*.adx.hyp
 	makeindex -o $*.and $*.adx.hyp
 	xelatex $* | egrep -v 'math|PDFDocEncod' |egrep 'Warning|label|aux'
+
+
+# %.pdf: %.tex $(SOURCE)
+# 	xelatex -no-pdf $* |grep -v math
+# 	bibtex -min-crossrefs=200 $*
+# 	xelatex -no-pdf $* |grep -v math
+# 	bibtex -min-crossrefs=200 $*
+# 	xelatex $* -no-pdf |egrep -v 'math|PDFDocEncod' |egrep 'Warning|label|aux'
+# 	correct-toappear
+# 	correct-index
+# 	makeindex -o $*.ind $*.idx
+# 	makeindex -o $*.lnd $*.ldx
+# 	makeindex -o $*.wnd $*.wdx
+# 	LSP/bin/reverse-index <$*.wdx >$*.rdx
+# 	makeindex -o $*.rnd $*.rdx
+# 	\rm $*.adx
+# 	authorindex -i -p $*.aux > $*.adx
+# 	sed -e 's/}{/|hyperpage}{/g' $*.adx > $*.adx.hyp
+# 	makeindex -o $*.and $*.adx.hyp
+# 	xelatex $* | egrep -v 'math|PDFDocEncod' |egrep 'Warning|label|aux'
 
 
 # http://stackoverflow.com/questions/10934456/imagemagick-pdf-to-jpgs-sometimes-results-in-black-background
