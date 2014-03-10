@@ -699,6 +699,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % Impressum:
 
 \newcommand{\lsImpressum}{
+\renewcommand{\newlineCover}{}
 \raggedright
 \null\vfill
 Language Science Press\\
@@ -719,6 +720,8 @@ Habelschwerdter Allee 45\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
+© \@author, \the\year 
+
 \newcommand{\ccby}{CC-BY} 
 \ifx\lsCopyright\ccby 
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
@@ -728,7 +731,6 @@ Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC B
 http://creativecommons.org/licenses/by-nd/4.0/ 
 \fi
  
-
 ISBN: \lsISBN 
 
 \bigskip
