@@ -1,0 +1,9 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Hintergrund}{2}{0}{1}
+\beamer@sectionintoc {2}{Organisation}{10}{0}{2}
+\beamer@sectionintoc {3}{Statistik}{31}{0}{3}
+\beamer@sectionintoc {4}{Mitarbeiter}{37}{0}{4}
+\beamer@sectionintoc {5}{Das Projekt}{46}{0}{5}
+\beamer@sectionintoc {6}{Ausblick}{65}{0}{6}
+\beamer@sectionintoc {7}{Preise}{66}{1}{7}
+\beamer@sectionintoc {8}{Journals and Publishers}{72}{1}{8}

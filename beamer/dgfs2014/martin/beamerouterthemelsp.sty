@@ -1,0 +1,170 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackageRCS $Header: /home/vedranm/bitbucket/beamer/base/themes/outer/beamerouterthemelsp.sty,v d02a7cf4d8ae 2010/06/17 09:11:41 rivanvx $
+
+
+\mode<presentation>
+
+%--------------
+
+\definecolor{beamer@lspturquoise}{RGB}{38,95,133} 
+\definecolor{beamer@lsplightturquoise}{RGB}{106,192,226}  
+\setbeamercolor{frametitle}{parent=palette primary} 
+
+\setbeamercolor{structure}{fg=beamer@lspturquoise}
+\setbeamercolor{title in head/foot}{fg=beamer@lspturquoise}
+\setbeamercolor{section in head/foot}{fg=beamer@lspturquoise}
+\setbeamercolor{subsection in head/foot}{fg=beamer@lspturquoise}
+\setbeamercolor{normal text}{fg=beamer@lspturquoise}  
+\setbeamercolor{item}{fg=beamer@lspturquoise} 
+\setbeamercolor{title}{fg=white}
+
+\setbeamertemplate{itemize items}{{\bf\small\textrangle}}
+\setlength{\itemindent}{.1cm}
+\setbeamertemplate{navigation symbols}{}
+
+%-----------
+
+\AtBeginDocument{
+  {
+    \usebeamerfont*{headline} 
+    \usebeamercolor{normal text}
+    \usebeamercolor{title in head/foot}
+    \usebeamercolor{subsection in head/foot}
+    \usebeamercolor{section in head/foot}
+    \usebeamercolor{frametitle}
+
+    \pgfdeclareverticalshading{beamer@treeshade}{\the\paperwidth}{%
+      color(0ex)=(normal text.bg);%
+      color(1ex)=(subsection in head/foot.bg);%
+      color(3.25ex)=(subsection in head/foot.bg);%
+      color(4.25ex)=(section in head/foot.bg);%
+      color(6.5ex)=(section in head/foot.bg);%
+      color(7.5ex)=(title in head/foot.bg);%
+      color(10.25ex)=(title in head/foot.bg)%
+    }
+    
+    \pgfdeclareverticalshading{beamer@aboveframetitle}{\the\paperwidth}{%
+      color(0ex)=(frametitle.bg);%
+      color(1ex)=(frametitle.bg);%
+      color(2ex)=(subsection in head/foot.bg)
+    }
+
+    \pgfdeclareverticalshading{beamer@belowframetitle}{\the\paperwidth}{%
+      color(0ex)=(normal text.bg);%
+      color(1ex)=(frametitle.bg)
+    }
+  }
+}
+
+\defbeamertemplate*{headline}{lsp theme}
+{%
+  \pgfuseshading{beamer@treeshade}%
+  \vskip-7ex% 
+  \begin{tabular}{p{.5cm}p{2cm}p{5.5cm}p{4cm}}
+   &
+  \vspace{-.7cm}
+  \includegraphics[width=2.1cm]{lsp-logo-blue.eps} 
+  &
+  {\raggedright\large\insertframetitle}
+  &
+  \parbox{2cm}{
+
+    \vspace{.2cm} 
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{section in head/foot}
+      \usebeamerfont{title in head/foot}{\scriptsize $|$~\insertsectionhead}
+    \end{beamercolorbox}
+
+    \vspace{.05cm}
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
+      leftskip=.3cm,rightskip=.3cm plus1fil]{subsection in head/foot}
+      \usebeamerfont{section in head/foot}% 
+      \ifx\insertsubsectionhead\@empty%
+        \strut\par%
+      \else
+        \par{\hskip12pt{\scriptsize $|$~\insertsubsectionhead}\strut\par}% 
+      \fi%%
+    \end{beamercolorbox}
+
+    \vspace{.05cm}
+
+    \begin{beamercolorbox}[wd=\paperwidth,ht=2.125ex,dp=1.125ex,ignorebg,%
+	leftskip=.3cm,rightskip=.3cm plus1fil]{subsubsection in head/foot}
+      \usebeamerfont{subsection in head/foot}%
+      \ifx\insertsubsubsectionhead\@empty%
+        \strut\par%
+      \else
+        \par{\hskip24pt{\scriptsize $|$~\insertsubsubsectionhead}\strut\par}% 
+      \fi%%
+    \end{beamercolorbox}
+
+    \vspace{.4cm}
+  }  
+\end{tabular}
+
+\hspace{.4cm}\includegraphics[width=.95\textwidth,height=.04cm]{colorbar.png} 
+}
+
+
+
+\defbeamertemplate*{frametitle}{lsp theme}
+{%
+  \nointerlineskip%
+  \usebeamerfont{headline}%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=6.5ex,dp=0ex]{empty}
+    \pgfuseshading{beamer@aboveframetitle}% 
+  \end{beamercolorbox}%
+
+  \vskip-.5ex%
+  \nointerlineskip%
+
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=.935cm,rightskip=.3cm plus1fil]{frametitle}
+%     \usebeamerfont*{frametitle}\insertframetitle%
+      \ifx\insertframesubtitle\@empty%
+        \strut\par%
+      \else
+        \par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}%
+      \fi%%
+    \usebeamerfont{headline}%
+    \vskip-12.5ex   
+  \end{beamercolorbox}%
+
+  \nointerlineskip 
+
+  \begin{beamercolorbox}[wd=\paperwidth,ht=.5ex,dp=0ex]{empty}
+    \pgfuseshading{beamer@belowframetitle}%
+  \end{beamercolorbox}%
+}
+
+\defbeamertemplate*{footline}{lsp theme}
+{%
+  \begin{beamercolorbox}{section in head/foot}
+    \hspace{11cm}
+    \parbox{1cm}{
+	\begin{tabular}{|l} 
+	\insertshortauthor\\
+	\\
+	\insertframenumber/\inserttotalframenumber\\
+	\\
+	\end{tabular}
+      \vspace{.2cm}
+    }
+  \end{beamercolorbox}% 
+}
+
+ 
+  
+
+  
+\mode
+<all>
