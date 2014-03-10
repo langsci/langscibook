@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/02/08 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/03/03 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -118,7 +118,8 @@
   			Ligatures={TeX,Common},
   			Path=\fontpath,
   			PunctuationSpace=0,							
-  			Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+%  			Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+  			Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
 			BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
 			ItalicFont = LinLibertine_RI_B.otf ,			
 			BoldItalicFont = LinLibertine_RZI_B.otf ]		% semi-bold
@@ -698,6 +699,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % Impressum:
 
 \newcommand{\lsImpressum}{
+\renewcommand{\newlineCover}{}
 \raggedright
 \null\vfill
 Language Science Press\\
@@ -707,7 +709,7 @@ Berlin\\
 
 Language Science Press\\
 Habelschwerdter Allee 45\\
-14 195 Berlin, Germany
+14195 Berlin, Germany
 
 \bigskip
 
@@ -718,16 +720,17 @@ Habelschwerdter Allee 45\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
+© \@author, \the\year 
+
 \newcommand{\ccby}{CC-BY} 
 \ifx\lsCopyright\ccby 
-Published under the Creative Commons Attribution 4.0 License (CC BY 4.0):
+Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
 http://creativecommons.org/licenses/by/4.0/ 
 \else
-Published under the Creative Commons Attribution-NoDerivatives 4.0 License (CC BY-ND 4.0):
+Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
 http://creativecommons.org/licenses/by-nd/4.0/ 
 \fi
  
-
 ISBN: \lsISBN 
 
 \bigskip

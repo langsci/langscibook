@@ -1,0 +1,327 @@
+\documentclass[ number=1
+			   ,series=sidl
+				,url=http://langsci-press.org/catalog/book/18 
+			   ,isbn=978-3-944675-19-0
+			   ,output=long   % long|short|inprep              
+			   %,blackandwhite
+			   %,smallfont
+%			   ,draftmode   
+			  ]{LSP/langsci}                          
+              
+\usepackage{LSP/lsp-styles/lsp-gb4e}		% verhindert Komma bei mehrfachen Fußnoten?
+\usepackage{LSP/lsp-styles/avm}
+\avmfont{\sc} 
+\avmvalfont{\it}
+
+\usepackage{german}
+\selectlanguage{USenglish}      
+
+\usepackage{graphicx,float,tabularx,curves}
+\usepackage{amsmath}
+\usepackage{longtable}
+
+\usepackage{epsfig}
+
+\usepackage{array,arydshln}
+%http://tex.stackexchange.com/questions/153303/tipa-package-causing-error-in-xelatex-sups-already-defined
+\let\sups\relax\usepackage{tipa}
+
+
+\usepackage{multicol,amssymb,latexsym}
+\def\exfont{\normalsize\it}
+\let\eachwordone=\it
+\renewcommand{\fnexfont}{\footnotesize\it}
+
+\defcitealias{Tucker:1955}{Tucker \& Mpaayei 1955} %changes the the in text citation of that entry to the value given behind
+%\bibpunct[:]{(}{)}{,}{,}{}{,}
+
+\newcommand{\nom}{{\sc nom}}
+\newcommand{\gen}{{\sc gen}}
+\newcommand{\dat}{{\sc dat}}
+\newcommand{\acc}{{\sc acc}}
+\newcommand{\abs}{{\sc abs}}
+\newcommand{\erg}{{\sc erg}}
+\newcommand{\instr}{{\sc ins}}
+\newcommand{\ines}{{\sc iness}}
+\newcommand{\antgen}{{\sc antgen}}
+\newcommand{\voc}{{\sc voc}}
+\newcommand{\poss}{{\sc poss}}
+
+\newcommand{\fem}{{\sc f}}
+\newcommand{\mas}{{\sc m}}
+\newcommand{\neu}{{\sc n}}
+\newcommand{\pl}{{\sc pl}}
+\newcommand{\sg}{{\sc sg}}
+\newcommand{\thirdsg}{3{\sc sg}}
+
+\newcommand{\agnm}{{\sc agnm}}
+\newcommand{\ali}{{\sc ali}}
+\newcommand{\allo}{{\sc allo}}
+\newcommand{\am}{{\sc am}}
+\newcommand{\antip}{{\sc antip}}
+\newcommand{\appl}{{\sc appl}}
+\newcommand{\asp}{{\sc asp}}
+\newcommand{\att}{{\sc att}}
+\newcommand{\augv}{{\sc augv}}
+\newcommand{\aux}{{\sc aux}}
+\newcommand{\ben}{{\sc ben}}
+\newcommand{\bg}{{\sc bg}}
+\newcommand{\caus}{{\sc caus}}
+\newcommand{\cert}{{\sc cert}}
+\newcommand{\clf}{{\sc clf}}
+\newcommand{\coll}{{\sc coll}}
+\newcommand{\com}{{\sc com}}
+\newcommand{\comp}{{\sc comp}}
+\newcommand{\compl}{{\sc compl}}
+\newcommand{\complx}{{\sc complx}}
+\newcommand{\con}{{\sc con}}
+\newcommand{\cond}{{\sc cond}}
+\newcommand{\conj}{{\sc conj}}
+\newcommand{\cop}{{\sc cop}}
+\newcommand{\cs}{{\sc cs}}
+\newcommand{\cvb}{{\sc cvb}}
+\newcommand{\decl}{{\sc decl}}
+\newcommand{\defsc}{{\sc def}}
+\newcommand{\dem}{{\sc dem}}
+\newcommand{\dep}{{\sc dep}}
+\newcommand{\deter}{{\sc det}}
+\newcommand{\detr}{{\sc detr}}
+\newcommand{\dir}{{\sc dir}}
+\newcommand{\dist}{{\sc dist}}
+\newcommand{\distr}{{\sc distr}}
+\newcommand{\dsbj}{{\sc dsbj}}
+\newcommand{\dscn}{{\sc dscn}}
+\newcommand{\du}{{\sc du}}
+\newcommand{\dubt}{{\sc dubt}}
+\newcommand{\dur}{{\sc dur}}
+\newcommand{\dyn}{{\sc dyn}}
+\newcommand{\ego}{{\sc ego}}
+\newcommand{\emphat}{{\sc emph}}
+\newcommand{\epen}{{\sc epen}}
+\newcommand{\excl}{{\sc excl}}
+\newcommand{\faff}{{\sc faff}}
+\newcommand{\fin}{{\sc fin}}
+\newcommand{\foc}{{\sc foc}}
+\newcommand{\fut}{{\sc fut}}
+\newcommand{\hab}{{\sc hab}}
+\newcommand{\Hyp}{{\sc hyp}}
+\newcommand{\icml}{{\sc icml}}
+\newcommand{\ideoph}{{\sc ideoph}}
+\newcommand{\imp}{{\sc imp}}
+\newcommand{\incep}{{\sc incep}}
+\newcommand{\Incl}{{\sc incl}}
+\newcommand{\ind}{{\sc ind}}
+\newcommand{\indf}{{\sc indf}}
+\newcommand{\Inf}{{\sc inf}}
+\newcommand{\intens}{{\sc intens}}
+\newcommand{\intr}{{\sc intr}}
+\newcommand{\ipfv}{{\sc ipfv}}
+\newcommand{\irr}{{\sc irr}}
+\newcommand{\lin}{{\sc lin}}
+\newcommand{\loc}{{\sc loc}}
+\newcommand{\Mid}{{\sc mid}}
+\newcommand{\modal}{{\sc modal}}
+\newcommand{\mut}{{\sc mut}}
+\newcommand{\Non}{{\sc n}}
+\newcommand{\NC}{{\sc nc}}
+\newcommand{\Neg}{{\sc neg}}
+\newcommand{\nmlz}{{\sc nmlz}}
+\newcommand{\NR}{{\sc nr}}
+\newcommand{\nts}{{\sc nts}}
+\newcommand{\obj}{{\sc obj}}
+\newcommand{\obl}{{\sc obl}}
+\newcommand{\opt}{{\sc opt}}
+\newcommand{\partic}{{\sc part}}
+\newcommand{\pass}{{\sc pass}}
+\newcommand{\persm}{{\sc pm}}
+\newcommand{\propnoun}{{\sc pn}}
+\newcommand{\polite}{{\sc pol}}
+\newcommand{\pronoun}{{\sc pro}}
+\newcommand{\pred}{{\sc pred}}
+\newcommand{\prep}{{\sc prep}}
+\newcommand{\prf}{{\sc prf}}
+\newcommand{\prog}{{\sc prog}}
+\newcommand{\prs}{{\sc prs}}
+\newcommand{\prtv}{{\sc prtv}}
+\newcommand{\proh}{{\sc proh}}
+\newcommand{\propr}{{\sc propr}}
+\newcommand{\prosp}{{\sc prosp}}
+\newcommand{\prox}{{\sc prox}}
+\newcommand{\pst}{{\sc pst}}
+\newcommand{\pstcont}{{\sc pstcont}}
+\newcommand{\pstpunc}{{\sc pstpunc}}
+\newcommand{\pstrem}{{\sc pstrem}}
+\newcommand{\purp}{{\sc purp}}
+\newcommand{\punc}{{\sc punc}}
+\newcommand{\pfv}{{\sc pfv}}
+\newcommand{\pvs}{{\sc pvs}}
+\newcommand{\question}{{\sc q}}
+\newcommand{\reas}{{\sc reas}}
+\newcommand{\rdp}{{\sc rdp}}
+\newcommand{\Recip}{{\sc rec}}
+\newcommand{\refl}{{\sc refl}}
+\newcommand{\relativ}{{\sc rel}}
+\newcommand{\result}{{\sc res}}
+\newcommand{\rls}{{\sc rls}}
+\newcommand{\sbj}{{\sc sbj}}
+\newcommand{\semb}{{\sc semb}}
+\newcommand{\simult}{{\sc sim}}
+\newcommand{\stat}{{\sc stat}}
+\newcommand{\ssbj}{{\sc ssbj}}
+\newcommand{\them}{{\sc them}}
+\newcommand{\tmp}{{\sc tmp}}
+\newcommand{\tns}{{\sc tns}}
+\newcommand{\topic}{{\sc top}}
+\newcommand{\transitiv}{{\sc tr}}
+\newcommand{\uop}{{\sc uop}}
+\newcommand{\Verb}{{\sc vblz}}
+\newcommand{\ventiv}{{\sc ven}}
+                                                      
+\usepackage{layout}  
+\usepackage{lipsum}   
+
+\hyphenation{Mül-ler lan-gu-a-ges no-mi-na-tive ac-cu-sa-tive for-med mark-ed-S con-tras-tive Was-kia Ame-ri-can de-crea-sing ge-schrie-hen ty-po-lo-gy fre-quen-cies Lich-ten-berk Tur-ka-na mark-ing Sa-ha-ran} 
+ 
+\title{\hspace{1mm}A\,typology of marked-S languages}  
+%\title{Τέχνη \newlineCover γραμματική}
+%\subtitle{2000+ Years of Language Science and no End in Sight}  
+\author{Corinna Handschuh}
+\dedication{Für Tommeck}
+
+\typesetter{Corinna Handschuh}
+\proofreader{Eitan Grossman, Daniel W. Hieber, Aaron Sonnenschein}
+
+\BackTitle{A typology of marked-S languages}
+
+\BackBody{%
+Case"=systems all over the world exhibit striking similarities.  In most languages
+  intransitive subjects (S) receives less overt marking than one of the two transitive arguments
+  (agent"=like A or patient"=like P); the other one of these two arguments is usually encoded by the
+  same form as S. In some languages the amount of overt marking is identical between S, A, and
+  P. But hardly ever does the S argument receive more overt marking than A or P.  Yet there are a
+  some languages that do not follow this general pattern.  This book is about those languages that
+  behave differently, the marked"=S languages.
+
+
+Marked"=S languages are well"=known to be found in East Africa, where they occure in two different
+language families, Afro"=Asiatic and Nilo"=Saharan. They can also be found in North"=Western America
+and the Pacific region. This book is the first investigation of marked S"=languages that treats the
+phenomenon on a global scale.
+
+
+The study examines the functional distribution of the two main case"=forms, the form used for S
+(S"=case) and the case"=form of the transitive argument which receives less marking (the zero"=case). It offers a very fine"=grained perspective considering a wide range of constructions.  The
+contexts in which the case"=marking patterns are investigated include nominal, existential and
+locational predication, subjects in special discourse function (e.g. focused constituents), subjects
+of passives and dependent clauses, as well as the forms used for addressing someone (vocative form)
+and for using a noun in isolation (citation form).
+
+
+Apart from the functional distribution of case forms, the formal means of marking are also
+considered. The main focus is on the synchronic description and comparison of marked"=S languages,
+but, historical explanations for the unusual case"=marking pattern are also discussed.
+}
+
+
+%\includeonly{AcknowledgmentsSDL,AbbreviationsSDL,introSDL,methodSDL,nompredSDL,exlocSDL,expsSDL,othclSDL,exsynSDL,typolSDL}
+%\includeonly{introSDL}
+%\includeonly{methodSDL}
+%\includeonly{nompredSDL}
+%\includeonly{exlocSDL}
+%\includeonly{expsSDL}	
+%\includeonly{othclSDL}
+%\includeonly{exsynSDL}
+%\includeonly{typolSDL}
+%\includeonly{conclSDL}
+
+\hypersetup{bookmarksopenlevel=0}
+  
+\begin{document}             
+                                    
+\maketitle  
+ 
+\frontmatter 
+
+%\chapter*{Preface}
+
+\tableofcontents   
+
+\include{AcknowledgmentsSDL}
+
+\include{AbbreviationsSDL}
+
+\mainmatter
+
+\part{Preliminaries}
+
+\include{introSDL}
+
+\include{methodSDL}
+
+\part{The contexts studied}
+
+\include{nompredSDL}
+
+\include{exlocSDL}
+
+\include{expsSDL}	
+
+\include{othclSDL}
+
+\include{exsynSDL}
+
+\part{Analysis of the data}
+
+\include{typolSDL}
+
+\include{conclSDL}
+
+\backmatter
+
+\newpage
+%\widowpenalty=10000 % keine Hurenkinder
+%\clubpenalty=10000
+
+\bibliography{diss}
+
+
+\il{Maasai|see{Maa}}
+\il{Diegue\~no (Jamul)|see{Jamul Tiipay}}
+\il{Hualapai|see{Walapai}}
+\il{Houailou|see{Aji\"e}}
+
+\is{cross-referencing|see{verbal indexing}}
+\is{agreement|see{verbal indexing}}
+\is{copula construction|see{nominal predication}}
+\is{causative|see{valency-increasing construction}}
+\is{ergativity|see{alignment}}
+\is{ergativity!optional|see{case-marking, optional}}
+\is{language contact|see{typology, areal}}
+\is{pro-drop|see{argument, omission of}}
+\is{passive|see{valency-decreasing construction, passive}}
+\is{antipassive|see{valency-decreasing construction, antipassive}}
+%\is{impersonal construction|see{valency-decreasing construction, impersonal construction}} äh?
+\is{impersonal construction|see{valency-decreasing construction}}
+\is{language change|see{marked-S languages, historical explanations}} 
+\is{subordinate clause|see{clause-type, dependent}}
+\is{nominal mutation|see{case-marking, via nominal mutation}}
+\is{mutated form|see{case-marking, via nominal mutation}}  
+\is{unmutated form|see{case-marking, via nominal mutation}}  
+
+
+\clearpage
+%\raggedright
+\pdfbookmark[0]{Index}{Index}
+\pdfbookmark[1]{Index of Names}{Index of Names}
+\printindex[aut]
+%\addcontentsline{toc}{chapter}{Verzeichnis der Sprachen}
+\pdfbookmark[1]{Index of Languages}{Index of Languages}
+\printindex[lan]
+%\addcontentsline{toc}{chapter}{Sachregister}
+%\begin{sloppypar}
+\pdfbookmark[1]{Index of Subjects}{Index of Subjects}
+\printindex
+%\end{sloppypar}
+                              
+\end{document}
+      

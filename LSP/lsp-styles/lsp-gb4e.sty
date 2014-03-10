@@ -500,8 +500,26 @@
 \exewidth{\exnrfont (35)}
 \judgewidth{*} % if wider judgements are needed, enlarge within papers
 
+\newcommand{\langinfo}[3]{{\rm #1\il{#1}~(%
+\ifx\\#2\\%
+\else%
+#2;
+\fi%
+#3)}\nopagebreak[4]\ignorespaces} 
+
+% same as above but with linebreak
+% fix me!!! Please!!
+\newcommand{\langinfobreak}[3]{{\rm #1\il{#1}~(%
+\ifx\\#2\\%
+\else%
+#2;
+\fi%
+#3)}\\\nopagebreak[4]\ignorespaces} 
 
 
+\newcommand{\xbox}[2]{\noindent\parbox[t]{#1}{#2}\noindent} 
+
+%\newcommand{\nobreakbox}[1]{\xbox{\linewidth}{#1}}
 
 % Local variables:
 % mode: font-lock
