@@ -12,7 +12,6 @@ almost final version in the proper layout, this speeds up production, since comm
 provided in the first reviewing steps.
 
 
-
 The following sections describe the layout of various items that play a role in typesetting. Many of
 these things are covered automatically by the Word Template\footnote{
 \url{https://github.com/langsci/word}, 19.02.2014.
@@ -22,30 +21,37 @@ these things are covered automatically by the Word Template\footnote{
 
 
 \section{Front matter}
-
-Every book begins with a table of contents, labeled Contents or Table of contents. (However, the
-table of contents may be preceded by a dedication page that contains a short dedication.) The table
-of contents lists chapter titles, section headings and subsection headings, each preceded by its
-number.  Next comes an optional section with notational conventions (perhaps labeled Abbreviations
-and notational conventions).  This is followed by an optional section labeled Acknowledgements or
-Preface.  (Note that there is no list of figures and no list of tables.) The introductory chapter is
-chapter 1, even if it is short.  In edited volumes, there is an obligatory section called Notes on
-contributors, with biosketches of all contributors (as is usual in OUP volumes). This follows the
-table of contents directly, preceding the section with notational conventions.
-
-
+The front matter of \lsp books is structured as follows
+\begin{itemize}
+ \item optional dedication
+ \item obligatory table of contents 
+ \item obligatory Notes on contributors (only in edited volumes)
+ \item optional list of abbreviations
+ \item optional notational conventions
+ \item optional acknowledgements
+ \item optional preface
+ \item no lists of figures or lists of tables!
+\end{itemize}
 
 \section{Back matter}
+The back matter is structured as follows:
 
-The last chapter is followed by an optional section with appendices (labeled Appendix A, Appendix B,
-\ldots).  The appendices are followed by an obligatory section called Bibliography.  The book is
-concluded by two or three indexes: an Author index (obligatory), a Subject index (obligatory), and a
-Language index (advisable if the book talks about a larger number of languages).  
+\begin{itemize}
+ \item optional Appendix A
+ \item optional Appendix B etc
+ \item optional further appendices
+ \item obligatory Bibliography
+ \item obligatory Author index
+ \item obligatory Subject index
+ \item optional Language index (advisable if the book talks about a larger number of languages)
+ 
+\end{itemize}
+
 
 \section{Chapters}
 
 Every book is divided into consecutively numbered chapters. In addition to chapters, a book may also
-have superordinate parts (numbered I, II, III). Chapter numbering is not restarted within parts.
+group chapters into parts (numbered I, II, III). %Chapter numbering is not restarted within parts.
 
 
 
@@ -59,16 +65,17 @@ six levels, that is there may be a section with the number 1.2.3.4.5.6.\footnote
 structures may be difficult for the readers, so there should be a good motivation for going beyond
 three or four levels.
 
-Sections and subsections must be minimally two and must be exhaustive, i.e. all text in a chapter
-must belong to some section, and all text within a section must belong to some subsection (etc.). A
+Sections and subsections must be minimally two and must be exhaustive. This means that all text in a chapter
+must belong to some section, all text within a section must belong to some subsection and so on. A
 short intro paragraph is allowed by way of exception, as in the current section 3 (see the intro
-paragraph above section 3.1).
+paragraph above section 3.1).\todo{würde ich nicht erlauben SN}
 
-Please write the headings of chapters and sections without special capitalization. This also applies
+Please do not change the capitalization of words when they are used in titles. 
+% Please write the headings of chapters and sections without special capitalization.
+This also applies
 to the title (and subtitle) of the book itself and to the bibliographical references. Language
-Science Press never uses special capitalization, as it potentially introduces ambiguity, and there
-are no clear rules for special capitalization in English anyway.
-
+Science Press never uses special capitalization.
+% , as it potentially introduces ambiguity, and there are no clear rules for special capitalization in English anyway.
 
 \section{Emphasis and punctuation}
 
@@ -84,23 +91,24 @@ to confusion.
 \z
 Single quotation marks are used exclusively for linguistic meanings, as in the following:
 \ea
-Latin habere `have’ is not cognate with Old English hafian `have’.
+Latin habere `have' is not cognate with Old English hafian `have'.
 \z
 
 \section{Glossed examples}
 
 Please gloss all examples and provide them with translations. The glossing should be done according
-to the Leipzig Glossing Rules. If you need special abbreviations that are not defined by the Leipzig
+to the Leipzig Glossing Rules. Special abbreviations that are not defined by the Leipzig
 Glossing Rules\footnote{
 \url{http://www.eva.mpg.de/lingua/resources/glossing-rules.php}. 27.10.2013.
 }
-\todo{Martin: provide an example}, put them in a table immedeately before the first chapter of a
-monograph. In case of edited volumes the tables with abbreviations should be placed immedeately
+\todo{Martin: provide an example} must be listed in a list of abbreviations. This list precedes the first chapter of a
+monograph. In case of edited volumes the list of abbreviations should be placed immediately
 before the references.
 
 The formating of linguistic examples in typological series follows the format that is used by the
 World Atlas of Language Structures \citep{DM2013a-ed}: If there is just one example, the language name and references
 follow the example number as in (\mex{1}):
+
 {\def\exfont{\normalsize\itshape}
 \ea\label{ex-typology}
 {\rm Mising\il{Mising} \citep[69]{Prasad91a}}\\
@@ -108,6 +116,7 @@ follow the example number as in (\mex{1}):
      small village\\ 
 \glt `a small village' 
 \z
+
 If two examples with different numbers belong to the same language, the language name is provided in
 both examples.\footnote{
   See examples (5) and (6) in the WALS online at \url{http://wals.info/chapter/87} for an example.
@@ -128,13 +137,10 @@ If an example consists of several subexamples, the language and references follo
 
 \section{Figures and tables}
 
-Figures and tables should come with a caption. Captions are set below figures and above tables. 
-Like headings, the caption should not use special capitalization.
-Please number figures and
-tables. The number should consist of the chapter number and a number that starts with one for every
-new chapter. There has to be one counter for figures and another one for
-tables. Figure~\vref{fig-example-fig-the-dog-barks} is an example of a figure and
-Table~\vref{tab-example-croft} is an example of a table.
+Figures and tables should come with a caption. %Captions are set below figures and above tables. 
+Like headings, the caption should not use special capitalization. \latex will take care of numbering the examples for you. 
+% Please number figures and tables. 
+% The number should consist of the chapter number and a number that starts with 1 for every new chapter. There has to be one counter for figures and another one for tables. Figure~\vref{fig-example-fig-the-dog-barks} is an example of a figure and Table~\vref{tab-example-croft} is an example of a table.
 
 \begin{figure}[htbp]
 \centerline{%
@@ -182,7 +188,7 @@ Please do not use footnotes in tables or figures\footnote{
 
 \section{Quotations}
 
-If long passages are quoted, they should be indented and the quote should be followed by the exact reference:
+If long passages are quoted, they should be indented and the quote should be followed by the exact reference. Use the quotation environment \latex provides:
 \begin{quotation}
 Precisely constructed models for linguistic structure can play an
 important role, both negative and positive, in the process of discovery 
@@ -210,11 +216,11 @@ correct ones''.
 If you quote text that is not in the language of the book provide a translation. Short quotes should
 be translated inline, long quotes should be translated in a footnote.
 
-\section{Crossreferences in the text}
+\section{Cross-references in the text}
 
-Please use the crossreferenceing mechanisms of your text editing/type setting software. Using such
-crossreferencing mechanisms is less error-prone when you shift text blocks around and in addition
-all these crossreferences will be turned into hyperlinks between document parts, which makes the
+Please use the cross-referencing mechanisms of your text editing/type setting software. Using such
+cross-referencing mechanisms is less error-prone when you shift text blocks around and in addition
+all these cross-references will be turned into hyperlinks between document parts, which makes the
 final documents much more useful.
 
 If you have numbered example sentence, please start with (1) for every new chapter.
@@ -240,17 +246,16 @@ referenced passages and it is a good service to the readers.
 
 We use the \emph{Unified Style Sheet for Linguistics}, which is described here:
 \url{http://celxj.org/downloads/UnifiedStyleSheet.pdf}. The \bibtex file is contained in the \latex
-classes that are used for typesetting \lsp books. Please deliver a \bibtex file with all your
-references together with your submissions. \bibtex can be exported from all common bibliography
-tools (We recommend BibDesk for the Mac and JabRef for all other platforms). Please make sure that
-all \bibtex fields are complete. Please provide all first and last names of all authros and
-editors. It is always possible to let a \bibtex style insert ``et~al.'', but of course it is
-impossible to have the \bibtex style guess what the names of the editors are if this information is
-not provided. For bipartite family names like ``von Stechow'', ``Van Eynde'', and ``de Hoop'' make sure that these
+classes that are used for typesetting \lsp books. 
+Please deliver a \bibtex file with all your references together with your submissions. 
+\bibtex can be exported from all common bibliography tools (We recommend BibDesk for the Mac and JabRef for all other platforms). 
+Please make sure that all \bibtex fields are complete. %what is the reference of  `all'? each and every imaginable bibtexfield?
+Please provide all first and last names of all authors and editors. Do not use et~al. in the Bibtex file; this will be generated automatically when inserted.
+For bipartite family names like ``von Stechow'', ``Van Eynde'', and ``de Hoop'' make sure that these
 family names are contained in curly brackets. These authors will then be cited as
 \citet{VanEynde2006a} and \citet{vonStechow84a}. Note that Dutch names like ``de Hoop'' are not treated differently from other surnames.
 
-The references in your \bibtex file will be typeset correctly automatically. So, provided the
+The references in your \bibtex file will automatically be correctly typeset. So, provided the
 \bibtex file is correct, authors do not have to worry about this. But there are some things to
 observe in the main text. Please cite as shown in Table~\ref{tab-citation}.
 
@@ -284,20 +289,23 @@ full information.
 \section{Special terms}
 
 If you refer to special terms, please use italics as in (\mex{1}):
+
 \ea
 I use the term \emph{nominative} for \ldots
 \z
 
-\section{Interpunction}
 
-Please use interpunction consistently. If you use initial adverbial clauses, please use commas:
+
+\section{Punctuation}
+
+Please use punctuation consistently. If you use initial adverbial clauses, please use commas:
 \emph{When referring to such nominatives, I use \ldots}.
 
 
 \section{Academic \emph{we}}
 
 Monographs and articles that are authored by a single author should use the pronoun \emph{I} rather
-than \emph{we} as in \emph{As we showed in Section~3}.
+than \emph{we} as in \emph{As I have shown in Section~3}.
 
 \section{Special guidelines for edited volumes}
 
@@ -305,9 +313,9 @@ than \emph{we} as in \emph{As we showed in Section~3}.
 Some special rules apply to the chapter of edited volumes:
 \begin{itemize}
 \item Each paper has its own list of references (unnumbered section labeled References).
-\item Each paper should start with a short abstract, printed in smaller typeface like a block quotation.
+\item Each paper should start with a short abstract
 \item A paper may have a special unnumbered section Acknowledgements just after the last numbered section. This is preferable to putting the acknowledgements into the footnotes.
-\item A paper may have a special unnumbered section Abbreviations (or similar) just before the References. This is strongly preferred to listing the abbreviations in a fotnote.
+\item A paper may have a special unnumbered section Abbreviations (or similar) just before the References. This is strongly preferred to listing the abbreviations in a footnote.
 \item Chapter numbers should not be used in numbering tables and figures within such chapters.
 \end{itemize}
 
@@ -316,8 +324,6 @@ Some special rules apply to the chapter of edited volumes:
 
 The following is a general checklist for authors. Author who use \latex should also consult the
 checklist for advanced authors/typesetters in Section~\ref{sec-check-typesetters}.
-
-
 
 \section{Other}
 
@@ -331,17 +337,3 @@ left-hand side: author name
 right-hand side: (chapter number and) chapter name
 \end{itemize}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-%      <!-- Local IspellDict: en_US-w_accents -->
