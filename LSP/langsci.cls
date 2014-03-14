@@ -720,7 +720,7 @@ Habelschwerdter Allee 45\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
-© \@author, \the\year 
+© \the\year, \@author 
 
 \newcommand{\ccby}{CC-BY} 
 \ifx\lsCopyright\ccby 
