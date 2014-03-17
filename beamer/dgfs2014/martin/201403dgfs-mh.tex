@@ -1,3 +1,4 @@
+%% -*- coding:utf-8 -*-
 \documentclass[10pt]{beamer}
 \usepackage{textcomp}
 \useoutertheme{lsp}
@@ -6,14 +7,10 @@
 
 \usepackage[utf8x]{inputenc}
 \usepackage{textcomp}
-%% -*- coding:utf-8 -*-
 
-\usepackage[utf8x]{inputenc}
+\usepackage{german}
 
-% \usepackage{german}
-% \selectlanguage{USenglish}
-
-
+\usepackage[sectionbib]{natbib}
 
 % DD.MM.YY
 \def\two@digits#1{\ifnum#1<10 0\fi\number#1}
@@ -51,7 +48,7 @@
 
  
 \author[M. Haspelmath]{Martin Haspelmath}
-\title{Warum die Linguistik Open-Access-Bücher braucht}
+\title{Warum die Linguistik\\Open-Access-Bücher braucht}
 \date{05.03.2014}
 
 \begin{document}
@@ -73,7 +70,7 @@
   
   
 \frame{ 
-\frametitle{Linguistik-Bücher sollten open-access sein (1)} 
+\frametitle{Linguistik-Bücher sollten\\ open-access sein (1)} 
 \begin{itemize}
  \item (ebenso wie auch Zeitschriften)
  \item  weil das Reader-pays-Modell für hochspezialisierte Inhalte ineffizient ist
@@ -86,7 +83,7 @@
 
   
 \frame{ 
-\frametitle{Linguistik-Bücher sollten open-access sein (2)} 
+\frametitle{Linguistik-Bücher sollten\\ open-access sein (2)} 
 \begin{itemize}
  \item Verbreitung ist durch das Internet superleicht geworden
  \item  Aufsätze und Bücher werden oft in der freien Manuskriptversion gelesen, oder bei Google Books
@@ -99,7 +96,7 @@
 \section{Verlage}  
   
 \frame{ 
-\frametitle{\parbox{5cm}{\vspace{1em}Der Mehrwert eines\\  wissenschaftlichen\- Verlags}} 
+\frametitle{\parbox{5cm}{Der Mehrwert eines\\  wissenschaftlichen Verlags}} 
 \begin{itemize}
  \item im 19. und 20. Jahrhundert:
 \begin{itemize}
@@ -121,24 +118,24 @@
 \frame{ 
 \frametitle{Warum hält sich das System?} 
 \begin{itemize}
- \item Reputation ist der entscheidende Faktor
- \item aus Reputation entstehen Karrieren, und ohne Karrieren gäbe es keine Wissenschaft
- \item ein renommierter Verlag ist wichtiger als viele Leser
- \item ein renommierter Verlag sorgt für Leser, selbst wenn fast niemand das Buch kauft
- \item die traditionellen Verlage gehen nur sehr langsam Richtung open-access (momentan eigentlich nur: De Gruyter Open) 
+ \item Reputation ist der entscheidende Faktor.
+ \item Aus Reputation entstehen Karrieren, und ohne Karrieren gäbe es keine Wissenschaft.
+ \item Ein renommierter Verlag ist wichtiger als viele Leser.
+ \item Ein renommierter Verlag sorgt für Leser, selbst wenn fast niemand das Buch kauft.
+ \item Die traditionellen Verlage gehen nur sehr langsam Richtung open-access (momentan eigentlich nur: De Gruyter Open).
 \end{itemize} 
 }
   
 \frame{ 
-\frametitle{\parbox{5cm}{\vspace{1em}Warum haben renommierte Verlage Renommee?}}
+\frametitle{Warum haben renommierte Verlage Renommee?}
 \begin{itemize}
  \item Weil sie so guten Service liefern?
  \begin{itemize}
   \item Nein, weil sie prominente Werke veröffentlichen 
- \item (ohne Chomskys "Syntactic Structures" gäbe es heute den Verlag De Gruyter Mouton nicht)
+ \item (ohne Chomskys "`Syntactic Structures"' gäbe es heute Mouton De Gruyter nicht)
  \end{itemize}
- \item Renommee entsteht durch exklusive Assoziation mit anderen renommierten Inhalten
- \item Also können renommierte Wissenschaftler relativ leicht neue renommierte Marken schaffen, auch ohne traditionelle Verlage
+ \item Renommee entsteht durch exklusive Assoziation mit anderen renommierten Inhalten.
+ \item Also können renommierte Wissenschaftler relativ leicht neue renommierte Marken schaffen, auch ohne traditionelle Verlage.
 \end{itemize} 
 }
    
@@ -146,13 +143,15 @@
 \frame{ 
 \frametitle{Finanzierungsmodelle (1)} 
 \begin{itemize}
- \item Author-pays-Modell: Der Autor trägt die "Druckkosten" komplett (ca. EUR 15.000 bei SpringerOpen, ca. EUR 10.000 bei De Gruyter Open)
- \item Freemium-Modell: Die Bücher sind im Prinzip frei verfügbar, aber für spezielle Services (z.B. EPUB-Version) muss man zahlen
+ \item Author-pays-Modell: Der Autor trägt die "`Druckkosten"' komplett\\
+       (ca.\ 15.000€ bei SpringerOpen, ca.\ 10.000€ bei De Gruyter Open)
+ \item Freemium-Modell: Die Bücher sind im Prinzip frei verfügbar,\\
+       aber für spezielle Services (z.\,B.\ EPUB-Version) muss man zahlen\nocite{Mounier2011a}
  \item Publisher-pays-Modell
 \begin{itemize}
-\item  
- Der Verlag trägt die Publikationskosten, mit dem Ziel, durch gute Bücher sein Renommee zu steigern 
- \item vielleicht "Marburg University Press"?
+\item  Der Verlag trägt die Publikationskosten, mit dem Ziel,\\
+       durch gute Bücher sein Renommee zu steigern 
+ \item vielleicht "`Marburg University Press"'?
  \item Publikationskosten werden als Teil der Forschungskosten angesehen
  
 
@@ -172,4 +171,30 @@
 \end{itemize} \end{itemize} 
 } 
  
-\end{document}s
+\section{Literatur}
+
+\begin{frame}%[allowframebreaks]
+{Literatur}
+
+
+% there seems to be a bug. These things are only set on the first literature slide
+%
+% The bug is still there, but the fix does not work any longer. 
+%\def\insertsectionhead{\refname}
+%\def\insertsubsectionhead{}
+
+%\fuberlinjustbarfootline
+
+%\let\url=\burl
+%\begin{multicols}{2}
+{%\tiny
+\beamertemplatetextbibitems
+
+\bibliography{bib-abbr,biblio,crossrefs}
+\bibliographystyle{unified}
+}
+%\end{multicols}
+
+\end{frame}
+
+\end{document}

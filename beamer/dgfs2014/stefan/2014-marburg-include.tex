@@ -1,12 +1,30 @@
 %% -*- coding:utf-8 -*-
 
+
+\newcommand{\frametitlefit}[1]{\frametitle{\oneline{#1}}}
+% Heiko Oberdiek
+% http://tex.stackexchange.com/questions/136644/vertical-space-in-interaction-with-figure-center-environment
+\newcommand{\oneline}[1]{%
+  \begingroup
+    \sbox0{\ignorespaces#1\unskip}%
+    \leavevmode
+    \ifdim\wd0>\linewidth
+      \hbox to\linewidth{%
+        \hss\resizebox{\linewidth}{!}{\copy0 }\hss
+      }%
+    \else
+      \copy0 %
+    \fi
+  \endgroup
+}
+
 \usepackage[utf8x]{inputenc}
 
 \usepackage{german}
-\selectlanguage{USenglish}
+%\selectlanguage{USenglish}
 
 \usepackage[sectionbib]{natbib}
-\setlength{\bibsep}{1mm}
+%\setlength{\bibsep}{1mm}
 
 % DD.MM.YY
 \def\two@digits#1{\ifnum#1<10 0\fi\number#1}
@@ -61,8 +79,8 @@
 \item 06.2012 Treffen mit Adele Goldberg, Thomas Herbst, Anatol Stefanowitsch
 \item 08.2012 OALI-Webseite, Mails an prominente Kollegen
 \item 08.2012 Treffen mit Martin Haspelmath
-\item 10.2012 Kick-Off-Treffen an der FU-Berlin mit internationaler Beteiligung via Skype (Anke
-  Lüdeling, Gereon Müller, FU-Linguistik, \ldots)
+\item 10.2012 Kick-Off-Treffen an der FU-Berlin mit internationaler
+  \mbox{Beteiligung via Skype (Anke Lüdeling, Gereon Müller, FU-Linguistik,~\ldots)}
 \item 02.2013 Einreichung Antrag im DFG-Programm \emph{Wissenschaftliche Monographien und monographische Serien im Open Access}
 \item 12.2013 DFG-Finanzierungszusage, 2 von 17 Projekten gefördert, $>$~575,000 € für zwei Jahre,
   72\,\% der Gesamtfördersumme
@@ -138,6 +156,8 @@ siehe: \url{http://langsci-press.org/Meta/sign/supporters}
 \end{multicols}
 }
 
+\subsection{Reihen}
+
 \frame{
 \frametitle{Reihen}
 
@@ -192,7 +212,7 @@ Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 }
 
 \frame{
-\frametitle{Reihen under submission/""review}
+\frametitlefit{Reihen under submission/""review}
 
 
 \begin{itemize}[<+->]
@@ -206,7 +226,9 @@ Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 
 }
 
-\section{Statistik}
+\section{Ergebnisse}
+
+\subsection{Statistik}
 
 \frame{
 \frametitle{Statistik}
@@ -251,7 +273,7 @@ Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 \frametitle{Mitarbeiter zur Zeit}
 
 \begin{itemize}[<+->]
-\item Projektorganisation/Press Manager:\\
+\item Projektorganisation/Press Director:\\
       Stefan Müller und Martin Haspelmath
 \item Projektkoordination: Sebastian Nordhoff (seit 25.02.2014)
 \item Design: Dipl.-Des. Ulrike Harbort\\
@@ -271,7 +293,7 @@ Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 \section{Das Projekt}
 
 
-\frame[shrink=15]{
+\frame[shrink=10]{
 \frametitle{Projektbestandteile}
 
 \begin{itemize}[<+->]
@@ -311,7 +333,7 @@ Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 \item 1/2 Stelle: BWLer: Dokumentation der Kosten, Geschäftsmodell\\
       (optionales Author Pays, optionale Bibliotheksbeiträge, Micropayment-Spenden, \ldots)
 \bigskip
-\item Ausschreibung in den nächsten Tagen
+\item offizielle Ausschreibung: \url{http://langsci-press.org/Meta/jobs.html}
 \end{itemize}
 
 }
@@ -359,10 +381,12 @@ Reinhard Rapp, Silvia Hansen-Schirra, Oliver Čulo
 
 \appendix
 
-\section{Preise}
+\section{Anhang}
+
+\subsection{Preise}
 
 \frame{
-\frametitle{Preisliste für Open-Access-Bücher}
+\frametitlefit{Preisliste für Open-Access-Bücher}
 
 \begin{itemize}
 \item Palgrave Macmillan: 11,000 £ (17,500 \$)\footnote{
