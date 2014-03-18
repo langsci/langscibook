@@ -29,8 +29,8 @@ handout: 2014-marburg-handout-2x2.pdf
 2014-marburg-handout-2x2.pdf: 2014-marburg-handout.pdf
 	beamer2handout $?
 
-o-public: kick-off-oali-handout-2x2.pdf 
-	scp -p kick-off-oali-handout-2x2.pdf home.hpsg.fu-berlin.de:/home/stefan/public_html/Pub/oali-kickoff.pdf
+o-public: 2014-marburg-handout-2x2.pdf 
+	scp -p 2014-marburg-handout-2x2.pdf home.hpsg.fu-berlin.de:/home/www/doc/.pdf
 
 
 clean:
