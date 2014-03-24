@@ -1,5 +1,0 @@
-\beamer@endinputifotherversion {3.24pt}
-\beamer@sectionintoc {1}{Einleitung}{2}{0}{1}
-\beamer@sectionintoc {2}{Open Access}{3}{0}{2}
-\beamer@sectionintoc {3}{Verlage}{5}{0}{3}
-\beamer@subsectionintoc {3}{1}{Finanzierungsmodelle}{8}{0}{3}
