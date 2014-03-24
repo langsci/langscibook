@@ -44,7 +44,6 @@
   \fi
   \endcenter\endgroup}
 
-\VerbatimFootnotes
 
 
 % http://tex.stackexchange.com/questions/73464/inserting-rtl-text-in-verbatim-environment?rq=1
@@ -55,39 +54,25 @@
 
 
 \newcommand{\ispackage}[1]{\if@noftnote%
-\index{package!\texttt{#1}}%
+\index{package!{\sc #1}}%
 \else%
-\index{package!\texttt{#1}|fn{*}}%
+\index{package!{\sc #1}|fn{*}}%
 \fi%
 }
 
-% breaks teh index
+% breaks the index
 %\usepackage{doc}
-
-
-
-\newcommand{\ispackageb}[1]{
-\index{package!\texttt{#1}|(}
-}
-\newcommand{\ispackagee}[1]{
-\index{package!\texttt{#1}|)}
-}
-
-\newcommand{\isoption}[1]{\if@noftnote%
-\index{option!\texttt{#1}}%
-\else%
-\index{option!\texttt{#1}|fn{*}}%
-\fi%
-}
-
-\newcommand{\iscommand}[1]{\if@noftnote%
-\index{#1@{\ttfamily $\backslash$#1}}%
-\else%
-\index{{#1@\ttfamily $\backslash$#1}|fn{*}}%
-\fi%
-}
 
 
 \newcommand\displaycmd[2]{%
   \DescribeMacro{#2}\centerline{\cmd{#1}}}
+  
+  
+% The following allows for a quick reference to following or preceeding examples (\mex{1}) or
+% (\mex{0}) but also (\mex{-1})
+% taken from covington.sty (check)
+\newcounter{lsptempcnt}
 
+\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+\addtocounter{lsptempcnt}{#1}%
+\arabic{lsptempcnt}}%
