@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.3.14)  17 MAR 2014 17:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2014.3.14)  18 MAR 2014 08:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1141,19 +1141,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--56
 
  []
 
-<bg-is.png, id=41, 642.52547pt x 481.72472pt>
-File: bg-is.png Graphic file (type png)
- <use bg-is.png>
-Package pdftex.def Info: bg-is.png used on input line 56.
-(pdftex.def)             Requested size: 364.19536pt x 273.05704pt.
- [1
+
+
+pdfTeX warning: pdflatex (file /Users/stefan/Library/texmf/tex/latex/lsp-beamer
+/lsp-beamer/lsp-title-page.pdf): PDF inclusion: found PDF version <1.7>, but at
+ most version <1.5> allowed
+<lsp-title-page.pdf, id=41, 803.0pt x 602.25pt>
+File: lsp-title-page.pdf Graphic file (type pdf)
+ <use lsp-title-page.pdf>
+Package pdftex.def Info: lsp-title-page.pdf used on input line 56.
+(pdftex.def)             Requested size: 364.19536pt x 273.15117pt.
+
+[1
 
 {/Users/stefan/Library/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.ma
-p} </Users/stefan/Library/texmf/tex/latex/lsp-beamer/lsp-beamer/bg-is.png>]
+p} </Users/stefan/Library/texmf/tex/latex/lsp-beamer/lsp-beamer/lsp-title-page.
+pdf>]
 LaTeX Font Info:    Try loading font information for TS1+cmss on input line 67.
 
-
-(/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmss.fd
+ (/usr/local/texlive/2013/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 
@@ -1465,8 +1471,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 200.
  ) 
 Here is how much of TeX's memory you used:
  18716 strings out of 493308
- 348138 string characters out of 6137816
- 423753 words of memory out of 5000000
+ 348183 string characters out of 6137816
+ 424783 words of memory out of 5000000
  21689 multiletter control sequences out of 15000+600000
  15604 words of font info for 57 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1480,10 +1486,10 @@ r/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/
 local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
 local/texlive/2013/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></usr/loca
 l/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx0900.pfb>
-Output written on 201403dgfs-mh.pdf (10 pages, 160852 bytes).
+Output written on 201403dgfs-mh.pdf (10 pages, 108427 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
+ 165 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
  27 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 

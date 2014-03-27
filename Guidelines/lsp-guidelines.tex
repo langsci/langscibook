@@ -21,13 +21,13 @@
 \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \newcommand{\bibtex}{\BibTeX\xspace}
 
-\usepackage{lsp-avm}
+\usepackage{LSP/lsp-styles/avm}
 
 \usepackage{lsp-makros}
 
 \usepackage{german}\selectlanguage{USenglish}
 
-\usepackage{lsp-eng-hyp}
+\usepackage{LSP/lsp-styles/lsp-eng-hyp}
 
 \usepackage{abbrev}
 
@@ -72,17 +72,16 @@
 
 
 % Chinese
-\usepackage[indentfirst=false]{xeCJK}
-\setCJKmainfont{SimSun}
+%\usepackage[indentfirst=false]{xeCJK}
+%\setCJKmainfont{SimSun}
 
 % bidirectional text and support for Arabic/Persian
-%% \usepackage{fontspec}
 \newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
 %\usepackage{bidi}
-\usepackage{lsp-bidi}
+\usepackage{LSP/lsp-styles/lsp-bidi}
 \newcommand{\PRL}[1]{\RL{\Parsifont #1}}
 %\TeXXeTOff
-\usepackage{lsp-gb4e}
+\usepackage{LSP/lsp-styles/lsp-gb4e}
 
 
 \iflsDraft

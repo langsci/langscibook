@@ -674,7 +674,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\sidl
 %\ifx\lsSeries\lnls
 \AtBeginDocument{
-\def\exfont{\normalsize\it}
+\def\exfont{\normalsize\itshape}
 }
 \fi
 
