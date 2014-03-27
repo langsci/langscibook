@@ -1,4 +1,4 @@
-\ProvidesPackage{my-gb4e-article}[2000/09/05]
+\ProvidesPackage{lsp-gb4e}[2000/09/05]
 \def\gbVersion{4e}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Version 4export (= v. 4 minus the compatibility code)
@@ -93,7 +93,7 @@
 %\input{my-cgloss\gbVersion.sty}
 % This is the hacked version by  Alexis Dimitriadis
 % that allows for \jambox interaction
-\input{cgloss.sty}
+\input{./LSP/lsp-styles/lsp-cgloss.sty}
 
 %%% NEWSTUFF:
 \newcommand{\indexgroupmark}[1]{\item{\bf #1}}  % ?? -CT
@@ -146,6 +146,7 @@
    \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
     {\rule{\z@}{\footnotesep}\ignorespaces
       #1\strut}}\@noftnotetrue}
+
 
 \newcount\@xnumdepth \@xnumdepth = 0
 
@@ -207,7 +208,7 @@
 %\exewidth{(234)}
 \exewidth{(34)}
 
-%% St. Mü. 02.05.2004
+%% St. Mï¿½. 02.05.2004
 \def\gblabelsep#1{\def\@gblabelsep{#1}}
 \gblabelsep{1em}
 
@@ -263,7 +264,7 @@
 \def\endxlistI{\end{list}}
 \def\endxlisti{\end{list}}
 
-%% St. Mü. 02.05.2004
+%% St. Mï¿½. 02.05.2004
 \def\subexsep#1{\def\@subexsep{#1}}
 \subexsep{1.5ex}
 
@@ -279,7 +280,7 @@
 
 %% Added third argument to be able to add some more space to leftmargin
 %% for footnotes that have bigger indentation.
-%% St. Mü. 07.01.2007
+%% St. Mï¿½. 07.01.2007
 \def\@subex#1#2#3{\settowidth{\labelwidth}{#1}\itemindent\z@\labelsep#2%
          \ifnum\the\@xnumdepth=1%
            \topsep 7\p@ plus2\p@ minus3\p@\itemsep3\p@ plus2\p@\else%
@@ -430,17 +431,17 @@
 %
 % 1) regular
 % a. example line
-\newcommand{\exfont}{\normalsize\upshape}
+\newcommand{\exfont}{\normalsize\itshape}
 % b. glossing line
 \newcommand{\glossfont}{\normalsize\upshape}
 % c. translation font
-\newcommand{\transfont}{\small\upshape}
+\newcommand{\transfont}{\normalsize\upshape} % 08.01.2014 changed small to normalsize (Martin Haspelmath)
 % d. example number
 \newcommand{\exnrfont}{\exfont\upshape}
 %
 % 2) in footnote
 % a. example line
-\newcommand{\fnexfont}{\footnotesize\upshape}
+\newcommand{\fnexfont}{\footnotesize\itshape}
 % b. glossing line
 \newcommand{\fnglossfont}{\footnotesize\upshape}
 % c. translation font
@@ -457,7 +458,7 @@
 % -------------------
 
 % define internal commands relative to these new font specifications
-\def\ex{\@ifnextchar [{\exnrfont\@ex}{\item\exfont}}
+\def\ex{\@ifnextchar [{\exnrfont\@ex}{\exnrfont\item\exfont}}
 \def\@ex[#1]#2{\item\@exj[#1]{\exfont#2}}
 
 \def\@exjbg#1{\begin{list}{{\exnrfont#1}}{\@subex{\@jwidth}{.5ex}{0em}}\item}
@@ -467,8 +468,9 @@
 \def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]\raggedright}
 \def\eanoraggedright{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
 
-\renewcommand\trans{\nopagebreak\vskip.25\baselineskip\transfont\parindent0ex}
+%\renewcommand\trans{\nopagebreak\vskip.17\baselineskip\transfont\parindent0ex}
 % Note that we have also set parindent to 0 in our redefinition of \trans
+\def\glt{\nopagebreak\vskip.17\baselineskip\transfont\parindent0ex}
 
 \renewcommand{\eachwordone}{\exfont}
 \renewcommand{\eachwordtwo}{\glossfont}
@@ -495,11 +497,29 @@
 \exewidth{\exnrfont (\theequation)}}
 
 % set initial sizes of example number and judgement sizes
-\exewidth{\exnrfont (0)}
+\exewidth{\exnrfont (35)}
 \judgewidth{*} % if wider judgements are needed, enlarge within papers
 
+\newcommand{\langinfo}[3]{{\rm #1\il{#1}~(%
+\ifx\\#2\\%
+\else%
+#2;
+\fi%
+#3)}\nopagebreak[4]\ignorespaces} 
+
+% same as above but with linebreak
+% fix me!!! Please!!
+\newcommand{\langinfobreak}[3]{{\rm #1\il{#1}~(%
+\ifx\\#2\\%
+\else%
+#2;
+\fi%
+#3)}\\\nopagebreak[4]\ignorespaces} 
 
 
+\newcommand{\xbox}[2]{\noindent\parbox[t]{#1}{#2}\noindent} 
+
+%\newcommand{\nobreakbox}[1]{\xbox{\linewidth}{#1}}
 
 % Local variables:
 % mode: font-lock
