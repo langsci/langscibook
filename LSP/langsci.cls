@@ -680,7 +680,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \lsInsideFont
 
-% Impressum:
+% Imprint:
 \ifx\lsOutput\lsOutputInprep{}
 \else{\lsImpressum}
 \fi
@@ -731,7 +731,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Impressum:
+%    Imprint:
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
