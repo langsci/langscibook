@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/03/03 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/04/02 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -65,7 +65,10 @@
 \usepackage{etex}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Page size and text area:
+%
+%    Page size and text area:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 \usepackage[ papersize={170mm,240mm}
 			,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
@@ -86,7 +89,10 @@
 \usepackage{pbox}   % boxes with maximum width
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Fonts, language and graphics:
+%
+%    Fonts, language and graphics:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
 \ifxetex
@@ -184,7 +190,10 @@
 % fxlj = libertine
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Colors:
+%
+%    Colors:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
 \definecolor{lsLightBlue}{cmyk}{0.6,0.05,0.05,0}
@@ -211,7 +220,11 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Special commands for authors:
+%
+%    Special commands for authors:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 % defaults:
 \newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un
@@ -235,7 +248,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Series information:
+%
+%    Series information:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\eotms}{eotms}
 \newcommand{\eotmsig}{eotmsig}
@@ -295,7 +311,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
  	{\renewcommand{\lsSeriesColor}{black}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Header and footer:
+%
+%    Header and footer:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{datetime}
 \usepackage{scrpage2}
@@ -318,7 +337,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \pagestyle{scrheadings}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Citation:
+%
+%    Citation:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{natbib}
 \setlength{\bibsep}{0mm}
@@ -344,7 +366,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Indexes:
+%
+%    Indexes:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \iflsIndex
 \usepackage{index}
@@ -457,7 +482,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Hyperref:
+%
+%    Hyperref:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Xelatex likes this:
 \usepackage[hyphens]{url}
@@ -482,7 +510,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Cover:
+%
+%    Cover:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\logopath}{./LSP/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
@@ -684,7 +715,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Series history:
+%
+%    Series history:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\lsSeriesHistory}{
 \color{black}
@@ -696,7 +730,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Impressum:
+%
+%    Impressum:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\lsImpressum}{
 \renewcommand{\newlineCover}{}
@@ -769,7 +806,10 @@ guarantee the accuracy of such information thereafter.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Dedication:
+%
+%    Dedication:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\lsDedication}{
 	\vspace*{.2\textheight}	
@@ -783,7 +823,10 @@ guarantee the accuracy of such information thereafter.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% footnotes:
+%
+%    Footnotes:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ifxetex
 \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}} 			% numbers in footnotes
@@ -829,7 +872,10 @@ guarantee the accuracy of such information thereafter.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% subsubsubsection:
+%
+%    subsubsubsection:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setcounter{secnumdepth}{4} % und (f"urs Inhaltsverzeichnis)
 % \setcounter{tocdepth}{4} (oder so) angegeben werden.
@@ -848,15 +894,17 @@ guarantee the accuracy of such information thereafter.
 \def\toclevel@subsubsubsection{4}
 %    
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Miscellaneous:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % bidi has to be loaded in the individual documents
 %\ifxetex
 %\usepackage{bidi} 		% wants to be placed below hyperref, natbib, graphicx, ...
 %\fi
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% miscellaneous:
-
 
 \usepackage[figuresright]{rotating}
 
