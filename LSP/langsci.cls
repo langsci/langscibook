@@ -262,6 +262,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lnls}{lnls}		%Lecture Notes in Language Sciences
 \newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
 \newcommand{\tdgi}{tdgi}		%Topics at the Discourse Grammar Interface
+\newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\lsSeriesFontColor}{white}
 
@@ -300,6 +301,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\tdgi
  	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+\fi	
+\ifx\lsSeries\cmle
+ 	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\dummyseries
  	\newcommand{\lsSeriesTitle}{~}
