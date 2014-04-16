@@ -1,0 +1,204 @@
+%% -*- coding:utf-8 -*-
+\documentclass[ number=??
+                ,series=lnls,
+                ,isbn=xxx-x-xxxxxx-xx-x,
+                ,url=http://langsci-press.org/catalog/book/14,
+	        ,output=long    % long|short|inprep              
+	        %,blackandwhite
+	        %,smallfont
+	        ,draftmode  
+		  ]{LSP/langsci}                          
+
+          
+\hypersetup{pdfdisplaydoctitle=true}
+
+\usepackage{xspace}
+\newcommand{\latex}{\LaTeX\xspace}
+
+
+
+% just for the XeLaTeX logo
+\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}
+\newcommand{\bibtex}{\BibTeX\xspace}
+
+\usepackage{LSP/lsp-styles/avm}
+
+\usepackage{lsp-makros}
+
+\usepackage{german}\selectlanguage{USenglish}
+
+\usepackage{LSP/lsp-styles/lsp-eng-hyp}
+
+\usepackage{styles/abbrev}
+
+
+      
+% OT pointing hand
+\usepackage{pifont}
+\newcommand{\hand}{\ding{43}}
+
+% OT tableaux                                                
+\usepackage{pstricks,colortab}   
+
+% DRS package by Alexis Dimitriadis
+\usepackage{drs}
+
+\usepackage{tabularx}
+
+% AVMs
+\usepackage{avm}
+\avmfont{\sc} 
+\avmvalfont{\it}
+
+% command to fontify the type values of an avm 
+\newcommand{\tpv}[1]{{\avmjvalfont #1}}
+
+% command to fontify the type of an avm and avmspan it
+\newcommand{\tp}[1]{\avmspan{\tpv{#1}}}
+
+
+\usepackage{tikz-qtree}
+% has strange side effects
+%\tikzset{every tree node/.style={align=left, anchor=north}}
+\tikzset{every roof node/.append style={inner sep=0.1pt,text height=2ex,text depth=0.3ex}}
+
+\usepackage{jambox}
+
+
+\setlength{\marginparwidth}{1.5cm}
+\usepackage[textsize=tiny,textwidth=1.5cm]{todonotes}
+\newcommand{\todostefan}[1]{\todo[color=green!40]{#1\xspace}}
+\newcommand{\inlinetodostefan}[1]{\todo[color=green!40,inline]{{\normalsize #1}}}
+
+
+% Chinese
+\usepackage[indentfirst=false]{xeCJK}
+\setCJKmainfont{SimSun}
+
+% bidirectional text and support for Arabic/Persian
+\newfontfamily\Parsifont[Script=Arabic]{XB Niloofar}
+%\usepackage{bidi}
+\usepackage{LSP/lsp-styles/lsp-bidi}
+\newcommand{\PRL}[1]{\RL{\Parsifont #1}}
+%\TeXXeTOff
+\usepackage{LSP/lsp-styles/lsp-gb4e}
+
+
+\iflsDraft
+\proofmodetrue
+\fi
+
+% This is needed to allow for hyphenation in \texttt
+% http://tex.stackexchange.com/questions/44361/how-to-automatically-hyphenate-within-texttt
+% usually this is not required, but since we show index entries for packages in the margin and since
+% the package names a re typeset in tt, we need the hyphenation.
+\DeclareFontFamily{OT1}{cmtt}{\hyphenchar \font=-1}
+
+
+\title{Language Science Press guidelines}  
+\subtitle{General rules for editors, authors and \latex recommendations}
+\BackTitle{Language Science Press guidelines}
+
+\BackBody{This book contains the guidelines for Language Science Press authors and editors. For those who want
+  to help keeping the production costs low and therefore decided to use \latex, it also contains
+  descriptions of packages that can be used for typesetting trees, Attribute Value Matrices, OT-tableaux, Categorial
+  Grammar proofs, LFG analyses, and much more. The setup of typesetting script with special fonts as
+  for instance right to left scripts like Arabic is explained. The \latex chapter also contains sections
+  concerning the efficient workflow in professional typesetting environments using \latex.
+
+Stefan Müller is an experienced \latex user who has typeset four published books and several book
+manuscripts and journal articles.
+}
+
+\dedication{This book is dedicated to everybody who cannot afford to buy books by profit oriented publishers.}
+
+\typesetter{Stefan Müller}
+\proofreader{Test T.\ Tester, Test T.\ Tester, Test T.\ Tester, Test T.\ Tester, Test T.\ Tester, Test T.\ Tester,}
+
+\author{Stefan Müller and Martin Haspelmath}
+
+
+
+\makeatletter
+\def\verbatim@font{\scriptsize\ttfamily}
+\makeatother
+         
+%\renewcommand{\eachwordone}{\it}
+%\renewcommand{\exfont}{\it}
+%\def\exfont{\it}
+
+\begin{document}               
+         
+                                                                           
+                                  
+\maketitle                
+
+%\frontmatter
+
+\chapter*{Preface}
+
+%\lipsum[3-10]  
+
+This book has several purposes: it describes the editorial process and contains guidelines with some style rules for all
+authors. In addition it contains a part for authors who use \latex or who want to learn \latex in order to
+support \lsp. The \latex part is also a reference for those who volunteered to help typesetting
+manuscripts that were not submitted in \latex. See \citew{MuellerOA} and \citew{MH2013a} for an overview of the
+general setup of the project.
+
+\section*{Acknowledgements}
+
+
+
+%% David Reitter danke ich für die \LaTeX"=Makros für Combinatorial
+%% Categorial Grammar, Mary Dalrymple und Jonas Kuhn für die LFG"=Makros und Beispielstrukturen, und
+%% Laura Kallmeyer für die \LaTeX"=Quelltexte der meisten TAG"=Analysen. Ohne diese
+%% Originalmakros/-texte wären die Darstellungen in den jeweiligen Kapiteln sicher nicht halb so schön
+%% geworden. 
+
+This book is typeset with \xelatex. We thank the \latex developers for their work and the members of
+the \textit{German Language TeX Users Group Communication List} and those replying at \url{http://tex.stackexchange.com} for many usefull hints and suggestions.
+
+We thank Matthias Hüning\aimention{Matthias H{\"u}ning} for comments on an earlier version of this document and Corinna Handschuh\aimention{Corinna Handschuh}
+and Francesco Cangemi\aimention{Francesco Cangemi} for being the first to use the new \latex classes and providing feedback
+to us.
+
+\bigskip
+
+\noindent
+Berlin, \today\hfill Stefan Müller \& Martin Haspelmath
+
+
+\tableofcontents      
+
+\mainmatter         
+
+\include{lsp-setup}
+\include{lsp-editors}
+\include{lsp-authors}
+\include{lsp-latex}
+\include{lsp-publication}
+
+
+\backmatter
+
+\bibliography{lsp-abbrev,lsp-guidelines}
+
+%\cleardoublepage
+
+\clearpage
+\pdfbookmark[0]{Index}{Index}
+\pdfbookmark[1]{Expression index}{Expression index}
+\printindex[wrd]
+\pdfbookmark[1]{Reverse expression index}{Reverse expression index}
+\printindex[rwrd]
+\pdfbookmark[1]{Name index}{Name index}
+\printindex[aut]
+\pdfbookmark[1]{Language index}{Language index}
+\printindex[lan]
+\pdfbookmark[1]{Subject index}{Subject index}
+\printindex
+
+                              
+\end{document}
+      
+%      <!-- Local IspellDict: en_US-w_accents -->
