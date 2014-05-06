@@ -382,8 +382,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=biblatex-sp-unified,
-		citestyle=sp-authoryear-comp,
+		style=lsp-bst/biblatex-sp-unified,
+		citestyle=lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
 		backend=\lsBiblatexBackend
 	]{biblatex}
