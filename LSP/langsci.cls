@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/04/02 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/05/06 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -12,8 +12,14 @@
 \newcommand{\lsOutput}{long}
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
+\newcommand{\lsBiblatexBackend}{bibtex}
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsIndex \lsIndextrue
+\newif\iflsBibtex \lsBibtexfalse
+\newif\iflsCollection \lsCollectionfalse
+\newif\iflsCollectionChapter \lsCollectionChapterfalse
+\newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
+
 
 
 % Option handling:
@@ -39,6 +45,9 @@
 \DeclareStringOption{copyright}[CC-BY]
 	\define@key{langsci}{copyright}{%
 		\renewcommand{\lsCopyright}{#1}}
+\DeclareStringOption{biblatexbackend}[bibtex]
+	\define@key{langsci}{biblatexbackend}{%
+		\renewcommand{\lsBiblatexBackend}{#1}}
 \DeclareVoidOption{blackandwhite}{
 	\newcommand{\blackandwhite}{}}
 \DeclareVoidOption{long}{
@@ -50,6 +59,16 @@
  	 \overfullrule=5pt	}	% to indicate overfull hboxes
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
+\DeclareVoidOption{bibtex}{  			
+	\lsBibtextrue}
+\DeclareVoidOption{collection}{  			
+	\lsCollectiontrue}
+\DeclareVoidOption{collectionchapter}{  			
+	\lsCollectiontrue
+	\lsCollectionChaptertrue}
+\DeclareVoidOption{collectiontoclong}{  			
+	\lsCollectiontrue
+	\lsCollectionTOCLongtrue}
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
@@ -58,6 +77,7 @@
         numbers=noenddot,		% no point after last number of chapters/sections
         toc=bibliographynumbered,
         index=totoc,
+        %chapterprefix=true,
 	%draft=yes,
 	]{scrbook}
 
@@ -238,6 +258,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \newcommand{\newlineCover}{\\}	% \newline only on cover
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
+\newcommand{\newlineTOC}{\\}		% \newline only in TOC entry
 
 \def\translator#1{\gdef\@translator{#1}}
 \translator{}
@@ -246,6 +267,16 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \def\proofreader#1{\gdef\@proofreader{#1}}
 \proofreader{}
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
+
+
+% for papers of collections:
+\newcommand{\lsCollectionPaperAbstract}{Put abstract here.}
+\newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
+
+% inside \author
+\renewcommand{\and}{}				
+\newcommand{\lastand}{}
+\newcommand{\affiliation}[1]{}	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -347,26 +378,41 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{natbib}
-\setlength{\bibsep}{0mm}
-% unified style sheet for linguistics journals
-% put directory in BST_INPUTS
-% http://celxj.org/downloads/unified.bst
-\bibliographystyle{./LSP/lsp-bst/unified} 
-% This does not work ...
-%% \setcitestyle{
-%% notesep={: }, % 2002: 125
-%% aysep={~}     % Gazdar 2002
-%% }
 
-% check what the unified people have to say on this.
-\bibpunct[: ]{(}{)}{;}{a}{}{,}
-% They do not say anything about citations in the running text.
-% As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
-% This is what De Gruyter does:
-\let\citew=\citet
-% This is what Stefan did:
-%\let\citew=\citealt
+\iflsBibtex	% BibTeX
+	\usepackage{natbib}
+	\setlength{\bibsep}{0mm}
+  	% unified style sheet for linguistics journals
+	% put directory in BST_INPUTS
+ 	% http://celxj.org/downloads/unified.bst
+	\bibliographystyle{./LSP/lsp-bst/unified} 
+	% This does not work ...
+	%% \setcitestyle{
+	%% notesep={: }, % 2002: 125
+	%% aysep={~}     % Gazdar 2002
+	%% }
+
+	% check what the unified people have to say on this.
+	\bibpunct[: ]{(}{)}{;}{a}{}{,}
+	% They do not say anything about citations in the running text.
+	% As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
+	% This is what De Gruyter does:
+	\let\citew=\citet
+	% This is what Stefan did:
+	%\let\citew=\citealt
+
+\else	%BibLaTeX
+	\usepackage[
+		natbib=true,
+		style=biblatex-sp-unified,
+		citestyle=sp-authoryear-comp,
+		%refsection=chapter,
+		backend=\lsBiblatexBackend
+	]{biblatex}
+	\renewcommand{\postnotedelim}{: $\!$}%
+	\DeclareFieldFormat{postnote}{#1}%
+	%\renewcommand{\nameyeardelim}{ }%		
+\fi
 
 
 
@@ -523,6 +569,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\logopath}{./LSP/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
+\newcommand{\lsEditorPrefix}{}
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
@@ -557,7 +604,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
  
 	\raggedright
 	{\lsCoverAuthorFont 
-		\@author\\}
+		\lsEditorPrefix\@author\\}
 	\end{textblock}}
 
 \newcommand{\lsCoverSeries}{
@@ -622,17 +669,93 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\end{minipage}}} 
 	\end{textblock}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\onlyAuthor}{%		% collection paper
+	\renewcommand{\and}{, }% 
+	\renewcommand{\lastand}{ \& }%  
+	\renewcommand{\affiliation}[1]{}}
+\newcommand{\AuthorAffiliation}{
+	\renewcommand{\and}{\newline\newline} 
+	\renewcommand{\lastand}{\newline\newline} 
+	\renewcommand{\affiliation}[1]{\\[0.5ex]{\large ##1}}}
+\newcommand{\lsCollectionPaperHeaderAuthor}{{%
+	\renewcommand{\newlineCover}{}%
+	\renewcommand{\newlineTOC}{}%
+	\onlyAuthor\@author}}
+\newcommand{\lsCollectionPaperHeaderTitle}{%
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineTOC}{}
+	\iflsCollectionChapter%
+		\thechapter\hspace{0.5em}\fi
+	\@title}
+\newcommand{\lsCollectionPaperTOC}{{%
+	\iflsCollectionChapter%
+		\protect\numberline{\thechapter}\fi
+	\@title\newline{\normalfont\@author}}}
+\newcommand{\lsCollectionPaperTitle}{{%
+	\renewcommand{\newlineTOC}{}
+	\renewcommand{\newlineCover}{\\}
+	\iflsCollectionChapter 
+		{\LARGE Chapter \thechapter}\newline\newline\fi
+	\@title}}
+\newcommand{\lsCollectionPaperAuthor}{{%
+	\renewcommand{\newlineTOC}{}
+	\renewcommand{\newlineCover}{\\[0.5ex]}
+	\AuthorAffiliation\LARGE\@author}}
+\newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
+	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
+	\hspace{0.8em}%
+	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\fullcite{this}}}
+\newcommand{\lsPaper}{
+	\renewcommand{\maketitle}{
+		\addtocounter{chapter}{1}
+		\addchap*{\lsCollectionPaperTitle}
+		\onlyAuthor
+		\renewcommand{\newlineCover}{}
+		\renewcommand{\newlineTOC}{\\}
+		\addcontentsline{toc}{chapter}{\lsCollectionPaperTOC}%
+		\ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
+		\vspace*{-2ex}
+		\lsCollectionPaperAuthor
+		\vspace*{\baselineskip}% 
+		\begin{quote}
+		\small\lsCollectionPaperAbstract
+		\end{quote}
+	}	
+	\renewcommand*{\thesection}{\arabic{section}}
+	\setcounter{section}{0}
+	\setcounter{footnote}{0}
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\setcounter{equation}{0}  % for examples
+	\ohead{}
+	\lehead{\lsCollectionPaperHeaderAuthor}
+	\rohead{\lsCollectionPaperHeaderTitle}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Ouput types:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\lsOutputLong}{long}
 \newcommand{\lsOutputShort}{short}
 \newcommand{\lsOutputInprep}{inprep}
+\newcommand{\lsOutputPaper}{paper}
 
 \AtBeginDocument{
+\ifx\lsOutput\lsOutputPaper				% only if output=paper
+	\usepackage{chngcntr}
+	\counterwithout{figure}{chapter}
+	\counterwithout{table}{chapter}
+	\lsPaper
+\else									% only if output!=paper
 \renewcommand{\maketitle}{
 \begin{titlepage}
 \thispagestyle{empty}
 
-%\@ifundefined{long}{}{		
 \ifx\lsOutput\lsOutputLong				% only if output=long
 	\setcounter{page}{-5}
 	% First titlepage:
@@ -661,13 +784,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	%%%%%%%%%%%%%%%%%%%%
 \fi		
 
-\ifx\lsOutput\lsOutputShort				% only if output=short
+\ifx\lsOutput\lsOutputShort						% only if output=short
   	{\renewcommand{\lsCoverBlockColor}{white}
   	 \renewcommand{\lsCoverFontColor}{black}
   	 \lsFrontPage}
 \fi
 
-\ifx\lsOutput\lsOutputInprep				% only if output=inprep
+\ifx\lsOutput\lsOutputInprep					% only if output=inprep
 	{\renewcommand{\lsCoverBlockColor}{white}
   	 \renewcommand{\lsCoverFontColor}{black}
   	 \lsCoverBlock
@@ -675,7 +798,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi								
 
 \end{titlepage}
-
 
 \frontmatter
 \renewcommand{\frontmatter}{}
@@ -694,24 +816,22 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \null\newpage\thispagestyle{plain}
 %\pagenumbering{roman}		% or \frontmatter
 
-
 % Dedication:
 \ifx\@dedication\empty{}
 \else{\lsDedication}
 \fi
 %%%%%%%%%%%%%%%%
 
-%\g@addto@macro{\tableofcontents}{\mainmatter}  % TODO: remove?
-		
-}
+}	% \maketitle
+\fi
 
 % for those who like the example in numbered example sentences to be typeset in italics
 % this is possible for a complete series only.
 \ifx\lsSeries\sidl
-%\ifx\lsSeries\lnls
-\AtBeginDocument{
-\def\exfont{\normalsize\itshape}
-}
+	%\ifx\lsSeries\lnls
+	\AtBeginDocument{
+	\def\exfont{\normalsize\itshape}
+	}
 \fi
 
 
@@ -874,6 +994,57 @@ guarantee the accuracy of such information thereafter.
 %%     {\rule{\z@}{\footnotesep}\ignorespaces
 %%       #1\strut}}\@noftnotetrue}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Collection:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\iflsCollection
+	\iflsBibtex
+		\ClassError{LSP/langsci}{Collection option not compatible with plain BibTeX}
+	\fi
+	
+\renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
+
+% customize \tableofcontents
+\renewcommand{\@dotsep}{2.5}		% space between dots
+\renewcommand{\@tocrmarg}{1.5em}	% right margin for leader 
+\renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
+\usepackage{tocstyle}
+\usetocstyle{standard}				%\usetocstyle{allwithdot}
+\iflsCollectionTOCLong\else
+	\setcounter{tocdepth}{0}\fi			% show only parts and chapters
+\settocstylefeature[-1]{pagenumberbox}{\csname @gobble\endcsname}	% parts without page number
+\settocstylefeature[-1]{leaders}{\hfill}							% parts without dots#
+	
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+% Modified code from:
+% http://pastcounts.wordpress.com/2010/12/20/how-to-construct-a-collection-of-articles-with-latex/
+\newenvironment{collectionpaper}{
+\renewcommand{\documentclass}[2][]{}%
+\renewcommand{\usepackage}[2][]{}%
+\renewenvironment{document}{\begingroup}{\endgroup}%
+
+\renewcommand{\title}[1]{\renewcommand{\@title}{##1}}
+\renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
+%\renewcommand{\thanks}[1]{\symbolfootnote[1]{##1}}
+\lsPaper
+}
+{}
+
+\newcommand{\includepaper}[1]{
+	\begin{collectionpaper}
+	\begin{refsection} 
+	\include{#1}%
+	%\printbibliography[heading=subbibliography,notkeyword=this]  
+	\end{refsection}
+	\end{collectionpaper}}
+\fi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
