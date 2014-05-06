@@ -15,7 +15,7 @@
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsIndex \lsIndextrue
-\newif\iflsBibtex \lsBibtexfalse
+\newif\iflsBiblatex \lsBiblatexfalse
 \newif\iflsCollection \lsCollectionfalse
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
@@ -59,8 +59,8 @@
  	 \overfullrule=5pt	}	% to indicate overfull hboxes
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
-\DeclareVoidOption{bibtex}{  			
-	\lsBibtextrue}
+\DeclareVoidOption{biblatex}{  			
+	\lsBiblatextrue}
 \DeclareVoidOption{collection}{  			
 	\lsCollectiontrue}
 \DeclareVoidOption{collectionchapter}{  			
@@ -379,7 +379,18 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\iflsBibtex	% BibTeX
+\iflsBiblatex	% BibLaTeX
+	\usepackage[
+		natbib=true,
+		style=biblatex-sp-unified,
+		citestyle=sp-authoryear-comp,
+		%refsection=chapter,
+		backend=\lsBiblatexBackend
+	]{biblatex}
+	\renewcommand{\postnotedelim}{: $\!$}%
+	\DeclareFieldFormat{postnote}{#1}%
+	%\renewcommand{\nameyeardelim}{ }%		
+\else	%BibTeX
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
   	% unified style sheet for linguistics journals
@@ -400,18 +411,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\let\citew=\citet
 	% This is what Stefan did:
 	%\let\citew=\citealt
-
-\else	%BibLaTeX
-	\usepackage[
-		natbib=true,
-		style=biblatex-sp-unified,
-		citestyle=sp-authoryear-comp,
-		%refsection=chapter,
-		backend=\lsBiblatexBackend
-	]{biblatex}
-	\renewcommand{\postnotedelim}{: $\!$}%
-	\DeclareFieldFormat{postnote}{#1}%
-	%\renewcommand{\nameyeardelim}{ }%		
 \fi
 
 
@@ -1002,8 +1001,8 @@ guarantee the accuracy of such information thereafter.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \iflsCollection
-	\iflsBibtex
-		\ClassError{LSP/langsci}{Collection option not compatible with plain BibTeX}
+	\iflsBiblatex\else
+		\ClassError{LSP/langsci}{Collection option not compatible with plain BibTeX. Please use biblatex option}
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
