@@ -92,8 +92,8 @@
  
 \usepackage[ papersize={170mm,240mm}
 			,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
-			,inner=25mm, 
-			,outer=20mm
+			,inner=20.5mm, 
+			,outer=24.5mm
 			%,showframe,pass
             ,marginparwidth=50pt
 			]{geometry}
