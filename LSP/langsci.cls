@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/05/20 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/05/06 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -92,10 +92,10 @@
  
 \usepackage[ papersize={170mm,240mm}
 			,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
-			,inner=20.5mm, 
-			,outer=24.5mm
+			,inner=20mm, 
+			,outer=25mm
 			%,showframe,pass
-            ,marginparwidth=50pt
+                        ,marginparwidth=50pt
 			]{geometry}
 			
 
@@ -382,8 +382,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=lsp-bst/biblatex-sp-unified,
-		citestyle=lsp-bst/sp-authoryear-comp,
+		style=LSP/lsp-bst/biblatex-sp-unified,
+		citestyle=LSP/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
 		backend=\lsBiblatexBackend
 	]{biblatex}
