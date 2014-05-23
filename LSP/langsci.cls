@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/05/23 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/05/06 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -92,10 +92,10 @@
  
 \usepackage[ papersize={170mm,240mm}
 			,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
-			,inner=20.5mm, 
-			,outer=24.5mm
+			,inner=20mm, 
+			,outer=25mm
 			%,showframe,pass
-			,marginparwidth=50pt
+                        ,marginparwidth=50pt
 			]{geometry}
 			
 
@@ -704,7 +704,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
 	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
 	\hspace{0.8em}%
-	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\fullcite{this}}}
+	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
+\newcommand{\lsCollectionPaperCitationText}{\fullcite{this}}
 \newcommand{\lsPaper}{
 	\renewcommand{\maketitle}{
 		\addtocounter{chapter}{1}
