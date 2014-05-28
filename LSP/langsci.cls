@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/05/23 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/05/28 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -414,6 +414,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Floats:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{floatrow}					% For adjusting the position of the caption (default is below).
+\floatsetup[table]{capposition=top} 	% As for tables, the caption appears above.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
