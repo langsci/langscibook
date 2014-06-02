@@ -215,7 +215,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{xcolor}
+\usepackage[table]{xcolor}
 \definecolor{lsLightBlue}{cmyk}{0.6,0.05,0.05,0}
 \definecolor{lsMidBlue}{cmyk}{0.75,0.15,0,0}
 \definecolor{lsMidDarkBlue}{cmyk}{0.9,0.4,0.05,0}
