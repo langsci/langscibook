@@ -87,6 +87,61 @@
     \threesent
 }
 
+
+\def\gllll%                  % Introduces 4-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%        conditionally force single spacing (hpk/MC)
+	\def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \foursent
+}
+
+
+\def\glllll%                  % Introduces 5-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%        conditionally force single spacing (hpk/MC)
+	\def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \fivesent
+}
+
+
+\def\gllllll%                  % Introduces 6-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%        conditionally force single spacing (hpk/MC)
+	\def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \sixsent
+}
+
+
+\def\glllllll%                  % Introduces 7-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%        conditionally force single spacing (hpk/MC)
+	\def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \sevensent
+}
+
+
+\def\gllllllll%                  % Introduces 8-line text-and-gloss.
+   {\bgroup %\begin{flushleft}
+     \ifx\@gsingle1%        conditionally force single spacing (hpk/MC)
+	\def\baselinestretch{1}\@selfnt\fi
+%        \vskip\baselineskip\def\baselinestretch{1}%
+%        \@selfnt\vskip-\baselineskip\fi%
+    \bgroup
+    \eightsent
+}
+
 % \def\glt{\vskip.0\baselineskip}
 
 % redefine \gltoffset to set off translation from ex and gloss
@@ -113,11 +168,21 @@
 \newbox\lineone % boxes with words from first line
 \newbox\linetwo
 \newbox\linethree
+\newbox\linefour
+\newbox\linefive
+\newbox\linesix
+\newbox\lineseven
+\newbox\lineeight
 \newbox\wordone % a word from the first line (hbox)
 \newbox\wordtwo
 \newbox\wordthree
+\newbox\wordfour
+\newbox\wordfive
+\newbox\wordsix
+\newbox\wordseven
+\newbox\wordeight
 \newbox\gline % the constructed double line (hbox)
-\newskip\glossglue % extra glue between glossed pairs or triples
+\newskip\glossglue % extra glue between glossed pairs or tuples
 \glossglue = 0pt plus 2pt minus 1pt % allow stretch/shrink between words
 %\glossglue = 5pt plus 2pt minus 1pt % allow stretch/shrink between words
 \newif\ifnotdone
@@ -125,6 +190,11 @@
 \@ifundefined{eachwordone}{\let\eachwordone=\rm}{\relax}
 \@ifundefined{eachwordtwo}{\let\eachwordtwo=\rm}{\relax}
 \@ifundefined{eachwordthree}{\let\eachwordthree=\rm}{\relax}
+\@ifundefined{eachwordfour}{\let\eachwordfour=\rm}{\relax}
+\@ifundefined{eachwordfive}{\let\eachwordfive=\rm}{\relax}
+\@ifundefined{eachwordsix}{\let\eachwordsix=\rm}{\relax}
+\@ifundefined{eachwordseven}{\let\eachwordseven=\rm}{\relax}
+\@ifundefined{eachwordeight}{\let\eachwordeight=\rm}{\relax}
 
 \def\lastword#1#2#3% #1 = \each, #2 = line box, #3 = word box
    {\setbox#2=\vbox{\unvbox#2%
@@ -188,6 +258,186 @@
                                           \box\wordtwo
                                           \nointerlineskip
                                           \box\wordthree
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+
+      
+\gdef\foursent#1\\ #2\\ #3\\ #4\\{% #1 = first line, #2 = second line, #3 = third
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \getwords(\linethree,\eachwordthree)#3 \\%
+    \getwords(\linefour,\eachwordfour)#4 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \lastword{\eachwordthree}{\linethree}{\wordthree}%
+         \lastword{\eachwordfour}{\linefour}{\wordfour}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                          \nointerlineskip
+                                          \box\wordthree
+                                          \nointerlineskip
+                                          \box\wordfour
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+
+      
+\gdef\fivesent#1\\ #2\\ #3\\ #4\\ #5\\{% #1 = first line, #2 = second line, #3 = third
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \getwords(\linethree,\eachwordthree)#3 \\%
+    \getwords(\linefour,\eachwordfour)#4 \\%
+    \getwords(\linefive,\eachwordfive)#5 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \lastword{\eachwordthree}{\linethree}{\wordthree}%
+         \lastword{\eachwordfour}{\linefour}{\wordfour}%
+         \lastword{\eachwordfive}{\linefive}{\wordfive}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                          \nointerlineskip
+                                          \box\wordthree
+                                          \nointerlineskip
+                                          \box\wordfour
+                                          \nointerlineskip
+                                          \box\wordfive
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+
+      
+\gdef\sixsent#1\\ #2\\ #3\\ #4\\ #5\\ #6\\{% #1 = first line, #2 = second line, #3 = third
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \getwords(\linethree,\eachwordthree)#3 \\%
+    \getwords(\linefour,\eachwordfour)#4 \\%
+    \getwords(\linefive,\eachwordfive)#5 \\%
+    \getwords(\linesix,\eachwordsix)#6 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \lastword{\eachwordthree}{\linethree}{\wordthree}%
+         \lastword{\eachwordfour}{\linefour}{\wordfour}%
+         \lastword{\eachwordfive}{\linefive}{\wordfive}%
+         \lastword{\eachwordsix}{\linesix}{\wordsix}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                          \nointerlineskip
+                                          \box\wordthree
+                                          \nointerlineskip
+                                          \box\wordfour
+                                          \nointerlineskip
+                                          \box\wordfive
+                                          \nointerlineskip
+                                          \box\wordsix
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+
+      
+\gdef\sevensent#1\\ #2\\ #3\\ #4\\ #5\\ #6\\ #7\\{% #1 = first line, #2 = second line, #3 = third
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \getwords(\linethree,\eachwordthree)#3 \\%
+    \getwords(\linefour,\eachwordfour)#4 \\%
+    \getwords(\linefive,\eachwordfive)#5 \\%
+    \getwords(\linesix,\eachwordsix)#6 \\%
+    \getwords(\lineseven,\eachwordseven)#7 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \lastword{\eachwordthree}{\linethree}{\wordthree}%
+         \lastword{\eachwordfour}{\linefour}{\wordfour}%
+         \lastword{\eachwordfive}{\linefive}{\wordfive}%
+         \lastword{\eachwordsix}{\linesix}{\wordsix}%
+         \lastword{\eachwordseven}{\lineseven}{\wordseven}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                          \nointerlineskip
+                                          \box\wordthree
+                                          \nointerlineskip
+                                          \box\wordfour
+                                          \nointerlineskip
+                                          \box\wordfive
+                                          \nointerlineskip
+                                          \box\wordsix
+                                          \nointerlineskip
+                                          \box\wordseven
+                                         }%
+                                   }%
+         \testdone
+         \ifnotdone
+    \repeat
+    \egroup % matches \bgroup in \gloss
+   \gl@stop}
+
+
+      
+\gdef\eightsent#1\\ #2\\ #3\\ #4\\ #5\\ #6\\ #7\\ #8\\{% #1 = first line, #2 = second line, #3 = third
+    \getwords(\lineone,\eachwordone)#1 \\%
+    \getwords(\linetwo,\eachwordtwo)#2 \\%
+    \getwords(\linethree,\eachwordthree)#3 \\%
+    \getwords(\linefour,\eachwordfour)#4 \\%
+    \getwords(\linefive,\eachwordfive)#5 \\%
+    \getwords(\linesix,\eachwordsix)#6 \\%
+    \getwords(\lineseven,\eachwordseven)#7 \\%
+    \getwords(\lineeight,\eachwordeight)#8 \\%
+    \loop\lastword{\eachwordone}{\lineone}{\wordone}%
+         \lastword{\eachwordtwo}{\linetwo}{\wordtwo}%
+         \lastword{\eachwordthree}{\linethree}{\wordthree}%
+         \lastword{\eachwordfour}{\linefour}{\wordfour}%
+         \lastword{\eachwordfive}{\linefive}{\wordfive}%
+         \lastword{\eachwordsix}{\linesix}{\wordsix}%
+         \lastword{\eachwordseven}{\lineseven}{\wordseven}%
+         \lastword{\eachwordeight}{\lineeight}{\wordeight}%
+         \global\setbox\gline=\hbox{\unhbox\gline
+                                    \hskip\glossglue
+                                    \vtop{\box\wordone   % vtop was vbox
+                                          \nointerlineskip
+                                          \box\wordtwo
+                                          \nointerlineskip
+                                          \box\wordthree
+                                          \nointerlineskip
+                                          \box\wordfour
+                                          \nointerlineskip
+                                          \box\wordfive
+                                          \nointerlineskip
+                                          \box\wordsix
+                                          \nointerlineskip
+                                          \box\wordseven
+                                          \nointerlineskip
+                                          \box\wordeight
                                          }%
                                    }%
          \testdone
