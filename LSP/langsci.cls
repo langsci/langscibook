@@ -378,6 +378,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Xelatex likes this, must appear before BibLaTeX:
+\usepackage[hyphens]{url}
+\urlstyle{same}
 
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
@@ -545,9 +548,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Xelatex likes this:
-\usepackage[hyphens]{url}
-\urlstyle{same}
+
 
 
 \usepackage[bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
