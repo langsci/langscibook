@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/05/28 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/06/20 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -272,6 +272,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % for papers of collections:
 \newcommand{\lsCollectionPaperAbstract}{Put abstract here.}
 \newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
+
+\def\epigram#1{\gdef\@epigram{#1}}			% needs to be defined this way to check emptiness
+\epigram{}
+\def\epigramsource#1{\gdef\@epigramsource{#1}}
+\epigramsource{}
 
 % inside \author
 \renewcommand{\and}{}				
@@ -725,8 +730,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\addcontentsline{toc}{chapter}{\lsCollectionPaperTOC}%
 		\ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
 		\vspace*{-2ex}
-		\lsCollectionPaperAuthor
-		\vspace*{\baselineskip}% 
+		\lsCollectionPaperAuthor%
+		\vspace*{\baselineskip}%
+ 		\ifx\@epigram\empty%
+			\else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}% 
+					\epigram{}\epigramsource{}}% 
+ 		\fi% 
 		\begin{quote}
 		\small\lsCollectionPaperAbstract
 		\end{quote}
@@ -1141,6 +1150,12 @@ guarantee the accuracy of such information thereafter.
 % a) hspace over width of something without showing it
 \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
 
+%%% epigraph configuration
+\usepackage{epigraph}
+\setlength{\epigraphrule}{0pt}
+\renewcommand{\textflush}{flushepinormal}
+%\setlength{\epigraphwidth}{.2\textwidth}
+\setlength{\afterepigraphskip}{0\baselineskip}
 
 \endinput
 
