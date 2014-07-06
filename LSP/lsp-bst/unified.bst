@@ -668,7 +668,11 @@ FUNCTION {format.bvolume}
 }
 FUNCTION {format.number.series}
     { number empty$
-        { series field.or.null }
+        %{ series field.or.null }
+        { series empty$ % version with brackets: Stefan Müller, 06.07.2014
+            { "" }
+            { " (" series * ")" * }
+          if$ }
         { series empty$
             { number "number" bibinfo.check }
             { add.blank "(" *
