@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/06/20 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/07/09 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -803,9 +803,27 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi		
 
 \ifx\lsOutput\lsOutputShort						% only if output=short
-  	{\renewcommand{\lsCoverBlockColor}{white}
-  	 \renewcommand{\lsCoverFontColor}{black}
-  	 \lsFrontPage}
+	\setcounter{page}{-3}
+	% First titlepage:
+	{\lsFrontPage}
+	%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	\null\newpage\thispagestyle{empty}
+	% Series information:
+	{\lsSeriesHistory}
+	%%%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	% Schmutztitel:
+	{\renewcommand{\lsCoverBlockColor}{white}
+	 \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+	\lsSchmutztitel}
+	%%%%%%%%%%%%%%%%%%%%
+	\AtEndDocument{
+		\newpage\thispagestyle{empty}
+		% Back page:
+		{\lsBackPage}
+		\null\newpage\thispagestyle{empty}
+	}
 \fi
 
 \ifx\lsOutput\lsOutputInprep					% only if output=inprep
