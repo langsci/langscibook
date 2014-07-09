@@ -775,7 +775,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \thispagestyle{empty}
 
 \ifx\lsOutput\lsOutputLong				% only if output=long
-	\setcounter{page}{-5}
+	\setcounter{page}{-3}
 	% First titlepage:
 	{\lsFrontPage}
 	%%%%%%%%%%%%%%%%%%%
@@ -803,7 +803,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi		
 
 \ifx\lsOutput\lsOutputShort						% only if output=short
-	\setcounter{page}{-3}
+	\setcounter{page}{-1}
 	% First titlepage:
 	{\lsFrontPage}
 	%%%%%%%%%%%%%%%%%%%
