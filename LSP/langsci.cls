@@ -299,6 +299,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
 \newcommand{\tdgi}{tdgi}		%Topics at the Discourse Grammar Interface
 \newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
+\newcommand{\cfls}{cfls}		%Conceptual Foundation of the Language Sciences
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\lsSeriesFontColor}{white}
 
@@ -341,6 +342,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\cmle
  	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsNightBlue}
+\fi	
+\ifx\lsSeries\cfls
+ 	\newcommand{\lsSeriesTitle}{Conceptual Foundation of the Language Sciences, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\dummyseries
  	\newcommand{\lsSeriesTitle}{~}
