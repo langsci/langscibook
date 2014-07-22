@@ -475,7 +475,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \def\zs{\end{tabular}\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
+% for enforcing samepage we put stuff in a tabular environment
+\def\zs{\end{tabular}\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
 % %\def\zt{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi\end{tabular}}
 % % if an example is final in a footnote
 % \def\zlast{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi\vspace{-\baselineskip}}
@@ -490,7 +491,8 @@
 % \def\eaal{\begin{exe}[(\theequation)]\ex\begin{xlist}[iv.]}
 \def\zl{\end{xlist}\end{exe}}
 % % if an example is final in a footnote
-% \def\zllast{\end{xlist}\end{exe}\removelastskip}
+% Hey, Sebastian, why did you comment this out? Please tell me, if you do such things. 22.07.2014
+\def\zllast{\end{xlist}\end{exe}\removelastskip}
 %
 %
 % %%%%%%% \lcomment for breaks in (example-)lists (leaves all counters

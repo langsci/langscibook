@@ -563,7 +563,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
   draft=false,
   plainpages=false,
   pdfusetitle=true,  % puts author and title in automatically, maybe only in final mode?
-  pdfkeywords={}
+  pdfkeywords={},
+% 
+  pdfpagelayout=TwoPageRight   % first page is separate
 %  ,ps2pdf=true
 ]{hyperref}
 
