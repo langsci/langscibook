@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/06/20 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/07/09 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -299,6 +299,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
 \newcommand{\tdgi}{tdgi}		%Topics at the Discourse Grammar Interface
 \newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
+\newcommand{\cfls}{cfls}		%Conceptual Foundation of the Language Sciences
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\lsSeriesFontColor}{white}
 
@@ -341,6 +342,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\cmle
  	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution, No \lsSeriesNumber}
  	\newcommand{\lsSeriesColor}{lsNightBlue}
+\fi	
+\ifx\lsSeries\cfls
+ 	\newcommand{\lsSeriesTitle}{Conceptual Foundation of the Language Sciences, No \lsSeriesNumber}
+ 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\dummyseries
  	\newcommand{\lsSeriesTitle}{~}
@@ -777,7 +782,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \thispagestyle{empty}
 
 \ifx\lsOutput\lsOutputLong				% only if output=long
-	\setcounter{page}{-5}
+	\setcounter{page}{-3}
 	% First titlepage:
 	{\lsFrontPage}
 	%%%%%%%%%%%%%%%%%%%
@@ -805,9 +810,27 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi		
 
 \ifx\lsOutput\lsOutputShort						% only if output=short
-  	{\renewcommand{\lsCoverBlockColor}{white}
-  	 \renewcommand{\lsCoverFontColor}{black}
-  	 \lsFrontPage}
+	\setcounter{page}{-1}
+	% First titlepage:
+	{\lsFrontPage}
+	%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	\null\newpage\thispagestyle{empty}
+	% Series information:
+	{\lsSeriesHistory}
+	%%%%%%%%%%%%%%%%%%%%%
+	\newpage\thispagestyle{empty}
+	% Schmutztitel:
+	{\renewcommand{\lsCoverBlockColor}{white}
+	 \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+	\lsSchmutztitel}
+	%%%%%%%%%%%%%%%%%%%%
+	\AtEndDocument{
+		\newpage\thispagestyle{empty}
+		% Back page:
+		{\lsBackPage}
+		\null\newpage\thispagestyle{empty}
+	}
 \fi
 
 \ifx\lsOutput\lsOutputInprep					% only if output=inprep
