@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/07/09 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/07/26 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -398,6 +398,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		style=LSP/lsp-bst/biblatex-sp-unified,
 		citestyle=LSP/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
+    maxbibnames=99,
 		backend=\lsBiblatexBackend
 	]{biblatex}
 	\renewcommand{\postnotedelim}{: $\!$}%
@@ -826,7 +827,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsSchmutztitel}
 	%%%%%%%%%%%%%%%%%%%%
 	\AtEndDocument{
-		\newpage\thispagestyle{empty}
+    \null\newpage\thispagestyle{empty}
 		% Back page:
 		{\lsBackPage}
 		\null\newpage\thispagestyle{empty}
