@@ -72,14 +72,14 @@
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
-	fontsize=\lsFontsize, % default is 11pt
-		footnotes=multiple,
-		numbers=noenddot,		% no point after last number of chapters/sections
-		toc=bibliographynumbered,
-		index=totoc,
-		%chapterprefix=true,
-	%draft=yes,
-	]{scrbook}
+    fontsize=\lsFontsize, % default is 11pt
+	footnotes=multiple,
+	numbers=noenddot,		% no point after last number of chapters/sections
+	toc=bibliographynumbered,
+	index=totoc,
+	%chapterprefix=true,
+    %draft=yes,
+    ]{scrbook}
 
 
 \usepackage{etex}
@@ -90,18 +90,20 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
-\usepackage[ papersize={170mm,240mm}
-			,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
-			,inner=20.5mm, 
-			,outer=24.5mm
-			%,showframe,pass
-			,marginparwidth=50pt
-			]{geometry}
+\usepackage[ 
+    papersize={170mm,240mm}
+	,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
+	,inner=20.5mm, 
+	,outer=24.5mm
+	%,showframe,pass
+	,marginparwidth=50pt
+    ]{geometry}
 			
 
-\usepackage[absolute 		% for absolute positioning in titlepage
-			%,showboxes
-			]{textpos}
+\usepackage[
+    absolute 		% for absolute positioning in titlepage
+	%,showboxes
+    ]{textpos}
 \setlength{\TPHorizModule}{1mm}
 \setlength{\TPVertModule}{\TPHorizModule}
 \textblockorigin{0mm}{0mm}
@@ -117,39 +119,37 @@
 \usepackage{ifxetex}
 \ifxetex
 	
-  \usepackage{amssymb} % has to be loaded before other stuff			
-  \usepackage{fontspec}
-  \newcommand{\fontpath}{./LSP/lsp-fonts/}
+    \usepackage{amssymb} % has to be loaded before other stuff			
+    \usepackage{fontspec}
+    \newcommand{\fontpath}{./LSP/lsp-fonts/}
+
+    \setsansfont[
+		%Ligatures={TeX,Common},		% not supported by ttf
+		Scale=MatchLowercase,
+		Path=\fontpath,
+		BoldFont = Arimo-Bold_B.ttf ,
+		ItalicFont = Arimo-Italic_B.ttf ,				
+		BoldItalicFont = Arimo-BoldItalic_B.ttf 		
+		]{Arimo_B.ttf}
 			
-  \setsansfont[
-			%Ligatures={TeX,Common},		% not supported by ttf
-			Scale=MatchLowercase,
-			Path=\fontpath,
-			BoldFont = Arimo-Bold_B.ttf ,
-			ItalicFont = Arimo-Italic_B.ttf ,				
-			BoldItalicFont = Arimo-BoldItalic_B.ttf 		
-			]
-			{Arimo_B.ttf}
-			
-  \setmonofont[
-			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
-			BoldFont = FreeMonoBold_B.otf ,
-			SlantedFont = FreeMonoOblique_B.otf ,				
-			BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
-			]
-			{FreeMono_B.otf}
+    \setmonofont[
+		Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
+		BoldFont = FreeMonoBold_B.otf ,
+		SlantedFont = FreeMonoOblique_B.otf ,				
+		BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
+		]{FreeMono_B.otf}
 
 
-  \setmainfont[
-			Ligatures={TeX,Common},
-			Path=\fontpath,
-			PunctuationSpace=0,							
-%  			Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
-			Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
-			BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
-			ItalicFont = LinLibertine_RI_B.otf ,			
-			BoldItalicFont = LinLibertine_RZI_B.otf ]		% semi-bold
-			{LinLibertine_R_B.otf}			
+    \setmainfont[
+		Ligatures={TeX,Common},
+		Path=\fontpath,
+		PunctuationSpace=0,							
+        %Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+		Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+		BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
+		ItalicFont = LinLibertine_RI_B.otf ,			
+		BoldItalicFont = LinLibertine_RZI_B.otf 		% semi-bold
+		]{LinLibertine_R_B.otf}			
   
   \usepackage[libertine]{newtxmath}
   
@@ -403,7 +403,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		doi=false,
 		eprint=false,
 		backend=\lsBiblatexBackend
-	]{biblatex}
+    	]{biblatex}
 	\renewcommand{\postnotedelim}{: $\!$}%
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%		
@@ -565,18 +565,18 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 
-\usepackage[bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
-  bookmarksdepth=5,
-  hyperindex=true,%
-  breaklinks=true,
-  draft=false,
-  plainpages=false,
-  pdfusetitle=true,  % puts author and title in automatically, maybe only in final mode?
-  pdfkeywords={},
-% 
-  pdfpagelayout=TwoPageRight   % first page is separate
-%  ,ps2pdf=true
-]{hyperref}
+\usepackage[
+    bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
+    bookmarksdepth=5,
+    hyperindex=true,%
+    breaklinks=true,
+    draft=false,
+    plainpages=false,
+    pdfusetitle=true,  % puts author and title in automatically, maybe only in final mode?
+    pdfkeywords={},
+    pdfpagelayout=TwoPageRight,   % first page is separate
+    %ps2pdf=true
+    ]{hyperref}
 
 %\KOMAoptions{footnotes=multiple}
 
