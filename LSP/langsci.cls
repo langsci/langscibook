@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/07/26 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/07/31 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -56,7 +56,7 @@
 	\renewcommand{\lsFontsize}{10pt}}
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
 	 \lsDrafttrue
- 	 \overfullrule=5pt	}	% to indicate overfull hboxes
+	 \overfullrule=5pt	}	% to indicate overfull hboxes
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
 \DeclareVoidOption{biblatex}{  			
@@ -73,11 +73,11 @@
 
 \LoadClass[
 	fontsize=\lsFontsize, % default is 11pt
-        footnotes=multiple,
-        numbers=noenddot,		% no point after last number of chapters/sections
-        toc=bibliographynumbered,
-        index=totoc,
-        %chapterprefix=true,
+		footnotes=multiple,
+		numbers=noenddot,		% no point after last number of chapters/sections
+		toc=bibliographynumbered,
+		index=totoc,
+		%chapterprefix=true,
 	%draft=yes,
 	]{scrbook}
 
@@ -116,23 +116,23 @@
 
 \usepackage{ifxetex}
 \ifxetex
- 	
+	
   \usepackage{amssymb} % has to be loaded before other stuff			
   \usepackage{fontspec}
   \newcommand{\fontpath}{./LSP/lsp-fonts/}
 			
   \setsansfont[
-  			%Ligatures={TeX,Common},		% not supported by ttf
-  			Scale=MatchLowercase,
-  			Path=\fontpath,
-            BoldFont = Arimo-Bold_B.ttf ,
+			%Ligatures={TeX,Common},		% not supported by ttf
+			Scale=MatchLowercase,
+			Path=\fontpath,
+			BoldFont = Arimo-Bold_B.ttf ,
 			ItalicFont = Arimo-Italic_B.ttf ,				
 			BoldItalicFont = Arimo-BoldItalic_B.ttf 		
 			]
 			{Arimo_B.ttf}
 			
   \setmonofont[
-  			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
+			Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
 			BoldFont = FreeMonoBold_B.otf ,
 			SlantedFont = FreeMonoOblique_B.otf ,				
 			BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
@@ -141,11 +141,11 @@
 
 
   \setmainfont[
-  			Ligatures={TeX,Common},
-  			Path=\fontpath,
-  			PunctuationSpace=0,							
+			Ligatures={TeX,Common},
+			Path=\fontpath,
+			PunctuationSpace=0,							
 %  			Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
-  			Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+			Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
 			BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
 			ItalicFont = LinLibertine_RI_B.otf ,			
 			BoldItalicFont = LinLibertine_RZI_B.otf ]		% semi-bold
@@ -304,57 +304,57 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
- 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsMidBlue}
+	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\eotmsig
- 	\newcommand{\lsSeriesTitle}{Implemented Grammars, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Implemented Grammars, No \lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\sidl
- 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsRichGreen}
+	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsRichGreen}
 \fi
 \ifx\lsSeries\algad
- 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsLightOrange}
+	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
 \ifx\lsSeries\tmnlp
- 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsDarkBlue}
+	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkBlue}
 \fi
 \ifx\lsSeries\lnls
- 	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsYellow}
+	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsYellow}
 \fi	
 \ifx\lsSeries\nc
- 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsRed}
+	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsRed}
 \fi	
 \ifx\lsSeries\labphon
- 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsLightWine}
+	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightWine}
 \fi	
 \ifx\lsSeries\tdgi
- 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
 \fi	
 \ifx\lsSeries\cmle
- 	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
- 	\newcommand{\lsSeriesTitle}{Conceptual Foundation of the Language Sciences, No \lsSeriesNumber}
- 	\newcommand{\lsSeriesColor}{lsNightGreen}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundation of the Language Sciences, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\dummyseries
- 	\newcommand{\lsSeriesTitle}{~}
- 	\newcommand{\lsSeriesColor}{lsNightGreen}
+	\newcommand{\lsSeriesTitle}{~}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 
 \@ifundefined{blackandwhite}
- 	{}
- 	{\renewcommand{\lsSeriesColor}{black}}
+	{}
+	{\renewcommand{\lsSeriesColor}{black}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -398,7 +398,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		style=LSP/lsp-bst/biblatex-sp-unified,
 		citestyle=LSP/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
-    maxbibnames=99,
+		maxbibnames=99,
+		isbn=false,
+		doi=false,
+		eprint=false,
 		backend=\lsBiblatexBackend
 	]{biblatex}
 	\renewcommand{\postnotedelim}{: $\!$}%
@@ -407,9 +410,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \else	%BibTeX
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
-  	% unified style sheet for linguistics journals
+	% unified style sheet for linguistics journals
 	% put directory in BST_INPUTS
- 	% http://celxj.org/downloads/unified.bst
+	% http://celxj.org/downloads/unified.bst
 	\bibliographystyle{./LSP/lsp-bst/unified} 
 	% This does not work ...
 	%% \setcitestyle{
@@ -447,36 +450,36 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \usepackage{index}
 % Wie im Stylefile, aber ohne \MakeUppercase
    \renewenvironment{theindex}{%
-        \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
-        \if@twocolumn
-            \@restonecolfalse
-        \else
-            \@restonecoltrue
-        \fi
-        \columnseprule \z@
-        \columnsep 35\p@
-        \twocolumn[%
-            \@makeschapterhead{\indexname}%
-            \ifx\index@prologue\@empty\else
-                \index@prologue
-                \bigskip
-            \fi
-        ]%
+		\edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+		\if@twocolumn
+			\@restonecolfalse
+		\else
+			\@restonecoltrue
+		\fi
+		\columnseprule \z@
+		\columnsep 35\p@
+		\twocolumn[%
+			\@makeschapterhead{\indexname}%
+			\ifx\index@prologue\@empty\else
+				\index@prologue
+				\bigskip
+			\fi
+		]%
 %        \@mkboth{\MakeUppercase\indexname}%
 %                {\MakeUppercase\indexname}%
-        \@mkboth{\indexname}%
-                {\indexname}%
-        \thispagestyle{plain}%
-        \parindent\z@
-        \parskip\z@ \@plus .3\p@\relax
-        \let\item\@idxitem
-    }{%
-        \if@restonecol
-            \onecolumn
-        \else
-            \clearpage
-        \fi
-    }
+		\@mkboth{\indexname}%
+				{\indexname}%
+		\thispagestyle{plain}%
+		\parindent\z@
+		\parskip\z@ \@plus .3\p@\relax
+		\let\item\@idxitem
+	}{%
+		\if@restonecol
+			\onecolumn
+		\else
+			\clearpage
+		\fi
+	}
 
 \makeindex
 \newindex{lan}{ldx}{lnd}{Language index}
@@ -597,16 +600,16 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\color{\lsCoverBlockColor}
 	\raggedright\rule{155mm}{225mm}
 	\end{textblock}
-    \iflsDraft
-       \begin{textblock}{155}(30,80)
-         \color{lsLightGray}
-         \rotatebox{40}{
-       		\begin{tabular}{c}
-       		\scalebox{10}{DRAFT}\\
-       		of \today, \currenttime
-       		\end{tabular}}
-       \end{textblock}
-    \fi}
+	\iflsDraft
+	   \begin{textblock}{155}(30,80)
+		 \color{lsLightGray}
+		 \rotatebox{40}{
+			\begin{tabular}{c}
+			\scalebox{10}{DRAFT}\\
+			of \today, \currenttime
+			\end{tabular}}
+	   \end{textblock}
+	\fi}
 
 \newcommand{\lsCoverTitleAuthor}{
 	\renewcommand{\newlineSpine}{}
@@ -617,9 +620,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\raggedright
 	{\lsCoverTitleFont{\@title\\}}
 
- 	\ifx\@subtitle\empty
- 	\else \vspace{8mm} {\lsCoverSubTitleFont \@subtitle\\}
- 	\fi
+	\ifx\@subtitle\empty
+	\else \vspace{8mm} {\lsCoverSubTitleFont \@subtitle\\}
+	\fi
 
 	\vspace{11.2mm} % 20mm - 25pt
  
@@ -682,7 +685,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\hspace{7.5mm}
 		\IfFileExists{\logopath/langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{\logopath/langsci_spinelogo_nocolor.pdf}}}$}{logo}
 		\hspace{15mm} 
- 		{\lsSpineTitleFont
+		{\lsSpineTitleFont
 			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\@title}}}
 		\hspace{13mm}
 		{\lsSpineAuthorFont 
@@ -740,10 +743,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\vspace*{-2ex}
 		\lsCollectionPaperAuthor%
 		\vspace*{\baselineskip}%
- 		\ifx\@epigram\empty%
+		\ifx\@epigram\empty%
 			\else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}% 
 					\epigram{}\epigramsource{}}% 
- 		\fi% 
+		\fi% 
 		\begin{quote}
 		\small\lsCollectionPaperAbstract
 		\end{quote}
@@ -827,7 +830,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsSchmutztitel}
 	%%%%%%%%%%%%%%%%%%%%
 	\AtEndDocument{
-    \null\newpage\thispagestyle{empty}
+		\null\newpage\thispagestyle{empty}
 		% Back page:
 		{\lsBackPage}
 		\null\newpage\thispagestyle{empty}
@@ -836,8 +839,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \ifx\lsOutput\lsOutputInprep					% only if output=inprep
 	{\renewcommand{\lsCoverBlockColor}{white}
-  	 \renewcommand{\lsCoverFontColor}{black}
-  	 \lsCoverBlock
+	 \renewcommand{\lsCoverFontColor}{black}
+	 \lsCoverBlock
 	 \lsCoverTitleAuthor}
 \fi								
 
@@ -1013,10 +1016,10 @@ guarantee the accuracy of such information thereafter.
 \newcommand\nextToken\relax
 
 \renewcommand\footnote[1]{%
-    \oldFootnote{#1}\futurelet\nextToken\isFootnote}
+	\oldFootnote{#1}\futurelet\nextToken\isFootnote}
 
 \newcommand\isFootnote{%
-    \ifx\footnote\nextToken\textsuperscript{,}\fi}
+	\ifx\footnote\nextToken\textsuperscript{,}\fi}
 
 %\deffootnote{1.5em}{1em}{% 
 %    \makebox[1.5em][l]{\thefootnotemark}}
@@ -1101,13 +1104,13 @@ guarantee the accuracy of such information thereafter.
 % \setcounter{tocdepth}{4} (oder so) angegeben werden.
 
 \def\subsubsubsection{\@startsection{paragraph}{3}{\z@}{-3.25ex plus
-    -1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+	-1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
 %
 \let\subsubsubsectionmark\@gobble
 %
 
 \def\subsubsubsubsection{\@startsection{subparagraph}{3}{\z@}{-3.25ex plus
-    -1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+	-1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
 %
 \let\subsubsubsubsectionmark\@gobble
 % needed for hyperref
@@ -1154,19 +1157,19 @@ guarantee the accuracy of such information thereafter.
 
 % quotes are indented at one side only.
 \renewenvironment{quote}
-               {\list{}{\rightmargin0pt\leftmargin8mm}%{\rightmargin\leftmargin}%
-                \item\relax}
-               {\endlist}
+			   {\list{}{\rightmargin0pt\leftmargin8mm}%{\rightmargin\leftmargin}%
+				\item\relax}
+			   {\endlist}
 
 % quotations are indented at one side only
 % there is no indentation at the beginning of the quote
 \renewenvironment{quotation}
-               {\list{}{\listparindent 1.5em%
-                        %\itemindent    \listparindent
-                        %\rightmargin   \leftmargin
-                        \parsep        \z@ \@plus\p@}%
-                \item\relax}
-               {\endlist}
+			   {\list{}{\listparindent 1.5em%
+						%\itemindent    \listparindent
+						%\rightmargin   \leftmargin
+						\parsep        \z@ \@plus\p@}%
+				\item\relax}
+			   {\endlist}
 
 \usepackage[english]{varioref}
 
