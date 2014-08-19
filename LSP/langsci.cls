@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/07/31 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/08/19 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -929,7 +929,7 @@ Habelschwerdter Allee 45\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
-© \the\year, \@author 
+© \the\year, \iflsCollection the authors\else\@author\fi
 
 \newcommand{\ccby}{CC-BY} 
 \ifx\lsCopyright\ccby 
