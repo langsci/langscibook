@@ -344,7 +344,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundation of the Language Sciences, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundation of Language Science, No \lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\dummyseries
