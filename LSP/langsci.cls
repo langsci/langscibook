@@ -440,6 +440,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \usepackage{floatrow}					% For adjusting the position of the caption (default is below).
 \floatsetup[table]{capposition=top} 	% As for tables, the caption appears above.
 
+
+\usepackage{booktabs} %for nicer lines
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Indexes:
@@ -1134,9 +1137,8 @@ guarantee the accuracy of such information thereafter.
 % gets rid of the warnings:
 % Failed to convert input string to UTF16
 % http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
-\hypersetup{unicode,pdfencoding=auto}
-
-
+\hypersetup{unicode,pdfencoding=auto,bookmarksopenlevel=0}
+ 
 % this is required by authorindex
 \newif\ifshowindex \showindexfalse
 
