@@ -1,18 +1,18 @@
-\documentclass[a4paper,10pt]{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{index}
+\documentclass{LSP/langsci}
+
 \usepackage{./LSP/lsp-styles/lsp-gb4e}
+\usepackage{./LSP/lsp-styles/lsp-makros} 
 
 % The following is langsci.cls specific. lsp-gb4e.sty should not make reference to this without providing the command \il
-\newindex{lan}{ldx}{lnd}{Language index}
-\newcommand{\il}[1]{%
-\if@noftnote%
-\index[lan]{#1}%
-\else%
-\index[lan]{#1|fn{*}}%
-\fi%
-}
-%end il
+% \newindex{lan}{ldx}{lnd}{Language index}
+% \newcommand{\il}[1]{%
+% \if@noftnote%
+% \index[lan]{#1}%
+% \else%
+% \index[lan]{#1|fn{*}}%
+% \fi%
+% }
+% %end il
 
 
 %opening
@@ -50,8 +50,8 @@
 \input{gb4e-tests/languageinfo}
 \subsection{Boxing}
 \input{gb4e-tests/xbox}
-\subsection{Greek letters}
-\input{gb4e-tests/greekletters}
+% \subsection{Greek letters}
+% \input{gb4e-tests/greekletters}
 \subsection{Jambox}
 \input{gb4e-tests/jambox}
 
@@ -74,6 +74,10 @@
 
 \section{avm}
 \section{trees}
+\section{tables}\label{sec:tables}
+\input{table-tests/general}
+\section{crossrefs}
+\input{crossref-tests/general}
 
 
 \end{document}

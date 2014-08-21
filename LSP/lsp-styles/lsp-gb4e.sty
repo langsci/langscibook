@@ -1,21 +1,7 @@
 \ProvidesPackage{lsp-gb4e}[2000/09/05]
 \def\gbVersion{4e} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Version 4export (= v. 4 minus the compatibility code)
-%  Based on hpk's gb.sty, revised for GM syllabus by ct,
-%  and incorporating macros adapted from J.Frampton, M. de Groot en M.
-%  Covington. Full documentation soon to come in gb4doc.tex. Bug-reports
-%  and suggestions for improvements, other used features, please!
-%
-%  Notes:
-%
-%  Various styles for X-bar levels; can be changed, but note that {picture}
-%  environements (e.g. trees) will then come out wrong and have to be
-%  fixed
-%
-%  This file allows _ and ^ to be used in ordinary text, hence must be
-%  loaded AFTER any file that uses them in their TeX meaning. Hence
-%  cgloss(n).sty is loaded early in this file.
+% modified from gb4e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,91 +51,18 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\@ifundefined{new@fontshape}{\def\reset@font{}\let\mathrm\rm\let\mathit\mit}{}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Bars and other superscripts for projections; specifiers
+%  auxiliary files
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\let\prmbrs=0
-\def\primebars{\let\prmbrs=1}
-\def\obar#1{\ifmmode#1^{0}\else#1$^{0}$\fi}  %% FIX
-\def\mbar#1{\ifmmode#1^{\mathrm{max}}\else#1$^{\mathrm{max}}$\fi}
-\def\ibar#1{\ifx\prmbrs0%
-                 \ifmmode\overline{\mathrm{#1}}\else$\overline{\mbox{#1}}$\fi%
-            \else\ifmmode#1^{'}\else#1$^{'}$\fi\fi}
-\def\iibar#1{\ifx\prmbrs0%
-                  \ifmmode\overline{\overline{\mathrm{#1}}}%
-                  \else$\overline{\overline{\mbox{#1}}}$\fi%
-             \else #1P\fi}
-
-
-\def\spec#1{[Spec,#1]} %Def. of "Specifier of #1"
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Greek letters
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\al{\ifmmode\alpha\else$\alpha$\fi}
-\def\be{\ifmmode\beta\else$\beta$\fi}
-\def\ga{\ifmmode\gamma\else$\gamma$\fi}
-\def\de{\ifmmode\delta\else$\delta$\fi}
-% This breaks icelandic \thorn
-%\def\th{\ifmmode\theta\else$\theta$\fi}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   custom markup
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\def\ct#1{{\em #1\/}} %Citation of linguistic material with alternative style:
-%\def\ct#1{`#1'}
-\def\tx{\bf} %Introduction of technical terms with alternative style:
-%\def\tx{\em}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%  jambox
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\input{my-cgloss\gbVersion.sty}
-% This is the hacked version by  Alexis Dimitriadis
-% that allows for \jambox interaction
+ 
 \input{./LSP/lsp-styles/lsp-cgloss.sty}
 \input{./LSP/lsp-styles/jambox.sty}
 
 
-% %%% NEWSTUFF: this should be removed Sebastian Nordhoff
-% \newcommand{\indexgroupmark}[1]{\item{\bf #1}}  % ?? -CT
-%
-% % this allows _ to be used in horizontal mode (from J.Frampton):
-%
-% % This is basically nonsense since it breaks the mathmode functionality
-%
-% %\catcode`_=\active
-% %\def_#1{\ifmmode\mathit{\sb{#1}}\else${}\sb{#1}$\fi}
-% %\catcode`^=\active
-% %\def^#1{\ifmmode\mathit{\sp{#1}}\else${}\sp{#1}$\fi}
-%
-% \def\lb#1{\@ifnextchar [{\@glarph{#1}}{\@bl{#1}}}
-% \def\@glarph#1[#2]{\ifmmode{[}\sb{{\mathrm{#1}}\sb{#2}}\else%
-%                            ${[}\sb{{\mathrm{#1}}\sb{#2}}$\fi}
-% \def\@bl#1{\ifmmode{[}\sb{\mathrm{#1}}\;\else${[}\sb{\mathrm{#1}}\;$\fi}
-%
-% \def\rb#1{\@ifnextchar [{\@grarph{#1}}{\@br{#1}}}
-% \def\@grarph#1[#2]{\ifmmode{]}\sb{{\mathrm{#1}}\sb{#2}}\else%
-%                         ${]}\sb{{\mathrm{#1}}\sb{#2}}$\fi}
-% \def\@br#1{\ifmmode{]}\sb{\mathrm{#1}}\;\else${]}\sb{\mathrm{#1}}\;$\fi}
-%
-% %%% END_NEWSTUFF.
+\@ifundefined{new@fontshape}{\def\reset@font{}\let\mathrm\rm\let\mathit\mit}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -522,51 +435,7 @@
 \def\attop#1{\leavevmode\vtop{\strut\vskip-\baselineskip\vbox{#1}}}
 \def\atcenter#1{$\vcenter{#1}$}
 %%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%         Move Arrows (from J.Frampton) [seems to be obsolete]
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-% \def\leaderfill{\leaders\hrule\hfil}
-% \def\pointerup{\hbox to 0pt{\hss
-%   \vbox{\offinterlineskip\vskip-1pt\hbox{\elevenex\char'170}\null}\hss}}
-% \def\pointerdown{\hbox to 0pt{\hss
-%   \vtop{\offinterlineskip\null\hbox{\elevenex\char'171}\vskip-1pt}\hss}}
-%
-% \let\pu=\pointerup
-% \let\pd=\pointerdown
-% \let\lf=\leaderfill
-%
-% \def\spacer{\hskip4.5pt}
-% \def\fillright#1{\hfil#1\leaderfill}
-% \def\fillleft#1{\leaderfill#1\hfil}
-% % Changed spelling to \centr, else conflicts with LaTeX \center{} -CT
-% \def\centr#1{\leaderfill#1\leaderfill}
-% \def\link#1{\multispan#1\leaderfill}
-%
-% \def\arrowalign#1{\vtop{\baselineskip=0pt \lineskiplimit=0pt \lineskip=2pt
-%   \halign{&##\cr#1}}}
-%
-% \font\elevenex=cmex10 scaled\magstephalf  % just for the arrow!
-%       %PS: this may not work on some installations, not sure why. CT
-%       %%PPS: (e.g., PCTeX, but it works find works fine with EmTeX)
-
-
-
-
-
-
-
-% \newcommand{\smallexamples}{\renewcommand{\exfont}{\small\upshape}\renewcommand{\glossfont}{\small\upshape}%
-% \exewidth{\exnrfont (\theequation)}}
-%
-% \newcommand{\footnotesizeexamples}{\renewcommand{\exfont}{\footnotesize\upshape}%
-% \exewidth{\exnrfont (\theequation)}}
-%
-% \newcommand{\tinyexamples}{\renewcommand{\exfont}{\tiny\upshape}%
+ 
 % \exewidth{\exnrfont (\theequation)}}
 
 
@@ -602,3 +471,43 @@
 
 %\newcommand{\nobreakbox}[1]{\xbox{\linewidth}{#1}}
 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Bars and other superscripts for projections; specifiers
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\prmbrs=0
+\def\primebars{\let\prmbrs=1}
+\def\obar#1{\ifmmode#1^{0}\else#1$^{0}$\fi}  %% FIX
+\def\mbar#1{\ifmmode#1^{\mathrm{max}}\else#1$^{\mathrm{max}}$\fi}
+\def\ibar#1{\ifx\prmbrs0%
+                 \ifmmode\overline{\mathrm{#1}}\else$\overline{\mbox{#1}}$\fi%
+            \else\ifmmode#1^{'}\else#1$^{'}$\fi\fi}
+\def\iibar#1{\ifx\prmbrs0%
+                  \ifmmode\overline{\overline{\mathrm{#1}}}%
+                  \else$\overline{\overline{\mbox{#1}}}$\fi%
+             \else #1P\fi}
+
+
+\def\spec#1{[Spec,#1]} %Def. of "Specifier of #1"
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   custom markup
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ct#1{{\em #1\/}} %Citation of linguistic material with alternative style:
+%\def\ct#1{`#1'}
+\def\tx{\bf} %Introduction of technical terms with alternative style:
+%\def\tx{\em}
+
+
+ 

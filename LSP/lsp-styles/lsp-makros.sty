@@ -1,3 +1,5 @@
+\usepackage{booktabs}
+
 % Heiko Oberdiek
 % http://tex.stackexchange.com/questions/136644/vertical-space-in-interaction-with-figure-center-environment
 \newcommand{\oneline}[1]{%
@@ -90,12 +92,20 @@
 \newcommand\displaycmd[2]{%
   \DescribeMacro{#2}\centerline{\cmd{#1}}}
   
-  
-% The following allows for a quick reference to following or preceeding examples (\mex{1}) or
-% (\mex{0}) but also (\mex{-1})
-% taken from covington.sty (check)
-\newcounter{lsptempcnt}
+% \mex considered evil, as we need explicit reference to examples in XML
+% % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
+% % (\mex{0}) but also (\mex{-1})
+% % taken from covington.sty (check)
+% \newcounter{lsptempcnt}
+% 
+% \newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+% \addtocounter{lsptempcnt}{#1}%
+% \arabic{lsptempcnt}}%
 
-\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-\addtocounter{lsptempcnt}{#1}%
-\arabic{lsptempcnt}}%
+
+\newcommand{\sectref}[1]{{\S}~\ref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+
+\newcommand{\lsptoprule}{\midrule\toprule}
+\newcommand{\lspbottomrule}{\bottomrule\midrule} 
