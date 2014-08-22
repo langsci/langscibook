@@ -405,6 +405,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		backend=\lsBiblatexBackend
 		]{biblatex}
 	\renewcommand{\postnotedelim}{: $\!$}%
+	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%		
 \else	%BibTeX
