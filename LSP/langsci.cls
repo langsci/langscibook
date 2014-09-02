@@ -319,6 +319,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
+\ifx\lsSeries\algad
+	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkOrange}
+\fi
 \ifx\lsSeries\tmnlp
 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
@@ -344,8 +348,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundation of Language Science, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of Language Science, No \lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
+\fi	
+\ifx\lsSeries\cfls
+	\newcommand{\lsSeriesTitle}{Language Variation, No \lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkWine}
 \fi	
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
