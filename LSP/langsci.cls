@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/08/19 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/09/02 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -304,55 +304,55 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
-	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\eotmsig
-	\newcommand{\lsSeriesTitle}{Implemented Grammars, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Implemented Grammars~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\sidl
-	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRichGreen}
 \fi
 \ifx\lsSeries\algad
-	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
 \ifx\lsSeries\algad
-	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
 \fi
 \ifx\lsSeries\tmnlp
-	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
 \fi
 \ifx\lsSeries\lnls
-	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsYellow}
 \fi	
 \ifx\lsSeries\nc
-	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRed}
 \fi	
 \ifx\lsSeries\labphon
-	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightWine}
 \fi	
 \ifx\lsSeries\tdgi
-	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
 \fi	
 \ifx\lsSeries\cmle
-	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundations of Language Science, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of Language Science~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Language Variation, No \lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkWine}
 \fi	
 \ifx\lsSeries\dummyseries
