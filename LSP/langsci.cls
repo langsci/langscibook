@@ -116,6 +116,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{xstring} 	% for manipulating strings
 \usepackage{ifxetex}
 \ifxetex
 	
@@ -215,7 +216,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[table]{xcolor}
+\usepackage{xcolor}
 \definecolor{lsLightBlue}{cmyk}{0.6,0.05,0.05,0}
 \definecolor{lsMidBlue}{cmyk}{0.75,0.15,0,0}
 \definecolor{lsMidDarkBlue}{cmyk}{0.9,0.4,0.05,0}
@@ -606,6 +607,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
+\newcommand{\lsEditorPostfixSpine}{}
+% \edef\authorTMP{\@author}
+% \IfSubStr{\authorTMP}{}{}{}
+%\IfSubStr{\author}{,}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{}    
+%\IfSubStr{\@author}{\&}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{\renewcommand{\lsEditorPostfixSpine}{(ed.)}}      
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
