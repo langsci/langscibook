@@ -1,11 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/09/02 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/09/16 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
-\newcommand{\lsISBN}{????????}
+\newcommand{\lsISBN}{000-0-000000-00-0}
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
@@ -30,7 +30,7 @@
 \DeclareStringOption{number}[??]
 	\define@key{langsci}{number}{%
 		\renewcommand{\lsSeriesNumber}{#1}}
-\DeclareStringOption{isbn}[????????]
+\DeclareStringOption{isbn}[000-0-000000-00-0]
 	\define@key{langsci}{isbn}{%
 		\renewcommand{\lsISBN}{#1}}
 \DeclareStringOption{url}[http://langsci-press.org/catalog]
@@ -603,6 +603,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[ISBN=\lsISBN,SC4]{ean13isbn}	% for generating bar codes
 \newcommand{\logopath}{./LSP/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
@@ -688,10 +689,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsBackBody
 	\end{textblock}
 
-	\begin{textblock}{40}(115,212.5)
+	\begin{textblock}{40}(110,200)
 	\lsBackBodyFont
 	\sffamily
-	ISBN \lsISBN			
+	\EANisbn%
+	%{\EAN \lsISBN }  % bar code without isbn line	
 	\end{textblock}}
 
 \newcommand{\lsSpine}{			% Book spine
