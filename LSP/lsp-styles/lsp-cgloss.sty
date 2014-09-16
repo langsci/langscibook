@@ -187,14 +187,14 @@
 %\glossglue = 5pt plus 2pt minus 1pt % allow stretch/shrink between words
 \newif\ifnotdone
 
-\@ifundefined{eachwordone}{\let\eachwordone=\rm}{\relax}
-\@ifundefined{eachwordtwo}{\let\eachwordtwo=\rm}{\relax}
-\@ifundefined{eachwordthree}{\let\eachwordthree=\rm}{\relax}
-\@ifundefined{eachwordfour}{\let\eachwordfour=\rm}{\relax}
-\@ifundefined{eachwordfive}{\let\eachwordfive=\rm}{\relax}
-\@ifundefined{eachwordsix}{\let\eachwordsix=\rm}{\relax}
-\@ifundefined{eachwordseven}{\let\eachwordseven=\rm}{\relax}
-\@ifundefined{eachwordeight}{\let\eachwordeight=\rm}{\relax}
+\@ifundefined{eachwordone}{\let\eachwordone=\upshape}{\relax}
+\@ifundefined{eachwordtwo}{\let\eachwordtwo=\upshape}{\relax}
+\@ifundefined{eachwordthree}{\let\eachwordthree=\upshape}{\relax}
+\@ifundefined{eachwordfour}{\let\eachwordfour=\upshape}{\relax}
+\@ifundefined{eachwordfive}{\let\eachwordfive=\upshape}{\relax}
+\@ifundefined{eachwordsix}{\let\eachwordsix=\upshape}{\relax}
+\@ifundefined{eachwordseven}{\let\eachwordseven=\upshape}{\relax}
+\@ifundefined{eachwordeight}{\let\eachwordeight=\upshape}{\relax}
 
 \def\lastword#1#2#3% #1 = \each, #2 = line box, #3 = word box
    {\setbox#2=\vbox{\unvbox#2%

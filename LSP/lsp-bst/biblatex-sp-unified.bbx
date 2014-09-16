@@ -1,3 +1,4 @@
+% Modified by LSP, Thu Jul 31 22:36:02 CEST 2014
 \ProvidesFile{sp-biblatex.bbx}
 
 % NB: The Unified Style Sheet wants abbreviated "ed(s)", "edn". But using the abbreviate option also abbreviates the names of months. But then dateabbrev=false restores the long names of months
@@ -332,10 +333,10 @@
   \printfield{note}%
   \newunit\newblock
   \usebibmacro{publisher+location+date}%
-  \newunit\newblock
-  \usebibmacro{chapter+pages}%
-  \newunit
-  \printfield{pagetotal}%
+  % \newunit\newblock                         commented by LSP
+  % \usebibmacro{chapter+pages}%
+  % \newunit
+  % \printfield{pagetotal}%
   \newunit\newblock
   \iftoggle{bbx:isbn}
     {\printfield{isbn}}
