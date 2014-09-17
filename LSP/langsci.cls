@@ -705,7 +705,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\newlineSpine}{\\}
 	\renewcommand{\newlineCover}{}
 	\begin{textblock}{40}(65,0)
-	\rotatebox{90}{\color{black}\fbox{\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
+	\rotatebox{90}{\color{black}\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
 		\color{\lsSeriesColor}
 		\hspace{7.5mm}
 		\IfFileExists{\logopath/langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{\logopath/langsci_spinelogo_nocolor.pdf}}}$}{logo}
@@ -715,7 +715,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\hspace{13mm}
 		{\lsSpineAuthorFont 
 			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\@author}}}
-	\end{minipage}}} 
+	\end{minipage}} 
 	\end{textblock}}
 
 
