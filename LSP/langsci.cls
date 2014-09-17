@@ -603,7 +603,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[ISBN=\lsISBN,SC4]{ean13isbn}	% for generating bar codes
+%\usepackage[ISBN=\lsISBN,SC4]{ean13isbn}	% for generating bar codes; remove this?
+\usepackage{pst-barcode}					% for generating bar codes
 \newcommand{\logopath}{./LSP/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
@@ -689,11 +690,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsBackBody
 	\end{textblock}
 
-	\begin{textblock}{40}(110,200)
-	\lsBackBodyFont
-	\sffamily
-	\EANisbn%
-	%{\EAN \lsISBN }  % bar code without isbn line	
+	\begin{textblock}{40}(105,200)
+	\lsBackBodyFont\sffamily
+	\colorbox{white}{%
+	\begin{pspicture}(0,0)(4.1,1in)
+	\psbarcode[transx=0.4,transy=0.3]{\lsISBN}{includetext height=0.7}{isbn}
+	\end{pspicture}
+	%\EANisbn%			% remove this?
+	%{\EAN \lsISBN }  	% bar code without isbn line
+	}%	
 	\end{textblock}}
 
 \newcommand{\lsSpine}{			% Book spine
