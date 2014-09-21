@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/09/16 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/09/21 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -755,11 +755,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
 	\hspace{0.8em}%
 	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
-\newcommand{\lsCollectionPaperCitationText}{\fullcite{this}}
+\newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 \newcommand{\lsPaper}{
 	\renewcommand{\maketitle}{
 		\addtocounter{chapter}{1}
 		\addchap*{\lsCollectionPaperTitle}
+		\global\edef\lsCollectionPaperFirstPage{\thepage}	% for citation in footer
 		\onlyAuthor
 		\renewcommand{\newlineCover}{}
 		\renewcommand{\newlineTOC}{\\}
@@ -776,6 +777,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\small\lsCollectionPaperAbstract
 		\end{quote}
 	}	
+
 	\renewcommand*{\thesection}{\arabic{section}}
 	\setcounter{section}{0}
 	\setcounter{footnote}{0}
@@ -1079,8 +1081,15 @@ guarantee the accuracy of such information thereafter.
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
+\AtBeginDocument{	% for the citation in the footer  
+	\edef\lsCollectionTitle{\@title}		% \edef immediately expands \@title
+	\edef\lsCollectionEditor{\@author}
+	\newwrite\tempfile						% open temporary bib file
+	\immediate\openout\tempfile=collection_tmp.bib
+}
+\AtEndDocument{\immediate\closeout\tempfile}% close temporary bib file
 
-% customize \tableofcontents
+%% customize \tableofcontents
 \renewcommand{\@dotsep}{2.5}		% space between dots
 \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader 
 \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
@@ -1095,24 +1104,51 @@ guarantee the accuracy of such information thereafter.
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
-% Modified code from:
-% http://pastcounts.wordpress.com/2010/12/20/how-to-construct-a-collection-of-articles-with-latex/
+%% Modified code from:
+%% http://pastcounts.wordpress.com/2010/12/20/how-to-construct-a-collection-of-articles-with-latex/
 \newenvironment{collectionpaper}{
-\renewcommand{\documentclass}[2][]{}%
-\renewcommand{\usepackage}[2][]{}%
-\renewenvironment{document}{\begingroup}{\endgroup}%
+	\renewcommand{\documentclass}[2][]{}%
+	\renewcommand{\usepackage}[2][]{}%
+	\renewenvironment{document}{\begingroup}{\endgroup}%
 
-\renewcommand{\title}[1]{\renewcommand{\@title}{##1}}
-\renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
-%\renewcommand{\thanks}[1]{\symbolfootnote[1]{##1}}
-\lsPaper
-}
-{}
+	\renewcommand{\title}[1]{\renewcommand{\@title}{##1}}
+	\renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
+	%\renewcommand{\thanks}[1]{\symbolfootnote[1]{##1}}
+	\lsPaper
+	}
+	{}
 
 \newcommand{\includepaper}[1]{
 	\begin{collectionpaper}
-	\begin{refsection} 
+	\begin{refsection}
+
+	\DeclareCiteCommand{\fullciteFooter}
+		{\defcounter{maxnames}{\blx@maxbibnames}%
+		  \usebibmacro{prenote}}
+		{\usedriver
+		   {\DeclareNameAlias{sortname}{default}}
+		   {\thefield{entrytype}}}
+		{\multicitedelim}
+		{\usebibmacro{postnote}}
+	\renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1}} 
+	
 	\include{#1}%
+	\edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \lsPaper
+
+	%%% for citation in footer
+	%% preprocessing of author/editor names
+	\onlyAuthor		
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineSpine}{}
+	\renewcommand{\newlineTOC}{}
+	\StrSubstitute{\@author}{,}{ and }[\authorTemp]
+	\StrSubstitute{\authorTemp}{\&}{ and }[\authorTemp]
+	\StrSubstitute{\lsCollectionEditor}{,}{ and }[\editorTemp]
+	\StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
+
+	%% write bib entry to file
+	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={\@title},booktitle={\lsCollectionTitle},editor={\editorTemp},publisher={Language Science Press},Address={Berlin},year=2014,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},options={skipbib=true}}}
+
 	%\printbibliography[heading=subbibliography,notkeyword=this]  
 	\end{refsection}
 	\end{collectionpaper}}
