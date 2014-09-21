@@ -1084,6 +1084,7 @@ guarantee the accuracy of such information thereafter.
 \AtBeginDocument{	% for the citation in the footer  
 	\edef\lsCollectionTitle{\@title}		% \edef immediately expands \@title
 	\edef\lsCollectionEditor{\@author}
+	\addbibresource{collection_tmp.bib}
 	\newwrite\tempfile						% open temporary bib file
 	\immediate\openout\tempfile=collection_tmp.bib
 }
