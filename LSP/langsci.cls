@@ -21,7 +21,6 @@
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 
 
-
 % Option handling:
 \RequirePackage{kvoptions}		% for key-value options
 \SetupKeyvalOptions{
@@ -118,64 +117,53 @@
 
 \usepackage{xstring} 	% for manipulating strings
 \usepackage{ifxetex}
-\ifxetex
+\ifxetex\else\ClassError{LSP/langsci}{Please use XeLaTeX!}{}\fi
 	
-	\usepackage{amssymb} % has to be loaded before other stuff			
-	\usepackage{fontspec}
-	\newcommand{\fontpath}{./LSP/lsp-fonts/}
+\usepackage{amssymb} % has to be loaded before other stuff			
+\usepackage{fontspec}
+\newcommand{\fontpath}{./LSP/lsp-fonts/}
 
-	\setsansfont[
-		%Ligatures={TeX,Common},		% not supported by ttf
-		Scale=MatchLowercase,
-		Path=\fontpath,
-		BoldFont = Arimo-Bold_B.ttf ,
-		ItalicFont = Arimo-Italic_B.ttf ,				
-		BoldItalicFont = Arimo-BoldItalic_B.ttf 		
-		]{Arimo_B.ttf}
-			
-	\setmonofont[
-		Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
-		BoldFont = FreeMonoBold_B.otf ,
-		SlantedFont = FreeMonoOblique_B.otf ,				
-		BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
-		]{FreeMono_B.otf}
+\setsansfont[
+	%Ligatures={TeX,Common},		% not supported by ttf
+	Scale=MatchLowercase,
+	Path=\fontpath,
+	BoldFont = Arimo-Bold_B.ttf ,
+	ItalicFont = Arimo-Italic_B.ttf ,				
+	BoldItalicFont = Arimo-BoldItalic_B.ttf 		
+	]{Arimo_B.ttf}
+		
+\setmonofont[
+	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
+	BoldFont = FreeMonoBold_B.otf ,
+	SlantedFont = FreeMonoOblique_B.otf ,				
+	BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
+	]{FreeMono_B.otf}
 
 
-	\setmainfont[
-		Ligatures={TeX,Common},
-		Path=\fontpath,
-		PunctuationSpace=0,							
-		%Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
-		Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
-		BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
-		ItalicFont = LinLibertine_RI_B.otf ,			
-		BoldItalicFont = LinLibertine_RZI_B.otf 		% semi-bold
-		]{LinLibertine_R_B.otf}			
+\setmainfont[
+	Ligatures={TeX,Common},
+	Path=\fontpath,
+	PunctuationSpace=0,							
+	%Numbers={OldStyle,Proportional},				% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+	Numbers={Proportional},	% normal numbers			% for tables use \addfontfeatures{Numbers={Monospaced,Lining}}
+	BoldFont = LinLibertine_RZ_B.otf ,				% semi-bold
+	ItalicFont = LinLibertine_RI_B.otf ,			
+	BoldItalicFont = LinLibertine_RZI_B.otf 		% semi-bold
+	]{LinLibertine_R_B.otf}			
   
-  \usepackage[libertine]{newtxmath}
-  
-  \let\oldtabular\tabular	% number in tabulars
-  \let\endoldtabular\endtabular
-  \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
+\usepackage[libertine]{newtxmath}
+
+\let\oldtabular\tabular	% number in tabulars
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
  
   %\usepackage{polyglossia}		% TODO remove this?
   %\setdefaultlanguage{british}
-\else
-  \usepackage[T1]{fontenc}
-  \usepackage{ucs}  				% extended UTF8 support TODO remove this?
-  \usepackage[utf8x]{inputenc}
-  \usepackage{libertine}			% TODO 
-  
-  %\usepackage[british]{babel}   	% TODO remove this?
-\fi
 
 %\frenchspacing			
 \usepackage[final]{microtype}
 \usepackage{graphicx}
 
-
-
-\ifxetex
   \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
   \newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
@@ -187,28 +175,8 @@
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
   \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
-\else 	% PDFLaTeX:
-  \newcommand{\lsCoverTitleFont}[1]{\sffamily\fontfamily{fxlj}\fontsize{52pt}{16.75mm}\selectfont #1}
-  \newcommand{\lsCoverSubTitleFont}{\sffamily\fontfamily{fxlj}\fontsize{25pt}{10mm}\selectfont}
-  \newcommand{\lsCoverAuthorFont}{\fontencoding{T1}\fontfamily{fxlj}\fontsize{25pt}{12.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{sc}\fontsize{14pt}{7.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesHistoryFont}{\fontencoding{T1}\fontfamily{phv}\fontseries{b}\fontsize{10pt}{5mm}\selectfont}
-  \newcommand{\lsInsideFont}{\fontencoding{T1}\fontfamily{fxlj}\selectfont}
-  \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
-  \newcommand{\lsBackTitleFont}{\lsCoverAuthorFont}
-  \newcommand{\lsBackBodyFont}{\lsInsideFont}
-  \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
-  \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
-  
-  \renewcommand{\bfseries}{\textsb}  	% bold -> semibold
-\fi
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
-
-% qtm = tgtermes
-% ptm = times
-% phv = helvet
-% fxlj = libertine
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -271,7 +239,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 % for papers of collections:
-\newcommand{\lsCollectionPaperAbstract}{Put abstract here.}
+\newcommand{\lsCollectionPaperAbstract}{Put abstract here with \string\abstract.}
 \newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
 
 \def\epigram#1{\gdef\@epigram{#1}}			% needs to be defined this way to check emptiness
@@ -1077,7 +1045,7 @@ guarantee the accuracy of such information thereafter.
 
 \iflsCollection
 	\iflsBiblatex\else
-		\ClassError{LSP/langsci}{Collection option not compatible with plain BibTeX. Please use biblatex option}
+		\ClassError{LSP/langsci}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
