@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/09/21 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/10/14 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -270,6 +270,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
 \newcommand{\cfls}{cfls}		%Conceptual Foundation of the Language Sciences
 \newcommand{\dummyseries}{dummyseries}
+\newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
 
 \ifx\lsSeries\eotms
@@ -323,6 +324,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\cfls
 	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkWine}
+\fi	
+\ifx\lsSeries\guidelines
+	\newcommand{\lsSeriesTitle}{Guidelines}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
