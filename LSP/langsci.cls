@@ -768,6 +768,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputShort}{short}
 \newcommand{\lsOutputInprep}{inprep}
 \newcommand{\lsOutputPaper}{paper}
+\newcommand{\lsOutputGuidelines}{guidelines}
+
 
 \AtBeginDocument{
 \ifx\lsOutput\lsOutputPaper				% only if output=paper
@@ -839,6 +841,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	 \lsCoverTitleAuthor}
 \fi								
 
+\ifx\lsOutput\lsOutputGuidelines				% only if output=guidelines
+	{\setcounter{page}{-1}
+	% First titlepage:
+	{\lsFrontPage}}
+\fi	
+
 \end{titlepage}
 
 \frontmatter
@@ -851,7 +859,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 % Imprint:
 \ifx\lsOutput\lsOutputInprep{}
-\else{\lsImpressum}
+\else{
+	\ifx\lsOutput\lsOutputGuidelines{}
+	\else{\lsImpressum}
+	\fi}
 \fi
 %%%%%%%%%%%%%
 
