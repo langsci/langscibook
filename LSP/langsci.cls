@@ -326,7 +326,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsDarkWine}
 \fi	
 \ifx\lsSeries\guidelines
-	\newcommand{\lsSeriesTitle}{Guidelines}
+	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\dummyseries
