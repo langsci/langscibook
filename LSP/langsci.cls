@@ -238,6 +238,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
 
+\newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
+\newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
+\newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
+\newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
+
 % for papers of collections:
 \newcommand{\lsCollectionPaperAbstract}{Put abstract here with \string\abstract.}
 \newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
@@ -273,6 +278,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
 
+\AtBeginDocument{
 \ifx\lsSeries\eotms
 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
@@ -332,7 +338,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\guidelines
 	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
-\fi 	
+\fi
+}	
 
 \@ifundefined{blackandwhite}
 	{}
