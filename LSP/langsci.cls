@@ -1207,18 +1207,18 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage{authorindex}
 
+% lsp-eng-hyp is a makeshift package. Authors should use localhyphenation.sty
+% \usepackage{./LSP/lsp-styles/lsp-eng-hyp}
 
-\usepackage{./LSP/lsp-styles/lsp-eng-hyp}
-
-
+% mex considered evil. We need explicit references to examples for XML conversion, but mex does not provide them
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
 % (\mex{0}) but also (\mex{-1})
 % taken from covington.sty (check)
-\newcounter{lsptempcnt}
-
-\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-\addtocounter{lsptempcnt}{#1}%
-\arabic{lsptempcnt}}%
+% \newcounter{lsptempcnt}
+% 
+% \newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+% \addtocounter{lsptempcnt}{#1}%
+% \arabic{lsptempcnt}}%
 
 % quotes are indented at one side only.
 \renewenvironment{quote}
@@ -1236,10 +1236,11 @@ guarantee the accuracy of such information thereafter.
 				\item\relax}
 			   {\endlist}
 
-\usepackage[english]{varioref}
+% varioref considered evil. We willh ave various output formats, and we do not know, where elements will be placed in all of them
+% \usepackage[english]{varioref}
 
 
-% usefull commands for glossings:
+% useful commands for glossings:
 \newlength{\LSPTmp}
 % a) hspace over width of something without showing it
 \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
