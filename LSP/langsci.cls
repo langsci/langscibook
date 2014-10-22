@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/10/17 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/09/21 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -238,11 +238,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
 
-\newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
-\newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
-\newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
-\newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
-
 % for papers of collections:
 \newcommand{\lsCollectionPaperAbstract}{Put abstract here with \string\abstract.}
 \newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
@@ -275,10 +270,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
 \newcommand{\cfls}{cfls}		%Conceptual Foundation of the Language Sciences
 \newcommand{\dummyseries}{dummyseries}
-\newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
 
-\AtBeginDocument{
 \ifx\lsSeries\eotms
 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
@@ -334,12 +327,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
-\fi
-\ifx\lsSeries\guidelines
-	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
-	\newcommand{\lsSeriesColor}{lsNightGreen}
-\fi
-}	
+\fi	
 
 \@ifundefined{blackandwhite}
 	{}
@@ -547,10 +535,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi%
 }
 
-
-\iflsDraft
-  \usepackage{showidx}
-\fi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -784,8 +768,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputShort}{short}
 \newcommand{\lsOutputInprep}{inprep}
 \newcommand{\lsOutputPaper}{paper}
-\newcommand{\lsOutputGuidelines}{guidelines}
-
 
 \AtBeginDocument{
 \ifx\lsOutput\lsOutputPaper				% only if output=paper
@@ -857,12 +839,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	 \lsCoverTitleAuthor}
 \fi								
 
-\ifx\lsOutput\lsOutputGuidelines				% only if output=guidelines
-	{\setcounter{page}{-1}
-	% First titlepage:
-	{\lsFrontPage}}
-\fi	
-
 \end{titlepage}
 
 \frontmatter
@@ -875,10 +851,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 % Imprint:
 \ifx\lsOutput\lsOutputInprep{}
-\else{
-	\ifx\lsOutput\lsOutputGuidelines{}
-	\else{\lsImpressum}
-	\fi}
+\else{\lsImpressum}
 \fi
 %%%%%%%%%%%%%
 
@@ -1198,18 +1171,21 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage{authorindex}
 
-
-\usepackage{./LSP/lsp-styles/lsp-eng-hyp}
+% lsp-eng-hyp is a makeshift file of one author's work over the years. It is completely unclear why it is included. All hyphenation problems should be addressed in localhyphenation.sty
+% \usepackage{./LSP/lsp-styles/lsp-eng-hyp}
 
 
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
 % (\mex{0}) but also (\mex{-1})
 % taken from covington.sty (check)
-\newcounter{lsptempcnt}
 
-\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-\addtocounter{lsptempcnt}{#1}%
-\arabic{lsptempcnt}}%
+%\mex considered evil. We need explicit references to the examples for the XML conversion, and \mex does not provide these
+
+% \newcounter{lsptempcnt}
+% 
+% \newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+% \addtocounter{lsptempcnt}{#1}%
+% \arabic{lsptempcnt}}%
 
 % quotes are indented at one side only.
 \renewenvironment{quote}
@@ -1227,10 +1203,12 @@ guarantee the accuracy of such information thereafter.
 				\item\relax}
 			   {\endlist}
 
-\usepackage[english]{varioref}
+% \usepackage[english]{varioref} %Varioref considered evil as it is only useful for pdf output, but has no meaning for xml etc. 
 
 
-% usefull commands for glossings:
+
+
+% useful commands for glossings:
 \newlength{\LSPTmp}
 % a) hspace over width of something without showing it
 \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
