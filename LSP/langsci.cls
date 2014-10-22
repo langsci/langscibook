@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/09/21 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/10/17 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -173,8 +173,8 @@
   \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
   \newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
   \newcommand{\lsBackBodyFont}{\lsInsideFont}
-  \newcommand{\lsSpineAuthorFont}{\fontsize{12pt}{14pt}\selectfont}
-  \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{16pt}{14pt}\selectfont}
+  \newcommand{\lsSpineAuthorFont}{\fontsize{16pt}{14pt}\selectfont}
+  \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{18pt}{14pt}\selectfont}
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 
@@ -229,6 +229,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\newlineSpine}{\\}	% \newline only on spine
 \newcommand{\newlineTOC}{\\}		% \newline only in TOC entry
 
+\newcommand{\lsSpineTitle}{\@title}
+\newcommand{\lsSpineAuthor}{\@author}
+\newcommand{\SpineTitle}[1]{\renewcommand{\lsSpineTitle}{#1}}
+\newcommand{\SpineAuthor}[1]{\renewcommand{\lsSpineAuthor}{#1}} 
+
 \def\translator#1{\gdef\@translator{#1}}
 \translator{}
 \def\typesetter#1{\gdef\@typesetter{#1}}
@@ -237,6 +242,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \proofreader{}
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
+
+\newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
+\newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
+\newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
+\newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
 
 % for papers of collections:
 \newcommand{\lsCollectionPaperAbstract}{Put abstract here with \string\abstract.}
@@ -270,8 +280,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
 \newcommand{\cfls}{cfls}		%Conceptual Foundation of the Language Sciences
 \newcommand{\dummyseries}{dummyseries}
+\newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
 
+\AtBeginDocument{
 \ifx\lsSeries\eotms
 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
@@ -327,7 +339,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
-\fi	
+\fi
+\ifx\lsSeries\guidelines
+	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
+\fi
+}	
 
 \@ifundefined{blackandwhite}
 	{}
@@ -536,6 +553,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 }
 
 
+\iflsDraft
+  \usepackage{showidx}
+\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -578,6 +599,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
 \newcommand{\lsEditorPostfixSpine}{}
+
 % \edef\authorTMP{\@author}
 % \IfSubStr{\authorTMP}{}{}{}
 %\IfSubStr{\author}{,}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{}    
@@ -600,6 +622,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\fi}
 
 \newcommand{\lsCoverTitleAuthor}{
+	\renewcommand{\newlineCover}{\\}
 	\renewcommand{\newlineSpine}{}
 	\lsCoverBlock
 
@@ -679,10 +702,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\IfFileExists{\logopath/langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{\logopath/langsci_spinelogo_nocolor.pdf}}}$}{logo}
 		\hspace{15mm} 
 		{\lsSpineTitleFont
-			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\@title}}}
+			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\lsSpineTitle}}}
 		\hspace{13mm}
 		{\lsSpineAuthorFont 
-			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\@author}}}
+			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor}}}
 	\end{minipage}} 
 	\end{textblock}}
 
@@ -768,6 +791,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputShort}{short}
 \newcommand{\lsOutputInprep}{inprep}
 \newcommand{\lsOutputPaper}{paper}
+\newcommand{\lsOutputGuidelines}{guidelines}
+
 
 \AtBeginDocument{
 \ifx\lsOutput\lsOutputPaper				% only if output=paper
@@ -839,6 +864,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	 \lsCoverTitleAuthor}
 \fi								
 
+\ifx\lsOutput\lsOutputGuidelines				% only if output=guidelines
+	{\setcounter{page}{-1}
+	% First titlepage:
+	{\lsFrontPage}}
+\fi	
+
 \end{titlepage}
 
 \frontmatter
@@ -851,7 +882,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 % Imprint:
 \ifx\lsOutput\lsOutputInprep{}
-\else{\lsImpressum}
+\else{
+	\ifx\lsOutput\lsOutputGuidelines{}
+	\else{\lsImpressum}
+	\fi}
 \fi
 %%%%%%%%%%%%%
 
@@ -1049,7 +1083,9 @@ guarantee the accuracy of such information thereafter.
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
-\AtBeginDocument{	% for the citation in the footer  
+\AtBeginDocument{	% for the citation in the footer
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineSpine}{} 
 	\edef\lsCollectionTitle{\@title}		% \edef immediately expands \@title
 	\edef\lsCollectionEditor{\@author}
 	\addbibresource{collection_tmp.bib}
@@ -1171,21 +1207,18 @@ guarantee the accuracy of such information thereafter.
 
 \usepackage{authorindex}
 
-% lsp-eng-hyp is a makeshift file of one author's work over the years. It is completely unclear why it is included. All hyphenation problems should be addressed in localhyphenation.sty
-% \usepackage{./LSP/lsp-styles/lsp-eng-hyp}
+
+\usepackage{./LSP/lsp-styles/lsp-eng-hyp}
 
 
 % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
 % (\mex{0}) but also (\mex{-1})
 % taken from covington.sty (check)
+\newcounter{lsptempcnt}
 
-%\mex considered evil. We need explicit references to the examples for the XML conversion, and \mex does not provide these
-
-% \newcounter{lsptempcnt}
-% 
-% \newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-% \addtocounter{lsptempcnt}{#1}%
-% \arabic{lsptempcnt}}%
+\newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
+\addtocounter{lsptempcnt}{#1}%
+\arabic{lsptempcnt}}%
 
 % quotes are indented at one side only.
 \renewenvironment{quote}
@@ -1203,12 +1236,10 @@ guarantee the accuracy of such information thereafter.
 				\item\relax}
 			   {\endlist}
 
-% \usepackage[english]{varioref} %Varioref considered evil as it is only useful for pdf output, but has no meaning for xml etc. 
+\usepackage[english]{varioref}
 
 
-\usepackage{./LSP/lsp-styles/lsp-lgr}
-
-% useful commands for glossings:
+% usefull commands for glossings:
 \newlength{\LSPTmp}
 % a) hspace over width of something without showing it
 \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
