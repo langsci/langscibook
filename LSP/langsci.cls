@@ -1206,7 +1206,7 @@ guarantee the accuracy of such information thereafter.
 % \usepackage[english]{varioref} %Varioref considered evil as it is only useful for pdf output, but has no meaning for xml etc. 
 
 
-
+\usepackage{./LSP/lsp-styles/lsp-lgr}
 
 % useful commands for glossings:
 \newlength{\LSPTmp}
