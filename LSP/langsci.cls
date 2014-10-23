@@ -19,6 +19,7 @@
 \newif\iflsCollection \lsCollectionfalse
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
+\newif\iflsNewtxmath \lsNewtxmathfalse
 
 
 % Option handling:
@@ -60,6 +61,8 @@
 	\lsIndexfalse }
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
+\DeclareVoidOption{newtxmath}{  			
+	\lsNewtxmathtrue}
 \DeclareVoidOption{collection}{  			
 	\lsCollectiontrue}
 \DeclareVoidOption{collectionchapter}{  			
@@ -150,8 +153,10 @@
 	ItalicFont = LinLibertine_RI_B.otf ,			
 	BoldItalicFont = LinLibertine_RZI_B.otf 		% semi-bold
 	]{LinLibertine_R_B.otf}			
-  
-\usepackage[libertine]{newtxmath}
+
+\iflsNewtxmath							% some users have problems when installing newtxmath
+	\usepackage[libertine]{newtxmath}
+\fi 	
 
 \let\oldtabular\tabular	% number in tabulars
 \let\endoldtabular\endtabular
