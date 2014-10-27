@@ -1262,4 +1262,6 @@ guarantee the accuracy of such information thereafter.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
+\usepackage{./LSP/lsp-styles/lsp-makros}
+
 \endinput
