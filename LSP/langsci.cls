@@ -440,6 +440,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \usepackage{floatrow}					% For adjusting the position of the caption (default is below).
 \floatsetup[table]{capposition=top} 	% As for tables, the caption appears above.
 
+% This sets the default for the positioning of floats
+\renewcommand{\fps@figure}{htbp}
+\renewcommand{\fps@table}{htbp}
 
 \usepackage{booktabs} %for nicer lines
 
@@ -1260,4 +1263,3 @@ guarantee the accuracy of such information thereafter.
 \setlength{\afterepigraphskip}{0\baselineskip}
 
 \endinput
-
