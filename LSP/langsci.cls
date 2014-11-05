@@ -403,6 +403,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		citestyle=LSP/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
+		indexing=cite,
 		isbn=false,
 		doi=false,
 		eprint=false,
