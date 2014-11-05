@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/03 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/05 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -352,10 +352,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\guidelines
 	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
 	\newcommand{\lsSeriesColor}{lsLightGray}
+	\renewcommand{\lsCoverFontColor}{black}
 \fi
 }	
 
-\@ifundefined{blackandwhite}
+\@ifundefined{\blackandwhite}
 	{}
 	{\renewcommand{\lsSeriesColor}{black}}
 
@@ -656,8 +657,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \newcommand{\lsCoverSeries}{
 	\begin{textblock}{95}(7.4,209)
-	\color{\lsCoverFontColor}
+	\color{white}
 	\raggedright\rule{3.6mm}{3.5mm}
+	\color{\lsCoverFontColor}
 	\hspace{3mm}\parbox[t]{85mm}{\raggedright\lsCoverSeriesFont   
 		\lsSeriesTitle\\}
 	\end{textblock}}
