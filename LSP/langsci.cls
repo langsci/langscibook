@@ -523,28 +523,30 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi%
 }
 
-\newcommand{\isfeat}[1]{\if@noftnote%
-\index{feature!{\sc #1}}%
-\else%
-%\index{feature!{\sc #1}|fn{\thefootnote}}%
-\index{feature!{\sc #1}|fn{*}}%
-\fi%
-}
-
-\newcommand{\istype}[1]{\if@noftnote%
-\index{type!#1@\type{#1}}%
-\else%
-%\index{type!{\it #1}|fn{\thefootnote}}
-\index{type!#1@\type{#1}|fn{*}}%
-\fi%
-}
-
-\newcommand{\isrel}[1]{\if@noftnote%
-\index{relation!\emph{#1}}%
-\else%
-\index{relation!\emph{#1}|fn{*}}%
-\fi%
-}
+% The following commands seem rather specific and should not be included in the general class
+% 
+% \newcommand{\isfeat}[1]{\if@noftnote%
+% \index{feature!{\sc #1}}%
+% \else%
+% %\index{feature!{\sc #1}|fn{\thefootnote}}%
+% \index{feature!{\sc #1}|fn{*}}%
+% \fi%
+% }
+% 
+% \newcommand{\istype}[1]{\if@noftnote%
+% \index{type!#1@\type{#1}}%
+% \else%
+% %\index{type!{\it #1}|fn{\thefootnote}}
+% \index{type!#1@\type{#1}|fn{*}}%
+% \fi%
+% }
+% 
+% \newcommand{\isrel}[1]{\if@noftnote%
+% \index{relation!\emph{#1}}%
+% \else%
+% \index{relation!\emph{#1}|fn{*}}%
+% \fi%
+% }
 
 
 % \index[lan] für Einträge in separaten Index

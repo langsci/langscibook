@@ -57,9 +57,9 @@
 
 
 \newcommand{\ispackage}[1]{\if@noftnote%
-\is{package!{\sc #1}}%
+\is{package!{\scshape #1}}%
 \else%
-\is{package!{\sc #1}|fn{*}}%
+\is{package!{\scshape #1}|fn{*}}%
 \fi%
 }
 
@@ -116,8 +116,8 @@
 \newcommand{\iai}[1]{\ia{#1}#1}
 \newcommand{\ili}[1]{\il{#1}#1}
 
-\newcommand{\ob}{{\rm [}} %opening bracket
-\newcommand{\cb}{{\rm ]}} %closing bracket
-\newcommand{\op}{{\rm (}} %opening paren
-\newcommand{\cp}{{\rm (}} %closing paren
-\newcommand{\rmfnm}{{\rm\footnotemark}} %romanfootnotemark
+\newcommand{\ob}{{\upshape [}} %opening bracket
+\newcommand{\cb}{{\upshape ]}} %closing bracket
+\newcommand{\op}{{\upshape (}} %opening paren
+\newcommand{\cp}{{\upshape )}} %closing paren
+\newcommand{\rmfnm}{{\upshape\footnotemark}} %romanfootnotemark
