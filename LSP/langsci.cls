@@ -508,9 +508,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 
 \newcommand{\ia}[1]{\if@noftnote%
-\index[aut]{#1}%
+\index{#1}%
 \else%
-\index[aut]{#1|fn{\thefootnote}}%
+\index{#1|fn{\thefootnote}}%
 \fi%
 }
 
