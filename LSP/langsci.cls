@@ -355,10 +355,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
 }	
-
-\@ifundefined{\blackandwhite}
-	{}
-	{\renewcommand{\lsSeriesColor}{black}}
+% 
+% \@ifundefined{\blackandwhite}
+% 	{}
+% 	{\renewcommand{\lsSeriesColor}{black}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -494,9 +494,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	}
 
 \makeindex
+\newindex{sbj}{sdx}{snd}{Subject index}
 \newindex{lan}{ldx}{lnd}{Language index}
-\newindex{aut}{adx}{and}{Name index}
-\renewindex{default}{idx}{ind}{Subject index}
+\renewindex{default}{adx}{and}{Name index} %biblatex can only deal with the default index
 \newindex{wrd}{wdx}{wnd}{Expression index}
 \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
 
@@ -515,10 +515,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 }
 
 \newcommand{\is}[1]{\if@noftnote%
-\index{#1}%
+\index[sbj]{#1}%
 \else%
 % irgendwie muss man ihn dazu bringen den Wert für footnote auch einzusetzen
-\index{#1|fn{*}}%
+\index[sbj]{#1|fn{*}}%
 %\indexftn{#1}{\value{footnotemark}}%
 \fi%
 }
