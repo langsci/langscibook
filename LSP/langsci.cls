@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/05 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/11 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
