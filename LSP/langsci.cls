@@ -992,7 +992,9 @@ http://creativecommons.org/licenses/by-nd/4.0/
 \fi
  
 ISBN: \lsISBN \\
-ISSN: \lsISSN
+\IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
+	{}
+	{ISSN: \lsISSN}
 
 \bigskip
  
