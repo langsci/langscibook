@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/11 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/12 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -305,13 +305,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\sidl
 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRichGreen}
-	\renewcommand{\lsISSN}{2363-5568}%
+	\renewcommand{\lsISSN}{2363-5568}
 \fi
 \ifx\lsSeries\algad
 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
-\ifx\lsSeries\algad
+\ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
 \fi
@@ -330,7 +330,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\silp
 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightWine}
-	\renewcommand{\lsISSN}{2363-5576}%
+	\renewcommand{\lsISSN}{2363-5576}
 \fi	
 \ifx\lsSeries\tdgi
 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
@@ -341,7 +341,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundations of Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of\\ Language Science~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\lv
@@ -358,8 +358,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
 }	
-% 
-% \@ifundefined{\blackandwhite}
+
+% \@ifundefined{blackandwhite}
 % 	{}
 % 	{\renewcommand{\lsSeriesColor}{black}}
 
@@ -406,11 +406,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		citestyle=LSP/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
-		indexing=cite,
 		isbn=false,
 		doi=false,
 		eprint=false,
-		backend=\lsBiblatexBackend
+		backend=\lsBiblatexBackend,
+		indexing=cite
 		]{biblatex}
 	\renewcommand{\postnotedelim}{: }%
 	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
@@ -497,8 +497,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	}
 
 \makeindex
-\newindex{sbj}{sdx}{snd}{Subject index}
 \newindex{lan}{ldx}{lnd}{Language index}
+% \newindex{aut}{adx}{and}{Name index}
+\newindex{sbj}{sdx}{snd}{Subject index}
 \renewindex{default}{adx}{and}{Name index} %biblatex can only deal with the default index
 \newindex{wrd}{wdx}{wnd}{Expression index}
 \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
@@ -951,6 +952,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	{\vfill\hfill ISSN: \lsISSN}
 
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
