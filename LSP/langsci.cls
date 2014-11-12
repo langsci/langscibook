@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/03 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/12 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -341,7 +341,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundations of Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of\\ Language Science~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\lv
@@ -500,7 +500,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newindex{lan}{ldx}{lnd}{Language index}
 % \newindex{aut}{adx}{and}{Name index}
 \newindex{sbj}{sdx}{snd}{Subject index}
-\renewindex{default}{adx}{and}{Name index}
+\renewindex{default}{adx}{and}{Name index} %biblatex can only deal with the default index
 \newindex{wrd}{wdx}{wnd}{Expression index}
 \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
 
