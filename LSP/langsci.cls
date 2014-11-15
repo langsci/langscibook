@@ -619,7 +619,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
-\newcommand{\lsSpineEditorSuffix}{}
+\newcommand{\lsEditorSuffix}{}
 
 %\edef\authorTMP{\@author}
 %\IfSubStr{\authorTMP}{}{}{}
@@ -727,7 +727,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\lsSpineTitle}}}
 		\hspace{13mm}
 		{\lsSpineAuthorFont 
-			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor}}}
+			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi}}}
 	\end{minipage}} 
 	\end{textblock}}
 
@@ -966,7 +966,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsImpressumCitationText}{
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{}
-	{\@author}\if\lsSpineEditorSuffix\empty\else\ \lsSpineEditorSuffix\fi. %
+	{\@author}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
 	{\the\year}. %
 	\textit{\@title} \if\@subtitle\empty\else. \textit{\@subtitle} \fi%
 	(\lsSeriesTitle). Berlin: Language Science Press.
