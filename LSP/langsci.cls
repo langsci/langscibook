@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/12 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/15 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -126,7 +126,8 @@
 \usepackage{ifxetex}
 \ifxetex\else\ClassError{LSP/langsci}{Please use XeLaTeX!}{}\fi
 	
-\usepackage{amssymb} % has to be loaded before other stuff			
+\usepackage{amssymb} % has to be loaded before other stuff
+\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol			
 \usepackage{fontspec}
 \newcommand{\fontpath}{./LSP/lsp-fonts/}
 
@@ -960,24 +961,18 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\lsImpressumCitationText}{
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineSpine}{}
+	{\@author}. {\the\year}. \textit{\@title} (\lsSeriesTitle). Berlin: Language Science Press.
+}
+
 \newcommand{\lsImpressum}{
-\renewcommand{\newlineCover}{}
 \raggedright
-\null\vfill
-Language Science Press\\
-Berlin\\
 
-\bigskip
+\lsImpressumCitationText
 
-Language Science Press\\
-Habelschwerdter Allee 45\\
-14195 Berlin, Germany
-
-\bigskip
-
-\href{http://langsci-press.org}{langsci-press.org}
-
-\bigskip
+\vfill
 
 This title can be downloaded at:\\
 \url{\lsURL}
@@ -1014,12 +1009,21 @@ Typesetting:
 Proofreading:
 \@proofreader \\
 \fi
+Fonts: Linux Libertine, Arimo \\
+Typesetting software: \XeLaTeX
 
-\vspace{3ex}
+\bigskip
+
+Language Science Press\\
+Habelschwerdter Allee 45\\
+14195 Berlin, Germany\\
+\href{http://langsci-press.org}{langsci-press.org}
+
+\vfill
 
 Storage and cataloguing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\
+\IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\[3ex]
 
 \vfill
 
