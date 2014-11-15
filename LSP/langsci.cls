@@ -216,6 +216,8 @@
 \definecolor{lsDarkGreen2}{cmyk}{0.85,0.05,1,0.5}
 \definecolor{lsNightGreen}{cmyk}{0.88,0.15,1,0.66}
 \definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
+\definecolor{lsGuidelinesGray}{cmyk}{0,0.04,0,0.45}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -355,7 +357,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 \ifx\lsSeries\guidelines
 	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
-	\newcommand{\lsSeriesColor}{lsLightGray}
+	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
 }	
