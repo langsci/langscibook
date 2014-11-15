@@ -619,12 +619,18 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
-\newcommand{\lsEditorSuffix}{}
+\newcommand{\lsEditorSuffix}{}   
 
-%\edef\authorTMP{\@author}
-%\IfSubStr{\authorTMP}{}{}{}
-%\IfSubStr{\author}{,}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{}    
-%\IfSubStr{\@author}{\&}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{\renewcommand{\lsEditorPostfixSpine}{(ed.)}}      
+\iflsCollection  	% for collections: set \lsEditorSuffix depending on \@author
+\AtBeginDocument{	
+	\IfSubStr{\@author}{\&}	 	% if \@author contains \&
+		{\renewcommand{\lsEditorSuffix}{(eds.)}}
+		{\IfSubStr{\@author}{,}	% if \@author contains ,
+			{\renewcommand{\lsEditorSuffix}{(eds.)}}
+			{\renewcommand{\lsEditorSuffix}{(ed.)}}}
+}
+\else
+\fi
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
