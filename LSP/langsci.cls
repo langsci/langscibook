@@ -619,10 +619,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
-\newcommand{\lsEditorPostfixSpine}{}
+\newcommand{\lsSpineEditorSuffix}{}
 
-% \edef\authorTMP{\@author}
-% \IfSubStr{\authorTMP}{}{}{}
+%\edef\authorTMP{\@author}
+%\IfSubStr{\authorTMP}{}{}{}
 %\IfSubStr{\author}{,}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{}    
 %\IfSubStr{\@author}{\&}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{\renewcommand{\lsEditorPostfixSpine}{(ed.)}}      
 
@@ -966,8 +966,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsImpressumCitationText}{
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{}
-	{\@author}. {\the\year}. \textit{\@title} %
-	\if\@subtitle\empty\else. \textit{\@subtitle} \fi%
+	{\@author}\if\lsSpineEditorSuffix\empty\else\ \lsSpineEditorSuffix\fi. %
+	{\the\year}. %
+	\textit{\@title} \if\@subtitle\empty\else. \textit{\@subtitle} \fi%
 	(\lsSeriesTitle). Berlin: Language Science Press.
 }
 
