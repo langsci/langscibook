@@ -964,7 +964,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsImpressumCitationText}{
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{}
-	{\@author}. {\the\year}. \textit{\@title} (\lsSeriesTitle). Berlin: Language Science Press.
+	{\@author}. {\the\year}. \textit{\@title} %
+	\if\@subtitle\empty\else. \textit{\@subtitle} \fi%
+	(\lsSeriesTitle). Berlin: Language Science Press.
 }
 
 \newcommand{\lsImpressum}{
