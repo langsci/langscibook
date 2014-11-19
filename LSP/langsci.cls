@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/05 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/15 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -126,7 +126,8 @@
 \usepackage{ifxetex}
 \ifxetex\else\ClassError{LSP/langsci}{Please use XeLaTeX!}{}\fi
 	
-\usepackage{amssymb} % has to be loaded before other stuff			
+\usepackage{amssymb} % has to be loaded before other stuff
+\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol			
 \usepackage{fontspec}
 \newcommand{\fontpath}{./LSP/lsp-fonts/}
 
@@ -215,6 +216,8 @@
 \definecolor{lsDarkGreen2}{cmyk}{0.85,0.05,1,0.5}
 \definecolor{lsNightGreen}{cmyk}{0.88,0.15,1,0.66}
 \definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
+\definecolor{lsGuidelinesGray}{cmyk}{0,0.04,0,0.45}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -282,12 +285,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\sidl}{sidl}
 \newcommand{\algad}{algad}
 \newcommand{\tmnlp}{tmnlp}
-\newcommand{\nc}{nc}			%Niger Congo
-\newcommand{\lnls}{lnls}		%Lecture Notes in Language Sciences
-\newcommand{\labphon}{labphon}%Studies in Laboratory Phonology
-\newcommand{\tdgi}{tdgi}		%Topics at the Discourse Grammar Interface
-\newcommand{\cmle}{cmle}		%Computational Models of Language Evolution
-\newcommand{\cfls}{cfls}		%Conceptual Foundation of the Language Sciences
+\newcommand{\nc}{nc}		%Niger Congo
+\newcommand{\lnls}{lnls}	%Lecture Notes in Language Sciences
+\newcommand{\silp}{silp}	%Studies in Laboratory Phonology
+\newcommand{\tdgi}{tdgi}	%Topics at the Discourse Grammar Interface
+\newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
+\newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
+\newcommand{\lv}{lv}		%Language Variation
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
@@ -304,12 +308,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\sidl
 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRichGreen}
+	\renewcommand{\lsISSN}{2363-5568}
 \fi
 \ifx\lsSeries\algad
 	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
-\ifx\lsSeries\algad
+\ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
 \fi
@@ -325,9 +330,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRed}
 \fi	
-\ifx\lsSeries\labphon
+\ifx\lsSeries\silp
 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightWine}
+	\renewcommand{\lsISSN}{2363-5576}
 \fi	
 \ifx\lsSeries\tdgi
 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
@@ -338,10 +344,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundations of Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of\\ Language Science~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
-\ifx\lsSeries\cfls
+\ifx\lsSeries\lv
 	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkWine}
 \fi	
@@ -351,14 +357,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 \ifx\lsSeries\guidelines
 	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
-	\newcommand{\lsSeriesColor}{lsLightGray}
+	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
 }	
 
-\@ifundefined{\blackandwhite}
-	{}
-	{\renewcommand{\lsSeriesColor}{black}}
+% \@ifundefined{blackandwhite}
+% 	{}
+% 	{\renewcommand{\lsSeriesColor}{black}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -403,11 +409,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		citestyle=LSP/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
-		indexing=cite,
 		isbn=false,
 		doi=false,
 		eprint=false,
-		backend=\lsBiblatexBackend
+		backend=\lsBiblatexBackend,
+		indexing=cite
 		]{biblatex}
 	\renewcommand{\postnotedelim}{: }%
 	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
@@ -495,8 +501,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \makeindex
 \newindex{lan}{ldx}{lnd}{Language index}
-\newindex{aut}{adx}{and}{Name index}
-\renewindex{default}{idx}{ind}{Subject index}
+% \newindex{aut}{adx}{and}{Name index}
+\newindex{sbj}{sdx}{snd}{Subject index}
+\renewindex{default}{adx}{and}{Name index} %biblatex can only deal with the default index
 \newindex{wrd}{wdx}{wnd}{Expression index}
 \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
 
@@ -508,17 +515,17 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 
 \newcommand{\ia}[1]{\if@noftnote%
-\index[aut]{#1}%
+\index{#1}%
 \else%
-\index[aut]{#1|fn{\thefootnote}}%
+\index{#1|fn{\thefootnote}}%
 \fi%
 }
 
 \newcommand{\is}[1]{\if@noftnote%
-\index{#1}%
+\index[sbj]{#1}%
 \else%
 % irgendwie muss man ihn dazu bringen den Wert für footnote auch einzusetzen
-\index{#1|fn{*}}%
+\index[sbj]{#1|fn{*}}%
 %\indexftn{#1}{\value{footnotemark}}%
 \fi%
 }
@@ -612,12 +619,18 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
-\newcommand{\lsEditorPostfixSpine}{}
+\newcommand{\lsEditorSuffix}{}   
 
-% \edef\authorTMP{\@author}
-% \IfSubStr{\authorTMP}{}{}{}
-%\IfSubStr{\author}{,}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{}    
-%\IfSubStr{\@author}{\&}{\renewcommand{\lsEditorPostfixSpine}{(eds.)}}{\renewcommand{\lsEditorPostfixSpine}{(ed.)}}      
+\iflsCollection  	% for collections: set \lsEditorSuffix depending on \@author
+\AtBeginDocument{	
+	\IfSubStr{\@author}{\&}	 	% if \@author contains \&
+		{\renewcommand{\lsEditorSuffix}{(eds.)}}
+		{\IfSubStr{\@author}{,}	% if \@author contains ,
+			{\renewcommand{\lsEditorSuffix}{(eds.)}}
+			{\renewcommand{\lsEditorSuffix}{(ed.)}}}
+}
+\else
+\fi
 
 \newcommand{\lsCoverBlock}{
 	\begin{textblock}{155}(7.6,7.5)
@@ -720,7 +733,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 			\rotatebox[origin=c]{180}{\pbox[c]{150mm}{\lsSpineTitle}}}
 		\hspace{13mm}
 		{\lsSpineAuthorFont 
-			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor}}}
+			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi}}}
 	\end{minipage}} 
 	\end{textblock}}
 
@@ -943,7 +956,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \IfFileExists{./LSP/lsp-seriesinfo/\lsSeries-info.tex}{\input{./LSP/lsp-seriesinfo/\lsSeries-info}}{
   Series information: ./LSP/lsp-seriesinfo/\lsSeries-info.tex not found!} 
 
+\IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
+	{}
+	{\vfill\hfill ISSN: \lsISSN}
+
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -951,24 +969,21 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\lsImpressumCitationText}{
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineSpine}{}
+	{\@author}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
+	{\the\year}. %
+	\textit{\@title} \if\@subtitle\empty\else. \textit{\@subtitle} \fi%
+	(\lsSeriesTitle). Berlin: Language Science Press.
+}
+
 \newcommand{\lsImpressum}{
-\renewcommand{\newlineCover}{}
 \raggedright
-\null\vfill
-Language Science Press\\
-Berlin\\
 
-\bigskip
+\lsImpressumCitationText
 
-Language Science Press\\
-Habelschwerdter Allee 45\\
-14195 Berlin, Germany
-
-\bigskip
-
-\href{http://langsci-press.org}{langsci-press.org}
-
-\bigskip
+\vfill
 
 This title can be downloaded at:\\
 \url{\lsURL}
@@ -985,7 +1000,9 @@ http://creativecommons.org/licenses/by-nd/4.0/
 \fi
  
 ISBN: \lsISBN \\
-ISSN: \lsISSN
+\IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
+	{}
+	{ISSN: \lsISSN}
 
 \bigskip
  
@@ -1003,12 +1020,21 @@ Typesetting:
 Proofreading:
 \@proofreader \\
 \fi
+Fonts: Linux Libertine, Arimo \\
+Typesetting software: \XeLaTeX
 
-\vspace{3ex}
+\bigskip
+
+Language Science Press\\
+Habelschwerdter Allee 45\\
+14195 Berlin, Germany\\
+\href{http://langsci-press.org}{langsci-press.org}
+
+\vfill
 
 Storage and cataloguing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\
+\IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\[3ex]
 
 \vfill
 
