@@ -298,7 +298,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \AtBeginDocument{
 \ifx\lsSeries\eotms
-	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \\ Morphology and Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \newlineCover Morphology and Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\eotmsig
@@ -311,7 +311,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\lsISSN}{2363-5568}
 \fi
 \ifx\lsSeries\algad
-	\newcommand{\lsSeriesTitle}{African Language Grammars\\ and Dictionaries~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{African Language Grammars \newlineCover and Dictionaries~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
 \ifx\lsSeries\scl
@@ -319,7 +319,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
 \fi
 \ifx\lsSeries\tmnlp
-	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural\\ Language Processing~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
 \fi
 \ifx\lsSeries\lnls
@@ -344,7 +344,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 \fi	
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundations of\\ Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 \fi	
 \ifx\lsSeries\lv
