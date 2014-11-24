@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/15 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/24 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -441,6 +441,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	% This is what Stefan did:
 	%\let\citew=\citealt
 \fi
+
+% to prevent widows and orphans from appearing inside bibliographies
+% http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
+\usepackage{etoolbox}
+\AtBeginEnvironment{thebibliography}{%
+    \clubpenalty10000
+    \@clubpenalty \clubpenalty
+    \widowpenalty10000}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
