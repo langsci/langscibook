@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/24 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/26 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -442,7 +442,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	%\let\citew=\citealt
 \fi
 
-% to prevent widows and orphans from appearing inside bibliographies
+% penalties against widows and orphans in bibliography
 % http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
 \usepackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{%
@@ -940,9 +940,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % for those who like the example in numbered example sentences to be typeset in italics
 % this is possible for a complete series only.
 \ifx\lsSeries\sidl
-	%\ifx\lsSeries\lnls
 	\AtBeginDocument{
-	\def\exfont{\normalsize\itshape}
+	%\def\exfont{\normalsize\itshape}
+	\renewcommand{\eachwordone}{\itshape} 
 	}
 \fi
 
