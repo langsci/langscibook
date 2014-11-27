@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/26 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/11/27 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -982,8 +982,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\newlineSpine}{}
 	{\@author}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
 	{\the\year}. %
-	\textit{\@title} \if\@subtitle\empty\else. \textit{\@subtitle} \fi%
-	(\lsSeriesTitle). Berlin: Language Science Press.
+	\textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
+	(\lsSeriesTitle). %
+	Berlin: Language Science Press.
 }
 
 \newcommand{\lsImpressum}{
