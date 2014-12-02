@@ -21,6 +21,8 @@
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
+\newif\iflsBlackandwhite \lsBlackandwhitefalse
+
 
 
 % Option handling:
@@ -53,7 +55,7 @@
 	\define@key{langsci}{biblatexbackend}{%
 		\renewcommand{\lsBiblatexBackend}{#1}}
 \DeclareVoidOption{blackandwhite}{
-	\newcommand{\blackandwhite}{}}
+	\lsBlackandwhitetrue}
 \DeclareVoidOption{long}{
 	\renewcommand{\lsOutput}{long}}
 \DeclareVoidOption{smallfont}{  			
@@ -360,11 +362,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
+
+\iflsBlackandwhite
+	\renewcommand{\lsSeriesColor}{black}
+\fi
 }	
 
-% \@ifundefined{blackandwhite}
-% 	{}
-% 	{\renewcommand{\lsSeriesColor}{black}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
