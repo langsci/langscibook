@@ -83,7 +83,7 @@
 	fontsize=\lsFontsize, % default is 11pt
 	footnotes=multiple,
 	numbers=noenddot,		% no point after last number of chapters/sections
-	toc=bibliographynumbered,
+	toc=bibliography,
 	index=totoc,
 	%chapterprefix=true,
 	%draft=yes,
