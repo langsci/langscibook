@@ -417,7 +417,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		doi=false,
 		eprint=false,
 		backend=\lsBiblatexBackend,
-		indexing=cite
+		indexing=cite,
+		\iflsCollection\else
+			toc=bib 		% make bibliography appear in toc
+		\fi
 		]{biblatex}
 	\renewcommand{\postnotedelim}{: }%
 	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
