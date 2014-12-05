@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/27 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/12/05 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -424,7 +424,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\fi
 		]{biblatex}
 	\renewcommand{\postnotedelim}{: }%
-	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
+	\renewcommand{\multicitedelim}{\addsemicolon\space}%
+	\renewcommand{\compcitedelim}{\multicitedelim}  
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%		
 \else	%BibTeX
@@ -441,7 +442,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	%% }
 
 	% check what the unified people have to say on this.
-	\bibpunct[: ]{(}{)}{;}{a}{}{,}
+	\bibpunct[: ]{(}{)}{;}{a}{}{;}
 	% They do not say anything about citations in the running text.
 	% As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
 	% This is what De Gruyter does:
