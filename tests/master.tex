@@ -1,7 +1,10 @@
-\documentclass{LSP/langsci}
+\documentclass[biblatex]{LSP/langsci}
+ 
 
 \usepackage{./LSP/lsp-styles/lsp-gb4e}
 \usepackage{./LSP/lsp-styles/lsp-makros} 
+\usepackage{authorindex}
+\bibliography{localbibliography}
 
 % The following is langsci.cls specific. lsp-gb4e.sty should not make reference to this without providing the command \il
 % \newindex{lan}{ldx}{lnd}{Language index}
@@ -72,12 +75,14 @@
 % \input{gb4e-tests/}
 
 
-\section{avm}
-\section{trees}
-\section{tables}\label{sec:tables}
+\section{AVM}
+\section{Trees}
+\section{Tables}\label{sec:tables}
 \input{table-tests/general}
-\section{crossrefs}
+\section{Crossrefs}
 \input{crossref-tests/general}
+\section{Bibliography}
+\input{bibtests/cite} 
 
 
 \end{document}
