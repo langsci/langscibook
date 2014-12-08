@@ -451,6 +451,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	%\let\citew=\citealt
 \fi
 
+\let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
+
 % penalties against widows and orphans in bibliography
 % http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
 \usepackage{etoolbox}
