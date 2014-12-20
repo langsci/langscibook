@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/12/05 Language Science Press]
+\ProvidesClass{LSP/langsci}[2014/12/20 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -953,7 +953,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\sidl
 	\AtBeginDocument{
 	%\def\exfont{\normalsize\itshape}
-	\renewcommand{\eachwordone}{\itshape} 
+	\renewcommand{\eachwordone}{\itshape}	% only \gll
+	
+	\let\oldtable\table 	% footnotes in tables without horizontal line
+	\let\endoldtable\endtable
+	\renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable} 
 	}
 \fi
 
