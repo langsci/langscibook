@@ -147,3 +147,13 @@
 \definecolor{langscicol18}{cmyk}{0.85,0.02,0.95,0.38}
 \definecolor{langscicol19}{cmyk}{0.85,0.05,1,0.5}
 \definecolor{langscicol20}{cmyk}{0.88,0.15,1,0.66}
+
+
+\newcommand{\lsptable}[2]{
+\resizebox{#1}{!}{
+\begin{tabularx}{\textwidth}{XXXXXXXXXXXXXXXXXXXX}
+ \cellcolor{langscicol1}&\cellcolor{langscicol2}&\cellcolor{langscicol3}&\cellcolor{langscicol4}&\cellcolor{langscicol5}&\cellcolor{langscicol6}&\cellcolor{langscicol7}&\cellcolor{langscicol8}&\cellcolor{langscicol9}&\cellcolor{langscicol10}&\cellcolor{langscicol11}&\cellcolor{langscicol12}&\cellcolor{langscicol13}&\cellcolor{langscicol14}&\cellcolor{langscicol15}&\cellcolor{langscicol16}&\cellcolor{langscicol17}&\cellcolor{langscicol18}&\cellcolor{langscicol19}&\cellcolor{langscicol20}
+ \rule{0pt}{#2}
+\end{tabularx}
+}
+}

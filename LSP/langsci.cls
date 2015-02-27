@@ -282,6 +282,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\calseries}{calseries}
 \newcommand{\eotms}{eotms}
 \newcommand{\eotmsig}{eotmsig}
 \newcommand{\sidl}{sidl}
@@ -353,6 +354,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\lv
 	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkWine}
+\fi	
+\ifx\lsSeries\calseries %\cal is already taken as a command
+	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidWine}
 \fi	
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
