@@ -289,7 +289,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\algad}{algad}
 \newcommand{\tmnlp}{tmnlp}
 \newcommand{\nc}{nc}		%Niger Congo
-\newcommand{\lnls}{lnls}	%Lecture Notes in Language Sciences
+\newcommand{\tbls}{tbls}	%Textbooks in Language Sciences
 \newcommand{\silp}{silp}	%Studies in Laboratory Phonology
 \newcommand{\tdgi}{tdgi}	%Topics at the Discourse Grammar Interface
 \newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
@@ -325,8 +325,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
 \fi
-\ifx\lsSeries\lnls
-	\newcommand{\lsSeriesTitle}{Lecture Notes in Language Sciences~\lsSeriesNumber}
+\ifx\lsSeries\tbls
+	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsYellow}
 \fi	
 \ifx\lsSeries\nc
