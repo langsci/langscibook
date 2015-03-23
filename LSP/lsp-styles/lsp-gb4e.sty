@@ -1,4 +1,4 @@
-\ProvidesPackage{lsp-gb4e}[2000/09/05]
+\ProvidesPackage{LSP/lsp-styles/lsp-gb4e}[2000/09/05]
 \def\gbVersion{4e} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % modified from gb4e
@@ -344,6 +344,7 @@
 
 \def\ea{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\raggedright\ex}
 \def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]\raggedright}
+\def\ealnoraggedright{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]}
 \def\eanoraggedright{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
 \def\glt{\nopagebreak\vskip.17\baselineskip\transfont\parindent0ex}
 
