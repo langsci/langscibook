@@ -1,12 +1,16 @@
-%% \usepackage{tikz-qtree}
-%% % has strange side effects
-%% % allows for glosses in trees
-%% \tikzset{every tree node/.style={align=left, anchor=north}}
-%% \tikzset{every roof node/.append style={inner sep=0.1pt,text height=2ex,text depth=0.3ex}}
-%% % alignment of the leave nodes:
-%% % http://tex.stackexchange.com/questions/163056/aligning-several-trees-to-the-baseline
-%% % seems not to work
-%% \tikzset{every leaf node/.append style={text depth=0pt}}
+% http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
+\usepackage{tikz-dependency}
+
+\usetikzlibrary{tikzmark} % saves positions in tikz pictures, allows to connect arbitrary text
+
+\usepackage{forest}
+% does not work
+%\usepackage[external]{forest}\tikzexternalize\usepackage{morewrites}
+
+
+% specification for all trees
+\forestset{.style={for tree={parent anchor=south, child anchor=north,align=center,base=top}}}
+
 
 % http://www.texample.net/tikz/examples/borrowers-and-lenders/
 \usetikzlibrary{arrows} %,positioning} 
@@ -15,17 +19,6 @@
     >=stealth'}
 
 
-% http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
-\usepackage{tikz-dependency}
-
-\usetikzlibrary{tikzmark} % saves positions in tikz pictures, allows to connect arbitrary text
-
-\usepackage{forest}
-
-
-
-% specification for all trees
-\forestset{.style={for tree={parent anchor=south, child anchor=north,align=center,base=top}}}
 
 %% \forestset{
 %% sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,where n children=0{tier=word}{}}}, 
@@ -60,6 +53,11 @@
 sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top},
                  where n children=0{tier=word,delay=with translation}{} %,delay=with translation
                  },
+sn edges without translation/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top},
+                 where n children=0{tier=word}{}
+                 },
+word tier/.style={where n children=0{tier=word}{}
+                 },
 %
 % dependency grammar trees, projective trees only, I guess. St. Mü. 29.09.2014
 dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom},
@@ -74,7 +72,7 @@ dg adjunct/.style={edge path={\noexpand\path[\forestoption{edge}]
 dg adjunct/.default=6pt,
 %
 % for Tesniere-style translations
-dg translation/.style={edge path={\noexpand\path[\forestoption{edge}, rounded corners=3pt]
+dg transfer/.style={edge path={\noexpand\path[\forestoption{edge}, rounded corners=3pt]
     % the line downwards
     (!u.parent anchor)-- +($(0,-l)-(0,4pt)$)-- +($(12pt,-l)-(0,4pt)$)
     % the horizontal line
