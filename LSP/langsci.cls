@@ -129,7 +129,8 @@
 \ifxetex\else\ClassError{LSP/langsci}{Please use XeLaTeX!}{}\fi
 	
 \usepackage{amssymb} % has to be loaded before other stuff
-\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol			
+%\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol, deprecated
+\usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol		
 \usepackage{fontspec}
 \newcommand{\fontpath}{./LSP/lsp-fonts/}
 
@@ -189,6 +190,7 @@
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{18pt}{14pt}\selectfont}
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
