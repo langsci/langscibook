@@ -15,6 +15,7 @@
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newif\iflsDraft \lsDraftfalse
+\newif\iflsOpenReview \lsOpenReviewfalse
 \newif\iflsIndex \lsIndextrue
 \newif\iflsBiblatex \lsBiblatexfalse
 \newif\iflsCollection \lsCollectionfalse
@@ -63,6 +64,8 @@
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
 	 \lsDrafttrue
 	 \overfullrule=5pt	}	% to indicate overfull hboxes
+\DeclareVoidOption{openreview}{
+	 \lsOpenReviewtrue }
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
 \DeclareVoidOption{biblatex}{  			
@@ -393,6 +396,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ofoot[]{\pagemark}
 \iflsDraft
   \ifoot{Draft of \today, \currenttime}
+\fi
+\iflsOpenReview
+  \ifoot{{\color{lsRed}Open review version} of \today. Please cite final version.}
 \fi
 %% \ihead{\upshape{\headmark}}
 %% \ohead{\pagemark}
