@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/12/20 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/05/18 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -16,6 +16,7 @@
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsOpenReview \lsOpenReviewfalse
+\newif\iflsShowIndex \lsShowIndexfalse
 \newif\iflsIndex \lsIndextrue
 \newif\iflsBiblatex \lsBiblatexfalse
 \newif\iflsCollection \lsCollectionfalse
@@ -68,6 +69,8 @@
 	 \lsOpenReviewtrue }
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
+\DeclareVoidOption{showindex}{  			
+	\lsShowIndextrue }
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
 \DeclareVoidOption{newtxmath}{  			
@@ -610,6 +613,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % \iflsDraft
 %   \usepackage{showidx} 	% Doesn't work with multiple indexes?
 % \fi
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1359,6 +1363,17 @@ guarantee the accuracy of such information thereafter.
     \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 
 	% remember to use [htp] or [htpb] for placement
+
+\iflsShowIndex	% shows index commands in text
+	\usepackage{soul}
+	\usepackage[textwidth=2cm
+		]{todonotes}
+	\usepackage[noadjust]{marginnote}
+	\renewcommand{\marginpar}{\marginnote}
+	\let\isold\is 
+	\renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
+	\renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
+\fi
 
 
 \endinput
