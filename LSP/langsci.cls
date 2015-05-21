@@ -858,6 +858,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputPaper}{paper}
 \newcommand{\lsOutputGuidelines}{guidelines}
 
+\hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 
 \AtBeginDocument{
 \ifx\lsOutput\lsOutputPaper				% only if output=paper
@@ -941,7 +942,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \renewcommand{\frontmatter}{}
 
 \null\newpage\thispagestyle{empty}
-\hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 \color{black}
 \lsInsideFont
 
