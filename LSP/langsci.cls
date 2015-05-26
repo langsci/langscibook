@@ -336,16 +336,16 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\tbls
 	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsYellow}
+	\renewcommand{\lsISSN}{2364-6209} 
 \fi	
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsRed}
-	\renewcommand{\lsISSN}{2363-5576}
+	\newcommand{\lsSeriesColor}{lsRed} 
 \fi	
 \ifx\lsSeries\silp
 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightWine}
-	\renewcommand{\lsISSN}{2364-6209}
+	\renewcommand{\lsISSN}{2363-5576}
 \fi	
 \ifx\lsSeries\tdgi
 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
@@ -354,6 +354,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\cmle
 	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsISSN}{2364-7809}
 \fi	
 \ifx\lsSeries\cfls
 	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
