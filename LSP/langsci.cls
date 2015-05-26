@@ -694,7 +694,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 			\colorbox{lsLightGray}{
 			\begin{tabular}{c}
 				\scalebox{6}{\color{red}Open Review}\\
-				of \today, \currenttime
+				version of \today, \currenttime
 			\end{tabular}}}
 	   \end{textblock}
 	\fi}
