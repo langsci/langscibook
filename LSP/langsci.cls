@@ -684,6 +684,19 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 			of \today, \currenttime
 			\end{tabular}}
 	   \end{textblock}
+	\fi
+	\iflsOpenReview
+		\iflsDraft
+			\ClassError{LSP/langsci}{Open review mode not compatible with draft mode. Please disable one of them}{}	
+		\fi
+		\begin{textblock}{155}(20,100)
+			\rotatebox{35}{
+			\colorbox{lsLightGray}{
+			\begin{tabular}{c}
+				\scalebox{6}{\color{red}Open Review}\\
+				version of \today, \currenttime
+			\end{tabular}}}
+	   \end{textblock}
 	\fi}
 
 \newcommand{\lsCoverTitleAuthor}{
