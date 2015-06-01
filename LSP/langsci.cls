@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/12/20 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/05/18 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -15,6 +15,8 @@
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newif\iflsDraft \lsDraftfalse
+\newif\iflsOpenReview \lsOpenReviewfalse
+\newif\iflsShowIndex \lsShowIndexfalse
 \newif\iflsIndex \lsIndextrue
 \newif\iflsBiblatex \lsBiblatexfalse
 \newif\iflsCollection \lsCollectionfalse
@@ -63,8 +65,12 @@
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
 	 \lsDrafttrue
 	 \overfullrule=5pt	}	% to indicate overfull hboxes
+\DeclareVoidOption{openreview}{
+	 \lsOpenReviewtrue }
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
+\DeclareVoidOption{showindex}{  			
+	\lsShowIndextrue }
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
 \DeclareVoidOption{newtxmath}{  			
@@ -129,7 +135,8 @@
 \ifxetex\else\ClassError{LSP/langsci}{Please use XeLaTeX!}{}\fi
 	
 \usepackage{amssymb} % has to be loaded before other stuff
-\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol			
+%\usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol, deprecated
+\usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol		
 \usepackage{fontspec}
 \newcommand{\fontpath}{./LSP/lsp-fonts/}
 
@@ -189,6 +196,7 @@
   \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{18pt}{14pt}\selectfont}
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -328,16 +336,16 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\tbls
 	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsYellow}
+	\renewcommand{\lsISSN}{2364-6209} 
 \fi	
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsRed}
-	\renewcommand{\lsISSN}{2363-5576}
+	\newcommand{\lsSeriesColor}{lsRed} 
 \fi	
 \ifx\lsSeries\silp
 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightWine}
-	\renewcommand{\lsISSN}{2364-6209}
+	\renewcommand{\lsISSN}{2363-5576}
 \fi	
 \ifx\lsSeries\tdgi
 	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
@@ -346,6 +354,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ifx\lsSeries\cmle
 	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsISSN}{2364-7809}
 \fi	
 \ifx\lsSeries\cfls
 	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
@@ -391,6 +400,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \ofoot[]{\pagemark}
 \iflsDraft
   \ifoot{Draft of \today, \currenttime}
+\fi
+\iflsOpenReview
+  \ifoot{{\color{lsRed}Open review version} of \today. Please cite final version.}
 \fi
 %% \ihead{\upshape{\headmark}}
 %% \ohead{\pagemark}
@@ -604,6 +616,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % \fi
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Hyperref:
@@ -670,6 +683,19 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 			\scalebox{10}{DRAFT}\\
 			of \today, \currenttime
 			\end{tabular}}
+	   \end{textblock}
+	\fi
+	\iflsOpenReview
+		\iflsDraft
+			\ClassError{LSP/langsci}{Open review mode not compatible with draft mode. Please disable one of them}{}	
+		\fi
+		\begin{textblock}{155}(20,100)
+			\rotatebox{35}{
+			\colorbox{lsLightGray}{
+			\begin{tabular}{c}
+				\scalebox{6}{\color{red}Open Review}\\
+				version of \today, \currenttime
+			\end{tabular}}}
 	   \end{textblock}
 	\fi}
 
@@ -798,7 +824,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
 	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
 	\hspace{0.8em}%
-	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
+	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText.}}
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 \newcommand{\lsPaper}{
 	\renewcommand{\maketitle}{
@@ -846,6 +872,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputPaper}{paper}
 \newcommand{\lsOutputGuidelines}{guidelines}
 
+\hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 
 \AtBeginDocument{
 \ifx\lsOutput\lsOutputPaper				% only if output=paper
@@ -929,7 +956,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \renewcommand{\frontmatter}{}
 
 \null\newpage\thispagestyle{empty}
-\hypersetup{colorlinks=false, pdfborder={0 0 0}} 	% for hyperref
 \color{black}
 \lsInsideFont
 
@@ -1351,6 +1377,17 @@ guarantee the accuracy of such information thereafter.
     \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 
 	% remember to use [htp] or [htpb] for placement
+
+\iflsShowIndex	% shows index commands in text
+	\usepackage{soul}
+	\usepackage[textwidth=2cm
+		]{todonotes}
+	\usepackage[noadjust]{marginnote}
+	\renewcommand{\marginpar}{\marginnote}
+	\let\isold\is 
+	\renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
+	\renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
+\fi
 
 
 \endinput

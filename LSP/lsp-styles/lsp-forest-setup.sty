@@ -108,3 +108,13 @@ instance/.style={edge=dotted},
 empty nodes/.style={
   delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}}
 }
+
+
+
+
+% Manual page 52
+\forestset{
+nice empty nodes/.style={
+for tree={calign=fixed edge angles},
+delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}
+}}
