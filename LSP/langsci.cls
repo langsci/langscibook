@@ -264,7 +264,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{LSP/lsp-seriesinfo/series.def}
+\input{LSP/lsp-seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle and \lsISSN are defined here
 
 
 
