@@ -1016,7 +1016,9 @@ guarantee the accuracy of such information thereafter.
 \fi
 
 \raggedbottom
-\deffootnote[1.5em]{1.5em}{0mm}{\textsuperscript{\thefootnotemark}\ }
+\deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}\ }
+\newlength{\normalparindent}
+\AtBeginDocument{\setlength{\normalparindent}{\parindent}}
 
 \KOMAoptions{footnotes=multiple}
 
