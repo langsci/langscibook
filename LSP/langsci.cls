@@ -63,10 +63,11 @@
 \DeclareVoidOption{smallfont}{  			
 	\renewcommand{\lsFontsize}{10pt}}
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
-	 \lsDrafttrue
-	 \overfullrule=5pt	}	% to indicate overfull hboxes
+	\lsDrafttrue
+	\overfullrule=5pt	}	% to indicate overfull hboxes
 \DeclareVoidOption{openreview}{
-	 \lsOpenReviewtrue }
+	\lsOpenReviewtrue
+	\AtBeginDocument{\renewcommand{\lsISBN}{000-0-000000-00-0}}}
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse }
 \DeclareVoidOption{showindex}{  			
