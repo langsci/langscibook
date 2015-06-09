@@ -574,11 +574,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\fi
 		\begin{textblock}{155}(20,100)
 			\rotatebox{35}{
-			\colorbox{lsLightGray}{
+			%\colorbox{lsLightGray}{
 			\begin{tabular}{c}
 				\scalebox{6}{\color{red}Open Review}\\
-				version of \today, \currenttime
-			\end{tabular}}}
+				%version of \today, \currenttime
+			\end{tabular}
+			%}
+			}
 	   \end{textblock}
 	\fi}
 
