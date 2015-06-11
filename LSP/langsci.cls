@@ -572,14 +572,16 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\iflsDraft
 			\ClassError{LSP/langsci}{Open review mode not compatible with draft mode. Please disable one of them}{}	
 		\fi
-		\begin{textblock}{155}(20,100)
-			\rotatebox{35}{
-			%\colorbox{lsLightGray}{
-			\begin{tabular}{c}
-				\scalebox{6}{\color{red}Open Review}\\
-				%version of \today, \currenttime
-			\end{tabular}
-			%}
+		\begin{textblock}{170}(-20,75)
+			\rotatebox{30}{
+			\colorbox{red}{
+			\parbox[c][15ex][c]{220mm}{\centering\lsCoverTitleFont\color{white}Open Review\\[-0.1ex]}
+			% \begin{tabular}{c}
+			% 	~\\
+			% 	\scalebox{6}{\color{red}Open Review}\\[-0.5ex]
+			% 	~%version of \today, \currenttime
+			% \end{tabular}
+			}
 			}
 	   \end{textblock}
 	\fi}
