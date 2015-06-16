@@ -69,6 +69,7 @@
 \ifx\lsSeries\tmnlp
 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
+	\renewcommand{\lsISSN}{2364-8899}
 \fi
 \ifx\lsSeries\tbls
 	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
