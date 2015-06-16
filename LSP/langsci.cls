@@ -401,7 +401,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
   \ifoot{Draft of \today, \currenttime}
 \fi
 \iflsOpenReview
-  \ifoot{{\color{lsRed}Open review version} of \today. Please cite final version.}
+  \ifoot{{\color{lsRed}Open review version}. Final version at \url{\lsURL}.}
 \fi
 %% \ihead{\upshape{\headmark}}
 %% \ohead{\pagemark}
