@@ -7,6 +7,9 @@
 \newcommand{\lsSeriesNumber}{??}
 \newcommand{\lsISSN}{??}
 \newcommand{\lsISBN}{000-0-000000-00-0}
+\newcommand{\lsISBNdigital}{000-0-000000-00-0}
+\newcommand{\lsISBNhardcover}{000-0-000000-00-0}
+\newcommand{\lsISBNsoftcover}{000-0-000000-00-0}
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
@@ -756,6 +759,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsOutputLong}{long}
 \newcommand{\lsOutputShort}{short}
 \newcommand{\lsOutputInprep}{inprep}
+\newcommand{\lsOutputWeb}{web}
+\newcommand{\lsOutputSoftcover}{softcover}
+\newcommand{\lsOutputHardcover}{hardcover}
 \newcommand{\lsOutputPaper}{paper}
 \newcommand{\lsOutputGuidelines}{guidelines}
 
