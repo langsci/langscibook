@@ -843,7 +843,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	{\lsFrontPage}}
 \fi	
 
-\end{titlepage}
+\end{titl epage}
 
 \frontmatter
 \renewcommand{\frontmatter}{}
