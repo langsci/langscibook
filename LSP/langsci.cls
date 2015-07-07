@@ -102,6 +102,7 @@
 
 \usepackage{etex}
 	
+\reserveinserts{8}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Page size and text area:
@@ -843,7 +844,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	{\lsFrontPage}}
 \fi	
 
-\end{titl epage}
+\end{titlepage}
 
 \frontmatter
 \renewcommand{\frontmatter}{}
