@@ -451,10 +451,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 }
 
 \newcommand{\isfeat}[1]{\if@noftnote%
-\index{feature!{\sc #1}}%
+\index{feature!\textsc{#1}}%
 \else%
 %\index{feature!{\sc #1}|fn{\thefootnote}}%
-\index{feature!{\sc #1}|fn{*}}%
+\index{feature!\textsc{#1}|fn{*}}%
 \fi%
 }
 
