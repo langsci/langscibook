@@ -523,13 +523,20 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\fi
 	}
 
+\newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
+\newcommand{\lsSubjectIndexTitle}{Subject index}
+\newcommand{\lsNameIndexTitle}{Name index}
+
+\AtBeginDocument{
 \makeindex
-\newindex{lan}{ldx}{lnd}{Language index}
+\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
 % \newindex{aut}{adx}{and}{Name index}
-\newindex{sbj}{sdx}{snd}{Subject index}
-\renewindex{default}{adx}{and}{Name index} %biblatex can only deal with the default index
+\newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
+\renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
 \newindex{wrd}{wdx}{wnd}{Expression index}
 \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
+}
+
 
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
