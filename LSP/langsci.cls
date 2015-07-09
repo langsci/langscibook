@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2014/11/27 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/07/09 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -245,6 +245,13 @@
 	SlantedFont = FreeMonoOblique_B.otf ,				
 	BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
 	]{FreeMono_B.otf}
+% \setmonofont[
+% 	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
+% 	BoldFont = DejaVuSansMono-Bold.ttf ,
+% 	SlantedFont = DejaVuSansMono-Oblique.ttf ,				
+% 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
+% 	]{DejaVuSansMono.ttf}
+
 
 
 \setmainfont[
