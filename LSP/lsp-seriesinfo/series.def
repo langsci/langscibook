@@ -40,6 +40,7 @@
 \newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
 \newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
 \newcommand{\lv}{lv}		%Language Variation
+\newcommand{\classics}{classics}	
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
@@ -106,6 +107,10 @@
 \ifx\lsSeries\calseries %\cal is already taken as a command
 	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidWine}
+\fi	
+\ifx\lsSeries\classics 
+	\newcommand{\lsSeriesTitle}{Classics in Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{black}
 \fi	
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
