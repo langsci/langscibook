@@ -181,8 +181,18 @@
   }%
 }
 
-\newcommand{\rothead}[2][2cm]{
-  \begin{rotate}{33}
-   \parbox{#1}{#2}   
-  \end{rotate}
+%% rotated table headers
+% create lengths
+\newlength{\rotheight}
+\newlength{\rotwidth}
+
+\newcommand{\rothead}[2][1cm]{
+%width is the width of the parbox
+%height is the buffer space used to vertically stretch the headere
+\setlength{\rotwidth}{#1}
+\setlength{\rotheight}{.85\rotwidth}
+  \begin{rotate}{33}~ %nbsp shifts the content away from the line underneath
+   \parbox{\rotwidth}{\raggedright #2}   
+  \end{rotate}%
+  \rule{0pt}{\rotheight} %add zero width rule to get the right table height
 }
