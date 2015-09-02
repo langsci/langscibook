@@ -794,7 +794,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\AuthorAffiliation}{
 	\renewcommand{\and}{\newline\newline} 
 	\renewcommand{\lastand}{\newline\newline} 
-	\renewcommand{\affiliation}[1]{\\[0.5ex]{\large ##1}}}
+	\renewcommand{\affiliation}[1]{\\[0.5ex]{\normalsize ##1}}}
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
 	\renewcommand{\newlineCover}{}%
 	\renewcommand{\newlineTOC}{}%
@@ -812,13 +812,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCollectionPaperTitle}{{%
 	\renewcommand{\newlineTOC}{}
 	\renewcommand{\newlineCover}{\\}
-	\iflsCollectionChapter 
+	\iflsCollectionChapter
+		\vspace*{-2\baselineskip} 
 		{\LARGE Chapter \thechapter}\newline\newline\fi
 	\@title}}
 \newcommand{\lsCollectionPaperAuthor}{{%
 	\renewcommand{\newlineTOC}{}
 	\renewcommand{\newlineCover}{\\[0.5ex]}
-	\AuthorAffiliation\LARGE\@author}}
+	\AuthorAffiliation\Large\@author}}
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
 	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
 	\hspace{0.8em}%
