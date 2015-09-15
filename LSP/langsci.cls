@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/07/09 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/09/15 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -22,7 +22,7 @@
 \newif\iflsShowIndex \lsShowIndexfalse
 
 \newif\iflsIndex \lsIndextrue
-\newif\iflsBiblatex \lsBiblatexfalse
+\newif\iflsBiblatex \lsBiblatextrue
 \newif\iflsCollection \lsCollectionfalse
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
@@ -70,23 +70,25 @@
 	 \lsDrafttrue
 	 \overfullrule=5pt	}	% to indicate overfull hboxes
 \DeclareVoidOption{openreview}{
-	\lsOpenReviewtrue
+	\lsOpenReviewtrue%
 	\AtBeginDocument{\renewcommand{\lsISBN}{000-0-000000-00-0}}}
 \DeclareVoidOption{noindex}{  			
-	\lsIndexfalse }
+	\lsIndexfalse}
 \DeclareVoidOption{showindex}{  			
-	\lsShowIndextrue }
+	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
+\DeclareVoidOption{bibtex}{  			
+	\lsBiblatexfalse}
 \DeclareVoidOption{newtxmath}{  			
 	\lsNewtxmathtrue}
 \DeclareVoidOption{collection}{  			
 	\lsCollectiontrue}
 \DeclareVoidOption{collectionchapter}{  			
-	\lsCollectiontrue
+	\lsCollectiontrue%
 	\lsCollectionChaptertrue}
 \DeclareVoidOption{collectiontoclong}{  			
-	\lsCollectiontrue
+	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
 \ProcessKeyvalOptions{langsci}
 
