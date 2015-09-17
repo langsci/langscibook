@@ -1189,7 +1189,7 @@ Typesetting:
 Proofreading:
 \@proofreader \\
 \fi
-Fonts: Linux Libertine, Arimo \\
+Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\\
 Typesetting software: \XeLaTeX
 
 \bigskip
