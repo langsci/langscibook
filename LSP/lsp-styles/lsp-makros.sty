@@ -157,3 +157,42 @@
 \end{tabularx}
 }
 }
+
+\newcommand{\fitpagewidth}[1]{
+  \resizebox{\textwidth}{!}{#1}
+}
+
+\newcommand{\protectedex}[1]{
+\parbox{\textwidth}{#1}
+}
+
+\newcommand{\largerpage}[1][1]{
+\enlargethispage{#1\baselineskip}
+}
+
+%add intonation bars over morphemes or words
+\newcommand{\intline}[2]{\settowidth{\LSPTmp}{#2}\raisebox{#1pt}{\parbox{.1mm}{\rule{\LSPTmp}{.5pt}}}#2}
+
+%add rising or falling intonation
+\newcommand{\dline}[3]{%
+  \parbox{.1mm}{\begin{picture}(0,0)%
+			  \put(0,#1){\line(#2,-1){#3}}%
+			  \end{picture}%
+  }%
+}
+
+%% rotated table headers
+% create lengths
+\newlength{\rotheight}
+\newlength{\rotwidth}
+
+\newcommand{\rothead}[2][1cm]{
+%width is the width of the parbox
+%height is the buffer space used to vertically stretch the headere
+\setlength{\rotwidth}{#1}
+\setlength{\rotheight}{.85\rotwidth}
+  \begin{rotate}{33}~ %nbsp shifts the content away from the line underneath
+   \parbox{\rotwidth}{\raggedright #2}   
+  \end{rotate}%
+  \rule{0pt}{\rotheight} %add zero width rule to get the right table height
+}
