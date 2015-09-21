@@ -242,18 +242,18 @@
 	BoldItalicFont = Arimo-BoldItalic_B.ttf 		
 	]{Arimo_B.ttf}
 		
-\setmonofont[
-	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
-	BoldFont = FreeMonoBold_B.otf ,
-	SlantedFont = FreeMonoOblique_B.otf ,				
-	BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
-	]{FreeMono_B.otf}
 % \setmonofont[
 % 	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
-% 	BoldFont = DejaVuSansMono-Bold.ttf ,
-% 	SlantedFont = DejaVuSansMono-Oblique.ttf ,				
-% 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
-% 	]{DejaVuSansMono.ttf}
+% 	BoldFont = FreeMonoBold_B.otf ,
+% 	SlantedFont = FreeMonoOblique_B.otf ,				
+% 	BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
+% 	]{FreeMono_B.otf}
+\setmonofont[
+	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
+	BoldFont = DejaVuSansMono-Bold.ttf ,
+	SlantedFont = DejaVuSansMono-Oblique.ttf ,				
+	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
+	]{DejaVuSansMono.ttf}
 
 
 
@@ -1189,7 +1189,7 @@ Typesetting:
 Proofreading:
 \@proofreader \\
 \fi
-Fonts: Linux Libertine, Arimo \\
+Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\\
 Typesetting software: \XeLaTeX
 
 \bigskip
