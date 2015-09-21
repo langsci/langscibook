@@ -133,15 +133,21 @@
 %    Page size and text area:
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
- 
+\newlength{\csspine} 
+\newlength{\bodspine}
+        \newlength{\seitenbreite}
+        \newlength{\seitenhoehe}
+        \newlength{\spinewidth}
+        \newlength{\totalwidth}
+        \newlength{\totalheight}
+
+
+
+
+
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 	\input{./lengths.tex}
  
- 	\newlength{\seitenbreite}
- 	\newlength{\seitenhoehe}
- 	\newlength{\spinewidth}
- 	\newlength{\totalwidth}
- 	\newlength{\totalheight}
  	\newlength{\bleed}{3.175mm}
  	\setlength{\seitenbreite}{169.9mm}
  	\setlength{\seitenhoehe}{244.1mm}
@@ -170,13 +176,8 @@
 
   \input{./lengths.tex}
   
-  \newlength{\seitenbreite}
-  \newlength{\seitenhoehe}
-  \newlength{\spinewidth}
-  \newlength{\totalwidth}
   \newlength{\bodfold}
   \newlength{\totalspine}
-  %\newlength{\totalheight}
   \setlength{\bodfold}{8mm}
   \setlength{\seitenbreite}{192mm}
   \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Gerader Rücken, Kaschiert, papier 80g/m², weiß
