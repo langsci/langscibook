@@ -613,6 +613,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % \fi
 
 
+
+% varioref considered evil. We willh ave various output formats, and we do not know, where elements will be placed in all of them
+% has to be loaded before hyperref
+\usepackage[english]{varioref}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Hyperref:
@@ -1450,8 +1457,6 @@ guarantee the accuracy of such information thereafter.
 				\item\relax}
 			   {\endlist}
 
-% varioref considered evil. We willh ave various output formats, and we do not know, where elements will be placed in all of them
-% \usepackage[english]{varioref}
 
 
 % useful commands for glossings:

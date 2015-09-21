@@ -3,6 +3,13 @@
 
 \usetikzlibrary{tikzmark} % saves positions in tikz pictures, allows to connect arbitrary text
 
+
+% http://tex.stackexchange.com/questions/256280/drawing-complex-dependency-diagrams-with-tikz-forest
+\usetikzlibrary{arrows.meta}
+
+\tikzset{deparrow/.style={-Latex}}%,blue}}
+
+
 \usepackage{forest}
 % does not work
 %\usepackage[external]{forest}\tikzexternalize\usepackage{morewrites}
@@ -79,6 +86,45 @@ dg transfer/.style={edge path={\noexpand\path[\forestoption{edge}, rounded corne
     ($(!p.north west)+(0,l)-(0,20pt)$)--($(.north east)+(0,l)-(0,20pt)$)\forestoption{edge label};},!p.edge'={}},
 % for Tesniere-style junctions
 dg junction/.style={no edge, tikz+={\draw (!p.east)--(!.west) (.east)--(!n.west);}    },
+%
+%
+%
+% http://tex.stackexchange.com/questions/256280/drawing-complex-dependency-diagrams-with-tikz-forest/256300#256300
+% in the tree draw the highest nodes of the inheritance network. For lower nodes insert empty nodes
+% "[]". These will be filled by the same word and the numbers will be provided with bars according
+% to remoteness from the word level.
+%
+% So cool! Thanks Sašo Živanović
+%
+ wg/.style={
+    for tree={
+      no edge,
+      draw,
+      outer ysep=1pt,
+    },
+    copy label/.style={
+      for children={
+        if content={}{
+            content/.pgfmath={content("!u")},
+            calign with current,
+            edge={draw,{-Triangle[open,reversed]}},
+            copy label,
+            !u.content/.pgfmath={content},
+            !u.content+=',
+        }{
+          copy label,
+        }
+      }
+    },
+    delay={
+      copy label,
+      for tree={name/.pgfmath={content}},
+    },
+    for tree={content format={\strut\forestoption{content}}},
+    where n children={0}{
+      tier=word,
+    }{},
+  },
 %
 %
 % TAG
