@@ -471,7 +471,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
     \widowpenalty10000}
  
 % change the default heading from "Bibliography" "List of references"
-\defbibheading{references}{\chapter{List of references}}
+\defbibheading{references}{\chapter{References}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
