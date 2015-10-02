@@ -148,7 +148,8 @@
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 	\input{./lengths.tex}
  
- 	\newlength{\bleed}{3.175mm}
+ 	\newlength{\bleed}
+	\setlength{\bleed}{3.175mm}
  	\setlength{\seitenbreite}{169.9mm}
  	\setlength{\seitenhoehe}{244.1mm}
  	
