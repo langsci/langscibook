@@ -345,7 +345,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \proofreader{}
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
-
+\newcommand{\keywords}[1]{}%This command is only for bookkeeping purposes and will not be printed out
 \newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
 \newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
