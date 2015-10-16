@@ -467,7 +467,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
 \usepackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{%
-    \clubpenalty10000q
+    \clubpenalty10000
     \@clubpenalty \clubpenalty
     \widowpenalty10000}
  
