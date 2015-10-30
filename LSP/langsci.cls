@@ -988,9 +988,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	% Text and Graphics Layer
 	
 	% Spine
+	\renewcommand{\newlineCover}{}
 	\node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./LSP/lsp-logos/langsci_spinelogo_nocolor.pdf}};
 	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}}; 
-	
+	\renewcommand{\newlineCover}{\\}
+
 	% Book Cover
 	
 	\newcommand{\lsCoverFontColour}{white}
@@ -1047,8 +1049,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	% Text and Graphics Layer
 	
 	% Spine
+	\renewcommand{\newlineCover}{}
 	\node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./LSP/lsp-logos/langsci_spinelogo_nocolor.pdf}};
-	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}}; 
+	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}};
+	\renewcommand{\newlineCover}{\\} 
 	
 	% Book Cover
 	
