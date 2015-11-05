@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/09/15 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/11/05 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -149,7 +149,8 @@
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 	\input{./lengths.tex}
  
- 	\newlength{\bleed}{3.175mm}
+ 	\newlength{\bleed}
+ 	\setlength{\bleed}{3.175mm}
  	\setlength{\seitenbreite}{169.9mm}
  	\setlength{\seitenhoehe}{244.1mm}
  	
