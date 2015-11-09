@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/11/05 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/11/09 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -682,7 +682,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsEditorSuffix}{}   
 
 \iflsCollection  	% for collections: set \lsEditorSuffix depending on \@author
-\AtBeginDocument{	
+\AtBeginDocument{
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineSpine}{}	
 	\IfSubStr{\@author}{\&}	 	% if \@author contains \&
 		{\renewcommand{\lsEditorSuffix}{(eds.)}}
 		{\IfSubStr{\@author}{,}	% if \@author contains ,
