@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/09/15 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/11/09 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -100,6 +100,7 @@
 	index=totoc,
 	%chapterprefix=true,
 	%draft=yes,
+	%appendixprefix
 	]{scrbook}
 
 
@@ -149,7 +150,7 @@
 	\input{./lengths.tex}
  
  	\newlength{\bleed}
-	\setlength{\bleed}{3.175mm}
+ 	\setlength{\bleed}{3.175mm}
  	\setlength{\seitenbreite}{169.9mm}
  	\setlength{\seitenhoehe}{244.1mm}
  	
@@ -345,7 +346,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \proofreader{}
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
-\newcommand{\keywords}[1]{}%This command is only for bookkeeping purposes and will not be printed out
+
 \newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
 \newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
@@ -489,6 +490,29 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \usepackage{booktabs} %for nicer lines
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Appendices:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appto\appendix{%
+	%% format of the appendix title page
+	\renewcommand*{\chapterformat}{%
+		\mbox{\chapapp~\thechapter\autodot:\enskip}%
+	}
+	%% format of the TOC entry
+	\renewcommand{\addchaptertocentry}[2]{
+		\ifstr{#1}{}{%
+		\addtocentrydefault{chapter}{}{#2}%
+		}{%
+		\addtocentrydefault{chapter}{}{\chapapp~#1: #2}%
+		}%
+	}
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Indexes:
@@ -623,12 +647,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
 \usepackage[
 	bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
 	bookmarksdepth=5,
+	bookmarksnumbered=true,
 	hyperindex=true,%
 	breaklinks=true,
 	draft=false,
@@ -660,7 +682,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsEditorSuffix}{}   
 
 \iflsCollection  	% for collections: set \lsEditorSuffix depending on \@author
-\AtBeginDocument{	
+\AtBeginDocument{
+	\renewcommand{\newlineCover}{}
+	\renewcommand{\newlineSpine}{}	
 	\IfSubStr{\@author}{\&}	 	% if \@author contains \&
 		{\renewcommand{\lsEditorSuffix}{(eds.)}}
 		{\IfSubStr{\@author}{,}	% if \@author contains ,
@@ -967,9 +991,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	% Text and Graphics Layer
 	
 	% Spine
+	\renewcommand{\newlineCover}{}
 	\node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./LSP/lsp-logos/langsci_spinelogo_nocolor.pdf}};
 	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}}; 
-	
+	\renewcommand{\newlineCover}{\\}
+
 	% Book Cover
 	
 	\newcommand{\lsCoverFontColour}{white}
@@ -1026,8 +1052,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	% Text and Graphics Layer
 	
 	% Spine
+	\renewcommand{\newlineCover}{}
 	\node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./LSP/lsp-logos/langsci_spinelogo_nocolor.pdf}};
-	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}}; 
+	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}};
+	\renewcommand{\newlineCover}{\\} 
 	
 	% Book Cover
 	
