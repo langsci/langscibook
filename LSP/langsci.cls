@@ -683,6 +683,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \iflsCollection  	% for collections: set \lsEditorSuffix depending on \@author
 \AtBeginDocument{
+	\onlyAuthor
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{}	
 	\IfSubStr{\@author}{\&}	 	% if \@author contains \&
@@ -728,6 +729,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\fi}
 
 \newcommand{\lsCoverTitleAuthor}{
+	\renewcommand{\and}{}
+	\renewcommand{\lastand}{}
 	\renewcommand{\newlineCover}{\\}
 	\renewcommand{\newlineSpine}{}
 	\lsCoverBlock
@@ -1165,6 +1168,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\lsImpressumCitationText}{
+	\onlyAuthor
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{}
 	{\@author}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
@@ -1330,6 +1334,7 @@ guarantee the accuracy of such information thereafter.
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
 \AtBeginDocument{	% for the citation in the footer
+	\onlyAuthor
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{} 
 	\edef\lsCollectionTitle{\@title}		% \edef immediately expands \@title
