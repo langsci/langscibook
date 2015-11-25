@@ -339,7 +339,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \proofreader{}
 \def\illustrator#1{\gdef\@illustrator{#1}}
 \illustrator{}
-\newcommand{\lsAdditionalFontImprint}{}
+\newcommand{\lsAdditionalFontsImprint}{}
 
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 \newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
@@ -1219,7 +1219,7 @@ Illustration:
 Proofreading:
 \@proofreader \\
 \fi
-Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\lsAdditionalFontImprint\\
+Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
 Typesetting software: \XeLaTeX
 
 \bigskip
