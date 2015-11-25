@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/11/09 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/11/25 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -346,6 +346,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \typesetter{}
 \def\proofreader#1{\gdef\@proofreader{#1}}
 \proofreader{}
+\def\illustrator#1{\gdef\@illustrator{#1}}
+\illustrator{}
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 
 
@@ -1224,6 +1226,10 @@ Typesetting:
 \@typesetter \\
 \fi
 \if\@proofreader\empty\else
+Illustration:
+\@illustrator \\
+\fi
+\if\@proofreader\empty\else
 Proofreading:
 \@proofreader \\
 \fi
@@ -1249,10 +1255,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 \lsp has no responsibility for the persistence or accuracy of URLs for
 external or third-party Internet websites referred to in this
 publication, and does not guarantee that any content on such websites
-is, or will remain, accurate or appropriate. Information regarding
-prices, travel timetables and other factual information given in this
-work are correct at the time of first publication but \lsp does not
-guarantee the accuracy of such information thereafter. 
+is, or will remain, accurate or appropriate. 
+%Information regarding prices, travel timetables and other factual information given in this work are correct at the time of first publication but \lsp does not guarantee the accuracy of such information thereafter. 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
