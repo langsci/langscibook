@@ -1225,7 +1225,7 @@ Translator:
 Typesetting:
 \@typesetter \\
 \fi
-\if\@proofreader\empty\else
+\if\@illustrator\empty\else
 Illustration:
 \@illustrator \\
 \fi
