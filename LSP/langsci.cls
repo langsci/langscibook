@@ -142,10 +142,6 @@
         \newlength{\totalwidth}
         \newlength{\totalheight}
 
-
-
-
-
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 	\input{./lengths.tex}
  
@@ -156,9 +152,7 @@
  	
  	\setlength{\spinewidth}{\csspine}			% Create Space Version. Value is in ./localmetadata.tex
  	
- 	
  	\usepackage{calc}
-
 
  	\setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
  	\setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
@@ -205,10 +199,7 @@
  	,marginparwidth=50pt
  	]{geometry}
  \fi
-\fi
- 
-
-			
+\fi			
 
 \usepackage[
 	absolute 		% for absolute positioning in titlepage
@@ -258,8 +249,6 @@
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
 	]{DejaVuSansMono.ttf}
 
-
-
 \setmainfont[
 	Ligatures={TeX,Common},
 	Path=\fontpath,
@@ -302,6 +291,7 @@
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Colors:
@@ -320,8 +310,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% defaults:
+%% defaults:
 \newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un
 myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li
 lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe
@@ -340,6 +329,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\SpineTitle}[1]{\renewcommand{\lsSpineTitle}{#1}}
 \newcommand{\SpineAuthor}[1]{\renewcommand{\lsSpineAuthor}{#1}} 
 
+
+%% for imprint:
 \def\translator#1{\gdef\@translator{#1}}
 \translator{}
 \def\typesetter#1{\gdef\@typesetter{#1}}
@@ -348,15 +339,16 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \proofreader{}
 \def\illustrator#1{\gdef\@illustrator{#1}}
 \illustrator{}
+\newcommand{\lsAdditionalFontImprint}{}
+
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
-
-
 \newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
 \newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
 
-% for papers of collections:
+
+%% for papers of collections:
 \newcommand{\lsCollectionPaperAbstract}{Put abstract here with \string\abstract.}
 \newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
 
@@ -365,10 +357,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \def\epigramsource#1{\gdef\@epigramsource{#1}}
 \epigramsource{}
 
-% inside \author
+%% inside \author:
 \renewcommand{\and}{}				
 \newcommand{\lastand}{}
 \newcommand{\affiliation}[1]{}	
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -381,6 +374,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % \@ifundefined{blackandwhite}
 % 	{}
 % 	{\renewcommand{\lsSeriesColor}{black}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -401,13 +395,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
   \ifoot{{\color{lsRed}Open review version}. Final version at \url{\lsURL}.}
 \fi
 
-%% \ihead{\upshape{\headmark}}
-%% \ohead{\pagemark}
-%% \cfoot{}
-%% \ifoot[]{}
-%% \ofoot{\upshape{Draft of \today, \currenttime}}
-
-
 \renewcommand*{\partpagestyle}{empty}
 
 \pagestyle{scrheadings}
@@ -418,7 +405,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Xelatex likes this, must appear before BibLaTeX:
+%% Xelatex likes this, must appear before BibLaTeX:
 \usepackage[hyphens]{url}
 \urlstyle{same}
 
@@ -468,16 +455,17 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
-% penalties against widows and orphans in bibliography
-% http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
+%% penalties against widows and orphans in bibliography
+%% http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
 \usepackage{etoolbox}
 \AtBeginEnvironment{thebibliography}{%
     \clubpenalty10000
     \@clubpenalty \clubpenalty
     \widowpenalty10000}
  
-% change the default heading from "Bibliography" "List of references"
+%% change the default heading from "Bibliography" "List of references"
 \defbibheading{references}{\chapter{References}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -488,7 +476,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \usepackage{floatrow}					% For adjusting the position of the caption (default is below).
 \floatsetup[table]{capposition=top} 	% As for tables, the caption appears above.
 
-% This sets the default for the positioning of floats
+%% This sets the default for the positioning of floats
 \renewcommand{\fps@figure}{htbp}
 \renewcommand{\fps@table}{htbp}
 
@@ -572,7 +560,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
 }
 
-
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
 \def\fn#1#2{%
@@ -620,7 +607,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 }
 
 
-% \index[lan] für Einträge in separaten Index
+%% \index[lan] für Einträge in separaten Index
 
 \newcommand{\il}[1]{%
 \if@noftnote%
@@ -630,7 +617,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi%
 }
 
-% index entries for words
+%% index entries for words
 \newcommand{\iw}[1]{%
 \if@noftnote%
 \index[wrd]{#1}%
@@ -638,7 +625,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \index[wrd]{#1|fn{*}}%
 \fi%
 }
-
 
 % \iflsDraft
 %   \usepackage{showidx} 	% Doesn't work with multiple indexes?
@@ -667,7 +653,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 %\KOMAoptions{footnotes=multiple}
 
-% xelatex hates this.
+%% xelatex hates this.
 %\usepackage{breakurl} 	
 
 
@@ -1105,7 +1091,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \lsInsideFont
 
-% Imprint:
+%% Imprint:
 \ifx\lsOutput\lsOutputInprep{}
 \else{
 	\ifx\lsOutput\lsOutputGuidelines{}
@@ -1117,17 +1103,17 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \null\newpage\thispagestyle{plain}
 %\pagenumbering{roman}		% or \frontmatter
 
-% Dedication:
+%% Dedication:
 \ifx\@dedication\empty{}
 \else{\lsDedication}
 \fi
 %%%%%%%%%%%%%%%%
 
-}	% \maketitle
+}	%% \maketitle
 \fi
 
-% for those who like the example in numbered example sentences to be typeset in italics
-% this is possible for a complete series only.
+%% for those who like the example in numbered example sentences to be typeset in italics
+%% this is possible for a complete series only.
 \ifx\lsSeries\sidl
 	\AtBeginDocument{
 	%\def\exfont{\normalsize\itshape}
@@ -1141,7 +1127,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 
 
-}	% \AtBeginDocument
+}	%% \AtBeginDocument
 
 
 
@@ -1233,7 +1219,7 @@ Illustration:
 Proofreading:
 \@proofreader \\
 \fi
-Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\\
+Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\lsAdditionalFontImprint\\
 Typesetting software: \XeLaTeX
 
 \bigskip
@@ -1258,6 +1244,7 @@ publication, and does not guarantee that any content on such websites
 is, or will remain, accurate or appropriate. 
 %Information regarding prices, travel timetables and other factual information given in this work are correct at the time of first publication but \lsp does not guarantee the accuracy of such information thereafter. 
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1296,7 +1283,7 @@ is, or will remain, accurate or appropriate.
 
 \KOMAoptions{footnotes=multiple}
 
-% http://tex.stackexchange.com/questions/28465/multiple-footnotes-at-one-point/71015#71015
+%% http://tex.stackexchange.com/questions/28465/multiple-footnotes-at-one-point/71015#71015
 \let\oldFootnote\footnote
 \newcommand\nextToken\relax
 
