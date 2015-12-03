@@ -464,7 +464,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
     \widowpenalty10000}
  
 %% change the default heading from "Bibliography" "List of references"
-\defbibheading{references}{\chapter{References}}
+% ?? does not work for bibtex, command not defined
+%\defbibheading{references}{\chapter{References}}
+
+% This works only after \begin{document}
+%\renewcommand{\bibname}{References}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
