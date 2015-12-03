@@ -250,17 +250,19 @@
 	]{DejaVuSansMono.ttf}
 
 \setmainfont[
-	Ligatures={TeX,Common},
-	Path=\fontpath,
-	PunctuationSpace=0,							
-	%Numbers={OldStyle,Proportional},			
-	Numbers={Proportional},	% normal numbers		
-	BoldFont = LinLibertine_RZ_B.otf ,			
-	ItalicFont = LinLibertine_RI_B.otf ,			
-	BoldItalicFont = LinLibertine_RZI_B.otf,             
+        Ligatures={TeX,Common},
+        Path=\fontpath,
+        PunctuationSpace=0,
+        Numbers={Proportional},
+        BoldFont = LinLibertine_RZ_B.otf ,
+        ItalicFont = LinLibertine_RI_B.otf ,
+        BoldItalicFont = LinLibertine_RZI_B.otf,
+        BoldSlantedFont = LinLibertine_RZ_B.otf,
         SlantedFont    = LinLibertine_R_B.otf,
-        SlantedFeatures = {FakeSlant=0.25} 		
-	]{LinLibertine_R_B.otf}			
+        SlantedFeatures = {FakeSlant=0.25},
+        BoldSlantedFeatures = {FakeSlant=0.25},
+        SmallCapsFeatures = {FakeSlant=0},
+        ]{LinLibertine_R_B.otf}		
 
 \iflsNewtxmath							% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
