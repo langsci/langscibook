@@ -49,6 +49,7 @@
 \ifx\lsSeries\eotms
 	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \newlineCover Morphology and Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
+	\renewcommand{\lsISSN}{2366-3529}
 \fi
 \ifx\lsSeries\eotmsig
 	\newcommand{\lsSeriesTitle}{Implemented Grammars~\lsSeriesNumber}
