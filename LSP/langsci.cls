@@ -464,14 +464,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
     \clubpenalty10000
     \@clubpenalty \clubpenalty
     \widowpenalty10000}
- 
-%% change the default heading from "Bibliography" "List of references"
-% ?? does not work for bibtex, command not defined
-%\defbibheading{references}{\chapter{References}}
-
-% This works only after \begin{document}
-%\renewcommand{\bibname}{References}
-
+  
+\defbibheading{references}{\chapter{References}} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -635,12 +629,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % \iflsDraft
 %   \usepackage{showidx} 	% Doesn't work with multiple indexes?
 % \fi
-
-
-
-% varioref considered evil. We willh ave various output formats, and we do not know, where elements will be placed in all of them
-% has to be loaded before hyperref
-\usepackage[english]{varioref}
 
 
 
