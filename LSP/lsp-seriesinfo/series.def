@@ -112,6 +112,7 @@
 \ifx\lsSeries\classics 
 	\newcommand{\lsSeriesTitle}{Classics in Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{black}
+	\renewcommand{\lsISSN}{2366-374X}
 \fi	
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
