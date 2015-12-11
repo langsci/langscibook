@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/11/25 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/12/11 Language Science Press]
 
 % Default values:
 \usepackage{xspace}
@@ -550,7 +550,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsSubjectIndexTitle}{Subject index}
 \newcommand{\lsNameIndexTitle}{Name index}
 
-\AtBeginDocument{
+\AtBeginDocument{ % why this?
 \makeindex
 \newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
 % \newindex{aut}{adx}{and}{Name index}
@@ -562,23 +562,33 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
+%% \index inside footnote
 \def\fn#1#2{%
-\hyperpage{#2}$^{#1}$%
+	\hyperpage{#2}n#1%
 }%
+\newcommand{\footnoteindex}[2]{\index{#2|fn{#1}}}
+\newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|fn{#1}}}
+\newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|fn{#1}}}
+\newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|fn{#1}}}
+
 \fi
+
+
 
 \newcommand{\ia}[1]{\if@noftnote%
 \index{#1}%
 \else%
-\index{#1|fn{\thefootnote}}%
+\edef\tempnumber{\thefootnote}%
+\expandafter\footnoteindex\expandafter{\tempnumber}{#1}%
+% \index{#1|fn{\thefootnote}}%
 \fi%
 }
 
 \newcommand{\is}[1]{\if@noftnote%
 \index[sbj]{#1}%
 \else%
-% irgendwie muss man ihn dazu bringen den Wert für footnote auch einzusetzen
-\index[sbj]{#1|fn{*}}%
+\edef\tempnumber{\thefootnote}%
+\expandafter\footnoteindex@sbj\expandafter{\tempnumber}{#1}%
 %\indexftn{#1}{\value{footnotemark}}%
 \fi%
 }
@@ -613,7 +623,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \if@noftnote%
 \index[lan]{#1}%
 \else%
-\index[lan]{#1|fn{*}}%
+\edef\tempnumber{\thefootnote}%
+\expandafter\footnoteindex@lan\expandafter{\tempnumber}{#1}%
 \fi%
 }
 
@@ -622,7 +633,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \if@noftnote%
 \index[wrd]{#1}%
 \else%
-\index[wrd]{#1|fn{*}}%
+\edef\tempnumber{\thefootnote}%
+\expandafter\footnoteindex@wrd\expandafter{\tempnumber}{#1}%
 \fi%
 }
 
