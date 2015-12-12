@@ -563,17 +563,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
 %% \index inside footnote
-\def\fn#1#2{%
+\def\infn#1#2{%
 	\hyperpage{#2}n#1%
 }%
-\newcommand{\footnoteindex}[2]{\index{#2|fn{#1}}}
-\newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|fn{#1}}}
-\newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|fn{#1}}}
-\newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|fn{#1}}}
+\newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
+\newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
+\newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
+\newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
 
 \fi
-
-
 
 \newcommand{\ia}[1]{\if@noftnote%
 \index{#1}%
@@ -593,32 +591,32 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi%
 }
 
-\newcommand{\isfeat}[1]{\if@noftnote%
-\index{feature!\textsc{#1}}%
-\else%
-%\index{feature!{\sc #1}|fn{\thefootnote}}%
-\index{feature!\textsc{#1}|fn{*}}%
-\fi%
-}
+%% Stefan's code; obsolete?
+% \newcommand{\isfeat}[1]{\if@noftnote%
+% \index{feature!\textsc{#1}}%
+% \else%
+% %\index{feature!{\sc #1}|fn{\thefootnote}}%
+% \index{feature!\textsc{#1}|fn{*}}%
+% \fi%
+% }
 
-\newcommand{\istype}[1]{\if@noftnote%
-\index{type!#1@\type{#1}}%
-\else%
-%\index{type!{\it #1}|fn{\thefootnote}}
-\index{type!#1@\type{#1}|fn{*}}%
-\fi%
-}
+% \newcommand{\istype}[1]{\if@noftnote%
+% \index{type!#1@\type{#1}}%
+% \else%
+% %\index{type!{\it #1}|fn{\thefootnote}}
+% \index{type!#1@\type{#1}|fn{*}}%
+% \fi%
+% }
 
-\newcommand{\isrel}[1]{\if@noftnote%
-\index{relation!\emph{#1}}%
-\else%
-\index{relation!\emph{#1}|fn{*}}%
-\fi%
-}
+% \newcommand{\isrel}[1]{\if@noftnote%
+% \index{relation!\emph{#1}}%
+% \else%
+% \index{relation!\emph{#1}|fn{*}}%
+% \fi%
+% }
 
 
 %% \index[lan] für Einträge in separaten Index
-
 \newcommand{\il}[1]{%
 \if@noftnote%
 \index[lan]{#1}%
