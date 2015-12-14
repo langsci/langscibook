@@ -627,14 +627,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 }
 
 %% index entries for words
-\newcommand{\iw}[1]{%
-\if@noftnote%
-\index[wrd]{#1}%
-\else%
-\edef\tempnumber{\thefootnote}%
-\expandafter\footnoteindex@wrd\expandafter{\tempnumber}{#1}%
-\fi%
-}
+% \newcommand{\iw}[1]{%
+% \if@noftnote%
+% \index[wrd]{#1}%
+% \else%
+% \edef\tempnumber{\thefootnote}%
+% \expandafter\footnoteindex@wrd\expandafter{\tempnumber}{#1}%
+% \fi%
+% }
 
 % \iflsDraft
 %   \usepackage{showidx} 	% Doesn't work with multiple indexes?
