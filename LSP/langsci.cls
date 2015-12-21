@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci.cls
-%%    Author: Language Science Press (http://langsci-press.org/)
+%%    Author: Language Science Press (http://langsci-press.org)
 %%      Date: 2015-12-21 20:07:25 UTC 
 %%   Purpose: This file defines the basic document class 
 %%            for books published with Language Science Press.
