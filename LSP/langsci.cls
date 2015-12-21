@@ -1,3 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      File: langsci.cls
+%%    Author: Language Science Press (http://langsci-press.org/)
+%%      Date: 2015-12-21 20:07:25 UTC 
+%%   Purpose: This file defines the basic document class 
+%%            for books published with Language Science Press.
+%%  Language: LaTeX
+%%   Licence: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{LSP/langsci}[2015/12/11 Language Science Press]
 
