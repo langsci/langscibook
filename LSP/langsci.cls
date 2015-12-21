@@ -1507,7 +1507,7 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./LSP/lsp-styles/lsp-makros}
+\usepackage{./LSP/lsp-styles/lsp-macros}
 
 
 % floats
