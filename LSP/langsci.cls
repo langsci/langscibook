@@ -380,7 +380,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	{\Large #1}
 	\chapterheadendvskip
 	\@afterindentfalse
-  \@afterheading
+	\@afterheading
 }
 
 
