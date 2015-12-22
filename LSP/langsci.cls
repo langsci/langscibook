@@ -753,8 +753,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\begin{pspicture}(0,0)(4.1,1in)
 	\psbarcode[transx=0.4,transy=0.3]{\lsISBN}{includetext height=0.7}{isbn}
 	\end{pspicture}
-	%\EANisbn%			% remove this?
-	%{\EAN \lsISBN }  	% bar code without isbn line
 	}%	
 	\end{textblock}}
 
