@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2015-12-21 20:07:25 UTC 
+%%      Date: 2015-12-22 09:47:44 UTC
 %%   Purpose: This file defines the basic document class 
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/12/11 Language Science Press]
+\ProvidesClass{LSP/langsci}[2015/12/22 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
@@ -390,6 +390,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
   \ifoot{{\color{lsRed}Open review version}. Final version at \url{\lsURL}.}
 \fi
 
+\newcommand{\lsPageStyleEmpty}{
+	\ohead{}
+	\ihead{}
+	\cfoot{}
+	\ofoot[]{}
+}
+
 \renewcommand*{\partpagestyle}{empty}
 
 \pagestyle{scrheadings}
@@ -732,6 +739,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsCoverTitleAuthor
 	\lsCoverLogo}
 
+\usepackage{pdfpages}
+\newcommand{\lsAdvertisement}{
+	\includepdf[pages={1}]{LSP/lsp-graphics/didyoulikethisbook.pdf}
+}
+
 \newcommand{\lsBackPage}{		% Back page
 	\lsCoverBlock
 
@@ -890,6 +902,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	 \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
 	\lsSchmutztitel}
 	%%%%%%%%%%%%%%%%%%%%
+	\AtEndDocument{
+		\lsPageStyleEmpty
+		\null\newpage\thispagestyle{empty}
+		%% Advertisement:
+		{\lsAdvertisement}
+	}
 \fi		
 
 \ifx\lsOutput\lsOutputShort						% only if output=short
@@ -909,6 +927,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsSchmutztitel}
 	%%%%%%%%%%%%%%%%%%%%
 	\AtEndDocument{
+		\lsPageStyleEmpty
+		\null\newpage\thispagestyle{empty}
+		%% Advertisement:
+		{\lsAdvertisement}
 		\null\newpage\thispagestyle{empty}
 		%% Back page:
 		{\lsBackPage}
@@ -1076,17 +1098,13 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %% for those who like the example in numbered example sentences to be typeset in italics
 %% this is possible for a complete series only.
 \ifx\lsSeries\sidl
-	\AtBeginDocument{
 	%\def\exfont{\normalsize\itshape}
 	\renewcommand{\eachwordone}{\itshape} % only \gll
 	
 	\let\oldtable\table 	% footnotes in tables without horizontal line
 	\let\endoldtable\endtable
 	\renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable} 
-
-	}
 \fi
-
 
 }	%% \AtBeginDocument
 
