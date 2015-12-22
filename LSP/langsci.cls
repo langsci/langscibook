@@ -11,7 +11,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{LSP/langsci}[2015/12/11 Language Science Press]
 
-% Default values:
+%% Default values:
 \usepackage{xspace}
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
@@ -41,7 +41,7 @@
 
 
 
-% Option handling:
+%% Option handling:
 \RequirePackage{kvoptions}		% for key-value options
 \SetupKeyvalOptions{
 	family=langsci,
@@ -103,7 +103,7 @@
 \ProcessKeyvalOptions{langsci}
 
 \LoadClass[
-	fontsize=\lsFontsize, % default is 11pt
+	fontsize=\lsFontsize,	% default is 11pt
 	footnotes=multiple,
 	numbers=noenddot,		% no point after last number of chapters/sections
 	toc=bibliography,
@@ -116,11 +116,12 @@
 
 \usepackage{etex}
 \reserveinserts{18}
-\usepackage{xstring} % Needed on Lines 114ff and again on 167
-\usepackage{graphicx} % Needed twice
-\usepackage{hyphenat} % Needed twice
+\usepackage{xstring}	% Needed on Lines 114ff and again on 167
+\usepackage{graphicx}	% Needed twice
+\usepackage{hyphenat}	% Needed twice
 
 \renewcommand{\lsISBN}{\lsISBNdigital} % for compatibility
+
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -144,6 +145,7 @@
 %    Page size and text area:
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
 \newlength{\csspine} 
 \newlength{\bodspine}
         \newlength{\seitenbreite}
@@ -175,7 +177,7 @@
  	    
  \else
  
- % Nested ifx. Here follows the BoD Version
+ %% Nested ifx. Here follows the BoD Version
  
   \ifx\lsOutput\lsOutputCoverBOD 
      \usepackage{calc}
@@ -221,6 +223,7 @@
 
 \usepackage{pbox}   % boxes with maximum width
 	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Fonts, language and graphics:
@@ -391,6 +394,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \pagestyle{scrheadings}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Citation:
@@ -469,7 +473,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \renewcommand{\fps@figure}{htbp}
 \renewcommand{\fps@table}{htbp}
 
-\usepackage{booktabs} %for nicer lines
+\usepackage{booktabs} % for nicer lines
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -626,7 +630,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\usepackage[ISBN=\lsISBN,SC4]{ean13isbn}	% for generating bar codes; remove this?
 \usepackage{pst-barcode}					% for generating bar codes
 \newcommand{\logopath}{./LSP/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
@@ -771,7 +774,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 			\rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi}}}
 	\end{minipage}} 
 	\end{textblock}}
-
 
 \newcommand{\onlyAuthor}{%		% collection paper
 	\renewcommand{\and}{, }% 
@@ -1042,7 +1044,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\end{document}     % the cover and nothing else.
 	\fi		
 	
-
 \end{titlepage}
 
 \frontmatter
@@ -1090,7 +1091,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 
 }	%% \AtBeginDocument
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1224,7 +1224,6 @@ is, or will remain, accurate or appropriate.
 	\clearpage}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Footnotes:
@@ -1241,7 +1240,6 @@ is, or will remain, accurate or appropriate.
 \deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}\ }
 \newlength{\normalparindent}
 \AtBeginDocument{\setlength{\normalparindent}{\parindent}}
-
 
 \KOMAoptions{footnotes=multiple}
 
