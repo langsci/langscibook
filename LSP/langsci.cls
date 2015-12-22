@@ -348,6 +348,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \def\illustrator#1{\gdef\@illustrator{#1}}
 \illustrator{}
 \newcommand{\lsAdditionalFontsImprint}{}
+\newcommand{\AdditionalFontImprint}[1]{
+	\edef\fontstemp{\lsAdditionalFontsImprint}
+	\renewcommand{\lsAdditionalFontsImprint}{\fontstemp, #1}
+	}
 
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 \newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
