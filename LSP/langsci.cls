@@ -374,6 +374,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lastand}{}
 \newcommand{\affiliation}[1]{}	
 
+%% to be used below chapters
+\newcommand{\chaptersubtitle}[1]{
+	\vspace*{-2ex}
+	{\Large #1}
+	\chapterheadendvskip
+	\@afterindentfalse
+  \@afterheading
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
