@@ -1,15 +1,15 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2015-12-22 09:47:44 UTC
+%%      Date: 2016-01-03 08:36:49 UTC
 %%   Purpose: This file defines the basic document class 
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
 %%   Licence: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2015/12/22 Language Science Press]
+\ProvidesClass{LSP/langsci}[2016/01/03 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
@@ -38,6 +38,7 @@
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsBlackandwhite \lsBlackandwhitefalse
+\newif\iflsDoiLinks \lsDoiLinksfalse
 
 
 
@@ -88,6 +89,8 @@
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
+\DeclareVoidOption{doilinks}{  			
+	\lsDoiLinkstrue}
 \DeclareVoidOption{bibtex}{  			
 	\lsBiblatexfalse}
 \DeclareVoidOption{newtxmath}{  			
@@ -374,7 +377,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lastand}{}
 \newcommand{\affiliation}[1]{}	
 
-%% to be used below chapters
+%% to be used below chapter titles
 \newcommand{\chaptersubtitle}[1]{
 	\vspace*{-2ex}
 	{\Large #1}
@@ -434,6 +437,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		maxbibnames=99,
 		isbn=false,
 		doi=false,
+		%url=false,
 		eprint=false,
 		backend=\lsBiblatexBackend,
 		indexing=cite,
@@ -445,7 +449,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
 	\renewcommand{\compcitedelim}{\multicitedelim}
 	\DeclareFieldFormat{postnote}{#1}%
-	%\renewcommand{\nameyeardelim}{ }%		
+	%\renewcommand{\nameyeardelim}{ }%
 \else	%BibTeX
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
@@ -476,7 +480,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \AtBeginEnvironment{thebibliography}{%
     \clubpenalty10000
     \@clubpenalty \clubpenalty
-    \widowpenalty10000}
+    \widowpenalty10000
+    \normalmarginpar}
   
 \defbibheading{references}{\chapter{References}} 
 
@@ -643,6 +648,18 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %% xelatex hates this.
 %\usepackage{breakurl} 	
 
+%% add hyperlinks for URLs and DOIs in bibliography; must appear after hyperref
+\iflsDoiLinks
+\ExecuteBibliographyOptions{url=false}
+\renewbibmacro*{begentry}{%	
+	\iffieldundef{doi}
+	  {}
+	  {\marginnote{\href{http://dx.doi.org/\thefield{doi}}{$\vcenter{\hbox{\includegraphics{LSP/lsp-graphics/doi.pdf}}}$}}}
+	\iffieldundef{url}
+	  {}
+	  {\marginnote{\href{\thefield{url}}{$\vcenter{\hbox{\includegraphics{LSP/lsp-graphics/url.pdf}}}$}}}
+  }		
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
