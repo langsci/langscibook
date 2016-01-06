@@ -20,6 +20,7 @@
 \newcommand{\lsISBNdigital}{000-0-000000-00-0}
 \newcommand{\lsISBNhardcover}{000-0-000000-00-0}
 \newcommand{\lsISBNsoftcover}{000-0-000000-00-0}
+\newcommand{\lsBookDOI}{??}
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
@@ -357,6 +358,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
 \newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
+\newcommand{\BookDOI}[1]{\renewcommand{\lsBookDOI}{#1}}
 
 
 %% for papers of collections:
@@ -1193,6 +1195,11 @@ ISBN: & \lsISBN~(Digital) \\
 \IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
 	{}
 	{ISSN: \lsISSN}
+
+\IfStrEq{\lsBookDOI}{??}		% \IfStrEq from xstring
+	{}
+	{\doi{\lsBookDOI}}
+
 
 \bigskip
  
