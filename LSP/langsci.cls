@@ -38,8 +38,6 @@
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsBlackandwhite \lsBlackandwhitefalse
-\newif\iflsDoiLinks \lsDoiLinksfalse
-
 
 
 %% Option handling:
@@ -89,8 +87,6 @@
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
-\DeclareVoidOption{doilinks}{  			
-	\lsDoiLinkstrue}
 \DeclareVoidOption{bibtex}{  			
 	\lsBiblatexfalse}
 \DeclareVoidOption{newtxmath}{  			
@@ -436,8 +432,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		%refsection=chapter,
 		maxbibnames=99,
 		isbn=false,
-		doi=false,
-		%url=false,
+		%doi=false,
+		url=false,
 		eprint=false,
 		backend=\lsBiblatexBackend,
 		indexing=cite,
@@ -648,18 +644,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %% xelatex hates this.
 %\usepackage{breakurl} 	
 
-%% add hyperlinks for URLs and DOIs in bibliography; must appear after hyperref
-\iflsDoiLinks
-\ExecuteBibliographyOptions{url=false}
-\renewbibmacro*{begentry}{%	
-	\iffieldundef{doi}
-	  {}
-	  {\marginnote{\href{http://dx.doi.org/\thefield{doi}}{$\vcenter{\hbox{\includegraphics{LSP/lsp-graphics/doi.pdf}}}$}}}
-	\iffieldundef{url}
-	  {}
-	  {\marginnote{\href{\thefield{url}}{$\vcenter{\hbox{\includegraphics{LSP/lsp-graphics/url.pdf}}}$}}}
-  }		
-\fi
+%% add hyperlinks for DOIs in bibliography; must appear after hyperref
+\usepackage{doi}
+\renewcommand{\doitext}{DOI:}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
