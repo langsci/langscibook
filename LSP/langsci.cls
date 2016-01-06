@@ -21,6 +21,7 @@
 \newcommand{\lsISBNhardcover}{000-0-000000-00-0}
 \newcommand{\lsISBNsoftcover}{000-0-000000-00-0}
 \newcommand{\lsBookDOI}{??}
+\newcommand{\lsChapterDOI}{??}
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
@@ -360,10 +361,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
 \newcommand{\BookDOI}[1]{\renewcommand{\lsBookDOI}{#1}}
 
-
 %% for papers of collections:
 \newcommand{\lsCollectionPaperAbstract}{Put abstract here with \string\abstract.}
 \newcommand{\abstract}[1]{\renewcommand{\lsCollectionPaperAbstract}{#1}}
+\newcommand{\ChapterDOI}[1]{\renewcommand{\lsChapterDOI}{#1}}
 
 \def\epigram#1{\gdef\@epigram{#1}}			% needs to be defined this way to check emptiness
 \epigram{}
@@ -1376,7 +1377,7 @@ is, or will remain, accurate or appropriate.
 	\StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
 
 	%% write bib entry to file
-	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={\@title},booktitle={\lsCollectionTitle},editor={\editorTemp},publisher={Language Science Press},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},options={skipbib=true}}}
+	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={\@title},booktitle={\lsCollectionTitle},editor={\editorTemp},publisher={Language Science Press},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},options={skipbib=true},doi={\lsChapterDOI}}}
  
 	\end{refsection}
 	\end{collectionpaper}}
