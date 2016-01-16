@@ -1463,7 +1463,8 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./langsci/styles/langsci-macros}
+\usepackage{./langsci/styles/langsci-basic}
+\usepackage{./langsci/styles/langsci-colors}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
