@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%      File: langsci.cls
+%%      File: langscibook.cls
 %%    Author: Language Science Press (http://langsci-press.org)
 %%      Date: 2016-01-16 16:47:51 UTC
 %%   Purpose: This file defines the basic document class 
@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langsci}[2016/01/16 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/01/16 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
