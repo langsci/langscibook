@@ -45,31 +45,31 @@
 %% Option handling:
 \RequirePackage{kvoptions}		% for key-value options
 \SetupKeyvalOptions{
-	family=langsci,
-	prefix=langsci@ }
+	family=langscibook,
+	prefix=langscibook@ }
 \DeclareStringOption{number}[??]
-	\define@key{langsci}{number}{%
+	\define@key{langscibook}{number}{%
 		\renewcommand{\lsSeriesNumber}{#1}}
 \DeclareStringOption{issn}[??]
-	\define@key{langsci}{issn}{%
+	\define@key{langscibook}{issn}{%
 		\renewcommand{\lsISSN}{#1}}
 \DeclareStringOption{isbn}[000-0-000000-00-0]
-	\define@key{langsci}{isbn}{%
+	\define@key{langscibook}{isbn}{%
 		\renewcommand{\lsISBN}{#1}}
 \DeclareStringOption{url}[http://langsci-press.org/catalog]
-	\define@key{langsci}{url}{%
+	\define@key{langscibook}{url}{%
 		\renewcommand{\lsURL}{#1}}
 \DeclareStringOption{series}[eotms]
-	\define@key{langsci}{series}{%
+	\define@key{langscibook}{series}{%
 		\renewcommand{\lsSeries}{#1}}
 \DeclareStringOption{output}[long]
-	\define@key{langsci}{output}{%
+	\define@key{langscibook}{output}{%
 		\renewcommand{\lsOutput}{#1}}
 \DeclareStringOption{copyright}[CC-BY]
-	\define@key{langsci}{copyright}{%
+	\define@key{langscibook}{copyright}{%
 		\renewcommand{\lsCopyright}{#1}}
 \DeclareStringOption{biblatexbackend}[bibtex]
-	\define@key{langsci}{biblatexbackend}{%
+	\define@key{langscibook}{biblatexbackend}{%
 		\renewcommand{\lsBiblatexBackend}{#1}}
 \DeclareVoidOption{blackandwhite}{
 	\lsBlackandwhitetrue} 
@@ -101,7 +101,7 @@
 \DeclareVoidOption{collectiontoclong}{  			
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
-\ProcessKeyvalOptions{langsci}
+\ProcessKeyvalOptions{langscibook}
 
 \LoadClass[
 	fontsize=\lsFontsize,	% default is 11pt
@@ -232,7 +232,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
-\ifxetex\else\ClassError{langsci/langsci}{Please use XeLaTeX!}{}\fi
+\ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi
 	
 \usepackage{amssymb} % has to be loaded before other stuff
 % \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol	
@@ -703,7 +703,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\fi
 	\iflsOpenReview
 		\iflsDraft
-			\ClassError{langsci/langsci}{Open review mode not compatible with draft mode. Please disable one of them}{}	
+			\ClassError{langsci/langscibook}{Open review mode not compatible with draft mode. Please disable one of them}{}	
 		\fi
 		\begin{textblock}{170}(-20,75)
 			\rotatebox{30}{
@@ -1311,7 +1311,7 @@ is, or will remain, accurate or appropriate.
 
 \iflsCollection
 	\iflsBiblatex\else
-		\ClassError{langsci/langsci}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
+		\ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
