@@ -310,7 +310,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{langsci/lsp-seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle and \lsISSN are defined here
+\input{langsci/seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle and \lsISSN are defined here
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1147,8 +1147,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{./langsci/lsp-seriesinfo/\lsSeries-info.tex}{\input{./langsci/lsp-seriesinfo/\lsSeries-info}}{
-  Series information: ./langsci/lsp-seriesinfo/\lsSeries-info.tex not found!} 
+\IfFileExists{./langsci/seriesinfo/\lsSeries-info.tex}{\input{./langsci/seriesinfo/\lsSeries-info}}{
+  Series information: ./langsci/seriesinfo/\lsSeries-info.tex not found!} 
 
 \IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
 	{}
