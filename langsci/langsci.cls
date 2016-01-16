@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-03 08:36:49 UTC
+%%      Date: 2016-01-16 16:47:51 UTC
 %%   Purpose: This file defines the basic document class 
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langsci}[2016/01/03 Language Science Press]
+\ProvidesClass{langsci/langsci}[2016/01/16 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
@@ -1450,7 +1450,7 @@ is, or will remain, accurate or appropriate.
 
 
 %% useful commands for glossings:
-\usepackage{./langsci/lsp-styles/lsp-lgr}
+\usepackage{./langsci/styles/lsp-lgr}
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
@@ -1463,7 +1463,7 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./langsci/lsp-styles/lsp-macros}
+\usepackage{./langsci/styles/lsp-macros}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
