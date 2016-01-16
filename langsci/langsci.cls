@@ -430,8 +430,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=langsci/lsp-bst/biblatex-sp-unified,
-		citestyle=langsci/lsp-bst/sp-authoryear-comp,
+		style=langsci/bst/biblatex-sp-unified,
+		citestyle=langsci/bst/sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
 		isbn=false,
@@ -454,7 +454,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\setlength{\bibsep}{0mm}
 	%% unified style sheet for linguistics journals
 	%% http://celxj.org/downloads/unified.bst
-	\bibliographystyle{./langsci/lsp-bst/unified} 
+	\bibliographystyle{./langsci/bst/unified} 
 	%% This does not work ...
 	% \setcitestyle{
 	% notesep={: }, % 2002: 125
