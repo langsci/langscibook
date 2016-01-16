@@ -238,7 +238,7 @@
 % \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol	
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}	
 \usepackage{fontspec}
-\newcommand{\fontpath}{./langsci/lsp-fonts/}
+\newcommand{\fontpath}{./langsci/fonts/}
 
 \setsansfont[
 	%Ligatures={TeX,Common},		% not supported by ttf
