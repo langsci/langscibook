@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{LSP/langsci}[2016/01/03 Language Science Press]
+\ProvidesClass{langsci/langsci}[2016/01/03 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
@@ -232,13 +232,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
-\ifxetex\else\ClassError{LSP/langsci}{Please use XeLaTeX!}{}\fi
+\ifxetex\else\ClassError{langsci/langsci}{Please use XeLaTeX!}{}\fi
 	
 \usepackage{amssymb} % has to be loaded before other stuff
 % \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol	
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}	
 \usepackage{fontspec}
-\newcommand{\fontpath}{./LSP/lsp-fonts/}
+\newcommand{\fontpath}{./langsci/lsp-fonts/}
 
 \setsansfont[
 	%Ligatures={TeX,Common},		% not supported by ttf
@@ -310,7 +310,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{LSP/lsp-seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle and \lsISSN are defined here
+\input{langsci/lsp-seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle and \lsISSN are defined here
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -430,12 +430,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=LSP/lsp-bst/biblatex-sp-unified,
-		citestyle=LSP/lsp-bst/sp-authoryear-comp,
+		style=langsci/lsp-bst/biblatex-sp-unified,
+		citestyle=langsci/lsp-bst/sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
 		isbn=false,
-		%doi=false,
+		doi=false,
 		url=false,
 		eprint=false,
 		backend=\lsBiblatexBackend,
@@ -454,7 +454,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\setlength{\bibsep}{0mm}
 	%% unified style sheet for linguistics journals
 	%% http://celxj.org/downloads/unified.bst
-	\bibliographystyle{./LSP/lsp-bst/unified} 
+	\bibliographystyle{./langsci/lsp-bst/unified} 
 	%% This does not work ...
 	% \setcitestyle{
 	% notesep={: }, % 2002: 125
@@ -650,6 +650,14 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %% add hyperlinks for DOIs in bibliography; must appear after hyperref
 \usepackage{doi}
 \renewcommand{\doitext}{DOI:}
+\iflsBiblatex
+\renewbibmacro*{finentry}{\finentry
+	\iffieldundef{doi}
+		  {}
+		  { {\color{lsGuidelinesGray}\doi{\thefield{doi}}}}
+}
+%\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -658,7 +666,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pst-barcode}					% for generating bar codes
-\newcommand{\logopath}{./LSP/lsp-logos}
+\newcommand{\logopath}{./langsci/lsp-logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
@@ -695,7 +703,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\fi
 	\iflsOpenReview
 		\iflsDraft
-			\ClassError{LSP/langsci}{Open review mode not compatible with draft mode. Please disable one of them}{}	
+			\ClassError{langsci/langsci}{Open review mode not compatible with draft mode. Please disable one of them}{}	
 		\fi
 		\begin{textblock}{170}(-20,75)
 			\rotatebox{30}{
@@ -761,7 +769,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-	\includepdf[pages={1}]{LSP/lsp-graphics/didyoulikethisbook.pdf}
+	\includepdf[pages={1}]{langsci/lsp-graphics/didyoulikethisbook.pdf}
 }
 
 \newcommand{\lsBackPage}{		% Back page
@@ -989,7 +997,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	
 	%% Spine
 	\renewcommand{\newlineCover}{}
-	\node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./LSP/lsp-logos/langsci_spinelogo_nocolor.pdf}};
+	\node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./langsci/lsp-logos/langsci_spinelogo_nocolor.pdf}};
 	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}}; 
 	\renewcommand{\newlineCover}{\\}
 
@@ -1006,7 +1014,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=137mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont{\nohyphens{\@author\par}}};
 	\fi
 	
-	\node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{./LSP/lsp-logos/langsci_logo_nocolor.pdf}};
+	\node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{./langsci/lsp-logos/langsci_logo_nocolor.pdf}};
 	\node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
 	\path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 	
@@ -1050,7 +1058,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	
 	%% Spine
 	\renewcommand{\newlineCover}{}
-	\node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./LSP/lsp-logos/langsci_spinelogo_nocolor.pdf}};
+	\node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./langsci/lsp-logos/langsci_spinelogo_nocolor.pdf}};
 	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}};
 	\renewcommand{\newlineCover}{\\} 
 	
@@ -1067,7 +1075,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=140mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\@author\par}};
 	\fi
 	
-	\node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{./LSP/lsp-logos/langsci_logo_nocolor.pdf}};
+	\node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{./langsci/lsp-logos/langsci_logo_nocolor.pdf}};
 	\node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
 	\path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 	
@@ -1139,8 +1147,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{./LSP/lsp-seriesinfo/\lsSeries-info.tex}{\input{./LSP/lsp-seriesinfo/\lsSeries-info}}{
-  Series information: ./LSP/lsp-seriesinfo/\lsSeries-info.tex not found!} 
+\IfFileExists{./langsci/lsp-seriesinfo/\lsSeries-info.tex}{\input{./langsci/lsp-seriesinfo/\lsSeries-info}}{
+  Series information: ./langsci/lsp-seriesinfo/\lsSeries-info.tex not found!} 
 
 \IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
 	{}
@@ -1303,7 +1311,7 @@ is, or will remain, accurate or appropriate.
 
 \iflsCollection
 	\iflsBiblatex\else
-		\ClassError{LSP/langsci}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
+		\ClassError{langsci/langsci}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
@@ -1442,7 +1450,7 @@ is, or will remain, accurate or appropriate.
 
 
 %% useful commands for glossings:
-\usepackage{./LSP/lsp-styles/lsp-lgr}
+\usepackage{./langsci/lsp-styles/lsp-lgr}
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
@@ -1455,7 +1463,7 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./LSP/lsp-styles/lsp-macros}
+\usepackage{./langsci/lsp-styles/lsp-macros}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
