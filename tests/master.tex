@@ -1,12 +1,12 @@
-\documentclass[biblatex,output=short]{LSP/langsci}
+\documentclass[biblatex,output=short]{langsci/langscibook}
  
 
-\usepackage{./LSP/lsp-styles/lsp-gb4e}
-\usepackage{./LSP/lsp-styles/lsp-macros} 
+\usepackage{./langsci/styles/langsci-gb4e}
+\usepackage{./langsci/styles/langsci-macros} 
 \usepackage{authorindex}
 \bibliography{localbibliography}
 
-% The following is langsci.cls specific. lsp-gb4e.sty should not make reference to this without providing the command \il
+% The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
 % \newindex{lan}{ldx}{lnd}{Language index}
 % \newcommand{\il}[1]{%
 % \if@noftnote%
@@ -19,14 +19,14 @@
 
 
 %opening
-\title{Test for the lsp-* packages}
+\title{Test for the langsci-* packages}
 \author{Language Science Press}
 
 \begin{document}
 
 \maketitle
 
-\section{lsp-gb4e}
+\section{langsci-gb4e}
 \subsection{Environemnts and syntactic sugar}
 \input{gb4e-tests/beginexe}
 % \input{gb4e-tests/exbegin}

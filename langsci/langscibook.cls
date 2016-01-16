@@ -1450,7 +1450,7 @@ is, or will remain, accurate or appropriate.
 
 
 %% useful commands for glossings:
-\usepackage{./langsci/styles/lsp-lgr}
+\usepackage{./langsci/styles/langsci-lgr}
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
@@ -1463,7 +1463,7 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./langsci/styles/lsp-macros}
+\usepackage{./langsci/styles/langsci-macros}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
