@@ -666,7 +666,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pst-barcode}					% for generating bar codes
-\newcommand{\logopath}{./langsci/lsp-logos}
+\newcommand{\logopath}{./langsci/logos}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
@@ -997,7 +997,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	
 	%% Spine
 	\renewcommand{\newlineCover}{}
-	\node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./langsci/lsp-logos/langsci_spinelogo_nocolor.pdf}};
+	\node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./langsci/logos/langsci_spinelogo_nocolor.pdf}};
 	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}}; 
 	\renewcommand{\newlineCover}{\\}
 
@@ -1014,7 +1014,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=137mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont{\nohyphens{\@author\par}}};
 	\fi
 	
-	\node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{./langsci/lsp-logos/langsci_logo_nocolor.pdf}};
+	\node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{./langsci/logos/langsci_logo_nocolor.pdf}};
 	\node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
 	\path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 	
@@ -1058,7 +1058,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	
 	%% Spine
 	\renewcommand{\newlineCover}{}
-	\node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./langsci/lsp-logos/langsci_spinelogo_nocolor.pdf}};
+	\node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{./langsci/logos/langsci_spinelogo_nocolor.pdf}};
 	\node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor} \hspace{13mm} \lsSpineTitleFont{\@title}};
 	\renewcommand{\newlineCover}{\\} 
 	
@@ -1075,7 +1075,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=140mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\@author\par}};
 	\fi
 	
-	\node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{./langsci/lsp-logos/langsci_logo_nocolor.pdf}};
+	\node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{./langsci/logos/langsci_logo_nocolor.pdf}};
 	\node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
 	\path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 	
