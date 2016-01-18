@@ -310,7 +310,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{langsci/seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle and \lsISSN are defined here
+\input{langsci/seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1464,7 +1464,6 @@ is, or will remain, accurate or appropriate.
 \setlength{\afterepigraphskip}{0\baselineskip}
 
 \usepackage{./langsci/styles/langsci-basic}
-\usepackage{./langsci/styles/langsci-colors}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
