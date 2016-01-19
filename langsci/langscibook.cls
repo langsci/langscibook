@@ -849,7 +849,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
 	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
 	\hspace{0.8em}%
-	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText.}}
+	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 \newcommand{\lsPaper}{
 	\renewcommand{\maketitle}{
@@ -1385,7 +1385,8 @@ is, or will remain, accurate or appropriate.
 	\StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
 
 	%% write bib entry to file
-	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={\@title},booktitle={\lsCollectionTitle},editor={\editorTemp},publisher={Language Science Press},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},options={skipbib=true},doi={\lsChapterDOI}}}
+	%% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
+	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={\@title},booktitle={\lsCollectionTitle},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={skipbib=true}}}
  
 	\end{refsection}
 	\end{collectionpaper}}
