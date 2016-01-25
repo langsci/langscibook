@@ -1,3 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      File: langsci-forest-setup.sty
+%%    Author: Language Science Press (http://langsci-press.org)
+%%      Date: 2016-01-16 16:47:43 UTC 
+%%   Purpose: This file contains optional styles and settings for the 
+%%            forest package.
+%%  Language: LaTeX
+%%   Licence: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% texlive 2015 is broken (in comparison to texlive 2013)
+% a workaround is to use a different pgf driver.
+% See email from Akira Kakuto to Stefan Müller 15.01.2016
+
+%deceive the driver
+\def\pdftexversion{140}
+%use the old driver for dvipdfm
+\def\pgfsysdriver{pgfsys-dvipdfm.def} 
+
 % http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
 \usepackage{tikz-dependency}
 
