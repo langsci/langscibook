@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langscibook.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-19 21:32:18 UTC
+%%      Date: 2016-01-26 20:54:30 UTC
 %%   Purpose: This file defines the basic document class 
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/01/19 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/01/26 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
