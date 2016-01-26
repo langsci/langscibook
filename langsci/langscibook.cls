@@ -16,7 +16,6 @@
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
 \newcommand{\lsISSN}{??}
-\newcommand{\lsISBN}{000-0-000000-00-0}
 \newcommand{\lsISBNdigital}{000-0-000000-00-0}
 \newcommand{\lsISBNhardcover}{000-0-000000-00-0}
 \newcommand{\lsISBNsoftcover}{000-0-000000-00-0}
@@ -53,9 +52,15 @@
 \DeclareStringOption{issn}[??]
 	\define@key{langscibook}{issn}{%
 		\renewcommand{\lsISSN}{#1}}
-\DeclareStringOption{isbn}[000-0-000000-00-0]
-	\define@key{langscibook}{isbn}{%
-		\renewcommand{\lsISBN}{#1}}
+\DeclareStringOption{isbndigital}[000-0-000000-00-0]
+	\define@key{langscibook}{isbndigital}{%
+		\renewcommand{\lsISBNdigital}{#1}}
+\DeclareStringOption{isbnsoftcover}[000-0-000000-00-0]
+	\define@key{langscibook}{isbnsoftcover}{%
+		\renewcommand{\lsISBNsoftcover}{#1}}
+\DeclareStringOption{isbnhardcover}[000-0-000000-00-0]
+	\define@key{langscibook}{isbnhardcover}{%
+		\renewcommand{\lsISBNhardcover}{#1}}
 \DeclareStringOption{url}[http://langsci-press.org/catalog]
 	\define@key{langscibook}{url}{%
 		\renewcommand{\lsURL}{#1}}
@@ -82,7 +87,7 @@
 	 \overfullrule=5pt	}	% to indicate overfull hboxes
 \DeclareVoidOption{openreview}{
 	\lsOpenReviewtrue%
-	\AtBeginDocument{\renewcommand{\lsISBN}{000-0-000000-00-0}}}
+	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}}
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse}
 \DeclareVoidOption{showindex}{  			
@@ -120,8 +125,6 @@
 \usepackage{xstring}	% Needed on Lines 114ff and again on 167
 \usepackage{graphicx}	% Needed twice
 \usepackage{hyphenat}	% Needed twice
-
-\renewcommand{\lsISBN}{\lsISBNdigital} % for compatibility
 
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -355,7 +358,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	}
 
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
-\newcommand{\ISBN}[1]{\renewcommand{\lsISBN}{#1}}
+\newcommand{\ISBNdigital}[1]{\renewcommand{\lsISBNdigital}{#1}}
+\newcommand{\ISBNsoftcover}[1]{\renewcommand{\lsISBNsoftcover}{#1}}
+\newcommand{\ISBNhardcover}[1]{\renewcommand{\lsISBNhardcover}{#1}}
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
 \newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
@@ -791,7 +796,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsBackBodyFont\sffamily
 	\colorbox{white}{%
 	\begin{pspicture}(0,0)(4.1,1in)
-	\psbarcode[transx=0.4,transy=0.3]{\lsISBN}{includetext height=0.7}{isbn}
+	\psbarcode[transx=0.4,transy=0.3]{\lsISBNdigital}{includetext height=0.7}{isbn}
 	\end{pspicture}
 	}%	
 	\end{textblock}}
@@ -1196,7 +1201,7 @@ http://creativecommons.org/licenses/by-nd/4.0/
 \fi
  
 \begin{tabular}{@{}l@{~}l}
-ISBN: & \lsISBN~(Digital) \\
+ISBN: & \lsISBNdigital~(Digital) \\
       &	\lsISBNhardcover~(Hardcover)\\
       & \lsISBNsoftcover~(Softcover)\\
 \end{tabular}
