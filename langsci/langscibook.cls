@@ -252,12 +252,6 @@
 	BoldItalicFont = Arimo-BoldItalic_B.ttf 		
 	]{Arimo_B.ttf}
 		
-% \setmonofont[
-% 	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
-% 	BoldFont = FreeMonoBold_B.otf ,
-% 	SlantedFont = FreeMonoOblique_B.otf ,				
-% 	BoldSlantedFont = FreeMonoBoldOblique_B.otf 		
-% 	]{FreeMono_B.otf}
 \setmonofont[
 	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
 	BoldFont = DejaVuSansMono-Bold.ttf ,
