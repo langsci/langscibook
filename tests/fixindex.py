@@ -39,11 +39,14 @@ def process(s):
   
 
 if __name__ == '__main__':
-  fn = 'main.adx'
-  lines = open(fn).readlines()
-  print(len(lines))
-  lines2 = list(map(process, lines))
-  out = open('mainmod.adx','w')
-  out.write(''.join(lines2))
-  out.close()
+  extensions =['adx','ldx','sdx']
+  for ext in extensions:
+    fn = 'main.'+ext
+    lines = open(fn).readlines()
+    print(len(lines))
+    lines2 = list(map(process, lines))
+    fnout = 'mainmod.'+ext
+    out = open(fnout,'w')
+    out.write(''.join(lines2))
+    out.close()
   

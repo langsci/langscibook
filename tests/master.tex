@@ -4,7 +4,7 @@
 \usepackage{./langsci/styles/langsci-basic}
 \usepackage{./langsci/styles/langsci-optional} 
 \usepackage{./langsci/styles/langsci-gb4e} 
-\usepackage{authorindex}
+% \usepackage{authorindex}
 \bibliography{localbibliography}
 
 % The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
@@ -87,6 +87,7 @@
 \input{crossref-tests/general}
 \section{Bibliography}
 \input{bibtests/cite} 
+\input{bibtests/index} 
 \section{Intonation}
 \ea  
 \gll
@@ -102,4 +103,5 @@ coconut  scrape-\textsc{ss.seq} food  cook-\textsc{Np-fu}.1s      \\
 \glt`I will scrape a coconut and cook food.'
 \z
 
+\include{backmatter}
 \end{document}
