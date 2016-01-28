@@ -39,6 +39,7 @@
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsBlackandwhite \lsBlackandwhitefalse
+\newif\iflsUscover \lsUscoverfalse
 
 
 %% Option handling:
@@ -106,6 +107,8 @@
 \DeclareVoidOption{collectiontoclong}{  			
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
+\DeclareVoidOption{uscover}{  			
+	\lsUscovertrue}
 \ProcessKeyvalOptions{langscibook}
 
 \LoadClass[
@@ -1085,7 +1088,9 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
 		\colorbox{white}{
 			\begin{pspicture}(0,0)(4.1,1in)
-			\psbarcode[transx=.4,transy=.3]{\lsISBNsoftcover}{includetext height=.7}{isbn}\end{pspicture}}};
+			\psbarcode[transx=.4,transy=.3]{%
+				\iflsUscover\lsISBNsoftcoverus\else\lsISBNsoftcover\fi
+				}{isbn}\end{pspicture}}};
 	\end{tikzpicture} 
 	\end{titlepage}
 	\end{document}     % the cover and nothing else.
