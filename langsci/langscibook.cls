@@ -1090,12 +1090,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\colorbox{white}{
 			\begin{pspicture}(0,0)(4.1,1in)
 			\psbarcode[transx=.4,transy=.3]{%
-				\iflsUscover\lsISBNsoftcoverus\else\lsISBNsoftcover\fi
-				}{isbn}\end{pspicture}}};
+				\iflsUscover\lsISBNsoftcoverus\else\lsISBNsoftcover\fi%
+				}{includetext height=.7}{isbn}\end{pspicture}}};
 	\end{tikzpicture} 
 	\end{titlepage}
 	\end{document}     % the cover and nothing else.
-	\fi		
+\fi		
 	
 \end{titlepage}
 
