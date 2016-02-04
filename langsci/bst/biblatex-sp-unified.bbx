@@ -246,10 +246,10 @@
 }
 
 % basically everything is in sentence case, other than journals and book series (recurring titles)
-\DeclareFieldFormat[article,book,thesis,incollection,unpublished,inproceedings]{titlecase}{\MakeSentenceCase*{#1}}%
+\DeclareFieldFormat[article,periodical,book,thesis,incollection,unpublished,inproceedings]{titlecase}{\MakeSentenceCase*{#1}}%
 
 % No quotes around titles
-\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
+\DeclareFieldFormat[article,periodical,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
 
 % Just like book titles, thesis titles are in italics
 \DeclareFieldFormat[thesis]{title}{\mkbibemph{#1}}
@@ -305,6 +305,44 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
+
+\DeclareBibliographyDriver{periodical}{%
+\usebibmacro{bibindex}%
+\usebibmacro{begentry}%
+\usebibmacro{author/editor+others/translator+others}%
+\setunit{\labelnamepunct}\newblock
+\usebibmacro{title}%
+\newunit
+\printlist{language}%
+\newunit\newblock
+\usebibmacro{byauthor}%
+\newunit\newblock
+\usebibmacro{bytranslator+others}%
+\newunit\newblock
+\printfield{version}%
+\newunit\newblock
+%  \usebibmacro{in:}%                         We don't use "In: " before journal titles
+\usebibmacro{journal+issuetitle}%
+\newunit
+\usebibmacro{byeditor+others}%
+\newunit\newblock%                          \newblock ensures period before pages
+\usebibmacro{note+pages}%
+\newunit\newblock
+\iftoggle{bbx:isbn}
+{\printfield{issn}}
+{}%
+\newunit\newblock
+\usebibmacro{doi+eprint+url}%
+\newunit\newblock
+\usebibmacro{addendum+pubstate}%
+\setunit{\bibpagerefpunct}\newblock
+\usebibmacro{pageref}%
+\newunit\newblock
+\iftoggle{bbx:related}
+{\usebibmacro{related:init}%
+\usebibmacro{related}}
+{}%
+\usebibmacro{finentry}}
 
 \DeclareBibliographyDriver{book}{%
   \usebibmacro{bibindex}%
