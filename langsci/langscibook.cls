@@ -558,6 +558,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\parindent\z@
 		\parskip\z@ \@plus .3\p@\relax
 		\let\item\@idxitem
+		\providecommand*\seealso[2]{\emph{see also} ##1}
 	}{%
 		\if@restonecol
 			\onecolumn
