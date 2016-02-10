@@ -1,0 +1,113 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Series information:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{langsci/seriesinfo/colors.def} % color definitions
+
+\newcommand{\calseries}{calseries}
+\newcommand{\eotms}{eotms}
+\newcommand{\eotmsig}{eotmsig}
+\newcommand{\sidl}{sidl}
+\newcommand{\algad}{algad}
+\newcommand{\tmnlp}{tmnlp}
+\newcommand{\nc}{nc}		%Niger Congo
+\newcommand{\tbls}{tbls}	%Textbooks in Language Sciences
+\newcommand{\silp}{silp}	%Studies in Laboratory Phonology
+\newcommand{\tdgi}{tdgi}	%Topics at the Discourse Grammar Interface
+\newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
+\newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
+\newcommand{\lv}{lv}		%Language Variation
+\newcommand{\classics}{classics}	
+\newcommand{\dummyseries}{dummyseries}
+\newcommand{\guidelines}{guidelines}
+\newcommand{\lsSeriesFontColor}{white}
+
+\AtBeginDocument{
+\ifx\lsSeries\algad
+	\newcommand{\lsSeriesTitle}{African Language Grammars \newlineCover and Dictionaries~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightOrange}
+\fi
+\ifx\lsSeries\calseries %\cal is already taken as a command
+	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidWine}
+\fi
+\ifx\lsSeries\cfls
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
+	\renewcommand{\lsISSN}{2363-877X}
+\fi
+\ifx\lsSeries\classics 
+	\newcommand{\lsSeriesTitle}{Classics in Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{black}
+	\renewcommand{\lsISSN}{2366-374X}
+\fi
+\ifx\lsSeries\cmle
+	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsISSN}{2364-7809}
+\fi
+\ifx\lsSeries\eotms
+	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \newlineCover Morphology and Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidBlue}
+	\renewcommand{\lsISSN}{2366-3529}
+\fi
+\ifx\lsSeries\eotmsig
+	\newcommand{\lsSeriesTitle}{Implemented Grammars~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidBlue}
+\fi
+\ifx\lsSeries\lv
+	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkWine}
+\fi
+\ifx\lsSeries\nc
+	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsRed} 
+\fi
+\ifx\lsSeries\ogs
+	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkGreen1} 
+\fi
+\ifx\lsSeries\scl
+	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkOrange}
+\fi
+\ifx\lsSeries\sidl
+	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsRichGreen}
+	\renewcommand{\lsISSN}{2363-5568}
+\fi
+\ifx\lsSeries\silp
+	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsLightWine}
+	\renewcommand{\lsISSN}{2363-5576}
+\fi	
+\ifx\lsSeries\tbls
+	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsYellow}
+	\renewcommand{\lsISSN}{2364-6209} 
+\fi	
+\ifx\lsSeries\tdgi
+	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+\fi
+\ifx\lsSeries\tmnlp
+	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkBlue}
+	\renewcommand{\lsISSN}{2364-8899}
+\fi		
+\ifx\lsSeries\dummyseries
+	\newcommand{\lsSeriesTitle}{~}
+	\newcommand{\lsSeriesColor}{lsNightGreen}
+\fi
+\ifx\lsSeries\guidelines
+	\newcommand{\lsSeriesTitle}{Language Science Press Guidelines}
+	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
+	\renewcommand{\lsCoverFontColor}{black}
+\fi
+
+\iflsBlackandwhite
+	\renewcommand{\lsSeriesColor}{black}
+\fi
+}	

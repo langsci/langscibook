@@ -1,0 +1,2396 @@
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015) (preloaded format=xelatex 2015.7.9)  28 JAN 2016 16:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**master.tex
+(./master.tex
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./langsci/langscibook.cls
+Document Class: langsci/langscibook 2016/01/26 Language Science Press
+(/home/snordhoff/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/scrbook.cls
+Document Class: scrbook 2015/07/02 v3.18 KOMA-Script document class (book)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2015/07/02 v3.18 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2015/07/02 v3.18 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2015/07/02 v3.18 KOMA-Script package (loading files)
+
+Package scrlfile, 2015/07/02 v3.18 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) (/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/tocbasic.sty
+Package: tocbasic 2015/07/02 v3.18 KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 125.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 126.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 127.
+Package tocbasic Info: defining new hook before heading of `' on input line 157
+8.
+Class scrbook Info: File `scrsize11pt.clo' used to setup font sizes on input li
+ne 2245.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
+File: scrsize11pt.clo 2015/07/02 v3.18 KOMA-Script font size class option (11pt
+)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/typearea.sty
+Package: typearea 2015/07/02 v3.18 KOMA-Script package (type area)
+
+Package typearea, 2015/07/02 v3.18 KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-
+
+\ta@bcor=\skip41
+\ta@div=\count79
+\ta@hblk=\skip42
+\ta@vblk=\skip43
+\ta@temp=\skip44
+\footheight=\skip45
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 10
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 418.25555pt
+(typearea)              DIV departure   = -6%
+(typearea)              \evensidemargin = 47.2316pt
+(typearea)              \oddsidemargin  = -12.5192pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 595.80026pt
+(typearea)              \topmargin      = -25.16531pt
+(typearea)              \headheight     = 17.0pt
+(typearea)              \headsep        = 20.40001pt
+(typearea)              \topskip        = 11.0pt
+(typearea)              \footskip       = 47.6pt
+(typearea)              \baselineskip   = 13.6pt
+(typearea)              on input line 1506.
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+LaTeX Info: Redefining \textsubscript on input line 4548.
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\c@pti@nb@sid@b@x=\box26
+\c@figure=\count87
+\c@table=\count88
+\bibindent=\dimen102
+) (/home/snordhoff/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 2015/07/06 v2.2 eTeX basic definition package (PEB,DPC)
+\et@xins=\count89
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/home/snordhoff/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write3
+\integerpart=\count90
+\decimalpart=\count91
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: xetex.def on input line 94.
+
+(/home/snordhoff/texlive/texmf-dist/tex/xelatex/xetex-def/xetex.def
+File: xetex.def 2015/03/25 v4.04 LaTeX color/graphics driver for XeTeX (TeX Liv
+e/RRM/JK)
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/hyphenat/hyphenat.sty
+Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
+\langwohyphens=\language80
+LaTeX Info: Redefining \_ on input line 43.
+)
+\csspine=\skip48
+\bodspine=\skip49
+\seitenbreite=\skip50
+\seitenhoehe=\skip51
+\spinewidth=\skip52
+\totalwidth=\skip53
+\totalheight=\skip54
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count92
+\Gm@cntv=\count93
+\c@Gm@tempcnt=\count94
+\Gm@bindingoffset=\dimen105
+\Gm@wd@mp=\dimen106
+\Gm@odd@mp=\dimen107
+\Gm@even@mp=\dimen108
+\Gm@layoutwidth=\dimen109
+\Gm@layoutheight=\dimen110
+\Gm@layouthoffset=\dimen111
+\Gm@layoutvoffset=\dimen112
+\Gm@dimlist=\toks15
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/textpos/textpos.sty
+Package: textpos 2014/01/03 v1.7j
+
+Package: textpos 2014/01/03 1.7j, absolute positioning of text on the page
+(/home/snordhoff/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)
+\TP@textbox=\box27
+\TP@holdbox=\box28
+\TPHorizModule=\dimen113
+\TPVertModule=\dimen114
+\TP@margin=\dimen115
+\TP@absmargin=\dimen116
+
+Grid set 16 x 16 = 30.23105pt x 42.67912pt
+\TPboxrulesize=\dimen117
+\TP@ox=\dimen118
+\TP@oy=\dimen119
+\TP@tbargs=\toks16
+\TP@prevdepth=\dimen120
+TextBlockOrigin set to 0pt x 0pt
+)
+TextBlockOrigin set to 0mm x 0mm
+(/home/snordhoff/texlive/texmf-dist/tex/latex/pbox/pbox.sty
+Package: pbox 2011/12/07 v1.2 Dynamic parboxes
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count95
+\calc@Bcount=\count96
+\calc@Adimen=\dimen121
+\calc@Bdimen=\dimen122
+\calc@Askip=\skip55
+\calc@Bskip=\skip56
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count97
+\calc@Cskip=\skip57
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\pb@xlen=\skip58
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/metalogo/metalogo.sty
+Package: metalogo 2010/05/29 v0.12 Extended TeX logo macros
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fontspec/fontspec.sty
+Package: fontspec 2015/03/14 v2.4c Font selection for XeLaTeX and LuaLaTeX
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2015/06/15 v5630 L3 programming layer (loader) 
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2015/06/15 v5630 L3 programming layer (code) 
+L3 Module: l3bootstrap 2015/05/20 v5608 L3 Bootstrap code
+L3 Module: l3names 2015/02/24 v5535 L3 Namespace for primitives
+L3 Module: l3basics 2015/01/27 v5500 L3 Basic definitions
+L3 Module: l3expan 2014/11/27 v5472 L3 Argument expansion
+L3 Module: l3tl 2015/01/27 v5500 L3 Token lists
+L3 Module: l3str 2015/03/01 v5545 L3 Strings
+L3 Module: l3seq 2014/08/23 v5354 L3 Sequences and stacks
+L3 Module: l3int 2015/02/21 v5529 L3 Integers
+\c_max_int=\count98
+\l_tmpa_int=\count99
+\l_tmpb_int=\count100
+\g_tmpa_int=\count101
+\g_tmpb_int=\count102
+L3 Module: l3quark 2014/08/23 v5354 L3 Quarks
+L3 Module: l3prg 2015/04/13 v5566 L3 Control structures
+\g__prg_map_int=\count103
+L3 Module: l3clist 2014/08/23 v5354 L3 Comma separated lists
+L3 Module: l3token 2014/09/15 v5422 L3 Experimental token manipulation
+L3 Module: l3prop 2014/08/23 v5354 L3 Property lists
+L3 Module: l3msg 2015/02/26 v5537 L3 Messages
+L3 Module: l3file 2015/06/07 v5627 L3 File and I/O operations
+\l_iow_line_count_int=\count104
+\l__iow_target_count_int=\count105
+\l__iow_current_line_int=\count106
+\l__iow_current_word_int=\count107
+\l__iow_current_indentation_int=\count108
+L3 Module: l3skip 2015/05/18 v5607 L3 Dimensions and skips
+\c_zero_dim=\dimen123
+\c_max_dim=\dimen124
+\l_tmpa_dim=\dimen125
+\l_tmpb_dim=\dimen126
+\g_tmpa_dim=\dimen127
+\g_tmpb_dim=\dimen128
+\c_zero_skip=\skip59
+\c_max_skip=\skip60
+\l_tmpa_skip=\skip61
+\l_tmpb_skip=\skip62
+\g_tmpa_skip=\skip63
+\g_tmpb_skip=\skip64
+\c_zero_muskip=\muskip10
+\c_max_muskip=\muskip11
+\l_tmpa_muskip=\muskip12
+\l_tmpb_muskip=\muskip13
+\g_tmpa_muskip=\muskip14
+\g_tmpb_muskip=\muskip15
+L3 Module: l3keys 2015/06/14 v5629 L3 Key-value interfaces
+\g__keyval_level_int=\count109
+\l_keys_choice_int=\count110
+L3 Module: l3fp 2014/08/22 v5336 L3 Floating points
+\c__fp_leading_shift_int=\count111
+\c__fp_middle_shift_int=\count112
+\c__fp_trailing_shift_int=\count113
+\c__fp_big_leading_shift_int=\count114
+\c__fp_big_middle_shift_int=\count115
+\c__fp_big_trailing_shift_int=\count116
+\c__fp_Bigg_leading_shift_int=\count117
+\c__fp_Bigg_middle_shift_int=\count118
+\c__fp_Bigg_trailing_shift_int=\count119
+L3 Module: l3box 2014/08/23 v5354 L3 Experimental boxes
+\c_empty_box=\box29
+\l_tmpa_box=\box30
+\l_tmpb_box=\box31
+\g_tmpa_box=\box32
+\g_tmpb_box=\box33
+L3 Module: l3coffins 2014/08/23 v5354 L3 Coffin code layer
+\l__coffin_internal_box=\box34
+\l__coffin_internal_dim=\dimen129
+\l__coffin_offset_x_dim=\dimen130
+\l__coffin_offset_y_dim=\dimen131
+\l__coffin_x_dim=\dimen132
+\l__coffin_y_dim=\dimen133
+\l__coffin_x_prime_dim=\dimen134
+\l__coffin_y_prime_dim=\dimen135
+\c_empty_coffin=\box35
+\l__coffin_aligned_coffin=\box36
+\l__coffin_aligned_internal_coffin=\box37
+\l_tmpa_coffin=\box38
+\l_tmpb_coffin=\box39
+\l__coffin_display_coffin=\box40
+\l__coffin_display_coord_coffin=\box41
+\l__coffin_display_pole_coffin=\box42
+\l__coffin_display_offset_dim=\dimen136
+\l__coffin_display_x_dim=\dimen137
+\l__coffin_display_y_dim=\dimen138
+L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
+L3 Module: l3candidates 2015/05/21 v5613 L3 Experimental additions to l3kernel
+\l__box_top_dim=\dimen139
+\l__box_bottom_dim=\dimen140
+\l__box_left_dim=\dimen141
+\l__box_right_dim=\dimen142
+\l__box_top_new_dim=\dimen143
+\l__box_bottom_new_dim=\dimen144
+\l__box_left_new_dim=\dimen145
+\l__box_right_new_dim=\dimen146
+\l__box_internal_box=\box43
+\l__coffin_bounding_shift_dim=\dimen147
+\l__coffin_left_corner_dim=\dimen148
+\l__coffin_right_corner_dim=\dimen149
+\l__coffin_bottom_corner_dim=\dimen150
+\l__coffin_top_corner_dim=\dimen151
+\l__coffin_scaled_total_height_dim=\dimen152
+\l__coffin_scaled_width_dim=\dimen153
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/l3kernel/l3unicode-data.def
+File: l3unicode-data.def 2015/03/01 v5544 L3 Unicode data
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/l3kernel/l3xdvipdfmx.def
+File: l3xdvidpfmx.def 2015/05/21 v5613 L3 Experimental driver: xdvipdfmx
+))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2015/06/15 v5630 L3 Experimental document command parser
+\l__xparse_current_arg_int=\count120
+\l__xparse_m_args_int=\count121
+\l__xparse_mandatory_args_int=\count122
+\l__xparse_processor_int=\count123
+\l__xparse_v_nesting_int=\count124
+)
+\l_fontspec_script_int=\count125
+\l_fontspec_language_int=\count126
+\l_fontspec_strnum_int=\count127
+\l__fontspec_tmpa_dim=\dimen154
+\l__fontspec_tmpb_dim=\dimen155
+\l__fontspec_tmpc_dim=\dimen156
+Variant \tl_gset:cV already defined; not changing it on line 71
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fontspec/fontspec-patches.sty
+Package: fontspec-patches 2015/03/14 v2.4c Font selection for XeLaTeX and LuaLa
+TeX
+LaTeX Info: Redefining \em on input line 49.
+LaTeX Info: Redefining \emph on input line 57.
+LaTeX Info: Redefining \- on input line 60.
+.................................................
+. LaTeX info: "xparse/redefine-command"
+. 
+. Redefining command \oldstylenums with sig. 'm' on line 155.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \liningnums with sig. 'm' on line 159.
+.................................................
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2015/03/14 v2.4c Font selection for XeLaTeX and LuaLaTe
+X
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/euenc/eu1enc.def
+File: eu1enc.def 2010/05/27 v0.1h Experimental Unicode font encodings
+)
+LaTeX Font Info:    Try loading font information for EU1+lmr on input line 105.
+
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/euenc/eu1lmr.fd
+File: eu1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+(/home/snordhoff/texlive/texmf-dist/tex/xelatex/xunicode/xunicode.sty
+File: xunicode.sty 2011/09/09 v0.981 provides access to latin accents and many 
+other characters in Unicode lower plane
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/tipa/t3enc.def
+File: t3enc.def 2001/12/31 T3 encoding
+LaTeX Font Info:    Try loading font information for EU1+lmss on input line 357
+.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/euenc/eu1lmss.fd
+File: eu1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+\tipaTiiicode=\count128
+\tipasavetokens=\toks18
+\tipachecktokens=\toks19
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \__fontspec_post_arg:w with sig. 'mmO{}' on line 42.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \fontspec with sig. 'om' on line 44.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmainfont with sig. 'om' on line 54.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setsansfont with sig. 'om' on line 64.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmonofont with sig. 'om' on line 74.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmathrm with sig. 'om' on line 88.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setboldmathrm with sig. 'om' on line 96.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmathsf with sig. 'om' on line 104.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \setmathtt with sig. 'om' on line 112.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontfamily with sig. 'mom' on line 126.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontface with sig. 'mom' on line 141.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \defaultfontfeatures with sig. 't+om' on line 155.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \addfontfeatures with sig. 'm' on line 210.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontfeature with sig. 'mm' on line 221.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newAATfeature with sig. 'mmmm' on line 229.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newopentypefeature with sig. 'mmm' on line 237.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \aliasfontfeature with sig. 'mm' on line 261.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \aliasfontfeatureoption with sig. 'mmm' on line 270.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontscript with sig. 'mm' on line 275.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \newfontlanguage with sig. 'mm' on line 301.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining command \DeclareFontsExtensions with sig. 'm' on line 321.
+.................................................
+Variant \prop_gput:cnV already defined; not changing it on line 704
+Variant \prop_gput:cnx already defined; not changing it on line 705
+\l__fontspec_tmp_int=\count129
+LaTeX Info: Redefining \itshape on input line 2232.
+LaTeX Info: Redefining \slshape on input line 2237.
+LaTeX Info: Redefining \scshape on input line 2242.
+LaTeX Info: Redefining \upshape on input line 2247.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+\xl@everylogo=\toks20
+\xl@@everylogo=\toks21
+LaTeX Info: Redefining \TeX on input line 193.
+LaTeX Info: Redefining \LaTeX on input line 202.
+LaTeX Info: Redefining \LaTeXe on input line 219.
+)
+\g__file_internal_ior=\read1
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.8157925138632163.
+.................................................
+\g__fontspec_family_Arimo_B.ttf_int=\count130
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B scale = 0.8157925138632163.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-Bold_B scale = 0.8157925138632163.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-Italic_B scale = 0.8157925138632163.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-BoldItalic_B scale = 0.8157925138632163.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'Arimo_B.ttf(0)' created for font 'Arimo_B.ttf' with options
+. [Ligatures=TeX,Scale=MatchLowercase,Path=./langsci/fonts/,BoldFont =
+. Arimo-Bold_B.ttf,ItalicFont = Arimo-Italic_B.ttf,BoldItalicFont =
+. Arimo-BoldItalic_B.ttf].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. 
+. <->s*[0.8157925138632163]"[./langsci/fonts/Arimo_B]/OT:script=latn;language=D
+FLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+. 
+. * 'bold' with NFSS spec.:
+. 
+. <->s*[0.8157925138632163]"[./langsci/fonts/Arimo-Bold_B]/OT:script=latn;langu
+age=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+. 
+. * 'italic' with NFSS spec.:
+. 
+. <->s*[0.8157925138632163]"[./langsci/fonts/Arimo-Italic_B]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+. 
+. * 'bold italic' with NFSS spec.:
+. 
+. <->s*[0.8157925138632163]"[./langsci/fonts/Arimo-BoldItalic_B]/OT:script=latn
+;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVuSansMono.ttf scale = 0.7881138392857143.
+.................................................
+\g__fontspec_family_DejaVuSansMono.ttf_int=\count131
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVuSansMono scale = 0.7881138392857143.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVuSansMono-Bold scale = 0.7881138392857143.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVuSansMono-Oblique scale = 0.7881138392857143.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. DejaVuSansMono-BoldOblique scale = 0.7881138392857143.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'DejaVuSansMono.ttf(0)' created for font 'DejaVuSansMono.ttf'
+. with options
+. [WordSpace={1,0,0},PunctuationSpace=WordSpace,Ligatures={TeX},Scale=MatchLowe
+rcase,Path=./langsci/fonts/,BoldFont
+. = DejaVuSansMono-Bold.ttf,SlantedFont =
+. DejaVuSansMono-Oblique.ttf,BoldSlantedFont =
+. DejaVuSansMono-BoldOblique.ttf].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. 
+. <->s*[0.7881138392857143]"[./langsci/fonts/DejaVuSansMono]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
+. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
+. 
+. * 'bold' with NFSS spec.:
+. 
+. <->s*[0.7881138392857143]"[./langsci/fonts/DejaVuSansMono-Bold]/OT:script=lat
+n;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
+. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
+. 
+. * 'sl/,' with NFSS spec.:
+. 
+. <->s*[0.7881138392857143]"[./langsci/fonts/DejaVuSansMono-Oblique]/OT:script=
+latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
+. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
+. 
+. * 'sl/,' with NFSS spec.:
+. 
+. <->s*[0.7881138392857143]"[./langsci/fonts/DejaVuSansMono-BoldOblique]/OT:scr
+ipt=latn;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font =0\fontdimen 3\font
+. \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font 
+.................................................
+\g__fontspec_family_LinLibertine_R_B.otf_int=\count132
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(0)' created for font
+. 'LinLibertine_R_B.otf' with options
+. [Ligatures=TeX,Ligatures={TeX,Common},Path=./langsci/fonts/,PunctuationSpace=
+0,Numbers={Proportional},BoldFont
+. = LinLibertine_RZ_B.otf,ItalicFont = LinLibertine_RI_B.otf,BoldItalicFont =
+. LinLibertine_RZI_B.otf,BoldSlantedFont = LinLibertine_RZ_B.otf,SlantedFont =
+. LinLibertine_R_B.otf,SlantedFeatures = {FakeSlant=0.25},BoldSlantedFeatures
+. = {FakeSlant=0.25},SmallCapsFeatures = {FakeSlant=0}].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'bold' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'italic' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RI_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RI_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'sl/,FakeSlant=0.25' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;slant=0.25;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;slant=0.25;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'bold italic' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZI_B]/OT:script=latn;language=DFLT;mapping
+=tex-text;mapping=tex-text;+liga;+pnum;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'sl/,FakeSlant=0.25' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;slant=0.25;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;slant=0.25;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+.................................................
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
+\MT@toks=\toks22
+\MT@count=\count133
+LaTeX Info: Redefining \textls on input line 766.
+\MT@outer@kern=\dimen157
+LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
+\MT@listname@count=\count134
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/microtype/microtype-xetex.def
+File: microtype-xetex.def 2013/05/23 v2.5a Definitions specific to xetex (RS)
+LaTeX Info: Redefining \lsstyle on input line 254.
+)
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2013/05/23 v2.5a microtype main configuration file (RS)
+))
+Package scrkbase Info: You've told me to redefine the font selection of the
+(scrkbase)             element `sectioning' that is an alias of element
+(scrkbase)             `disposition' on input line 303.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(./langsci/seriesinfo/series.def (./langsci/seriesinfo/colors.def))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/datetime/datetime.sty
+Package: datetime 2015/03/20 v2.60 Date Time Package
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count135
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fmtcount/fmtcount.sty
+Package: fmtcount 2015/05/05 v3.01
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(/home/snordhoff/texlive/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks23
+\XKV@tempa@toks=\toks24
+)
+\XKV@depth=\count136
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fmtcount/fcprefix.sty
+Package: fcprefix 2012/09/28
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
+Package: fcnumparser 2012/09/28
+\fc@digit@counter=\count137
+))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks25
+\ex@=\dimen158
+)
+\c@padzeroesN=\count138
+\fc@tmpcatcode=\count139
+\@DT@modctr=\count140
+\@ordinalctr=\count141
+\@orgargctr=\count142
+\@strctr=\count143
+\@tmpstrctr=\count144
+\@DT@loopN=\count145
+\@DT@X=\count146
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fmtcount/fc-english.def
+File: fc-english.def 2013/08/17
+))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/datetime/datetime-defaults.sty
+Package: datetime-defaults 2013/09/10
+)
+\@day=\count147
+\@month=\count148
+\@year=\count149
+\c@HOUR=\count150
+\c@HOURXII=\count151
+\c@MINUTE=\count152
+\c@TOHOUR=\count153
+\c@TOMINUTE=\count154
+\c@SECOND=\count155
+\currenthour=\count156
+\currentminute=\count157
+\currentsecond=\count158
+Package datetime Info: No datetime.cfg file found, using default settings on in
+put line 308.
+\@dtctr=\count159
+\dayofyear=\count160
+\dayofweek=\count161
+LaTeX Info: Redefining \today on input line 736.
+\dt@a=\toks26
+\dt@b=\toks27
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/koma-script/scrpage2.sty
+Package: scrpage2 2015/07/02 v3.18 KOMA-Script package (page head and foot)
+LaTeX Info: Redefining \pagemark on input line 174.
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2015/04/19 v3.0 programmable bibliographies (PK/JW/AB)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/biblatex1.sty
+Package: biblatex1 2015/04/19 v3.0 programmable bibliographies (bibtex) (PK/JW/
+AB)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count162
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+))
+\c@tabx@nest=\count163
+\c@listtotal=\count164
+\c@listcount=\count165
+\c@liststart=\count166
+\c@liststop=\count167
+\c@citecount=\count168
+\c@citetotal=\count169
+\c@multicitecount=\count170
+\c@multicitetotal=\count171
+\c@instcount=\count172
+\c@maxnames=\count173
+\c@minnames=\count174
+\c@maxitems=\count175
+\c@minitems=\count176
+\c@citecounter=\count177
+\c@savedcitecounter=\count178
+\c@uniquelist=\count179
+\c@uniquename=\count180
+\c@refsection=\count181
+\c@refsegment=\count182
+\c@maxextrayear=\count183
+\c@maxextraalpha=\count184
+\c@abbrvpenalty=\count185
+\c@highnamepenalty=\count186
+\c@lownamepenalty=\count187
+\c@maxparens=\count188
+\c@parenlevel=\count189
+\blx@tempcnta=\count190
+\blx@tempcntb=\count191
+\blx@tempcntc=\count192
+\blx@maxsection=\count193
+\blx@maxsegment=\count194
+\blx@notetype=\count195
+\blx@parenlevel@text=\count196
+\blx@parenlevel@foot=\count197
+\labelnumberwidth=\skip65
+\labelalphawidth=\skip66
+\shorthandwidth=\skip67
+\biblabelsep=\skip68
+\bibitemsep=\skip69
+\bibnamesep=\skip70
+\bibinitsep=\skip71
+\bibparsep=\skip72
+\bibhang=\skip73
+\blx@auxin=\read2
+\blx@auxout=\write4
+\c@mincomprange=\count198
+\c@maxcomprange=\count199
+\c@mincompwidth=\count200
+\c@labelname=\count201
+\c@savedlabelname=\count202
+\c@author=\count203
+\c@savedauthor=\count204
+\c@shortauthor=\count205
+\c@savedshortauthor=\count206
+\c@editor=\count207
+\c@savededitor=\count208
+\c@editora=\count209
+\c@savededitora=\count210
+\c@editorb=\count211
+\c@savededitorb=\count212
+\c@editorc=\count213
+\c@savededitorc=\count214
+\c@shorteditor=\count215
+Normal \count register pool exhausted, switching to extended pool.
+\c@savedshorteditor=\count277
+\c@bookauthor=\count278
+\c@savedbookauthor=\count279
+\c@translator=\count280
+\c@savedtranslator=\count281
+\c@annotator=\count282
+\c@savedannotator=\count283
+\c@commentator=\count284
+\c@savedcommentator=\count285
+\c@introduction=\count286
+\c@savedintroduction=\count287
+\c@foreword=\count288
+\c@savedforeword=\count289
+\c@afterword=\count290
+\c@savedafterword=\count291
+\c@holder=\count292
+\c@savedholder=\count293
+\c@namea=\count294
+\c@savednamea=\count295
+\c@nameb=\count296
+\c@savednameb=\count297
+\c@namec=\count298
+\c@savednamec=\count299
+\c@institution=\count300
+\c@savedinstitution=\count301
+\c@language=\count302
+\c@savedlanguage=\count303
+\c@location=\count304
+\c@savedlocation=\count305
+\c@organization=\count306
+\c@savedorganization=\count307
+\c@origlocation=\count308
+\c@savedoriglocation=\count309
+\c@origpublisher=\count310
+\c@savedorigpublisher=\count311
+\c@pageref=\count312
+\c@savedpageref=\count313
+\c@publisher=\count314
+\c@savedpublisher=\count315
+\c@lista=\count316
+\c@savedlista=\count317
+\c@listb=\count318
+\c@savedlistb=\count319
+\c@listc=\count320
+\c@savedlistc=\count321
+\c@listd=\count322
+\c@savedlistd=\count323
+\c@liste=\count324
+\c@savedliste=\count325
+\c@listf=\count326
+\c@savedlistf=\count327
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2015/04/19 v3.0 biblatex compatibility (PK/JW/AB)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 
+\c@textcitecount=\count328
+\c@textcitetotal=\count329
+\c@textcitemaxnames=\count330
+\c@biburlnumpenalty=\count331
+\c@biburlucpenalty=\count332
+\c@biburllcpenalty=\count333
+\c@smartand=\count334
+)
+Package biblatex Info: Trying to load natbib compatibility...
+Package biblatex Info: ... file 'blx-natbib.def' found.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/blx-natbib.def
+File: blx-natbib.def 2015/04/19 v3.0 biblatex compatibility (PK/JW/AB)
+)
+Package biblatex Info: Trying to load bibliography style 'langsci/bst/biblatex-
+sp-unified'...
+Package biblatex Info: ... file 'langsci/bst/biblatex-sp-unified.bbx' found.
+
+(./langsci/bst/biblatex-sp-unified.bbx
+File: sp-biblatex.bbx 
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/bbx/authoryear.bbx
+File: authoryear.bbx 2015/04/19 v3.0 biblatex bibliography style (PK/JW/AB)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2015/04/19 v3.0 biblatex bibliography style (PK/JW/AB)
+\c@bbx:relatedcount=\count335
+\c@bbx:relatedtotal=\count336
+)))
+Package biblatex Info: Trying to load citation style 'langsci/bst/sp-authoryear
+-comp'...
+Package biblatex Info: ... file 'langsci/bst/sp-authoryear-comp.cbx' found.
+
+(./langsci/bst/sp-authoryear-comp.cbx
+File: sp-authoryear-comp.cbx 
+
+
+Package biblatex Warning: Macro 'textcite' undefined.
+(biblatex)                Using \newbibmacro.
+
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\footcites'.
+Package biblatex Info: Redefining '\footcitetexts'.
+Package biblatex Info: Redefining '\smartcites'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\citeauthor'.
+Package biblatex Info: Redefining '\citeyear'.
+Package biblatex Info: Redefining '\citeyearpar'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+ (/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+)))
+(/home/snordhoff/texlive/texmf-dist/tex/latex/floatrow/floatrow.sty
+Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
+\captionmargin=\dimen159
+\captionmargin@=\dimen160
+\captionwidth=\dimen161
+\caption@tempdima=\dimen162
+\caption@indent=\dimen163
+\caption@parindent=\dimen164
+\caption@hangindent=\dimen165
+)
+\c@float@type=\count337
+\float@exts=\toks28
+\float@box=\box44
+\@floatcapt=\box45
+Package floatrow Info: Modified float package code loaded on input line 455.
+Package floatrow Info: Modified rotfloat package code loaded on input line 473.
+
+\FR@everyfloat=\toks29
+\flrow@foot=\insert233
+\FB@wd=\dimen166
+\FBo@wd=\dimen167
+\FBc@wd=\dimen168
+\FBo@ht=\skip74
+\FBc@ht=\skip75
+\FBf@ht=\skip76
+\FBo@max=\skip77
+\FBc@max=\skip78
+\FBf@max=\skip79
+\c@FBl@b=\count338
+\floatbox@depth=\count339
+\c@FRobj=\count340
+\c@FRsobj=\count341
+\Xhsize=\skip80
+\sXhsize=\skip81
+\Zhsize=\skip82
+\sZhsize=\skip83
+\flrow@rowbox=\box46
+\FR@Zunitlength=\dimen169
+\c@FBcnt=\count342
+\FPOScnt=\count343
+\LTleft=\skip84
+\LTright=\skip85
+\LTleft=\skip86
+\LTright=\skip87
+\flrow@types=\toks30
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen170
+\lightrulewidth=\dimen171
+\cmidrulewidth=\dimen172
+\belowrulesep=\dimen173
+\belowbottomsep=\dimen174
+\aboverulesep=\dimen175
+\abovetopsep=\dimen176
+\cmidrulesep=\dimen177
+\cmidrulekern=\dimen178
+\defaultaddspace=\dimen179
+\@cmidla=\count344
+\@cmidlb=\count345
+\@aboverulesep=\dimen180
+\@belowrulesep=\dimen181
+\@thisruleclass=\count346
+\@lastruleclass=\count347
+\@thisrulewidth=\dimen182
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/index/index.sty
+Package: index 2004/01/20 v4.2beta Improved index support (dmj)
+\@indexbox=\insert232
+\indexproofstyle=\toks31
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package hobsub Info: Skipping package `ifvtex' (already loaded).
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package hobsub Info: Skipping package `ifpdf' (already loaded).
+Package hobsub Info: Skipping package `etexcmds' (already loaded).
+Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen183
+\Hy@linkcounter=\count348
+\Hy@pagecounter=\count349
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count350
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `bookmarks' set `true' on input line 4319.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 4319.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4319
+.
+Package hyperref Info: Option `hyperindex' set `true' on input line 4319.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4319.
+Package hyperref Info: Option `draft' set `false' on input line 4319.
+Package hyperref Info: Option `plainpages' set `false' on input line 4319.
+Package hyperref Info: Option `pdfusetitle' set `true' on input line 4319.
+
+
+Package hyperref Warning: XeTeX driver only supports unicode.
+(hyperref)                Enabling option `unicode'.
+
+Package hyperref Info: Option `unicode' set `true' on input line 4319.
+(/home/snordhoff/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count351
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen184
+\Fld@menulength=\count352
+\Field@Width=\dimen185
+\Fld@charsize=\dimen186
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count353
+\c@Item=\count354
+\c@Hfootnote=\count355
+)
+
+Package hyperref Message: Driver (autodetected): hxetex.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/hyperref/hxetex.def
+File: hxetex.def 2012/11/06 v6.83m Hyperref driver for XeTeX
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/stringenc.sty
+Package: stringenc 2011/12/02 v1.10 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box47
+\c@Hy@AnnotLevel=\count356
+\HyField@AnnotCount=\count357
+\Fld@listcount=\count358
+\c@bookmark@seq@number=\count359
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package rerunfilecheck Info: Feature \pdfmdfivesum is not available
+(rerunfilecheck)             (e.g. pdfTeX or LuaTeX with package `pdftexcmds').
+
+(rerunfilecheck)             Therefore file contents cannot be checked efficien
+tly
+(rerunfilecheck)             and the loading of the package is aborted.
+)
+\Hy@SectionHShift=\skip88
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/doi/doi.sty
+Package: doi 2007/07/24 handle doi numbers
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/pst-barcode/pst-barcode.sty
+(/home/snordhoff/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2013/12/12 v0.60 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/home/snordhoff/texlive/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count360
+\pstFP@xia=\count361
+\pstFP@xib=\count362
+\pstFP@xfa=\count363
+\pstFP@xfb=\count364
+\pstFP@rega=\count365
+\pstFP@regb=\count366
+\pstFP@regs=\count367
+\pstFP@times=\count368
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks32
+\pgfutil@tempdima=\dimen187
+\pgfutil@tempdimb=\dimen188
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks33
+\pgfkeys@temptoks=\toks34
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks35
+))
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex
+\pgf@x=\dimen189
+\pgf@xa=\dimen190
+\pgf@xb=\dimen191
+\pgf@xc=\dimen192
+\pgf@y=\dimen193
+\pgf@ya=\dimen194
+\pgf@yb=\dimen195
+\pgf@yc=\dimen196
+\c@pgf@counta=\count369
+\c@pgf@countb=\count370
+\c@pgf@countc=\count371
+\c@pgf@countd=\count372
+\pgfutil@tempcnta=\count373
+\pgfutil@tempcntb=\count374
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen197
+\pgfmath@count=\count375
+\pgfmath@box=\box48
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
+)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count376
+))
+\pgffor@iter=\dimen198
+\pgffor@skip=\dimen199
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
+)
+\psLoopIndex=\count377
+
+`PSTricks' v2.61  <2015/06/28> (tvz)
+\pst@dima=\dimen200
+\pst@dimb=\dimen201
+\pst@dimc=\dimen202
+\pst@dimd=\dimen203
+\pst@dimg=\dimen204
+\pst@dimh=\dimen205
+\pst@dimm=\dimen206
+\pst@dimn=\dimen207
+\pst@dimo=\dimen208
+\pst@dimp=\dimen209
+\pst@hbox=\box49
+\pst@ibox=\box50
+\pst@boxg=\box51
+\pst@cnta=\count378
+\pst@cntb=\count379
+\pst@cntc=\count380
+\pst@cntd=\count381
+\pst@cntg=\count382
+\pst@cnth=\count383
+\pst@cntm=\count384
+\pst@cntn=\count385
+\pst@cnto=\count386
+\pst@cntp=\count387
+\@zero=\count388
+\pst@toks=\toks41
+(/home/snordhoff/texlive/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg))
+\psunit=\dimen210
+\psxunit=\dimen211
+\psyunit=\dimen212
+\pst@C@@rType=\count389
+\pslinewidth=\dimen213
+\psk@startLW=\dimen214
+\psk@endLW=\dimen215
+\pst@customdefs=\toks42
+Normal \dimen register pool exhausted, switching to extended pool.
+\pslinearc=\dimen256
+\pst@symbolStep=\dimen257
+\pst@symbolWidth=\dimen258
+\pst@symbolLinewidth=\dimen259
+\everypsbox=\toks43
+\psframesep=\dimen260
+\pslabelsep=\dimen261
+\sh@wgridXunit=\dimen262
+\sh@wgridYunit=\dimen263
+\pst@shift=\dimen264
+(/home/snordhoff/texlive/texmf-dist/tex/xelatex/xetex-pstricks/pstricks.con
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pstricks/config/xdvipdfmx.cfg
+Using PSTricks configuration for XeTeX+xdvipdfmx
+)))
+File: pstricks.tex 2015/06/28 v2.61 `PSTricks' (tvz,hv)
+ (/home/snordhoff/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2015/06/28 v2.61 `PST-fp' (hv)
+)
+Package: pst-barcode 2012/11/16 package wrapper for pst-barcode.tex (hv)
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/pst-barcode/pst-barcode.tex
+`PST-barcode' v0.14, 2015/06/17 (tb,hv)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/marginnote/marginnote.sty
+Package: marginnote 2012/03/29 v1.1i non floating margin notes for LaTeX
+\c@mn@abspage=\count390
+)
+\QR@box=\box52
+)
+File: pst-barcode.tex 2015/06/17 v0.14 `PST-barcode' (hv)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2015/06/15 v0.4y Insert pages of external PDF documents (AM)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2015/04/20 v2.0e eso-pic (RN)
+)
+\AM@pagewidth=\dimen265
+\AM@pageheight=\dimen266
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/pdfpages/ppxetex.def
+File: ppxetex.def 2015/06/15 v0.4y Pdfpages driver for XeTeX (AM)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/oberdiek/pdflscape.sty
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: dvipdfm (xetex) on input line 98.
+
+)
+\AM@pagebox=\box53
+\AM@toc@title=\toks44
+\c@AM@survey=\count391
+\AM@templatesizebox=\box54
+)
+\normalparindent=\skip89
+
+
+Class scrbook Warning: Change of `\@footnotemark' detected!
+(scrbook)              Use of `footnotes=multiple' may break
+(scrbook)              another package!
+(scrbook)              Maybe you should remove the usage of
+(scrbook)              option `footnotes=multiple' on input line 1298.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/rotating/rotating.sty
+Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
+\c@r@tfl@t=\count392
+\rotFPtop=\skip90
+\rotFPbot=\skip91
+\rot@float@box=\box55
+\rot@mess@toks=\toks45
+)
+Package hyperref Info: Option `unicode' set `true' on input line 1434.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/authorindex/authorindex.sty
+Package: authorindex 2005/03/22 make index of authors cited in a work
+)
+(./langsci/styles/langsci-lgr.sty)
+\LSPTmp=\skip92
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/epigraph/epigraph.sty
+Package: epigraph 2009/09/02 v1.5c typesetting epigraphs
+\beforeepigraphskip=\skip93
+\afterepigraphskip=\skip94
+\epigraphwidth=\skip95
+\epigraphrule=\skip96
+)
+(./langsci/styles/langsci-basic.sty)) (./langsci/styles/langsci-optional.sty
+(/home/snordhoff/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count393
+\FV@InFile=\read3
+\FV@TabBox=\box56
+\c@FancyVerbLine=\count394
+\FV@StepNumber=\count395
+\FV@OutFile=\write5
+)
+\rotheight=\skip97
+\rotwidth=\skip98
+) (./langsci/styles/langsci-gb4e.sty
+
+LaTeX Warning: You have requested package `./langsci/styles/langsci-gb4e',
+               but the package provides `langsci/styles/langsci-gb4e'.
+
+Package: langsci/styles/langsci-gb4e 2000/09/05
+(./langsci/styles/langsci-cgloss.sty
+\lineone=\box57
+\linetwo=\box58
+\linethree=\box59
+\linefour=\box60
+\linefive=\box61
+\linesix=\box62
+\lineseven=\box63
+\lineeight=\box64
+\wordone=\box65
+\wordtwo=\box66
+\wordthree=\box67
+\wordfour=\box68
+\wordfive=\box69
+\wordsix=\box70
+\wordseven=\box71
+\wordeight=\box72
+\gline=\box73
+\glossglue=\skip99
+) (./langsci/styles/jambox.sty
+\jamwidth=\dimen267
+)
+\c@fnx=\count396
+\@xnumdepth=\count397
+\c@xnumi=\count398
+\c@xnumii=\count399
+\c@xnumiii=\count400
+\c@xnumiv=\count401
+\c@rxnumi=\count402
+\c@rxnumii=\count403
+\c@rxnumiii=\count404
+\c@rxnumiv=\count405
+)
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2015/04/19 v3.0 biblatex localization (PK/JW/AB)
+)
+\@quotelevel=\count406
+\@quotereset=\count407
+
+(./master.aux)
+\openout1 = `master.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 26.
+LaTeX Font Info:    Try loading font information for T3+cmr on input line 26.
+ (/home/snordhoff/texlive/texmf-dist/tex/latex/tipa/t3cmr.fd
+File: t3cmr.fd 2001/12/31 TIPA font definitions
+)
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: custom
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(58.32814pt, 355.65945pt, 69.70924pt)
+* v-part:(T,H,B)=(77.96053pt, 522.96085pt, 81.94476pt)
+* \paperwidth=483.69684pt
+* \paperheight=682.86613pt
+* \textwidth=355.65945pt
+* \textheight=522.96085pt
+* \oddsidemargin=-13.94185pt
+* \evensidemargin=-2.56075pt
+* \topmargin=-31.70947pt
+* \headheight=17.0pt
+* \headsep=20.40001pt
+* \topskip=11.0pt
+* \footskip=47.6pt
+* \marginparwidth=50.0pt
+* \marginparsep=12.8401pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ABD: EveryShipout initializing macros
+.................................................
+. fontspec info: "setup-math"
+. 
+. Adjusting the maths setup (use [no-math] to avoid this).
+.................................................
+\symlegacymaths=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 26.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 26.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 26.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 26.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 26.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 26.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 26.
+LaTeX Font Info:    Redeclaring math accent \check on input line 26.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 26.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 26.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 26.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 26.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 26.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 26.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> EU1/LinLibertine_R_B.otf(0)/m/n on inpu
+t line 26.
+LaTeX Font Info:    Encoding `OT1' has changed to `EU1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 26.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> EU1/LinLibertine_R_B.otf(0)/m/n on inp
+ut line 26.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  EU1/LinLibertine_R_B.otf(0)/m/n --> EU1/LinLibertine_R_
+B.otf(0)/m/n on input line 26.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> EU1/LinLibertine_R_B.otf(0)/m/it on in
+put line 26.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> EU1/LinLibertine_R_B.otf(0)/bx/n on in
+put line 26.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> EU1/Arimo_B.ttf(0)/m/n on input line 2
+6.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> EU1/DejaVuSansMono.ttf(0)/m/n on input
+ line 26.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  EU1/LinLibertine_R_B.otf(0)/m/n --> EU1/LinLibertine_R_
+B.otf(0)/bx/n on input line 26.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> EU1/LinLibertine_R_B.otf(0)/bx/it on 
+input line 26.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> EU1/Arimo_B.ttf(0)/bx/n on input line
+ 26.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> EU1/DejaVuSansMono.ttf(0)/bx/n on inpu
+t line 26.
+LaTeX Info: Redefining \microtypecontext on input line 26.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `LinLibertine_R_B.otf' (encoding: EU1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+Package biblatex Info: XeTeX detected.
+(biblatex)             Assuming input encoding 'utf8'.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+
+
+Package biblatex Warning: Data encoding is 'utf8'.
+(biblatex)                Use backend=biber.
+
+\openout4 = `master-blx.bib'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'master.bbl' not found.
+No file master.bbl.
+Package biblatex Info: Reference section=0 on input line 26.
+Package biblatex Info: Reference segment=0 on input line 26.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+\idxtitle@default=\toks46
+\tf@default=\write6
+\openout6 = `master.idx'.
+
+Package index Info: Writing index file master.idx on input line 26.
+\idxtitle@lan=\toks47
+\tf@lan=\write7
+\openout7 = `master.ldx'.
+
+Package index Info: Writing index file master.ldx on input line 26.
+\idxtitle@sbj=\toks48
+\tf@sbj=\write8
+\openout8 = `master.sdx'.
+
+Package index Info: Writing index file master.sdx on input line 26.
+\openout6 = `master.adx'.
+
+Package index Info: Writing index file master.adx on input line 26.
+\idxtitle@wrd=\toks49
+\tf@wrd=\write9
+\openout9 = `master.wdx'.
+
+Package index Info: Writing index file master.wdx on input line 26.
+\idxtitle@rwrd=\toks50
+\tf@rwrd=\write10
+\openout10 = `master.rdx'.
+
+Package index Info: Writing index file master.rdx on input line 26.
+\AtBeginShipoutBox=\box74
+Package hyperref Info: Link coloring OFF on input line 26.
+(/home/snordhoff/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count408
+)
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
+
+(./master.out) (./master.out)
+\@outlinefile=\write11
+\openout11 = `master.out'.
+
+Package marginnote Info: \pdfoutput not 0 and \pdflastxpos available.
+(marginnote)             Extended position detection mode activated.
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(0)/m/n' will be
+(Font)              scaled to size 8.93295pt on input line 28.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `Arimo_B.ttf' (encoding: EU1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.9564119235264212.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B scale = 0.9564119235264212.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-Bold_B scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-Bold_B scale = 0.9564119235264212.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-Italic_B scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-Italic_B scale = 0.9564119235264212.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-BoldItalic_B scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo-BoldItalic_B scale = 0.9564119235264212.
+.................................................
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'Arimo_B.ttf(1)' created for font 'Arimo_B.ttf' with options
+. [Ligatures=TeX,Scale=MatchLowercase,Path=./langsci/fonts/,BoldFont =
+. Arimo-Bold_B.ttf,ItalicFont = Arimo-Italic_B.ttf,BoldItalicFont =
+. Arimo-BoldItalic_B.ttf,Scale=MatchUppercase].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. 
+. <->s*[0.9564119235264212]"[./langsci/fonts/Arimo_B]/OT:script=latn;language=D
+FLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+. 
+. * 'bold' with NFSS spec.:
+. 
+. <->s*[0.9564119235264212]"[./langsci/fonts/Arimo-Bold_B]/OT:script=latn;langu
+age=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+. 
+. * 'italic' with NFSS spec.:
+. 
+. <->s*[0.9564119235264212]"[./langsci/fonts/Arimo-Italic_B]/OT:script=latn;lan
+guage=DFLT;mapping=tex-text;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+. 
+. * 'bold italic' with NFSS spec.:
+. 
+. <->s*[0.9564119235264212]"[./langsci/fonts/Arimo-BoldItalic_B]/OT:script=latn
+;language=DFLT;mapping=tex-text;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. 
+.................................................
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(1)/m/n' will be
+(Font)              scaled to size 10.47263pt on input line 28.
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(1)/m/n' will be
+(Font)              scaled to size 49.7331pt on input line 28.
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(0)/m/n' will be
+(Font)              scaled to size 13.86853pt on input line 28.
+File: ./langsci/graphics/langsci_logo_nocolor.pdf Graphic file (type QTm)
+
+<use  "./langsci/graphics/langsci_logo_nocolor.pdf" >
+(/home/snordhoff/texlive/texmf-dist/tex/generic/oberdiek/se-ascii-print.def
+File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
+
+)
+[-1
+
+
+
+]
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(0)/m/n' will be
+(Font)              scaled to size 8.15796pt on input line 28.
+ (./langsci/seriesinfo/eotms-info.tex
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(0)/m/n' will be
+(Font)              scaled to size 9.78955pt on input line 2.
+) [0]
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.9564119235264212.
+.................................................
+File: ./langsci/graphics/langsci_logo_nocolor.pdf Graphic file (type QTm)
+
+<use  "./langsci/graphics/langsci_logo_nocolor.pdf" > [1
+
+
+]
+
+Package hyperref Warning: Option `colorlinks' has already been used,
+(hyperref)                setting the option has no effect on input line 28.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+(/home/snordhoff/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+
+(/home/snordhoff/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+(/home/snordhoff/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
+)
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'LinLibertine_R_B.otf(1)' created for font
+. 'LinLibertine_R_B.otf' with options
+. [Ligatures=TeX,Ligatures={TeX,Common},Path=./langsci/fonts/,PunctuationSpace=
+0,Numbers={Proportional},BoldFont
+. = LinLibertine_RZ_B.otf,ItalicFont = LinLibertine_RI_B.otf,BoldItalicFont =
+. LinLibertine_RZI_B.otf,BoldSlantedFont = LinLibertine_RZ_B.otf,SlantedFont =
+. LinLibertine_R_B.otf,SlantedFeatures = {FakeSlant=0.25},BoldSlantedFeatures
+. = {FakeSlant=0.25},SmallCapsFeatures = {FakeSlant=0},Numbers=Lining].
+. 
+. This font family consists of the following shapes:
+. 
+. * 'normal' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;+lnum;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;+lnum;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'bold' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+lnum;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+lnum;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'italic' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RI_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+lnum;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RI_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+lnum;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'sl/,FakeSlant=0.25' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;+lnum;slant=0.25;"
+. 
+. * 'small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_R_B]/OT:script=latn;language=DFLT;mapping=t
+ex-text;mapping=tex-text;+liga;+pnum;+lnum;slant=0.25;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'bold italic' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZI_B]/OT:script=latn;language=DFLT;mapping
+=tex-text;mapping=tex-text;+liga;+pnum;+lnum;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+. 
+. * 'sl/,FakeSlant=0.25' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+lnum;slant=0.25;"
+. 
+. * 'bold small caps' with NFSS spec.:
+. 
+. <->"[./langsci/fonts/LinLibertine_RZ_B]/OT:script=latn;language=DFLT;mapping=
+tex-text;mapping=tex-text;+liga;+pnum;+lnum;slant=0.25;+smcp;slant=0;"
+. and font adjustment code:
+. \fontdimen 7\font =0\fontdimen 7\font 
+.................................................
+File: ./langsci/graphics/FULogo_sw_CMYK.pdf Graphic file (type QTm)
+
+<use  "./langsci/graphics/FULogo_sw_CMYK.pdf" > [2] (./gb4e-tests/beginexe.tex)
+(./gb4e-tests/subex.tex) (./gb4e-tests/xlist.tex) (./gb4e-tests/subsubex.tex)
+(./gb4e-tests/exi.tex
+LaTeX Font Info:    Font shape `EU1/DejaVuSansMono.ttf(0)/m/n' will be
+(Font)              scaled to size 8.62987pt on input line 6.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `DejaVuSansMono.ttf' (encoding: EU1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Overfull \hbox (14.8141pt too wide) in paragraph at lines 14--15
+[]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 This sentence has a prime ’ and refers
+ to the example with the label \EU1/DejaVuSansMono.ttf(0)/m/n/10.95 ex:mylabel
+ []
+
+) (./gb4e-tests/ea.tex) (./gb4e-tests/judgment.tex) (./gb4e-tests/gll.tex)
+(./gb4e-tests/glll.tex [3]) (./gb4e-tests/linebreak.tex)
+(./gb4e-tests/footnote.tex) (./gb4e-tests/footnotemark.tex)
+(./gb4e-tests/exinfn.tex) (./gb4e-tests/languageinfo.tex [4])
+(./gb4e-tests/xbox.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 7--59
+
+ []
+
+(./gb4e-tests/jambox.tex) (./gb4e-tests/bars.tex) [5]
+(./gb4e-tests/nontypo-ex.tex) (./gb4e-tests/typo-ex.tex)
+(./table-tests/general.tex) [6] (./crossref-tests/general.tex)
+(./bibtests/cite.tex
+
+LaTeX Warning: Citation 'Chomsky1957' on page 7 undefined on input line 6.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 7 undefined on input line 12.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 7 undefined on input line 12.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 7 undefined on input line 18.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 7 undefined on input line 24.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 7 undefined on input line 24.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 7 undefined on input line 30.
+
+[7]
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 36.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 8 undefined on input line 36.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 42.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 50.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 57.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 57.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 66.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 74.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 82.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 92.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 99.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 99.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 110.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 8 undefined on input line 118.
+
+[8]
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 131.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 137.
+
+
+LaTeX Warning: Citation 'Chomsky1965aspects' on page 9 undefined on input line 
+137.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 145.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 151.
+
+
+LaTeX Warning: Citation 'Chomsky1965aspects' on page 9 undefined on input line 
+151.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 9 undefined on input line 151.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 159.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 165.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 9 undefined on input line 165.
+
+
+LaTeX Warning: Citation 'Chomsky1965aspects' on page 9 undefined on input line 
+165.
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 174.
+
+
+LaTeX Warning: Citation 'Chomsky1965aspects' on page 9 undefined on input line 
+174.
+
+
+LaTeX Warning: Citation 'Chomsky1965cartesian' on page 9 undefined on input lin
+e 174.
+
+
+Overfull \hbox (5.43625pt too wide) in paragraph at lines 178--179
+[]\EU1/DejaVuSansMono.ttf(0)/m/n/10.95 \citet{Chomsky1957,Chomsky1965aspects,Co
+mrie1981,Chomsky1965cartesian} 
+ []
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 180.
+
+
+LaTeX Warning: Citation 'Chomsky1965aspects' on page 9 undefined on input line 
+180.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 9 undefined on input line 180.
+
+
+LaTeX Warning: Citation 'Chomsky1965cartesian' on page 9 undefined on input lin
+e 180.
+
+
+Overfull \hbox (362.18173pt too wide) in paragraph at lines 180--183
+[][]\EU1/LinLibertine_R_B.otf(0)/m/n/10.95 ; []; []; [] []\EU1/DejaVuSansMono.t
+tf(0)/m/n/10.95 \citealt{Chomsky1957,Chomsky1965aspects,Comrie1981,Chomsky1965c
+artesian} 
+ []
+
+
+LaTeX Warning: Citation 'Chomsky1957' on page 9 undefined on input line 184.
+
+
+LaTeX Warning: Citation 'Chomsky1965aspects' on page 9 undefined on input line 
+184.
+
+
+LaTeX Warning: Citation 'Comrie1981' on page 9 undefined on input line 184.
+
+
+LaTeX Warning: Citation 'Chomsky1965cartesian' on page 9 undefined on input lin
+e 184.
+
+
+LaTeX Warning: Citation 'Circov1900' on page 9 undefined on input line 188.
+
+
+LaTeX Warning: Citation 'MeierCircovac1900' on page 9 undefined on input line 1
+88.
+
+)
+Overfull \hbox (4.10641pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+
+Overfull \hbox (12.70216pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+
+Overfull \hbox (8.79301pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+
+Overfull \hbox (14.18042pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+
+Overfull \hbox (11.71666pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+
+Overfull \hbox (18.37427pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+
+Overfull \hbox (12.76787pt too wide) in paragraph at lines 102--102
+[][] 
+ []
+
+[9] [10]
+\openout2 = `backmatter.aux'.
+
+ (./backmatter.tex
+
+LaTeX Warning: Empty bibliography on input line 3.
+
+
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 8.
+
+No file master.and.
+No file master.lnd.
+No file master.snd.
+) [11
+
+
+
+
+
+
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsl
+ine {chapter}{Index}{xi}{section*.2}}
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsl
+ine {section}{Name index}{xi}{section*.3}}
+
+
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsl
+ine {section}{Language index}{xi}{section*.4}}
+
+
+\@writefile{toc}{\defcounter {refsection}{0}\relax }\@writefile{toc}{\contentsl
+ine {section}{Subject index}{xi}{section*.5}}
+
+]
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+ <use  "langsci/graphics/didyoulikethisbook.pdf" >
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+
+<use  "langsci/graphics/didyoulikethisbook.pdf" >
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+
+<use  "langsci/graphics/didyoulikethisbook.pdf"  page1>
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+
+<use  "langsci/graphics/didyoulikethisbook.pdf"  page1>
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+
+<use  "langsci/graphics/didyoulikethisbook.pdf"  page1>
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+
+<use  "langsci/graphics/didyoulikethisbook.pdf"  page1>
+File: langsci/graphics/didyoulikethisbook.pdf Graphic file (type QTm)
+
+<use  "langsci/graphics/didyoulikethisbook.pdf"  page1> [12] [13]
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.8120079233408858.
+.................................................
+.................................................
+. fontspec info: "set-scale"
+. 
+. Arimo_B.ttf scale = 0.9564119235264212.
+.................................................
+LaTeX Font Info:    Font shape `EU1/Arimo_B.ttf(1)/m/n' will be
+(Font)              scaled to size 23.91014pt on input line 107.
+
+Overfull \hbox (21.32785pt too wide) in paragraph at lines 107--107
+[][][][][][][] 
+ []
+
+[14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
+ (./master.aux (./backmatter.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 107.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 107.
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package biblatex Warning: Please (re)run BibTeX on the file(s):
+(biblatex)                master
+(biblatex)                and rerun LaTeX afterwards.
+
+Package logreq Info: Writing requests to 'master.run.xml'.
+\openout1 = `master.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 40963 strings out of 493710
+ 753958 string characters out of 6145917
+ 1162809 words of memory out of 5000000
+ 43653 multiletter control sequences out of 15000+600000
+ 12263 words of font info for 99 fonts, out of 8000000 for 9000
+ 1328 hyphenation exceptions out of 8191
+ 65i,18n,104p,10457b,733s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on master.pdf (16 pages).
