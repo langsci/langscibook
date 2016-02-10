@@ -1,6 +1,6 @@
 # specify thh main file and all the files that you are including
 SOURCE=  main.tex $(wildcard local*.tex) $(wildcard chapters/*.tex) \
-langsci/langscibook.cls
+langscibook.cls
 
 # specify your main target here:
 pdf: main.bbl main.pdf  #by the time main.pdf, bib assures there is a newer aux file
