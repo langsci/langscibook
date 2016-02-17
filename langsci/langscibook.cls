@@ -129,6 +129,10 @@
 \usepackage{graphicx}	% Needed twice
 \usepackage{hyphenat}	% Needed twice
 
+\usepackage{tikz} % Needed for covers and advert page
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{calc}
+
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -176,10 +180,6 @@
  	\setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
  	\setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
  	\usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
- 	\usepackage{tikz}
-
- 	\usetikzlibrary{positioning}
- 	\usetikzlibrary{calc}
  	\hyphenpenalty 750
  	    
  \else
@@ -201,10 +201,6 @@
   \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
   %\setlength{\totalheight}{\seitenhoehe}
   \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
-  \usepackage{tikz}
-  
-  \usetikzlibrary{positioning}
-  \usetikzlibrary{calc}
   \hyphenpenalty 750
   
  \else 
