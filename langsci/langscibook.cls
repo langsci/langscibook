@@ -770,9 +770,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsCoverTitleAuthor
 	\lsCoverLogo}
 
-\usepackage{pdfpages}
+%\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
+%	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
+	\include{langsci/graphics/didyoulikethisbook}
 }
 
 \newcommand{\lsBackPage}{		% Back page
