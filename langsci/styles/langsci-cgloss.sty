@@ -78,7 +78,8 @@
    {\def\@selfnt{\selectfont}}
 
 \def\gll%                  % Introduces 2-line text-and-gloss.
-   {\bgroup %\begin{flushleft}
+   {\raggedright%
+     \bgroup %\begin{flushleft}
      \ifx\@gsingle1%           conditionally force single spacing (hpk/MC)
 	 \def\baselinestretch{1}\@selfnt\fi
 %        \vskip\baselineskip\def\baselinestretch{1}%
