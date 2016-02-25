@@ -141,3 +141,12 @@
   \end{rotate}%
   \rule{0pt}{\rotheight} %add zero width rule to get the right table height
 }
+
+% example metadata
+
+\newcommand{\langinfo}[3]{{\upshape #1\il{#1}~(%
+\ifx\\#2\\%
+\else%
+#2;
+\fi%
+#3)}\nopagebreak[4]\ignorespaces}
