@@ -342,6 +342,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \typesetter{}
 \def\proofreader#1{\gdef\@proofreader{#1}}
 \proofreader{}
+\def\openreviewer#1{\gdef\@openreviewer{#1}}
+\openreviewer{}
 \def\illustrator#1{\gdef\@illustrator{#1}}
 \illustrator{}
 \newcommand{\lsAdditionalFontsImprint}{}
@@ -1250,6 +1252,10 @@ Illustration:
 \if\@proofreader\empty\else
 Proofreading:
 \@proofreader \\
+\fi
+\if\@openreviewer\empty\else
+Open reviewing:
+\@openreviewer \\
 \fi
 Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
 Typesetting software: \XeLaTeX
