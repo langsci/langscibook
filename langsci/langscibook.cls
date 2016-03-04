@@ -275,6 +275,17 @@
 
 \iflsNewtxmath							% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
+
+	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
+	%% due to a bug in XeTeX; unfortunately this is NOT extensively tested!
+	\usepackage{xpatch}
+	\xpretocmd{\textsuperscript}
+	 {{\sbox0{$\textstyle x$}}}
+	 {}{}
+	\AtBeginDocument{%
+	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
+	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
+	}	
 \fi 	
 
 \let\oldtabular\tabular	% number in tabulars
