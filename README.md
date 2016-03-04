@@ -21,7 +21,7 @@ isbndigital | \<isbn\> | the ISBN of the digital release
 isbnsoftcover | \<isbn\> | the ISBN of the soft cover release
 isbnhardcover | \<isbn\> | the ISBN of the hard cover release
 noindex | | remove index
-newtxmath | | switch math fonts to newtxmath (should be default)
+newtxmath | | switch math fonts to newtxmath (**please add this**; it should be default)
 number | \<number\> | number of the book within the series
 openreview | | switch to open review mode
 output | short \| **long** \| inprep \| paper \| guidelines \| cover \| coverbod \| coverdob \| covercreatespace | different output formats
