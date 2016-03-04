@@ -6,7 +6,7 @@ This repository contains the most recent development build. See the [latex-skele
 
 ## class options of langscibook.cls
 
-option | values | meaning
+option | values (defaults in bold face) | meaning
 -------|--------|---------
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **bibtex** \| biber | the backend of BibLaTeX
