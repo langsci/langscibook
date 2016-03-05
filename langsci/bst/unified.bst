@@ -971,23 +971,6 @@ FUNCTION {article}
   format.note output
   fin.entry
 }
-FUNCTION {periodical}
-{ std.status.using.comma
-  start.entry
-  if.url.alt.interword.spacing
-  format.editors output
-  name.or.dash
-  format.book.title "title" output.warn
-  format.series output
-  format.volume output
-  format.number output
-  format.organization "organization" bibinfo.check output
-  format.date "year" output.warn
-  format.note output
-  format.url output
-  fin.entry
-  if.url.std.interword.spacing
-}
 FUNCTION {book}
 { output.bibitem
   author empty$
