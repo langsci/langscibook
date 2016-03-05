@@ -460,6 +460,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\compcitedelim}{\multicitedelim}
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%
+        \defbibheading{references}{\chapter{References}} 
 \else	%BibTeX
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
@@ -493,7 +494,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
     \widowpenalty10000
     \normalmarginpar}
   
-\defbibheading{references}{\chapter{References}} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
