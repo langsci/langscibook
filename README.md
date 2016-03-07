@@ -27,7 +27,7 @@ newtxmath | | switch math fonts to newtxmath (**please add this**; it should be 
 number | \<number\> | number of the book within the series
 openreview | | switch to open review mode
 output | short \| **long** \| inprep \| paper \| guidelines \| cover \| coverbod \| coverdob \| covercreatespace | different output formats
-series | sidl \| __eotms__ \| ... | the series code
+series | sidl \| __eotms__ \| ... | the series code (see series.def for a list of abbreviations)
 showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 url | \<url\> | the URL of the book 
