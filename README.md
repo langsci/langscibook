@@ -16,9 +16,11 @@ collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
 copyright | **CC-BY** \| CC-BY-ND | choice of copyright
+coverus | | prints isbnsoftcoverus instead of isbnsoftcover if output=covercreatespace
 draftmode | | switch to draft mode (adds: draft stamp, indication of overlong lines, date)
 isbndigital | \<isbn\> | the ISBN of the digital release
 isbnsoftcover | \<isbn\> | the ISBN of the soft cover release
+isbnsoftcoverus | \<isbn\> | the ISBN of the US version of soft cover release (used for distribution to US academic institutions)
 isbnhardcover | \<isbn\> | the ISBN of the hard cover release
 noindex | | remove index
 newtxmath | | switch math fonts to newtxmath (**please add this**; it should be default)
@@ -29,16 +31,3 @@ series | sidl \| __eotms__ \| ... | the series code
 showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 url | \<url\> | the URL of the book 
-uscover | | ???
-
-
-
-
-
-
-
-
-
-
-
-

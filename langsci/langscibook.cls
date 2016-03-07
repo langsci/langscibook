@@ -107,7 +107,7 @@
 \DeclareVoidOption{collectiontoclong}{  			
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
-\DeclareVoidOption{uscover}{  			
+\DeclareVoidOption{coverus}{  			
 	\lsUscovertrue}
 \ProcessKeyvalOptions{langscibook}
 
