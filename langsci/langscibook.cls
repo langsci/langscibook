@@ -486,14 +486,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
 %% penalties against widows and orphans in bibliography
-%% http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
+%% http://tex.stackexchange.com/questions/297705/atbeginenvironment-does-not-work-with-natbib/297721#297721
 \usepackage{etoolbox}
-\AtBeginEnvironment{thebibliography}{%
-    \clubpenalty10000
-    \@clubpenalty \clubpenalty
-    \widowpenalty10000
-    \normalmarginpar}
-  
+\apptocmd{\thebibliography}{%
+\clubpenalty\@M
+\@clubpenalty\clubpenalty
+\widowpenalty\@M
+}
+{}{}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
