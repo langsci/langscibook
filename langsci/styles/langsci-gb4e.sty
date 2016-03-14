@@ -482,7 +482,7 @@
 \let\prmbrs=0
 \def\primebars{\let\prmbrs=1}
 \def\obar#1{\ifmmode#1^{0}\else#1$^{0}$\fi}  %% FIX
-\def\mbar#1{\ifmmode#1^{\mathrm{max}}\else#1$^{\mathrm{max}}$\fi}
+\def\mbar#1{\ifmmode#1^{\mathrm{max}}\else#1\textsuperscript{max}\fi}
 \def\ibar#1{\ifx\prmbrs0%
                  \ifmmode\overline{\mathrm{#1}}\else$\overline{\mbox{#1}}$\fi%
             \else\ifmmode#1^{'}\else#1$^{'}$\fi\fi}
