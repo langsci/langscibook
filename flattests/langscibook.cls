@@ -1,1 +1,0 @@
-../flatlangsci/langscibook.cls
