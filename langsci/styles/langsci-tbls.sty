@@ -1,0 +1,47 @@
+\newcommand{\tblsbwbox}[3][]{%
+  \noindent 
+  \colorbox{#2}{\parbox{\textwidth}{
+  \ifthenelse{\equal{#1}{}}{%empty
+    }{ %else
+    \colorbox{white}{\color{lightgray}\includegraphics[width=1cm]{langsci/graphics/#1.eps}}
+    \\
+    }#3}}
+}
+
+\newcommand{\tblsbwboxdark}[2][]{%
+  \noindent
+  \tblsbwbox[#1]{gray}{\parbox{\textwidth}{#2}}
+}
+
+\newcommand{\tblsbwboxlight}[2][]{%
+  \noindent
+  \tblsbwbox[#1]{lightgray}{\parbox{\textwidth}{#2}}
+}
+
+\newcommand{\tblsthinline}{\rule{\textwidth}{.8mm}}
+\newcommand{\tblsthickline}{{\color{gray}\rule{\textwidth}{1.5mm}}}
+
+\newcommand{\tblssandwich}[2]{
+\noindent
+#1\\ 
+#2
+\noindent 
+#1\\ 
+}
+
+\newcommand{\tblsbwthinsandwich}[1]{
+   \tblssandwich{\tblsthinline}{#1}
+}
+
+\newcommand{\tblsbwthicksandwich}[1]{
+   \tblssandwich{\tblsthickline}{#1}
+}
+
+\newenvironment{tblscolbox}{}{}
+\newenvironment{tblscolboxlight}{}{}
+\newenvironment{tblscolboxdark}{}{}
+\newenvironment{tblscolframebox}{}{}
+\newenvironment{tblscolthicksandwich}{}{}
+\newenvironment{tblscolthinsandwich}{}{} 
+
+\newcommand{\boxheader}[1]{\medskip{\Large\bfseries#1}\\}

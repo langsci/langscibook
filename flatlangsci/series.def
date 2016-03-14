@@ -4,7 +4,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{langsci/seriesinfo/colors.def} % color definitions
+\input{colors.def} % color definitions
 
 \newcommand{\calseries}{calseries}
 \newcommand{\eotms}{eotms}

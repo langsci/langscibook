@@ -9,7 +9,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/01/26 Language Science Press]
+\ProvidesClass{langscibook}[2016/01/26 Language Science Press]
 
 %% Default values:
 \usepackage{xspace}
@@ -238,13 +238,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
-\ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi
+\ifxetex\else\ClassError{langscibook}{Please use XeLaTeX!}{}\fi
 	
 \usepackage{amssymb} % has to be loaded before other stuff
 % \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol	
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}	
 \usepackage{fontspec}
-\newcommand{\fontpath}{./langsci/fonts/}
+\newcommand{\fontpath}{./}
 
 \setsansfont[
 	%Ligatures={TeX,Common},		% not supported by ttf
@@ -310,7 +310,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{langsci/seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
+\input{series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -432,8 +432,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=langsci/bst/biblatex-sp-unified,
-		citestyle=langsci/bst/sp-authoryear-comp,
+		style=biblatex-sp-unified,
+		citestyle=sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
 		isbn=false,
@@ -456,7 +456,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\setlength{\bibsep}{0mm}
 	%% unified style sheet for linguistics journals
 	%% http://celxj.org/downloads/unified.bst
-	\bibliographystyle{./langsci/bst/unified} 
+	\bibliographystyle{unified} 
 	%% This does not work ...
 	% \setcitestyle{
 	% notesep={: }, % 2002: 125
@@ -669,7 +669,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pst-barcode}					% for generating bar codes
-\newcommand{\logopath}{./langsci/graphics}
+\newcommand{\logopath}{./}
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
@@ -706,7 +706,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\fi
 	\iflsOpenReview
 		\iflsDraft
-			\ClassError{langsci/langscibook}{Open review mode not compatible with draft mode. Please disable one of them}{}	
+			\ClassError{langscibook}{Open review mode not compatible with draft mode. Please disable one of them}{}	
 		\fi
 		\begin{textblock}{170}(-20,75)
 			\rotatebox{30}{
@@ -772,7 +772,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
+	\includepdf[pages={1}]{didyoulikethisbook.pdf}
 }
 
 \newcommand{\lsBackPage}{		% Back page
@@ -1170,8 +1170,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{./langsci/seriesinfo/\lsSeries-info.tex}{\input{./langsci/seriesinfo/\lsSeries-info}}{
-  Series information: ./langsci/seriesinfo/\lsSeries-info.tex not found!} 
+\IfFileExists{\lsSeries-info.tex}{\input{\lsSeries-info}}{
+  Series information: \lsSeries-info.tex not found!} 
 
 \IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
 	{}
@@ -1335,7 +1335,7 @@ is, or will remain, accurate or appropriate.
 
 \iflsCollection
 	\iflsBiblatex\else
-		\ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
+		\ClassError{langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
 	\fi
 	
 \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
@@ -1475,7 +1475,7 @@ is, or will remain, accurate or appropriate.
 
 
 %% useful commands for glossings:
-\usepackage{./langsci/styles/langsci-lgr}
+\usepackage{langsci-lgr}
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
@@ -1488,7 +1488,7 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./langsci/styles/langsci-basic}
+\usepackage{langsci-basic}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html

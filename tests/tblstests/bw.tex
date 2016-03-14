@@ -1,0 +1,98 @@
+\subsection{Simple boxes}
+
+\lipsum[1]
+
+\tblsbwboxlight{
+\boxheader{This box is light gray}
+\lipsum[2]
+}
+
+\lipsum[14]
+ 
+\tblsbwboxdark{%
+\boxheader{This box is dark gray}
+\lipsum[3]
+}
+ 
+\subsection{Lined boxes}
+
+\lipsum[15]
+
+\tblsbwthinsandwich{
+\boxheader{This box has thin lines around it}
+\lipsum[4]
+}
+
+\lipsum[5]
+
+\tblsbwthicksandwich{
+\boxheader{This box has thick lines around it}
+\lipsum[6]
+}
+
+
+\subsection{Floating boxes}
+\lipsum[7]
+
+\tblsbwboxlight{
+\boxheader{This box is inline}
+\lipsum[8]
+}
+
+\begin{figure}
+\color{red} This dummy figure is used to check whether the floating box interferes with figure numbering
+ \caption{Dummy figure for counting}
+\label{fig:dummycountfiguretbls}
+\end{figure}
+
+
+\begin{figure}
+\tblsbwboxlight{
+\boxheader{This box floats to the top}
+\lipsum[9]
+}
+\end{figure}
+
+\lipsum[11-12]
+
+\begin{figure}
+\color{red}The caption of this figure is only 1 higher than \figref{fig:dummycountfiguretbls}
+ \caption{Dummy figure for counting. The uncaptioned figure with the floating box is not counted.}
+\label{fig:dummycountfiguretbls2}
+\end{figure}
+
+
+\subsection{Boxes with icons}
+\lipsum[13-14]
+
+
+\tblsbwboxlight[glass]{
+\boxheader{This light box has a looking glass icon}
+\lipsum[15]
+}
+
+\lipsum[16]
+ 
+\tblsbwboxdark[bulb]{%
+\boxheader{This dark box has a bulb icon}
+\lipsum[17]
+}
+
+\subsection{Multipage boxes}
+
+
+\lipsum[18]
+
+\tblsbwthinsandwich{
+\boxheader{This box has thin lines around it. The lines repeat on page breaks}
+\lipsum[19-23]
+}
+
+\lipsum[24-25]
+
+\tblsbwthicksandwich{
+\boxheader{This box has thick lines around it. The lines repeat on page breaks}
+\lipsum[26-30]
+}
+
+\lipsum[31]
