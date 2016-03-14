@@ -1,15 +1,29 @@
 \newcommand{\tblsbwbox}[4][]{%
+\\
   \noindent 
-  \colorbox{#2}{\parbox{\textwidth}{
-    %add logo if requested  
-    \ifthenelse{\equal{#1}{}}{}{\colorbox{white}{\color{lightgray}\includegraphics[width=1cm]{langsci/graphics/#1.eps}}\\}
-    %add header
+  \colorbox{#2}{
+\parbox{.97\textwidth}{
+\centering
+\parbox{.9\textwidth}{
+
+    %add logo if requested   
+      \ifthenelse{\equal{#1}{}}{\bigskip}{
+    \begin{flushleft}
+      \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{langsci/graphics/#1.eps}}
+    \end{flushleft}}  
+    %add header 
     \boxheader{#3}
     \begin{multicols*}{2}
     #4
     \end{multicols*}
-    }}
+    \bigskip
+    }
 }
+}
+\\[1em]
+}
+
+ 
 
 \newcommand{\tblsbwboxdark}[3][]{%
   \noindent
@@ -32,18 +46,23 @@
 
 \newcommand{\tblsthinline}{\rule{\textwidth}{.8mm}}
 \newcommand{\tblsthickline}{{\color{gray}\rule{\textwidth}{1.5mm}}}
+\newcommand{\tblsthickcolorline}{{\color{lsYellow}\rule{\textwidth}{1.5mm}}}
 
 \newcommand{\tblssandwich}[3]{
+% \\
 
+\medskip
 \noindent
 #1
+\\[2em]
 \boxheader{#2} 
-
-\noindent 
+\\[1em]
+\noindent%
 #3 
-
+\smallskip
 \noindent
 #1
+\\[1em]
 }
 
 \newcommand{\tblsbwthinsandwich}[2]{
@@ -54,34 +73,34 @@
    \tblssandwich{\tblsthickline}{#1}{#2}
 }
 
+\newcommand{\tblscolthicksandwich}[2]{
+   \tblssandwich{\tblsthickcolorline}{#1}{#2}
+}
+
+\newcommand{\tblscolthinsandwich}[2]{
+   \tblssandwich{\tblsthinline}{#1}{#2}
+}
+
 \newcommand{\tblscolframebox}[3][]{ 
-\fboxrule.8mm
-
-\noindent
+  \fboxrule.8mm
+  \noindent
   \begin{figure}
-\centering
-{
-   \color{lsYellow}\framebox{%
-    \colorbox{white}{\color{black}{
+    \begin{flushleft}
+      \hspace*{3.5mm} 
+      \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{langsci/graphics/#1.eps}}} \\
+    \end{flushleft}
+    \color{lsYellow}\framebox[\textwidth]{% 
+      \color{black}
       \parbox{.92\textwidth}{%
-    \ifthenelse{\equal{#1}{}}{%empty
-    }{ %else
-    {\color{lsYellow}\includegraphics[width=1cm]{langsci/graphics/#1.eps}}  
-    \\
+	\vspace*{.5cm}
+	\boxheader{#2}
+	\begin{multicols*}{2}
+	  #3
+	\end{multicols*}
+      }  
     }
-    \boxheader{#2}
-    \begin{multicols*}{2}
-    #3
-    \end{multicols*}
-
-}
-}
-}
-}
-}
   \end{figure}
 }
-\newenvironment{tblscolthicksandwich}{}{}
-\newenvironment{tblscolthinsandwich}{}{} 
+ 
 
 \newcommand{\boxheader}[1]{\medskip{\Large\bfseries\sffamily #1}}
