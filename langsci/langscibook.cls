@@ -107,7 +107,7 @@
 \DeclareVoidOption{collectiontoclong}{  			
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
-\DeclareVoidOption{uscover}{  			
+\DeclareVoidOption{coverus}{  			
 	\lsUscovertrue}
 \ProcessKeyvalOptions{langscibook}
 
@@ -122,12 +122,15 @@
 	%appendixprefix
 	]{scrbook}
 
-
 \usepackage{etex}
 \reserveinserts{18}
 \usepackage{xstring}	% Needed on Lines 114ff and again on 167
 \usepackage{graphicx}	% Needed twice
 \usepackage{hyphenat}	% Needed twice
+
+\usepackage{tikz} % Needed for covers and advert page
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{calc}
 
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,10 +179,6 @@
  	\setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
  	\setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
  	\usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
- 	\usepackage{tikz}
-
- 	\usetikzlibrary{positioning}
- 	\usetikzlibrary{calc}
  	\hyphenpenalty 750
  	    
  \else
@@ -201,10 +200,6 @@
   \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
   %\setlength{\totalheight}{\seitenhoehe}
   \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
-  \usepackage{tikz}
-  
-  \usetikzlibrary{positioning}
-  \usetikzlibrary{calc}
   \hyphenpenalty 750
   
  \else 
@@ -238,12 +233,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
-\ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi
-	
+\ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi	
 \usepackage{amssymb} % has to be loaded before other stuff
-% \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol	
-\usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}	
-\usepackage{fontspec}
+% \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol
+
+%\usepackage{fontspec}	% already loaded by XeLaTeX
+\PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job 
+\usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \newcommand{\fontpath}{./langsci/fonts/}
 
 \setsansfont[
@@ -279,6 +275,17 @@
 
 \iflsNewtxmath							% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
+
+	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
+	%% due to a bug in XeTeX; unfortunately this is NOT extensively tested!
+	\usepackage{xpatch}
+	\xpretocmd{\textsuperscript}
+	 {{\sbox0{$\textstyle x$}}}
+	 {}{}
+	\AtBeginDocument{%
+	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
+	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
+	}	
 \fi 	
 
 \let\oldtabular\tabular	% number in tabulars
@@ -346,6 +353,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \typesetter{}
 \def\proofreader#1{\gdef\@proofreader{#1}}
 \proofreader{}
+\def\openreviewer#1{\gdef\@openreviewer{#1}}
+\openreviewer{}
 \def\illustrator#1{\gdef\@illustrator{#1}}
 \illustrator{}
 \newcommand{\lsAdditionalFontsImprint}{}
@@ -451,6 +460,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\compcitedelim}{\multicitedelim}
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%
+        \defbibheading{references}{\chapter{References}} 
 \else	%BibTeX
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
@@ -476,15 +486,15 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
 %% penalties against widows and orphans in bibliography
-%% http://tex.stackexchange.com/questions/51257/how-can-i-force-bibliography-items-not-to-be-split-across-pages
+%% http://tex.stackexchange.com/questions/297705/atbeginenvironment-does-not-work-with-natbib/297721#297721
 \usepackage{etoolbox}
-\AtBeginEnvironment{thebibliography}{%
-    \clubpenalty10000
-    \@clubpenalty \clubpenalty
-    \widowpenalty10000
-    \normalmarginpar}
-  
-\defbibheading{references}{\chapter{References}} 
+\apptocmd{\thebibliography}{%
+\clubpenalty\@M
+\@clubpenalty\clubpenalty
+\widowpenalty\@M
+}
+{}{}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -770,9 +780,10 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsCoverTitleAuthor
 	\lsCoverLogo}
 
-\usepackage{pdfpages}
+%\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
+%	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
+	\include{langsci/graphics/didyoulikethisbook}
 }
 
 \newcommand{\lsBackPage}{		% Back page
@@ -1253,6 +1264,10 @@ Illustration:
 \if\@proofreader\empty\else
 Proofreading:
 \@proofreader \\
+\fi
+\if\@openreviewer\empty\else
+Open reviewing:
+\@openreviewer \\
 \fi
 Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
 Typesetting software: \XeLaTeX

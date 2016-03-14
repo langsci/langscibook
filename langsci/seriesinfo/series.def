@@ -60,6 +60,7 @@
 \ifx\lsSeries\lv
 	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkWine}
+	\renewcommand{\lsISSN}{2366-7818}
 \fi
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}

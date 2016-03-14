@@ -138,16 +138,24 @@
 \@definecounter{fnx}
 
 %%%% adapted from latex.tex to get examples in footnotes right
-\long\def\@footnotetext#1{%
-    \@noftnotefalse\setcounter{fnx}{0}%
-    \insert\footins{\reset@font\footnotesize
-    \interlinepenalty\interfootnotelinepenalty
-    \splittopskip\footnotesep
-    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
-    \hsize\columnwidth \@parboxrestore
-   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
-    {\rule{\z@}{\footnotesep}\ignorespaces
-      #1\strut}}\@noftnotetrue}
+%% \long\def\@footnotetext#1{%
+%%     \@noftnotefalse\setcounter{fnx}{0}%
+%%     \insert\footins{\reset@font\footnotesize
+%%     \interlinepenalty\interfootnotelinepenalty
+%%     \splittopskip\footnotesep
+%%     \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+%%     \hsize\columnwidth \@parboxrestore
+%%    \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+%%     {\rule{\z@}{\footnotesep}\ignorespaces
+%%       #1\strut}}\@noftnotetrue}
+
+
+% same effect but more compact
+\let\oldFootnotetext\@footnotetext
+
+\renewcommand\@footnotetext[1]{%
+   \@noftnotefalse\setcounter{fnx}{0}%
+ 	\oldFootnotetext{#1}\@noftnotetrue}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,28 +457,7 @@
  
 % \exewidth{\exnrfont (\theequation)}}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%      example metadata
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\langinfo}[3]{{\upshape #1\il{#1}~(%
-\ifx\\#2\\%
-\else%
-#2;
-\fi%
-#3)}\nopagebreak[4]\ignorespaces}
-
-% % same as above but with linebreak
-% % fix me!!! Please!!
-% \newcommand{\langinfobreak}[3]{{\rm #1\il{#1}~(%
-% \ifx\\#2\\%
-% \else%
-% #2;
-% \fi%
-% #3)}\\\nopagebreak[4]\ignorespaces}
+ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

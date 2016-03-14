@@ -1,3 +1,5 @@
+%%% This version was modified by Language Science Press to include the PERIODICAL entry type 
+%%%
 %%% This is unified.bst, made by Bridget Samuels. It is based on sp.bst (v1.9+)
 %%% coded by Kai von Fintel as the house style for bibliographies in the journal
 %%% Semantics and Pragmatics. The style is based on a style generated 
@@ -970,6 +972,23 @@ FUNCTION {article}
   new.block
   format.note output
   fin.entry
+}
+FUNCTION {periodical}
+{ std.status.using.comma
+  start.entry
+  if.url.alt.interword.spacing
+  format.editors output
+  name.or.dash
+  format.book.title "title" output.warn
+  format.series output
+  format.volume output
+  format.number output
+  format.organization "organization" bibinfo.check output
+  format.date "year" output.warn
+  format.note output
+  format.url output
+  fin.entry
+  if.url.std.interword.spacing
 }
 FUNCTION {book}
 { output.bibitem
