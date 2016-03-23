@@ -25,7 +25,7 @@
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
-\newcommand{\lsOutput}{long}
+\newcommand{\lsOutput}{short}
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
