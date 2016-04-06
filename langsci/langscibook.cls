@@ -16,11 +16,18 @@
 %     Paths
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\fontpath}{./langsci/fonts/} 
-\newcommand{\logopath}{./langsci/graphics/}
-\newcommand{\seriesinfopath}{./langsci/seriesinfo/}
-\newcommand{\bstpath}{./langsci/bst/}
-\newcommand{\stylepath}{./langsci/styles/}
+\newcommand{\fontpath}{} 
+\newcommand{\logopath}{}
+\newcommand{\seriesinfopath}{}
+\newcommand{\bstpath}{}
+\newcommand{\stylepath}{}
+\newcommand{\bertholdfonts}{}	
+\renewcommand{\fontpath}{./langsci/fonts/} 
+\renewcommand{\logopath}{./langsci/graphics/}
+\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
+\renewcommand{\bstpath}{./langsci/bst/}
+\renewcommand{\stylepath}{./langsci/styles/}
+\renewcommand{\bertholdfonts}{_B}	
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -257,7 +264,8 @@
 %\usepackage{fontspec}	% already loaded by XeLaTeX
 \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job 
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
-
+\usepackage{dejavu}
+\usepackage{libertine}
 \setsansfont[
 	%Ligatures={TeX,Common},		% not supported by ttf
 	Scale=MatchLowercase,
@@ -268,7 +276,8 @@
 	]{Arimo_B.ttf}
 		
 \setmonofont[
-	Ligatures={TeX},Scale=MatchLowercase,Path=\fontpath,
+	Ligatures={TeX},Scale=MatchLowercase,
+% 	Path=\fontpath,
 	BoldFont = DejaVuSansMono-Bold.ttf ,
 	SlantedFont = DejaVuSansMono-Oblique.ttf ,				
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
@@ -279,15 +288,15 @@
         Path=\fontpath,
         PunctuationSpace=0,
         Numbers={Proportional},
-        BoldFont = LinLibertine_RZ_B.otf ,
-        ItalicFont = LinLibertine_RI_B.otf ,
-        BoldItalicFont = LinLibertine_RZI_B.otf,
-        BoldSlantedFont = LinLibertine_RZ_B.otf,
-        SlantedFont    = LinLibertine_R_B.otf,
+        BoldFont = LinLibertine_RZ\bertholdfonts .otf ,
+        ItalicFont = LinLibertine_RI\bertholdfonts .otf ,
+        BoldItalicFont = LinLibertine_RZI\bertholdfonts .otf,
+        BoldSlantedFont = LinLibertine_RZ\bertholdfonts .otf,
+        SlantedFont    = LinLibertine_R\bertholdfonts .otf,
         SlantedFeatures = {FakeSlant=0.25},
         BoldSlantedFeatures = {FakeSlant=0.25},
         SmallCapsFeatures = {FakeSlant=0},
-        ]{LinLibertine_R_B.otf}		
+        ]{LinLibertine_R\bertholdfonts .otf}		
 
 \iflsNewtxmath							% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
@@ -333,7 +342,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{langsci/seriesinfo/series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
+\input{\seriesinfopath series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -798,7 +807,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
 %	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
-	\include{langsci/graphics/didyoulikethisbook}
+	
+	\include{\logopath didyoulikethisbook}
 }
 
 \newcommand{\lsBackPage}{		% Back page
