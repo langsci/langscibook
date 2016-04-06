@@ -11,7 +11,24 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{langsci/langscibook}[2016/01/26 Language Science Press]
 
-%% Default values:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     Paths
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\fontpath}{./langsci/fonts/} 
+\newcommand{\logopath}{./langsci/graphics/}
+\newcommand{\seriesinfopath}{./langsci/seriesinfo/}
+\newcommand{\bstpath}{./langsci/bst/}
+\newcommand{\stylepath}{./langsci/styles/}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     Default values
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
 \usepackage{xspace}
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
@@ -131,8 +148,8 @@
 \usepackage{tikz} % Needed for covers and advert page
 	\usetikzlibrary{positioning}
 	\usetikzlibrary{calc}
-
 	
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Output types (moved from below)
@@ -240,7 +257,6 @@
 %\usepackage{fontspec}	% already loaded by XeLaTeX
 \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job 
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
-\newcommand{\fontpath}{./langsci/fonts/}
 
 \setsansfont[
 	%Ligatures={TeX,Common},		% not supported by ttf
@@ -437,12 +453,12 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %% Xelatex likes this, must appear before BibLaTeX:
 \usepackage[hyphens]{url}
 \urlstyle{same}
-
+ 
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=langsci/bst/biblatex-sp-unified,
-		citestyle=langsci/bst/sp-authoryear-comp,
+		style=\bstpath biblatex-sp-unified,
+		citestyle=\bstpath sp-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
 		isbn=false,
@@ -678,8 +694,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{pst-barcode}					% for generating bar codes
-\newcommand{\logopath}{./langsci/graphics}
+\usepackage{pst-barcode}					% for generating bar codes 
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 \newcommand{\lsEditorPrefix}{}
@@ -1181,8 +1196,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{./langsci/seriesinfo/\lsSeries-info.tex}{\input{./langsci/seriesinfo/\lsSeries-info}}{
-  Series information: ./langsci/seriesinfo/\lsSeries-info.tex not found!} 
+\IfFileExists{{\seriesinfopath}\lsSeries-info.tex}{\input{./langsci/seriesinfo/\lsSeries-info}}{
+  Series information: {\seriesinfopath}\lsSeries-info.tex not found!} 
 
 \IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
 	{}
@@ -1490,7 +1505,7 @@ is, or will remain, accurate or appropriate.
 
 
 %% useful commands for glossings:
-\usepackage{./langsci/styles/langsci-lgr}
+\usepackage{\stylepath langsci-lgr}
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
@@ -1503,7 +1518,7 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{./langsci/styles/langsci-basic}
+\usepackage{\stylepath langsci-basic}
 
 %% floats
 %% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
