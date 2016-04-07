@@ -176,7 +176,26 @@
 	\usetikzlibrary{positioning}
 	\usetikzlibrary{calc}
 	
+\newcommand{\logotext}{FU-Logo}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Cover lengths
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\newlength{\csspine} 
+\newlength{\bodspine}
+\newlength{\bleed}
+\newlength{\seitenbreite}
+\newlength{\seitenhoehe}
+\newlength{\spinewidth}
+\newlength{\totalwidth}
+\newlength{\totalheight}
+\setlength{\csspine}{20mm}
+\setlength{\bodspine}{20mm}
+\setlength{\bleed}{3.175mm}
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Output types  
@@ -196,21 +215,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Cover lengths
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-
-\newlength{\csspine} 
-\newlength{\bodspine}
-\newlength{\seitenbreite}
-\newlength{\seitenhoehe}
-\newlength{\spinewidth}
-\newlength{\totalwidth}
-\newlength{\totalheight}
-\newlength{\bleed}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
 %    Page size and text area:
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -221,7 +225,7 @@
  	\setlength{\bleed}{3.175mm}
  	\setlength{\seitenbreite}{169.9mm}
  	\setlength{\seitenhoehe}{244.1mm} 	
- 	\setlength{\spinewidth}{\csspine}			% Create Space Version. Value is in ./localmetadata.tex
+ 	\setlength{\spinewidth}{\csspine} % Create Space Version
  	
  	\usepackage{calc}
 
@@ -244,7 +248,7 @@
   \setlength{\bodfold}{8mm}
   \setlength{\seitenbreite}{192mm}
   \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Gerader Rücken, Kaschiert, papier 80g/m², weiß
-  \setlength{\spinewidth}{\bodspine}         % BoD Version. Value is in ./localmetadata.tex
+  \setlength{\spinewidth}{\bodspine}  
   \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold} 
   \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
   %\setlength{\totalheight}{\seitenhoehe}
@@ -284,9 +288,6 @@
 \usepackage{ifxetex}
 \ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi	
 \usepackage{amssymb} % has to be loaded before other stuff
-% \usepackage{dtklogos}\newcommand{\xelatex}{\XeLaTeX\xspace}	% the XeLaTeX symbol
-
-%\usepackage{fontspec}	% already loaded by XeLaTeX
 \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job 
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \usepackage{dejavu}
@@ -294,7 +295,6 @@
 
 \setmonofont[
 	Ligatures={TeX},Scale=MatchLowercase,
-% 	Path=\fontpath,
 	BoldFont = DejaVuSansMono-Bold.ttf ,
 	SlantedFont = DejaVuSansMono-Oblique.ttf ,				
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
@@ -330,10 +330,10 @@
 	  %Ligatures={TeX,Common},		% not supported by ttf
 	  Scale=MatchLowercase,
 	  Path=\fontpath,
-	  BoldFont = Arimo-Bold-Latin.ttf ,
-	  ItalicFont = Arimo-Italic-Latin.ttf ,				
-	  BoldItalicFont = Arimo-BoldItalic-Latin.ttf 		
-	  ]{Arimo-Regular-Latin.ttf}
+	  BoldFont = Arimo-Bold.ttf ,
+	  ItalicFont = Arimo-Italic.ttf ,				
+	  BoldItalicFont = Arimo-BoldItalic.ttf 		
+	  ]{Arimo-Regular.ttf}
 		  
 
   \setmainfont[
@@ -353,7 +353,7 @@
 
 \fi
 
-\iflsNewtxmath							% some users have problems when installing newtxmath
+\iflsNewtxmath		% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
 
 	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
@@ -1304,8 +1304,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{{\seriesinfopath}\lsSeries-info.tex}{\input{./langsci/seriesinfo/\lsSeries-info}}{
-  Series information: {\seriesinfopath}\lsSeries-info.tex not found!} 
+\IfFileExists{\seriesinfopath \lsSeries-info.tex}{\input{\seriesinfopath\lsSeries-info}}{
+  Series information: \seriesinfopath \lsSeries-info.tex not found!} 
 
 \IfStrEq{\lsISSN}{??}		% \IfStrEq from xstring
 	{}
@@ -1406,9 +1406,12 @@ Habelschwerdter Allee 45\\
 
 Storage and cataloguing done by FU Berlin \\[3ex]  	
 
-\IfFileExists{\logopath/FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath/FULogo_sw_CMYK.pdf}}{FU-Logo} \\[3ex]
+\IfFileExists{\logopath/logo.pdf}{\includegraphics[width=5cm]{\logopath/logo.pdf}}{\logotext} \\[3ex]
+
 
 \vfill
+
+
 
 \noindent
 \lsp has no responsibility for the persistence or accuracy of URLs for
@@ -1548,7 +1551,7 @@ is, or will remain, accurate or appropriate.
 
 	%% write bib entry to file
 	%% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
-	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={\@title},booktitle={\lsCollectionTitle},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={skipbib=true}}}
+	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\@title}},booktitle={{\lsCollectionTitle}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={skipbib=true}}}
  
 	\end{refsection}
 	\end{collectionpaper}}
@@ -1623,7 +1626,5 @@ is, or will remain, accurate or appropriate.
 \renewcommand{\textflush}{flushepinormal}
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
-
-
 
 \endinput
