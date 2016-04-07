@@ -175,19 +175,19 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%      Output types (moved from below)
+%      Output types  
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputShort}{short}
-\newcommand{\lsOutputInprep}{inprep}
-\newcommand{\lsOutputPaper}{paper}
-\newcommand{\lsOutputGuidelines}{guidelines}
-\newcommand{\lsOutputCover}{cover}
-\newcommand{\lsOutputCoverBOD}{coverbod}
-\newcommand{\lsOutputCoverDOB}{coverdob}
-\newcommand{\lsOutputCoverCS}{covercreatespace}
+\newcommand{\lsOutputShort}{short}            % standard book
+\newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
+\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
+\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
+\newcommand{\lsOutputCover}{cover}            % FIXME remove this?
+\newcommand{\lsOutputCoverBOD}{coverbod}      % cover with BoD measurements
+\newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
+\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -198,11 +198,11 @@
 
 \newlength{\csspine} 
 \newlength{\bodspine}
-        \newlength{\seitenbreite}
-        \newlength{\seitenhoehe}
-        \newlength{\spinewidth}
-        \newlength{\totalwidth}
-        \newlength{\totalheight}
+\newlength{\seitenbreite}
+\newlength{\seitenhoehe}
+\newlength{\spinewidth}
+\newlength{\totalwidth}
+\newlength{\totalheight}
 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 % 	\input{./lengths.tex}
@@ -390,14 +390,19 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %% for imprint:
 \def\translator#1{\gdef\@translator{#1}}
 \translator{}
+
 \def\typesetter#1{\gdef\@typesetter{#1}}
 \typesetter{}
+
 \def\proofreader#1{\gdef\@proofreader{#1}}
 \proofreader{}
+
 \def\openreviewer#1{\gdef\@openreviewer{#1}}
 \openreviewer{}
+
 \def\illustrator#1{\gdef\@illustrator{#1}}
 \illustrator{}
+
 \newcommand{\lsAdditionalFontsImprint}{}
 \newcommand{\AdditionalFontImprint}[1]{
 	\edef\fontstemp{\lsAdditionalFontsImprint}
@@ -408,6 +413,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newcommand{\ISBNdigital}[1]{\renewcommand{\lsISBNdigital}{#1}}
 \newcommand{\ISBNsoftcover}[1]{\renewcommand{\lsISBNsoftcover}{#1}}
 \newcommand{\ISBNhardcover}[1]{\renewcommand{\lsISBNhardcover}{#1}}
+
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
 \newcommand{\Series}[1]{\renewcommand{\lsSeries}{#1}}
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
@@ -436,7 +442,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\@afterindentfalse
 	\@afterheading
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -552,6 +557,26 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \usepackage{booktabs} % for nicer lines
 
+%% floats
+%% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
+%% Alter some LaTeX defaults for better treatment of figures:
+
+%% See p.105 of "TeX Unbound" for suggested values.
+%% See pp. 199-200 of Lamport's "LaTeX" book for details.
+%%   General parameters, for ALL pages:
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+%%   Parameters for TEXT pages (not float pages):
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}     % 2 may work better
+\setcounter{dbltopnumber}{2}    % for 2-column pages
+\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+%%  Parameters for FLOAT pages (not text pages):
+\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+    %% N.B.: floatpagefraction MUST be less than topfraction !!
+\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -644,6 +669,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \fi
 
+% Author index
+
 \newcommand{\ia}[1]{\if@noftnote%
 \index{#1}%
 \else%
@@ -652,6 +679,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % \index{#1|fn{\thefootnote}}%
 \fi%
 }
+
+% Subject index
 
 \newcommand{\is}[1]{\if@noftnote%
 \index[sbj]{#1}%
@@ -662,7 +691,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi%
 }
 
-%% \index[lan] für Einträge in separaten Index
+% Language index
+
 \newcommand{\il}[1]{%
 \if@noftnote%
 \index[lan]{#1}%
@@ -676,6 +706,22 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %   \usepackage{showidx} 	% Doesn't work with multiple indexes?
 % \fi
 
+%% this is required by authorindex
+\newif\ifshowindex \showindexfalse
+
+\usepackage{authorindex}
+
+
+\iflsShowIndex	% shows index commands in text
+	\usepackage{soul}
+	\usepackage[textwidth=2cm
+		]{todonotes}
+	\usepackage[noadjust]{marginnote}
+	\renewcommand{\marginpar}{\marginnote}
+	\let\isold\is 
+	\renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
+	\renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
+\fi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -697,9 +743,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	pdfpagelayout=TwoPageRight,   % first page is separate
 	%ps2pdf=true
 	]{hyperref}
-
-%% xelatex hates this.
-%\usepackage{breakurl} 	
 
 %% add hyperlinks for DOIs in bibliography; must appear after hyperref
 \usepackage{doi}
@@ -946,7 +989,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Output types are defined with \newcommand above so they can be used width geometry.
+%% Output types are defined with \newcommand above so they can be used with geometry.
 
 \AtBeginDocument{
 \ifx\lsOutput\lsOutputPaper				% only if output=paper
@@ -1508,10 +1551,6 @@ is, or will remain, accurate or appropriate.
 %% http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto,bookmarksopenlevel=0}
  
-%% this is required by authorindex
-\newif\ifshowindex \showindexfalse
-
-\usepackage{authorindex}
 
 %% quotes are indented at one side only.
 \renewenvironment{quote}
@@ -1529,6 +1568,8 @@ is, or will remain, accurate or appropriate.
 				\item\relax}
 			   {\endlist}
 
+% %standard commands
+\usepackage{\stylepath langsci-basic}
 
 %% useful commands for glossings:
 \usepackage{\stylepath langsci-lgr}
@@ -1544,39 +1585,6 @@ is, or will remain, accurate or appropriate.
 %\setlength{\epigraphwidth}{.2\textwidth}
 \setlength{\afterepigraphskip}{0\baselineskip}
 
-\usepackage{\stylepath langsci-basic}
-
-%% floats
-%% http://mintaka.sdsu.edu/GF/bibliog/latex/floats.html
-%% Alter some LaTeX defaults for better treatment of figures:
-
-    %% See p.105 of "TeX Unbound" for suggested values.
-    %% See pp. 199-200 of Lamport's "LaTeX" book for details.
-    %%   General parameters, for ALL pages:
-    \renewcommand{\topfraction}{0.9}	% max fraction of floats at top
-    \renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
-    %%   Parameters for TEXT pages (not float pages):
-    \setcounter{topnumber}{2}
-    \setcounter{bottomnumber}{2}
-    \setcounter{totalnumber}{4}     % 2 may work better
-    \setcounter{dbltopnumber}{2}    % for 2-column pages
-    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
-    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
-    %%  Parameters for FLOAT pages (not text pages):
-    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
-	%% N.B.: floatpagefraction MUST be less than topfraction !!
-    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
-
-\iflsShowIndex	% shows index commands in text
-	\usepackage{soul}
-	\usepackage[textwidth=2cm
-		]{todonotes}
-	\usepackage[noadjust]{marginnote}
-	\renewcommand{\marginpar}{\marginnote}
-	\let\isold\is 
-	\renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
-	\renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
-\fi
 
 
 \endinput
