@@ -191,7 +191,7 @@
         \newlength{\totalheight}
 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
-	\input{./lengths.tex}
+% 	\input{./lengths.tex}
  
  	\newlength{\bleed}
  	\setlength{\bleed}{3.175mm}
@@ -214,7 +214,7 @@
   \ifx\lsOutput\lsOutputCoverBOD 
      \usepackage{calc}
 
-  \input{./lengths.tex}
+%   \input{./lengths.tex}
   
   \newlength{\bodfold}
   \newlength{\totalspine}
