@@ -60,12 +60,18 @@
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
-\newcommand{\lsDirectoryStructure}{}
+\newcommand{\logotext}{FU-Logo}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     Conditionals
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsOpenReview \lsOpenReviewfalse
 \newif\iflsShowIndex \lsShowIndexfalse
-
 \newif\iflsIndex \lsIndextrue
 \newif\iflsBiblatex \lsBiblatextrue
 \newif\iflsCollection \lsCollectionfalse
@@ -73,10 +79,17 @@
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsBlackandwhite \lsBlackandwhitefalse
+\newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
 
-%% Option handling:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     Option handling
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \RequirePackage{kvoptions}		% for key-value options
 \SetupKeyvalOptions{
 	family=langscibook,
@@ -102,9 +115,9 @@
 \DeclareStringOption{series}[eotms]
 	\define@key{langscibook}{series}{%
 		\renewcommand{\lsSeries}{#1}}
-% \DeclareStringOption{output}[long]
-% 	\define@key{langscibook}{output}{%
-% 		\renewcommand{\lsOutput}{#1}}
+\DeclareStringOption{output}[short]
+	\define@key{langscibook}{output}{%
+		\renewcommand{\lsOutput}{#1}}
 \DeclareStringOption{copyright}[CC-BY]
 	\define@key{langscibook}{copyright}{%
 		\renewcommand{\lsCopyright}{#1}}
@@ -154,29 +167,7 @@
 \DeclareVoidOption{coverus}{  			
 	\lsUscovertrue}
 \ProcessKeyvalOptions{langscibook}
-
-\LoadClass[
-	fontsize=\lsFontsize,	% default is 11pt
-	footnotes=multiple,
-	numbers=noenddot,		% no point after last number of chapters/sections
-	toc=bibliography,
-	index=totoc,
-	%chapterprefix=true,
-	%draft=yes,
-	%appendixprefix
-	]{scrbook}
-
-\usepackage{etex}
-\reserveinserts{18}
-\usepackage{xstring}	% Needed on Lines 114ff and again on 167
-\usepackage{graphicx}	% Needed twice
-\usepackage{hyphenat}	% Needed twice
-
-\usepackage{tikz} % Needed for covers and advert page
-	\usetikzlibrary{positioning}
-	\usetikzlibrary{calc}
 	
-\newcommand{\logotext}{FU-Logo}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -195,7 +186,50 @@
 \setlength{\csspine}{20mm}
 \setlength{\bodspine}{20mm}
 \setlength{\bleed}{3.175mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     Class
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\LoadClass[
+	fontsize=\lsFontsize,	% default is 11pt
+	footnotes=multiple,
+	numbers=noenddot,		% no point after last number of chapters/sections
+	toc=bibliography,
+	index=totoc,
+	%chapterprefix=true,
+	%draft=yes,
+	%appendixprefix
+	]{scrbook}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%     Packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{etex}
+\reserveinserts{18}
+\usepackage{xstring}	% Needed on Lines 114ff and again on 167
+\usepackage{graphicx}	% Needed twice
+\usepackage{hyphenat}	% Needed twice
+
+\usepackage{tikz} % Needed for covers and advert page
+	\usetikzlibrary{positioning}
+	\usetikzlibrary{calc}
+
+\usepackage{pbox}   % boxes with maximum width
 	
+% %standard commands
+\usepackage{\stylepath langsci-basic}
+
+%% useful commands for glossings:
+\usepackage{\stylepath langsci-lgr}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Output types  
@@ -213,36 +247,33 @@
 \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Page size and text area:
+%    Cover creation for print on demand
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 % 	\input{./lengths.tex}
- 
- 	\setlength{\bleed}{3.175mm}
- 	\setlength{\seitenbreite}{169.9mm}
- 	\setlength{\seitenhoehe}{244.1mm} 	
- 	\setlength{\spinewidth}{\csspine} % Create Space Version
- 	
- 	\usepackage{calc}
+    \lsCovertrue
+    \setlength{\bleed}{3.175mm}
+    \setlength{\seitenbreite}{169.9mm}
+    \setlength{\seitenhoehe}{244.1mm} 	
+    \setlength{\spinewidth}{\csspine} % Create Space Version
+    
+    \usepackage{calc}
 
- 	\setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
- 	\setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
- 	\usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
- 	\hyphenpenalty 750
- 	    
- \else
- 
- %% Nested ifx. Here follows the BoD Version
- 
-  \ifx\lsOutput\lsOutputCoverBOD 
-     \usepackage{calc}
-
-%   \input{./lengths.tex}
-  
+    \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
+    \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
+    \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
+    \hyphenpenalty 750
+\fi
+ 	   
+\ifx\lsOutput\lsOutputCoverBOD 
+  \lsCovertrue 	
+  \usepackage{calc}
+%     \input{./lengths.tex}
   \newlength{\bodfold}
   \newlength{\totalspine}
   \setlength{\bodfold}{8mm}
@@ -251,21 +282,27 @@
   \setlength{\spinewidth}{\bodspine}  
   \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold} 
   \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
-  %\setlength{\totalheight}{\seitenhoehe}
+  \setlength{\totalheight}{\seitenhoehe}
   \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
   \hyphenpenalty 750
-  
- \else 
+\fi
  
- 	\usepackage[ 					% if output != cover
- 	papersize={170mm,240mm}
- 	,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
- 	,inner=20.5mm, 
- 	,outer=24.5mm
- 	%,showframe,pass
- 	,marginparwidth=50pt
- 	]{geometry}
- \fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Page size and text area if not cover
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+\iflsCover
+%output types cover have already been handled
+\else % output != cover
+  \usepackage[ 					
+  papersize={170mm,240mm}
+  ,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
+  ,inner=20.5mm, 
+  ,outer=24.5mm
+  %,showframe,pass
+  ,marginparwidth=50pt
+  ]{geometry}
 \fi			
 
 \usepackage[
@@ -276,7 +313,6 @@
 \setlength{\TPVertModule}{\TPHorizModule}
 \textblockorigin{0mm}{0mm}
 
-\usepackage{pbox}   % boxes with maximum width
 	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1075,7 +1111,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 % 	}
 % \fi		
 
-\ifx\lsOutput\lsOutputShort						% only if output=short
+\ifx\lsOutput\lsOutputShort		% only if output=short
 	\setcounter{page}{-1}
 	%% First titlepage:
 	{\lsFrontPage}
@@ -1117,6 +1153,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \fi
 
 \ifx\lsOutput\lsOutputCoverBOD				 % only if output=cover 
+	\lsCovertrue
 	\renewcommand{\maketitle}{}  %no need for this
 	\StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
 	\pagestyle{empty}
@@ -1187,6 +1224,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\fi	
 	
 	\ifx\lsOutput\lsOutputCoverCS	 			 % only if output=covercs 	
+	\lsCovertrue
 	\renewcommand{\maketitle}{}  				 % no need for this 			
 	\StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
 	\pagestyle{empty}
@@ -1610,11 +1648,6 @@ is, or will remain, accurate or appropriate.
 				\item\relax}
 			   {\endlist}
 
-% %standard commands
-\usepackage{\stylepath langsci-basic}
-
-%% useful commands for glossings:
-\usepackage{\stylepath langsci-lgr}
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
