@@ -35,8 +35,6 @@
 \newcommand{\seriesinfopath}{}
 \newcommand{\bstpath}{}
 \newcommand{\stylepath}{}
-\newcommand{\bertholdfonts}{}	
-\newcommand{\arimofonts}{}	
 % Paths can be overwritten with option "nonflat"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,6 +74,7 @@
 \newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsBlackandwhite \lsBlackandwhitefalse
 \newif\iflsUscover \lsUscoverfalse
+\newif\iflsModfonts \lsModfontsfalse
 
 %% Option handling:
 \RequirePackage{kvoptions}		% for key-value options
@@ -131,9 +130,10 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\bstpath}{./langsci/bst/}
-	\renewcommand{\stylepath}{./langsci/styles/}
-	\renewcommand{\bertholdfonts}{_B}	
-	\renewcommand{\arimofonts}{_B}	
+	\renewcommand{\stylepath}{./langsci/styles/}	
+}
+\DeclareVoidOption{modfonts}{  			
+    \lsModfontstrue
 }
 \DeclareVoidOption{showindex}{  			
 	\lsShowIndextrue}
@@ -196,7 +196,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Page size and text area:
+%    Cover lengths
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
@@ -207,15 +207,20 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
+\newlength{\bleed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    Page size and text area:
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
 % 	\input{./lengths.tex}
  
- 	\newlength{\bleed}
  	\setlength{\bleed}{3.175mm}
  	\setlength{\seitenbreite}{169.9mm}
- 	\setlength{\seitenhoehe}{244.1mm}
- 	
+ 	\setlength{\seitenhoehe}{244.1mm} 	
  	\setlength{\spinewidth}{\csspine}			% Create Space Version. Value is in ./localmetadata.tex
  	
  	\usepackage{calc}
@@ -286,15 +291,7 @@
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \usepackage{dejavu}
 \usepackage{libertine}
-\setsansfont[
-	%Ligatures={TeX,Common},		% not supported by ttf
-	Scale=MatchLowercase,
-	Path=\fontpath,
-	BoldFont = Arimo-Bold\arimofonts .ttf ,
-	ItalicFont = Arimo-Italic\arimofonts .ttf ,				
-	BoldItalicFont = Arimo-BoldItalic\arimofonts .ttf 		
-	]{Arimo\arimofonts .ttf}
-		
+
 \setmonofont[
 	Ligatures={TeX},Scale=MatchLowercase,
 % 	Path=\fontpath,
@@ -303,20 +300,58 @@
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
 	]{DejaVuSansMono.ttf}
 
-\setmainfont[
-        Ligatures={TeX,Common},
-        Path=\fontpath,
-        PunctuationSpace=0,
-        Numbers={Proportional},
-        BoldFont = LinLibertine_RZ\bertholdfonts .otf ,
-        ItalicFont = LinLibertine_RI\bertholdfonts .otf ,
-        BoldItalicFont = LinLibertine_RZI\bertholdfonts .otf,
-        BoldSlantedFont = LinLibertine_RZ\bertholdfonts .otf,
-        SlantedFont    = LinLibertine_R\bertholdfonts .otf,
-        SlantedFeatures = {FakeSlant=0.25},
-        BoldSlantedFeatures = {FakeSlant=0.25},
-        SmallCapsFeatures = {FakeSlant=0},
-        ]{LinLibertine_R\bertholdfonts .otf}		
+\iflsModfonts{% use Langsci fonts
+  \setsansfont[
+	  %Ligatures={TeX,Common},		% not supported by ttf
+	  Scale=MatchLowercase,
+	  Path=\fontpath,
+	  BoldFont = Arimo-Bold_B.ttf ,
+	  ItalicFont = Arimo-Italic_B.ttf ,				
+	  BoldItalicFont = Arimo-BoldItalic_B.ttf 		
+	  ]{Arimo_B.ttf}
+		  
+
+  \setmainfont[
+	  Ligatures={TeX,Common},
+	  Path=\fontpath,
+	  PunctuationSpace=0,
+	  Numbers={Proportional},
+	  BoldFont = LinLibertine_RZ_B.otf ,
+	  ItalicFont = LinLibertine_RI_B.otf ,
+	  BoldItalicFont = LinLibertine_RZI_B.otf,
+	  BoldSlantedFont = LinLibertine_RZ_B.otf,
+	  SlantedFont    = LinLibertine_R_B.otf,
+	  SlantedFeatures = {FakeSlant=0.25},
+	  BoldSlantedFeatures = {FakeSlant=0.25},
+	  SmallCapsFeatures = {FakeSlant=0},
+	  ]{LinLibertine_R_B.otf}		
+\else % use standard fonts
+    \setsansfont[
+	  %Ligatures={TeX,Common},		% not supported by ttf
+	  Scale=MatchLowercase,
+	  Path=\fontpath,
+	  BoldFont = Arimo-Bold-Latin.ttf ,
+	  ItalicFont = Arimo-Italic-Latin.ttf ,				
+	  BoldItalicFont = Arimo-BoldItalic-Latin.ttf 		
+	  ]{Arimo-Regular-Latin.ttf}
+		  
+
+  \setmainfont[
+	  Ligatures={TeX,Common},
+	  Path=\fontpath,
+	  PunctuationSpace=0,
+	  Numbers={Proportional},
+	  BoldFont = LinLibertine_RZ.otf ,
+	  ItalicFont = LinLibertine_RI.otf ,
+	  BoldItalicFont = LinLibertine_RZI.otf,
+	  BoldSlantedFont = LinLibertine_RZ.otf,
+	  SlantedFont    = LinLibertine_R.otf,
+	  SlantedFeatures = {FakeSlant=0.25},
+	  BoldSlantedFeatures = {FakeSlant=0.25},
+	  SmallCapsFeatures = {FakeSlant=0},
+	  ]{LinLibertine_R.otf}		
+
+\fi
 
 \iflsNewtxmath							% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
