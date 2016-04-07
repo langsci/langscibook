@@ -37,14 +37,7 @@
 \newcommand{\stylepath}{}
 \newcommand{\bertholdfonts}{}	
 \newcommand{\arimofonts}{}	
-\renewcommand{\fontpath}{./langsci/fonts/} 
-\renewcommand{\logopath}{./langsci/graphics/}
-\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
-\renewcommand{\bstpath}{./langsci/bst/}
-\renewcommand{\stylepath}{./langsci/styles/}
-\renewcommand{\bertholdfonts}{_B}	
-\renewcommand{\arimofonts}{_B}	
-
+% Paths can be overwritten with option "nonflat"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -69,6 +62,8 @@
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
+\newcommand{\lsDirectoryStructure}{}
+
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsOpenReview \lsOpenReviewfalse
 \newif\iflsShowIndex \lsShowIndexfalse
@@ -131,6 +126,15 @@
 	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}}
 \DeclareVoidOption{noindex}{  			
 	\lsIndexfalse}
+\DeclareVoidOption{nonflat}{  			
+	\renewcommand{\fontpath}{./langsci/fonts/} 
+	\renewcommand{\logopath}{./langsci/graphics/}
+	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
+	\renewcommand{\bstpath}{./langsci/bst/}
+	\renewcommand{\stylepath}{./langsci/styles/}
+	\renewcommand{\bertholdfonts}{_B}	
+	\renewcommand{\arimofonts}{_B}	
+}
 \DeclareVoidOption{showindex}{  			
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
