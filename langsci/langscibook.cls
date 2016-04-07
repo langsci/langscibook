@@ -214,19 +214,21 @@
 
 \usepackage{etex}
 \reserveinserts{18}
-\usepackage{xstring}	% Needed on Lines 114ff and again on 167
-\usepackage{graphicx}	% Needed twice
-\usepackage{hyphenat}	% Needed twice
+\usepackage{xstring}	 
+\usepackage{graphicx}	
+\usepackage{hyphenat}	
 
 \usepackage{tikz} % Needed for covers and advert page
 	\usetikzlibrary{positioning}
 	\usetikzlibrary{calc}
 
 \usepackage{pbox}   % boxes with maximum width
+\usepackage[hyphens]{url}
+\urlstyle{same}
+
 	
 % %standard commands
 \usepackage{\stylepath langsci-basic}
-
 %% useful commands for glossings:
 \usepackage{\stylepath langsci-lgr}
 
@@ -245,8 +247,6 @@
 \newcommand{\lsOutputCoverBOD}{coverbod}      % cover with BoD measurements
 \newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
 \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -288,6 +288,7 @@
 \fi
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 %    Page size and text area if not cover
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
@@ -312,8 +313,6 @@
 \setlength{\TPHorizModule}{1mm}
 \setlength{\TPVertModule}{\TPHorizModule}
 \textblockorigin{0mm}{0mm}
-
-	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -555,9 +554,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Xelatex likes this, must appear before BibLaTeX:
-\usepackage[hyphens]{url}
-\urlstyle{same}
  
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
@@ -623,9 +619,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{floatrow}					% For adjusting the position of the caption (default is below).
+\usepackage{floatrow}	% For adjusting the position of the caption (default is below).
 \floatsetup[table]{capposition=top} 	% As for tables, the caption appears above.
-
 %% This sets the default for the positioning of floats
 \renewcommand{\fps@figure}{htbp}
 \renewcommand{\fps@table}{htbp}
@@ -682,99 +677,98 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \iflsIndex
-\usepackage{index}
-% Wie im Stylefile, aber ohne \MakeUppercase
-   \renewenvironment{theindex}{%
-		\edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
-		\if@twocolumn
-			\@restonecolfalse
-		\else
-			\@restonecoltrue
-		\fi
-		\columnseprule \z@
-		\columnsep 35\p@
-		\twocolumn[%
-			\@makeschapterhead{\indexname}%
-			\ifx\index@prologue\@empty\else
-				\index@prologue
-				\bigskip
-			\fi
-		]%
-%        \@mkboth{\MakeUppercase\indexname}%
-%                {\MakeUppercase\indexname}%
-		\@mkboth{\indexname}%
-				{\indexname}%
-		\thispagestyle{plain}%
-		\parindent\z@
-		\parskip\z@ \@plus .3\p@\relax
-		\let\item\@idxitem
-		\providecommand*\seealso[2]{\emph{see also} ##1}
-	}{%
-		\if@restonecol
-			\onecolumn
-		\else
-			\clearpage
-		\fi
-	}
+    \usepackage{index}
+    % Wie im Stylefile, aber ohne \MakeUppercase
+    \renewenvironment{theindex}{%
+		  \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+		  \if@twocolumn
+			  \@restonecolfalse
+		  \else
+			  \@restonecoltrue
+		  \fi
+		  \columnseprule \z@
+		  \columnsep 35\p@
+		  \twocolumn[%
+			  \@makeschapterhead{\indexname}%
+			  \ifx\index@prologue\@empty\else
+				  \index@prologue
+				  \bigskip
+			  \fi
+		  ]%
+  %        \@mkboth{\MakeUppercase\indexname}%
+  %                {\MakeUppercase\indexname}%
+		  \@mkboth{\indexname}%
+				  {\indexname}%
+		  \thispagestyle{plain}%
+		  \parindent\z@
+		  \parskip\z@ \@plus .3\p@\relax
+		  \let\item\@idxitem
+		  \providecommand*\seealso[2]{\emph{see also} ##1}
+	  }{%
+		  \if@restonecol
+			  \onecolumn
+		  \else
+			  \clearpage
+		  \fi
+	  }
 
-\newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
-\newcommand{\lsSubjectIndexTitle}{Subject index}
-\newcommand{\lsNameIndexTitle}{Name index}
+  \newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
+  \newcommand{\lsSubjectIndexTitle}{Subject index}
+  \newcommand{\lsNameIndexTitle}{Name index}
 
-\AtBeginDocument{ % why this?
-\makeindex
-\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
-% \newindex{aut}{adx}{and}{Name index}
-\newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
-\renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
-\newindex{wrd}{wdx}{wnd}{Expression index}
-\newindex{rwrd}{rdx}{rnd}{Reverse expression index}
-}
+  \AtBeginDocument{
+  \makeindex
+  \newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
+  % \newindex{aut}{adx}{and}{Name index}
+  \newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
+  \renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
+  \newindex{wrd}{wdx}{wnd}{Expression index}
+  \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
+  }
 
-\indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
+  \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
-%% \index inside footnote
-\def\infn#1#2{%
-	\hyperpage{#2}n#1%
-}%
-\newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
-\newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
-\newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
-\newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
+  %% \index inside footnote
+  \def\infn#1#2{%
+	  \hyperpage{#2}n#1%
+  }%
+  \newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
+  \newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
+  \newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
+  \newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
 
 \fi
 
 % Author index
-
-\newcommand{\ia}[1]{\if@noftnote%
-\index{#1}%
-\else%
-\edef\tempnumber{\thefootnote}%
-\expandafter\footnoteindex\expandafter{\tempnumber}{#1}%
-% \index{#1|fn{\thefootnote}}%
-\fi%
+\newcommand{\ia}[1]{%
+  \if@noftnote%
+    \index{#1}%
+    \else%
+    \edef\tempnumber{\thefootnote}%
+    \expandafter\footnoteindex\expandafter{\tempnumber}{#1}%
+    % \index{#1|fn{\thefootnote}}%
+  \fi%
 }
 
 % Subject index
-
-\newcommand{\is}[1]{\if@noftnote%
-\index[sbj]{#1}%
-\else%
-\edef\tempnumber{\thefootnote}%
-\expandafter\footnoteindex@sbj\expandafter{\tempnumber}{#1}%
-%\indexftn{#1}{\value{footnotemark}}%
-\fi%
+\newcommand{\is}[1]{%
+  \if@noftnote%
+    \index[sbj]{#1}%
+    \else%
+    \edef\tempnumber{\thefootnote}%
+    \expandafter\footnoteindex@sbj\expandafter{\tempnumber}{#1}%
+    %\indexftn{#1}{\value{footnotemark}}%
+  \fi%
 }
 
 % Language index
-
 \newcommand{\il}[1]{%
-\if@noftnote%
-\index[lan]{#1}%
-\else%
-\edef\tempnumber{\thefootnote}%
-\expandafter\footnoteindex@lan\expandafter{\tempnumber}{#1}%
-\fi%
+  \if@noftnote
+    \index[lan]{#1}%
+    \else%
+    \edef\tempnumber{\thefootnote}%
+    \expandafter\footnoteindex@lan\expandafter{\tempnumber}{#1}%
+  \fi%
 }
 
 % \iflsDraft
@@ -783,19 +777,17 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 %% this is required by authorindex
 \newif\ifshowindex \showindexfalse
-
 \usepackage{authorindex}
 
-
 \iflsShowIndex	% shows index commands in text
-	\usepackage{soul}
-	\usepackage[textwidth=2cm
-		]{todonotes}
-	\usepackage[noadjust]{marginnote}
-	\renewcommand{\marginpar}{\marginnote}
-	\let\isold\is 
-	\renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
-	\renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
+    \usepackage{soul}
+    \usepackage[textwidth=2cm
+	    ]{todonotes}
+    \usepackage[noadjust]{marginnote}
+    \renewcommand{\marginpar}{\marginnote}
+    \let\isold\is 
+    \renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
+    \renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
 \fi
 
 
@@ -940,8 +932,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 %\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-%	\includepdf[pages={1}]{langsci/graphics/didyoulikethisbook.pdf}
-	
 	\include{\logopath didyoulikethisbook}
 }
 
@@ -949,24 +939,24 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\lsCoverBlock
 
 	\begin{textblock}{115}(15,24)  % 30mm-6mm
-	\color{white}
-	{\raggedright
-	 \lsBackTitleFont 
-	 \lsBackTitle \\ \null} 
+	  \color{white}
+	  {\raggedright
+	  \lsBackTitleFont 
+	  \lsBackTitle \\ \null} 
 
-	\lsBackBodyFont
+	  \lsBackBodyFont
 
-	\noindent 
-	\lsBackBody
+	  \noindent 
+	  \lsBackBody
 	\end{textblock}
 
 	\begin{textblock}{40}(105,200)
-	\lsBackBodyFont\sffamily
-	\colorbox{white}{%
-	\begin{pspicture}(0,0)(4.1,1in)
-	\psbarcode[transx=0.4,transy=0.3]{\lsISBNdigital}{includetext height=0.7}{isbn}
-	\end{pspicture}
-	}%	
+	  \lsBackBodyFont\sffamily
+	  \colorbox{white}{%
+	  \begin{pspicture}(0,0)(4.1,1in)
+	  \psbarcode[transx=0.4,transy=0.3]{\lsISBNdigital}{includetext height=0.7}{isbn}
+	  \end{pspicture}
+	  }%	
 	\end{textblock}}
 
 % \newcommand{\lsSpine}{			% Book spine
@@ -990,24 +980,29 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 	\renewcommand{\and}{, }% 
 	\renewcommand{\lastand}{ \& }%  
 	\renewcommand{\affiliation}[1]{}}
+	
 \newcommand{\AuthorAffiliation}{
 	\renewcommand{\and}{\newline\newline} 
 	\renewcommand{\lastand}{\newline\newline} 
 	\renewcommand{\affiliation}[1]{\\[0.5ex]{\normalsize ##1}}}
+
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
 	\renewcommand{\newlineCover}{}%
 	\renewcommand{\newlineTOC}{}%
 	\onlyAuthor\@author}}
+	
 \newcommand{\lsCollectionPaperHeaderTitle}{%
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineTOC}{}
 	\iflsCollectionChapter%
 		\thechapter\hspace{0.5em}\fi
 	\@title}
+	
 \newcommand{\lsCollectionPaperTOC}{{%
 	\iflsCollectionChapter%
 		\protect\numberline{\thechapter}\fi
 	\@title\newline{\normalfont\@author}}}
+	
 \newcommand{\lsCollectionPaperTitle}{{%
 	\renewcommand{\newlineTOC}{}
 	\renewcommand{\newlineCover}{\\}
@@ -1015,15 +1010,19 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 		\vspace*{-2\baselineskip} 
 		{\LARGE Chapter \thechapter}\newline\newline\fi
 	\@title}}
+	
 \newcommand{\lsCollectionPaperAuthor}{{%
 	\renewcommand{\newlineTOC}{}
 	\renewcommand{\newlineCover}{\\[0.5ex]}
 	\AuthorAffiliation\Large\@author}}
+	
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
 	\includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
 	\hspace{0.8em}%
 	\parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
+	
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
+
 \newcommand{\lsPaper}{
 	\renewcommand{\maketitle}{
 		\addtocounter{chapter}{1}
@@ -1633,20 +1632,19 @@ is, or will remain, accurate or appropriate.
  
 
 %% quotes are indented at one side only.
-\renewenvironment{quote}
-			   {\list{}{\rightmargin0pt\leftmargin8mm}%{\rightmargin\leftmargin}%
-				\item\relax}
-			   {\endlist}
+\renewenvironment{quote}{\list{}{\rightmargin0pt\leftmargin8mm}%{\rightmargin\leftmargin}%
+	  \item\relax}
+      {\endlist}
 
 %% quotations are indented at one side only
 %% there is no indentation at the beginning of the quote
 \renewenvironment{quotation}
-			   {\list{}{\listparindent 1.5em%
-						%\itemindent    \listparindent
-						%\rightmargin   \leftmargin
-						\parsep        \z@ \@plus\p@}%
-				\item\relax}
-			   {\endlist}
+      {\list{}{\listparindent 1.5em%
+			  %\itemindent    \listparindent
+			  %\rightmargin   \leftmargin
+			  \parsep        \z@ \@plus\p@}%
+	  \item\relax}
+      {\endlist}
 
 
 %% hspace over width of something without showing it
