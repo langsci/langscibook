@@ -87,7 +87,7 @@
 \newcommand{\lsURL}{http://langsci-press.org/catalog}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
-\newcommand{\lsOutput}{short}
+\newcommand{\lsOutput}{book} %"short" makes no sense if "long" is deprecated
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
@@ -164,7 +164,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \DeclareStringOption{series}[eotms]
 	\define@key{langscibook}{series}{%
 		\renewcommand{\lsSeries}{#1}}
-\DeclareStringOption{output}[short]
+\DeclareStringOption{output}[book]
 	\define@key{langscibook}{output}{%
 		\renewcommand{\lsOutput}{#1}}
 \DeclareStringOption{copyright}[CC-BY]
@@ -268,7 +268,8 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputShort}{short}            % standard book
+\newcommand{\lsOutputBook}{book}             % standard book
+\newcommand{\lsOutputShort}{short}            % standard book, old key name
 \newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
 \newcommand{\lsOutputPaper}{paper}            % paper in edited volume
 \newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
@@ -326,7 +327,36 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %   }
 % \fi   
 
-\ifx\lsOutput\lsOutputShort   % only if output=short
+\ifx\lsOutput\lsOutputBook   % only if output=book
+  \setcounter{page}{-1}
+  %% First titlepage:
+  {\lsFrontPage}
+  %%%%%%%%%%%%%%%%%%%
+  \newpage\thispagestyle{empty}
+  \null\newpage\thispagestyle{empty}
+  %% Series information:
+  {\lsSeriesHistory}
+  %%%%%%%%%%%%%%%%%%%%%
+  \newpage\thispagestyle{empty}
+  %% Schmutztitel:
+  {\renewcommand{\lsCoverBlockColor}{white}
+   \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+  \lsSchmutztitel}
+  %%%%%%%%%%%%%%%%%%%%
+  \AtEndDocument{
+    \lsPageStyleEmpty
+    \null\newpage\thispagestyle{empty}
+    %% Advertisement:
+    {\lsAdvertisement}
+    \null\newpage\thispagestyle{empty}
+    %% Back page:
+    {\lsBackPage}
+    \null\newpage\thispagestyle{empty}
+  }
+\fi
+
+
+\ifx\lsOutput\lsOutputShort  %repeated from \lsOutputBook above for backward compatibility
   \setcounter{page}{-1}
   %% First titlepage:
   {\lsFrontPage}
