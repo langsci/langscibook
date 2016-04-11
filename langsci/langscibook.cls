@@ -363,8 +363,11 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 
 \ifx\lsOutput\lsOutputGuidelines        % only if output=guidelines
   {\setcounter{page}{-1}
+  \renewcommand{\lsAdvertisement}{}
   %% First titlepage:
-  {\lsFrontPage}}
+  {\lsFrontPage}
+  }
+
 \fi
 
 \ifx\lsOutput\lsOutputCoverBOD         % only if output=cover 
@@ -722,17 +725,17 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 %\frenchspacing			
 \usepackage[final]{microtype}
 
-  \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
-  \newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
-  \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
-  \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
-  \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
-  \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
-  \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
-  \newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
-  \newcommand{\lsBackBodyFont}{\lsInsideFont}
-  \newcommand{\lsSpineAuthorFont}{\fontsize{16pt}{14pt}\selectfont}
-  \newcommand{\lsSpineTitleFont}{\sffamily\fontsize{18pt}{14pt}\selectfont}
+\newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{16.75mm}\selectfont #1}
+\newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
+\newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
+\newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
+\newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
+\newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
+\newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
+\newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
+\newcommand{\lsBackBodyFont}{\lsInsideFont}
+\newcommand{\lsSpineAuthorFont}{\fontsize{16pt}{14pt}\selectfont}
+\newcommand{\lsSpineTitleFont}{\sffamily\fontsize{18pt}{14pt}\selectfont}
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 
