@@ -11,7 +11,6 @@ option | values (defaults in bold face) | meaning
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **bibtex** \| biber | the backend of BibLaTeX
 bibtex | | use BibTeX
-blackandwhite | | remove all colors
 collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
@@ -23,6 +22,7 @@ isbnsoftcover | \<isbn\> | the ISBN of the soft cover release
 isbnsoftcoverus | \<isbn\> | the ISBN of the US version of soft cover release (used for distribution to US academic institutions)
 isbnhardcover | \<isbn\> | the ISBN of the hard cover release
 noindex | | remove index
+nonflat | | switch paths when using the langsci folder 
 newtxmath | | switch math fonts to newtxmath (**please add this**; it should be default)
 number | \<number\> | number of the book within the series
 openreview | | switch to open review mode
