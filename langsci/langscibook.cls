@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langscibook.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-26 20:54:30 UTC
+%%      Date: 2016-04-20 20:13:33 UTC
 %%   Purpose: This file defines the basic document class 
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/01/26 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/04/20 Language Science Press]
 
 
   
@@ -93,10 +93,7 @@
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newcommand{\logotext}{FU-Logo}
 
-\newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un
-myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li
-lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe
-al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.}
+\newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.}
 \newcommand{\lsBackTitle}{Back Title}
 \newcommand{\BackTitle}[1]{\renewcommand{\lsBackTitle}{#1}}
 \newcommand{\BackBody}[1]{\renewcommand{\lsBackBody}{#1}} 
@@ -127,7 +124,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
-\newif\iflsBlackandwhite \lsBlackandwhitefalse
 \newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
@@ -173,8 +169,6 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \DeclareStringOption{biblatexbackend}[bibtex]
 	\define@key{langscibook}{biblatexbackend}{%
 		\renewcommand{\lsBiblatexBackend}{#1}}
-\DeclareVoidOption{blackandwhite}{
-	\lsBlackandwhitetrue} 
 % \DeclareVoidOption{long}{
 % 	\renewcommand{\lsOutput}{long}}
 \DeclareVoidOption{smallfont}{  			
@@ -256,7 +250,7 @@ al desirabilite de un nov lingua franca: On refusa continuar payar custosi tradu
 \urlstyle{same}
 
 	
-% %standard commands
+%% standard commands
 \usepackage{\stylepath langsci-basic}
 %% useful commands for glossings:
 \usepackage{\stylepath langsci-lgr}
