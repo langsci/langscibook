@@ -118,7 +118,6 @@
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsOpenReview \lsOpenReviewfalse
 \newif\iflsShowIndex \lsShowIndexfalse
-\newif\iflsIndex \lsIndextrue
 \newif\iflsBiblatex \lsBiblatextrue
 \newif\iflsCollection \lsCollectionfalse
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
@@ -179,8 +178,6 @@
 \DeclareVoidOption{openreview}{
 	\lsOpenReviewtrue%
 	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}}
-\DeclareVoidOption{noindex}{  			
-	\lsIndexfalse}
 \DeclareVoidOption{nonflat}{  			
 	\renewcommand{\fontpath}{./langsci/fonts/} 
 	\renewcommand{\logopath}{./langsci/graphics/}
@@ -1356,68 +1353,66 @@ is, or will remain, accurate or appropriate.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\iflsIndex
-    \usepackage{index}
-    % Wie im Stylefile, aber ohne \MakeUppercase
-    \renewenvironment{theindex}{%
-		  \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
-		  \if@twocolumn
-			  \@restonecolfalse
-		  \else
-			  \@restonecoltrue
-		  \fi
-		  \columnseprule \z@
-		  \columnsep 35\p@
-		  \twocolumn[%
-			  \@makeschapterhead{\indexname}%
-			  \ifx\index@prologue\@empty\else
-				  \index@prologue
-				  \bigskip
-			  \fi
-		  ]%
-  %        \@mkboth{\MakeUppercase\indexname}%
-  %                {\MakeUppercase\indexname}%
-		  \@mkboth{\indexname}%
-				  {\indexname}%
-		  \thispagestyle{plain}%
-		  \parindent\z@
-		  \parskip\z@ \@plus .3\p@\relax
-		  \let\item\@idxitem
-		  \providecommand*\seealso[2]{\emph{see also} ##1}
-	  }{%
-		  \if@restonecol
-			  \onecolumn
-		  \else
-			  \clearpage
-		  \fi
-	  }
+\usepackage{index}
+%% Wie im Stylefile, aber ohne \MakeUppercase
+\renewenvironment{theindex}{%
+  \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
+  \if@twocolumn
+	  \@restonecolfalse
+  \else
+	  \@restonecoltrue
+  \fi
+  \columnseprule \z@
+  \columnsep 35\p@
+  \twocolumn[%
+	  \@makeschapterhead{\indexname}%
+	  \ifx\index@prologue\@empty\else
+		  \index@prologue
+		  \bigskip
+	  \fi
+  ]%
+%        \@mkboth{\MakeUppercase\indexname}%
+%                {\MakeUppercase\indexname}%
+  \@mkboth{\indexname}%
+		  {\indexname}%
+  \thispagestyle{plain}%
+  \parindent\z@
+  \parskip\z@ \@plus .3\p@\relax
+  \let\item\@idxitem
+  \providecommand*\seealso[2]{\emph{see also} ##1}
+}{%
+  \if@restonecol
+	  \onecolumn
+  \else
+	  \clearpage
+  \fi
+}
 
-  \newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
-  \newcommand{\lsSubjectIndexTitle}{Subject index}
-  \newcommand{\lsNameIndexTitle}{Name index}
+\newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
+\newcommand{\lsSubjectIndexTitle}{Subject index}
+\newcommand{\lsNameIndexTitle}{Name index}
 
-  \AtBeginDocument{
-  \makeindex
-  \newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
-  % \newindex{aut}{adx}{and}{Name index}
-  \newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
-  \renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
-  \newindex{wrd}{wdx}{wnd}{Expression index}
-  \newindex{rwrd}{rdx}{rnd}{Reverse expression index}
-  }
+\AtBeginDocument{
+	\makeindex
+	\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
+	% \newindex{aut}{adx}{and}{Name index}
+	\newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
+	\renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
+	\newindex{wrd}{wdx}{wnd}{Expression index}
+	\newindex{rwrd}{rdx}{rnd}{Reverse expression index}
+}
 
-  \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
+\indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
-  %% \index inside footnote
-  \def\infn#1#2{%
-	  \hyperpage{#2}n#1%
-  }%
-  \newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
-  \newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
-  \newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
-  \newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
+%% \index inside footnote
+\def\infn#1#2{%
+	\hyperpage{#2}n#1%
+}%
+\newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
+\newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
+\newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
+\newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
 
-\fi
 
 % Author index
 \newcommand{\ia}[1]{%
