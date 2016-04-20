@@ -107,8 +107,4 @@
 	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
-
-\iflsBlackandwhite
-	\renewcommand{\lsSeriesColor}{black}
-\fi
 }	
