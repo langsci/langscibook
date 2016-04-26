@@ -122,7 +122,7 @@
 \newif\iflsCollection \lsCollectionfalse
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
-\newif\iflsNewtxmath \lsNewtxmathfalse
+\newif\iflsNewtxmath \lsNewtxmathtrue
 \newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
@@ -186,16 +186,15 @@
 	\renewcommand{\stylepath}{./langsci/styles/}	
 }
 \DeclareVoidOption{modfonts}{  			
-    \lsModfontstrue
-}
+    \lsModfontstrue}
 \DeclareVoidOption{showindex}{  			
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
 \DeclareVoidOption{bibtex}{  			
 	\lsBiblatexfalse}
-\DeclareVoidOption{newtxmath}{  			
-	\lsNewtxmathtrue}
+\DeclareVoidOption{nonewtxmath}{  			
+	\lsNewtxmathfalse}
 \DeclareVoidOption{collection}{  			
 	\lsCollectiontrue}
 \DeclareVoidOption{collectionchapter}{  			
