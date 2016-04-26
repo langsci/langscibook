@@ -23,7 +23,7 @@ isbnsoftcoverus | \<isbn\> | the ISBN of the US version of soft cover release (u
 isbnhardcover | \<isbn\> | the ISBN of the hard cover release
 modfonts | | use modified fonts
 nonflat | | switch paths when using the langsci folder 
-newtxmath | | switch math fonts to newtxmath (**please add this**; it should be default)
+nonewtxmath | | suppress newtxmath (and use standard, ugly math fonts)
 number | \<number\> | number of the book within the series
 openreview | | switch to open review mode
 output | short \| **long** \| inprep \| paper \| guidelines \| cover \| coverbod \| coverdob \| covercreatespace | different output formats
