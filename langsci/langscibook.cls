@@ -1454,14 +1454,13 @@ is, or will remain, accurate or appropriate.
 \usepackage{authorindex}
 
 \iflsShowIndex	% shows index commands in text
-    \usepackage{soul}
-    \usepackage[textwidth=2cm
-	    ]{todonotes}
-    \usepackage[noadjust]{marginnote}
+    \RequirePackage{soul}
+    \RequirePackage{todonotes}
+    \RequirePackage[noadjust]{marginnote}
     \renewcommand{\marginpar}{\marginnote}
     \let\isold\is 
     \renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
-    \renewcommand{\is}[1]{\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}
+    \renewcommand{\is}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}}
 \fi
 
 
