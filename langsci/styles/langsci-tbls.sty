@@ -1,3 +1,44 @@
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{skipabove=\baselineskip,skipbelow=\baselineskip,frametitlefont=\sffamily\bfseries\Large,}
+\mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}}
+\newcommand{\langscisymbol}{book2}
+\newlength{\trennlinie}
+\setlength{\trennlinie}{.8mm}
+\newcommand{\tblsboxcolor}{black}
+\mdfdefinestyle{yellowexercise}{%
+	linewidth=1.5pt, linecolor=lsYellow,
+	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm,
+	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, innertopmargin=0, repeatframetitle=false,
+	firstextra={\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{blue}{\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.pdf}}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{blue}{\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.pdf}}};} % if env. does not span multiple pages, print the same.
+%	singleextra={\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {{\color{lsYellow}\input{langsci/graphics/book2.tex}}};} % if env. does not span multiple pages, print the same.
+	}
+	
+\mdfdefinestyle{greyexercise}{%
+	everyline=true,ignorelastdescenders=true,
+	linewidth=0pt,backgroundcolor=black!12,
+	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm, needspace=10\baselineskip,
+	frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
+	firstextra={\node[xshift=5mm,right,draw=black!20, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {{\color{lsYellow}\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.eps}}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\node[xshift=5mm,right,draw=black!20, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {{\color{lsYellow}\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.eps}}};} % if env. does not span multiple pages, print the same.
+	%	singleextra={\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {{\color{lsYellow}\input{langsci/graphics/book2.tex}}};} % if env. does not span multiple pages, print the same.
+	}
+	
+
+\mdfdefinestyle{tblsbox}{%
+	leftline=false, rightline=false, frametitleaboveskip=5mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblsboxcolor, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0	
+	}
+	
+\mdfdefinestyle{tblsframedbox}{%
+	frametitleaboveskip=5mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblsboxcolor, innerbottommargin=5mm, innertopmargin=5mm	
+}	
+	
+\newcommand{\tblsfillcolour}{black!12}
+\mdfdefinestyle{tblsfilledbox}{%
+	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,startinnercode={\begin{multicols}{2}},endinnercode={\end{multicols}}
+}
+	
+
 \newcommand{\tblsbwbox}[4][]{%
 \\
   \noindent 
