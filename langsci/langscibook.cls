@@ -878,7 +878,7 @@
 
 %\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-  \include{\logopath didyoulikethisbook}
+  \include{\logopath langsci-advertisement}
 }
 
 \newcommand{\lsBackPage}{   % Back page
