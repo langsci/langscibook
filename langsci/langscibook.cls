@@ -251,7 +251,6 @@
 % \usepackage{\stylepath langsci-lgr} #FIXME this should probably be replaced by \usepackage{leipzig}
 
 \usepackage{todonotes}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Output types  
@@ -1698,7 +1697,16 @@ is, or will remain, accurate or appropriate.
 }
 
 
+%writeout page numbers for separation of chapters 
 
+\usepackage{newfile}
+\newoutputstream{pages}
+\openoutputfile{\jobname.pgs}{pages}
+\newcommand{\writechapterpages}{\addtostream{pages}{\thepage}}
+
+\AtEndDocument{
+ \closeoutputstream{pages}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
