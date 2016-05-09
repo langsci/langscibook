@@ -499,10 +499,10 @@
     \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=140mm, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
     
     \ifnum\subtitleStrLen=0  % Is there a subtitle?
-      {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
+      {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{aa\lsEditorPrefix\@author\par}}; % If not, just print the author
     \else
       \node [font=\fontsize{25pt}{10mm}\selectfont, right, below = 8mm of lspcls_covertitle.south, text width=140mm] (lspcls_coversubtitle) {\color{\lsCoverFontColour} \lsCoverSubTitleFont \nohyphens{\@subtitle\par}}; 
-      \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=140mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
+      \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=140mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{bb\lsEditorPrefix\@author\par}};
     \fi
     
     \node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
@@ -594,7 +594,9 @@
 
 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
-% 	\input{./lengths.tex}
+% 	\input{./lengths.tex} 
+    \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
+  
     \lsCovertrue
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
@@ -973,6 +975,7 @@
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 \newcommand{\ISBNdigital}[1]{\renewcommand{\lsISBNdigital}{#1}}
 \newcommand{\ISBNsoftcover}[1]{\renewcommand{\lsISBNsoftcover}{#1}}
+\newcommand{\ISBNsoftcoverus}[1]{\renewcommand{\lsISBNsoftcoverus}{#1}}
 \newcommand{\ISBNhardcover}[1]{\renewcommand{\lsISBNhardcover}{#1}}
 
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
