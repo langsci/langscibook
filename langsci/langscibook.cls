@@ -251,6 +251,8 @@
 %% useful commands for glossings:
 % \usepackage{\stylepath langsci-lgr} #FIXME this should probably be replaced by \usepackage{leipzig}
 
+\usepackage{todonotes}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Output types  
@@ -769,7 +771,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{\seriesinfopath series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
+\input{\seriesinfopath langsci-series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1458,7 +1460,6 @@ is, or will remain, accurate or appropriate.
 
 \iflsShowIndex	% shows index commands in text
     \RequirePackage{soul}
-    \RequirePackage{todonotes}
     \RequirePackage[noadjust]{marginnote}
     \renewcommand{\marginpar}{\marginnote}
     \let\isold\is 

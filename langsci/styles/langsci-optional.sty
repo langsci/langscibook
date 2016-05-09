@@ -151,7 +151,12 @@
 \fi%
 #3)}\nopagebreak[4]\ignorespaces}
 
-
-% \newcommand{\tobi}[3][0]{\parbox{0cm}{\raisebox{1em}[0cm]{\hspace{#1mm}#3}}#2}
+ 
 \newcommand{\fittable}[1]{\resizebox{\textwidth}{!}{#1}}
 
+
+% integrate see also in multiple indexes
+\def\igobble#1 {} 
+\newcommand{\langsciseealso}{\par\addvspace{.1\baselineskip}\hspace*{1.4cm}\hangindent=1.4cm\seealso}
+\newcommand{\ilsa}[2]{\il{#1@\igobble | langsciseealso{#2}}}
+\newcommand{\issa}[2]{\is{#1@\igobble | langsciseealso{#2}}}
