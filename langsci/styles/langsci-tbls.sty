@@ -1,7 +1,7 @@
 \usepackage[framemethod=tikz]{mdframed}
 \mdfsetup{skipabove=\baselineskip,skipbelow=\baselineskip,frametitlefont=\sffamily\bfseries\Large,splittopskip=3\baselineskip, splitbottomskip=3\baselineskip}
 \mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}}
-\newcommand{\langscisymbol}{book2}
+\newcommand{\langscisymbol}{book}
 \newlength{\trennlinie}
 \setlength{\trennlinie}{.8mm}
 \newcommand{\tblsboxcolor}{black}
@@ -9,8 +9,8 @@
 	linewidth=1.5pt, linecolor=lsYellow,
 	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm,
 	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, innertopmargin=0, repeatframetitle=false,
-	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{blue}{\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.pdf}}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{blue}{\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.pdf}}};} % if env. does not span multiple pages, print the same.
+	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{blue}{\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.eps}}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{blue}{\includegraphics[width=10mm]{langsci/graphics/\langscisymbol.eps}}};} % if env. does not span multiple pages, print the same.
 %	singleextra={\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {{\color{lsYellow}\input{langsci/graphics/book2.tex}}};} % if env. does not span multiple pages, print the same.
 	}
 	

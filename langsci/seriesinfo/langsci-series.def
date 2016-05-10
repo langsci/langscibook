@@ -4,7 +4,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{\seriesinfopath colors.def} % color definitions
+\input{\seriesinfopath langsci-colors.def} % color definitions
 
 \newcommand{\calseries}{calseries}
 \newcommand{\eotms}{eotms}

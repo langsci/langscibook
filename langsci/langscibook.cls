@@ -17,8 +17,7 @@
 %% This work has the LPPL maintenance status `maintained'.
 %% 
 %% The Current Maintainer of this work is Sebastian Nordhoff.
-%%
-%% This work consists of the files #FIXME
+%% 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,6 +250,7 @@
 %% useful commands for glossings:
 % \usepackage{\stylepath langsci-lgr} #FIXME this should probably be replaced by \usepackage{leipzig}
 
+\usepackage{todonotes}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %      Output types  
@@ -499,10 +499,12 @@
     \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=140mm, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
     
     \ifnum\subtitleStrLen=0  % Is there a subtitle?
+      \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_covertitle.south, text width=140mm]       
       {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
     \else
       \node [font=\fontsize{25pt}{10mm}\selectfont, right, below = 8mm of lspcls_covertitle.south, text width=140mm] (lspcls_coversubtitle) {\color{\lsCoverFontColour} \lsCoverSubTitleFont \nohyphens{\@subtitle\par}}; 
-      \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=140mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
+      \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=140mm] 
+      {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
     \fi
     
     \node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
@@ -592,9 +594,10 @@
 \setlength{\bodspine}{20mm}
 \setlength{\bleed}{3.175mm}
 
-
- \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version 
-% 	\input{./lengths.tex}
+\newcommand{\lsEditorPrefix}{abc}
+ \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
+    \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
+    
     \lsCovertrue
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
@@ -724,7 +727,7 @@
 \fi
 
 \iflsNewtxmath		% some users have problems when installing newtxmath
-	\usepackage[libertine]{newtxmath}
+% 	\usepackage[libertine]{newtxmath}
 
 	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
 	%% due to a bug in XeTeX; unfortunately this is NOT extensively tested!
@@ -767,7 +770,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
-\input{\seriesinfopath series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
+\input{\seriesinfopath langsci-series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -777,8 +780,7 @@
 
 \usepackage{pst-barcode}          % for generating bar codes 
 \newcommand{\lsCoverFontColor}{white}
-\newcommand{\lsCoverBlockColor}{\lsSeriesColor}
-\newcommand{\lsEditorPrefix}{}
+\newcommand{\lsCoverBlockColor}{\lsSeriesColor} 
 \newcommand{\lsEditorSuffix}{}   
 
 \iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
@@ -878,7 +880,7 @@
 
 %\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
-  \include{\logopath didyoulikethisbook}
+  \include{\logopath langsci-advertisement}
 }
 
 \newcommand{\lsBackPage}{   % Back page
@@ -973,6 +975,7 @@
 %\def\@author{\@latex@warning@no@line{No \noexpand\author given}}
 \newcommand{\ISBNdigital}[1]{\renewcommand{\lsISBNdigital}{#1}}
 \newcommand{\ISBNsoftcover}[1]{\renewcommand{\lsISBNsoftcover}{#1}}
+\newcommand{\ISBNsoftcoverus}[1]{\renewcommand{\lsISBNsoftcoverus}{#1}}
 \newcommand{\ISBNhardcover}[1]{\renewcommand{\lsISBNhardcover}{#1}}
 
 \newcommand{\URL}[1]{\renewcommand{\lsURL}{#1}}
@@ -1455,7 +1458,6 @@ is, or will remain, accurate or appropriate.
 
 \iflsShowIndex	% shows index commands in text
     \RequirePackage{soul}
-    \RequirePackage{todonotes}
     \RequirePackage[noadjust]{marginnote}
     \renewcommand{\marginpar}{\marginnote}
     \let\isold\is 
@@ -1695,7 +1697,16 @@ is, or will remain, accurate or appropriate.
 }
 
 
+%writeout page numbers for separation of chapters 
 
+\usepackage{newfile}
+\newoutputstream{pages}
+\openoutputfile{\jobname.pgs}{pages}
+\newcommand{\writechapterpages}{\addtostream{pages}{\thepage}}
+
+\AtEndDocument{
+ \closeoutputstream{pages}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
