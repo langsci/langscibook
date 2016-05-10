@@ -1,5 +1,5 @@
 \usepackage[framemethod=tikz]{mdframed}
-\mdfsetup{skipabove=\baselineskip,skipbelow=\baselineskip,frametitlefont=\sffamily\bfseries\Large,}
+\mdfsetup{skipabove=\baselineskip,skipbelow=\baselineskip,frametitlefont=\sffamily\bfseries\Large,splittopskip=3\baselineskip, splitbottomskip=3\baselineskip}
 \mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}}
 \newcommand{\langscisymbol}{book2}
 \newlength{\trennlinie}
@@ -35,6 +35,10 @@
 	
 \newcommand{\tblsfillcolour}{black!12}
 \mdfdefinestyle{tblsfilledbox}{%
+	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm
+}
+
+\mdfdefinestyle{tblsfilledcolumnbox}{% % Copy of tblsfilledbox with multicols
 	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,startinnercode={\begin{multicols}{2}},endinnercode={\end{multicols}}
 }
 	
