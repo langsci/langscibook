@@ -54,7 +54,6 @@
 \ProvidesClass{langsci/langscibook}[2016/04/20 Language Science Press]
 
 
-  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %     Paths
@@ -268,7 +267,35 @@
 \newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
 \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
+\newcommand{\podspine}[1]{  
+  \renewcommand{\newlineCover}{}
+  \renewcommand{\and}{, }
+  \renewcommand{\lastand}{ \& }
+  \node [above = #1 of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
+  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
+  \renewcommand{\newlineCover}{\\}
+}
+  
+\newcommand{\podgeometry}[4]{
+    \begin{pgfonlayer}{lspcls_bg} % background layer
+      \node [bg, left = #1 of current page.east, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
+      \node [bg, right = #1 of current page.west, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg2) {};
+      \node at (current page.center) [bg, minimum height=#4, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
+    \end{pgfonlayer}   
+}
 
+\newcommand{\podbackcover}{
+    \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\lsBackTitle\par}};
+  \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
+  %\node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west] {\color{\lsCoverFontColour}ISBN \lsBackBodyFont{\lsISBN}};
+  \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
+    \colorbox{white}{
+      \begin{pspicture}(0,0)(4.1,1in)
+        \psbarcode[transx=.4,transy=.3]{\lsISBNhardcover}{includetext height=.7}{isbn}%
+      \end{pspicture}
+      }
+    };
+}
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
@@ -398,28 +425,25 @@
   \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
   \pgfsetlayers{lspcls_bg,main}
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \begin{pgfonlayer}{lspcls_bg} % background layer
-      \node [bg, left = 24.5mm of current page.east, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen
-      \node [bg, right = 24.5mm of current page.west, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg2) {};
-      \node at (current page.center) [bg, minimum height=24.6cm, minimum width=\totalspine,dashed] (lspcls_bgspline) {}; % add draw option for preview mode 
-    \end{pgfonlayer}
+%     \begin{pgfonlayer}{lspcls_bg} % background layer
+%       \node [bg, left = 24.5mm of current page.east, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen
+%       \node [bg, right = 24.5mm of current page.west, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg2) {};
+%       \node at (current page.center) [bg, minimum height=24.6cm, minimum width=\totalspine,dashed] (lspcls_bgspline) {}; % add draw option for preview mode 
+%     \end{pgfonlayer}
   
   %% Text and Graphics Layer
+  \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
   
   %% Spine
-  \renewcommand{\newlineCover}{}
-  \renewcommand{\and}{, }
-  \renewcommand{\lastand}{ \& }
-  \node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
-  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
-  \renewcommand{\newlineCover}{\\}
 
+  \podspine{7.5mm}
   %% Book Cover
   
+  \newcommand{\lsCoverFontColour}{white}
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
-  \newcommand{\lsCoverFontColour}{white}
-  \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=13.7cm, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
+
+  \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=137mm, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
   
   \ifnum\subtitleStrLen=0  % Is there a subtitle?
     \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_covertitle.south, text width=137mm] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
@@ -433,14 +457,7 @@
   \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
   
   %% Book Back Cover
-  \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\lsBackTitle\par}};
-  \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
-  %\node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west] {\color{\lsCoverFontColour}ISBN \lsBackBodyFont{\lsISBN}};
-  \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
-      \colorbox{white}{
-    \begin{pspicture}(0,0)(4.1,1in)
-      \psbarcode[transx=.4,transy=.3]{\lsISBNhardcover}{includetext height=.7}{isbn}%
-    \end{pspicture}}};
+  \podbackcover
   
   %% Guiding Lines
   %\draw [red, thick, dashed] (lspcls_covertitle.west) -- (lspcls_seriesinfo.west);
@@ -463,22 +480,21 @@
     \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
     \pgfsetlayers{lspcls_bg,main}
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \begin{pgfonlayer}{lspcls_bg} % background layer
-      \node [bg, left = 10.675mm of current page.east, fill=\lsSeriesColor, minimum height=22.5cm, minimum width=15.5cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
-      \node [bg, right = 10.675mm of current page.west, fill=\lsSeriesColor, minimum height=22.5cm, minimum width=15.5cm] (lspcls_bg2) {};
-      \node at (current page.center) [bg, minimum height=24cm, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
-    \end{pgfonlayer}    
+
     %% Text and Graphics Layer
   
+    \podgeometry{10.675cm}{22.5cm}{15.5cm}{24cm}
     %% Spine
-    \renewcommand{\newlineCover}{}
-    \renewcommand{\and}{, }
-    \renewcommand{\lastand}{ \& }
-    \node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
-    \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
-    \renewcommand{\newlineCover}{\\} 
+    \podspine{10.675mm}
+%     \renewcommand{\newlineCover}{}
+%     \renewcommand{\and}{, }
+%     \renewcommand{\lastand}{ \& }
+%     \node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
+%     \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
+%     \renewcommand{\newlineCover}{\\} 
     
     %% Book Cover   
+
     \newcommand{\lsCoverFontColour}{white}
     \renewcommand{\and}{\\}
     \renewcommand{\lastand}{\\}
