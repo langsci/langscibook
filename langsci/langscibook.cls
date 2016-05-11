@@ -397,16 +397,6 @@
   \pagestyle{empty}
   \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
   \pgfsetlayers{lspcls_bg,main}
-  \iflsCollection% Check for Collection option
-    \IfSubStr{\@author}{\&}   % if \@author contains \&
-    {\renewcommand{\lsEditorSuffix}{\xspace(eds.)}}
-    {\IfSubStr{\@author}{,} % if \@author contains ,
-      {\renewcommand{\lsEditorSuffix}{\xspace(eds.)}}
-      {\renewcommand{\lsEditorSuffix}{\xspace(ed.)}}} 
-    \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
-  \else
-      \renewcommand{\lsEditorPrefix}{}
-  \fi
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
     \begin{pgfonlayer}{lspcls_bg} % background layer
       \node [bg, left = 24.5mm of current page.east, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen
@@ -418,14 +408,17 @@
   
   %% Spine
   \renewcommand{\newlineCover}{}
+  \renewcommand{\and}{, }
+  \renewcommand{\lastand}{ \& }
   \node [above = 7.5mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
-  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
+  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
   \renewcommand{\newlineCover}{\\}
 
   %% Book Cover
   
+  \renewcommand{\and}{\\}
+  \renewcommand{\lastand}{\\}
   \newcommand{\lsCoverFontColour}{white}
-  
   \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=13.7cm, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
   
   \ifnum\subtitleStrLen=0  % Is there a subtitle?
@@ -463,22 +456,12 @@
   \fi 
   
   \ifx\lsOutput\lsOutputCoverCS        % only if output=covercs   
-    \lsCovertrue
+    \lsCovertrue 
     \renewcommand{\maketitle}{}          % no need for this       
     \StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
     \pagestyle{empty}
     \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
     \pgfsetlayers{lspcls_bg,main}
-    \iflsCollection% Check for Collection option
-    \IfSubStr{\@author}{\&}   % if \@author contains \&
-    {\renewcommand{\lsEditorSuffix}{\xspace(eds.)}}
-    {\IfSubStr{\@author}{,} % if \@author contains ,
-      {\renewcommand{\lsEditorSuffix}{\xspace(eds.)}}
-      {\renewcommand{\lsEditorSuffix}{\xspace(ed.)}}} 
-    \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
-    \else
-    \renewcommand{\lsEditorPrefix}{}
-  \fi
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
     \begin{pgfonlayer}{lspcls_bg} % background layer
       \node [bg, left = 10.675mm of current page.east, fill=\lsSeriesColor, minimum height=22.5cm, minimum width=15.5cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
@@ -489,12 +472,16 @@
   
     %% Spine
     \renewcommand{\newlineCover}{}
+    \renewcommand{\and}{, }
+    \renewcommand{\lastand}{ \& }
     \node [above = 10.675mm of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
     \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
     \renewcommand{\newlineCover}{\\} 
     
     %% Book Cover   
     \newcommand{\lsCoverFontColour}{white}
+    \renewcommand{\and}{\\}
+    \renewcommand{\lastand}{\\}
     
     \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=140mm, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
     
@@ -593,11 +580,8 @@
 \setlength{\csspine}{20mm}
 \setlength{\bodspine}{20mm}
 \setlength{\bleed}{3.175mm}
-
-\newcommand{\lsEditorPrefix}{abc}
+ 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
-    \renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
-    
     \lsCovertrue
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
@@ -781,18 +765,23 @@
 \usepackage{pst-barcode}          % for generating bar codes 
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor} 
-\newcommand{\lsEditorSuffix}{}   
+   
 
 \iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
 \AtBeginDocument{
   \onlyAuthor
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineSpine}{}  
-  \IfSubStr{\@author}{\&}   % if \@author contains \&
-    {\renewcommand{\lsEditorSuffix}{(eds.)}}
-    {\IfSubStr{\@author}{,} % if \@author contains ,
-      {\renewcommand{\lsEditorSuffix}{(eds.)}}
-      {\renewcommand{\lsEditorSuffix}{(ed.)}}}
+  \newcommand{\lsEditorPrefix}{{\Large Edited by\\}}
+  \newcommand{\lsEditorSuffix}{(ed.)}
+  \IfSubStr{\@author}{\lastand}   % if \@author contains \&
+    {
+      \renewcommand{\lsEditorSuffix}{(eds.)}
+    }    
+   \IfSubStr{\@author}{,} % if \@author contains ,
+      {
+        \renewcommand{\lsEditorSuffix}{(eds.)}
+      }      
 }
 \else
 \fi
@@ -1536,7 +1525,7 @@ is, or will remain, accurate or appropriate.
 		\ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
 	\fi
 	
-\renewcommand{\lsEditorPrefix}{{\LARGE Edited by}\\}
+
 \AtBeginDocument{	% for the citation in the footer
 	\onlyAuthor
 	\renewcommand{\newlineCover}{}
