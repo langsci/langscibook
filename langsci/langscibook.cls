@@ -735,14 +735,16 @@
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor} 
    
-
+   
+\newcommand{\lsEditorPrefix}{}
+\newcommand{\lsEditorSuffix}{}
 \iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
 \AtBeginDocument{
   \onlyAuthor
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineSpine}{}  
-  \newcommand{\lsEditorPrefix}{{\Large Edited by\\}}
-  \newcommand{\lsEditorSuffix}{(ed.)}
+  \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
+  \renewcommand{\lsEditorSuffix}{(ed.)}
   \IfSubStr{\@author}{\lastand}   % if \@author contains \&
     {
       \renewcommand{\lsEditorSuffix}{(eds.)}
