@@ -273,7 +273,10 @@
   \StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
   \pagestyle{empty}
   \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
-  \pgfsetlayers{lspcls_bg,main}
+  \pgfsetlayers{lspcls_bg,main}  
+  \renewcommand{\and}{, }% 
+  \renewcommand{\lastand}{ \& }%  
+  \renewcommand{\affiliation}[1]{}
 }
 
 \newcommand{\podspine}[1]{  
@@ -739,21 +742,22 @@
 \newcommand{\lsEditorPrefix}{}
 \newcommand{\lsEditorSuffix}{}
 \iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
-\AtBeginDocument{
-  \onlyAuthor
-  \renewcommand{\newlineCover}{}
-  \renewcommand{\newlineSpine}{}  
-  \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
-  \renewcommand{\lsEditorSuffix}{(ed.)}
-  \IfSubStr{\@author}{\lastand}   % if \@author contains \&
-    {
-      \renewcommand{\lsEditorSuffix}{(eds.)}
-    }    
-   \IfSubStr{\@author}{,} % if \@author contains ,
-      {
-        \renewcommand{\lsEditorSuffix}{(eds.)}
-      }      
-}
+  \AtBeginDocument{
+    \renewcommand{\newlineCover}{}
+    \renewcommand{\newlineSpine}{}  
+    \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
+    \renewcommand{\lsEditorSuffix}{(ed.)}
+    \IfSubStr{\@author}{Press}   % if \@author contains \&
+      %case true
+      {\renewcommand{\lsEditorSuffix}{(eds.)}}
+      %case false
+      {}
+    \IfSubStr{\@author}{,} % if \@author contains ,
+      %case true   
+      {\renewcommand{\lsEditorSuffix}{(eds.)}}
+      %case false
+      {}      
+  }
 \else
 \fi
 
@@ -791,8 +795,8 @@
   \fi}
 
 \newcommand{\lsCoverTitleAuthor}{
-  \renewcommand{\and}{}
-  \renewcommand{\lastand}{}
+  \renewcommand{\and}{\\}
+  \renewcommand{\lastand}{\\}
   \renewcommand{\newlineCover}{\\}
   \renewcommand{\newlineSpine}{}
   \lsCoverBlock
@@ -1579,7 +1583,8 @@ is, or will remain, accurate or appropriate.
 \newcommand{\onlyAuthor}{%    % collection paper
   \renewcommand{\and}{, }% 
   \renewcommand{\lastand}{ \& }%  
-  \renewcommand{\affiliation}[1]{}}
+  \renewcommand{\affiliation}[1]{}
+  }
   
 \newcommand{\AuthorAffiliation}{
   \renewcommand{\and}{\newline\newline} 
