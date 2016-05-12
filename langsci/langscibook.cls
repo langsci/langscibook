@@ -294,7 +294,7 @@
 }
 
 \newcommand{\podbackcover}{
-    \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\lsBackTitle\par}};
+    \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
   \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
   %\node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west] {\color{\lsCoverFontColour}ISBN \lsBackBodyFont{\lsISBN}};
   \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
