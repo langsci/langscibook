@@ -267,6 +267,15 @@
 \newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
 \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
+\newcommand{\podsetup}{
+  \lsCovertrue
+  \renewcommand{\maketitle}{}  %no need for this
+  \StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
+  \pagestyle{empty}
+  \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
+  \pgfsetlayers{lspcls_bg,main}
+}
+
 \newcommand{\podspine}[1]{  
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
@@ -310,6 +319,12 @@
   \node [font=\fontsize{25pt}{10mm}\selectfont,below = 8mm of lspcls_covertitle.south, text width=#1] (lspcls_coversubtitle) {\color{\lsCoverFontColour} \lsCoverSubTitleFont \nohyphens{\@subtitle}\par}; 
   \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=#1] {\color{\lsCoverFontColour}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
   \fi
+}
+
+\newcommand{\podcoverbottomtext}{
+  \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
+  \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
+  \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};  
 }
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
@@ -433,84 +448,43 @@
 \fi
 
 \ifx\lsOutput\lsOutputCoverBOD         % only if output=cover 
-  \lsCovertrue
-  \renewcommand{\maketitle}{}  %no need for this
-  \StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
-  \pagestyle{empty}
-  \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
-  \pgfsetlayers{lspcls_bg,main}
-  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-%     \begin{pgfonlayer}{lspcls_bg} % background layer
-%       \node [bg, left = 24.5mm of current page.east, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen
-%       \node [bg, right = 24.5mm of current page.west, fill=\lsSeriesColor, minimum height=23.1cm, minimum width=15.2cm] (lspcls_bg2) {};
-%       \node at (current page.center) [bg, minimum height=24.6cm, minimum width=\totalspine,dashed] (lspcls_bgspline) {}; % add draw option for preview mode 
-%     \end{pgfonlayer}
-  
-  %% Text and Graphics Layer
-  \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
-  
-  %% Spine
-
-  \podspine{7.5mm}
-  %% Book Cover
-  \podfrontcovertoptext{137mm}
-  
-  
-  \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
-  \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
-  \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
-  
-  %% Book Back Cover
-  \podbackcover
-  
-  %% Guiding Lines
-  %\draw [red, thick, dashed] (lspcls_covertitle.west) -- (lspcls_seriesinfo.west);
-  
-  % \node [below right=17mm and 17mm of current page.north west] (GL1) {};
-  % \node [above left=17mm and 17mm of current page.south east] (GL2) {};
-  % \draw [dashed, orange, thick] (GL1) -| (GL2) -| (GL1);
-  % 
-  
-  \end{tikzpicture} 
+  \podsetup  
+  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
+    \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
+    \podspine{7.5mm}  
+    \podfrontcovertoptext{137mm}  
+    \podcoverbottomtext    
+    \podbackcover  
+  \end{tikzpicture}  
+  %exit the document right here
   \end{titlepage}
-  \end{document}     % the cover and nothing else.
+  \end{document}    
   \fi 
   
   
 %   ============================
 \ifx\lsOutput\lsOutputCoverCS        % only if output=covercs   
-\lsCovertrue 
-\renewcommand{\maketitle}{}          % no need for this       
-\StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
-\pagestyle{empty}
-\pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
-\pgfsetlayers{lspcls_bg,main}
-\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-\begin{pgfonlayer}{lspcls_bg} % background layer
-\node [bg, left = 10.675mm of current page.east, fill=\lsSeriesColor, minimum height=22.5cm, minimum width=15.5cm] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
-\node [bg, right = 10.675mm of current page.west, fill=\lsSeriesColor, minimum height=22.5cm, minimum width=15.5cm] (lspcls_bg2) {};
-\node at (current page.center) [bg, minimum height=24cm, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
-\end{pgfonlayer}    
-%% Text and Graphics Layer
-
-%% Spine
-\podspine{10.675mm}
- 
-%% Book Cover  
-\podfrontcovertoptext{140mm}
-
-\node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
-\node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
-\path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
-
-%% Book Back Cover
-\podbackcover
-    \end{tikzpicture} 
-    \end{titlepage}
-    \end{document}     % the cover and nothing else.
-    \fi   
+  \podsetup
+  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+    \podgeometry{10.675mm}{22.5cm}{15.5cm}{24cm}
+    \podspine{10.675mm}
+    \podfrontcovertoptext{140mm}
+    \podcoverbottomtext
+%     %unclear why this was different between BOD and CS
+%     %-----------------------------
+%     \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
+%     \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
+% %     \node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
+%     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
+%     %-----------------------------
+    \podbackcover
+  \end{tikzpicture} 
+  %exit the document right here  
+  \end{titlepage}
+  \end{document}      
+\fi   
     
-    \end{titlepage}
+\end{titlepage}
 
 \frontmatter
 \renewcommand{\frontmatter}{}
