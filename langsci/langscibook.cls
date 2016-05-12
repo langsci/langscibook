@@ -29,6 +29,7 @@
 %   \- Option handling
 %   \- MAIN CLASS
 %   \- General packages
+%   \- print on demand macros
 %   \- Output types (book, draft, cover)
 %   \- Page geometry
 %   \- Fonts 
@@ -248,24 +249,14 @@
 \usepackage{\stylepath langsci-basic}
 %% useful commands for glossings:
 % \usepackage{\stylepath langsci-lgr} #FIXME this should probably be replaced by \usepackage{leipzig}
-
 \usepackage{todonotes}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%      Output types  
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputBook}{book}             % standard book
-\newcommand{\lsOutputShort}{short}            % standard book, old key name
-\newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
-\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
-\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
-\newcommand{\lsOutputCover}{cover}            % FIXME remove this?
-\newcommand{\lsOutputCoverBOD}{coverbod}      % cover with BoD measurements
-\newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
-\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%      Print on demand macros
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\podsetup}{
   \lsCovertrue
@@ -329,6 +320,24 @@
   \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
   \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};  
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%      Output types  
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \newcommand{\lsOutputLong}{long}
+\newcommand{\lsOutputBook}{book}             % standard book
+\newcommand{\lsOutputShort}{short}            % standard book, old key name
+\newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
+\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
+\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
+\newcommand{\lsOutputCover}{cover}            % FIXME remove this?
+\newcommand{\lsOutputCoverBOD}{coverbod}      % cover with BoD measurements
+\newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
+\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
+
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
