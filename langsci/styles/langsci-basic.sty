@@ -33,7 +33,9 @@
 \newcommand{\citegen}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
 
 \newcommand{\protectedex}[1]{
-\parbox{\textwidth}{#1}
+\noindent
+\parbox{\textwidth}{ 
+#1}
 }
 
 \newcommand{\largerpage}[1][1]{
@@ -41,3 +43,4 @@
 }
 
 \newcommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}} 
+
