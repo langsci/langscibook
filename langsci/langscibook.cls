@@ -270,11 +270,17 @@
   \renewcommand{\affiliation}[1]{}
 }
 
+% \usepackage[outline]{contour}
+
 \newcommand{\podspine}[1]{  
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
   \renewcommand{\lastand}{ \& }
   \node [above = #1 of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
+% add number on spine
+%   \node [below = -7mm of lspcls_splinelogo] (lspcls_splinenumber)  { \hspace*{4mm}{\parbox{.37cm}{\centering \contour{\lsSeriesColor}{\color{white}\sffamily \large \lsSeriesNumber }}}};
+%   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\centering\sffamily \large \lsSeriesNumber }}};
+%   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
   \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
   \renewcommand{\newlineCover}{\\}
 }
