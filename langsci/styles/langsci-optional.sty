@@ -167,3 +167,7 @@
 \newenvironment{widetabular}[1][1]
   {\tabularx{#1\textwidth}}
   {\endtabularx}
+
+
+\newcommand{\citetv}[1]{\citeauthor{#1} (\citeyear*{#1} [this volume])}
+\newcommand{\citepv}[1]{(\citealt{#1} [this volume])}
