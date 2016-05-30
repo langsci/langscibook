@@ -286,13 +286,13 @@
 %   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
 %
 \node [above = 225mm of lspcls_bgspline.south] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
-{\parbox{.37cm}{
-% \centering
-\sffamily 
-\huge
-\lsSeriesNumber 
-}
-}
+  {\parbox{.37cm}{
+  % \centering
+    \sffamily 
+    \huge
+    \lsSeriesNumber 
+  }
+  }
 };
 
   \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
