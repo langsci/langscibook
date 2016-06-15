@@ -314,7 +314,7 @@
   \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
     \colorbox{white}{
       \begin{pspicture}(0,0)(4.1,1in)
-        \psbarcode[transx=.4,transy=.3]{\lsISBNhardcover}{includetext height=.7}{isbn}%
+        \psbarcode[transx=.4,transy=.3]{\lsISBNcover}{includetext height=.7}{isbn}%
       \end{pspicture}
       }
     };
@@ -485,7 +485,8 @@
     \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
     \podspine{7.5mm}  
     \podfrontcovertoptext{137mm}  
-    \podcoverbottomtext    
+    \podcoverbottomtext
+    \newcommand{\lsISBNcover}{\lsISBNhardcover}
     \podbackcover  
   \end{tikzpicture}  
   %exit the document right here
@@ -509,6 +510,7 @@
 % %     \node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
 %     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 %     %-----------------------------
+	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
     \podbackcover
   \end{tikzpicture} 
   %exit the document right here  
@@ -570,6 +572,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 % For output type cover
+\usepackage{catchfilebetweentags}
 \newlength{\csspine} 
 \newlength{\bodspine}
 \newlength{\bleed}
@@ -578,8 +581,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\setlength{\csspine}{20mm}
-\setlength{\bodspine}{20mm}
+\ExecuteMetaData[localmetadata.tex]{coverdimen} % Get only the information between the tag "coverdimen" from localmetadate.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
