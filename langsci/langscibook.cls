@@ -1322,6 +1322,18 @@ is, or will remain, accurate or appropriate.
     %% N.B.: floatpagefraction MUST be less than topfraction !!
 \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 
+% \usepackage{setspace}
+% \usepackage{caption}
+% \captionsetup{labelfont=bf} 
+% \captionsetup{%
+% font={%
+% stretch=.8%
+% ,small%
+% },%
+% width=.8\textwidth
+% }
+
+\setcapindent{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Appendices:
