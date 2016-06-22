@@ -320,12 +320,12 @@
     };
 }
 
-\newcommand{\podfrontcovertoptext}[1]{
+\newcommand{\podfrontcovertoptext}[2]{
   \newcommand{\lsCoverFontColour}{white}
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
   
-  \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
+  \node [execute at begin node={}, font=\fontsize{#2}{17.25mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
   
   \ifnum\subtitleStrLen=0  % Is there a subtitle?
   \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_covertitle.south, text width=#1] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
@@ -484,7 +484,7 @@
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
     \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
     \podspine{7.5mm}  
-    \podfrontcovertoptext{137mm}  
+    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
     \podbackcover  
@@ -501,7 +501,7 @@
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
     \podgeometry{10.675mm}{22.5cm}{15.5cm}{24cm}
     \podspine{10.675mm}
-    \podfrontcovertoptext{140mm}
+    \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
     \podcoverbottomtext
 %     %unclear why this was different between BOD and CS
 %     %-----------------------------
