@@ -286,8 +286,8 @@
 %   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
 %
 \node [above = 225mm of lspcls_bgspline.south] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
-  {\parbox{.37cm}{
-  % \centering
+  {\parbox{.47cm}{
+   \centering
     \sffamily 
     \huge
     \lsSeriesNumber 
