@@ -594,7 +594,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\ExecuteMetaData[localmetadata.tex]{coverdimen} % Get only the information between the tag "coverdimen" from localmetadate.tex
+\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\wlog{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
