@@ -258,6 +258,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Basic cover commands, including PGF layers
 \newcommand{\podsetup}{
   \lsCovertrue
   \renewcommand{\maketitle}{}  %no need for this
@@ -272,6 +273,8 @@
 
 % \usepackage[outline]{contour}
 
+% Content creation for the spine. Including Logo, author, title, and volume number on spine. 
+% Argument 1: Bottom margin, i.e. distance between the canvas' bottom and the spine logo's bottom.
 \newcommand{\podspine}[1]{  
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
@@ -298,7 +301,12 @@
   \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
   \renewcommand{\newlineCover}{\\}
 }
-  
+
+% Fill the canvas for the cover with coloured areas on back and front cover
+% Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
+% Argument 2: Height of the coloured title and backtitle form. Input: 12.45cm
+% Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
+% Argument 4: Height of the spine.
 \newcommand{\podgeometry}[4]{
     \begin{pgfonlayer}{lspcls_bg} % background layer
       \node [bg, left = #1 of current page.east, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
@@ -307,6 +315,7 @@
     \end{pgfonlayer}   
 }
 
+% Generates the content of the back cover
 \newcommand{\podbackcover}{
     \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
   \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
@@ -320,6 +329,9 @@
     };
 }
 
+% Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
+% Argument 1: Text width on the front cover. Input: 12.34mm
+% Argument 2: Font size on the front cover. Adjust to compensate varying text width Input: 12.34pt
 \newcommand{\podfrontcovertoptext}[2]{
   \newcommand{\lsCoverFontColour}{white}
   \renewcommand{\and}{\\}
@@ -335,6 +347,7 @@
   \fi
 }
 
+% Generates the bottom half of the front cover content: series, series number, logo.
 \newcommand{\podcoverbottomtext}{
   \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
   \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
