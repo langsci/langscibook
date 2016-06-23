@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/04/20 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/06/22 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -258,6 +258,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Basic cover commands, including PGF layers
 \newcommand{\podsetup}{
   \lsCovertrue
   \renewcommand{\maketitle}{}  %no need for this
@@ -272,6 +273,8 @@
 
 % \usepackage[outline]{contour}
 
+% Content creation for the spine. Including Logo, author, title, and volume number on spine. 
+% Argument 1: Bottom margin, i.e. distance between the canvas' bottom and the spine logo's bottom.
 \newcommand{\podspine}[1]{  
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
@@ -286,8 +289,8 @@
 %   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
 %
 \node [above = 225mm of lspcls_bgspline.south] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
-  {\parbox{.37cm}{
-  % \centering
+  {\parbox{.47cm}{
+   \centering
     \sffamily 
     \huge
     \lsSeriesNumber 
@@ -298,7 +301,12 @@
   \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
   \renewcommand{\newlineCover}{\\}
 }
-  
+
+% Fill the canvas for the cover with coloured areas on back and front cover
+% Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
+% Argument 2: Height of the coloured title and backtitle form. Input: 12.45cm
+% Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
+% Argument 4: Height of the spine.
 \newcommand{\podgeometry}[4]{
     \begin{pgfonlayer}{lspcls_bg} % background layer
       \node [bg, left = #1 of current page.east, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
@@ -307,6 +315,7 @@
     \end{pgfonlayer}   
 }
 
+% Generates the content of the back cover
 \newcommand{\podbackcover}{
     \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
   \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
@@ -320,12 +329,15 @@
     };
 }
 
-\newcommand{\podfrontcovertoptext}[1]{
+% Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
+% Argument 1: Text width on the front cover. Input: 12.34mm
+% Argument 2: Font size on the front cover. Adjust to compensate varying text width Input: 12.34pt
+\newcommand{\podfrontcovertoptext}[2]{
   \newcommand{\lsCoverFontColour}{white}
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
   
-  \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
+  \node [execute at begin node={}, font=\fontsize{#2}{17.25mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
   
   \ifnum\subtitleStrLen=0  % Is there a subtitle?
   \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_covertitle.south, text width=#1] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
@@ -335,6 +347,7 @@
   \fi
 }
 
+% Generates the bottom half of the front cover content: series, series number, logo.
 \newcommand{\podcoverbottomtext}{
   \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
   \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
@@ -484,7 +497,7 @@
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
     \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
     \podspine{7.5mm}  
-    \podfrontcovertoptext{137mm}  
+    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
     \podbackcover  
@@ -501,7 +514,7 @@
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
     \podgeometry{10.675mm}{22.5cm}{15.5cm}{24cm}
     \podspine{10.675mm}
-    \podfrontcovertoptext{140mm}
+    \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
     \podcoverbottomtext
 %     %unclear why this was different between BOD and CS
 %     %-----------------------------
@@ -581,7 +594,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\ExecuteMetaData[localmetadata.tex]{coverdimen} % Get only the information between the tag "coverdimen" from localmetadate.tex
+\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\wlog{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
