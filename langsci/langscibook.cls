@@ -274,12 +274,11 @@
 % \usepackage[outline]{contour}
 
 % Content creation for the spine. Including Logo, author, title, and volume number on spine. 
-% Argument 1: Bottom margin, i.e. distance between the canvas' bottom and the spine logo's bottom.
-\newcommand{\podspine}[1]{  
+\newcommand{\podspine}{  
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
   \renewcommand{\lastand}{ \& }
-  \node [above = #1 of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
+  \node [above = 0mm of lspcls_bgspline.south, anchor=base] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
 % add number on spine
 % inside logo
 %   \node [below = -7mm of lspcls_splinelogo] (lspcls_splinenumber)  { \hspace*{4mm}{\parbox{.37cm}{\centering \contour{\lsSeriesColor}{\color{white}\sffamily \large \lsSeriesNumber }}}};
@@ -288,7 +287,7 @@
 % bottom leftaligned
 %   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
 %
-\node [above = 225mm of lspcls_bgspline.south] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
+\node [below = 0mm of lspcls_bgspline.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
   {\parbox{.47cm}{
    \centering
     \sffamily 
@@ -304,14 +303,13 @@
 
 % Fill the canvas for the cover with coloured areas on back and front cover
 % Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
-% Argument 2: Height of the coloured title and backtitle form. Input: 12.45cm
+% Argument 2: Height of the coloured title and backtitle form and of the spine. Input: 12.45cm
 % Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
-% Argument 4: Height of the spine.
-\newcommand{\podgeometry}[4]{
+\newcommand{\podgeometry}[3]{
     \begin{pgfonlayer}{lspcls_bg} % background layer
       \node [bg, left = #1 of current page.east, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
       \node [bg, right = #1 of current page.west, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg2) {};
-      \node at (current page.center) [bg, minimum height=#4, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
+      \node at (current page.center) [bg, minimum height=#2, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
     \end{pgfonlayer}   
 }
 
@@ -495,8 +493,8 @@
 \ifx\lsOutput\lsOutputCoverBOD         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
-    \podspine{7.5mm}  
+    \podgeometry{24.5mm}{23.1cm}{15.2cm}
+    \podspine 
     \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
@@ -512,8 +510,8 @@
 \ifx\lsOutput\lsOutputCoverCS        % only if output=covercs   
   \podsetup
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \podgeometry{10.675mm}{22.5cm}{15.5cm}{24cm}
-    \podspine{10.675mm}
+    \podgeometry{10.675mm}{22.5cm}{15.5cm}
+    \podspine
     \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
     \podcoverbottomtext
 %     %unclear why this was different between BOD and CS
@@ -594,7 +592,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\wlog{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
+\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
