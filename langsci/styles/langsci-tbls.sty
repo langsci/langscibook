@@ -13,8 +13,8 @@
 	linewidth=1.5pt, linecolor=\tblslinecolour,
 	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm,
 	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, innertopmargin=0, repeatframetitle=false,
-	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.eps}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.eps}};} % if env. does not span multiple pages, print the same.
+	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=lsYellow, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
 	
 \mdfdefinestyle{greyexercise}{%
@@ -22,8 +22,8 @@
 	linewidth=0pt,backgroundcolor=black!12,
 	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,
 	frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
-	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=black!20, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.eps}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=black!20, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.eps}};} % if env. does not span multiple pages, print the same.
+	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=black!20, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=black!20, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
 	
 
@@ -50,11 +50,10 @@
 
 %%% MDFRAMED COMMANDS %%%
 
-\newcommand{\tblssy}[3]{% Use like this \tblsfr{book|bulb|glass|law}{title}{text} % {colour}
-  \renewcommand{\langscisymbol}{#1}
-%   \renewcommand{\tblsboxcolor}{black!12}
-  \begin{mdframed}[style=greyexercise,frametitle={#2}]
-    #3
+\newcommand{\tblssy}[4][black!12]{% Use like this \tblsfr[colour]{book|bulb|glass|law}{title}{text}, where [colour] is optional
+  \renewcommand{\langscisymbol}{#2}\renewcommand{\tblsboxcolor}{#1}
+  \begin{mdframed}[style=greyexercise,frametitle={#3}]
+    #4
   \end{mdframed}
 }
 
@@ -65,14 +64,14 @@
 \end{mdframed}
 }
 
-\newcommand{\tblsfi}[3]{% Use like this \tblsfi{colour}{title}{text}
+\newcommand{\tblsfi}[3][black!12]{% Use like this \tblsfi[colour]{title}{text}, where [colour] is optional
 \renewcommand{\tblsfillcolour}{#1}
 \begin{mdframed}[style=tblsfilledbox,frametitle={#2}]
 #3
 \end{mdframed}
 }
 
-\newcommand{\tblsfr}[4]{% Use like this \tblsfr{colour}{book|bulb|glass|law}{title}{text}
+\newcommand{\tblsfr}[4][\lsSeriesColor]{% Use like this \tblsfr[colour]{book|bulb|glass|law}{title}{text}, where [colour] is optional
 \renewcommand{\tblslinecolour}{#1}\renewcommand{\langscisymbol}{#2}
 \begin{mdframed}[style=yellowexercise,frametitle={#3}]
 #4
