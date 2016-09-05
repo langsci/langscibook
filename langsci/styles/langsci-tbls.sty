@@ -28,16 +28,16 @@
 	
 
 \mdfdefinestyle{tblsbox}{%
-	leftline=false, rightline=false, frametitleaboveskip=5mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblsboxcolor, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0	
+	leftline=false, rightline=false, frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0	
 	}
 	
 \mdfdefinestyle{tblsframedbox}{%
-	frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblsboxcolor, innerbottommargin=5mm, innertopmargin=5mm	
+	frametitleaboveskip=5mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm	
 }	
 	
 \newcommand{\tblsfillcolour}{black!12}
 \mdfdefinestyle{tblsfilledbox}{%
-	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=2\baselineskip, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm
+	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm
 }
 
 \mdfdefinestyle{tblsfilledcolumnbox}{% % Copy of tblsfilledbox with multicols
@@ -73,7 +73,14 @@
 
 \newcommand{\tblsfr}[4][\lsSeriesColor]{% Use like this \tblsfr[colour]{book|bulb|glass|law}{title}{text}, where [colour] is optional
 \renewcommand{\tblslinecolour}{#1}\renewcommand{\langscisymbol}{#2}
-\begin{mdframed}[style=yellowexercise,frametitle={#3}]
+\begin{mdframed}[style=tblsbox,frametitle={#3}]
+#4
+\end{mdframed}
+}
+
+\newcommand{\tblsfd}[4]{ % Use like this: \tblsfd{colour}{line width}{title}{content}
+\renewcommand{\tblslinecolour}{#1}\setlength{\trennlinie}{#2mm}
+\begin{mdframed}[style=tblsframedbox,frametitle={#3}]
 #4
 \end{mdframed}
 }
