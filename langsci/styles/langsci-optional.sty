@@ -171,3 +171,22 @@
 
 \newcommand{\citetv}[1]{\citeauthor{#1} (\citeyear*{#1} [this volume])}
 \newcommand{\citepv}[1]{(\citealt{#1} [this volume])}
+
+
+% Vowel chart tikz commands
+\newcommand{\aeiou}{%
+	\node at (1.5,0) (a) {a};
+	\node at (0,3) (i) {i};
+	\node at (3,3) (u) {u};
+	\node at (0.5,1.5) (e) {e};
+	\node at (2.5,1.5) (o) {o};
+}
+\newcommand{\aeiouEO}{%
+	\node at (1.5,0) (a) {a};
+	\node at (0,3) (i) {i};
+	\node at (3,3) (u) {u};
+	\node at (0.25,2) (e) {e};
+	\node at (2.75,2) (o) {o};
+	\node at (0.75,1) (E) {ε};
+	\node at (2.25,1) (O) {ɔ};	
+}

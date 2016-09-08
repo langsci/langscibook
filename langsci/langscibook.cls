@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/04/20 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/06/22 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -258,6 +258,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Basic cover commands, including PGF layers
 \newcommand{\podsetup}{
   \lsCovertrue
   \renewcommand{\maketitle}{}  %no need for this
@@ -272,11 +273,12 @@
 
 % \usepackage[outline]{contour}
 
-\newcommand{\podspine}[1]{  
+% Content creation for the spine. Including Logo, author, title, and volume number on spine. 
+\newcommand{\podspine}{  
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
   \renewcommand{\lastand}{ \& }
-  \node [above = #1 of lspcls_bgspline.south] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
+  \node [above = 0mm of lspcls_bgspline.south, anchor=base] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
 % add number on spine
 % inside logo
 %   \node [below = -7mm of lspcls_splinelogo] (lspcls_splinenumber)  { \hspace*{4mm}{\parbox{.37cm}{\centering \contour{\lsSeriesColor}{\color{white}\sffamily \large \lsSeriesNumber }}}};
@@ -285,9 +287,9 @@
 % bottom leftaligned
 %   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
 %
-\node [above = 225mm of lspcls_bgspline.south] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
-  {\parbox{.37cm}{
-  % \centering
+\node [below = 0mm of lspcls_bgspline.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
+  {\parbox{.47cm}{
+   \centering
     \sffamily 
     \huge
     \lsSeriesNumber 
@@ -298,15 +300,20 @@
   \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
   \renewcommand{\newlineCover}{\\}
 }
-  
-\newcommand{\podgeometry}[4]{
+
+% Fill the canvas for the cover with coloured areas on back and front cover
+% Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
+% Argument 2: Height of the coloured title and backtitle form and of the spine. Input: 12.45cm
+% Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
+\newcommand{\podgeometry}[3]{
     \begin{pgfonlayer}{lspcls_bg} % background layer
       \node [bg, left = #1 of current page.east, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
       \node [bg, right = #1 of current page.west, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg2) {};
-      \node at (current page.center) [bg, minimum height=#4, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
+      \node at (current page.center) [bg, minimum height=#2, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
     \end{pgfonlayer}   
 }
 
+% Generates the content of the back cover
 \newcommand{\podbackcover}{
     \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
   \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
@@ -314,18 +321,21 @@
   \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
     \colorbox{white}{
       \begin{pspicture}(0,0)(4.1,1in)
-        \psbarcode[transx=.4,transy=.3]{\lsISBNhardcover}{includetext height=.7}{isbn}%
+        \psbarcode[transx=.4,transy=.3]{\lsISBNcover}{includetext height=.7}{isbn}%
       \end{pspicture}
       }
     };
 }
 
-\newcommand{\podfrontcovertoptext}[1]{
+% Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
+% Argument 1: Text width on the front cover. Input: 12.34mm
+% Argument 2: Font size on the front cover. Adjust to compensate varying text width Input: 12.34pt
+\newcommand{\podfrontcovertoptext}[2]{
   \newcommand{\lsCoverFontColour}{white}
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
   
-  \node [execute at begin node={}, font=\fontsize{52pt}{16.75mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
+  \node [execute at begin node={}, font=\fontsize{#2}{17.25mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
   
   \ifnum\subtitleStrLen=0  % Is there a subtitle?
   \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_covertitle.south, text width=#1] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
@@ -335,6 +345,7 @@
   \fi
 }
 
+% Generates the bottom half of the front cover content: series, series number, logo.
 \newcommand{\podcoverbottomtext}{
   \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
   \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
@@ -482,10 +493,11 @@
 \ifx\lsOutput\lsOutputCoverBOD         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{24.5mm}{23.1cm}{15.2cm}{24.6cm}
-    \podspine{7.5mm}  
-    \podfrontcovertoptext{137mm}  
-    \podcoverbottomtext    
+    \podgeometry{24.5mm}{23.1cm}{15.2cm}
+    \podspine 
+    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
+    \podcoverbottomtext
+    \newcommand{\lsISBNcover}{\lsISBNhardcover}
     \podbackcover  
   \end{tikzpicture}  
   %exit the document right here
@@ -498,9 +510,9 @@
 \ifx\lsOutput\lsOutputCoverCS        % only if output=covercs   
   \podsetup
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \podgeometry{10.675mm}{22.5cm}{15.5cm}{24cm}
-    \podspine{10.675mm}
-    \podfrontcovertoptext{140mm}
+    \podgeometry{10.675mm}{22.5cm}{15.5cm}
+    \podspine
+    \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
     \podcoverbottomtext
 %     %unclear why this was different between BOD and CS
 %     %-----------------------------
@@ -509,6 +521,7 @@
 % %     \node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
 %     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 %     %-----------------------------
+	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
     \podbackcover
   \end{tikzpicture} 
   %exit the document right here  
@@ -570,6 +583,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 % For output type cover
+\usepackage{catchfilebetweentags}
 \newlength{\csspine} 
 \newlength{\bodspine}
 \newlength{\bleed}
@@ -578,8 +592,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\setlength{\csspine}{20mm}
-\setlength{\bodspine}{20mm}
+\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
@@ -1489,9 +1502,8 @@ is, or will remain, accurate or appropriate.
 \renewcommand{\doitext}{DOI:}
 \iflsBiblatex
 \renewbibmacro*{finentry}{\finentry
-	\iffieldundef{doi}
-		  {}
-		  { {\color{lsGuidelinesGray}\doi{\thefield{doi}}}}
+	\iffieldundef{url}{}{ \url{\thefield{url}}\iffieldundef{urlday}{}{, accessed \thefield{urlyear}-\thefield{urlmonth}-\thefield{urlday}}.}
+	\iffieldundef{doi}{}{ {\color{lsGuidelinesGray}\doi{\thefield{doi}}}}
 }
 %\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
 \fi
