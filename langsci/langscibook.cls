@@ -584,15 +584,15 @@
  
 % For output type cover
 \usepackage{catchfilebetweentags}
-\newlength{\csspine} 
-\newlength{\bodspine}
+\newlength{\csspine}   % CS spine width algorithm, when page count is known:  Total Page Number (excluding cover), usually (Total Page - 3) * 0.0572008 mm 
+\newlength{\bodspine}  % BoD spine width algorithm located at http://www.bod.de/hilfe/coverberechnung.html (German only, please contact LangSci for help)
 \newlength{\bleed}
 \newlength{\seitenbreite}
 \newlength{\seitenhoehe}
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
+\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadata.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
