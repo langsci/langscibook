@@ -592,7 +592,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
+% \IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
@@ -600,7 +600,7 @@
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
     \setlength{\seitenhoehe}{244.1mm} 	
-    \setlength{\spinewidth}{\csspine} % Create Space Version
+    \setlength{\spinewidth}{40mm} % Create Space Version
     
     \usepackage{calc}
 
