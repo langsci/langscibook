@@ -193,3 +193,27 @@
 
 \newcommand{\xxref}[2]{(\ref{#1}--\ref{#2})}
 
+
+% Underlining in gb4e-example Environments. Usual underlining commands that span multiple words do not work, because gb4e would parse it as one word. 
+% Example: \underline{My example phrase} should become \ulp{My}{~~~~~} \ulp{example}{~~~~~} \ule{phrase}
+% Note: The 2nd Argument of the \ulp command is filled in by experience - if you are not familiar with the command, you should experiment a bit. Usually, five tildes are enough, but be sure to check the outcome. 
+% \ule is meant to be the last word in a phrase that is underlined. Therefore, \ule does not have an extra length.
+\usepackage[normalem]{ulem}
+\newcommand{\ulp}[2]{%#1: stuff to underline, #2: extra length to skip the whitespace between to components
+  \settowidth{\LSPTmp}{#1}%
+  \parbox{\LSPTmp}{%restrict width to first argument
+      \settoheight{\LSPTmp}{a}%
+	\leavevmode\smash{\uline{% underlining over both arguments
+	    #1#2
+	}}\vphantom{a}
+      }
+}
+\newcommand{\ule}[1]{%#1: stuff to underline, no extra length
+  \settowidth{\LSPTmp}{#1}%
+  \parbox{\LSPTmp}{%restrict width to first argument
+      \settoheight{\LSPTmp}{a}%
+	\leavevmode\smash{\uline{% underlining over both arguments
+	    #1
+	}}\vphantom{a}
+      }
+}
