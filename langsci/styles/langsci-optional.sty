@@ -214,3 +214,13 @@
 \newcommand{\ule}[1]{%#1: stuff to underline, no extra length
   \ulp{#1}{}
   }
+  
+  
+\newoutputstream{colorfigures}
+\openoutputfile{\jobname.clr}{colorfigures}
+\addtostream{colorfigures}{Note the offset incurred by the frontmatter!}
+\newenvironment{colorfigure}{\begin{figure}\addtostream{colorfigures}{\thepage}}{\end{figure}} 
+
+\AtEndDocument{
+ \closeoutputstream{colorfigures}
+}
