@@ -190,7 +190,8 @@
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
-\DeclareVoidOption{bibtex}{  			
+\DeclareVoidOption{bibtex}{
+  \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final Version}
 	\lsBiblatexfalse}
 \DeclareVoidOption{nonewtxmath}{  			
 	\lsNewtxmathfalse}
