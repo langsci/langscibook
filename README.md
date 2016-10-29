@@ -10,7 +10,7 @@ option | values (defaults in bold face) | meaning
 -------|--------|---------
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **bibtex** \| biber | the backend of BibLaTeX
-bibtex | | use BibTeX
+bibtex | | use BibTeX (deprecated)
 collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
