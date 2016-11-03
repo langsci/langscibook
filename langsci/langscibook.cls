@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/06/22 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/10/29 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,7 +190,8 @@
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
-\DeclareVoidOption{bibtex}{  			
+\DeclareVoidOption{bibtex}{
+  \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final version}
 	\lsBiblatexfalse}
 \DeclareVoidOption{nonewtxmath}{  			
 	\lsNewtxmathfalse}
@@ -1264,8 +1265,8 @@ is, or will remain, accurate or appropriate.
 	\renewcommand{\compcitedelim}{\multicitedelim}
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%
-        \defbibheading{references}{\chapter{References}} 
-\else	%BibTeX
+  \defbibheading{references}{\chapter{References}} 
+\else	%BibTeX (deprecated)
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
 	%% unified style sheet for linguistics journals

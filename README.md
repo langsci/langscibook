@@ -10,7 +10,7 @@ option | values (defaults in bold face) | meaning
 -------|--------|---------
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **bibtex** \| biber | the backend of BibLaTeX
-bibtex | | use BibTeX
+bibtex | | use BibTeX (deprecated)
 collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
@@ -26,7 +26,7 @@ nonflat | | switch paths when using the langsci folder
 nonewtxmath | | suppress newtxmath (and use standard, ugly math fonts)
 number | \<number\> | number of the book within the series
 openreview | | switch to open review mode
-output | short \| **long** \| inprep \| paper \| guidelines \| cover \| coverbod \| coverdob \| covercreatespace | different output formats
+output | **book** \| inprep \| paper \| guidelines \| cover \| coverbod \| coverdob \| covercreatespace | different output formats
 series | sidl \| __eotms__ \| ... | the series code (see series.def for a list of abbreviations)
 showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
