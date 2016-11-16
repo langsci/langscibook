@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/06/22 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2016/10/29 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,7 +190,8 @@
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
 	\lsBiblatextrue}
-\DeclareVoidOption{bibtex}{  			
+\DeclareVoidOption{bibtex}{
+  \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final version}
 	\lsBiblatexfalse}
 \DeclareVoidOption{nonewtxmath}{  			
 	\lsNewtxmathfalse}
@@ -250,6 +251,8 @@
 %% useful commands for glossings:
 % \usepackage{\stylepath langsci-lgr} #FIXME this should probably be replaced by \usepackage{leipzig}
 \usepackage{todonotes}
+
+\usepackage[english]{babel}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -584,15 +587,19 @@
  
 % For output type cover
 \usepackage{catchfilebetweentags}
-\newlength{\csspine} 
-\newlength{\bodspine}
+\newlength{\csspine}   % CS spine width algorithm, when page count is known:  Total Page Number (excluding cover), usually (Total Page - 3) * 0.0572008 mm 
+\newlength{\bodspine}  % BoD spine width algorithm located at http://www.bod.de/hilfe/coverberechnung.html (German only, please contact LangSci for help)
 \newlength{\bleed}
 \newlength{\seitenbreite}
 \newlength{\seitenhoehe}
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
+<<<<<<< HEAD
 % \IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
+=======
+\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadata.tex
+>>>>>>> 3f1ebd357de685a05f769bd9c19525e472f52fba
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
@@ -1243,8 +1250,8 @@ is, or will remain, accurate or appropriate.
 \iflsBiblatex	% BibLaTeX
 	\usepackage[
 		natbib=true,
-		style=\bstpath biblatex-sp-unified,
-		citestyle=\bstpath sp-authoryear-comp,
+		style=\bstpath biblatex-langsci-unified,
+		citestyle=\bstpath langsci-authoryear-comp,
 		%refsection=chapter,
 		maxbibnames=99,
 		isbn=false,
@@ -1262,8 +1269,8 @@ is, or will remain, accurate or appropriate.
 	\renewcommand{\compcitedelim}{\multicitedelim}
 	\DeclareFieldFormat{postnote}{#1}%
 	%\renewcommand{\nameyeardelim}{ }%
-        \defbibheading{references}{\chapter{References}} 
-\else	%BibTeX
+  \defbibheading{references}{\chapter{References}} 
+\else	%BibTeX (deprecated)
 	\usepackage{natbib}
 	\setlength{\bibsep}{0mm}
 	%% unified style sheet for linguistics journals
@@ -1665,7 +1672,7 @@ is, or will remain, accurate or appropriate.
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\}
   \iflsCollectionChapter
-    \vspace*{-2\baselineskip} 
+%     \vspace*{-2\baselineskip} 
     {\LARGE Chapter \thechapter}\newline\newline\fi
   \@title}}
   

@@ -36,7 +36,7 @@
 
 
 % specification for all trees
-\forestset{.style={for tree={parent anchor=south, child anchor=north,align=center,base=top}}}
+\forestset{.style={for tree={parent anchor=south, child anchor=north,base=top}}}
 
 
 % http://www.texample.net/tikz/examples/borrowers-and-lenders/
@@ -77,14 +77,18 @@
 % to do: make this style default and change all other figures explicitely as is described here:
 % http://tex.stackexchange.com/questions/167983/getting-rid-of-a-default-where-specification
 \forestset{
-sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top},
+sn edges/.style={for tree={parent anchor=south, child anchor=north,base=top},
                  where n children=0{tier=word,delay=with translation}{} %,delay=with translation
                  },
-sn edges without translation/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top},
+sn edges without translation/.style={for tree={parent anchor=south, child anchor=north,base=top},
                  where n children=0{tier=word}{}
                  },
 word tier/.style={where n children=0{tier=word}{}
                  },
+% for some reason the grow works but the anchors do not. The definition has to be given per tree.
+%% root at bottom/.style={for tree={parent anchor=north, child anchor=south,grow=north,
+%%           fit=rectangle, % tree layout with more space
+%%           l+=2mm}},
 %
 % dependency grammar trees, projective trees only, I guess. St. Mü. 29.09.2014
 dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom},
