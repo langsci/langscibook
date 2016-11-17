@@ -231,6 +231,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{morewrites} %more helper files to write to
 \usepackage{etex}
 \reserveinserts{18}
 \usepackage{xstring}	 
@@ -595,11 +596,7 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-<<<<<<< HEAD
-% \IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadate.tex
-=======
 \IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadata.tex
->>>>>>> 3f1ebd357de685a05f769bd9c19525e472f52fba
 \setlength{\bleed}{3.175mm}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  

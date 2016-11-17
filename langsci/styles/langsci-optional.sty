@@ -191,9 +191,19 @@
 	\node at (2.25,1) (O) {ɔ};	
 }
 
+%no hyphenation left alingned
+\newcolumntype{Q}{>{\raggedright\arraybackslash}X}
+%no hyphenation right aligned
+\newcolumntype{S}{>{\raggedleft\arraybackslash}X}
+%no hyphenation centered
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+%no hyphenation fixed width
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%no hyphenation centered fixed width
+\newcolumntype{Z}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%no hyphenation right aligned fixed width
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 \newcolumntype{d}[1]{D{.}{.}{#1}} 
 \newcommand{\xxref}[2]{(\ref{#1}--\ref{#2})}
 
@@ -217,4 +227,19 @@
 
 \newcommand{\ule}[1]{%#1: stuff to underline, no extra length
   \ulp{#1}{}
-  } 
+  }
+  
+  
+\newoutputstream{colorfigures}
+\openoutputfile{\jobname.clr}{colorfigures}
+\addtostream{colorfigures}{Note the offset incurred by the frontmatter!}
+\newenvironment{colorfigure}{\begin{figure}\addtostream{colorfigures}{\thepage}}{\end{figure}} 
+
+\AtEndDocument{
+ \closeoutputstream{colorfigures}
+}
+
+\newcommand{\longrule}{\rule{1em}{.3pt}}
+\usepackage{colortbl} 
+\newcommand{\shadecell}{\cellcolor{black!20!white}}
+
