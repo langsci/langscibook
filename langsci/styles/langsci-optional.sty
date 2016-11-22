@@ -243,3 +243,19 @@
 \usepackage{colortbl} 
 \newcommand{\shadecell}{\cellcolor{black!20!white}}
 
+% vertical alignment of  numbered  example
+\newcommand{\eabox}[2][-.7\baselineskip]{
+  \ea
+    \parbox[t]{.8\textwidth}{
+      \vspace{#1}
+      #2
+     } 
+  \z
+}
+\newcommand{\exbox}[2][-.7\baselineskip]{
+  \ex
+    \parbox[t]{.8\textwidth}{
+      \vspace{#1}
+      #2
+     }  
+}
