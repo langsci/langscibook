@@ -1301,6 +1301,10 @@ is, or will remain, accurate or appropriate.
 }
 {}{}
 
+% temporary workaround to fix wrong wrapping for \verb in bibtex
+% \makeatletter
+% \def\blx@maxline{77}
+% \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
