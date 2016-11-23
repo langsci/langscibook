@@ -231,6 +231,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{morewrites} %more helper files to write to
 \usepackage{etex}
 \reserveinserts{18}
 \usepackage{xstring}	 
@@ -603,7 +604,7 @@
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
     \setlength{\seitenhoehe}{244.1mm} 	
-    \setlength{\spinewidth}{\csspine} % Create Space Version
+    \setlength{\spinewidth}{40mm} % Create Space Version
     
     \usepackage{calc}
 
@@ -1300,6 +1301,10 @@ is, or will remain, accurate or appropriate.
 }
 {}{}
 
+% temporary workaround to fix wrong wrapping for \verb in bibtex
+% \makeatletter
+% \def\blx@maxline{77}
+% \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1336,6 +1341,18 @@ is, or will remain, accurate or appropriate.
     %% N.B.: floatpagefraction MUST be less than topfraction !!
 \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 
+% \usepackage{setspace}
+% \usepackage{caption}
+% \captionsetup{labelfont=bf} 
+% \captionsetup{%
+% font={%
+% stretch=.8%
+% ,small%
+% },%
+% width=.8\textwidth
+% }
+
+\setcapindent{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Appendices:
@@ -1656,7 +1673,7 @@ is, or will remain, accurate or appropriate.
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\}
   \iflsCollectionChapter
-    \vspace*{-2\baselineskip} 
+%     \vspace*{-2\baselineskip} 
     {\LARGE Chapter \thechapter}\newline\newline\fi
   \@title}}
   
