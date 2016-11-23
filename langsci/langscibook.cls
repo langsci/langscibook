@@ -1434,7 +1434,9 @@ is, or will remain, accurate or appropriate.
 
 %% \index inside footnote
 \def\infn#1#2{%
-	\hyperpage{#2}n#1%
+% 	\hyperpage{#2}n#1%  99n2
+% 	\hyperpage{#2}*%   99*
+	\hyperpage{#2}\textsuperscript{#1}%  99²
 }%
 \newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
 \newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
