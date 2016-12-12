@@ -319,7 +319,6 @@
 
 % Generates the content of the back cover
 % Argument 1: Text width, corresponding to Argument 1 of \podfrontcovertoptext
-% Argument 2: Distance from coloured background layer to beginning of text field, 6mm for BOD, 7.5mm for Createspace
 \newcommand{\podbackcover}[1]{
   \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 10mm and 7.5mm of lspcls_bg2.north west, text width=#1] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
   \node [below = 10mm of lspcls_backtitle, text width=#1, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
