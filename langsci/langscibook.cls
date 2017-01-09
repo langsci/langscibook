@@ -318,9 +318,10 @@
 }
 
 % Generates the content of the back cover
-\newcommand{\podbackcover}{
-    \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 16.5mm and 7.5mm of lspcls_bg2.north west, text width=11.5cm] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
-  \node [below = 10mm of lspcls_backtitle, text width=11.5cm, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
+% Argument 1: Text width, corresponding to Argument 1 of \podfrontcovertoptext
+\newcommand{\podbackcover}[1]{
+  \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 10mm and 7.5mm of lspcls_bg2.north west, text width=#1] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
+  \node [below = 10mm of lspcls_backtitle, text width=#1, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
   %\node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west] {\color{\lsCoverFontColour}ISBN \lsBackBodyFont{\lsISBN}};
   \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
     \colorbox{white}{
@@ -502,7 +503,7 @@
     \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
-    \podbackcover  
+    \podbackcover{135.5mm}  
   \end{tikzpicture}  
   %exit the document right here
   \end{titlepage}
@@ -526,7 +527,7 @@
 %     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 %     %-----------------------------
 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-    \podbackcover
+    \podbackcover{137mm}
   \end{tikzpicture} 
   %exit the document right here  
   \end{titlepage}
@@ -604,7 +605,7 @@
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
     \setlength{\seitenhoehe}{244.1mm} 	
-    \setlength{\spinewidth}{40mm} % Create Space Version
+    \setlength{\spinewidth}{\csspine} % Create Space Version
     
     \usepackage{calc}
 
@@ -759,8 +760,8 @@
 \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
 \newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
 \newcommand{\lsBackBodyFont}{\lsInsideFont}
-\newcommand{\lsSpineAuthorFont}{\fontsize{16pt}{14pt}\selectfont}
-\newcommand{\lsSpineTitleFont}{\sffamily\fontsize{18pt}{14pt}\selectfont}
+\newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
+\newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 
@@ -1434,7 +1435,9 @@ is, or will remain, accurate or appropriate.
 
 %% \index inside footnote
 \def\infn#1#2{%
-	\hyperpage{#2}n#1%
+% 	\hyperpage{#2}n#1%  99n2
+% 	\hyperpage{#2}*%   99*
+	\hyperpage{#2}\textsuperscript{#1}%  99²
 }%
 \newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
 \newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
