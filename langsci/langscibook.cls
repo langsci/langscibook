@@ -1423,12 +1423,11 @@ width=.8\textwidth
 
 \AtBeginDocument{
 	\makeindex
-	\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
-	% \newindex{aut}{adx}{and}{Name index}
+	\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle} 
 	\newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
 	\renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
-	\newindex{wrd}{wdx}{wnd}{Expression index}
-	\newindex{rwrd}{rdx}{rnd}{Reverse expression index}
+% 	\newindex{wrd}{wdx}{wnd}{Expression index}
+% 	\newindex{rwrd}{rdx}{rnd}{Reverse expression index}
 }
 
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
