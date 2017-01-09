@@ -230,6 +230,8 @@
   }
   
   
+
+\usepackage{newfile}  
 \newoutputstream{colorfigures}
 \openoutputfile{\jobname.clr}{colorfigures}
 \addtostream{colorfigures}{Note the offset incurred by the frontmatter!}
@@ -259,3 +261,8 @@
       #2
      }  
 }
+
+%fix \verb error in biblatex
+\makeatletter
+\def\blx@maxline{77}
+\makeatother
