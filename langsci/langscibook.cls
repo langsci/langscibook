@@ -116,6 +116,7 @@
 
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsOpenReview \lsOpenReviewfalse
+\newif\iflsUndecapitalize \lsUndecapitalizefalse
 \newif\iflsShowIndex \lsShowIndexfalse
 \newif\iflsBiblatex \lsBiblatextrue
 \newif\iflsCollection \lsCollectionfalse
@@ -171,6 +172,8 @@
 % 	\renewcommand{\lsOutput}{long}}
 \DeclareVoidOption{smallfont}{  			
 	\renewcommand{\lsFontsize}{10pt}}
+\DeclareVoidOption{undecapitalize}{  			
+	\lsUndecapitalizetrue }	
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects	
 	 \lsDrafttrue
 	 \overfullrule=5pt	}	% to indicate overfull hboxes
@@ -839,7 +842,23 @@
       }
       }
      \end{textblock}
-  \fi}
+  \fi
+  \iflsUndecapitalize 
+    \begin{textblock}{170}(-20,75)
+      \rotatebox{30}{
+      \colorbox{red}{
+      \parbox[c][15ex][c]{220mm}{\centering\lsCoverTitleFont\color{white}Undecapitalized\\[-0.1ex]}
+      % \begin{tabular}{c}
+      %   ~\\
+      %   \scalebox{6}{\color{red}Open Review}\\[-0.5ex]
+      %   ~%version of \today, \currenttime
+      % \end{tabular}
+      }
+      }
+     \end{textblock}
+  \fi
+  
+  }
 
 \newcommand{\lsCoverTitleAuthor}{
   \renewcommand{\and}{\\}
@@ -1244,52 +1263,33 @@ is, or will remain, accurate or appropriate.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage[
+	natbib=true,
+	\iflsUndecapitalize
+	style=\bstpath biblatex-langsci-unified-undecap,
+	\else
+	style=\bstpath biblatex-langsci-unified,
+	\fi
+	citestyle=\bstpath langsci-authoryear-comp,
+	%refsection=chapter,
+	maxbibnames=99,
+	isbn=false,
+	doi=false,
+	url=false,
+	eprint=false,
+	backend=\lsBiblatexBackend,
+	indexing=cite,
+	\iflsCollection\else
+		toc=bib 		% make bibliography appear in toc
+	\fi
+	]{biblatex} 
+\renewcommand{\postnotedelim}{: }%
+\renewcommand{\multicitedelim}{\addsemicolon\space}%  
+\renewcommand{\compcitedelim}{\multicitedelim}
+\DeclareFieldFormat{postnote}{#1}%
+%\renewcommand{\nameyeardelim}{ }%
+\defbibheading{references}{\chapter{References}} 
  
-\iflsBiblatex	% BibLaTeX
-	\usepackage[
-		natbib=true,
-		style=\bstpath biblatex-langsci-unified,
-		citestyle=\bstpath langsci-authoryear-comp,
-		%refsection=chapter,
-		maxbibnames=99,
-		isbn=false,
-		doi=false,
-		url=false,
-		eprint=false,
-		backend=\lsBiblatexBackend,
-		indexing=cite,
-		\iflsCollection\else
-			toc=bib 		% make bibliography appear in toc
-		\fi
-		]{biblatex}
-	\renewcommand{\postnotedelim}{: }%
-	\renewcommand{\multicitedelim}{\addsemicolon\space}%  
-	\renewcommand{\compcitedelim}{\multicitedelim}
-	\DeclareFieldFormat{postnote}{#1}%
-	%\renewcommand{\nameyeardelim}{ }%
-  \defbibheading{references}{\chapter{References}} 
-\else	%BibTeX (deprecated)
-	\usepackage{natbib}
-	\setlength{\bibsep}{0mm}
-	%% unified style sheet for linguistics journals
-	%% http://celxj.org/downloads/unified.bst
-	\bibliographystyle{./langsci/bst/unified} 
-	%% This does not work ...
-	% \setcitestyle{
-	% notesep={: }, % 2002: 125
-	% aysep={~}     % Gazdar 2002
-	% }
-
-	%% check what the unified people have to say on this.
-	\bibpunct[: ]{(}{)}{;}{a}{}{,}
-	%% They do not say anything about citations in the running text.
-	%% As was sown in \citew{Meier2002} -> As was shown in Meier (2002), ...
-	%% This is what De Gruyter does:
-	\let\citew=\citet
-	%% This is what Stefan did:
-	%\let\citew=\citealt
-\fi
-
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
 %% penalties against widows and orphans in bibliography
@@ -1302,7 +1302,7 @@ is, or will remain, accurate or appropriate.
 }
 {}{}
 
-% temporary workaround to fix wrong wrapping for \verb in bibtex
+% % temporary workaround to fix wrong wrapping for \verb in bibtex
 % \makeatletter
 % \def\blx@maxline{77}
 % \makeatother
@@ -1342,16 +1342,16 @@ is, or will remain, accurate or appropriate.
     %% N.B.: floatpagefraction MUST be less than topfraction !!
 \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
 
-% \usepackage{setspace}
-% \usepackage{caption}
+\usepackage{setspace}
+\usepackage{caption}
 % \captionsetup{labelfont=bf} 
-% \captionsetup{%
-% font={%
-% stretch=.8%
-% ,small%
-% },%
-% width=.8\textwidth
-% }
+\captionsetup{%
+font={%
+stretch=.8%
+,small%
+},%
+width=.8\textwidth
+}
 
 \setcapindent{0pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1728,14 +1728,14 @@ is, or will remain, accurate or appropriate.
 
 %writeout page numbers for separation of chapters 
 
-\usepackage{newfile}
-\newoutputstream{pages}
-\openoutputfile{\jobname.pgs}{pages}
-\newcommand{\writechapterpages}{\addtostream{pages}{\thepage}}
-
-\AtEndDocument{
- \closeoutputstream{pages}
-}
+% \usepackage{newfile}
+% \newoutputstream{pages}
+% \openoutputfile{\jobname.pgs}{pages}
+% \newcommand{\writechapterpages}{\addtostream{pages}{\thepage}}
+% 
+% \AtEndDocument{
+%  \closeoutputstream{pages}
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
