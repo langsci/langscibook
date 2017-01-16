@@ -1688,7 +1688,7 @@ width=.8\textwidth
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
   \includegraphics{\logopath langsci_spinelogo_nocolor.pdf}}%
   \hspace{0.8em}%
-  \parbox[b]{.85\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
+  \parbox[b]{.87\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
   
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 
