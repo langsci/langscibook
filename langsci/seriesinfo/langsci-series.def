@@ -73,7 +73,7 @@
 \fi
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsDarkGreen1} 
+	\newcommand{\lsSeriesColor}{lsDarkGreenOne} 
 \fi
 \ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
