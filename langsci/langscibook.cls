@@ -127,6 +127,7 @@
 \newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
+\newif\iflsMultiauthors \lsMultiauthorsfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,6 +191,8 @@
 }
 \DeclareVoidOption{modfonts}{  			
     \lsModfontstrue}
+\DeclareVoidOption{multiauthors}{  			
+    \lsMultiauthorstrue}
 \DeclareVoidOption{showindex}{  			
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{  			
@@ -796,18 +799,11 @@
   \AtBeginDocument{
     \renewcommand{\newlineCover}{}
     \renewcommand{\newlineSpine}{}  
-    \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
-    \renewcommand{\lsEditorSuffix}{(ed.)}
-    \IfSubStr{\@author}{Press}   % if \@author contains \&
-      %case true
-      {\renewcommand{\lsEditorSuffix}{(eds.)}}
-      %case false
-      {}
-    \IfSubStr{\@author}{,} % if \@author contains ,
-      %case true   
-      {\renewcommand{\lsEditorSuffix}{(eds.)}}
-      %case false
-      {}      
+    \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}  
+      \iflsMultiauthors
+	\renewcommand{\lsEditorSuffix}{(eds.)} 
+	{\renewcommand{\lsEditorSuffix}{(ed.)}}
+      \fi
   }
 \else
 \fi
