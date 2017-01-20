@@ -800,9 +800,9 @@
     \renewcommand{\newlineCover}{}
     \renewcommand{\newlineSpine}{}  
     \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}  
+    \renewcommand{\lsEditorSuffix}{(ed.)}
       \iflsMultiauthors
 	\renewcommand{\lsEditorSuffix}{(eds.)} 
-	{\renewcommand{\lsEditorSuffix}{(ed.)}}
       \fi
   }
 \else
