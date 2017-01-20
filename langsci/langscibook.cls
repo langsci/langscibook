@@ -88,9 +88,10 @@
 \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{book} %"short" makes no sense if "long" is deprecated
 \newcommand{\lsFontsize}{11pt}
+\newcommand{\lsChapterFooterSize}{\small} %footers in editedvolumes
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
-\newcommand{\logotext}{FU-Logo}
+\newcommand{\logotext}{{\color{red}no logo}}
 
 \newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.}
 \newcommand{\lsBackTitle}{\@title}
@@ -1046,10 +1047,23 @@ http://creativecommons.org/licenses/by-nd/4.0/
 \fi
  
 \begin{tabular}{@{}l@{~}l}
-ISBN: & \lsISBNdigital~(Digital) \\
-      & \lsISBNhardcover~(Hardcover)\\
-      & \lsISBNsoftcover~(Softcover)\\
-      & \lsISBNsoftcoverus~(Softcover US)\\
+ISBN: & 
+\IfStrEq{\lsISBNdigital}{000-0-000000-00-0} 
+{\color{red}no digital ISBN}
+{\lsISBNdigital~(Digital)}
+\\
+&
+\IfStrEq{\lsISBNhardcover}{000-0-000000-00-0} 
+{\color{red}no hardcover ISBN}
+{\lsISBNhardcover~(Hardcover)}
+\\&
+\IfStrEq{\lsISBNsoftcover}{000-0-000000-00-0} 
+{\color{red}no softcover ISBN}
+{\lsISBNsoftcover~(Softcover)}
+\\
+%       & \lsISBNhardcover~(Hardcover)\\
+%       & \lsISBNsoftcover~(Softcover)\\
+%       & \lsISBNsoftcoverus~(Softcover US)\\
 \end{tabular}
 
 \IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
@@ -1057,7 +1071,7 @@ ISBN: & \lsISBNdigital~(Digital) \\
   {ISSN: \lsISSN}
 
 \IfStrEq{\lsBookDOI}{??}    % \IfStrEq from xstring
-  {}
+  {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}
 
 
@@ -1582,6 +1596,7 @@ width=.8\textwidth
 \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
 \usepackage{tocstyle}
 \usetocstyle{standard}				%\usetocstyle{allwithdot}
+\settocfeature[toc]{raggedhook}{\raggedright} 
 \iflsCollectionTOCLong\else
 	\setcounter{tocdepth}{0}\fi			% show only parts and chapters
 \settocstylefeature[-1]{pagenumberbox}{\csname @gobble\endcsname}	% parts without page number
@@ -1673,10 +1688,10 @@ width=.8\textwidth
   
 \newcommand{\lsCollectionPaperTitle}{{%
   \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\}
-  \iflsCollectionChapter
-%     \vspace*{-2\baselineskip} 
-    {\LARGE Chapter \thechapter}\newline\newline\fi
+  \renewcommand{\newlineCover}{\\} 
+  \\[-1\baselineskip]
+  \noindent{\LARGE Chapter \thechapter}\\
+  \bigskip  
   \@title}}
   
 \newcommand{\lsCollectionPaperAuthor}{{%
@@ -1688,7 +1703,7 @@ width=.8\textwidth
   \includegraphics{\logopath langsci_spinelogo_nocolor.pdf}}%
   % \hspace{0.8em}%
   \hfill%
-  \parbox[b]{.87\textwidth}{\linespread{0.8}\small\normalfont\lsCollectionPaperCitationText}}
+  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText}}
   
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 
