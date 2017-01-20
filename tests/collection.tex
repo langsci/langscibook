@@ -1,0 +1,53 @@
+
+\documentclass[output=book
+		,modfonts
+		,nonflat
+	        ,collection
+	        ,collectionchapter
+% 	      ,undecapitalize 
+ 	        ,biblatex  
+ 	        ,multiauthors
+ 	        ,nobabel
+	      ]{langsci/langscibook}
+ 
+\usepackage[english]{babel}
+\usepackage{./langsci/styles/langsci-basic}
+\usepackage{./langsci/styles/langsci-tbls}
+\usepackage{./langsci/styles/langsci-optional} 
+\usepackage{./langsci/styles/langsci-glyphs} 
+\usepackage{./langsci/styles/langsci-gb4e} 
+\usepackage{./langsci/styles/langsci-tobi} 
+\usepackage{./langsci/styles/langsci-lgr} 
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{minibox}
+\usepackage{forest}
+% \usepackage{authorindex}
+\bibliography{localbibliography}
+
+% The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
+% \newindex{lan}{ldx}{lnd}{Language index}
+% \newcommand{\il}[1]{%
+% \if@noftnote%
+% \index[lan]{#1}%
+% \else%
+% \index[lan]{#1|fn{*}}%
+% \fi%
+% }
+% %end il
+
+
+%opening
+\title{Test for the langsci-* packages}
+\author{Language\and Science\lastand Press}
+
+\begin{document}
+\maketitle 
+\tableofcontents
+
+% \newcommand{\lsCollectionPaperFirstPage}{0}
+\renewcommand{\lsChapterFooterSize}{\footnotesize}
+\includepaper{chapters/01}
+\renewcommand{\lsChapterFooterSize}{\small}
+\includepaper{chapters/02}
+\end{document}
