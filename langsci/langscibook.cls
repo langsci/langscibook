@@ -127,6 +127,7 @@
 \newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
+\newif\iflsNoBabel \lsNoBabelfalse
 \newif\iflsMultiauthors \lsMultiauthorsfalse
 
 
@@ -189,6 +190,8 @@
 	\renewcommand{\bstpath}{./langsci/bst/}
 	\renewcommand{\stylepath}{./langsci/styles/}	
 }
+\DeclareVoidOption{nobabel}{  			
+    \lsNoBabeltrue}
 \DeclareVoidOption{modfonts}{  			
     \lsModfontstrue}
 \DeclareVoidOption{multiauthors}{  			
@@ -260,7 +263,6 @@
 % \usepackage{\stylepath langsci-lgr} #FIXME this should probably be replaced by \usepackage{leipzig}
 \usepackage{todonotes}
 
-\usepackage[english]{babel}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1760,6 +1762,9 @@ width=.8\textwidth
 \newlength{\LSPTmp}
 \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
 
-
+\iflsNoBabel
+  \else
+  \usepackage[english]{babel}
+\fi
 
 \endinput
