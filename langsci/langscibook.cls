@@ -92,6 +92,7 @@
 \newcommand{\lsCopyright}{CC-BY}
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newcommand{\logotext}{{\color{red}no logo}}
+\newcommand{\lsYear}{\the\year}
 
 \newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.}
 \newcommand{\lsBackTitle}{\@title}
@@ -1017,7 +1018,7 @@
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineSpine}{}
   {\@author}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
-  {\the\year}. %
+  {\lsYear}. %
   \textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
   (\lsSeriesTitle). %
   Berlin: Language Science Press.
@@ -1033,7 +1034,7 @@
 This title can be downloaded at:\\
 \url{\lsURL}
 
-© \the\year, \iflsCollection the authors\else\@author\fi
+© \lsYear, \iflsCollection the authors\else\@author\fi
 
 \newcommand{\ccby}{CC-BY} 
 \ifx\lsCopyright\ccby 
@@ -1648,7 +1649,7 @@ width=.8\textwidth
 
 	%% write bib entry to file
 	%% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
-	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\@title}},booktitle={{\lsCollectionTitle}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year=\the\year,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={skipbib=true}}}
+	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\@title}},booktitle={{\lsCollectionTitle}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year=\lsYear,pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={skipbib=true}}}
  
 	\end{refsection}
 	\end{collectionpaper}}
