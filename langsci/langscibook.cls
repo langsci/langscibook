@@ -586,6 +586,11 @@
   \renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable} 
 \fi
 
+\ifx\lsSeries\pmwe
+ \renewcommand{\eachwordone}{\itshape} 
+\fi
+
+
 } %% \AtBeginDocument
 
 
