@@ -1693,7 +1693,8 @@ width=.8\textwidth
 \newcommand{\lsCollectionPaperTitle}{{%
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\} 
-  \\[-1\baselineskip]
+  %   \\[-1\baselineskip]
+  \vspace*{-2\baselineskip}
   \noindent{\LARGE Chapter \thechapter}\\
   \bigskip  
   \@title}}
