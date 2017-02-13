@@ -273,3 +273,22 @@
 \newcommand{\fourdigitexamples}{\exewidth{(2345)}}
 
 \newcommand{\noabstract}{\vspace*{-2\baselineskip}} %for chapters without abstract
+
+\newcommand{\barplot}[2]{
+  \begin{tikzpicture}
+    \begin{axis}[
+	axis lines*=left, 
+        width  = \textwidth,
+    	nodes near coords, 
+	xtick=data,
+	x tick label style={}, 
+	ylabel={\%},  
+	ymin=0,
+	symbolic x coords={#1},
+	]
+	\addplot+[ybar,lsRichGreen!80!black,fill=lsRichGreen] plot coordinates {
+	    #2
+	}; 
+    \end{axis} 
+  \end{tikzpicture} 
+}
