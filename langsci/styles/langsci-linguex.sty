@@ -318,7 +318,7 @@
 \DeclareRobustCommand{\d}{\@ifnextchar.{\b}{\oldd}}
 \let\e=\b
 \let\f=\b
-\def\z.{\end{list}\addtocounter{ExDepth}{-1}}
+\def\Lsciz.{\end{list}\addtocounter{ExDepth}{-1}}
 %
 %%%%%%%%%%%%%%%%%%%% INDEXED BRACKETS %%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifindex
@@ -381,8 +381,8 @@
 \def\bg.{\my@ifnextchar[{\newglossitem}{\item\newgll}}
 \def\cg.{\bg.}
 \def\dg.{\bg.}
-\def\eg.{\bg.}
-\def\fg.{\bg.}
+% \def\eg.{\bg.}
+% \def\fg.{\bg.}
 %
 %%%%%%%%%%%%%%%%%%%% GLOSSES WITH INDEXED BRACKETS %%%%%%%%%%%%
 \def\exig.{\my@ifnextchar[{\newglossexi}{\Lsciexi.\newgll}}
