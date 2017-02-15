@@ -3,7 +3,7 @@
 %%    Author: Language Science Press (http://langsci-press.org)
 %%      Date: 2016-01-16 16:47:43 UTC 
 %%   Purpose: This file contains optional styles and settings for the 
-%%            forest package.
+%%            forest package. This version is for 2.0.
 %%  Language: LaTeX
 %%   Licence: 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,13 +30,54 @@
 \tikzset{deparrow/.style={-Latex}}%,blue}}
 
 
-\usepackage{forest}
-% does not work
-%\usepackage[external]{forest}\tikzexternalize\usepackage{morewrites}
+% does not work with forest v1.05 did not check later versions
+\usepackage[external]{forest}
+\tikzset{external/up to date check=simple} 
+% for texlive: -shell-escape, for miktex -enable-write18
+% All externalized graphics go go the \externaldirectory
+%\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
+\tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+%\usepackage{morewrites}
+
+%\usepackage{forest}
+% for forest version2
+\useforestlibrary{linguistics}
+\forestapplylibrarydefaults{linguistics}
 
 
-% specification for all trees
-\forestset{.style={for tree={parent anchor=south, child anchor=north,base=top}}}
+
+
+% specification for all trees, "default preamble" appends to existing specification.
+% The version with apostrophe replaces it.
+\forestset{default preamble'={
+    for tree={align=center,parent anchor=south, child anchor=north,base=bottom},
+    before drawing tree={
+      sort by=y,
+      for min={tree}{baseline}
+    }
+  }} 
+
+
+\forestset{
+  declare dimen={child anchor yshift}{0pt},
+  adjust childrens child anchors/.style={
+    if n children>=2{
+      before packing={
+        tempdima/.max={max_y}{children},
+        for children={
+          child anchor yshift=tempdima()-max_y()
+        },
+      }
+    }{}
+  },
+  default preamble={
+    for tree={
+      edge path'={(!u.parent anchor)--([yshift=\forestoption{child anchor yshift}].child anchor)},
+      adjust childrens child anchors
+    }
+  },
+}
+
 
 
 % http://www.texample.net/tikz/examples/borrowers-and-lenders/
@@ -63,7 +104,13 @@
     append translation/.expanded/.wrap pgfmath arg={\gettranslation{##1}}{content},
     content/.expanded/.wrap pgfmath arg={\gettext{##1}}{content},
   },  
-  append translation/.style={append={[#1,no edge,l=0,inner xsep=0,inner ysep=0,outer ysep=0,before computing xy={l-=2pt}]}}
+  append translation/.style={
+    if={strequal("#1","")}{}{
+      append={[#1,no edge,inner xsep=0,inner ysep=0,outer ysep=0,
+               l=\baselineskip + 0.2ex,
+        ]}
+    }
+  } 
 }
 
 \def\gettext#1{\gettextA#1;;\endget}
@@ -77,18 +124,14 @@
 % to do: make this style default and change all other figures explicitely as is described here:
 % http://tex.stackexchange.com/questions/167983/getting-rid-of-a-default-where-specification
 \forestset{
-sn edges/.style={for tree={parent anchor=south, child anchor=north,base=top},
+sm edges/.style={for tree={parent anchor=south, child anchor=north,base=bottom},
                  where n children=0{tier=word,delay=with translation}{} %,delay=with translation
                  },
-sn edges without translation/.style={for tree={parent anchor=south, child anchor=north,base=top},
+sm edges without translation/.style={for tree={parent anchor=south, child anchor=north,base=bottom},
                  where n children=0{tier=word}{}
                  },
 word tier/.style={where n children=0{tier=word}{}
                  },
-% for some reason the grow works but the anchors do not. The definition has to be given per tree.
-%% root at bottom/.style={for tree={parent anchor=north, child anchor=south,grow=north,
-%%           fit=rectangle, % tree layout with more space
-%%           l+=2mm}},
 %
 % dependency grammar trees, projective trees only, I guess. St. Mü. 29.09.2014
 dg edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom},
@@ -175,16 +218,25 @@ typehierarchy/.style={for tree={parent anchor=south, child
 instance/.style={edge=dotted},
 %
 % auxiliary nodes without node label
-empty nodes/.style={
-  delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}}
+%empty nodes/.style={
+%  delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}}
 }
 
 
 
-
 % Manual page 52
+%% \forestset{
+%% nice empty nodes/.style={
+%% for tree={calign=fixed edge angles},
+%% delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}
+%% }}
+
+
+% forest 2.0
 \forestset{
-nice empty nodes/.style={
-for tree={calign=fixed edge angles},
-delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}
-}}
+     empty nodes/.style={
+     delay={where content={}{shape=coordinate,for siblings={anchor=north}}{}}
+     }
+}
+
+
