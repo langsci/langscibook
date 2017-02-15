@@ -33,6 +33,7 @@
 \ifx\lsSeries\calseries %\cal is already taken as a command
 	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidWine}
+	\renewcommand{\lsISSN}{2511-7726}
 \fi
 \ifx\lsSeries\cfls
 	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
