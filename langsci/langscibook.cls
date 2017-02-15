@@ -1639,8 +1639,10 @@ width=.8\textwidth
 	\renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1}} 
 	
 	\include{#1}%
+  \addtocounter{page}{-1}
 	\edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \lsPaper
-
+  \addtocounter{page}{1}
+  
 	%%% for citation in footer
 	%% preprocessing of author/editor names
 	\onlyAuthor		
