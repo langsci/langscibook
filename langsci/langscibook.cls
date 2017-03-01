@@ -1109,8 +1109,8 @@ Typesetting software: \XeLaTeX
 \bigskip
 
 Language Science Press\\
-Habelschwerdter Allee 45\\
-14195 Berlin, Germany\\
+Unter den Linden 6\\
+10099 Berlin, Germany\\
 \href{http://langsci-press.org}{langsci-press.org}
 
 \vfill
