@@ -1504,11 +1504,17 @@ width=.8\textwidth
 
 \iflsShowIndex	% shows index commands in text
     \RequirePackage{soul}
-    \RequirePackage[noadjust]{marginnote}
+%     \RequirePackage[noadjust]{marginnote}
     \renewcommand{\marginpar}{\marginnote}
     \let\isold\is 
+    \let\ilold\il 
+    \let\iaold\ia 
     \renewcommand{\isi}[1]{\sethlcolor{green}\hl{#1}\isold{#1}}
     \renewcommand{\is}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=green,size=\scriptsize]{\tiny#1}\isold{#1}}}
+    \renewcommand{\ili}[1]{\sethlcolor{yellow}\hl{#1}\ilold{#1}}
+    \renewcommand{\il}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=yellow,size=\scriptsize]{\tiny#1}\ilold{#1}}}
+    \renewcommand{\iai}[1]{\sethlcolor{pink}\hl{#1}\iaold{#1}}
+    \renewcommand{\ia}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=pink,size=\scriptsize]{\tiny#1}\iaold{#1}}}
 \fi
 
 
