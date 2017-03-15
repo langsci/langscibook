@@ -378,10 +378,9 @@
 \newcommand{\lsOutputShort}{short}            % standard book, old key name
 \newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
 \newcommand{\lsOutputPaper}{paper}            % paper in edited volume
-\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
-\newcommand{\lsOutputCover}{cover}            % FIXME remove this?
-\newcommand{\lsOutputCoverBOD}{coverbod}      % cover with BoD measurements
-\newcommand{\lsOutputCoverDOB}{coverdob}      % FIXME remove this?
+\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines 
+\newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements 
+\newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements 
 \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 
@@ -505,7 +504,23 @@
 
 \fi
 
-\ifx\lsOutput\lsOutputCoverBOD         % only if output=cover 
+\ifx\lsOutput\lsOutputCoverBODhc         % only if output=cover 
+  \podsetup  
+  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
+    \podgeometry{24.5mm}{23.1cm}{15.2cm}
+    \podspine 
+    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
+    \podcoverbottomtext
+    \newcommand{\lsISBNcover}{\lsISBNhardcover}
+    \podbackcover{135.5mm}  
+  \end{tikzpicture}  
+  %exit the document right here
+  \end{titlepage}
+  \end{document}    
+  \fi 
+  
+
+\ifx\lsOutput\lsOutputCoverBODsc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
     \podgeometry{24.5mm}{23.1cm}{15.2cm}
@@ -630,17 +645,33 @@
     \hyphenpenalty 750
 \fi
  	   
-\ifx\lsOutput\lsOutputCoverBOD 
+\ifx\lsOutput\lsOutputCoverBODhc 
   \lsCovertrue 	
   \usepackage{calc}
-%     \input{./lengths.tex}
+%   \newlength{\bodfold}
+  \newlength{\totalspine}
+%   \setlength{\bodfold}{8mm}
+  \setlength{\seitenbreite}{192mm}
+  \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Runder Rücken, Kaschiert, papier 80g/m², weiß
+  \setlength{\spinewidth}{\bodspine}  
+%   \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold} %check whether we need fold for rundrücken
+  \setlength{\totalspine}{\spinewidth} 
+  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
+  \setlength{\totalheight}{\seitenhoehe}
+  \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
+  \hyphenpenalty 750
+\fi
+  
+ 	   
+\ifx\lsOutput\lsOutputCoverBODsc 
+  \lsCovertrue 	
+  \usepackage{calc}   
   \newlength{\bodfold}
   \newlength{\totalspine}
-  \setlength{\bodfold}{8mm}
-  \setlength{\seitenbreite}{192mm}
-  \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Gerader Rücken, Kaschiert, papier 80g/m², weiß
+  \setlength{\seitenbreite}{175mm}
+  \setlength{\seitenhoehe}{240mm} % For BOD: Softcover, papier 80g/m², weiß
   \setlength{\spinewidth}{\bodspine}  
-  \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold} 
+  \setlength{\totalspine}{\spinewidth} 
   \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
   \setlength{\totalheight}{\seitenhoehe}
   \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
