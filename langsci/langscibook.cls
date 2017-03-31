@@ -90,6 +90,7 @@
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsChapterFooterSize}{\small} %footers in editedvolumes
 \newcommand{\lsCopyright}{CC-BY}
+\newcommand{\lsSpinewidth}{20mm}
 \newcommand{\lsBiblatexBackend}{bibtex}
 \newcommand{\logotext}{{\color{red}no logo}}
 \newcommand{\lsYear}{\the\year}
@@ -172,6 +173,10 @@
 \DeclareStringOption{biblatexbackend}[bibtex]
 	\define@key{langscibook}{biblatexbackend}{%
 		\renewcommand{\lsBiblatexBackend}{#1}}
+
+\DeclareStringOption{spinewidth}[20mm]
+	\define@key{langscibook}{spinewidth}{%
+		\renewcommand{\lsSpinewidth}{#1}}
 % \DeclareVoidOption{long}{
 % 	\renewcommand{\lsOutput}{long}}
 \DeclareVoidOption{smallfont}{  			
@@ -276,10 +281,10 @@
 \newcommand{\podsetup}{
   \lsCovertrue
   \renewcommand{\maketitle}{}  %no need for this
-  \StrLen{\@subtitle}[\subtitleStrLen]     % check if a subtitle exists
+  \StrLen{\@subtitle}[\subtitleStrLen]     % Get the length of the subtitle. Later, we use this length to check if a subtitle exists.
   \pagestyle{empty}
-  \pgfdeclarelayer{lspcls_bg} % Please make sure to never use lspcls_... PGF layers in any document
-  \pgfsetlayers{lspcls_bg,main}  
+  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
   \renewcommand{\and}{, }% 
   \renewcommand{\lastand}{ \& }%  
   \renewcommand{\affiliation}[1]{}
@@ -292,16 +297,16 @@
   \renewcommand{\newlineCover}{}
   \renewcommand{\and}{, }
   \renewcommand{\lastand}{ \& }
-  \node [above = 0mm of lspcls_bgspline.south, anchor=base] (lspcls_splinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
+  \node [above = 0mm of CoverSpine.south, anchor=base] (lspcls_spinelogo) {\color{\lsSeriesColor}\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}};
 % add number on spine
 % inside logo
-%   \node [below = -7mm of lspcls_splinelogo] (lspcls_splinenumber)  { \hspace*{4mm}{\parbox{.37cm}{\centering \contour{\lsSeriesColor}{\color{white}\sffamily \large \lsSeriesNumber }}}};
+%   \node [below = -7mm of lspcls_spinelogo] (lspcls_splinenumber)  { \hspace*{4mm}{\parbox{.37cm}{\centering \contour{\lsSeriesColor}{\color{white}\sffamily \large \lsSeriesNumber }}}};
 % bottom centered
-%   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\centering\sffamily \large \lsSeriesNumber }}};
+%   \node [below = -1mm of lspcls_spinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\centering\sffamily \large \lsSeriesNumber }}};
 % bottom leftaligned
-%   \node [below = -1mm of lspcls_splinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
+%   \node [below = -1mm of lspcls_spinelogo] (lspcls_splinenumber)  {\color{\lsSeriesColor} \hspace*{4mm}{\parbox{.37cm}{\sffamily \large \lsSeriesNumber }}};
 %
-\node [below = 0mm of lspcls_bgspline.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
+\node [below = 0mm of CoverSpine.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor} 
   {\parbox{.47cm}{
    \centering
     \sffamily 
@@ -311,7 +316,7 @@
   }
 };
 
-  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_splinelogo.north, rotate=270] (lspcls_splinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
+  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_spinelogo.north, rotate=270] (lspcls_spinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}}; 
   \renewcommand{\newlineCover}{\\}
 }
 
@@ -320,20 +325,41 @@
 % Argument 2: Height of the coloured title and backtitle form and of the spine. Input: 12.45cm
 % Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
 \newcommand{\podgeometry}[3]{
-    \begin{pgfonlayer}{lspcls_bg} % background layer
-      \node [bg, left = #1 of current page.east, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg1) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
-      \node [bg, right = #1 of current page.west, fill=\lsSeriesColor, minimum height=#2, minimum width=#3] (lspcls_bg2) {};
-      \node at (current page.center) [bg, minimum height=#2, minimum width=\spinewidth,dashed] (lspcls_bgspline) {}; % add [draw] option for preview mode 
+    \begin{pgfonlayer}{lspcls_bg} % Draw on the background layer
+      \node [ bg, % Draw the coloured background on the front cover
+	      left = #1 of current page.east, 
+	      fill=\lsSeriesColor, 
+	      minimum height=#2, 
+	      minimum width=#3
+	     ] (CoverColouredRectangleFront) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
+      \node [ bg, % Draw the coloured background on the back cover 
+              right = #1 of current page.west, 
+              fill=\lsSeriesColor, 
+              minimum height=#2, 
+              minimum width=#3
+            ] (CoverColouredRectangleBack) {}; 
+      \node at (current page.center) [ % Create a reference node for the spine
+              bg, 
+              minimum height=#2, 
+              minimum width=\spinewidth,dashed
+            ] (CoverSpine) {}; % add [draw] option for preview mode 
     \end{pgfonlayer}   
 }
 
 % Generates the content of the back cover
 % Argument 1: Text width, corresponding to Argument 1 of \podfrontcovertoptext
 \newcommand{\podbackcover}[1]{
-  \node [font=\fontsize{25pt}{10mm}\selectfont, right, below right = 10mm and 7.5mm of lspcls_bg2.north west, text width=#1] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
-  \node [below = 10mm of lspcls_backtitle, text width=#1, align=justify] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
-  %\node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west] {\color{\lsCoverFontColour}ISBN \lsBackBodyFont{\lsISBN}};
-  \node [below right = 192.5mm and 97.5mm of lspcls_bg2.north west, text width=4cm] {
+  \node [ font=\fontsize{25pt}{10mm}\selectfont, 
+          right,
+          below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west, 
+          text width=#1
+         ] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
+  \node [ below = 10mm of lspcls_backtitle,
+          text width=#1,
+          align=justify
+        ] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
+ \node [  below right = 192.5mm and 97.5mm of CoverColouredRectangleBack.north west, 
+          text width=4cm] {%
     \colorbox{white}{
       \begin{pspicture}(0,0)(4.1,1in)
         \psbarcode[transx=.4,transy=.3]{\lsISBNcover}{includetext height=.7}{isbn}%
@@ -344,27 +370,54 @@
 
 % Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
 % Argument 1: Text width on the front cover. Input: 12.34mm
-% Argument 2: Font size on the front cover. Adjust to compensate varying text width Input: 12.34pt
+% Argument 2: Font size on the front cover. Adjust to compensate varying text width. Input: 12.34pt
 \newcommand{\podfrontcovertoptext}[2]{
   \newcommand{\lsCoverFontColour}{white}
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
   
-  \node [execute at begin node={}, font=\fontsize{#2}{17.25mm}\selectfont, below right = 10mm and 7.5mm of lspcls_bg1.north west, text width=#1, align=left] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}}; % x = 15mm - 7.5mm ; y = 17.5mm - 7.5mm
+  \node [ execute at begin node={}, 
+          font=\fontsize{#2}{17.25mm}\selectfont, 
+          below right = 10mm and 7.5mm of CoverColouredRectangleFront.north west, 
+          text width=#1, 
+          align=left
+        ] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}};
   
-  \ifnum\subtitleStrLen=0  % Is there a subtitle?
-  \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_covertitle.south, text width=#1] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; % If not, just print the author
-  \else
-  \node [font=\fontsize{25pt}{10mm}\selectfont,below = 8mm of lspcls_covertitle.south, text width=#1] (lspcls_coversubtitle) {\color{\lsCoverFontColour} \lsCoverSubTitleFont \nohyphens{\@subtitle}\par}; 
-  \node [font=\fontsize{25pt}{12.5mm}\selectfont, right, below = 11.2mm of lspcls_coversubtitle.south, text width=#1] {\color{\lsCoverFontColour}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
+  \ifnum\subtitleStrLen=0  % Is there a subtitle? If no, just print the author.
+  \node [ font=\fontsize{25pt}{12.5mm}\selectfont, 
+          right, 
+          below = 11.2mm of lspcls_covertitle.south, 
+          text width=#1
+        ] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}}; 
+  \else % If yes, create a node for subtitle and author
+  \node [ font=\fontsize{25pt}{10mm}\selectfont,
+          below = 8mm of lspcls_covertitle.south, 
+          text width=#1
+        ] (lspcls_coversubtitle) {\color{\lsCoverFontColour} \lsCoverSubTitleFont \nohyphens{\@subtitle}\par}; 
+  \node [
+          font=\fontsize{25pt}{12.5mm}\selectfont, 
+          right, 
+          below = 11.2mm of lspcls_coversubtitle.south, 
+          text width=#1
+        ] {\color{\lsCoverFontColour}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
   \fi
 }
 
 % Generates the bottom half of the front cover content: series, series number, logo.
 \newcommand{\podcoverbottomtext}{
-  \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
-  \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
-  \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};  
+  \node [ above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west, 
+          rectangle, 
+          fill=white, 
+          minimum size=17pt] (lspcls_square) {}; % This is the white square at the bottom left of the front cover
+  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
+  \path let \p1 = (lspcls_square.north east), % Calculate the exact coordinates for the Series Title to print.
+            \p2 = (lspcls_covertitle.west) 
+            in node at (\x2,\y1) (lspcls_seriesinfo) [
+                  font=\fontsize{17pt}{7.5mm}\selectfont,
+                  right,
+                  text width=95mm,
+                  anchor=north west] 
+            {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};  
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -523,7 +576,7 @@
 \ifx\lsOutput\lsOutputCoverBODsc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{24.5mm}{23.1cm}{15.2cm}
+    \podgeometry{10.5mm}{23.1cm}{15.2cm}
     \podspine 
     \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
@@ -546,9 +599,9 @@
     \podcoverbottomtext
 %     %unclear why this was different between BOD and CS
 %     %-----------------------------
-%     \node [above right = 18.5mm and -.1mm of lspcls_bg1.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
-%     \node [above left = 10mm and 7.5mm of lspcls_bg1.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
-% %     \node [below right = 197.5mm and 117.1mm of lspcls_bg1.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
+%     \node [above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
+%     \node [above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
+% %     \node [below right = 197.5mm and 117.1mm of CoverColouredRectangleFront.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
 %     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 %     %-----------------------------
 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
@@ -627,17 +680,17 @@
 \newlength{\spinewidth}
 \newlength{\totalwidth}
 \newlength{\totalheight}
-\IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadata.tex
+% \IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadata.tex
 \setlength{\bleed}{3.175mm}
+\setlength{\spinewidth}{\lsSpinewidth} % Create Space Version
+\usepackage{calc}
  
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version  
     \lsCovertrue
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
     \setlength{\seitenhoehe}{244.1mm} 	
-    \setlength{\spinewidth}{\csspine} % Create Space Version
     
-    \usepackage{calc}
 
     \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
     \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
@@ -646,35 +699,32 @@
 \fi
  	   
 \ifx\lsOutput\lsOutputCoverBODhc 
-  \lsCovertrue 	
-  \usepackage{calc}
-%   \newlength{\bodfold}
+  \lsCovertrue 	 
+  \newlength{\bodfold}
   \newlength{\totalspine}
-%   \setlength{\bodfold}{8mm}
+  \setlength{\bodfold}{8mm}
   \setlength{\seitenbreite}{192mm}
-  \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Runder Rücken, Kaschiert, papier 80g/m², weiß
-  \setlength{\spinewidth}{\bodspine}  
-%   \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold} %check whether we need fold for rundrücken
+  \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Runder Rücken, Kaschiert, papier 80g/m², weiß, Papier 17x24cm
+%   \setlength{\spinewidth}{\bodspine}  
+%   \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold}
   \setlength{\totalspine}{\spinewidth} 
   \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
   \setlength{\totalheight}{\seitenhoehe}
-  \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
+  \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
   \hyphenpenalty 750
 \fi
   
  	   
 \ifx\lsOutput\lsOutputCoverBODsc 
-  \lsCovertrue 	
-  \usepackage{calc}   
-  \newlength{\bodfold}
+  \lsCovertrue
   \newlength{\totalspine}
-  \setlength{\seitenbreite}{175mm}
-  \setlength{\seitenhoehe}{240mm} % For BOD: Softcover, papier 80g/m², weiß
-  \setlength{\spinewidth}{\bodspine}  
+  \setlength{\seitenbreite}{170mm}
+  \setlength{\seitenhoehe}{240mm} % For BOD: Softcover, papier 80g/m², weiß, Papier 17x24cm
+  \setlength{\bleed}{5mm}
   \setlength{\totalspine}{\spinewidth} 
-  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
-  \setlength{\totalheight}{\seitenhoehe}
-  \usepackage[paperheight=\seitenhoehe, paperwidth=\totalwidth]{geometry}
+  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
+  \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
+  \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
   \hyphenpenalty 750
 \fi
   
