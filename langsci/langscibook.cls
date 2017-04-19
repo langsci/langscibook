@@ -1702,7 +1702,8 @@ width=.8\textwidth
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\} 
   %   \\[-1\baselineskip]
-  \vspace*{-2\baselineskip}
+  %   \vspace*{-2\baselineskip}
+  \renewcommand{\chapterheadstartvskip}{}
   \noindent{\LARGE Chapter \thechapter}\\
   \bigskip  
   \@title}}
