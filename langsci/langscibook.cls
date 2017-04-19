@@ -1782,10 +1782,10 @@ width=.8\textwidth
 \newcommand{\lsCollectionPaperTitle}{{%
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\} 
-  %   \\[-1\baselineskip]
-  %   \vspace*{-2\baselineskip}
+%     \\[-1\baselineskip]
+%     \vspace*{-2\baselineskip}
   \renewcommand{\chapterheadstartvskip}{}
-  \noindent{\LARGE Chapter \thechapter}\\
+  {\LARGE \noindent \hspace*{-.7cm} Chapter \thechapter}\\ %there must be a better way to undo this length than a hard value
   \bigskip  
   \@title}}
   
