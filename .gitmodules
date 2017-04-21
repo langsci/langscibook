@@ -1,0 +1,3 @@
+[submodule "langsci/fonts"]
+	path = langsci/fonts
+	url = https://github.com/langsci/langsci-fonts.git
