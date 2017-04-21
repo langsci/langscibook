@@ -336,7 +336,7 @@
               right = #1 of current page.west, 
               fill=\lsSeriesColor, 
               minimum height=#2, 
-              minimum width=#3
+              minimum width=#3  
             ] (CoverColouredRectangleBack) {}; 
       \node at (current page.center) [ % Create a reference node for the spine
               bg, 
@@ -560,7 +560,7 @@
 \ifx\lsOutput\lsOutputCoverBODhc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{24.5mm}{23.1cm}{15.2cm}
+    \podgeometry{24.2mm}{23.1cm}{15.5cm}
     \podspine 
     \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
@@ -576,7 +576,7 @@
 \ifx\lsOutput\lsOutputCoverBODsc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{10.5mm}{23.1cm}{15.2cm}
+%     \podgeometry{13.75mm}{23.1cm}{15.5cm}
     \podspine 
     \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
