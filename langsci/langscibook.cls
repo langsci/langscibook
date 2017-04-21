@@ -562,7 +562,7 @@
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
     \podgeometry{24.2mm}{23.1cm}{15.5cm}
     \podspine 
-    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
+    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
     \podbackcover{135.5mm}  
@@ -576,9 +576,9 @@
 \ifx\lsOutput\lsOutputCoverBODsc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-%     \podgeometry{13.75mm}{23.1cm}{15.5cm}
+    \podgeometry{13.75mm}{23.1cm}{15.5cm}
     \podspine 
-    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
+    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNsoftcover}
     \podbackcover{135.5mm}  
@@ -605,7 +605,7 @@
 %     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 %     %-----------------------------
 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-    \podbackcover{137mm}
+    \podbackcover{140mm}
   \end{tikzpicture} 
   %exit the document right here  
   \end{titlepage}
