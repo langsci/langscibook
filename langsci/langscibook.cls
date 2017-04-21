@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/10/29 Language Science Press]
+\ProvidesClass{langsci/langscibook}[2017/04/21 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -64,6 +64,8 @@
 \newcommand{\logopath}{}
 \newcommand{\seriesinfopath}{}
 \newcommand{\bstpath}{}
+\newcommand{\bbxpath}{}
+\newcommand{\cbxpath}{}
 \newcommand{\stylepath}{}
 % Paths can be overwritten with option "nonflat"
 
@@ -194,6 +196,8 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\bstpath}{./langsci/bst/}
+  \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+  \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
 	\renewcommand{\stylepath}{./langsci/styles/}	
 }
 \DeclareVoidOption{nobabel}{  			
@@ -1364,12 +1368,13 @@ is, or will remain, accurate or appropriate.
 
 \usepackage[
 	natbib=true,
-	\iflsUndecapitalize
-	style=\bstpath biblatex-langsci-unified-undecap,
-	\else
-	style=\bstpath biblatex-langsci-unified,
-	\fi
-	citestyle=\bstpath langsci-authoryear-comp,
+	% \iflsUndecapitalize
+	% style=\bstpath biblatex-langsci-unified-undecap,
+	% \else
+	% style=\bstpath biblatex-langsci-unified,
+	% \fi
+  style=\bbxpath biblatex-sp-unified,
+	citestyle=\cbxpath sp-authoryear-comp,
 	%refsection=chapter,
 	maxbibnames=99,
 	isbn=false,
