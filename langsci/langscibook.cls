@@ -1316,7 +1316,7 @@ is, or will remain, accurate or appropriate.
 \fi
 
 \raggedbottom
-\deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}\ }
+\deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}} % putting a space after footnotemark has undesirable side effects with footnotes that start with an empty line; instead use \xspace in the footnote definition below
 \newlength{\normalparindent}
 \AtBeginDocument{\setlength{\normalparindent}{\parindent}}
 
@@ -1327,7 +1327,7 @@ is, or will remain, accurate or appropriate.
 \newcommand\nextToken\relax
 
 \renewcommand\footnote[1]{%
-\oldFootnote{#1}\futurelet\nextToken\isFootnote}
+\oldFootnote{\xspace#1}\futurelet\nextToken\isFootnote}
 
 \newcommand\isFootnote{%
 \ifx\footnote\nextToken\textsuperscript{,}\fi}
