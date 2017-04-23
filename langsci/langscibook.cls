@@ -1386,13 +1386,15 @@ is, or will remain, accurate or appropriate.
 	\iflsCollection\else
 		toc=bib 		% make bibliography appear in toc
 	\fi
-	]{biblatex} 
+	]{biblatex}
+  
 \renewcommand{\postnotedelim}{: }%
 \renewcommand{\multicitedelim}{\addsemicolon\space}%  
 \renewcommand{\compcitedelim}{\multicitedelim}
+% \renewcommand{\nameyeardelim}{ }%
 \DeclareFieldFormat{postnote}{#1}%
-%\renewcommand{\nameyeardelim}{ }%
-\defbibheading{references}{\chapter{References}} 
+\DeclareBibliographyAlias{inbook}{incollection} % see https://github.com/semprag/biblatex-sp-unified/issues/35
+\defbibheading{references}{\chapter{References}} % FIXME: adjust with language
  
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
