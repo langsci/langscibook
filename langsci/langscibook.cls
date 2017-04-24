@@ -152,12 +152,9 @@
 \DeclareStringOption{biblatexbackend}[bibtex]
 	\define@key{langscibook}{biblatexbackend}{%
 		\renewcommand{\lsBiblatexBackend}{#1}}
-
 \DeclareStringOption{spinewidth}[20mm]
 	\define@key{langscibook}{spinewidth}{%
-		\renewcommand{\lsSpinewidth}{#1}}
-% \DeclareVoidOption{long}{
-% 	\renewcommand{\lsOutput}{long}}
+		\renewcommand{\lsSpinewidth}{#1}} 
 \DeclareVoidOption{smallfont}{  			
 	\renewcommand{\lsFontsize}{10pt}}
 \DeclareVoidOption{undecapitalize}{  			
@@ -197,9 +194,7 @@
 	\lsCollectionChaptertrue}
 \DeclareVoidOption{collectiontoclong}{  			
 	\lsCollectiontrue%
-	\lsCollectionTOCLongtrue}
-\DeclareVoidOption{coverus}{  			
-	\lsUscovertrue}
+	\lsCollectionTOCLongtrue} 
 \ProcessKeyvalOptions{langscibook}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -406,8 +401,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputBook}{book}             % standard book
-\newcommand{\lsOutputShort}{short}            % standard book, old key name
+\newcommand{\lsOutputBook}{book}             % standard book 
 \newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
 \newcommand{\lsOutputPaper}{paper}            % paper in edited volume
 \newcommand{\lsOutputGuidelines}{guidelines}  % guidelines 
@@ -428,40 +422,7 @@
 \renewcommand{\maketitle}{
 \begin{titlepage}
 \thispagestyle{empty}
-
-% \ifx\lsOutput\lsOutputLong        % only if output=long
-%   \setcounter{page}{-3}
-%   %% First titlepage:
-%   {\lsFrontPage}
-%   %%%%%%%%%%%%%%%%%%%
-%   \newpage\thispagestyle{empty}
-%   \null\newpage\thispagestyle{empty}
-%   %% Back page:
-%   {\lsBackPage}
-%   %%%%%%%%%%%%%%%%%%%
-%   \newpage\thispagestyle{empty}
-%   \null\newpage\thispagestyle{empty}
-%   %% Book spine:
-%   {\lsSpine}
-%   %%%%%%%%%%%%%%%%
-%   \newpage\thispagestyle{empty}
-%   \null\newpage\thispagestyle{empty}
-%   %% Series information:
-%   {\lsSeriesHistory}
-%   %%%%%%%%%%%%%%%%%%%%%
-%   \newpage\thispagestyle{empty}
-%   %% Schmutztitel:
-%   {\renewcommand{\lsCoverBlockColor}{white}
-%    \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
-%   \lsSchmutztitel}
-%   %%%%%%%%%%%%%%%%%%%%
-%   \AtEndDocument{
-%     \lsPageStyleEmpty
-%     \null\newpage\thispagestyle{empty}
-%     %% Advertisement:
-%     {\lsAdvertisement}
-%   }
-% \fi   
+ 
 
 \ifx\lsOutput\lsOutputBook   % only if output=book
   \setcounter{page}{-1}
@@ -489,36 +450,7 @@
     {\lsBackPage}
     \null\newpage\thispagestyle{empty}
   }
-\fi
-
-
-\ifx\lsOutput\lsOutputShort  %repeated from \lsOutputBook above for backward compatibility
-  \setcounter{page}{-1}
-  %% First titlepage:
-  {\lsFrontPage}
-  %%%%%%%%%%%%%%%%%%%
-  \newpage\thispagestyle{empty}
-  \null\newpage\thispagestyle{empty}
-  %% Series information:
-  {\lsSeriesHistory}
-  %%%%%%%%%%%%%%%%%%%%%
-  \newpage\thispagestyle{empty}
-  %% Schmutztitel:
-  {\renewcommand{\lsCoverBlockColor}{white}
-   \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
-  \lsSchmutztitel}
-  %%%%%%%%%%%%%%%%%%%%
-  \AtEndDocument{
-    \lsPageStyleEmpty
-    \null\newpage\thispagestyle{empty}
-    %% Advertisement:
-    {\lsAdvertisement}
-    \null\newpage\thispagestyle{empty}
-    %% Back page:
-    {\lsBackPage}
-    \null\newpage\thispagestyle{empty}
-  }
-\fi
+\fi 
 
 \ifx\lsOutput\lsOutputInprep          % only if output=inprep
   {\renewcommand{\lsCoverBlockColor}{white}
@@ -650,7 +582,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
 % For output type cover
-\usepackage{catchfilebetweentags}
+% \usepackage{catchfilebetweentags}
 \newlength{\csspine}   % CS spine width algorithm, when page count is known:  Total Page Number (excluding cover), usually (Total Page - 3) * 0.0572008 mm 
 \newlength{\bodspine}  % BoD spine width algorithm located at http://www.bod.de/hilfe/coverberechnung.html (German only, please contact LangSci for help)
 \newlength{\bleed}
@@ -1002,23 +934,6 @@
     }%  
   \end{textblock}}
 
-% \newcommand{\lsSpine}{      % Book spine
-%   \renewcommand{\newlineSpine}{\\}
-%   \renewcommand{\newlineCover}{}
-%   \begin{textblock}{40}(65,0)
-%   \rotatebox{90}{\color{black}\begin{minipage}[c][\lsSpineBreadth][c]{\paperheight}
-%     \color{\lsSeriesColor}
-%     \hspace{7.5mm}
-%     \IfFileExists{\logopath langsci_spinelogo_nocolor.pdf}{$\vcenter{\hbox{\includegraphics[angle=-90,origin=c]{\logopath langsci_spinelogo_nocolor.pdf}}}$}{logo}
-%     \hspace{15mm} 
-%     {\lsSpineTitleFont
-%       \rotatebox[origin=c]{180}{\pbox[c]{150mm}{\lsSpineTitle}}}
-%     \hspace{13mm}
-%     {\lsSpineAuthorFont 
-%       \rotatebox[origin=c]{180}{\pbox[c]{100mm}{\lsSpineAuthor\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi}}}
-%   \end{minipage}} 
-%   \end{textblock}}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1189,7 +1104,6 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 external or third-party Internet websites referred to in this
 publication, and does not guarantee that any content on such websites
 is, or will remain, accurate or appropriate. 
-%Information regarding prices, travel timetables and other factual information given in this work are correct at the time of first publication but \lsp does not guarantee the accuracy of such information thereafter. 
 }
 
 
