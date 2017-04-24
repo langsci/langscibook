@@ -143,27 +143,6 @@
 \SetupKeyvalOptions{
 	family=langscibook,
 	prefix=langscibook@ }
-\DeclareStringOption{number}[??]
-	\define@key{langscibook}{number}{%
-		\renewcommand{\lsSeriesNumber}{#1}}
-\DeclareStringOption{issn}[??]
-	\define@key{langscibook}{issn}{%
-		\renewcommand{\lsISSN}{#1}}
-\DeclareStringOption{isbndigital}[000-0-000000-00-0]
-	\define@key{langscibook}{isbndigital}{%
-		\renewcommand{\lsISBNdigital}{#1}}
-\DeclareStringOption{isbnsoftcover}[000-0-000000-00-0]
-	\define@key{langscibook}{isbnsoftcover}{%
-		\renewcommand{\lsISBNsoftcover}{#1}}
-\DeclareStringOption{isbnhardcover}[000-0-000000-00-0]
-	\define@key{langscibook}{isbnhardcover}{%
-		\renewcommand{\lsISBNhardcover}{#1}}
-\DeclareStringOption{url}[http://langsci-press.org/catalog]
-	\define@key{langscibook}{url}{%
-		\renewcommand{\lsURL}{#1}}
-\DeclareStringOption{series}[eotms]
-	\define@key{langscibook}{series}{%
-		\renewcommand{\lsSeries}{#1}}
 \DeclareStringOption{output}[book]
 	\define@key{langscibook}{output}{%
 		\renewcommand{\lsOutput}{#1}}
