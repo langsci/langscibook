@@ -52,7 +52,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langsci/langscibook}[2016/10/29 Language Science Press]
+\ProvidesClass{langscibook}[2017/04/24 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1092,7 +1092,7 @@ Unter den Linden 6\\
 
 Storage and cataloguing done by FU Berlin \\[3ex]   
 
-\IfFileExists{\logopath logo.pdf}{\includegraphics[width=5cm]{\logopath logo.pdf}}{\logotext} \\[3ex]
+\IfFileExists{\logopath logo.pdf}{\includegraphics[width=5cm]{\logopath langscibook-logo.pdf}}{\logotext} \\[3ex]
 
 
 \vfill
