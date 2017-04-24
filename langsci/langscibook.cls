@@ -336,7 +336,7 @@
               right = #1 of current page.west, 
               fill=\lsSeriesColor, 
               minimum height=#2, 
-              minimum width=#3
+              minimum width=#3  
             ] (CoverColouredRectangleBack) {}; 
       \node at (current page.center) [ % Create a reference node for the spine
               bg, 
@@ -560,9 +560,9 @@
 \ifx\lsOutput\lsOutputCoverBODhc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{24.5mm}{23.1cm}{15.2cm}
+    \podgeometry{24.2mm}{23.1cm}{15.5cm}
     \podspine 
-    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
+    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
     \podbackcover{135.5mm}  
@@ -576,9 +576,9 @@
 \ifx\lsOutput\lsOutputCoverBODsc         % only if output=cover 
   \podsetup  
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}] 
-    \podgeometry{10.5mm}{23.1cm}{15.2cm}
+    \podgeometry{13.75mm}{23.1cm}{15.5cm}
     \podspine 
-    \podfrontcovertoptext{137mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
+    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNsoftcover}
     \podbackcover{135.5mm}  
@@ -605,7 +605,7 @@
 %     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 %     %-----------------------------
 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-    \podbackcover{137mm}
+    \podbackcover{140mm}
   \end{tikzpicture} 
   %exit the document right here  
   \end{titlepage}
@@ -1316,7 +1316,7 @@ is, or will remain, accurate or appropriate.
 \fi
 
 \raggedbottom
-\deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}\ }
+\deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}} % putting a space after footnotemark has undesirable side effects with footnotes that start with an empty line; instead use \xspace in the footnote definition below
 \newlength{\normalparindent}
 \AtBeginDocument{\setlength{\normalparindent}{\parindent}}
 
@@ -1327,7 +1327,7 @@ is, or will remain, accurate or appropriate.
 \newcommand\nextToken\relax
 
 \renewcommand\footnote[1]{%
-\oldFootnote{#1}\futurelet\nextToken\isFootnote}
+\oldFootnote{\xspace#1}\futurelet\nextToken\isFootnote}
 
 \newcommand\isFootnote{%
 \ifx\footnote\nextToken\textsuperscript{,}\fi}
