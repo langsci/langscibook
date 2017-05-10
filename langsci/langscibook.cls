@@ -476,7 +476,7 @@
     \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNhardcover}
-    \podbackcover{135.5mm}  
+    \podbackcover{137mm}  
   \end{tikzpicture}  
   %exit the document right here
   \end{titlepage}
@@ -492,7 +492,7 @@
     \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books. 
     \podcoverbottomtext
     \newcommand{\lsISBNcover}{\lsISBNsoftcover}
-    \podbackcover{135.5mm}  
+    \podbackcover{137mm}  
   \end{tikzpicture}  
   %exit the document right here
   \end{titlepage}
