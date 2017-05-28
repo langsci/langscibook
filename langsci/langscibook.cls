@@ -64,6 +64,8 @@
 \newcommand{\logopath}{}
 \newcommand{\seriesinfopath}{}
 \newcommand{\bstpath}{}
+\newcommand{\bbxpath}{}
+\newcommand{\cbxpath}{}
 \newcommand{\stylepath}{}
 % Paths can be overwritten with option "nonflat"
 
@@ -170,6 +172,8 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\bstpath}{./langsci/bst/}
+  \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+  \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
 	\renewcommand{\stylepath}{./langsci/styles/}	
 }
 \DeclareVoidOption{nobabel}{  			
@@ -1257,12 +1261,13 @@ is, or will remain, accurate or appropriate.
 
 \usepackage[
 	natbib=true,
-	\iflsUndecapitalize
-	style=\bstpath biblatex-langsci-unified-undecap,
-	\else
-	style=\bstpath biblatex-langsci-unified,
-	\fi
-	citestyle=\bstpath langsci-authoryear-comp,
+	% \iflsUndecapitalize
+	% style=\bstpath biblatex-langsci-unified-undecap,
+	% \else
+	% style=\bstpath biblatex-langsci-unified,
+	% \fi
+  style=\bbxpath biblatex-sp-unified,
+	citestyle=\cbxpath sp-authoryear-comp,
 	%refsection=chapter,
 	maxbibnames=99,
 	isbn=false,
@@ -1274,13 +1279,15 @@ is, or will remain, accurate or appropriate.
 	\iflsCollection\else
 		toc=bib 		% make bibliography appear in toc
 	\fi
-	]{biblatex} 
+	]{biblatex}
+  
 \renewcommand{\postnotedelim}{: }%
 \renewcommand{\multicitedelim}{\addsemicolon\space}%  
 \renewcommand{\compcitedelim}{\multicitedelim}
+% \renewcommand{\nameyeardelim}{ }%
 \DeclareFieldFormat{postnote}{#1}%
-%\renewcommand{\nameyeardelim}{ }%
-\defbibheading{references}{\chapter{References}} 
+\DeclareBibliographyAlias{inbook}{incollection} % see https://github.com/semprag/biblatex-sp-unified/issues/35
+\defbibheading{references}{\chapter{References}} % FIXME: adjust with language
  
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
