@@ -172,8 +172,10 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\bstpath}{./langsci/bst/}
-  \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
-  \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
+%   \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+  \renewcommand{\bbxpath}{\bstpath}
+%   \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
+  \renewcommand{\cbxpath}{\bstpath}
 	\renewcommand{\stylepath}{./langsci/styles/}	
 }
 \DeclareVoidOption{nobabel}{  			
