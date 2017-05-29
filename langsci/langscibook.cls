@@ -573,6 +573,11 @@
  \renewcommand{\eachwordone}{\itshape} 
 \fi
 
+\ifx\lsSeries\nc
+ \renewcommand{\eachwordone}{\itshape} 
+\fi
+
+
 
 } %% \AtBeginDocument
 
