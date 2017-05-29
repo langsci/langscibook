@@ -6,7 +6,9 @@ This repository contains the most recent development build. See the [latex-skele
 
 ## installation
 
-Clone the repository and download submodules: `git clone --recursive https://github.com/langsci/latex.git`
+Clone the repository and download the contained submodules with your terminal: 
+
+`git clone --recursive https://github.com/langsci/latex.git`
 
 
 ## class options of langscibook.cls
