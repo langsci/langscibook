@@ -10,7 +10,7 @@ In your terminal, you can clone the repository and download the contained submod
 
 `git clone --recursive https://github.com/langsci/latex.git`
 
-In case you already have cloned the repository, don't forget to also update the submodules from time to time:
+In case you already have cloned the repository, don't forget to also update the submodules together with `git pull`:
 
 `git submodule update --init --recursive`
 
