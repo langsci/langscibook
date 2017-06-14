@@ -172,10 +172,10 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\bstpath}{./langsci/bst/}
-%   \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
-  \renewcommand{\bbxpath}{\bstpath}
-%   \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
-  \renewcommand{\cbxpath}{\bstpath}
+  \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+  % \renewcommand{\bbxpath}{\bstpath}
+  \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
+  % \renewcommand{\cbxpath}{\bstpath}
 	\renewcommand{\stylepath}{./langsci/styles/}	
 }
 \DeclareVoidOption{nobabel}{  			
@@ -1287,13 +1287,18 @@ is, or will remain, accurate or appropriate.
 		toc=bib 		% make bibliography appear in toc
 	\fi
 	]{biblatex}
-  
+
+
+%% changes of citestyle (FIXME: documentation missing)   
 \renewcommand{\postnotedelim}{: }%
 \renewcommand{\multicitedelim}{\addsemicolon\space}%  
 \renewcommand{\compcitedelim}{\multicitedelim}
 % \renewcommand{\nameyeardelim}{ }%
+
+%% changes of bibliography style
 \DeclareFieldFormat{postnote}{#1}%
 \DeclareBibliographyAlias{inbook}{incollection} % see https://github.com/semprag/biblatex-sp-unified/issues/35
+
 \defbibheading{references}{\chapter{References}} % FIXME: adjust with language
  
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
