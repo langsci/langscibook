@@ -1259,7 +1259,6 @@ is, or will remain, accurate or appropriate.
 {\endlist}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Citations:
@@ -1289,16 +1288,16 @@ is, or will remain, accurate or appropriate.
 	]{biblatex}
 
 
-%% changes of citestyle (FIXME: documentation missing)   
+%% changes of citestyle (cbx) (FIXME: documentation missing)   
 \renewcommand{\postnotedelim}{: }%
 \renewcommand{\multicitedelim}{\addsemicolon\space}%  
 \renewcommand{\compcitedelim}{\multicitedelim}
 % \renewcommand{\nameyeardelim}{ }%
 
-%% changes of bibliography style
+%% changes of bibliography style (bbx)
 \DeclareFieldFormat{postnote}{#1}%
 \DeclareBibliographyAlias{inbook}{incollection} % see https://github.com/semprag/biblatex-sp-unified/issues/35
-
+%% DOIs are handled after hyperref.
 \defbibheading{references}{\chapter{References}} % FIXME: adjust with language
  
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
