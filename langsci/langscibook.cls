@@ -1681,6 +1681,38 @@ width=.8\textwidth
   {\LARGE \noindent \hspace*{-.7cm} Chapter \thechapter}\\ %there must be a better way to undo this length than a hard value
   \bigskip  
   \@title}}
+   
+\newcommand{\lsCollectionPaperFrontmatterMode}{% %%% Sometimes, chapters like prefaces appear in edited volumes that need special treatment in their headers and TOC
+  \renewcommand{\lsCollectionPaperTitle}{{%
+  \renewcommand{\newlineTOC}{}
+  \renewcommand{\newlineCover}{\\} 
+  \\[-1\baselineskip]
+  \noindent{\LARGE ~}\\
+  \bigskip  
+  \noindent\@title}}
+  
+  \renewcommand{\lsCollectionPaperTOC}{{%
+  \iflsCollectionChapter%
+    \protect\numberline{~}\fi
+  \@title\newline{\normalfont\@author}}}
+}
+
+\newcommand{\lsCollectionPaperMainmatterMode}{% %%% This resets the changes done by FrontmatterMode
+  \renewcommand{\lsCollectionPaperTitle}{{%
+  \renewcommand{\newlineTOC}{}
+  \renewcommand{\newlineCover}{\\} 
+  \\[-1\baselineskip]
+% \vspace*{-2\baselineskip}
+  \noindent{\LARGE Chapter \thechapter}\\
+  \bigskip  
+  \@title}}
+  
+  \renewcommand{\lsCollectionPaperTOC}{{%
+  \iflsCollectionChapter%
+    \protect\numberline{\thechapter}\fi
+  \@title\newline{\normalfont\@author}}}
+}
+
   
 \newcommand{\lsCollectionPaperAuthor}{{%
   \renewcommand{\newlineTOC}{}
