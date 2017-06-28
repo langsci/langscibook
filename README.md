@@ -4,6 +4,17 @@ LaTeX class and additions for typesetting books to be published with Language Sc
 
 This repository contains the most recent development build. See the [latex-skeletons](https://github.com/langsci/latex-skeletons) repository for ready to use templates.
 
+## installation
+
+In your terminal, you can clone the repository and download the contained submodules with the following command: 
+
+`git clone --recursive https://github.com/langsci/latex.git`
+
+In case you already have cloned the repository, don't forget to also update the submodules together with `git pull`:
+
+`git submodule update --init --recursive`
+
+
 ## class options of langscibook.cls
 
 option | values (defaults in bold face) | meaning

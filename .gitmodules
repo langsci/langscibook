@@ -1,0 +1,6 @@
+[submodule "langsci/fonts"]
+	path = langsci/fonts
+	url = https://github.com/langsci/langsci-fonts.git
+[submodule "langsci/bst/biblatex-sp-unified"]
+	path = langsci/bst/biblatex-sp-unified
+	url = https://github.com/langsci/biblatex-sp-unified.git
