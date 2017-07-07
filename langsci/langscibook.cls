@@ -1295,8 +1295,13 @@ is, or will remain, accurate or appropriate.
 % \renewcommand{\nameyeardelim}{ }%
 
 %% changes of bibliography style (bbx)
-\DeclareFieldFormat{postnote}{#1}%
+\DeclareFieldFormat{postnote}{#1}% display pages without page prefix (p., pp.)
 \DeclareBibliographyAlias{inbook}{incollection} % see https://github.com/semprag/biblatex-sp-unified/issues/35
+%% The note field should appear at end of an entry just before the DOI, other than with the used bibliography style. It is therefore first removed, then again restored and included together with the DOI. 
+\AtEveryBibitem{%
+  \savefield*{note}{\lsnote}% 
+  \clearfield{note}%
+}
 %% DOIs are handled after hyperref.
 \defbibheading{references}{\chapter{References}} % FIXME: adjust with language
  
@@ -1541,6 +1546,8 @@ width=.8\textwidth
 \iflsBiblatex
 \renewbibmacro*{finentry}{\finentry
 	\iffieldundef{url}{}{ \url{\thefield{url}}\iffieldundef{urlday}{}{, accessed \thefield{urlyear}-\thefield{urlmonth}-\thefield{urlday}}.}
+  \restorefield{note}{\lsnote}
+  \iffieldundef{note}{}{\addspace{\thefield{note}\addperiod}}
 	\iffieldundef{doi}{}{ {\color{lsGuidelinesGray}\doi{\thefield{doi}}}}
 }
 %\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
