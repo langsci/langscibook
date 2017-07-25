@@ -694,7 +694,7 @@
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf 		
 	]{DejaVuSansMono.ttf}
 
-\iflsModfonts{% use Langsci fonts
+\iflsModfonts% use Langsci fonts
   \setsansfont[
 	  %Ligatures={TeX,Common},		% not supported by ttf
 	  Scale=MatchLowercase,
