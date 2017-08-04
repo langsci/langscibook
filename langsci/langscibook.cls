@@ -1276,6 +1276,7 @@ is, or will remain, accurate or appropriate.
 	citestyle=\cbxpath sp-authoryear-comp,
 	%refsection=chapter,
 	maxbibnames=99,
+	maxcitenames=2,
 	isbn=false,
 	doi=false,
 	url=false,
