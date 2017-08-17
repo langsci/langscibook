@@ -299,3 +299,7 @@
 \newcommand{\rephrase}[2]{{\color{yellow!30!black}#2}\todo{replaced `#1'}}
 
 \newcommand{\missref}[2][]{\todo[#1]{missing reference #2}}
+
+\newenvironment{indentquote}[1]%
+  {\list{}{\leftmargin=#1\rightmargin=0pt}\item[]}%
+  {\endlist}

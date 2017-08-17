@@ -16,7 +16,7 @@
 \newcommand{\nc}{nc}		%Niger Congo
 \newcommand{\tbls}{tbls}	%Textbooks in Language Sciences
 \newcommand{\silp}{silp}	%Studies in Laboratory Phonology
-\newcommand{\tdgi}{tdgi}	%Topics at the Discourse Grammar Interface
+\newcommand{\tgdi}{tgdi}	%Topics at the  Grammar-Discourse Interface
 \newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
 \newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
 \newcommand{\lv}{lv}		%Language Variation
@@ -95,9 +95,10 @@
 	\newcommand{\lsSeriesColor}{lsYellow}
 	\renewcommand{\lsISSN}{2364-6209} 
 \fi	
-\ifx\lsSeries\tdgi
-	\newcommand{\lsSeriesTitle}{Topics at the Discourse Grammar Interface~\lsSeriesNumber}
+\ifx\lsSeries\tgdi
+	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse Interface~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+	\renewcommand{\lsISSN}{2567-3335} 
 \fi
 \ifx\lsSeries\tmnlp
 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
