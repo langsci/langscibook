@@ -30,7 +30,8 @@
 \newcommand{\db}{\hspaceThis{[}} %dummy space for [ in IMT line
 \newcommand{\rmfnm}{{\upshape\footnotemark}} %romanfootnotemark
 
-\newcommand{\citegen}[2][]{\citeauthor{#2}'s (\citeyear[#1]{#2})}
+\newcommand{\citegen}[2][]{\citeauthor{#2}'s (\citeyear*[#1]{#2})}
+\newcommand{\citeapo}[2][]{\citeauthor{#2}' (\citeyear*[#1]{#2})}
 
 \newcommand{\protectedex}[1]{
 \noindent
@@ -52,3 +53,6 @@
 
 % vertical space to structure tables
 \newcommand{\tablevspace}{\\[-.5em]}
+
+\let\oldfootnotemark\footnotemark
+\renewcommand{\footnotemark}{\upshape\oldfootnotemark}

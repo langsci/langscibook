@@ -85,7 +85,7 @@
 \newcommand{\lsISBNsoftcoverus}{000-0-000000-00-0}
 \newcommand{\lsBookDOI}{??}
 \newcommand{\lsChapterDOI}{??}
-\newcommand{\lsURL}{http://langsci-press.org/catalog}
+\newcommand{\lsURL}{http://langsci-press.org/catalog/book/\lsID}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{book} %"short" makes no sense if "long" is deprecated
@@ -1062,7 +1062,9 @@ ISBN: &
 
 \IfStrEq{\lsBookDOI}{??}    % \IfStrEq from xstring
   {{\color{red} no DOI}}
-  {\doi{\lsBookDOI}}
+  {\doi{\lsBookDOI}}\\
+Source code available from \url{www.github.com/langsci/\lsID}  \\
+Collaborative~reading:~\url{paperhive.org/documents/remote?type=langsci&id=\lsID}
 
 
 \bigskip
