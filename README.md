@@ -4,6 +4,15 @@ LaTeX class and additions for typesetting books to be published with Language Sc
 
 This repository contains the most recent development build. See the [latex-skeletons](https://github.com/langsci/latex-skeletons) repository for ready to use templates.
 
+## submodules
+
+In order to ease the installation procedure, submodules are hardwired, i.e., the files of the following langsci repositories have been already copied to the respective directories:
+
+ * biblatex-sp-unified: langsci/bst/biblatex-sp-unified
+ * langsci-fonts: langsci/fonts
+ 
+We aim to keep repositories and directories identical.
+
 ## installation
 
 In your terminal, you can clone the repository and download the contained submodules with the following command: 
@@ -39,3 +48,6 @@ showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 spinewidth | | the width of the spine, used for cover creation
 undecapitalize | | do not change the casing of titles in the list of references
+
+
+
