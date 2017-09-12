@@ -85,6 +85,7 @@
 \newcommand{\lsISBNsoftcoverus}{000-0-000000-00-0}
 \newcommand{\lsBookDOI}{??}
 \newcommand{\lsChapterDOI}{??}
+\newcommand{\lsID}{000}
 \newcommand{\lsURL}{http://langsci-press.org/catalog/book/\lsID}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsSpineBreadth}{20mm}
@@ -924,7 +925,7 @@
 \newcommand{\lsBackPage}{   % Back page
   \lsCoverBlock
 
-  \begin{textblock}{115}(15,24)  % 30mm-6mm
+  \begin{textblock}{140}(15,24)  % 30mm-6mm
     \color{white}
     {\raggedright
     \lsBackTitleFont 
@@ -1105,7 +1106,7 @@ Unter den Linden 6\\
 
 Storage and cataloguing done by FU Berlin \\[3ex]   
 
-\IfFileExists{\logopath logo.pdf}{\includegraphics[width=5cm]{\logopath langscibook-logo.pdf}}{\logotext} \\[3ex]
+\IfFileExists{\logopath FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath FULogo_sw_CMYK.pdf}}{\logotext} \\[3ex]
 
 
 \vfill
