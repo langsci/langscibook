@@ -8,20 +8,20 @@ This repository contains the most recent development build. See the [latex-skele
 
 In order to ease the installation procedure, submodules are hardwired, i.e., the files of the following langsci repositories have been already copied to the respective directories:
 
- * biblatex-sp-unified: langsci/bst/biblatex-sp-unified
- * langsci-fonts: langsci/fonts
+ * [biblatex-sp-unified](https://github.com/langsci/biblatex-sp-unified) ==>  langsci/bst/biblatex-sp-unified
+ * [langsci-fonts](https://github.com/langsci/langsci-fonts) ==> langsci/fonts
  
 We aim to keep repositories and directories identical.
 
 ## installation
 
-In your terminal, you can clone the repository and download the contained submodules with the following command: 
+In your terminal, you can clone the repository ~~and download the contained submodules~~ with the following command: 
 
 `git clone --recursive https://github.com/langsci/latex.git`
 
-In case you already have cloned the repository, don't forget to also update the submodules together with `git pull`:
+~~In case you already have cloned the repository, don't forget to also update the submodules together with `git pull`:~~
 
-`git submodule update --init --recursive`
+~~`git submodule update --init --recursive`~~
 
 
 ## class options of langscibook.cls
