@@ -22,6 +22,7 @@
 \newcommand{\lv}{lv}		%Language Variation
 \newcommand{\ogs}{ogs}		%Open Generative Syntax
 \newcommand{\osl}{osl}		%Open Slavic Linguistics
+\newcommand{\mi}{mi}		
 \newcommand{\eurosla}{eurosla}		
 \newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
 \newcommand{\classics}{classics}	
@@ -72,6 +73,11 @@
 	\newcommand{\lsSeriesColor}{lsDarkWine}
 	\renewcommand{\lsISSN}{2366-7818}
 \fi
+\ifx\lsSeries\mi
+	\newcommand{\lsSeriesTitle}{Morphological Investigations~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{lsDarkGreenTwo}
+	\renewcommand{\lsISSN}{2567-742X}
+\fi
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRed} 
@@ -84,7 +90,7 @@
 	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidGreen} 
 \fi
-\ifx\lsSeries\osl
+\ifx\lsSeries\pmwe
 	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightBlue} 
 \fi
