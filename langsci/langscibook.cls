@@ -1233,8 +1233,8 @@ is, or will remain, accurate or appropriate.
 \let\oldFootnote\footnote
 \newcommand\nextToken\relax
 
-\renewcommand\footnote[1]{%
-\oldFootnote{\xspace#1}\futurelet\nextToken\isFootnote}
+% \renewcommand\footnote[1]{%
+% \oldFootnote{\xspace#1}\futurelet\nextToken\isFootnote}
 
 \newcommand\isFootnote{%
 \ifx\footnote\nextToken\textsuperscript{,}\fi}
