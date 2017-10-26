@@ -29,7 +29,7 @@ In your terminal, you can clone the repository ~~and download the contained subm
 option | values (defaults in bold face) | meaning
 -------|--------|---------
 biblatex | | use BibLaTeX (default)
-biblatexbackend | **bibtex** \| biber | the backend of BibLaTeX
+biblatexbackend | **biber** \| bibtex  | the backend of BibLaTeX
 collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes

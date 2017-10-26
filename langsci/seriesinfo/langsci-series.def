@@ -23,7 +23,6 @@
 \newcommand{\ogs}{ogs}		%Open Generative Syntax
 \newcommand{\osl}{osl}		%Open Slavic Linguistics
 \newcommand{\mi}{mi}		
-\newcommand{\eurosla}{eurosla}		
 \newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
 \newcommand{\classics}{classics}	
 \newcommand{\dummyseries}{dummyseries}
