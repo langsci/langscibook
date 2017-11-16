@@ -1,11 +1,10 @@
 \documentclass[output=book
-	      ,nonflat
-	      ,modfonts,
+	      ,nonflat      ,modfonts,
 	      ,colorlinks
-% 	      ,undecapitalize
-	      ,biblatex
+% 	      ,undecapitalize 
 % 	      ,collection
 	      ,showindex
+	      ,booklanguage=french
 	      ]{langsci/langscibook}
  
 
@@ -21,7 +20,8 @@
 \usepackage{forest}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\newcommand{\lsID}{000}
+\renewcommand{\lsISBNhardcover}{999-3-123456-99-9}
+\renewcommand{\lsISBNsoftcover}{999-3-123456-99-9}
 % \usepackage{authorindex}
 \bibliography{localbibliography}
 
@@ -106,8 +106,8 @@
 % \input{table-tests/general}
 % \section{Crossrefs}
 % \input{crossref-tests/general}
-% \section{Bibliography}
-% \input{bibtests/cite} 
+\section{Bibliography}
+\input{bibtests/cite} 
 % \section{Index}
 % \input{indextests/indexes} 
 % \section{Diagrams}

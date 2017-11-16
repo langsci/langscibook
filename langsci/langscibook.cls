@@ -49,6 +49,7 @@
 %   \- Indexes
 %   \- Hyperref 
 %   \- Edited volumes (Collection)
+%   \- Languages
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -88,8 +89,9 @@
 \newcommand{\lsID}{000}
 \newcommand{\lsURL}{http://langsci-press.org/catalog/book/\lsID}
 \newcommand{\lsSeries}{eotms}
-\newcommand{\lsSpineBreadth}{20mm}
+% \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{book} %"short" makes no sense if "long" is deprecated
+\newcommand{\lsBookLanguage}{english} %"short" makes no sense if "long" is deprecated
 \newcommand{\lsFontsize}{11pt}
 \newcommand{\lsChapterFooterSize}{\small} %footers in editedvolumes
 \newcommand{\lsCopyright}{CC-BY}
@@ -98,7 +100,7 @@
 \newcommand{\logotext}{{\color{red}no logo}}
 \newcommand{\lsYear}{\the\year}
 
-\newcommand{\lsBackBody}{Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc, litot Europa usa li sam vocabular. Li lingues differe solmen in li grammatica, li pronunciation e li plu commun vocabules. Omnicos directe al desirabilite de un nov lingua franca: On refusa continuar payar custosi traductores.}
+\newcommand{\lsBackBody}{Set blurb on back with {\textbackslash}BackBody{my blurb\}}}
 \newcommand{\lsBackTitle}{\@title}
 \newcommand{\BackTitle}[1]{\renewcommand{\lsBackTitle}{#1}}
 \newcommand{\BackBody}[1]{\renewcommand{\lsBackBody}{#1}} 
@@ -149,6 +151,9 @@
 \DeclareStringOption{output}[book]
 	\define@key{langscibook}{output}{%
 		\renewcommand{\lsOutput}{#1}}
+\DeclareStringOption{booklanguage}[english]
+	\define@key{langscibook}{booklanguage}{%
+		\renewcommand{\lsBookLanguage}{#1}}
 \DeclareStringOption{copyright}[CC-BY]
 	\define@key{langscibook}{copyright}{%
 		\renewcommand{\lsCopyright}{#1}}
@@ -515,13 +520,6 @@
     \podspine
     \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
     \podcoverbottomtext
-%     %unclear why this was different between BOD and CS
-%     %-----------------------------
-%     \node [above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west, rectangle, fill=white, minimum size=17pt] (lspcls_square) {}; % 2
-%     \node [above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
-% %     \node [below right = 197.5mm and 117.1mm of CoverColouredRectangleFront.north west] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}};
-%     \path let \p1 = (lspcls_square.north east), \p2 = (lspcls_covertitle.west) in node at (\x2,\y1) (lspcls_seriesinfo) [font=\fontsize{17pt}{7.5mm}\selectfont, right, text width=95mm, anchor=north west] {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
-%     %-----------------------------
 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
     \podbackcover{140mm}
   \end{tikzpicture} 
@@ -536,7 +534,7 @@
 \renewcommand{\frontmatter}{}
 
 \null\newpage\thispagestyle{empty}
-\hypersetup{colorlinks=false, pdfborder={0 0 0}}  % for hyperref
+\hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
 \color{black}
 \lsInsideFont
 
@@ -602,8 +600,7 @@
 \newlength{\seitenhoehe}
 \newlength{\spinewidth}
 \newlength{\totalwidth}
-\newlength{\totalheight}
-% \IfFileExists{./localmetadata.tex}{\ExecuteMetaData[localmetadata.tex]{coverdimen}}{\typeout{No local meta data found, therefore default spline length was chosen}} % Get only the information between the tag "coverdimen" from localmetadata.tex
+\newlength{\totalheight} 
 \setlength{\bleed}{3.175mm}
 \setlength{\spinewidth}{\lsSpinewidth} % Create Space Version
 \usepackage{calc}
@@ -612,9 +609,7 @@
     \lsCovertrue
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
-    \setlength{\seitenhoehe}{244.1mm} 	
-    
-
+    \setlength{\seitenhoehe}{244.1mm} 	 
     \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
     \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
     \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
@@ -767,7 +762,7 @@
 \let\endoldtabular\endtabular
 \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
 
-%\frenchspacing			
+\frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography		
 \usepackage[final]{microtype}
 
 \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{17.25mm}\selectfont #1}
@@ -1039,22 +1034,25 @@ http://creativecommons.org/licenses/by-nd/4.0/
  
 \begin{tabular}{@{}l@{~}l}
 ISBN: & 
-\IfStrEq{\lsISBNdigital}{000-0-000000-00-0} 
-{\color{red}no digital ISBN}
-{\lsISBNdigital~(Digital)}
+\IfStrEq{\lsISBNdigital}{000-0-000000-00-0}{%no digital ISBN, issue warning
+  \color{red}no digital ISBN
+}{%digital ISBN present, write ISBN
+  \lsISBNdigital~(Digital)
+}
 \\
-&
-\IfStrEq{\lsISBNhardcover}{000-0-000000-00-0} 
-{\color{red}no hardcover ISBN}
-{\lsISBNhardcover~(Hardcover)}
-\\&
-\IfStrEq{\lsISBNsoftcover}{000-0-000000-00-0} 
-{\color{red}no softcover ISBN}
-{\lsISBNsoftcover~(Softcover)}
-\\
-%       & \lsISBNhardcover~(Hardcover)\\
-%       & \lsISBNsoftcover~(Softcover)\\
-%       & \lsISBNsoftcoverus~(Softcover US)\\
+\IfStrEq{\lsISBNhardcover}{000-0-000000-00-0}{ %hardcover ISBN not present
+}{%hardcover ISBN present, write ISBN
+  &\lsISBNhardcover~(Hardcover)\\
+}
+
+\IfStrEq{\lsISBNsoftcover}{000-0-000000-00-0}{ %softcover ISBN not present
+  \IfStrEq{\lsISBNhardcover}{000-0-000000-00-0}{ %neither hardcover nor softcover, issue warning
+    \color{red} no print ISBNs!
+  }{%hardcover present, no warning
+  }
+}{%only softcover present, write ISBN
+  &\lsISBNsoftcover~(Softcover)\\
+}
 \end{tabular}
 
 \IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
@@ -1065,7 +1063,7 @@ ISBN: &
   {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}\\
 Source code available from \url{www.github.com/langsci/\lsID}  \\
-Collaborative~reading:~\url{paperhive.org/documents/remote?type=langsci&id=\lsID}
+Collaborative~reading:~\href{{paperhive.org/documents/remote?type=langsci&id=\lsID}}{paperhive.org/documents/remote?type=langsci\&id=\lsID}
 
 
 \bigskip
@@ -1106,18 +1104,18 @@ Unter den Linden 6\\
 
 Storage and cataloguing done by FU Berlin \\[3ex]   
 
-\IfFileExists{\logopath FULogo_sw_CMYK.pdf}{\includegraphics[width=5cm]{\logopath FULogo_sw_CMYK.pdf}}{\logotext} \\[3ex]
+\IfFileExists{\logopath storagelogo.pdf}{\includegraphics[width=5cm]{\logopath storagelogo.pdf}}{\logotext} \\[3ex]
 
 
-\vfill
+% \vfill
 
 
 
-\noindent
-\lsp has no responsibility for the persistence or accuracy of URLs for
-external or third-party Internet websites referred to in this
-publication, and does not guarantee that any content on such websites
-is, or will remain, accurate or appropriate. 
+% \noindent
+% \lsp has no responsibility for the persistence or accuracy of URLs for
+% external or third-party Internet websites referred to in this
+% publication, and does not guarantee that any content on such websites
+% is, or will remain, accurate or appropriate. 
 }
 
 
@@ -1233,7 +1231,7 @@ is, or will remain, accurate or appropriate.
 \let\oldFootnote\footnote
 \newcommand\nextToken\relax
 
-% \renewcommand\footnote[1]{%
+% \renewcommand\footnote[1]{% breaks more footnotes than it fixes
 % \oldFootnote{\xspace#1}\futurelet\nextToken\isFootnote}
 
 \newcommand\isFootnote{%
@@ -1275,7 +1273,7 @@ is, or will remain, accurate or appropriate.
 	% \else
 	% style=\bstpath biblatex-langsci-unified,
 	% \fi
-  style=\bbxpath biblatex-sp-unified,
+	style=\bbxpath biblatex-sp-unified,
 	citestyle=\cbxpath sp-authoryear-comp,
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1307,7 +1305,11 @@ is, or will remain, accurate or appropriate.
   \clearfield{note}%
 }
 %% DOIs are handled after hyperref.
-\defbibheading{references}{\chapter{References}} % FIXME: adjust with language
+\defbibheading{references}{\chapter{References}\sloppy} % FIXME: adjust with language
+\defbibheading{french}{\chapter{Références bibliographiques}\sloppy} 
+\defbibheading{german}{\chapter{Literaturverzeichnis}\sloppy} 
+\defbibheading{portuguese}{\chapter{Referências}\sloppy} 
+\defbibheading{chinese}{\chapter{References}\sloppy} 
  
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
 
@@ -1801,6 +1803,40 @@ width=.8\textwidth
 %  \closeoutputstream{pages}
 % }
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Languages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% languages
+\newcommand{\lsBookLanguageFrench}{french}  
+\newcommand{\lsBookLanguagePortuguese}{portuguese}  
+\newcommand{\lsBookLanguageGerman}{german}  
+\newcommand{\lsBookLanguageChinese}{chinese}  
+\iflsNoBabel
+  \else 
+  \usepackage[\lsBookLanguage]{babel}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageFrench
+  \renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
+  \renewcommand{\lsSubjectIndexTitle}{Index des termes}
+  \renewcommand{\lsLanguageIndexTitle}{Index des langues}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageGerman
+  \renewcommand{\lsNameIndexTitle}{Autorenregister}
+  \renewcommand{\lsSubjectIndexTitle}{Sachregister}
+  \renewcommand{\lsLanguageIndexTitle}{Sprachregister}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguagePortuguese
+  \renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
+  \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
+  \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Miscellaneous:
@@ -1810,12 +1846,11 @@ width=.8\textwidth
 \usepackage[figuresright]{rotating}
 
 %% hspace over width of something without showing it
-\newlength{\LSPTmp}
-\newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
+% \newlength{\LSPTmp}
+% \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
+\newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
 
-\iflsNoBabel
-  \else
-  \usepackage[english]{babel}
-\fi
+
+
 
 \endinput
