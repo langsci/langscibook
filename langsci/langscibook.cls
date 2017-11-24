@@ -1286,8 +1286,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	indexing=cite,
 	\iflsCollection\else
 		toc=bib, 		% make bibliography appear in toc
-	        \fi
-        datamodel=\bstpath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+  \fi
+  datamodel=\bstpath langsci   % add authauthor and autheditor as possible fields to bibtex entries
 ]{biblatex}
 
 % If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
