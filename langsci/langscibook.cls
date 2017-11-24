@@ -53,7 +53,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2017/06/21 Language Science Press]
+\ProvidesClass{langscibook}[2017/11/24 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1783,7 +1783,7 @@ width=.8\textwidth
 
 \newcommand{\lsPaper}{
   \renewcommand{\maketitle}{
-    \addtocounter{chapter}{1}
+    \refstepcounter{chapter}
     \addchap*{\lsCollectionPaperTitle}
     \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
     \onlyAuthor
