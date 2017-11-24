@@ -310,3 +310,20 @@
 
 
 \definecolor{RED}{cmyk}{0.05,1,0.8,0}
+
+%connect two elements with lines
+\newcommand{\tikzmark}[2]{\tikz[overlay,remember picture] \node (#1) {#2};}
+\newcommand{\connect}[2]{%
+  \tikz[overlay,remember picture]{%
+    \draw[-,thick] (#1) -- (#2) node   {};  %
+  }
+} 
+
+\newcommand{\examplesroman}{
+  \let\eachwordone=\upshape
+  \exfont{\upshape}
+}
+\newcommand{\examplesitalics}{
+  \let\eachwordone=\itshape
+  \exfont{\itshape}
+}
