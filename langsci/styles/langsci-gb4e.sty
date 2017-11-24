@@ -104,14 +104,14 @@
 %\newcommand{\mytrans}[1]{{\trans`#1'}\vskip.6\baselineskip}
 
 % make examples in footnotes smaller:
-\let\beforeExFootnote\footnote
-\renewcommand{\footnote}[1]{\begingroup%
+\let\beforeExFootnotetext\footnotetext
+\renewcommand{\footnotetext}[1]{\begingroup%
 \let\exfont\fnexfont%
 \let\glossfont\fnglossfont%
 \let\transfont\fntransfont%
 \let\exnrfont\fnexnrfont%
 %\renewcommand{\@@xsi}{\let\@xsi\roman}% set example numbering to roman
-\beforeExFootnote{#1}%
+\beforeExFootnotetext{#1}%
 \endgroup}
 
 

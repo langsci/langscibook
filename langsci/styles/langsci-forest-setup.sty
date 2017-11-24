@@ -13,10 +13,12 @@
 % a workaround is to use a different pgf driver.
 % See email from Akira Kakuto to Stefan Müller 15.01.2016
 
+% Do we need this for 2017?
+% We seem to be better off without it 31.10.2017
 %deceive the driver
-\def\pdftexversion{140}
+%\def\pdftexversion{140}
 %use the old driver for dvipdfm
-\def\pgfsysdriver{pgfsys-dvipdfm.def} 
+%\def\pgfsysdriver{pgfsys-dvipdfm.def} 
 
 % http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
 \usepackage{tikz-dependency}
@@ -31,18 +33,13 @@
 
 
 % does not work with forest v1.05 did not check later versions
-\usepackage[external]{forest}
+\usepackage[external,linguistics]{forest}
 \tikzset{external/up to date check=simple} 
 % for texlive: -shell-escape, for miktex -enable-write18
 % All externalized graphics go go the \externaldirectory
 %\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
 \tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 %\usepackage{morewrites}
-
-%\usepackage{forest}
-% for forest version2
-\useforestlibrary{linguistics}
-\forestapplylibrarydefaults{linguistics}
 
 
 
@@ -124,7 +121,9 @@
 % to do: make this style default and change all other figures explicitely as is described here:
 % http://tex.stackexchange.com/questions/167983/getting-rid-of-a-default-where-specification
 \forestset{
-sm edges/.style={for tree={parent anchor=south, child anchor=north,base=bottom},
+sm edges/.style={for tree={parent anchor=south, child anchor=north,base=top}, % changed base=bottom
+                                % to top since we have NP and AVM nodes and the NP has to start
+                                % right away at the same hight as the AVM St. Mü. 18.10.2017
                  where n children=0{tier=word,delay=with translation}{} %,delay=with translation
                  },
 sm edges without translation/.style={for tree={parent anchor=south, child anchor=north,base=bottom},

@@ -1285,9 +1285,32 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\iflsCollection\else
-		toc=bib 		% make bibliography appear in toc
-	\fi
-	]{biblatex}
+		toc=bib, 		% make bibliography appear in toc
+	        \fi
+        datamodel=\bstpath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+]{biblatex}
+
+% If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
+% authorindex package) if it is defined, otherwise we use the author.
+% This gets F/T as shorthand right and puts the guys in the index.
+
+\renewbibmacro*{citeindex}{%
+  \ifciteindex
+    {\iffieldequalstr{labelnamesource}{shortauthor} % If biblatex uses shortauthor as the label of a bibitem
+      {\ifnameundef{authauthor}                     % we check whether there is something in authauthor
+        {\indexnames{author}}                       % if not, we use author
+        {\indexnames{authauthor}}}                  % if yes, we use authauthor
+      {\iffieldequalstr{labelnamesource}{author}    % if biblatex uses author we similarly test for
+                                                    % authauthor and use this field
+        {\ifnameundef{authauthor}% if defined use authauthor
+          {\indexnames{author}}
+          {\indexnames{authauthor}}} % if defined use this field 
+        {\iffieldequalstr{labelnamesource}{shorteditor} % same for editor
+          {\ifnameundef{autheditor}
+            {\indexnames{editor}}
+            {\indexnames{autheditor}}}
+          {\indexnames{labelname}}}}}               % as a fallback we index on whatever biblatex used.
+    {}}
 
 
 %% changes of citestyle (cbx) (FIXME: documentation missing)   
