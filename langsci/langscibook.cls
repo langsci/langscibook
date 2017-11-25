@@ -1724,7 +1724,7 @@ width=.8\textwidth
 \newcommand{\lsCollectionPaperTOC}{{%
   \iflsCollectionChapter%
     \protect\numberline{\thechapter}\fi
-  \@title\newline{\normalfont\@author}}}
+    \@title\ \newline{\normalfont\@author}}} % space between \@title and \newline is needed for bookmarks
   
 \newcommand{\lsCollectionPaperTitle}{{%
   \renewcommand{\newlineTOC}{}
@@ -1748,7 +1748,7 @@ width=.8\textwidth
   \renewcommand{\lsCollectionPaperTOC}{{%
   \iflsCollectionChapter%
     \protect\numberline{~}\fi
-  \@title\newline{\normalfont\@author}}}
+  \@title\ \newline{\normalfont\@author}}}
 }
 
 \newcommand{\lsCollectionPaperMainmatterMode}{% %%% This resets the changes done by FrontmatterMode
@@ -1764,7 +1764,7 @@ width=.8\textwidth
   \renewcommand{\lsCollectionPaperTOC}{{%
   \iflsCollectionChapter%
     \protect\numberline{\thechapter}\fi
-  \@title\newline{\normalfont\@author}}}
+  \@title\ \newline{\normalfont\@author}}}
 }
 
   
