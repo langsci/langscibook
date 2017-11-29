@@ -20,7 +20,7 @@ main.aux: $(SOURCE)
 #create only the book
 main.bbl:  $(SOURCE) localbibliography.bib  
 	xelatex -no-pdf main 
-	bibtex -min-crossrefs=200 main 
+	biber main 
 
 
 main.snd: main.bbl
@@ -28,8 +28,8 @@ main.snd: main.bbl
 	sed -i 's/hyperindexformat{\\\(infn {[0-9]*\)}/\1/' main.sdx # ordering of references to footnotes
 	sed -i 's/hyperindexformat{\\\(infn {[0-9]*\)}/\1/' main.adx
 	sed -i 's/hyperindexformat{\\\(infn {[0-9]*\)}/\1/' main.ldx
-# 	python3 fixindex.py
-# 	mv mainmod.adx main.adx
+	python3 fixindex.py
+	mv mainmod.adx main.adx
 	makeindex -o main.and main.adx
 	makeindex -o main.lnd main.ldx
 	makeindex -o main.snd main.sdx 

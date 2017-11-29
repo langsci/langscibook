@@ -1869,7 +1869,7 @@ width=.8\textwidth
 \usepackage[figuresright]{rotating}
 
 %% hspace over width of something without showing it
-% \newlength{\LSPTmp}
+\newlength{\LSPTmp}
 % \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
 \newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
 
