@@ -1582,7 +1582,6 @@ width=.8\textwidth
 %\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
 \fi
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %    Collection (edited volume):
@@ -1829,15 +1828,17 @@ width=.8\textwidth
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Languages
+%   Language-specific settings
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% languages
+%   languages
+\newcommand{\lsBookLanguageEnglish}{english}  
 \newcommand{\lsBookLanguageFrench}{french}  
 \newcommand{\lsBookLanguagePortuguese}{portuguese}  
 \newcommand{\lsBookLanguageGerman}{german}  
-\newcommand{\lsBookLanguageChinese}{chinese}  
+\newcommand{\lsBookLanguageChinese}{chinese}
+
 \iflsNoBabel
   \else 
   \usepackage[\lsBookLanguage]{babel}
@@ -1860,7 +1861,21 @@ width=.8\textwidth
   \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
   \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
 \fi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% autoref (part of hyperref)
+\ifx\lsBookLanguage\lsBookLanguageEnglish
+  \renewcommand{\partautorefname}{Part}%    
+  \renewcommand{\chapterautorefname}{Chapter}%
+  \renewcommand{\sectionautorefname}{Section}%
+  \renewcommand{\subsectionautorefname}{Section}%
+  \renewcommand{\subsubsectionautorefname}{Section}%
+  \renewcommand{\figureautorefname}{Figure}%
+  \renewcommand{\tableautorefname}{Table}%
+  \renewcommand{\Hfootnoteautorefname}{Footnote}%
+\fi
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %
 %    Miscellaneous:
 %
