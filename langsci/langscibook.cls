@@ -130,7 +130,7 @@
 \newif\iflsCollection \lsCollectionfalse
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
-\newif\iflsNewtxmath \lsNewtxmathtrue
+\newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
@@ -199,6 +199,8 @@
 	\lsBiblatexfalse}
 \DeclareVoidOption{nonewtxmath}{  			
 	\lsNewtxmathfalse}
+\DeclareVoidOption{newtxmath}{  			
+	\lsNewtxmathtrue}
 \DeclareVoidOption{collection}{  			
 	\lsCollectiontrue}
 \DeclareVoidOption{collectionchapter}{  			
@@ -744,10 +746,11 @@
 \fi
 
 \iflsNewtxmath		% some users have problems when installing newtxmath
-% 	\usepackage[libertine]{newtxmath}
+	\usepackage[libertine]{newtxmath}
 
 	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
-	%% due to a bug in XeTeX; unfortunately this is NOT extensively tested!
+	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
+  %% Unfortunately, this is NOT extensively tested!
 	\usepackage{xpatch}
 	\xpretocmd{\textsuperscript}
 	 {{\sbox0{$\textstyle x$}}}
