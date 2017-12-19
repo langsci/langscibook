@@ -39,7 +39,8 @@ modfonts | | use modified fonts
 multiauthors | | change editor suffix to `(eds.)`
 no babel | | do not load the babel package (load it manually instead and include custom languages)
 nonflat | | switch paths when using the langsci folder 
-nonewtxmath | | suppress newtxmath (and use standard, ugly math fonts)
+nonewtxmath | | suppress newtxmath (default) 
+newtxmath | | activate newtxmath
 number | \<number\> | number of the book within the series
 openreview | | switch to open review mode
 output | **book** \| inprep \| paper \| guidelines \| cover \| coverbodsc\| coverbodhc \| covercreatespace | different output formats
