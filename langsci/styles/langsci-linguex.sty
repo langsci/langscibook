@@ -3,26 +3,26 @@
 %% of the LaTeX Project Public License Distributed from CTAN
 %% archives in directory macros/latex/base/lppl.txt; either
 %% version 1 of the License, or any later version.
-%% linguex.sty version 3.3, revised 2000/12/22, compatability with 
+%% linguex.sty version 3.3, revised 2000/12/22, compatability with
 %% lucida fonts: Defaults defined \AtBeginDocument
-%% linguex.sty version 3.4, revised 2001/04/30, corrected vspacing for 
-%% \ex. embedded in \a. 
-%% linguex.sty version 3.5, revised 2002/01/26, corrected hspacing for 
+%% linguex.sty version 3.4, revised 2001/04/30, corrected vspacing for
+%% \ex. embedded in \a.
+%% linguex.sty version 3.5, revised 2002/01/26, corrected hspacing for
 %% \alignSubEx
-%% linguex.sty version 3.6, revised 2008/03/20, \lessthanten, 
-%% \lessthanhundred, and \lessthanthousand redefined due to problems 
+%% linguex.sty version 3.6, revised 2008/03/20, \lessthanten,
+%% \lessthanhundred, and \lessthanthousand redefined due to problems
 %% with kerning in fonts
-%% linguex.sty version 3.7, revised 2008/06/30, \lessthanten, 
-%% \lessthanhundred, and \lessthanthousand redefined due to problems 
+%% linguex.sty version 3.7, revised 2008/06/30, \lessthanten,
+%% \lessthanhundred, and \lessthanthousand redefined due to problems
 %% with kerning in fonts
 %% linguex.sty version 3.7a, revised 2009/09/02, replaced hard-coded
 %% example format with \theExNo
-%% linguex.sty version 4.0 replaces hard-coded brackets with 
+%% linguex.sty version 4.0 replaces hard-coded brackets with
 %% predefined commands
-%% linguex.sty version 4.1 replaces \refstepcounter by \stepcounter 
+%% linguex.sty version 4.1 replaces \refstepcounter by \stepcounter
 %% for internal counters
-%% linguex.sty version 4.2 replaces \rm by \textrm in definition of 
-%% \stripoffbr; undoes the change in version 4.0 from .66\baselineskip to 
+%% linguex.sty version 4.2 replaces \rm by \textrm in definition of
+%% \stripoffbr; undoes the change in version 4.0 from .66\baselineskip to
 %% \Extopsep; renews definition of \label AtBeginDocument
 %% linguex.sty version 4.3 removes code that caused problems with beamer; adds
 %% a \ProvidesPackage line to keep track of versions better
@@ -38,7 +38,7 @@
 \ProvidesPackage{langsci-linguex}[2017/02/14 adapted to work in the LangSci class]
 \RequirePackage{xspace,cgloss4e}
 %%%%%%%%%%%%%%%%%%% FOOTNOTES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% to let \ex. know whether or not it is in a footnote 
+% to let \ex. know whether or not it is in a footnote
 \newif\if@noftnote\@noftnotetrue
 \let\predefinedfootnotetext=\@footnotetext
 \long\def\@footnotetext#1{\@noftnotefalse\predefinedfootnotetext{#1}%
@@ -69,7 +69,7 @@
 \newcommand{\Exarabic}{\arabic}%added in version 4.0
 \newcommand{\Exalph}{\alph}%added in version 4.0
 \newcommand{\Exroman}{\roman}%added in version 4.0
-% Modification in version 4.0: hard wired brackets replaced by 
+% Modification in version 4.0: hard wired brackets replaced by
 % commands defined above:
 \renewcommand{\theSubExNo}{\hbox{\if@noftnote\theExLBr\Exarabic{ExNo}\firstrefdash
      \Exalph{SubExNo}\theExRBr\else
@@ -114,7 +114,7 @@
 \newcommand{\minimalwidth}[1]{\settowidth{\digitwidth}{#1}%added-3.7
 \ifdim\digitwidth<\mindigitwidth\mindigitwidth\digitwidth\fi}%added-3.7
 %
-%%%%%%%%%%%%%%%%%%% DEFINITION OF \Lsciex. %%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%% DEFINITION OF \Lsciex. %%%%%%%%%%%%%%%%%%%%%%%%%%
 \newif\ifembedded
 \newif\ifExWarning
 \newcounter{ExDepth}
@@ -123,7 +123,7 @@
      \begin{list}{}{\leftmargin\z@%
      \labelwidth\z@\labelsep\z@\partopsep\z@\topsep\Extopsep}%
      \item{}#1%
-     \stepcounter{ExDepth}\ExEnd}%refstepcounter replaced 
+     \stepcounter{ExDepth}\ExEnd}%refstepcounter replaced
 \def\Lsciex.#1\par{%
      \ifnum\theExDepth>0 \setcounter{TempExDepth}{\theExDepth}%
         \setcounter{ExDepth}{0}
@@ -131,15 +131,15 @@
 	 \ifembedded\else
         \ifdim\lastskip=.66\baselineskip\vspace{\Exredux}\fi
 	 \fi
-     \stepcounter{ExDepth}%%refstepcounter replaced 
+     \stepcounter{ExDepth}%%refstepcounter replaced
      \my@ifnextchar[{\OptArgEx}{\ifindex\expandafter\lookforwords\fi
      \NormalEx\testforgramm}%
      #1%
      \addtocounter{ExDepth}{\theTempExDepth}\setcounter{TempExDepth}{0}%
      \embeddedfalse\global\ExWarningfalse\ExEnd}
-\newcommand{\NormalEx}{\ifExWarning 
-     \PackageWarning{linguex}{Check example numbering (screwed up?), 
-     check number of empty lines at end of examples.  
+\newcommand{\NormalEx}{\ifExWarning
+     \PackageWarning{linguex}{Check example numbering (screwed up?),
+     check number of empty lines at end of examples.
      Detected}\fi\ExWarningtrue
      \if@noftnote\refstepcounter{ExNo}%
         \Exformat[\ExLBr\Exarabic{ExNo}\ExRBr]%
@@ -177,21 +177,21 @@
    \minimalwidth{9}%
    \settowidth{\lessthanthousand}{\ExLBr\hbox to \philarge{}\ExRBr}%modified-3.7,4.0
    \ifdim\currentlabel<\lessthanthousand\leftmargin\Exlabelsep
-   \ifdim\lessthanthousand<\Exlabelwidth\Exlabelwidth\Exlabelsep% 
-   \settowidth{\lessthanten}{\ExLBr\hbox 
+   \ifdim\lessthanthousand<\Exlabelwidth\Exlabelwidth\Exlabelsep%
+   \settowidth{\lessthanten}{\ExLBr\hbox
                                to \philsmall{}\ExRBr}%modified-3.7
-   \settowidth{\lessthanhundred}{\ExLBr\hbox to 
+   \settowidth{\lessthanhundred}{\ExLBr\hbox to
                                   \philmiddle{}\ExRBr}%modified-3.7
    \ifdim\currentlabel<\lessthanten\leftmargin\lessthanten%
      \else
      \ifdim\currentlabel<\lessthanhundred\leftmargin\lessthanhundred%
-     \else 
+     \else
      \ifdim\currentlabel<\lessthanthousand\leftmargin\lessthanthousand%
    \fi\fi\fi\fi
    \else
    \Exlabelwidth\z@
    \fi%
-   \@Exleftmargin\Exlabelwidth 
+   \@Exleftmargin\Exlabelwidth
    \labelwidth\leftmargin
    \ifembedded\relax\else
    \addtolength{\Exlabelwidth}{\Exindent}
@@ -209,7 +209,7 @@
    }%
    \ifindex\firstwordtrue\fi\item{}}
 %
-%%%%%%%% the `[' of OPTIONAL ARGUMENTS must immediately follow \Lsciex. %%%%%% 
+%%%%%%%% the `[' of OPTIONAL ARGUMENTS must immediately follow \Lsciex. %%%%%%
 %%%% redefinition of \@ifnextchar that does NOT ignore spaces %%%%%%%%%%%
 \def\my@ifnextchar#1#2#3{\let\reserved@d=#1%
   \def\reserved@a{#2}\def\reserved@b{#3}%
@@ -253,13 +253,13 @@
 \def\a.{\ifindex\firstwordtrue\fi
         \ifnum\theExDepth=0 \unembeddedtrue
         \trivex.\fi
-     \stepcounter{ExDepth}%refstepcounter replaced 
-     \begin{list}{\makebox[\labelwidth][l]{% 
+     \stepcounter{ExDepth}%refstepcounter replaced
+     \begin{list}{\makebox[\labelwidth][l]{%
          \ifnum\theExDepth=1 \SubExLBr\Exalph{ABC}\SubExRBr%
           \else
            \ifnum\theExDepth=2 %
            \ifdim\currentlabel<\lessthanthousand%
-           \ifalignSubEx 
+           \ifalignSubEx
               \llap{\hbox to \alignSubExnegindent{\ifunembedded%
                   \SubExLBr\Exalph{SubExNo}\SubExRBr
                   \else\SubExlabel\fi\hss}}%
@@ -269,18 +269,18 @@
                   \else\SubExlabel\fi\fi
             \else
              \ifnum\theExDepth=3 %
-             \if@noftnote%\ifunembedded\mbox{$\bullet$!}\else 
+             \if@noftnote%\ifunembedded\mbox{$\bullet$!}\else
                     \SubSubExLBr\Exroman{SubSubExNo}\SubSubExRBr
                     %\fi
                \else\Exarabic{SubSubExNo}\SubSubExRBr\fi
          \fi\fi\fi}}%
-    {\labelsep\z@ 
-     \ifnum\theExDepth=2\topsep .3\Extopsep\else\topsep 0pt\fi 
+    {\labelsep\z@
+     \ifnum\theExDepth=2\topsep .3\Extopsep\else\topsep 0pt\fi
      \parsep\z@\itemsep\z@
      \ifnum\theExDepth=1 %
        \usecounter{ABC}%
        \settowidth{\currentlabel}{\ExLBr\Exarabic{ExNo}\ExRBr}%
-       \listdecl%   
+       \listdecl%
      \else
       \ifnum\theExDepth=2 %
          \usecounter{SubExNo}%
@@ -300,12 +300,12 @@
 %%%%%%%%%%%%%%%%% ITEMS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\newExitem[#1]{\ifnum\theExDepth=2 %
       \ifdim\currentlabel<\lessthanthousand%
-      \ifalignSubEx 
+      \ifalignSubEx
               \item[\llap{\hbox to \alignSubExnegindent{#1\hfill}}]%
       \else
-          \item[#1\hfill]\fi 
+          \item[#1\hfill]\fi
        \else\item[#1\hfill]%
-	   \fi 
+	   \fi
        \else\item[#1\hfill]%
        \fi\testforgramm}
 \let\oldb=\b
@@ -327,11 +327,11 @@
 \def\Lsciexi.#1\par{\indextrue\Lsciex.#1 | blabla | \indexfalse\par}
 \def\ai.#1 \par{\indextrue
            \a.#1 | blabla |
-           \par      
+           \par
            \indexfalse}
 \def\finish|#1|{\ExEnd}
 \newcommand{\testGrAndBr}{\GTest{}{\printGramm\checkforbr}}
-\def\doaword#1 {% 
+\def\doaword#1 {%
        \iffirstword\firstwordfalse\expandafter\testGrAndBr\fi%
        #1
        \ifgloss\expandafter\checkforbrorstar\else
@@ -359,7 +359,7 @@
                     \unvbox#1}%
     \def\more{#4}%
     \ifx\more\empty\let\more=\donewords
-    \else\let\more=\getwords 
+    \else\let\more=\getwords
     \fi
     \more(#1,#2)#4\\%
    }
@@ -367,7 +367,7 @@
          \global\glossfalse%
          \ifindex\expandafter\lookforwords\fi {} }
 %%%
-\newcommand{\newgll}{\glosstrue\GTest{\gll}{\gll\printGramm}}        
+\newcommand{\newgll}{\glosstrue\GTest{\gll}{\gll\printGramm}}
 \def\exg.{\my@ifnextchar[{\newglossex}{\Lsciex.\newgll}}
 \def\newglossex[#1]{\Lsciex.[#1]\newgll}
 \def\ag.{\my@ifnextchar[{\newglossa}{\a.\newgll}}
@@ -395,10 +395,10 @@
 \newcounter{tmpaEx}
 \newif\ifNoFnRef
 \newcommand{\Next}{\if@noftnote\NoFnReftrue\else\NoFnReffalse\fi
-          \copyExNo\stepcounter{tmpaEx}\printExNo}%refstepcounter replaced 
+          \copyExNo\stepcounter{tmpaEx}\printExNo}%refstepcounter replaced
 \newcommand{\NNext}{\if@noftnote\NoFnReftrue\else\NoFnReffalse\fi
           \copyExNo\addtocounter{tmpaEx}{2}\printExNo}
-\newcommand{\TextNext}{\NoFnReftrue\copyExNo\stepcounter{tmpaEx}\printExNo}%refstepcounter replaced 
+\newcommand{\TextNext}{\NoFnReftrue\copyExNo\stepcounter{tmpaEx}\printExNo}%refstepcounter replaced
 \newcommand{\Last}{\if@noftnote\NoFnReftrue\else
                \ifnum\Exarabic{FnExNo}=0 \NoFnReftrue\else\NoFnReffalse\fi
           \fi
@@ -424,15 +424,15 @@
             \else\theFnExRBr\fi}}%hard wired bracket changed to \theExBr in version 4.0
 \newcommand{\printExNo}{\@ifnextchar[{\complexExNo}{%
             \if@noftnote\theExLBr\else\theFnExLBr\fi\thetmpaEx%
-            \if@noftnote\theExRBr\else\theFnExRBr\fi\xspace}}%hard 
+            \if@noftnote\theExRBr\else\theFnExRBr\fi\xspace}}%hard
                                        %wired bracket changed to \theExBr in version 4.0
 %%%%%%%%%%%%%%%%%%%%%%%%%%% compatibility with beamer class %%%%%%%%%%%%%%%%%%%%%%%%%%
 % This code has now been commented out in v 4.2 since it now causes problems with beamer
 % The original problem it solved was probably a beamer issue, not a linguex issue.
 % Users with old versions of beamer may need this code so let's leave it in the source for the moment
-% 
 %
-%\@ifundefined{usetheme}{}{\AtBeginDocument{\def\label#1{\strut%strut added to definition 
+%
+%\@ifundefined{usetheme}{}{\AtBeginDocument{\def\label#1{\strut%strut added to definition
 %\@bsphack
 %   \protected@write\@auxout{}%
 % 	 {\string\newlabel{#1}{{\@currentlabel}{\thepage}}}%

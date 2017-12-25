@@ -15,7 +15,7 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is Christopher Manning.
 %
 % This work consists of the files avm.sty, avm-doc.tex, avm-test.tex.
@@ -70,7 +70,7 @@
 {\avmjcatcode	% new group: redefine above catcodes as active
 
 \gdef\specialavm{\avmjcatcode
-\def({\avmjprolog\lparen}% 
+\def({\avmjprolog\lparen}%
 \def){\avmjpostlog\rparen}%
 \def<{\avmjprolog\langle}%
 \def>{\avmjpostlog\rangle}%
@@ -100,7 +100,7 @@
 \long\def\avm{\begingroup
 \ifavmactive\specialavm
 \else
-\def\({\avmjprolog(}% 
+\def\({\avmjprolog(}%
 \def\){\avmjpostlog)}%
 \def\<{\avmjprolog\langle}%
 \def\>{\avmjpostlog\rangle}%
@@ -180,5 +180,5 @@
 
 % based on TeXbook exercise 21.3
 \def\avmbox#1{\setbox2=\hbox{$\scriptstyle #1$}\lower.2ex\vbox{\hrule
-	\hbox{\vrule\kern1.25pt 
+	\hbox{\vrule\kern1.25pt
 	\vbox{\kern1.25pt\box2\kern1.25pt}\kern1.25pt\vrule}\hrule}}

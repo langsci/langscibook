@@ -22,9 +22,9 @@
 \newcommand{\lv}{lv}		%Language Variation
 \newcommand{\ogs}{ogs}		%Open Generative Syntax
 \newcommand{\osl}{osl}		%Open Slavic Linguistics
-\newcommand{\mi}{mi}		
+\newcommand{\mi}{mi}
 \newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
-\newcommand{\classics}{classics}	
+\newcommand{\classics}{classics}
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\guidelines}{guidelines}
 \newcommand{\lsSeriesFontColor}{white}
@@ -44,7 +44,7 @@
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 	\renewcommand{\lsISSN}{2363-877X}
 \fi
-\ifx\lsSeries\classics 
+\ifx\lsSeries\classics
 	\newcommand{\lsSeriesTitle}{Classics in Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{black}
 	\renewcommand{\lsISSN}{2366-374X}
@@ -65,7 +65,7 @@
 \fi
 \ifx\lsSeries\eurosla
 	\newcommand{\lsSeriesTitle}{Eurosla Studies~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsMidOrange} 
+	\newcommand{\lsSeriesColor}{lsMidOrange}
 \fi
 \ifx\lsSeries\lv
 	\newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
@@ -79,19 +79,19 @@
 \fi
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsRed} 
+	\newcommand{\lsSeriesColor}{lsRed}
 \fi
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsDarkGreenOne} 
+	\newcommand{\lsSeriesColor}{lsDarkGreenOne}
 \fi
 \ifx\lsSeries\osl
 	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsMidGreen} 
+	\newcommand{\lsSeriesColor}{lsMidGreen}
 \fi
 \ifx\lsSeries\pmwe
 	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsLightBlue} 
+	\newcommand{\lsSeriesColor}{lsLightBlue}
 \fi
 \ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
@@ -106,22 +106,22 @@
 	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightWine}
 	\renewcommand{\lsISSN}{2363-5576}
-\fi	
+\fi
 \ifx\lsSeries\tbls
 	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsYellow}
-	\renewcommand{\lsISSN}{2364-6209} 
-\fi	
+	\renewcommand{\lsISSN}{2364-6209}
+\fi
 \ifx\lsSeries\tgdi
 	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse Interface~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
-	\renewcommand{\lsISSN}{2567-3335} 
+	\renewcommand{\lsISSN}{2567-3335}
 \fi
 \ifx\lsSeries\tmnlp
 	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
 	\renewcommand{\lsISSN}{2364-8899}
-\fi		
+\fi
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
@@ -131,4 +131,4 @@
 	\newcommand{\lsSeriesColor}{lsGuidelinesGray}
 	\renewcommand{\lsCoverFontColor}{black}
 \fi
-}	
+}

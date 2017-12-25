@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci-forest-setup.sty
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-16 16:47:43 UTC 
-%%   Purpose: This file contains optional styles and settings for the 
+%%      Date: 2016-01-16 16:47:43 UTC
+%%   Purpose: This file contains optional styles and settings for the
 %%            forest package. This version is for 2.0.
 %%  Language: LaTeX
-%%   Licence: 
+%%   Licence:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -18,7 +18,7 @@
 %deceive the driver
 %\def\pdftexversion{140}
 %use the old driver for dvipdfm
-%\def\pgfsysdriver{pgfsys-dvipdfm.def} 
+%\def\pgfsysdriver{pgfsys-dvipdfm.def}
 
 % http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
 \usepackage{tikz-dependency}
@@ -34,7 +34,7 @@
 
 % does not work with forest v1.05 did not check later versions
 \usepackage[external,linguistics]{forest}
-\tikzset{external/up to date check=simple} 
+\tikzset{external/up to date check=simple}
 % for texlive: -shell-escape, for miktex -enable-write18
 % All externalized graphics go go the \externaldirectory
 %\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
@@ -52,7 +52,7 @@
       sort by=y,
       for min={tree}{baseline}
     }
-  }} 
+  }}
 
 
 \forestset{
@@ -78,7 +78,7 @@
 
 
 % http://www.texample.net/tikz/examples/borrowers-and-lenders/
-\usetikzlibrary{arrows} %,positioning} 
+\usetikzlibrary{arrows} %,positioning}
 \tikzset{
     %Define standard arrow tip
     >=stealth'}
@@ -86,7 +86,7 @@
 
 
 %% \forestset{
-%% sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,where n children=0{tier=word}{}}}, 
+%% sn edges/.style={for tree={parent anchor=south, child anchor=north,align=center,base=bottom,where n children=0{tier=word}{}}},
 %% background tree/.style={for tree={text opacity=0.2,draw opacity=0.2,edge={draw opacity=0.2}}}
 %% }
 
@@ -100,14 +100,14 @@
     l sep=0,inner xsep=0,
     append translation/.expanded/.wrap pgfmath arg={\gettranslation{##1}}{content},
     content/.expanded/.wrap pgfmath arg={\gettext{##1}}{content},
-  },  
+  },
   append translation/.style={
     if={strequal("#1","")}{}{
       append={[#1,no edge,inner xsep=0,inner ysep=0,outer ysep=0,
                l=\baselineskip + 0.2ex,
         ]}
     }
-  } 
+  }
 }
 
 \def\gettext#1{\gettextA#1;;\endget}
@@ -195,7 +195,7 @@ dg junction/.style={no edge, tikz+={\draw (!p.east)--(!.west) (.east)--(!n.west)
 %
 % TAG
 % http://tex.stackexchange.com/questions/207459/getting-old-school-trees-with-forest
-% fit -> fit=band causes all nodes to have nothing below them 
+% fit -> fit=band causes all nodes to have nothing below them
 tag/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top,fit=rectangle},
   where n children=0{delay=with translation}{},
 % the following breaks the alignments in sets
@@ -206,7 +206,7 @@ tag/.style={for tree={parent anchor=south, child anchor=north,align=center,base=
 no word baseline/.style={for tree={parent anchor=south, child anchor=north,align=center,base=top},
   where n children=0{delay=with translation}{}},
 %
-% a style that creates an arrow pointing to the substitution node from a tree top node encoded as daughter 
+% a style that creates an arrow pointing to the substitution node from a tree top node encoded as daughter
 substitution/.style={edge={<-,dashed},l+=\baselineskip},
 %
 %
