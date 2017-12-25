@@ -1891,7 +1891,4 @@ width=.8\textwidth
 % \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
 \newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
 
-
-
-
 \endinput

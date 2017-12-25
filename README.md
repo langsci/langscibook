@@ -49,6 +49,3 @@ showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 spinewidth | | the width of the spine, used for cover creation
 undecapitalize | | do not change the casing of titles in the list of references
-
-
-
