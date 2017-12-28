@@ -1,17 +1,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci-cgloss.sty
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-16 16:47:43 UTC 
+%%      Date: 2016-01-16 16:47:43 UTC
 %%   Purpose: This file contains an adpated version of the cgloss
 %%            package for glossing linguistic examples.
 %%  Language: LaTeX
-%%   Licence: 
+%%   Licence:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % -*- LaTeX -*-
 
 % Modified version of cgloss4e.sty.  Hacked and renamed cgloss.sty
-% by Alexis Dimitriadis (alexis@babel.ling.upenn.edu) 
+% by Alexis Dimitriadis (alexis@babel.ling.upenn.edu)
 
 % Following borrows from Covington's style files inspired by Midnight by M.
 % de Groot, adapted to be used with gb4e.sty: examples beginning with \ex can
@@ -26,13 +26,13 @@
 % \\)---hpk
 %
 
-% Changes by Alexis Dimitriadis 
+% Changes by Alexis Dimitriadis
 %
 % Removed flushleft environment and initial vskip to make macros usable
 % on the same line with earlier and/or later text, e.g.,
 % \item Q: \gll ... \\
 %               ... \\   \hfill (Greek)
-%    \trans Q: `...' 
+%    \trans Q: `...'
 % Note: Text following the gloss will appear on line one of the example;
 % To get a line break, insert one manually with \\ or use \trans or \glt.
 % (\gln does not end the line, since it was already the
@@ -41,7 +41,7 @@
 % Modified \glt to keep translation on the same page as the text.
 
 % BUGS: does not work very gracefully with double spacing (struts are not
-% automatically inserted after the \vboxes used by the macros).  
+% automatically inserted after the \vboxes used by the macros).
 % In double space mode without \nosinglegloss, when a translation
 % is not given, the next line of text is single-spaced from the glossed text.
 % With \nosinglegloss, the translation is set too close to the bottom line.
@@ -278,7 +278,7 @@
    \gl@stop}
 
 
-      
+
 \gdef\foursent#1\\ #2\\ #3\\ #4\\{% #1 = first line, #2 = second line, #3 = third
     \getwords(\lineone,\eachwordone)#1 \\%
     \getwords(\linetwo,\eachwordtwo)#2 \\%
@@ -306,7 +306,7 @@
    \gl@stop}
 
 
-      
+
 \gdef\fivesent#1\\ #2\\ #3\\ #4\\ #5\\{% #1 = first line, #2 = second line, #3 = third
     \getwords(\lineone,\eachwordone)#1 \\%
     \getwords(\linetwo,\eachwordtwo)#2 \\%
@@ -338,7 +338,7 @@
    \gl@stop}
 
 
-      
+
 \gdef\sixsent#1\\ #2\\ #3\\ #4\\ #5\\ #6\\{% #1 = first line, #2 = second line, #3 = third
     \getwords(\lineone,\eachwordone)#1 \\%
     \getwords(\linetwo,\eachwordtwo)#2 \\%
@@ -374,7 +374,7 @@
    \gl@stop}
 
 
-      
+
 \gdef\sevensent#1\\ #2\\ #3\\ #4\\ #5\\ #6\\ #7\\{% #1 = first line, #2 = second line, #3 = third
     \getwords(\lineone,\eachwordone)#1 \\%
     \getwords(\linetwo,\eachwordtwo)#2 \\%
@@ -414,7 +414,7 @@
    \gl@stop}
 
 
-      
+
 \gdef\eightsent#1\\ #2\\ #3\\ #4\\ #5\\ #6\\ #7\\ #8\\{% #1 = first line, #2 = second line, #3 = third
     \getwords(\lineone,\eachwordone)#1 \\%
     \getwords(\linetwo,\eachwordtwo)#2 \\%
