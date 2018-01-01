@@ -1324,7 +1324,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 %% changes of bibliography style (bbx)
 \DeclareFieldFormat{postnote}{#1}% display pages without page prefix (p., pp.)
-\DeclareBibliographyAlias{inbook}{incollection} % see https://github.com/semprag/biblatex-sp-unified/issues/35
+\DeclareBibliographyAlias{inbook}{incollection}% see https://github.com/semprag/biblatex-sp-unified/issues/35
+\DeclareFieldFormat[techreport,report,misc]{titlecase}{\MakeSentenceCase*{#1}}% techreport/report and misc are not genuinely supported by biblatex-sp-unified 
 %% The note field should appear at end of an entry just before the DOI, other than with the used bibliography style. It is therefore first removed, then again restored and included together with the DOI.
 \AtEveryBibitem{%
   \savefield*{note}{\lsnote}%
