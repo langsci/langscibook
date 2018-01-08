@@ -8,7 +8,7 @@
 %%   Licence: 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{langsci/styles/langsci-gb4e}[2000/09/05]
+\ProvidesPackage{langsci-gb4e}[2000/09/05]
 \def\gbVersion{4e} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,8 +65,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
-\input{\stylepath langsci-cgloss.sty}
-\input{\stylepath jambox.sty}
+\usepackage{langsci-cgloss}
+% \input{jambox.sty}
 
 
 \@ifundefined{new@fontshape}{\def\reset@font{}\let\mathrm\rm\let\mathit\mit}{}
