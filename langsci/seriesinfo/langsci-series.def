@@ -84,6 +84,7 @@
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkGreenOne}
+	\renewcommand{\lsISSN}{2568-7336}
 \fi
 \ifx\lsSeries\osl
 	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics~\lsSeriesNumber}
