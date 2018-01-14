@@ -53,7 +53,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2017/11/24 Language Science Press]
+\ProvidesClass{langscibook}[2018/01/14 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -135,6 +135,7 @@
 \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
 \newif\iflsNoBabel \lsNoBabelfalse
+\newif\iflsBabelShorthands \lsBabelShorthandsfalse
 \newif\iflsMultiauthors \lsMultiauthorsfalse
 
 
@@ -185,7 +186,9 @@
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
-    \lsNoBabeltrue}
+  \lsNoBabeltrue}
+\DeclareVoidOption{babelshorthands}{
+  \lsBabelShorthandstrue}
 \DeclareVoidOption{modfonts}{
     \lsModfontstrue}
 \DeclareVoidOption{multiauthors}{
@@ -1844,8 +1847,21 @@ width=.8\textwidth
 \newcommand{\lsBookLanguageChinese}{chinese}
 
 \iflsNoBabel
+	\else
+	\iflsBabelShorthands
+  	\usepackage[\lsBookLanguage,german]{babel}
+    \ifx\lsBookLanguage\lsBookLanguageEnglish
+  		\addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
+    \fi
+    \ifx\lsBookLanguage\lsBookLanguageFrench
+  		\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
+    \fi
+    \ifx\lsBookLanguage\lsBookLanguagePortuguese
+      \addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
+    \fi
   \else
   \usepackage[\lsBookLanguage]{babel}
+  \fi
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
