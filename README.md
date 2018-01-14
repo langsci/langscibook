@@ -38,7 +38,7 @@ copyright | **CC-BY** \| CC-BY-ND | choice of copyright
 draftmode | | switch to draft mode (adds: draft stamp, indication of overlong lines, date)
 modfonts | | use modified fonts
 multiauthors | | change editor suffix to `(eds.)`
-no babel | | do not load the babel package (load it manually instead and include custom languages)
+nobabel | | do not load the babel package (load it manually instead and include custom languages)
 nonflat | | switch paths when using the langsci folder
 nonewtxmath | | suppress newtxmath (default)
 newtxmath | | activate newtxmath
