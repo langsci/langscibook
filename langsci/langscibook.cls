@@ -43,17 +43,17 @@
 %   \- Epigrams
 %   \- Footnotes
 %   \- Quotes
+%   \- Languages
 %   \- Citations
 %   \- Floats
 %   \- Appendices
 %   \- Indexes
 %   \- Hyperref
 %   \- Edited volumes (Collection)
-%   \- Languages
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2018/01/14 Language Science Press]
+\ProvidesClass{langscibook}[2018/01/15 Language Science Press]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -588,8 +588,6 @@
 } %% \AtBeginDocument
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %   Geometry
@@ -788,23 +786,23 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Colors:
+%    Colors
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{xcolor}
 \input{\seriesinfopath langsci-series.def} % \lsSeriesColor, \lsSeriesTitle, \lsISSN and colors are defined here
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Cover:
+%    Cover
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pst-barcode}          % for generating bar codes
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
-
 
 \newcommand{\lsEditorPrefix}{}
 \newcommand{\lsEditorSuffix}{}
@@ -950,7 +948,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Series history:
+%    Series history
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -970,9 +968,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Imprint:
+%    Imprint
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% for imprint:
 \def\translator#1{\gdef\@translator{#1}}
 \translator{}
@@ -1071,7 +1070,6 @@ ISBN: &
 Source code available from \url{www.github.com/langsci/\lsID}  \\
 Collaborative~reading:~\href{{paperhive.org/documents/remote?type=langsci&id=\lsID}}{paperhive.org/documents/remote?type=langsci\&id=\lsID}
 
-
 \bigskip
 
 Cover and concept of design:
@@ -1115,8 +1113,6 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 % \vfill
 
-
-
 % \noindent
 % \lsp has no responsibility for the persistence or accuracy of URLs for
 % external or third-party Internet websites referred to in this
@@ -1125,10 +1121,9 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 }
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Dedication:
+%    Dedication
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1144,7 +1139,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Header and footer:
+%    Header and footer
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1197,7 +1192,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Epigrams:
+%    Epigrams
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1216,7 +1211,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Footnotes:
+%    Footnotes
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1246,7 +1241,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Quotes:
+%    Quotes
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1266,9 +1261,43 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 {\endlist}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+% 
+%    Language-specific settings
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%% Must apear before biblatex and hyperref.
+
+%% languages
+\newcommand{\lsBookLanguageEnglish}{english}
+\newcommand{\lsBookLanguageFrench}{french}
+\newcommand{\lsBookLanguagePortuguese}{portuguese}
+\newcommand{\lsBookLanguageGerman}{german}
+\newcommand{\lsBookLanguageChinese}{chinese}
+
+\iflsNoBabel
+	\else
+	\iflsBabelShorthands
+		\usepackage[\lsBookLanguage,german]{babel}
+		\ifx\lsBookLanguage\lsBookLanguageEnglish
+		  \addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
+	  \fi
+		\ifx\lsBookLanguage\lsBookLanguageFrench
+			\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
+	  \fi
+		\ifx\lsBookLanguage\lsBookLanguagePortuguese
+			\addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
+	  \fi
+	\else
+		\usepackage[\lsBookLanguage]{babel}
+	\fi
+\fi
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Citations:
+%    Citations
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1358,9 +1387,10 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 % \def\blx@maxline{77}
 % \makeatother
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Floats:
+%    Floats
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1405,9 +1435,11 @@ width=.8\textwidth
 }
 
 \setcapindent{0pt}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Appendices:
+%    Appendices
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1429,7 +1461,7 @@ width=.8\textwidth
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Indexes:
+%    Indexes
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1471,6 +1503,24 @@ width=.8\textwidth
 \newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
 \newcommand{\lsSubjectIndexTitle}{Subject index}
 \newcommand{\lsNameIndexTitle}{Name index}
+
+\ifx\lsBookLanguage\lsBookLanguageFrench
+\renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
+\renewcommand{\lsSubjectIndexTitle}{Index des termes}
+\renewcommand{\lsLanguageIndexTitle}{Index des langues}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageGerman
+\renewcommand{\lsNameIndexTitle}{Autorenregister}
+\renewcommand{\lsSubjectIndexTitle}{Sachregister}
+\renewcommand{\lsLanguageIndexTitle}{Sprachregister}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguagePortuguese
+\renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
+\renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
+\renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+\fi
 
 \AtBeginDocument{
 	\makeindex
@@ -1553,7 +1603,7 @@ width=.8\textwidth
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%    Hyperref:
+%    Hyperref
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1588,6 +1638,19 @@ width=.8\textwidth
 }
 %\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
 \fi
+
+%% autoref (part of hyperref)
+\ifx\lsBookLanguage\lsBookLanguageEnglish
+\renewcommand{\partautorefname}{Part}%
+\renewcommand{\chapterautorefname}{Chapter}%
+\renewcommand{\sectionautorefname}{Section}%
+\renewcommand{\subsectionautorefname}{Section}%
+\renewcommand{\subsubsectionautorefname}{Section}%
+\renewcommand{\figureautorefname}{Figure}%
+\renewcommand{\tableautorefname}{Table}%
+\renewcommand{\Hfootnoteautorefname}{Footnote}%
+\fi
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1835,69 +1898,7 @@ width=.8\textwidth
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%   Language-specific settings
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%   languages
-\newcommand{\lsBookLanguageEnglish}{english}
-\newcommand{\lsBookLanguageFrench}{french}
-\newcommand{\lsBookLanguagePortuguese}{portuguese}
-\newcommand{\lsBookLanguageGerman}{german}
-\newcommand{\lsBookLanguageChinese}{chinese}
-
-\iflsNoBabel
-	\else
-	\iflsBabelShorthands
-  	\usepackage[\lsBookLanguage,german]{babel}
-    \ifx\lsBookLanguage\lsBookLanguageEnglish
-  		\addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
-    \fi
-    \ifx\lsBookLanguage\lsBookLanguageFrench
-  		\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
-    \fi
-    \ifx\lsBookLanguage\lsBookLanguagePortuguese
-      \addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
-    \fi
-  \else
-  \usepackage[\lsBookLanguage]{babel}
-  \fi
-\fi
-
-\ifx\lsBookLanguage\lsBookLanguageFrench
-  \renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
-  \renewcommand{\lsSubjectIndexTitle}{Index des termes}
-  \renewcommand{\lsLanguageIndexTitle}{Index des langues}
-\fi
-
-\ifx\lsBookLanguage\lsBookLanguageGerman
-  \renewcommand{\lsNameIndexTitle}{Autorenregister}
-  \renewcommand{\lsSubjectIndexTitle}{Sachregister}
-  \renewcommand{\lsLanguageIndexTitle}{Sprachregister}
-\fi
-
-\ifx\lsBookLanguage\lsBookLanguagePortuguese
-  \renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
-  \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
-  \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
-\fi
-
-%% autoref (part of hyperref)
-\ifx\lsBookLanguage\lsBookLanguageEnglish
-  \renewcommand{\partautorefname}{Part}%
-  \renewcommand{\chapterautorefname}{Chapter}%
-  \renewcommand{\sectionautorefname}{Section}%
-  \renewcommand{\subsectionautorefname}{Section}%
-  \renewcommand{\subsubsectionautorefname}{Section}%
-  \renewcommand{\figureautorefname}{Figure}%
-  \renewcommand{\tableautorefname}{Table}%
-  \renewcommand{\Hfootnoteautorefname}{Footnote}%
-\fi
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%    Miscellaneous:
+%    Miscellaneous
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
