@@ -28,9 +28,10 @@ In your terminal, you can clone the repository ~~and download the contained subm
 
 option | values (defaults in bold face) | meaning
 -------|--------|---------
+babelshorthands | | use shorthands defined for German
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **biber** \| bibtex  | the backend of BibLaTeX
-babelshorthands | | use shorthands defined for German
+booklanguage | **english**\|french\|german\|portuguese | language the book is written in
 collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
