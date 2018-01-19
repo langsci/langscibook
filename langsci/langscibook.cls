@@ -1279,16 +1279,21 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 \iflsNoBabel
 	\else
 	\iflsBabelShorthands
-		\usepackage[\lsBookLanguage,german]{babel}
 		\ifx\lsBookLanguage\lsBookLanguageEnglish
+		  \usepackage[german,\lsBookLanguage]{babel}
 		  \addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
 	  \fi
 		\ifx\lsBookLanguage\lsBookLanguageFrench
+      \usepackage[german,\lsBookLanguage]{babel}
 			\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
-	  \fi
+    \fi
+    \ifx\lsBookLanguage\lsBookLanguageGerman
+      \usepackage[german]{babel}
+    \fi
 		\ifx\lsBookLanguage\lsBookLanguagePortuguese
+      \usepackage[german,\lsBookLanguage]{babel}
 			\addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
-	  \fi
+    \fi
 	\else
 		\usepackage[\lsBookLanguage]{babel}
 	\fi
