@@ -8,7 +8,7 @@
 % example sentences, usually with a short note in parentheses.
 % May overflow to the left or right, or line up on the next line as necessary.
 %
-% \jambox[width]{text}	Align 'text' starting 'width' distance from the 
+% \jambox[width]{text}	Align 'text' starting 'width' distance from the
 %			right margin (default \the\jamwidth).
 % \jam(something)	Align a note delimited by parentheses (which are
 %			retained).  No optional argument.
@@ -28,7 +28,7 @@
 %
 % BUG: Not compatible with ragged-right mode.
 %
-% Incompatibilities: Not useful with the vanilla cgloss4e.sty, which ends 
+% Incompatibilities: Not useful with the vanilla cgloss4e.sty, which ends
 % glossed lines prematurely.
 % I do have a suitably modified file, cgloss.sty. With it you can do the
 % following:
@@ -44,8 +44,8 @@
 % Quickie invocation: The argument is delimited by the parentheses (no width
 % argument allowed). I redefine it in my documents to add formatting.
 % Syntax: \jam(Some note)
-%  
-\def\jam(#1){\jambox{(#1)}} 
+%
+\def\jam(#1){\jambox{(#1)}}
 
 % Set width AND display the argument.
 % The star is read and ignored; the argument #1 is boxed, used to set
@@ -55,21 +55,21 @@
   \@jambox[\the\jamwidth]{\box\@tempboxa}}
 
 %% Version 1: old & stupid
-%% \def\@jambox[#1]#2{\hfill\hbox to #1 {#2\hfil}}  
+%% \def\@jambox[#1]#2{\hfill\hbox to #1 {#2\hfil}}
 
 % Version 2:
 % Always takes up \jamwidth space, even if it means breaking the line. But it
 % works on ragged-right mode, too.
 % \def\@jambox[#1]#2{\setbox\@tempboxa\hbox {#2\hfil}%
 %	\ifdim \wd\@tempboxa<#1\relax \wd\@tempboxa=#1\relax\fi
-%	\hskip 0.5em plus 1fill 
+%	\hskip 0.5em plus 1fill
 %	\penalty 100\vadjust{}\nobreak\hfill\box\@tempboxa\par}
 % The penalty enables a break.  \vadjust inserts an empty element
 % at the beginning of the next line, protecting \hfill from being discarded.
 
 % Version 3:
 % This seems to cover everything!  But unfortunately, it won't work in
-% ragged-right mode-- the line is broken BEFORE the last word, to make enough 
+% ragged-right mode-- the line is broken BEFORE the last word, to make enough
 % space...
 \def\@jambox[#1]#2{{\setbox\@tempboxa\hbox {#2}%
   \ifdim \wd\@tempboxa<#1\relax % if label fits in the alloted space:
