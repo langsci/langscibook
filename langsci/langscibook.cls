@@ -440,7 +440,6 @@
 \begin{titlepage}
 \thispagestyle{empty}
 
-
 \ifx\lsOutput\lsOutputBook   % only if output=book
   \setcounter{page}{-1}
   %% First titlepage:
@@ -1838,9 +1837,7 @@ width=.8\textwidth
   \renewcommand{\lsCollectionPaperTOC}{{%
   \iflsCollectionChapter%
     \protect\numberline{\thechapter}\fi
-  \@title\ \newline{\normalfont\@author}}}
-}
-
+  \@title\ \newline{\normalfont\@author}}}}
 
 \newcommand{\lsCollectionPaperAuthor}{{%
   \renewcommand{\newlineTOC}{}
@@ -1852,8 +1849,14 @@ width=.8\textwidth
   % \hspace{0.8em}%
   \hfill%
   \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText}}
+\ifx\lsOutput\lsOutputPaper       % only if output=paper
+	\renewcommand{\lsCollectionPaperCitation}{Change with \string\papernote}
+\fi
 
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
+
+\newcommand{\papernote}[1]{
+  \renewcommand{\lsCollectionPaperCitation}{#1}}
 
 \newcommand{\lsPaper}{
   \renewcommand{\maketitle}{
