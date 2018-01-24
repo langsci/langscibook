@@ -114,6 +114,16 @@
 \beforeExFootnotetext{#1}%
 \endgroup}
 
+\let\beforeExFootnote\footnote
+\renewcommand{\footnote}[1]{\begingroup%
+\let\exfont\fnexfont%
+\let\glossfont\fnglossfont%
+\let\transfont\fntransfont%
+\let\exnrfont\fnexnrfont%
+%\renewcommand{\@@xsi}{\let\@xsi\roman}% set example numbering to roman
+\beforeExFootnote{#1}%
+\endgroup}
+
 
 \renewcommand{\eachwordone}{\exfont}
 \renewcommand{\eachwordtwo}{\glossfont}
