@@ -100,7 +100,7 @@
 \newcommand{\logotext}{{\color{red}no logo}}
 \newcommand{\lsYear}{\the\year}
 
-\newcommand{\lsBackBody}{Set blurb on back with {\textbackslash}BackBody{my blurb\}}}
+\newcommand{\lsBackBody}{Set blurb on back with {\textbackslash}BackBody\{my blurb\}}
 \newcommand{\lsBackTitle}{\@title}
 \newcommand{\BackTitle}[1]{\renewcommand{\lsBackTitle}{#1}}
 \newcommand{\BackBody}[1]{\renewcommand{\lsBackBody}{#1}}
@@ -344,11 +344,11 @@
           right,
           below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
           text width=#1
-         ] (lspcls_backtitle) {\color{\lsCoverFontColour}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
+         ] (lspcls_backtitle) {\color{white}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
   \node [ below = 10mm of lspcls_backtitle,
           text width=#1,
           align=justify
-        ] {\color{\lsCoverFontColour}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
+        ] {\color{white}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
  \node [  below right = 192.5mm and 97.5mm of CoverColouredRectangleBack.north west,
           text width=4cm] {%
     \colorbox{white}{
@@ -362,45 +362,44 @@
 % Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
 % Argument 1: Text width on the front cover. Input: 12.34mm
 % Argument 2: Font size on the front cover. Adjust to compensate varying text width. Input: 12.34pt
-\newcommand{\podfrontcovertoptext}[2]{
-  \newcommand{\lsCoverFontColour}{white}
+\newcommand{\podfrontcovertoptext}[3][white]{
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
 
   \node [ execute at begin node={},
-          font=\fontsize{#2}{17.25mm}\selectfont,
+          font=\fontsize{#3}{17.25mm}\selectfont,
           below right = 10mm and 7.5mm of CoverColouredRectangleFront.north west,
-          text width=#1,
+          text width=#2,
           align=left
-        ] (lspcls_covertitle) {\color{\lsCoverFontColour}\lsCoverTitleFont{\raggedright\@title\par}};
+        ] (lspcls_covertitle) {\color{#1}\lsCoverTitleFont{\raggedright\@title\par}};
 
   \ifnum\subtitleStrLen=0  % Is there a subtitle? If no, just print the author.
   \node [ font=\fontsize{25pt}{12.5mm}\selectfont,
           right,
           below = 11.2mm of lspcls_covertitle.south,
-          text width=#1
-        ] {\color{\lsCoverFontColour}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
+          text width=#2
+        ] {\color{#1}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
   \else % If yes, create a node for subtitle and author
   \node [ font=\fontsize{25pt}{10mm}\selectfont,
           below = 8mm of lspcls_covertitle.south,
-          text width=#1
-        ] (lspcls_coversubtitle) {\color{\lsCoverFontColour} \lsCoverSubTitleFont \nohyphens{\@subtitle}\par};
+          text width=#2
+        ] (lspcls_coversubtitle) {\color{#1} \lsCoverSubTitleFont \nohyphens{\@subtitle}\par};
   \node [
           font=\fontsize{25pt}{12.5mm}\selectfont,
           right,
           below = 11.2mm of lspcls_coversubtitle.south,
-          text width=#1
-        ] {\color{\lsCoverFontColour}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
+          text width=#2
+        ] {\color{#1}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
   \fi
 }
 
 % Generates the bottom half of the front cover content: series, series number, logo.
-\newcommand{\podcoverbottomtext}{
+\newcommand{\podcoverbottomtext}[1][white]{
   \node [ above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west,
           rectangle,
           fill=white,
           minimum size=17pt] (lspcls_square) {}; % This is the white square at the bottom left of the front cover
-  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsCoverFontColour}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
+  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{#1}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
   \path let \p1 = (lspcls_square.north east), % Calculate the exact coordinates for the Series Title to print.
             \p2 = (lspcls_covertitle.west)
             in node at (\x2,\y1) (lspcls_seriesinfo) [
@@ -408,7 +407,7 @@
                   right,
                   text width=95mm,
                   anchor=north west]
-            {\color{\lsCoverFontColour}\lsCoverSeriesFont{\lsSeriesTitle\par}};
+            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -904,16 +903,57 @@
     \raggedright\IfFileExists{\logopath langsci_logo_nocolor.pdf}{\includegraphics{\logopath langsci_logo_nocolor.pdf}}{langsci logo}
   \end{textblock}}
 
+   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+    \StrLen{\@subtitle}[\subtitleStrLen]
+
 \newcommand{\lsFrontPage}{    % Front page
-  \lsCoverBlock
-  \lsCoverTitleAuthor
-  \lsCoverSeries
-  \lsCoverLogo}
+% %   \lsCoverBlock
+% %   \lsCoverTitleAuthor
+% %   \lsCoverSeries
+% %   \lsCoverLogo
+  \pagestyle{empty}
+  \renewcommand{\and}{, }%
+  \renewcommand{\lastand}{ \& }%
+  \renewcommand{\affiliation}[1]{}
+\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+  \begin{pgfonlayer}{lspcls_bg}
+    \node [ bg,
+	    left=7.5mm of current page.east,
+	    fill=\lsSeriesColor,
+	    minimum width=155mm,
+	    minimum height=225mm
+	    ] (CoverColouredRectangleFront) {};
+  \end{pgfonlayer}
+  \podfrontcovertoptext{140mm}{51pt}
+  \podcoverbottomtext
+  \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
+  \iflsOpenReview \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime}; \fi
+  \iflsUndecapitalize \node [rotate=45,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Undecapitalized}; \fi  
+\end{tikzpicture}
+}
 
 \newcommand{\lsSchmutztitel}{ % Schmutztitel
-  \lsCoverBlock
-  \lsCoverTitleAuthor
-  \lsCoverLogo}
+% %   \lsCoverBlock
+% %   \lsCoverTitleAuthor
+% %   \lsCoverLogo
+\pagestyle{empty}
+  \renewcommand{\and}{, }%
+  \renewcommand{\lastand}{ \& }%
+  \renewcommand{\affiliation}[1]{}
+\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+  \begin{pgfonlayer}{lspcls_bg}
+    \node [ bg,
+	    left=7.5mm of current page.east,
+	    fill=white,
+	    minimum width=155mm,
+	    minimum height=225mm
+	    ] (CoverColouredRectangleFront) {};
+  \end{pgfonlayer}
+  \podfrontcovertoptext[\lsSeriesColor]{140mm}{51pt}
+  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsSeriesColor}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
+\end{tikzpicture}
+  }
 
 %\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
@@ -921,28 +961,45 @@
 }
 
 \newcommand{\lsBackPage}{   % Back page
-  \lsCoverBlock
-
-  \begin{textblock}{140}(15,24)  % 30mm-6mm
-    \color{white}
-    {\raggedright
-    \lsBackTitleFont
-    \lsBackTitle \\ \null}
-
-    \lsBackBodyFont
-
-    \noindent
-    \lsBackBody
-  \end{textblock}
-
-  \begin{textblock}{40}(105,200)
-    \lsBackBodyFont\sffamily
-    \colorbox{white}{%
-    \begin{pspicture}(0,0)(4.1,1in)
-    \psbarcode[transx=0.4,transy=0.3]{\lsISBNdigital}{includetext height=0.7}{isbn}
-    \end{pspicture}
-    }%
-  \end{textblock}}
+% %   \lsCoverBlock
+% % 
+% %   \begin{textblock}{140}(15,24)  % 30mm-6mm
+% %     \color{white}
+% %     {\raggedright
+% %     \lsBackTitleFont
+% %     \lsBackTitle \\ \null}
+% % 
+% %     \lsBackBodyFont
+% % 
+% %     \noindent
+% %     \lsBackBody
+% %   \end{textblock}
+% % 
+% %   \begin{textblock}{40}(105,200)
+% %     \lsBackBodyFont\sffamily
+% %     \colorbox{white}{%
+% %     \begin{pspicture}(0,0)(4.1,1in)
+% %     \psbarcode[transx=0.4,transy=0.3]{\lsISBNdigital}{includetext height=0.7}{isbn}
+% %     \end{pspicture}
+% %     }%
+% %   \end{textblock}
+  \pagestyle{empty}
+  \renewcommand{\and}{, }%
+  \renewcommand{\lastand}{ \& }%
+  \renewcommand{\affiliation}[1]{}
+  \newcommand{\lsISBNcover}{\lsISBNdigital}
+\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+  \begin{pgfonlayer}{lspcls_bg}
+    \node [ bg,
+	    right=7.5mm of current page.west,
+	    fill=\lsSeriesColor,
+	    minimum width=155mm,
+	    minimum height=225mm
+	    ] (CoverColouredRectangleBack) {};
+  \end{pgfonlayer}
+  \podbackcover{137mm}
+  \end{tikzpicture}
+  }
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
