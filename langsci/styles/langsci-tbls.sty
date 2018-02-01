@@ -16,7 +16,7 @@
 	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
 	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
-	
+
 \mdfdefinestyle{greyexercise}{%
 	everyline=true,ignorelastdescenders=true,
 	linewidth=0pt,backgroundcolor=\tblsboxcolor,
@@ -25,16 +25,16 @@
 	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
 	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
-	
+
 
 \mdfdefinestyle{tblsbox}{%
-	leftline=false, rightline=false, frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0	
+	leftline=false, rightline=false, frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0
 	}
-	
+
 \mdfdefinestyle{tblsframedbox}{%
-	frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm	
-}	
-	
+	frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm
+}
+
 \newcommand{\tblsfillcolour}{black!12}
 \mdfdefinestyle{tblsfilledbox}{%
 	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm
@@ -86,22 +86,22 @@
 }
 
 %%% MDFRAMED END %%%
-	
+
 
 \newcommand{\tblsbwbox}[4][]{%
 \\
-  \noindent 
+  \noindent
   \colorbox{#2}{
 \parbox{.97\textwidth}{
 \centering
 \parbox{.9\textwidth}{
 
-    %add logo if requested   
+    %add logo if requested
       \ifthenelse{\equal{#1}{}}{\bigskip}{
     \begin{flushleft}
       \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{langsci/graphics/#1.eps}}
-    \end{flushleft}}  
-    %add header 
+    \end{flushleft}}
+    %add header
     \boxheader{#3}
     \begin{multicols*}{2}
     #4
@@ -113,7 +113,7 @@
 \\[1em]
 }
 
- 
+
 
 \newcommand{\tblsbwboxdark}[3][]{%
   \noindent
@@ -145,10 +145,10 @@
 \noindent
 #1
 \\[2em]
-\boxheader{#2} 
+\boxheader{#2}
 \\[1em]
 \noindent%
-#3 
+#3
 \smallskip
 \noindent
 #1
@@ -171,15 +171,15 @@
    \tblssandwich{\tblsthinline}{#1}{#2}
 }
 
-\newcommand{\tblscolframebox}[3][]{ 
+\newcommand{\tblscolframebox}[3][]{
   \fboxrule.8mm
   \noindent
   \begin{figure}
     \begin{flushleft}
-      \hspace*{3.5mm} 
+      \hspace*{3.5mm}
       \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{langsci/graphics/#1.eps}}} \\
     \end{flushleft}
-    \color{lsYellow}\framebox[\textwidth]{% 
+    \color{lsYellow}\framebox[\textwidth]{%
       \color{black}
       \parbox{.92\textwidth}{%
 	\vspace*{.5cm}
@@ -187,10 +187,9 @@
 	\begin{multicols*}{2}
 	  #3
 	\end{multicols*}
-      }  
+      }
     }
   \end{figure}
 }
- 
 
 \newcommand{\boxheader}[1]{\medskip{\Large\bfseries\sffamily #1}}
