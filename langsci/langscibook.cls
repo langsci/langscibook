@@ -437,19 +437,18 @@
 \else                 % only if output!=paper
 \renewcommand{\maketitle}{
 \begin{titlepage}
-\thispagestyle{empty}
-
+% \thispagestyle{empty}
 \ifx\lsOutput\lsOutputBook   % only if output=book
   \setcounter{page}{-1}
   %% First titlepage:
   {\lsFrontPage}
   %%%%%%%%%%%%%%%%%%%
-  \newpage\thispagestyle{empty}
-  \null\newpage\thispagestyle{empty}
+  \clearpage\thispagestyle{empty}
+%   \null\newpage\thispagestyle{empty}
   %% Series information:
   {\lsSeriesHistory}
   %%%%%%%%%%%%%%%%%%%%%
-  \newpage\thispagestyle{empty}
+  \clearpage%\thispagestyle{empty}
   %% Schmutztitel:
   {\renewcommand{\lsCoverBlockColor}{white}
    \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
@@ -530,13 +529,9 @@
   \end{titlepage}
   \end{document}
 \fi
-
 \end{titlepage}
 
-\frontmatter
-\renewcommand{\frontmatter}{}
-
-\null\newpage\thispagestyle{empty}
+% \null\newpage\thispagestyle{empty}
 \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
 \color{black}
 \lsInsideFont
@@ -550,7 +545,7 @@
 \fi
 %%%%%%%%%%%%%
 
-\null\newpage\thispagestyle{plain}
+% \null\newpage\thispagestyle{plain}
 %\pagenumbering{roman}    % or \frontmatter
 
 %% Dedication:
@@ -912,7 +907,7 @@
 % %   \lsCoverTitleAuthor
 % %   \lsCoverSeries
 % %   \lsCoverLogo
-  \pagestyle{empty}
+  \thispagestyle{empty}
   \renewcommand{\and}{, }%
   \renewcommand{\lastand}{ \& }%
   \renewcommand{\affiliation}[1]{}
@@ -933,14 +928,14 @@
 \end{tikzpicture}
 }
 
-\newcommand{\lsSchmutztitel}{ % Schmutztitel
+\newcommand{\lsSchmutztitel}{% Schmutztitel
 % %   \lsCoverBlock
 % %   \lsCoverTitleAuthor
 % %   \lsCoverLogo
-\pagestyle{empty}
+\thispagestyle{empty}
   \renewcommand{\and}{, }%
   \renewcommand{\lastand}{ \& }%
-  \renewcommand{\affiliation}[1]{}
+  \renewcommand{\affiliation}[1]{}%
 \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
   \begin{pgfonlayer}{lspcls_bg}
     \node [ bg,
@@ -953,7 +948,7 @@
   \podfrontcovertoptext[\lsSeriesColor]{140mm}{51pt}
   \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsSeriesColor}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
 \end{tikzpicture}
-  }
+}
 
 %\usepackage{pdfpages}
 \newcommand{\lsAdvertisement}{
@@ -1073,6 +1068,7 @@
 }
 
 \newcommand{\lsImpressum}{
+\thispagestyle{empty}
 \raggedright
 
 \lsImpressumCitationText
