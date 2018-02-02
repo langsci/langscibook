@@ -443,7 +443,7 @@
   %% First titlepage:
   {\lsFrontPage}
   %%%%%%%%%%%%%%%%%%%
-  \pagenumbering{roman}\clearpage\thispagestyle{empty}
+  \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
   %% Series information:
   {\lsSeriesHistory}
   %%%%%%%%%%%%%%%%%%%%%
