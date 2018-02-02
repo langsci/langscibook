@@ -437,14 +437,13 @@
 \else                 % only if output!=paper
 \renewcommand{\maketitle}{
 \begin{titlepage}
-% \thispagestyle{empty}
+ \thispagestyle{empty}
 \ifx\lsOutput\lsOutputBook   % only if output=book
   \setcounter{page}{-1}
   %% First titlepage:
   {\lsFrontPage}
   %%%%%%%%%%%%%%%%%%%
-  \clearpage\thispagestyle{empty}
-%   \null\newpage\thispagestyle{empty}
+  \pagenumbering{roman}\clearpage\thispagestyle{empty}
   %% Series information:
   {\lsSeriesHistory}
   %%%%%%%%%%%%%%%%%%%%%
