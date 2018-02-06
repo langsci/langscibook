@@ -329,3 +329,7 @@
   \let\eachwordone=\itshape
   \exfont{\itshape}
 }
+
+\newenvironment{modquote}[1][6mm]% slightly less indented quote for hyphenation issues
+  {\list{}{\leftmargin=#1\rightmargin=0mm}\item[]}%
+  {\endlist}
