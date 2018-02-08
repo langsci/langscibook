@@ -1119,7 +1119,7 @@ ISBN: &
   {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}\\
 Source code available from \url{www.github.com/langsci/\lsID}  \\
-Collaborative~reading:~\href{{paperhive.org/documents/remote?type=langsci&id=\lsID}}{paperhive.org/documents/remote?type=langsci\&id=\lsID}
+Collaborative~reading:~\href{https://paperhive.org/documents/remote?type=langsci&id=\lsID}{paperhive.org/documents/remote?type=langsci\&id=\lsID}
 
 \bigskip
 
