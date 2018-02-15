@@ -549,7 +549,7 @@
 
 %% Dedication:
 \ifx\@dedication\empty{}
-\else{\lsDedication}
+\else{\newpage\lsDedication}
 \fi
 %%%%%%%%%%%%%%%%
 
@@ -1178,13 +1178,13 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\lsDedication}{
-	\vspace*{.2\textheight}
+\newcommand{\lsDedication}{\thispagestyle{empty}
+	\vspace*{\fill}
 	\begin{center}
 	{\lsDedicationFont
-	\@dedication }
+	\@dedication\par}
 	\end{center}
-	\vfill
+	\vspace*{\fill}
 	\clearpage}
 
 
