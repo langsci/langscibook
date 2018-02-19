@@ -902,6 +902,9 @@
     \StrLen{\@subtitle}[\subtitleStrLen]
 
 \newcommand{\lsFrontPage}{    % Front page
+	\pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+	\pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+    \StrLen{\@subtitle}[\subtitleStrLen]
 % %   \lsCoverBlock
 % %   \lsCoverTitleAuthor
 % %   \lsCoverSeries
@@ -928,10 +931,13 @@
 }
 
 \newcommand{\lsSchmutztitel}{% Schmutztitel
+  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+  \StrLen{\@subtitle}[\subtitleStrLen]
 % %   \lsCoverBlock
 % %   \lsCoverTitleAuthor
 % %   \lsCoverLogo
-\thispagestyle{empty}
+  \thispagestyle{empty}
   \renewcommand{\and}{, }%
   \renewcommand{\lastand}{ \& }%
   \renewcommand{\affiliation}[1]{}%
@@ -977,6 +983,9 @@
 % %     \end{pspicture}
 % %     }%
 % %   \end{textblock}
+  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+  \StrLen{\@subtitle}[\subtitleStrLen]
   \pagestyle{empty}
   \renewcommand{\and}{, }%
   \renewcommand{\lastand}{ \& }%
