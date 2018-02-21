@@ -78,7 +78,7 @@
 	\renewcommand{\lsISSN}{2567-742X}
 \fi
 \ifx\lsSeries\nc
-	\newcommand{\lsSeriesTitle}{Monographs on Comparative Niger-Congo~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Niger-Congo Comparative Studies~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRed}
 \fi
 \ifx\lsSeries\ogs
