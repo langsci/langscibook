@@ -234,15 +234,6 @@
   
   
 
-\usepackage{newfile}  
-\newoutputstream{colorfigures}
-\openoutputfile{\jobname.clr}{colorfigures}
-\addtostream{colorfigures}{Note the offset incurred by the frontmatter!}
-\newenvironment{colorfigure}{\begin{figure}\addtostream{colorfigures}{\thepage}}{\end{figure}} 
-
-\AtEndDocument{
- \closeoutputstream{colorfigures}
-}
 
 \newcommand{\longrule}{\rule{1em}{.3pt}}
 \usepackage{colortbl} 
