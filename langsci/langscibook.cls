@@ -1430,7 +1430,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
   \clearfield{note}%
 }
 %% DOIs are handled after hyperref.
-\defbibheading{references}{\chapter{References}\sloppy} % FIXME: adjust with language
+\defbibheading{references}{\chapter{References}\sloppy}
 \defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
 \defbibheading{german}{\chapter{Literaturverzeichnis}\sloppy}
 \defbibheading{portuguese}{\chapter{Referências}\sloppy}
@@ -1599,26 +1599,46 @@ width=.8\textwidth
   \fi
 }
 
+\newcommand{\lsIndexTitle}{Index}
 \newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
 \newcommand{\lsSubjectIndexTitle}{Subject index}
 \newcommand{\lsNameIndexTitle}{Name index}
+\newcommand{\lsPrefaceTitle}{Preface}
+\newcommand{\lsAcknowledgementTitle}{Acknowledgments}
+\newcommand{\lsAbbreviationsTitle}{Abbreviations}
+\newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
+\renewcommand{\lsIndexTitle}{Index}
 \renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
 \renewcommand{\lsSubjectIndexTitle}{Index des termes}
 \renewcommand{\lsLanguageIndexTitle}{Index des langues}
+\renewcommand{\lsPrefaceTitle}{Préface}
+\renewcommand{\lsAcknowledgementTitle}{Remerciements}
+\renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
+\renewcommand{\lsReferencesTitle}{french}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
+\renewcommand{\lsIndexTitle}{Register}
 \renewcommand{\lsNameIndexTitle}{Autorenregister}
 \renewcommand{\lsSubjectIndexTitle}{Sachregister}
 \renewcommand{\lsLanguageIndexTitle}{Sprachregister}
+\renewcommand{\lsPrefaceTitle}{Vorwort}
+\renewcommand{\lsAcknowledgementTitle}{Danksagung}
+\renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
+\renewcommand{\lsReferencesTitle}{german}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
+\renewcommand{\lsIndexTitle}{Índices}
 \renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
 \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
 \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+\renewcommand{\lsPrefaceTitle}{Prefácio}
+\renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
+\renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+\renewcommand{\lsReferencesTitle}{portugese}
 \fi
 
 \AtBeginDocument{
