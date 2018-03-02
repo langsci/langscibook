@@ -1437,7 +1437,6 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 \defbibheading{chinese}{\chapter{References}\sloppy}
 
 
-\let\citew\citealt
 
 % fix \citep* et.al.
 % unclear why it was overwritten, these are the definitions from blx-natbib.def
@@ -1467,6 +1466,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
     {\AtNextCite{\AtEachCitekey{\defcounter{maxnames}{999}}}%
      \orgcite}
     {\orgcite}}
+
+\let\citew\citealt
 
 \let\orgcite=\cite
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
