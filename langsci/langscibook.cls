@@ -2035,4 +2035,12 @@ width=.8\textwidth
 % no this does add vertical space instead of horizontal St. Mü. 04.03.2018
 % \newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
 
+% in this example
+%% \eal
+%% \ex \hspaceThis{*~}The boy who is running fast can jump high. $\to$\\
+%%  {}* Is the boy who running fast can jump high?
+%% \ex \hspaceThis{*~}The boy who can run fast can jump high. $\to$\\
+%%  {}* Can the boy who run fast can jump high?
+%% \zl
+
 \endinput
