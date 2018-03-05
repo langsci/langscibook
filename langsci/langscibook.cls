@@ -1383,6 +1383,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	doi=false,
 	url=false,
 	eprint=false,
+        useprefix=true,
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\iflsCollection\else
