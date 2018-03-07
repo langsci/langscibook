@@ -64,6 +64,7 @@
 \newcommand{\fontpath}{}
 \newcommand{\logopath}{}
 \newcommand{\seriesinfopath}{}
+\newcommand{\localepath}{}
 \newcommand{\bstpath}{}
 \newcommand{\bbxpath}{}
 \newcommand{\cbxpath}{}
@@ -178,6 +179,7 @@
 	\renewcommand{\fontpath}{./langsci/fonts/}
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
+	\renewcommand{\localepath}{./langsci/locale/}
 	\renewcommand{\bstpath}{./langsci/bst/}
   \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
   % \renewcommand{\bbxpath}{\bstpath}
@@ -1609,6 +1611,7 @@ width=.8\textwidth
 \newcommand{\lsAcknowledgementTitle}{Acknowledgments}
 \newcommand{\lsAbbreviationsTitle}{Abbreviations}
 \newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
+\input{\localepath langsci-hyphenation-universal}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
 \renewcommand{\lsIndexTitle}{Index}
@@ -1619,6 +1622,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Remerciements}
 \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
 \renewcommand{\lsReferencesTitle}{french}
+\input{\localepath langsci-hyphenation-fr}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -1630,6 +1634,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Danksagung}
 \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
 \renewcommand{\lsReferencesTitle}{german}
+\input{\localepath langsci-hyphenation-de}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -1641,6 +1646,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
 \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
 \renewcommand{\lsReferencesTitle}{portugese}
+\input{\localepath langsci-hyphenation-pt}
 \fi
 
 \AtBeginDocument{
