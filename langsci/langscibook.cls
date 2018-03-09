@@ -1470,7 +1470,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
      \orgcite}
     {\orgcite}}
 
-\let\citew\citealt
+\let\citew\citet
 
 \let\orgcite=\cite
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
