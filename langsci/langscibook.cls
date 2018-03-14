@@ -64,6 +64,7 @@
 \newcommand{\fontpath}{}
 \newcommand{\logopath}{}
 \newcommand{\seriesinfopath}{}
+\newcommand{\localepath}{}
 \newcommand{\bstpath}{}
 \newcommand{\bbxpath}{}
 \newcommand{\cbxpath}{}
@@ -178,6 +179,7 @@
 	\renewcommand{\fontpath}{./langsci/fonts/}
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
+	\renewcommand{\localepath}{./langsci/locale/}
 	\renewcommand{\bstpath}{./langsci/bst/}
   \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
   % \renewcommand{\bbxpath}{\bstpath}
@@ -1127,7 +1129,7 @@ ISBN: &
 \IfStrEq{\lsBookDOI}{??}    % \IfStrEq from xstring
   {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}\\
-Source code available from \url{www.github.com/langsci/\lsID}  \\
+Source code available from \href{https://www.github.com/langsci/\lsID}{www.github.com/langsci/\lsID}  \\
 Collaborative~reading:~\href{https://paperhive.org/documents/remote?type=langsci&id=\lsID}{paperhive.org/documents/remote?type=langsci\&id=\lsID}
 
 \bigskip
@@ -1385,6 +1387,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	doi=false,
 	url=false,
 	eprint=false,
+        useprefix=true,
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\iflsCollection\else
@@ -1432,14 +1435,13 @@ Storage and cataloguing done by FU Berlin \\[3ex]
   \clearfield{note}%
 }
 %% DOIs are handled after hyperref.
-\defbibheading{references}{\chapter{References}\sloppy} % FIXME: adjust with language
+\defbibheading{references}{\chapter{References}\sloppy}
 \defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
 \defbibheading{german}{\chapter{Literaturverzeichnis}\sloppy}
 \defbibheading{portuguese}{\chapter{Referências}\sloppy}
 \defbibheading{chinese}{\chapter{References}\sloppy}
 
 
-\let\citew\citealt
 
 % fix \citep* et.al.
 % unclear why it was overwritten, these are the definitions from blx-natbib.def
@@ -1469,6 +1471,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
     {\AtNextCite{\AtEachCitekey{\defcounter{maxnames}{999}}}%
      \orgcite}
     {\orgcite}}
+
+\let\citew\citet
 
 \let\orgcite=\cite
 \let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
@@ -1601,26 +1605,50 @@ width=.8\textwidth
   \fi
 }
 
+\newcommand{\lsIndexTitle}{Index}
 \newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
 \newcommand{\lsSubjectIndexTitle}{Subject index}
 \newcommand{\lsNameIndexTitle}{Name index}
+\newcommand{\lsPrefaceTitle}{Preface}
+\newcommand{\lsAcknowledgementTitle}{Acknowledgments}
+\newcommand{\lsAbbreviationsTitle}{Abbreviations}
+\newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
+\input{\localepath langsci-hyphenation-universal}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
+\renewcommand{\lsIndexTitle}{Index}
 \renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
 \renewcommand{\lsSubjectIndexTitle}{Index des termes}
 \renewcommand{\lsLanguageIndexTitle}{Index des langues}
+\renewcommand{\lsPrefaceTitle}{Préface}
+\renewcommand{\lsAcknowledgementTitle}{Remerciements}
+\renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
+\renewcommand{\lsReferencesTitle}{french}
+\input{\localepath langsci-hyphenation-fr}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
+\renewcommand{\lsIndexTitle}{Register}
 \renewcommand{\lsNameIndexTitle}{Autorenregister}
 \renewcommand{\lsSubjectIndexTitle}{Sachregister}
 \renewcommand{\lsLanguageIndexTitle}{Sprachregister}
+\renewcommand{\lsPrefaceTitle}{Vorwort}
+\renewcommand{\lsAcknowledgementTitle}{Danksagung}
+\renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
+\renewcommand{\lsReferencesTitle}{german}
+\input{\localepath langsci-hyphenation-de}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
+\renewcommand{\lsIndexTitle}{Índices}
 \renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
 \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
 \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+\renewcommand{\lsPrefaceTitle}{Prefácio}
+\renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
+\renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+\renewcommand{\lsReferencesTitle}{portugese}
+\input{\localepath langsci-hyphenation-pt}
 \fi
 
 \AtBeginDocument{
@@ -2011,7 +2039,17 @@ width=.8\textwidth
 
 %% hspace over width of something without showing it
 \newlength{\LSPTmp}
-% \newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
-\newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
+\newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
+
+% no this does add vertical space instead of horizontal St. Mü. 04.03.2018
+% \newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
+
+% in this example
+%% \eal
+%% \ex \hspaceThis{*~}The boy who is running fast can jump high. $\to$\\
+%%  {}* Is the boy who running fast can jump high?
+%% \ex \hspaceThis{*~}The boy who can run fast can jump high. $\to$\\
+%%  {}* Can the boy who run fast can jump high?
+%% \zl
 
 \endinput
