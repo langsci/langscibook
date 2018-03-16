@@ -274,7 +274,6 @@
 \newcommand{\podsetup}{
   \lsCovertrue
   \renewcommand{\maketitle}{}  %no need for this
-  \StrLen{\@subtitle}[\subtitleStrLen]     % Get the length of the subtitle. Later, we use this length to check if a subtitle exists.
   \pagestyle{empty}
   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
@@ -367,6 +366,7 @@
 \newcommand{\podfrontcovertoptext}[3][white]{
   \renewcommand{\and}{\\}
   \renewcommand{\lastand}{\\}
+  \renewcommand{\newlineCover}{\\}
 
   \node [ execute at begin node={},
           font=\fontsize{#3}{17.25mm}\selectfont,
@@ -375,7 +375,7 @@
           align=left
         ] (lspcls_covertitle) {\color{#1}\lsCoverTitleFont{\raggedright\@title\par}};
 
-  \ifnum\subtitleStrLen=0  % Is there a subtitle? If no, just print the author.
+  \ifx\@subtitle\empty  % Is there a subtitle? If no, just print the author.
   \node [ font=\fontsize{25pt}{12.5mm}\selectfont,
           right,
           below = 11.2mm of lspcls_covertitle.south,
@@ -384,8 +384,9 @@
   \else % If yes, create a node for subtitle and author
   \node [ font=\fontsize{25pt}{10mm}\selectfont,
           below = 8mm of lspcls_covertitle.south,
-          text width=#2
-        ] (lspcls_coversubtitle) {\color{#1} \lsCoverSubTitleFont \nohyphens{\@subtitle}\par};
+          text width=#2, 
+          align=left
+        ] (lspcls_coversubtitle) {\color{#1}\lsCoverSubTitleFont{\raggedright\@subtitle\par}};
   \node [
           font=\fontsize{25pt}{12.5mm}\selectfont,
           right,
@@ -901,12 +902,10 @@
 
    \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
    \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-    \StrLen{\@subtitle}[\subtitleStrLen]
 
 \newcommand{\lsFrontPage}{    % Front page
 	\pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
 	\pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-    \StrLen{\@subtitle}[\subtitleStrLen]
 % %   \lsCoverBlock
 % %   \lsCoverTitleAuthor
 % %   \lsCoverSeries
@@ -935,7 +934,6 @@
 \newcommand{\lsSchmutztitel}{% Schmutztitel
   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-  \StrLen{\@subtitle}[\subtitleStrLen]
 % %   \lsCoverBlock
 % %   \lsCoverTitleAuthor
 % %   \lsCoverLogo
@@ -987,7 +985,6 @@
 % %   \end{textblock}
   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-  \StrLen{\@subtitle}[\subtitleStrLen]
   \pagestyle{empty}
   \renewcommand{\and}{, }%
   \renewcommand{\lastand}{ \& }%
