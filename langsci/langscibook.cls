@@ -1186,7 +1186,7 @@ Proofreading:
 Open reviewing:
 \@openreviewer \\
 \fi
-Fonts: Linux Libertine, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
+Fonts: Linux Libertine, Libertinus Math, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
 Typesetting software: \XeLaTeX
 
 \bigskip
