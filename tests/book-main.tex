@@ -21,16 +21,25 @@
 \usepackage{./langsci/styles/langsci-optional} 
 \usepackage{./langsci/styles/langsci-tobi} 
 \usepackage{./langsci/styles/langsci-lgr} 
+
 \usepackage{lipsum}
 \usepackage{multicol}
 \usepackage{minibox}
 \usepackage{forest}
 \usepackage{tikz}
 \usepackage{pgfplots}
+
+\usepackage{./langsci/styles/avm}
+\avmoptions{center} 
+\avmfont{\scshape}
+\avmvalfont{\normalfont}
+\avmsortfont{\normalfont\itshape}
+
 \renewcommand{\lsISBNhardcover}{999-3-123456-99-9}
 \renewcommand{\lsISBNsoftcover}{999-3-123456-99-9}
 \renewcommand{\lsISBNdigital}{978-3-946234-65-4}
 % \usepackage{authorindex}
+
 \bibliography{localbibliography}
 
 % The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
@@ -102,6 +111,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 \input{gb4e-tests/underlinedexample}
 
 \section{AVM}
+\input{avm-tests/avm.tex}
 
 \section{Maths}
 \input{math-tests/formulae}
