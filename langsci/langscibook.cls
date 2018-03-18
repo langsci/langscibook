@@ -679,6 +679,8 @@
 %% Typesetting of mathematical formulas
 \usepackage{amssymb} % has to be loaded before other stuff
 \usepackage{amsmath} % has to be loaded before mathspec/unicode-math
+
+\iflsNewtxmath\else
 %% There is a known problem in the interplay between \binom, unicode-math, and OTF
 %% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
 \ifx\Umathcode\@undefined\else
@@ -705,9 +707,12 @@
 \fi
 %% Provides \setmathfont
 \usepackage{unicode-math}
+\fi
 
+\iflsNewtxmath
 %% Deprecated:
-% \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
+\PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
+\fi
 
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \usepackage{dejavu}
@@ -720,7 +725,9 @@
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
 	]{DejaVuSansMono.ttf}
 
+\iflsNewtxmath\else
 \setmathfont[AutoFakeBold]{libertinusmath-regular.otf}
+\fi
 
 \iflsModfonts% use Langsci fonts
   \setsansfont[
@@ -774,21 +781,21 @@
 \fi
 
 %% Deprecated:
-% \iflsNewtxmath		% some users have problems when installing newtxmath
-% 	\usepackage[libertine]{newtxmath}
+\iflsNewtxmath		% some users have problems when installing newtxmath
+	\usepackage[libertine]{newtxmath}
 
-% 	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
-% 	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
-%   %% Unfortunately, this is NOT extensively tested!
-% 	\usepackage{xpatch}
-% 	\xpretocmd{\textsuperscript}
-% 	 {{\sbox0{$\textstyle x$}}}
-% 	 {}{}
-% 	\AtBeginDocument{%
-% 	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
-% 	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
-% 	}
-% \fi
+	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
+	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
+  %% Unfortunately, this is NOT extensively tested!
+	\usepackage{xpatch}
+	\xpretocmd{\textsuperscript}
+	 {{\sbox0{$\textstyle x$}}}
+	 {}{}
+	\AtBeginDocument{%
+	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
+	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
+	}
+\fi
 
 \let\oldtabular\tabular	% number in tabulars
 \let\endoldtabular\endtabular
