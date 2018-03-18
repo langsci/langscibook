@@ -675,8 +675,40 @@
 
 \usepackage{ifxetex}
 \ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi
+
+%% Typesetting of mathematical formulas
 \usepackage{amssymb} % has to be loaded before other stuff
-\PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
+\usepackage{amsmath} % has to be loaded before mathspec/unicode-math
+%% There is a known problem in the interplay between \binom, unicode-math, and OTF
+%% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
+\ifx\Umathcode\@undefined\else
+
+\DeclareRobustCommand{\genfrac}[6]{%
+  \def\@tempa{#1#2}%
+  \edef\@tempb{\@nx\@genfrac\@mathstyle{#4}%
+    % just \over or \above never withdelims versions
+    \ifx @#3@\@@over\else\@@above\fi 
+  }%
+  \ifx\@tempa\@empty \else
+  \bgroup % so mathord not mathinner
+  \left\ifx\relax#1\relax.\else#1\fi % assumes . is null delimiter 
+  % otherwise add specified delimiter
+  \kern-\nulldelimiterspace % fractions add extra nulldelimiter space
+  \fi
+  \@tempb{#3}{\mathstrut{#5}}{\mathstrut{#6}}%
+  \ifx\@tempa\@empty \else
+  \kern-\nulldelimiterspace
+  \right\ifx\relax#2\relax.\else#2\fi
+  \egroup
+  \fi
+}
+\fi
+%% Provides \setmathfont
+\usepackage{unicode-math}
+
+%% Deprecated:
+% \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
+
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 \usepackage{dejavu}
 \usepackage{libertine}
@@ -688,6 +720,8 @@
 	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
 	]{DejaVuSansMono.ttf}
 
+\setmathfont[AutoFakeBold]{libertinusmath-regular.otf}
+
 \iflsModfonts% use Langsci fonts
   \setsansfont[
 	  %Ligatures={TeX,Common},		% not supported by ttf
@@ -697,7 +731,6 @@
 	  ItalicFont = Arimo-Italic_B.ttf ,
 	  BoldItalicFont = Arimo-BoldItalic_B.ttf
 	  ]{Arimo_B.ttf}
-
 
   \setmainfont[
 	  Ligatures={TeX,Common},
@@ -723,7 +756,6 @@
 	  BoldItalicFont = Arimo-BoldItalic.ttf
 	  ]{Arimo-Regular.ttf}
 
-
   \setmainfont[
 	  Ligatures={TeX,Common},
 	  Path=\fontpath,
@@ -741,21 +773,22 @@
 
 \fi
 
-\iflsNewtxmath		% some users have problems when installing newtxmath
-	\usepackage[libertine]{newtxmath}
+%% Deprecated:
+% \iflsNewtxmath		% some users have problems when installing newtxmath
+% 	\usepackage[libertine]{newtxmath}
 
-	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
-	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
-  %% Unfortunately, this is NOT extensively tested!
-	\usepackage{xpatch}
-	\xpretocmd{\textsuperscript}
-	 {{\sbox0{$\textstyle x$}}}
-	 {}{}
-	\AtBeginDocument{%
-	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
-	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
-	}
-\fi
+% 	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
+% 	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
+%   %% Unfortunately, this is NOT extensively tested!
+% 	\usepackage{xpatch}
+% 	\xpretocmd{\textsuperscript}
+% 	 {{\sbox0{$\textstyle x$}}}
+% 	 {}{}
+% 	\AtBeginDocument{%
+% 	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
+% 	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
+% 	}
+% \fi
 
 \let\oldtabular\tabular	% number in tabulars
 \let\endoldtabular\endtabular
