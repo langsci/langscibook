@@ -1,14 +1,14 @@
 
 \documentclass[output=book
-		,modfonts
-		,nonflat
-	        ,collection
-	        ,collectionchapter
-% 	      ,undecapitalize 
- 	        ,biblatex  
- 	        ,multiauthors
- 	        ,nobabel
-	      ]{langsci/langscibook}
+  ,modfonts
+  ,nonflat
+  ,collection
+  ,collectionchapter
+  % ,undecapitalize 
+  ,biblatex  
+  ,multiauthors
+  ,nobabel
+  ]{langsci/langscibook}
  
 \usepackage[english]{babel}
 \usepackage{./langsci/styles/langsci-basic}
@@ -45,9 +45,10 @@
 \maketitle 
 \tableofcontents
 
-% \newcommand{\lsCollectionPaperFirstPage}{0}
 \renewcommand{\lsChapterFooterSize}{\footnotesize}
-\includepaper{chapters/01}
+\includepaper{collection-tests/01}
+
 \renewcommand{\lsChapterFooterSize}{\small}
-\includepaper{chapters/02}
+\includepaper{collection-tests/02}
+
 \end{document}
