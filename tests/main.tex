@@ -1,21 +1,21 @@
 \documentclass[output=book
-	      ,nonflat      ,modfonts,
-	      ,colorlinks
-% 	      ,undecapitalize 
-% 	      ,collection
-	      ,showindex
-	      ,draftmode
-% 	      ,openreview
-	      ,nobabel
-	      ,booklanguage=french
-	      ]{langsci/langscibook}
+  ,nonflat
+  ,modfonts,
+  ,colorlinks
+  % ,undecapitalize 
+  % ,collection
+  ,showindex
+  ,draftmode
+  % ,openreview
+  ,nobabel
+  ,booklanguage=french
+  ]{langsci/langscibook}
  
-
 \usepackage{./langsci/styles/langsci-basic}
 \usepackage{./langsci/styles/langsci-tbls}
 \usepackage{./langsci/styles/langsci-glyphs} 
 \usepackage{./langsci/styles/langsci-linguex} 
-\usepackage{./langsci/styles/langsci-gb4e} 
+\usepackage{./langsci/styles/langsci-gb4e}
 \usepackage{./langsci/styles/jambox} 
 \usepackage{./langsci/styles/langsci-optional} 
 \usepackage{./langsci/styles/langsci-tobi} 
@@ -41,9 +41,9 @@
 % \index[lan]{#1|fn{*}}%
 % \fi%
 % }
-% %end il
-\BackBody{
+% %   end il
 
+\BackBody{
 What causes a language to be the way it is? Some features are universal, some are inherited, others are borrowed, and yet others are internally innovated. But no matter where a bit of language is from, it will only exist if it has been diffused and kept in circulation through social interaction in the history of a community. This book makes the case that a proper understanding of the ontology of language systems has to be grounded in the causal mechanisms by which linguistic items are socially transmitted, in communicative contexts. A biased transmission model provides a basis for understanding why certain things and not others are likely to develop, spread, and stick in languages. Because bits of language are always parts of systems, we also need to show how it is that items of knowledge and behavior become structured wholes. The book argues that to achieve this, we need to see how causal processes apply in multiple frames or 'time scales' simultaneously, and we need to understand and address each and all of these frames in our work on language. This forces us to confront implications that are not always comfortable: for example, that "a language" is not a real thing but a convenient fiction, that language-internal and language-external processes have a lot in common, and that tree diagrams are poor conceptual tools for understanding the history of languages. By exploring avenues for clear solutions to these problems, this book suggests a conceptual framework for ultimately explaining, in causal terms, what languages are like and why they are like that.
 }
 
@@ -58,8 +58,6 @@ What causes a language to be the way it is? Some features are universal, some ar
 \tableofcontents
 \mainmatter
 
-
- 
 \chapter{Tests} 
 \section{langsci-gb4e}
 \subsection{Environments and syntactic sugar}
@@ -117,13 +115,13 @@ What causes a language to be the way it is? Some features are universal, some ar
 \section{Crossrefs}
 \input{crossref-tests/general}
 \section{Bibliography}
-\input{bibtests/cite}
+\input{bib-tests/cite}
 \printbibliography[heading=references] 
 \section{Index}
-\input{indextests/indexes} 
+\input{index-tests/indexes} 
 \section{Diagrams}
-\input{diagramtests/plots} 
-% \input{bibtests/index}  
+\input{diagram-tests/plots} 
+% \input{bib-tests/index}  
 
 \section{Floats}
 \input{floats-tests/floats.tex} 
@@ -134,13 +132,13 @@ What causes a language to be the way it is? Some features are universal, some ar
 \section{Langsci-lgr tests}
 \input{lgr-tests/lgr} 
 \section{Langsci-basic tests}
-% % \input{packagetests/basic} 
+% % \input{package-tests/basic} 
 \section{Langsci-optional tests}
-% % \input{packagetests/optional} 
+% % \input{package-tests/optional} 
 \section{Textbooks tests}
-\input{tblstests/bw} 
-\input{tblstests/color} 
-\input{tblstests/demo} 
+% \input{tbls-tests/bw} 
+% \input{tbls-tests/color} 
+% \input{tbls-tests/demo} 
 \section{Syntactic sugar}
 \input{syntax-sugar-tests/langsci-optional} 
 \include{backmatter}
