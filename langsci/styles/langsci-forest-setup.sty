@@ -47,7 +47,7 @@
 % specification for all trees, "default preamble" appends to existing specification.
 % The version with apostrophe replaces it.
 \forestset{default preamble'={
-    for tree={align=center,parent anchor=south, child anchor=north,base=bottom},
+    for tree={align=center,parent anchor=south, child anchor=north,anchor=north,base=bottom},
     before drawing tree={
       sort by=y,
       for min={tree}{baseline}
