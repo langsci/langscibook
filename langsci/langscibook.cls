@@ -181,10 +181,10 @@
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\localepath}{./langsci/locale/}
 	\renewcommand{\bstpath}{./langsci/bst/}
-  \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
-  % \renewcommand{\bbxpath}{\bstpath}
-  \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
-  % \renewcommand{\cbxpath}{\bstpath}
+	\renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+	% \renewcommand{\bbxpath}{\bstpath}
+	\renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
+	% \renewcommand{\cbxpath}{\bstpath}
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
@@ -1651,7 +1651,7 @@ width=.8\textwidth
 \newcommand{\lsAcknowledgementTitle}{Acknowledgments}
 \newcommand{\lsAbbreviationsTitle}{Abbreviations}
 \newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
-\input{\localepath langsci-hyphenation-universal}
+\IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
 \renewcommand{\lsIndexTitle}{Index}
@@ -1662,7 +1662,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Remerciements}
 \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
 \renewcommand{\lsReferencesTitle}{french}
-\input{\localepath langsci-hyphenation-fr}
+\IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -1674,7 +1674,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Danksagung}
 \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
 \renewcommand{\lsReferencesTitle}{german}
-\input{\localepath langsci-hyphenation-de}
+\IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -1686,7 +1686,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
 \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
 \renewcommand{\lsReferencesTitle}{portugese}
-\input{\localepath langsci-hyphenation-pt}
+\IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
 \fi
 
 \AtBeginDocument{
