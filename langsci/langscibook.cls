@@ -214,7 +214,40 @@
 \DeclareVoidOption{collectiontoclong}{
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
+\DeclareVoidOption{chinesefont}{
+	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
+% 	\newcommand{\zh}[1]{{\cn #1}}
+	\XeTeXlinebreaklocale 'zh'  
+	\XeTeXlinebreakskip = 0pt plus 1pt
+	\AdditionalFontImprint{UMing}
+}
+\DeclareVoidOption{japanesefont}{
+	  \newfontfamily\jpn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{TakaoPGothic} %Japanese
+% 	  \newcommand{\jp}[1]{{{\jpn #1}}}
+	  \XeTeXlinebreaklocale 'ja'  
+	  \AdditionalFontImprint{TakaoPGothic}
+}
+% \DeclareVoidOption{koreanfont}{
+% 	\newfontfamily\hangul[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{./SourceHanSerifK.otf}
+% 	\newcommand{\kr}[1]{{\sffamily #1}}
+% 	\AdditionalFontImprint{Korean}}
+\DeclareVoidOption{arabicfont}{
+	\newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{arabtype.ttf}
+% 	\newcommand{\textarabic}[1]{{\arabicfont #1}}
+	\AdditionalFontImprint{Arabtype}
+}
+\DeclareVoidOption{hebrewfont}{
+	\newfontfamily\hebrewfont[Script=Hebrew,ItalicFont=*, Scale=0.9]{SBLHebrew.ttf}
+% 	\newcommand{\texthebrew}[1]{{\hebrewfont #1}}
+	\AdditionalFontImprint{SBLHebrew}
+}
+\DeclareVoidOption{syriacfont}{
+	\newfontfamily\syriacfont[Script=Syriac]{EstrangeloEdessa.ttf}
+% 	\newcommand{\textsyriac}[1]{{\syriacfont #1}}
+	\AdditionalFontImprint{Estrangelo Edessa}
+}
 \ProcessKeyvalOptions{langscibook}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
