@@ -1,4 +1,4 @@
-# latex
+# langscibook
 
 LaTeX class and additions for typesetting books to be published with Language Science Press
 
@@ -15,14 +15,9 @@ We aim to keep repositories and directories identical.
 
 ## installation
 
-In your terminal, you can clone the repository ~~and download the contained submodules~~ with the following command:
+In your terminal, you can clone the repository with the following command:
 
 `git clone --recursive https://github.com/langsci/latex.git`
-
-~~In case you already have cloned the repository, don't forget to also update the submodules together with `git pull`:~~
-
-~~`git submodule update --init --recursive`~~
-
 
 ## class options of langscibook.cls
 
