@@ -10,20 +10,27 @@
 \newcommand{\tblslinecolour}{lsYellow}
 
 \mdfdefinestyle{yellowexercise}{%
-	linewidth=1.5pt, linecolor=\tblslinecolour,
-	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm,
-	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, innertopmargin=0, repeatframetitle=false,
-	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
+	everyline=true,
+        ignorelastdescenders=true,
+        middlelinewidth=1.5pt,linecolor=\tblslinecolour,outerlinewidth=5mm,
+	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=0,
+	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, repeatframetitle=false,
+	firstextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
 
 \mdfdefinestyle{greyexercise}{%
-	everyline=true,ignorelastdescenders=true,
-	linewidth=0pt,backgroundcolor=\tblsboxcolor,
-	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,
-	frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
-	firstextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\useasboundingbox (P) rectangle (P);\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
+        everyline=true,
+        ignorelastdescenders=true,
+        middlelinewidth=0pt,linecolor=white,outerlinewidth=5mm,
+        leftline=false,rightline=false,bottomline=false,
+        backgroundcolor=\tblsboxcolor,
+        innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,
+        frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
+        firstextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}
+        };},
+        singleextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}
+};}
 }
 
 

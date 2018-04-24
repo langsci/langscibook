@@ -181,10 +181,10 @@
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\localepath}{./langsci/locale/}
 	\renewcommand{\bstpath}{./langsci/bst/}
-  \renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
-  % \renewcommand{\bbxpath}{\bstpath}
-  \renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
-  % \renewcommand{\cbxpath}{\bstpath}
+	\renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
+	% \renewcommand{\bbxpath}{\bstpath}
+	\renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
+	% \renewcommand{\cbxpath}{\bstpath}
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
@@ -214,7 +214,40 @@
 \DeclareVoidOption{collectiontoclong}{
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
+\DeclareVoidOption{chinesefont}{
+	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
+% 	\newcommand{\zh}[1]{{\cn #1}}
+	\XeTeXlinebreaklocale 'zh'  
+	\XeTeXlinebreakskip = 0pt plus 1pt
+	\AdditionalFontImprint{UMing}
+}
+\DeclareVoidOption{japanesefont}{
+	  \newfontfamily\jpn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{TakaoPGothic} %Japanese
+% 	  \newcommand{\jp}[1]{{{\jpn #1}}}
+	  \XeTeXlinebreaklocale 'ja'  
+	  \AdditionalFontImprint{TakaoPGothic}
+}
+% \DeclareVoidOption{koreanfont}{
+% 	\newfontfamily\hangul[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{./SourceHanSerifK.otf}
+% 	\newcommand{\kr}[1]{{\sffamily #1}}
+% 	\AdditionalFontImprint{Korean}}
+\DeclareVoidOption{arabicfont}{
+	\newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{arabtype.ttf}
+% 	\newcommand{\textarabic}[1]{{\arabicfont #1}}
+	\AdditionalFontImprint{Arabtype}
+}
+\DeclareVoidOption{hebrewfont}{
+	\newfontfamily\hebrewfont[Script=Hebrew,ItalicFont=*, Scale=0.9]{SBLHebrew.ttf}
+% 	\newcommand{\texthebrew}[1]{{\hebrewfont #1}}
+	\AdditionalFontImprint{SBLHebrew}
+}
+\DeclareVoidOption{syriacfont}{
+	\newfontfamily\syriacfont[Script=Syriac]{EstrangeloEdessa.ttf}
+% 	\newcommand{\textsyriac}[1]{{\syriacfont #1}}
+	\AdditionalFontImprint{Estrangelo Edessa}
+}
 \ProcessKeyvalOptions{langscibook}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1650,7 +1683,7 @@ width=.8\textwidth
 \newcommand{\lsAcknowledgementTitle}{Acknowledgments}
 \newcommand{\lsAbbreviationsTitle}{Abbreviations}
 \newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
-\input{\localepath langsci-hyphenation-universal}
+\IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
 \renewcommand{\lsIndexTitle}{Index}
@@ -1661,7 +1694,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Remerciements}
 \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
 \renewcommand{\lsReferencesTitle}{french}
-\input{\localepath langsci-hyphenation-fr}
+\IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -1673,7 +1706,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Danksagung}
 \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
 \renewcommand{\lsReferencesTitle}{german}
-\input{\localepath langsci-hyphenation-de}
+\IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -1685,7 +1718,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
 \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
 \renewcommand{\lsReferencesTitle}{portugese}
-\input{\localepath langsci-hyphenation-pt}
+\IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
 \fi
 
 \AtBeginDocument{
