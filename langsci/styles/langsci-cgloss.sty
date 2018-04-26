@@ -225,7 +225,8 @@
    }
 
 \gdef\getwords(#1,#2)#3 #4\\% #1=linebox, #2=\each, #3=1st word, #4=remainder
-   {\setbox#1=\vbox{\hbox{#2\strut#3 }% adds space
+   {\setbox#1=\vbox{\hbox{#2\strut#3{} }% adds space, the {} is needed for CJK otherwise the space
+                                        % would be ignored
                     \unvbox#1%
                    }%
     \def\more{#4}%

@@ -1510,8 +1510,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 \defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
 \defbibheading{german}{\chapter{Literaturverzeichnis}\sloppy}
 \defbibheading{portuguese}{\chapter{Referências}\sloppy}
-\defbibheading{chinese}{\chapter{References}\sloppy}
-
+\defbibheading{chinese}{\chapter{参考文献}\sloppy}
 
 
 % fix \citep* et.al.
