@@ -1,168 +1,83 @@
-\documentclass[output=book
-  ,nonflat
-  ,modfonts,
-  ,colorlinks
-  % ,undecapitalize 
-  % ,collection
-  ,showindex
-  ,draftmode
-  % ,openreview
-  ,nobabel
-  ,booklanguage=french
-  ]{langsci/langscibook}
+\documentclass[output=book,modfonts,nonflat,nobabel
+% 	    ,draft,draftmode 
+% 	    ,colorlinks, citecolor=brown
+		  ]{langsci/langscibook}     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%          additional packages                 %%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+% \input{localmetadata.tex}
+\newcommand\eachwordone{}{}
+% \input{localpackages.tex}
+% \input{localhyphenation.tex}
+% \input{localcommands.tex} 
 
-\usepackage{./langsci/styles/langsci-basic}
-\usepackage{./langsci/styles/langsci-tbls}
-\usepackage{./langsci/styles/langsci-forest-setup}
-\usepackage{./langsci/styles/langsci-glyphs} 
-\usepackage{./langsci/styles/langsci-linguex} 
-\usepackage{./langsci/styles/langsci-gb4e}
-\usepackage{./langsci/styles/jambox} 
-\usepackage{./langsci/styles/langsci-optional} 
-\usepackage{./langsci/styles/langsci-tobi} 
-\usepackage{./langsci/styles/langsci-lgr} 
-
-\usepackage{lipsum}
-\usepackage{multicol}
-\usepackage{minibox}
-\usepackage{forest}
-\usepackage{tikz}
-\usepackage{pgfplots}
-
-\usepackage{./langsci/styles/avm}
-\avmoptions{center} 
-\avmfont{\scshape}
-\avmvalfont{\normalfont}
-\avmsortfont{\normalfont\itshape}
-
-\renewcommand{\lsISBNhardcover}{999-3-123456-99-9}
-\renewcommand{\lsISBNsoftcover}{999-3-123456-99-9}
-\renewcommand{\lsISBNdigital}{978-3-946234-65-4}
-% \usepackage{authorindex}
-
+% \bibliography{bib/linguistics}
+% \bibliography{bib/semitic}
+% \bibliography{bib/nena}
+% \bibliography{bib/kurdish}
+% \bibliography{bib/syriac}
+% \bibliography{bib/old-aramaic}\bibliography{bib/linguistics}
 \bibliography{localbibliography}
 
-% The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
-% \newindex{lan}{ldx}{lnd}{Language index}
-% \newcommand{\il}[1]{%
-% \if@noftnote%
-% \index[lan]{#1}%
-% \else%
-% \index[lan]{#1|fn{*}}%
-% \fi%
-% }
-% %   end il
+%% NOTE: polyglossia has to be loaded in langsci.cls, before biblatex!!!
 
-\BackBody{
-What causes a language to be the way it is? Some features are universal, some are inherited, others are borrowed, and yet others are internally innovated. But no matter where a bit of language is from, it will only exist if it has been diffused and kept in circulation through social interaction in the history of a community. This book makes the case that a proper understanding of the ontology of language systems has to be grounded in the causal mechanisms by which linguistic items are socially transmitted, in communicative contexts. A biased transmission model provides a basis for understanding why certain things and not others are likely to develop, spread, and stick in languages. Because bits of language are always parts of systems, we also need to show how it is that items of knowledge and behavior become structured wholes. The book argues that to achieve this, we need to see how causal processes apply in multiple frames or 'time scales' simultaneously, and we need to understand and address each and all of these frames in our work on language. This forces us to confront implications that are not always comfortable: for example, that "a language" is not a real thing but a convenient fiction, that language-internal and language-external processes have a lot in common, and that tree diagrams are poor conceptual tools for understanding the history of languages. By exploring avenues for clear solutions to these problems, this book suggests a conceptual framework for ultimately explaining, in causal terms, what languages are like and why they are like that.
+\deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%             Frontmatter                      %%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\includeonly{ 
+% % chapters/01,
+% chapters/02,
+% chapters/03,
+% chapters/04,
+% chapters/05,
+% chapters/06,
+% chapters/07,
+% chapters/08,
+% chapters/09,
+% chapters/10,
+% chapters/11,
+% chapters/12
+backmatter
 }
 
-\dedication{Für Alma, Ariel, Block, Frau Brüggenolte, Chopin, Christina, Doro, Edgar, Elena, Elin, Emma, den ehemaligen FCR Duisburg, Frida, Gabriele, Hamlet, Helmut Schmidt, Henry, Ian Kilmister, Ingeborg, Ischariot, Jean-Pierre, Johan, Kurt, Lemmy, Liv, Marina, Martin, Mats, Mausi, Michelle, Nadezhda, Herrn Oelschlägel, Oma, Opa, Pavel, Philly, Sarah, Scully, Stig, Tania, Tante Klärchen, Tarek, Tatjana, Herrn Uhl, Ullis schreckhaften Hund, Vanessa und so. Wenn das schonmal klar sein würde.}
+\begin{document}         
+% \maketitle                
+\frontmatter 
 
-%opening
-\title{Test for the langsci-* packages}
-\author{Language\and Science\lastand Press}
-\renewcommand{\lsYear}{1999} 
-\begin{document}
-\maketitle 
+\currentpdfbookmark{Contents}{name} % adds a PDF bookmark 
 \tableofcontents
-\mainmatter
-
-\chapter{Tests} 
-\section{langsci-gb4e}
-\subsection{Environments and syntactic sugar}
-\input{gb4e-tests/beginexe}
-% % % \input{gb4e-tests/exbegin}
-\input{gb4e-tests/subex}
-\input{gb4e-tests/xlist}
-\input{gb4e-tests/subsubex}
-\input{gb4e-tests/exi}
-\input{gb4e-tests/ea}
-\input{gb4e-tests/judgment}
-\input{gb4e-tests/parbox}
-\input{linguex-tests/linguex}
-
+\include{chapters/preface}
+\include{chapters/acknowledgments}
+\include{chapters/abbreviations} 
+\mainmatter         
  
-\subsection{Glosses}
-\input{gb4e-tests/gll}
-\input{gb4e-tests/glll}
-\input{gb4e-tests/gllll}
-\input{gb4e-tests/linebreak}
-\input{gb4e-tests/exewidth}
- 
-\subsection{Footnotes}
-\input{gb4e-tests/footnote}
-\input{gb4e-tests/footnotemark}
-\input{gb4e-tests/exinfn} 
-\subsection{Metadata}
-\input{gb4e-tests/languageinfo}
-\subsection{Boxing}
-\input{gb4e-tests/xbox} 
-\subsection{Jambox}
-\input{gb4e-tests/jambox}
-\subsection{XPs}
-\input{gb4e-tests/bars}
-\input{gb4e-tests/crossrefref}
-\input{gb4e-tests/eal}  
 
-\subsection{Styles for source line}
-\input{gb4e-tests/nontypo-ex}
-\input{gb4e-tests/typo-ex}
-\input{gb4e-tests/underlinedexample}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%             Chapters                         %%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{AVM}
-\input{avm-tests/avm.tex}
+\citet{Chomsky1957,Chomsky1957b}
 
-\section{Maths}
-\input{math-tests/formulae}
-
-\section{Trees}
-\input{forest-tests/simpletrees}
-
-\section{Fonts}
-\input{font-tests/fonts.tex}
-% \input{font-tests/glyphs.tex} 
-
-\section{Figures}\label{sec:tables} 
-
-\section{Tables}\label{sec:tables}
-\input{table-tests/general}
-
-\section{Crossrefs}
-\input{crossref-tests/general}
-
-\section{Bibliography}
-\input{bib-tests/cite}
-\printbibliography[heading=references] 
-
-\section{Index}
-\input{index-tests/indexes} 
-
-\section{Diagrams}
-\input{diagram-tests/plots} 
-% \input{bib-tests/index}  
-
-\section{Floats}
-\input{float-tests/floats.tex} 
- 
-% 
-% % \input{intonation-tests/tobi} 
-%  
-\section{Langsci-lgr tests}
-\input{lgr-tests/lgr} 
-
-\section{Langsci-basic tests}
-% % \input{package-tests/basic} 
-
-\section{Langsci-optional tests}
-% % \input{package-tests/optional} 
-
-\section{Textbooks tests}
-% \input{tbls-tests/bw} 
-% \input{tbls-tests/color} 
-% \input{tbls-tests/demo} 
-
-\section{Syntactic sugar}
-\input{syntax-sugar-tests/langsci-optional} 
-\include{backmatter}
-\end{document}
+%  \todo[inline]{Check whether all years are in list of references}
+%  \todo[inline]{Check whether Samvelian disambiguation works}
+\include{chapters/01}  %add a percentage sign in front of the line to exclude this chapter from book
+\include{chapters/02}
+\include{chapters/03}
+\include{chapters/04}
+\include{chapters/05}
+\include{chapters/06}
+\include{chapters/07}
+\include{chapters/08}
+\include{chapters/09}
+\include{chapters/10}
+\include{chapters/11}
+\include{chapters/12}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%             Backmatter                       %%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \input{localseealso.txt} 
+\input{backmatter.tex}
+\end{document}  
