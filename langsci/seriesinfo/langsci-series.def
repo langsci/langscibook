@@ -99,6 +99,7 @@
 \ifx\lsSeries\pmwe
 	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsLightBlue}
+	\renewcommand{\lsISSN}{2625-3127}	
 \fi
 \ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
