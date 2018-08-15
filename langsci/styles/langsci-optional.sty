@@ -152,6 +152,13 @@
 \fi%
 #3)}\nopagebreak[4]\ignorespaces}
 
+\newcommand{\langinfoverb}[3]{{\upshape #1~(% langinfo without index marker
+\ifx\\#2\\%
+\else%
+#2;
+\fi%
+#3)}\nopagebreak[4]\ignorespaces}
+
  
 \newcommand{\fittable}[1]{\resizebox{\textwidth}{!}{#1}}
 
