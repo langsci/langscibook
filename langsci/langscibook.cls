@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langscibook.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: #FIXME UTC
+%%      Date: 2018-08-29 13:12 UTC
 %%   Purpose: This file defines the basic document class
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -1837,7 +1837,7 @@ width=.8\textwidth
 	\iffieldundef{url}{}{ \url{\thefield{url}}\iffieldundef{urlday}{}{, accessed \thefield{urlyear}-\thefield{urlmonth}-\thefield{urlday}}.}
   \restorefield{note}{\lsnote}
   \iffieldundef{note}{}{\addspace{\thefield{note}\addperiod}}
-	\iffieldundef{doi}{}{ {\color{lsGuidelinesGray}\doi{\thefield{doi}}}}
+	\iffieldundef{doi}{}{ {\color{lsDOIGray}\doi{\thefield{doi}}}}
 }
 %\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
 \fi
