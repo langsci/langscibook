@@ -1698,6 +1698,11 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Remerciements}
 \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
 \renewcommand{\lsReferencesTitle}{french}
+  \iflsNoBabel
+  \else
+    \renewcommand\frenchfigurename{Figure}
+    \renewcommand\frenchtablename{Table}
+  \fi
 \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
