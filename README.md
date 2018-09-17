@@ -23,6 +23,7 @@ In your terminal, you can clone the repository with the following command:
 
 option | values (defaults in bold face) | meaning
 -------|--------|---------
+arseneau | | use Donald Arseneau's procedure for automatic widow and orphan control. *This feature is experimental.*
 babelshorthands | | use shorthands defined for German
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **biber** \| bibtex  | the backend of BibLaTeX
