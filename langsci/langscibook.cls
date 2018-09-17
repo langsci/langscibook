@@ -142,6 +142,7 @@
 \newif\iflsNoBabel \lsNoBabelfalse
 \newif\iflsBabelShorthands \lsBabelShorthandsfalse
 \newif\iflsMultiauthors \lsMultiauthorsfalse
+\newif\iflsArseneau \lsArseneaufalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -218,6 +219,7 @@
 \DeclareVoidOption{collectiontoclong}{
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
+\DeclareVoidOption{arseneau}{\lsArseneautrue}
 \DeclareVoidOption{chinesefont}{
 	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
 % 	\newcommand{\zh}[1]{{\cn #1}}
@@ -2132,5 +2134,15 @@ width=.8\textwidth
 %% \ex \hspaceThis{*~}The boy who can run fast can jump high. $\to$\\
 %%  {}* Can the boy who run fast can jump high?
 %% \zl
+
+\iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
+% With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
+\def\sloppybottom{%
+  \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
+  \topskip=1\topskip \@plus 0.625\topskip \@minus .95\topskip%
+  \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
+}
+\sloppybottom
+\fi
 
 \endinput
