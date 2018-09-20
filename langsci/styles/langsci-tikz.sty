@@ -1,0 +1,25 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Experimental feature for pointing out moving things. %%%%
+%%%% Buggy? Write to: kopeckyf@hu-berlin.de               %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{arrows,arrows.meta}
+\newcounter{lsConnectTempGroup}
+\NewDocumentCommand\ConnectTail{m O{\thelsConnectTempGroup}}{%read: mandatory arg #1, optional argument #2 with the current group counter as its default value.
+    \edef\lsConnectTempPosition{#2}%\edef expands the argument, which means reading the current value of the counter.
+    {\tikz[remember picture,
+           anchor=base, baseline,
+           inner xsep=0pt, 
+           inner ysep=-.5ex]\node (ConnectTempTail\lsConnectTempPosition) {\strut{}#1};}%\strut for baseline
+}
+\NewDocumentCommand\ConnectHead{s O{1ex} m O{\thelsConnectTempGroup}}{%read: star #1, optional argument (distance of arrow from text= std. one x-height), mand. arg. (node text), optional argument #2, the group specifier
+    \edef\lsConnectTempPosition{#4}%
+    \stepcounter{lsConnectTempGroup}%We have a match, let's update the group counter   
+    {\tikz[remember picture,
+           anchor=base, baseline, 
+           inner xsep=0pt, 
+           inner ysep=-.5ex] \node (ConnectTempHead\lsConnectTempPosition) {\strut{}#3};%
+     \tikz[remember picture] \draw[% we have a tail and a head, let's bring them together
+                                \IfBooleanTF#1{{Triangle[]}-}{-{Triangle[]}},% Check if the starred version is used. The starred version is right->left, the normal version left->right
+                                overlay] (ConnectTempTail\lsConnectTempPosition.south) -- ++(0,-#2) -| (ConnectTempHead\lsConnectTempPosition.south);
+    }%
+} 
