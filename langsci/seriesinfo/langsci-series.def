@@ -68,6 +68,7 @@
 \ifx\lsSeries\eurosla
 	\newcommand{\lsSeriesTitle}{Eurosla Studies~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidOrange}
+	\renewcommand{\lsISSN}{2626-2665}	
 \fi
 \ifx\lsSeries\hpls
 	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences~\lsSeriesNumber}
