@@ -133,8 +133,21 @@ What causes a language to be the way it is? Some features are universal, some ar
 
 \section{Bibliography}
 \input{bib-tests/cite}
-% \input{bib-tests/index}  
-\printbibliography[heading=references] 
+% \input{bib-tests/index}   
+
+\printbibliography[notkeyword={techreport},notkeyword={website},title={References}] 
+
+next thing up is list of standards, included with \verb+keywords={standard},+ in the bib file. 
+
+\printbibliography[keyword={standard},title={Standards}]
+
+
+
+next thing up is list of websites, included with \verb+keywords={website},+ in the bib file. 
+
+\printbibliography[keyword={website},title={Websites}]
+
+ 
 
 % \section{Index}
 % \input{index-tests/indexes} 
