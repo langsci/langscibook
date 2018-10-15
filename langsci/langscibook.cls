@@ -1127,11 +1127,10 @@ ISBN: &
 \IfStrEq{\lsBookDOI}{??}    % \IfStrEq from xstring
   {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}\\
-\IfStrEq{\lsID}{000}{%  
+\IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%  
 Source code available from \href{https://www.github.com/langsci/\lsID}{www.github.com/langsci/\lsID}  \\
 Collaborative~reading:~\href{https://paperhive.org/documents/remote?type=langsci&id=\lsID}{paperhive.org/documents/remote?type=langsci\&id=\lsID}
 }%
-{\color{red} ID not assigned!}
 \bigskip
 
 Cover and concept of design:
