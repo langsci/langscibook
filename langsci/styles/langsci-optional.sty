@@ -343,43 +343,43 @@
 %%%%           %%%%%
 %%%%%%%%%%%%%%%%%%%%
 
-% \newcommand{\barplot}[4]{%
-%   \begin{tikzpicture}
-%     \begin{axis}[
-% 	xlabel={#1},  
-% 	ylabel={#2}, 
-% 	axis lines*=left, 
-%         width  = \textwidth,
-% 	height = .3\textheight,
-%     	nodes near coords, 
-% 	xtick=data,
-% 	x tick label style={},  
-% 	ymin=0,
-% 	symbolic x coords={#3},
-% 	]
-% 	\addplot+[ybar,lsRichGreen!80!black,fill=lsRichGreen] plot coordinates {
-% 	    #4
-% 	}; 
-%     \end{axis} 
-%   \end{tikzpicture} 
-% }
-% \usepackage{pgfmath,pgfplotstable}
-% \newcommand{\langsciplot}[2]{%% experimental
-%         \pgfplotstablegetcolsof{#1.csv}
-%         \pgfmathsetmacro{\langscicsvlength}{\pgfplotsretval-1}
-%         \begin{tikzpicture}[trim axis right,trim axis left]
-%             \begin{axis}[
-%                     #2,
-%                     xtick=data,
-%                     axis lines*=left,
-%                     nodes near coords,
-%                     ymin=0,
-%                     width=\textwidth]
-%             \foreach \i in {0,...,\langscicsvlength} {
-%                 \addplot[
-%                     /pgf/number format/read comma as period
-%                     ] table [x index={0},y index={\i}] {#1.csv};
-%             }
-%             \end{axis}    
-%         \end{tikzpicture}
-% }
+\newcommand{\barplot}[4]{%
+  \begin{tikzpicture}
+    \begin{axis}[
+	xlabel={#1},  
+	ylabel={#2}, 
+	axis lines*=left, 
+        width  = \textwidth,
+	height = .3\textheight,
+    	nodes near coords, 
+	xtick=data,
+	x tick label style={},  
+	ymin=0,
+	symbolic x coords={#3},
+	]
+	\addplot+[ybar,lsRichGreen!80!black,fill=lsRichGreen] plot coordinates {
+	    #4
+	}; 
+    \end{axis} 
+  \end{tikzpicture} 
+}
+\usepackage{pgfmath,pgfplotstable}
+\newcommand{\langsciplot}[2]{%% experimental
+        \pgfplotstablegetcolsof{#1.csv}
+        \pgfmathsetmacro{\langscicsvlength}{\pgfplotsretval-1}
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \begin{axis}[
+                    #2,
+                    xtick=data,
+                    axis lines*=left,
+                    nodes near coords,
+                    ymin=0,
+                    width=\textwidth]
+            \foreach \i in {0,...,\langscicsvlength} {
+                \addplot[
+                    /pgf/number format/read comma as period
+                    ] table [x index={0},y index={\i}] {#1.csv};
+            }
+            \end{axis}    
+        \end{tikzpicture}
+}
