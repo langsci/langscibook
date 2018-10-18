@@ -1064,17 +1064,32 @@
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
 \newcommand{\BookDOI}[1]{\renewcommand{\lsBookDOI}{#1}}
 
+
+%invert names of first author for citation on impressum page 
+
+\AtBeginDocument{
+  \makeatletter
+  \let\theauthor\@author 
+  \makeatother
+}
+\newcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
+\newcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
+\newcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
+\newcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }} 
+
+\newcommand{\lsImpressionCitationAuthor}{ 
+\lsFirstAuthorLastName, \lsFirstAuthorFirstName \lsNonFirstAuthorsString}
+  
 \newcommand{\lsImpressumCitationText}{
   \onlyAuthor
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineSpine}{}
-  {\@author}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
+  {\lsImpressionCitationAuthor}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
   {\lsYear}. %
   \textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
   (\lsSeriesTitle). %
   Berlin: Language Science Press.
 }
-
 \newcommand{\lsImpressum}{
 \thispagestyle{empty}
 \raggedright
