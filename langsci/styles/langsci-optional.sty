@@ -273,8 +273,6 @@
 \newcommand{\threedigitexamples}{\exewidth{(234)}}
 \newcommand{\fourdigitexamples}{\exewidth{(2345)}}
 
-\newcommand{\noabstract}{\vspace*{-2\baselineskip}} %for chapters without abstract
-
 \newcommand{\rephrase}[2]{{\color{yellow!30!black}#2}\todo{replaced `#1'}}
 
 \newcommand{\missref}[2][]{\todo[#1]{missing reference #2}}
@@ -336,6 +334,29 @@
     }%
 } 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Extras for use in (some) edited volumes             %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% for chapters without abstract
+\newcommand{\noabstract}{\vspace*{-2\baselineskip}} 
+
+% for papers that have appendices, a replacement for \appendix.
+% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix
+%        Will result in "Appendix A: Title"
+%
+\newenvironment{paperappendix}{%
+    \let\oldthesection\thesection%
+    \let\oldsectionformat\sectionformat%
+    \newcounter{Hsection}% The Hsection counter is needed by hyperref.
+    \setcounter{Hsection}{\thesection}%
+    \setcounter{section}{0}%
+    \def\thesection{\Alph{section}}%
+    \def\sectionformat{\appendixname\ \thesection:\enskip\stepcounter{Hsection}}%
+    }{%
+    \let\thesection\oldthesection%
+    \let\sectionformat\oldsectionformat}
   
 %%%%%%%%%%%%%%%%%%%%
 %%%%           %%%%%
