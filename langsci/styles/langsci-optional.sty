@@ -349,9 +349,6 @@
 \newenvironment{paperappendix}{%
     \let\oldthesection\thesection%
     \let\oldsectionformat\sectionformat%
-    \newcounter{Hsection}% The Hsection counter is needed by hyperref.
-    \setcounter{Hsection}{\thesection}%
-    \setcounter{section}{0}%
     \def\thesection{\Alph{section}}%
     \def\sectionformat{\appendixname\ \thesection:\enskip\stepcounter{Hsection}}%
     }{%
