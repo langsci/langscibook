@@ -1067,15 +1067,39 @@
 
 %invert names of first author for citation on impressum page 
 
+\newcommand{\lsFirstAuthorFullName}{}%temporary, will be overwritten
+\newcommand{\lsFirstAuthorFirstName}{}%temporary, will be overwritten
+\newcommand{\lsFirstAuthorLastName}{}%temporary, will be overwritten
+\newcommand{\lsFirstAuthorString}{\lsFirstAuthorLastName, \lsFirstAuthorFirstName} %can be customized in localmetadata.tex
+\newcommand{\lsNonFirstAuthorsString}{}  %default, will be overwritten iff more than one author
+% \newcommand{\lsImpressionCitationAuthor}{\lsFirstAuthorString \lsNonFirstAuthorsString}
+
+
 \AtBeginDocument{
-  \makeatletter
-  \let\theauthor\@author 
-  \makeatother
+\makeatletter
+\let\theauthor\@author 
+\makeatother
+\renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
+\renewcommand{\lastand}{LASTAND} %expand for easier checking
+
+\IfSubStr{\theauthor}{NONLASTAND}{%2+authors
+  \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
+  \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }} 
+  \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
+  \renewcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }} 
+  }{%else
+    \IfSubStr{\theauthor}{LASTAND}{%less than two authors, more than one
+    \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\lastand }}
+    \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
+    \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\lastand }}
+    \renewcommand{\lsNonFirstAuthorsString}{\lastand\StrBehind{\theauthor}{\lastand }} 
+    }{%else exactly one author
+      \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
+      \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
+      }
+    }  
 }
-\newcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
-\newcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-\newcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
-\newcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }} 
+ 
 
 \newcommand{\lsImpressionCitationAuthor}{ 
 \lsFirstAuthorLastName, \lsFirstAuthorFirstName \lsNonFirstAuthorsString}
