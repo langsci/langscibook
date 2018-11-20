@@ -349,6 +349,7 @@
 \newenvironment{paperappendix}{%
     \let\oldthesection\thesection%
     \let\oldsectionformat\sectionformat%
+    \setcounter{section}{0}%
     \def\thesection{\Alph{section}}%
     \def\sectionformat{\appendixname\ \thesection:\enskip}%
     }{%
