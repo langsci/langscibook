@@ -93,7 +93,8 @@
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Niger-Congo Comparative Studies~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsRed}
-	\renewcommand{\lsISSN}{2627-0048}
+	\renewcommand{\lsISSN}{2627-0048} %online
+% 	\renewcommand{\lsISSN}{2626-3513} %print 
 \fi
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
