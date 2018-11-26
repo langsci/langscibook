@@ -2,13 +2,14 @@
   ,nonflat
   ,modfonts,
   ,colorlinks
-  % ,undecapitalize 
-  % ,collection
+  ,undecapitalize 
+  ,collection
   ,showindex
   ,draftmode
-  % ,openreview
+  ,openreview
   ,nobabel
   ,booklanguage=french
+  ,oldstylenumbers
   ]{langsci/langscibook}
 
 \usepackage{./langsci/styles/langsci-basic}
@@ -27,7 +28,7 @@
 \usepackage{minibox}
 \usepackage{forest}
 \usepackage{tikz}
-% \usepackage{pgfplots}
+\usepackage{pgfplots}
 
 \usepackage{./langsci/styles/avm}
 \avmoptions{center} 
@@ -38,20 +39,10 @@
 \renewcommand{\lsISBNhardcover}{999-3-123456-99-9}
 \renewcommand{\lsISBNsoftcover}{999-3-123456-99-9}
 \renewcommand{\lsISBNdigital}{978-3-946234-65-4}
-% \usepackage{authorindex}
+ 
 
 \bibliography{localbibliography}
-
-% The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
-% \newindex{lan}{ldx}{lnd}{Language index}
-% \newcommand{\il}[1]{%
-% \if@noftnote%
-% \index[lan]{#1}%
-% \else%
-% \index[lan]{#1|fn{*}}%
-% \fi%
-% }
-% %   end il
+ 
 
 \BackBody{
 What causes a language to be the way it is? Some features are universal, some are inherited, others are borrowed, and yet others are internally innovated. But no matter where a bit of language is from, it will only exist if it has been diffused and kept in circulation through social interaction in the history of a community. This book makes the case that a proper understanding of the ontology of language systems has to be grounded in the causal mechanisms by which linguistic items are socially transmitted, in communicative contexts. A biased transmission model provides a basis for understanding why certain things and not others are likely to develop, spread, and stick in languages. Because bits of language are always parts of systems, we also need to show how it is that items of knowledge and behavior become structured wholes. The book argues that to achieve this, we need to see how causal processes apply in multiple frames or 'time scales' simultaneously, and we need to understand and address each and all of these frames in our work on language. This forces us to confront implications that are not always comfortable: for example, that "a language" is not a real thing but a convenient fiction, that language-internal and language-external processes have a lot in common, and that tree diagrams are poor conceptual tools for understanding the history of languages. By exploring avenues for clear solutions to these problems, this book suggests a conceptual framework for ultimately explaining, in causal terms, what languages are like and why they are like that.
@@ -59,17 +50,11 @@ What causes a language to be the way it is? Some features are universal, some ar
 
 \dedication{Für Alma, Ariel, Block, Frau Brüggenolte, Chopin, Christina, Doro, Edgar, Elena, Elin, Emma, den ehemaligen FCR Duisburg, Frida, Gabriele, Hamlet, Helmut Schmidt, Henry, Ian Kilmister, Ingeborg, Ischariot, Jean-Pierre, Johan, Kurt, Lemmy, Liv, Marina, Martin, Mats, Mausi, Michelle, Nadezhda, Herrn Oelschlägel, Oma, Opa, Pavel, Philly, Sarah, Scully, Stig, Tania, Tante Klärchen, Tarek, Tatjana, Herrn Uhl, Ullis schreckhaften Hund, Vanessa und so. Wenn das schonmal klar sein würde.}
 
-%opening
+ 
 \title{Test for the langsci-* packages}
 \author{Lang Uage\and Science\lastand Press}
 \renewcommand{\lsYear}{1999} 
-
- 
-
- 
-
-
-
+  
 
 
 \begin{document}
@@ -80,9 +65,9 @@ What causes a language to be the way it is? Some features are universal, some ar
 \part{Part test}
 \chapter{Tests} 
 \section{langsci-gb4e}
-\subsection{Environments and syntactic sugar}
+% \subsection{Environments and syntactic sugar}
 % \input{gb4e-tests/beginexe}
-% % % % \input{gb4e-tests/exbegin}
+% % % \input{gb4e-tests/exbegin}
 % \input{gb4e-tests/subex}
 % \input{gb4e-tests/xlist}
 % \input{gb4e-tests/subsubex}
@@ -96,7 +81,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 % \subsection{Glosses}
 % \input{gb4e-tests/gll}
 % \input{gb4e-tests/glll}
-% \input{gb4e-tests/gllll}
+% \input{gb4e-tests/gllll}Numbers=OldStyle
 % \input{gb4e-tests/linebreak}
 % \input{gb4e-tests/exewidth}
 %  
@@ -128,42 +113,44 @@ What causes a language to be the way it is? Some features are universal, some ar
 % 
 % \section{Trees}
 % \input{forest-tests/simpletrees}
-
-\section{Fonts}
-\input{font-tests/fonts.tex}
-\input{font-tests/glyphs.tex} 
-
-\section{Figures}\label{sec:tables} 
-
-\section{Tables}\label{sec:tables}
-\input{table-tests/general}
-
-\section{Crossrefs}
-\input{crossref-tests/general}
-
-\section{Bibliography}
-\input{bib-tests/cite}
+% 
+% \section{Fonts}
+% \input{font-tests/fonts.tex}
+% \input{font-tests/glyphs.tex} 
+% \input{font-tests/tiebars.tex} 
+\input{font-tests/numbers.tex}
+% 
+% \section{Figures}\label{sec:tables} 
+% 
+% \section{Tables}\label{sec:tables}
+% \input{table-tests/general}
+% 
+% \section{Crossrefs}
+% \input{crossref-tests/general}
+% 
+% \section{Bibliography}
+% \input{bib-tests/cite}
 % \input{bib-tests/index}  
-\printbibliography[heading=references] 
-
-\section{Index}
-\input{index-tests/indexes} 
-
-\section{Diagrams}
+% \printbibliography[heading=references] 
+% 
+% \section{Index}
+% \input{index-tests/indexes} 
+% 
+% \section{Diagrams}
 % \input{diagram-tests/plots} 
-
-\section{Floats}
-\input{float-tests/floats.tex} 
+% 
+% \section{Floats}
+% \input{float-tests/floats.tex} 
 %  
 % % 
-% % \input{intonation-tests/tobi} 
+% \input{intonation-tests/tobi} 
 %  
-\section{Langsci-lgr tests}
+% \section{Langsci-lgr tests}
 % \input{lgr-tests/lgr} 
-
+% 
 % \section{Langsci-basic tests}
 % \input{package-tests/basic} 
-
+% 
 % \section{Langsci-optional tests}
 % \input{package-tests/optional} 
 % 
@@ -172,7 +159,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 % \input{tbls-tests/color} 
 % \input{tbls-tests/demo} 
 % 
-\section{Syntactic sugar}
-\input{syntax-sugar-tests/langsci-optional} 
+% \section{Syntactic sugar}
+% \input{syntax-sugar-tests/langsci-optional} 
 \include{backmatter}
 \end{document}

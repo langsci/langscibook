@@ -40,6 +40,7 @@ nonflat | | switch paths when using the langsci folder
 nonewtxmath | | suppress newtxmath (default)
 newtxmath | | activate newtxmath
 number | \<number\> | number of the book within the series
+oldstylenumbers | | Global option for old style ("lowercase", "medieval") numerals within the scope of serif \textsc and \scshape
 openreview | | switch to open review mode
 output | **book** \| inprep \| paper \| guidelines \| cover \| coverbodsc\| coverbodhc \| covercreatespace | different output formats
 series | sidl \| __eotms__ \| ... | the series code (see series.def for a list of abbreviations)
@@ -47,3 +48,8 @@ showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 spinewidth | | the width of the spine, used for cover creation
 undecapitalize | | do not change the casing of titles in the list of references
+
+## defined environments, commands, etc.
+name | type | descrition | usage
+-------|--------|---------|---------
+paperappendix | env | Use appendices in papers in collected volumes | `\begin{paperappendix} \section{Title of Appendix} ... \end{paperappendix}`
