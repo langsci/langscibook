@@ -135,6 +135,7 @@
 \newif\iflsBabelShorthands \lsBabelShorthandsfalse
 \newif\iflsMultiauthors \lsMultiauthorsfalse
 \newif\iflsArseneau \lsArseneaufalse
+\newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,6 +211,7 @@
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue}
 \DeclareVoidOption{arseneau}{\lsArseneautrue}
+\DeclareVoidOption{oldstylenumbers}{\lsOldStyleNumberstrue}
 \DeclareVoidOption{chinesefont}{
 	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
 % 	\newcommand{\zh}[1]{{\cn #1}}
@@ -735,6 +737,9 @@
 \fi
 
 \iflsModfonts% use Langsci fonts
+  \iflsOldStyleNumbers
+    \defaultfontfeatures[LinLibertine_RZ_B.otf,LinLibertine_RI_B.otf,LinLibertine_RZI_B.otf,LinLibertine_R_B.otf]{SmallCapsFeatures={Numbers=OldStyle}}
+  \fi
   \setsansfont[
 	  %Ligatures={TeX,Common},		% not supported by ttf
 	  Scale=MatchLowercase,
@@ -756,10 +761,13 @@
 	  SlantedFont    = LinLibertine_R_B.otf,
 	  SlantedFeatures = {FakeSlant=0.25},
 	  BoldSlantedFeatures = {FakeSlant=0.25},
-	  SmallCapsFeatures = {FakeSlant=0,Numbers=OldStyle},
+	  SmallCapsFeatures = {FakeSlant=0},
 	  ]{LinLibertine_R_B.otf}
 \else % use standard fonts
-    \setsansfont[
+  \iflsOldStyleNumbers
+    \defaultfontfeatures[LinLibertine_RZ.otf,LinLibertine_RI.otf,LinLibertine_RZI.otf,LinLibertine_R.otf]{SmallCapsFeatures={Numbers=OldStyle}}
+  \fi
+  \setsansfont[
 	  %Ligatures={TeX,Common},		% not supported by ttf
 	  Scale=MatchLowercase,
 	  Path=\fontpath,
@@ -780,9 +788,8 @@
 	  SlantedFont    = LinLibertine_R.otf,
 	  SlantedFeatures = {FakeSlant=0.25},
 	  BoldSlantedFeatures = {FakeSlant=0.25},
-	  SmallCapsFeatures = {FakeSlant=0,Numbers=OldStyle},
+	  SmallCapsFeatures = {FakeSlant=0},
 	  ]{LinLibertine_R.otf}
-
 \fi
 
 %% Deprecated:
