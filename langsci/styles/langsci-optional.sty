@@ -404,3 +404,35 @@
 % }
 
 \newcommand{\LSfrac}[1]{{\addfontfeature{Fractions=On}#1}}% Use the fraction glyphs shipped with Libertine. The argument is n/m, where n and m are integers
+
+
+% Provide a raised tie bar for diphthongs and affricates with ascenders
+\newcommand{\hitie}[2]{%
+\mbox{#1}%
+\raisebox{.5mm}{%
+͡%
+}%
+\mbox{#2}%
+}
+
+
+\newcommand{\hitier}[3][.7]{%
+\mbox{#2}%
+\hspace*{#1mm}%
+\raisebox{.5mm}{%
+͡%
+}%
+\hspace*{-#1mm}%
+\mbox{#3}%
+}
+
+
+\newcommand{\hitiel}[3][.7]{%
+\mbox{#2}%
+\hspace*{-#1mm}%
+\raisebox{.5mm}{%
+͡%
+}%
+\hspace*{#1mm}%
+\mbox{#3}%
+}
