@@ -113,6 +113,8 @@
 \ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
+	\renewcommand{\lsISSN}{2627-1834} %online	
+	\renewcommand{\lsISSN}{2627-1893} %Print 
 \fi
 \ifx\lsSeries\sidl
 	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
