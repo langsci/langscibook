@@ -1374,18 +1374,18 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	\else
 	\iflsBabelShorthands
 		\ifx\lsBookLanguage\lsBookLanguageEnglish
-		  \usepackage[german,\lsBookLanguage]{babel}
+		  \usepackage[ngerman,\lsBookLanguage]{babel}
 		  \addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
 	  \fi
 		\ifx\lsBookLanguage\lsBookLanguageFrench
-      \usepackage[german,\lsBookLanguage]{babel}
+      \usepackage[ngerman,\lsBookLanguage]{babel}
 			\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
     \fi
     \ifx\lsBookLanguage\lsBookLanguageGerman
-      \usepackage[german]{babel}
+      \usepackage[ngerman]{babel}% ngerman provides better hyphenation than german.
     \fi
 		\ifx\lsBookLanguage\lsBookLanguagePortuguese
-      \usepackage[german,\lsBookLanguage]{babel}
+      \usepackage[ngerman,\lsBookLanguage]{babel}
 			\addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
     \fi
 	\else
