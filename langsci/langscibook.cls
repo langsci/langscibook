@@ -1143,6 +1143,12 @@ Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC B
 http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{\logopath/ccbynd.eps}
 \fi
 
+\ifx\lsSeries\sidl 
+Indexed in EBSCO\smallskip
+\fi
+
+
+
 \begin{tabular}{@{}l@{~}l}
 ISBN: &
 \IfStrEq{\lsISBNdigital}{000-0-000000-00-0}{%no digital ISBN, issue warning
