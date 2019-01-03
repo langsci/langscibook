@@ -1894,9 +1894,10 @@ width=.8\textwidth
 	\renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1}}
 
 	\include{#1}%
-  \addtocounter{page}{-1}
+          \if@tempswa% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
+        \addtocounter{page}{-1}
 	\edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \lsPaper
-  \addtocounter{page}{1}
+        \addtocounter{page}{1}
 
 	%%% for citation in footer
 	%% preprocessing of author/editor names
@@ -1912,7 +1913,7 @@ width=.8\textwidth
 	%% write bib entry to file
 	%% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
 	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\lsCollectionPaperFooterTitle}},booktitle={{\lsCollectionTitle}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\,\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={skipbib=true,skiplab=true}}}
-
+          \fi% If the paper is not within \includeonly, don't do anything.
 	\end{refsection}
 	\end{collectionpaper}}
 \fi
