@@ -57,6 +57,7 @@
 \WarningsOff[hyperref]
 \WarningsOff[tocstyle]
 \typeout{Warnings are disabled in langscibook.cls for hyperref and tocstyle}
+\usepackage{etoolbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Paths
@@ -244,6 +245,7 @@
 % 	\newcommand{\textsyriac}[1]{{\syriacfont #1}}
 	\AdditionalFontImprint{Estrangelo Edessa}
 }
+
 \ProcessKeyvalOptions{langscibook}
 
 
@@ -946,9 +948,10 @@
    \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
    \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
 
-\newcommand{\lsFrontPage}{    % Front page
-	\pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
-	\pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ. 
+\newcommand{\lsFrontPage}{% Front page
+  \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
+  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ. 
   \thispagestyle{empty}
   \renewcommand{\and}{, }%
   \renewcommand{\lastand}{ \& }%
@@ -968,9 +971,11 @@
   \iflsOpenReview \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime}; \fi
 %   \iflsUndecapitalize \node [rotate=45,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Undecapitalized}; \fi  
 \end{tikzpicture}
+\ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
 }
 
 \newcommand{\lsSchmutztitel}{% Schmutztitel
+  \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ. 
   \thispagestyle{empty}
@@ -989,14 +994,16 @@
   \podfrontcovertoptext[\lsSeriesColor]{140mm}{51pt}
   \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsSeriesColor}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
 \end{tikzpicture}
+\ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
 }
 
 %\usepackage{pdfpages}
-\newcommand{\lsAdvertisement}{
+\newcommand{\lsAdvertisement}{%
   \include{\logopath langsci-advertisement}
 }
 
-\newcommand{\lsBackPage}{   
+\newcommand{\lsBackPage}{%
+  \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
   \pagestyle{empty}
@@ -1015,6 +1022,7 @@
   \end{pgfonlayer}
   \podbackcover{137mm}
   \end{tikzpicture}
+  \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
   }
 
 
@@ -1515,7 +1523,6 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 %% penalties against widows and orphans in bibliography
 %% http://tex.stackexchange.com/questions/297705/atbeginenvironment-does-not-work-with-natbib/297721#297721
-\usepackage{etoolbox}
 \apptocmd{\thebibliography}{%
 \clubpenalty\@M
 \@clubpenalty\clubpenalty
@@ -1595,8 +1602,7 @@ width=.8\textwidth
 %    Indexes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{index}
-%% Wie im Stylefile, aber ohne \MakeUppercase
+\usepackage{index} %% Wie im Stylefile, aber ohne \MakeUppercase
 \renewenvironment{theindex}{%
   \edef\indexname{\the\@nameuse{idxtitle@\@indextype}}%
   \if@twocolumn
@@ -1679,14 +1685,14 @@ width=.8\textwidth
 \IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
 \fi
 
-\AtBeginDocument{
+% \AtBeginDocument{% FK 16-Jan-19: It is unclear why this was set. It conflicts with TikZ externalisation.
 	\makeindex
 	\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
 	\newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
 	\renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
 % 	\newindex{wrd}{wdx}{wnd}{Expression index}
 % 	\newindex{rwrd}{rdx}{rnd}{Reverse expression index}
-}
+% }
 
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
