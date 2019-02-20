@@ -3,6 +3,11 @@
 \usepackage[framemethod=tikz]{mdframed}
 \mdfsetup{skipabove=2\baselineskip,skipbelow=2\baselineskip,frametitlefont=\sffamily\bfseries\Large, needspace=4\baselineskip, splittopskip=1.5\baselineskip}
 \mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}}
+\AtEndPreamble{% Check if the external library from tikz has been loaded in the preamble. If so, skip externalising for all mdframed boxes.
+    \ifcsname tikz@library@external@loaded\endcsname
+        \mdfsetup{settings={\tikzexternaldisable},endcode={\tikzexternalenable}}
+    \fi
+}
 \newcommand{\langscisymbol}{book}
 \newlength{\trennlinie}
 \setlength{\trennlinie}{.8mm}

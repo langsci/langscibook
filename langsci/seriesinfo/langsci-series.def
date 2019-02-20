@@ -104,6 +104,8 @@
 \ifx\lsSeries\osl
 	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidGreen}
+	\renewcommand{\lsISSN}{2627-8332} % Online
+	%\renewcommand{\lsISSN}{2627-8324}% (Print)	
 \fi
 \ifx\lsSeries\pmwe
 	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions~\lsSeriesNumber}
