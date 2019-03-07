@@ -7,6 +7,7 @@
 
 \newcommand{\algad}{algad}
 \newcommand{\calseries}{calseries}
+\newcommand{\cib}{cib}
 \newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
 \newcommand{\classics}{classics}
 \newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
@@ -41,6 +42,11 @@
 	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidWine}
 	\renewcommand{\lsISSN}{2511-7726}
+\fi
+\ifx\lsSeries\cib
+	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism~\lsSeriesNumber}
+	\newcommand{\lsSeriesColor}{LightGreen}
+% 	\renewcommand{\lsISSN}{}
 \fi
 \ifx\lsSeries\cfls
 	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
