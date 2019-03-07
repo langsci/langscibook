@@ -45,7 +45,7 @@
 \fi
 \ifx\lsSeries\cib
 	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{LightGreen}
+	\newcommand{\lsSeriesColor}{lsLightGreen}
 % 	\renewcommand{\lsISSN}{}
 \fi
 \ifx\lsSeries\cfls
