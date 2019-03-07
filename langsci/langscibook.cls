@@ -67,8 +67,8 @@
 \newcommand{\seriesinfopath}{}
 \newcommand{\localepath}{}
 \newcommand{\bibstylepath}{}
-\newcommand{\bbxpath}{}
-\newcommand{\cbxpath}{}
+% \newcommand{\bbxpath}{}
+% \newcommand{\cbxpath}{}
 \newcommand{\stylepath}{}
 % Paths can be overwritten with option "nonflat"
 
@@ -177,9 +177,9 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\localepath}{./langsci/locale/}
-	\renewcommand{\bibstylepath}{./langsci/bibstyles/}
-	\renewcommand{\bbxpath}{\bibstylepath langsci-unified/bbx/}
-	\renewcommand{\cbxpath}{\bibstylepath langsci-unified/cbx/}
+	\renewcommand{\bibstylepath}{./langsci/}
+% 	\renewcommand{\bbxpath}{\bibstylepath langsci-unified/bbx/}
+% 	\renewcommand{\cbxpath}{\bibstylepath langsci-unified/cbx/}
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
@@ -1412,8 +1412,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 
 \usepackage[
 	natbib=true, 
-	style=\bbxpath langsci-unified,
-	citestyle=\cbxpath langsci-unified,
+	style=\bibstylepath langsci-unified,
+	citestyle=\bibstylepath langsci-unified,
 	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1457,21 +1457,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
     {}}
 
 
-%% changes of citestyle (cbx) (FIXME: documentation missing)
-\renewcommand{\postnotedelim}{: }%
-\renewcommand{\multicitedelim}{\addsemicolon\space}%
-\renewcommand{\compcitedelim}{\multicitedelim}
-% \renewcommand{\nameyeardelim}{ }%
 
-%% changes of bibliography style (bbx)
-\DeclareFieldFormat{postnote}{#1}% display pages without page prefix (p., pp.)
-\DeclareBibliographyAlias{inbook}{incollection}% see https://github.com/semprag/biblatex-sp-unified/issues/35
-\DeclareFieldFormat[techreport,report,misc]{titlecase}{\MakeSentenceCase*{#1}}% techreport/report and misc are not genuinely supported by biblatex-sp-unified 
-%% The note field should appear at end of an entry just before the DOI, other than with the used bibliography style. It is therefore first removed, then again restored and included together with the DOI.
-\AtEveryBibitem{%
-  \savefield*{note}{\lsnote}%
-  \clearfield{note}%
-}
+
 %% DOIs are handled after hyperref.
 \defbibheading{references}{\chapter{References}\sloppy}
 \defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
