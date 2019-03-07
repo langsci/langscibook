@@ -192,10 +192,8 @@
 \newbibmacro*{cite:labelyear+extrayear}{%
   \iffieldundef{labelyear}
     {}
-    {\printtext[bibhyperref]{%
-       \printfield{labelyear}%
-       \printfield{extrayear}}}}
-
+    {\printtext[bibhyperref]{\printlabeldateextra}}   
+}
 \newbibmacro*{cite:extrayear}{%
   \iffieldundef{extrayear}
     {}
