@@ -44,11 +44,11 @@
 	\newcommand{\lsSeriesColor}{lsMidWine}
 	\renewcommand{\lsISSN}{2511-7726}
 \fi
-%\ifx\lsSeries\cam
-%	\newcommand{\lsSeriesTitle}{Contact and Multilingualism}
-%	\newcommand{\lsSeriesColor}{} 
-% 	\renewcommand{\lsISSN}{}
-%\fi
+\ifx\lsSeries\cam
+	\newcommand{\lsSeriesTitle}{Contact and Multilingualism}
+	\newcommand{\lsSeriesColor}{lsRed} 
+ 	\renewcommand{\lsISSN}{}
+\fi
 
 \ifx\lsSeries\cib
 	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism~\lsSeriesNumber}
