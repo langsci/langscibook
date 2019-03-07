@@ -66,7 +66,7 @@
 \newcommand{\logopath}{}
 \newcommand{\seriesinfopath}{}
 \newcommand{\localepath}{}
-\newcommand{\bstpath}{}
+\newcommand{\bibstylepath}{}
 \newcommand{\bbxpath}{}
 \newcommand{\cbxpath}{}
 \newcommand{\stylepath}{}
@@ -177,11 +177,9 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\localepath}{./langsci/locale/}
-	\renewcommand{\bstpath}{./langsci/bst/}
-	\renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
-	% \renewcommand{\bbxpath}{\bstpath}
-	\renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
-	% \renewcommand{\cbxpath}{\bstpath}
+	\renewcommand{\bibstylepath}{./langsci/bibstyles/}
+	\renewcommand{\bbxpath}{\bibstylepath langsci-unified/bbx/}
+	\renewcommand{\cbxpath}{\bibstylepath langsci-unified/cbx/}
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
@@ -1413,14 +1411,9 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[
-	natbib=true,
-	% \iflsUndecapitalize
-	% style=\bstpath biblatex-langsci-unified-undecap,
-	% \else
-	% style=\bstpath biblatex-langsci-unified,
-	% \fi
-	style=\bbxpath biblatex-sp-unified,
-	citestyle=\cbxpath sp-authoryear-comp,
+	natbib=true, 
+	style=\bbxpath langsci-unified,
+	citestyle=\cbxpath langsci-unified,
 	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1438,7 +1431,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	\iflsCollection\else
 		toc=bib, 		% make bibliography appear in toc
   \fi
-  datamodel=\bstpath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+  datamodel=\bibstylepath langsci   % add authauthor and autheditor as possible fields to bibtex entries
 ]{biblatex}
 
 % If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the

@@ -64,10 +64,10 @@ What causes a language to be the way it is? Some features are universal, some ar
 
 \part{Part test}
 \chapter{Tests} 
-\section{langsci-gb4e}
+% \section{langsci-gb4e}
 % \subsection{Environments and syntactic sugar}
 % \input{gb4e-tests/beginexe}
-% % % \input{gb4e-tests/exbegin}
+% % % % \input{gb4e-tests/exbegin}
 % \input{gb4e-tests/subex}
 % \input{gb4e-tests/xlist}
 % \input{gb4e-tests/subsubex}
@@ -81,7 +81,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 % \subsection{Glosses}
 % \input{gb4e-tests/gll}
 % \input{gb4e-tests/glll}
-% \input{gb4e-tests/gllll}Numbers=OldStyle
+% \input{gb4e-tests/gllll}
 % \input{gb4e-tests/linebreak}
 % \input{gb4e-tests/exewidth}
 %  
@@ -127,32 +127,45 @@ What causes a language to be the way it is? Some features are universal, some ar
 % 
 % \section{Crossrefs}
 % \input{crossref-tests/general}
-% 
-% \section{Bibliography}
-% \input{bib-tests/cite}
-% \input{bib-tests/index}  
-% \printbibliography[heading=references] 
-% 
+
+\section{Bibliography}
+\input{bib-tests/cite}
+% \input{bib-tests/index}   
+
+\printbibliography[notkeyword={techreport},notkeyword={website},title={References}] 
+
+next thing up is list of standards, included with \verb+keywords={standard},+ in the bib file. 
+
+\printbibliography[keyword={standard},title={Standards}]
+
+
+
+next thing up is list of websites, included with \verb+keywords={website},+ in the bib file. 
+
+\printbibliography[keyword={website},title={Websites}]
+
+ 
+
 % \section{Index}
 % \input{index-tests/indexes} 
 % 
 % \section{Diagrams}
-% \input{diagram-tests/plots} 
+% % \input{diagram-tests/plots} 
 % 
 % \section{Floats}
 % \input{float-tests/floats.tex} 
 %  
 % % 
-% \input{intonation-tests/tobi} 
+% % \input{intonation-tests/tobi} 
 %  
 % \section{Langsci-lgr tests}
 % \input{lgr-tests/lgr} 
 % 
-% \section{Langsci-basic tests}
-% \input{package-tests/basic} 
+% % \section{Langsci-basic tests}
+% % \input{package-tests/basic} 
 % 
-% \section{Langsci-optional tests}
-% \input{package-tests/optional} 
+% % \section{Langsci-optional tests}
+% % \input{package-tests/optional} 
 % 
 % \section{Textbooks tests}
 % \input{tbls-tests/bw} 
