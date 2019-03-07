@@ -4,7 +4,6 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{\seriesinfopath langsci-colors.def} % color definitions
 
 \newcommand{\algad}{algad}
 \newcommand{\calseries}{calseries}
