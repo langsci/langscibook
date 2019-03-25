@@ -1128,6 +1128,7 @@
   (\lsSeriesTitle). %
   Berlin: Language Science Press.
 }
+\newcommand{\lsImpressumExtra}{}%for legal notes required for revised theses ("... in fulfillment of ... ")
 \newcommand{\lsImpressum}{
 \thispagestyle{empty}
 \raggedright
@@ -1149,6 +1150,8 @@ http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{\logo
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
 http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{\logopath/ccbynd.eps}
 \fi
+
+{\lsImpressumExtra}
 
 \ifx\lsSeries\sidl 
 Indexed in EBSCO\smallskip
