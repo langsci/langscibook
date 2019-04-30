@@ -227,19 +227,34 @@
   \settowidth{\LSPTmp}{#1}%
   % several boxes are need to assure that words with ascending and descending letters are underlined at the same 
   % level, leading to the impression of a continuous stroke
-  \parbox[t]{\LSPTmp}{ %restrict first box to the length of first argument
+  \parbox[t]{\LSPTmp}{%restrict first box to the length of first argument
       \settowidth{\fulllength}{\parbox{\LSPTmp}{~}\parbox{#2mm}{~}} %inner box is larger than outerbox, so underlining will extend beyond length of outer box
       %             align parbox to bottom
       %              |           mbox to prevent hyphenation
-      \uline{\parbox[b]{\fulllength}{\mbox{#1}}}
-    }
+      \uline{\parbox[b]{\fulllength}{\mbox{#1}}}%
+    }%
 }
 
 \newcommand{\ule}[1]{%#1: stuff to underline, no extra length
-  \ulp{#1}{0}
+  \ulp{#1}{0}%
   }
   
-  
+\newlength{\fullllength}
+\newcommand{\soutp}[2]{%#1: stuff to underline, #2: extra length to skip the whitespace between to components
+  \settowidth{\LSPTmp}{#1}%
+  % several boxes are need to assure that words with ascending and descending letters are underlined at the same 
+  % level, leading to the impression of a continuous stroke
+  \parbox[t]{\LSPTmp}{%restrict first box to the length of first argument
+      \settowidth{\fullllength}{\parbox{\LSPTmp}{~}\parbox{#2mm}{~}}%inner box is larger than outerbox, so underlining will extend beyond length of outer box
+      %             align parbox to bottom
+      %              |           mbox to prevent hyphenation
+      \sout{\parbox[b]{\fullllength}{\mbox{#1}}}%
+    }%
+}
+
+\newcommand{\soute}[1]{%#1: stuff to underline, no extra length
+  \soutp{#1}{0}%
+  } 
 
 
 \newcommand{\longrule}{\rule{1em}{.3pt}}

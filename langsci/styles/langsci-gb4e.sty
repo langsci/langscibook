@@ -249,7 +249,7 @@
                  \if@noftnote%
                         \begin{list}{(\thexnumi)}%
                         {\usecounter{xnumi}\@subex{#1}{\@gblabelsep}{0em}%
-                        \setcounter{xnumi}{\value{equation}}}%
+                        \setcounter{xnumi}{\value{equation}}\nopagebreak}%
                  \else%
                         \begin{list}{(\roman{xnumi})}%
                         % 1em is the indentation of footnotes in koma-script
@@ -315,7 +315,7 @@
 %%% the example-items
 \def\ex{\@ifnextchar [{\@ex}{\item}}
 \def\@ex[#1]#2{\item\@exj[#1]{#2}}
-\def\@exj[#1]#2{\@exjbg{#1} #2 \end{list}}
+\def\@exj[#1]#2{\@exjbg{#1} #2 \end{list}\nopagebreak}
 % without understanding anything:
 \def\exs#1{\item\begin{samepage}#1\end{samepage}}
 %-- end
