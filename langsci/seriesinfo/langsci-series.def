@@ -86,7 +86,7 @@
 \fi
 \ifx\lsSeries\hpls
 	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsSoftGreen}
+	\newcommand{\lsSeriesColor}{black}
 \fi
 \ifx\lsSeries\loc
         \newcommand{\lsSeriesTitle}{Languages of the Caucasus~\lsSeriesNumber}
