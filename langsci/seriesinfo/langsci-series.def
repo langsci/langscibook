@@ -87,6 +87,8 @@
 \ifx\lsSeries\hpls
 	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{black}
+	\renewcommand{\lsISSN}{2629-172X} %online
+% 	\renewcommand{\lsISSN}{2629-1711} %print 
 \fi
 \ifx\lsSeries\loc
         \newcommand{\lsSeriesTitle}{Languages of the Caucasus~\lsSeriesNumber}
