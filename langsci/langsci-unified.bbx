@@ -347,10 +347,10 @@
     {}
     {\setunit*{\addcolon\space}}%
   \printlist{institution}%
-  \setunit{\addspace}%
-  \printfield{type}%
   \setunit*{\addcomma\space}%
-  \usebibmacro{date}%
+  \usebibmacro{date} %
+  \setunit{\adddot\space}%
+  \printtext[parens]{\printfield{type}}%
   \newunit}
 
 % The following is a hack to satisfy the Unified Stylesheet's decision to give the edition right after the OED as used as a sortlabel.
@@ -384,7 +384,7 @@
 
 \DefineBibliographyStrings{english}{%
   edition          = {edn\adddot},
-  phdthesis        = {dissertation},
+  phdthesis        = {Doctoral dissertation},
 }
 
 % basically everything is in sentence case, other than journals and book series (recurring titles)
