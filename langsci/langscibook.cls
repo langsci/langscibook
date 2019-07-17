@@ -259,6 +259,7 @@
   numbers=noenddot,   % no point after last number of chapters/sections
   toc=bibliography,
   index=totoc,
+  headings=optiontohead,
   %chapterprefix=true,
   %draft=yes,
   %appendixprefix
