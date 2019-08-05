@@ -1094,6 +1094,7 @@
 \makeatletter
 \let\theauthor\@author 
 \makeatother
+\ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
 \renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
 \renewcommand{\lastand}{LASTAND} %expand for easier checking
 
@@ -1112,7 +1113,8 @@
       \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
       \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
       }
-    }  
+    }
+  }{}
 }
  
 
