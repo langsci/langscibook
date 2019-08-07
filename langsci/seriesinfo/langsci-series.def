@@ -36,11 +36,11 @@
 
 \AtBeginDocument{
 \ifx\lsSeries\algad
-	\newcommand{\lsSeriesTitle}{African Language Grammars \newlineCover and Dictionaries~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{African Language Grammars \newlineCover and Dictionaries}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
 \fi
 \ifx\lsSeries\calseries %\cal is already taken as a command
-	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics}
 	\newcommand{\lsSeriesColor}{lsMidWine}
 	\renewcommand{\lsISSN}{2511-7726}
 \fi
@@ -51,109 +51,109 @@
 \fi
 
 \ifx\lsSeries\cib
-	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism}
 	\newcommand{\lsSeriesColor}{lsLightGreen}
 % 	\renewcommand{\lsISSN}{}
 \fi
 \ifx\lsSeries\cfls
-	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science}
 	\newcommand{\lsSeriesColor}{lsNightGreen}
 	\renewcommand{\lsISSN}{2363-877X}
 \fi
 \ifx\lsSeries\classics
-	\newcommand{\lsSeriesTitle}{Classics in Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Classics in Linguistics}
 	\newcommand{\lsSeriesColor}{black}
 	\renewcommand{\lsISSN}{2366-374X}
 \fi
 \ifx\lsSeries\cmle
-	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Computational Models of Language Evolution}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 	\renewcommand{\lsISSN}{2364-7809}
 \fi
 \ifx\lsSeries\eotms
-	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \newlineCover Morphology and Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Empirically Oriented Theoretical \newlineCover Morphology and Syntax}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 	\renewcommand{\lsISSN}{2366-3529}
 \fi
 \ifx\lsSeries\eotmsig
-	\newcommand{\lsSeriesTitle}{Implemented Grammars~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Implemented Grammars}
 	\newcommand{\lsSeriesColor}{lsMidBlue}
 \fi
 \ifx\lsSeries\eurosla
-	\newcommand{\lsSeriesTitle}{Eurosla Studies~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Eurosla Studies}
 	\newcommand{\lsSeriesColor}{lsMidOrange}
 	\renewcommand{\lsISSN}{2626-2665}	
 \fi
 \ifx\lsSeries\hpls
-	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences}
 	\newcommand{\lsSeriesColor}{black}
 	\renewcommand{\lsISSN}{2629-172X} %online
 % 	\renewcommand{\lsISSN}{2629-1711} %print 
 \fi
 \ifx\lsSeries\loc
-        \newcommand{\lsSeriesTitle}{Languages of the Caucasus~\lsSeriesNumber}
+        \newcommand{\lsSeriesTitle}{Languages of the Caucasus}
         \newcommand{\lsSeriesColor}{lsLightWine}
 \fi
 \ifx\lsSeries\lv
-        \newcommand{\lsSeriesTitle}{Language Variation~\lsSeriesNumber}
+        \newcommand{\lsSeriesTitle}{Language Variation}
         \newcommand{\lsSeriesColor}{lsDarkWine}
         \renewcommand{\lsISSN}{2366-7818}
 \fi
 \ifx\lsSeries\mi
-	\newcommand{\lsSeriesTitle}{Morphological Investigations~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Morphological Investigations}
 	\newcommand{\lsSeriesColor}{lsDarkGreenTwo}
 	\renewcommand{\lsISSN}{2567-742X}
 \fi
 \ifx\lsSeries\nc
-	\newcommand{\lsSeriesTitle}{Niger-Congo Comparative Studies~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Niger-Congo Comparative Studies}
 	\newcommand{\lsSeriesColor}{lsRed}
 	\renewcommand{\lsISSN}{2627-0048} %online
 % 	\renewcommand{\lsISSN}{2626-3513} %print 
 \fi
 \ifx\lsSeries\ogs
-	\newcommand{\lsSeriesTitle}{Open Generative Syntax~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Open Generative Syntax}
 	\newcommand{\lsSeriesColor}{lsDarkGreenOne}
 	\renewcommand{\lsISSN}{2568-7336}
 \fi
 \ifx\lsSeries\osl
-	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Open Slavic Linguistics}
 	\newcommand{\lsSeriesColor}{lsMidGreen}
 	\renewcommand{\lsISSN}{2627-8332} % Online
 	%\renewcommand{\lsISSN}{2627-8324}% (Print)	
 \fi
 \ifx\lsSeries\pmwe
-	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Phraseology and Multiword Expressions}
 	\newcommand{\lsSeriesColor}{lsLightBlue}
 	\renewcommand{\lsISSN}{2625-3127}	
 \fi
 \ifx\lsSeries\scl
-	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
 	\renewcommand{\lsISSN}{2627-1834} %online	
 	\renewcommand{\lsISSN}{2627-1893} %Print 
 \fi
 \ifx\lsSeries\sidl
-	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Studies in Diversity Linguistics}
 	\newcommand{\lsSeriesColor}{lsRichGreen}
 	\renewcommand{\lsISSN}{2363-5568}
 \fi
 \ifx\lsSeries\silp
-	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Studies in Laboratory Phonology}
 	\newcommand{\lsSeriesColor}{lsLightWine}
 	\renewcommand{\lsISSN}{2363-5576}
 \fi
 \ifx\lsSeries\tbls
-	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences}
 	\newcommand{\lsSeriesColor}{lsYellow}
 	\renewcommand{\lsISSN}{2364-6209}
 \fi
 \ifx\lsSeries\tgdi
-	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse \newlineCover Interface~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse \newlineCover Interface}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
 	\renewcommand{\lsISSN}{2567-3335}
 \fi
 \ifx\lsSeries\tmnlp
-	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Translation and Multilingual Natural \newlineCover Language Processing}
 	\newcommand{\lsSeriesColor}{lsDarkBlue}
 	\renewcommand{\lsISSN}{2364-8899}
 \fi

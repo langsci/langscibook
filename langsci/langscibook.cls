@@ -426,7 +426,7 @@
                   right,
                   text width=95mm,
                   anchor=north west]
-            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
+            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle~\lsSeriesNumber\par}};
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1079,57 +1079,29 @@
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
 \newcommand{\BookDOI}[1]{\renewcommand{\lsBookDOI}{#1}}
 
-
-%invert names of first author for citation on impressum page 
-
-\newcommand{\lsFirstAuthorFullName}{}%temporary, will be overwritten
-\newcommand{\lsFirstAuthorFirstName}{}%temporary, will be overwritten
-\newcommand{\lsFirstAuthorLastName}{}%temporary, will be overwritten
-\newcommand{\lsFirstAuthorString}{\lsFirstAuthorLastName, \lsFirstAuthorFirstName} %can be customized in localmetadata.tex
-\newcommand{\lsNonFirstAuthorsString}{}  %default, will be overwritten iff more than one author
-% \newcommand{\lsImpressionCitationAuthor}{\lsFirstAuthorString \lsNonFirstAuthorsString}
-
-
-\AtBeginDocument{
-\makeatletter
-\let\theauthor\@author 
-\makeatother
-\ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
-\renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
-\renewcommand{\lastand}{LASTAND} %expand for easier checking
-
-\IfSubStr{\theauthor}{NONLASTAND}{%2+authors
-  \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
-  \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }} 
-  \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
-  \renewcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }} 
-  }{%else
-    \IfSubStr{\theauthor}{LASTAND}{%less than two authors, more than one
-    \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\lastand }}
-    \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-    \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\lastand }}
-    \renewcommand{\lsNonFirstAuthorsString}{\lastand\StrBehind{\theauthor}{\lastand }} 
-    }{%else exactly one author
-      \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-      \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
-      }
-    }
-  }{}
-}
- 
-
-\newcommand{\lsImpressionCitationAuthor}{ 
-\lsFirstAuthorLastName, \lsFirstAuthorFirstName \lsNonFirstAuthorsString}
-  
-\newcommand{\lsImpressumCitationText}{
-  \onlyAuthor
-  \renewcommand{\newlineCover}{}
-  \renewcommand{\newlineSpine}{}
-  {\lsImpressionCitationAuthor}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
-  {\lsYear}. %
-  \textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
-  (\lsSeriesTitle). %
-  Berlin: Language Science Press.
+\AtEndPreamble{\addbibresource{thisbook.citation}}
+\newcommand{\lsImpressumCitationText}{%
+    \renewcommand{\newlineCover}{}
+    \renewcommand{\newlineSpine}{}
+    % Correct "and"s for the bibliographical entry
+    \renewcommand{\and}{ and }
+    \renewcommand{\lastand}{ and }
+    \StrSubstitute{\@author}{,}{ and }[\authorTemp]
+	\StrSubstitute{\authorTemp}{\&}{ and }[\authorTemp]
+    \newwrite\citationtemp\immediate\openout\citationtemp=thisbook.citation% Create and output file and write to it:
+    \immediate\write\citationtemp{
+                @book{langsci\lsID,
+                    \iflsCollection editor = {\authorTemp}, \else author={\authorTemp},\fi
+                    year={\lsYear},
+                    title={{\@title\if\@subtitle\empty\else: \@subtitle\fi}},
+                    series={\lsSeriesTitle},
+                    number={\lsSeriesNumber},
+                    publisher={Language Science Press},
+                    address={Berlin}
+                    }
+                }
+    \immediate\closeout\citationtemp
+    \citethiswork{langsci\lsID}.% The dot is necessary since it is not output by the driver.
 }
 \newcommand{\lsImpressumExtra}{}%for legal notes required for revised theses ("... in fulfillment of ... ")
 \newcommand{\lsImpressum}{
@@ -1473,6 +1445,15 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 \defbibheading{portuguese}{\chapter{Referências}\sloppy}
 \defbibheading{chinese}{\chapter{参考文献}\sloppy}
 
+% \citethiswork, a \cite command used to print bibliographical informations of books and chapters in edited volumes
+\DeclareCiteCommand{\citethiswork}
+	{\defcounter{maxnames}{\blx@maxbibnames}%
+	  \usebibmacro{prenote}}
+	{\usedriver
+	   {\DeclareNameAlias{sortname}{default}}
+	   {\thefield{entrytype}}}
+	{\multicitedelim}
+	{\usebibmacro{postnote}}
 
 % fix \citep* et.al.
 % unclear why it was overwritten, these are the definitions from blx-natbib.def
@@ -1878,16 +1859,7 @@ width=.8\textwidth
 \newcommand{\includepaper}[1]{
 	\begin{collectionpaper}
 	\begin{refsection}
-
-	\DeclareCiteCommand{\fullciteFooter}
-		{\defcounter{maxnames}{\blx@maxbibnames}%
-		  \usebibmacro{prenote}}
-		{\usedriver
-		   {\DeclareNameAlias{sortname}{default}}
-		   {\thefield{entrytype}}}
-		{\multicitedelim}
-		{\usebibmacro{postnote}}
-	\renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
+	\renewcommand{\lsCollectionPaperCitationText}{\citethiswork{#1footer}}
 
 	\include{#1}%
         \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
