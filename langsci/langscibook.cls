@@ -48,7 +48,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2018/01/15 Language Science Press]
+\ProvidesClass{langscibook}[2019/06/05 Language Science Press]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Early load packages
@@ -259,6 +259,7 @@
   numbers=noenddot,   % no point after last number of chapters/sections
   toc=bibliography,
   index=totoc,
+  headings=optiontohead,
   %chapterprefix=true,
   %draft=yes,
   %appendixprefix
@@ -1093,6 +1094,7 @@
 \makeatletter
 \let\theauthor\@author 
 \makeatother
+\ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
 \renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
 \renewcommand{\lastand}{LASTAND} %expand for easier checking
 
@@ -1111,7 +1113,8 @@
       \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
       \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
       }
-    }  
+    }
+  }{}
 }
  
 

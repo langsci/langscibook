@@ -86,7 +86,9 @@
 \fi
 \ifx\lsSeries\hpls
 	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences~\lsSeriesNumber}
-	\newcommand{\lsSeriesColor}{lsSoftGreen}
+	\newcommand{\lsSeriesColor}{black}
+	\renewcommand{\lsISSN}{2629-172X} %online
+% 	\renewcommand{\lsISSN}{2629-1711} %print 
 \fi
 \ifx\lsSeries\loc
         \newcommand{\lsSeriesTitle}{Languages of the Caucasus~\lsSeriesNumber}
@@ -146,7 +148,7 @@
 	\renewcommand{\lsISSN}{2364-6209}
 \fi
 \ifx\lsSeries\tgdi
-	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse Interface~\lsSeriesNumber}
+	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse \newlineCover Interface~\lsSeriesNumber}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
 	\renewcommand{\lsISSN}{2567-3335}
 \fi
