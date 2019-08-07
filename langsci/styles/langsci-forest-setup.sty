@@ -58,7 +58,7 @@
 \forestset{
   declare dimen={child anchor yshift}{0pt},
   adjust childrens child anchors/.style={
-    if n children>=2{
+    if n children>1{
       before packing={
         tempdima/.max={max_y}{children},
         for children={
