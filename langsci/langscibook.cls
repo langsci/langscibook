@@ -1097,7 +1097,8 @@
                     series={\lsSeriesTitle},
                     number={\lsSeriesNumber},
                     publisher={Language Science Press},
-                    address={Berlin}
+                    address={Berlin},
+                    options={dataonly=true}
                     }
                 }
     \immediate\closeout\citationtemp
