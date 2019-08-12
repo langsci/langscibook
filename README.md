@@ -53,3 +53,4 @@ undecapitalize | | do not change the casing of titles in the list of references
 name | type | descrition | usage
 -------|--------|---------|---------
 paperappendix | env | Use appendices in papers in collected volumes | `\begin{paperappendix} \section{Title of Appendix} ... \end{paperappendix}`
+issueandeditor | cmd | print issue title in bibliography `\PassOptionsToPackage{issueandeditor=true}{biblatex}`
