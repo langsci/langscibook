@@ -1943,13 +1943,12 @@ width=.8\textwidth
     \protect\numberline{\thechapter}\fi
     \@title\ \newline{\normalfont\@author}}} % space between \@title and \newline is needed for bookmarks
 
+\newcommand{\localizedchaptestring}{Chapter}    
 \newcommand{\lsCollectionPaperTitle}{{%
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\}
-%     \\[-1\baselineskip]
-%     \vspace*{-2\baselineskip}
   \renewcommand{\chapterheadstartvskip}{}
-  {\LARGE \noindent \hspace*{-.7cm} Chapter \thechapter}\\ %there must be a better way to undo this length than a hard value
+  {\LARGE \noindent \hspace*{-.7cm} \localizedchaptestring~\thechapter}\\ %there must be a better way to undo this length than a hard value
   \bigskip
   \@title}}
 
