@@ -218,6 +218,23 @@
     {}%
   \newunit}
 
+% In case that year is not given, but pubstate. This mainly occurs for titles that are forthcoming, in press, etc.
+\renewbibmacro*{addendum+pubstate}{% Thanks to https://tex.stackexchange.com/a/154367 for the idea
+  \printfield{addendum}%
+  \iffieldequalstr{labeldatesource}{pubstate}{}
+  {\newunit\newblock\printfield{pubstate}}
+}
+
+\DeclareLabeldate{%
+    \field{date}
+    \field{year}
+    \field{eventdate}
+    \field{origdate}
+    \field{urldate}
+    \field{pubstate}
+    \literal{nodate}
+}
+
 % The next three bib macros are for printing the maintitle and booktitle fields
 % of an @inproceedings entry with an ISSN as an article in accordance with the
 % unified style sheet guidelines.
