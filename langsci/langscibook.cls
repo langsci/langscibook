@@ -1396,6 +1396,7 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	natbib=true, 
 	style=\bibstylepath langsci-unified,
 	citestyle=\bibstylepath langsci-unified,
+	datamodel=\bibstylepath langsci   % add authauthor and autheditor as possible fields to bibtex entries
 	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1406,14 +1407,12 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	doi=false,
 	url=false,
 	eprint=false,
-        autolang=hyphen,
-        useprefix=true,
+	autolang=hyphen,
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\iflsCollection\else
-		toc=bib, 		% make bibliography appear in toc
-  \fi
-  datamodel=\bibstylepath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+		toc=bib, % make bibliography appear in toc
+	\fi
 ]{biblatex}
 
 % If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
