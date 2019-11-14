@@ -1,0 +1,43 @@
+\newcommand{\barplot}[5][]{%
+  \begin{tikzpicture}
+    \begin{axis}[ 
+        xlabel={#2},  
+        ylabel={#3}, 
+        axis lines*=left, 
+        width  = \textwidth,
+        height = .3\textheight,
+        nodes near coords, 
+        xtick=data,
+        x tick label style={},  
+        ymin=0,
+        symbolic x coords={#4},#1 %any additional parameters for the axis can be given in the optional argument
+        ]
+        \addplot+[ybar,lsRichGreen!80!black,fill=lsRichGreen] plot coordinates {
+            #5
+        }; 
+    \end{axis} 
+  \end{tikzpicture} 
+}
+
+
+
+\usepackage{pgfmath,pgfplotstable}
+\newcommand{\langsciplot}[2]{%% experimental
+        \pgfplotstablegetcolsof{#1.csv}
+        \pgfmathsetmacro{\langscicsvlength}{\pgfplotsretval-1}
+        \begin{tikzpicture}[trim axis right,trim axis left]
+            \begin{axis}[
+                    #2,
+                    xtick=data,
+                    axis lines*=left,
+                    nodes near coords,
+                    ymin=0,
+                    width=\textwidth]
+            \foreach \i in {0,...,\langscicsvlength} {
+                \addplot[
+                    /pgf/number format/read comma as period
+                    ] table [x index={0},y index={\i}] {#1.csv};
+            }
+            \end{axis}    
+        \end{tikzpicture}
+}
