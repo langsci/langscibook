@@ -93,6 +93,8 @@
 \ifx\lsSeries\loc
         \newcommand{\lsSeriesTitle}{Languages of the Caucasus}
         \newcommand{\lsSeriesColor}{lsLightWine}
+	\renewcommand{\lsISSN}{2699-0156} %online
+% 	\renewcommand{\lsISSN}{2699-0148} %print  
 \fi
 \ifx\lsSeries\lv
         \newcommand{\lsSeriesTitle}{Language Variation}

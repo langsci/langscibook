@@ -293,6 +293,34 @@
    \usebibmacro{textcite}}
   {}
   {\usebibmacro{textcite:postnote}}
+  
+% "This volume" citation commands
+\DeclareCiteCommand{\citetv}
+  {\usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\printnames{labelname}\addspace\printfield{year}}}
+  {\multicitedelim}
+  {\printtext[bibhyperref]{\usebibmacro{postnote}\addspace[this volume]}}
+  
+\DeclareCiteCommand{\textcitetv}
+  {\usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\printnames{labelname}\addspace\bibopenparen\printfield{year}}}
+  {\multicitedelim}
+  {\printtext[bibhyperref]{\usebibmacro{postnote}\addspace[this volume]\bibcloseparen}}
+  
+\DeclareCiteCommand{\parencitetv}
+  {\usebibmacro{prenote}}
+  {\ifciteindex
+     {\indexnames{labelname}}
+     {}%
+   \printtext[bibhyperref]{\bibopenparen\printnames{labelname}\addspace\printfield{year}}}
+  {\multicitedelim}
+  {\printtext[bibhyperref]{\usebibmacro{postnote}\addspace[this volume]\bibcloseparen}}
 
 \DeclareMultiCiteCommand{\cites}{\cite}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\parencites}[\mkbibparens]{\parencite}{\setunit{\multicitedelim}}
@@ -306,6 +334,8 @@
 
 \let\citealt\cite
 \let\citet\textcite
+\let\citep\parencite
+\let\citepv\parencitetv
 \let\Citet\Textcite
 \newcommand{\pgcitep}[2]{(\cite{#1}:~#2)}
 \newcommand{\pgcitealt}[2]{\cite{#1}:~#2}
@@ -315,7 +345,6 @@
 \newcommand{\seccitep}[2]{(\cite{#1}:~$\S$#2)}
 \newcommand{\seccitet}[2]{\citeauthor{#1} (\citeyear{#1}:~$\S$#2)}
 \newcommand{\secposscitet}[2]{\citeauthor{#1}'s (\citeyear{#1}:~$\S$#2)}
-\let\citep\parencite
 
 \renewcommand*{\postnotedelim}{\addcolon\space}
 \DeclareFieldFormat{postnote}{#1}
@@ -378,6 +407,3 @@
 % \renewcommand{\nameyeardelim}{ }%
 
 \endinput
-
- 
- 
