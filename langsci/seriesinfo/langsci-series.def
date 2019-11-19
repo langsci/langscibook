@@ -87,14 +87,14 @@
 \ifx\lsSeries\hpls
 	\newcommand{\lsSeriesTitle}{History and Philosophy of the Language Sciences}
 	\newcommand{\lsSeriesColor}{black}
-	\renewcommand{\lsISSN}{2629-172X} %online
-% 	\renewcommand{\lsISSN}{2629-1711} %print 
+	\renewcommand{\lsISSNelectronic}{2629-172X} %online
+ 	\renewcommand{\lsISSNprint}{2629-1711} %print 
 \fi
 \ifx\lsSeries\loc
         \newcommand{\lsSeriesTitle}{Languages of the Caucasus}
-        \newcommand{\lsSeriesColor}{lsLightWine}
-	\renewcommand{\lsISSN}{2699-0156} %online
-% 	\renewcommand{\lsISSN}{2699-0148} %print  
+        \newcommand{\lsSeriesColor}{lsLightWine} 
+	\renewcommand{\lsISSNelectronic}{2699-0156} %online
+ 	\renewcommand{\lsISSNprint}{2699-0148} %print  
 \fi
 \ifx\lsSeries\lv
         \newcommand{\lsSeriesTitle}{Language Variation}
@@ -109,8 +109,8 @@
 \ifx\lsSeries\nc
 	\newcommand{\lsSeriesTitle}{Niger-Congo Comparative Studies}
 	\newcommand{\lsSeriesColor}{lsRed}
-	\renewcommand{\lsISSN}{2627-0048} %online
-% 	\renewcommand{\lsISSN}{2626-3513} %print 
+	\renewcommand{\lsISSNelectronic}{2627-0048} %online
+ 	\renewcommand{\lsISSNprint}{2626-3513} %print 
 \fi
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax}

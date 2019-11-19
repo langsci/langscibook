@@ -81,6 +81,8 @@
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
 \newcommand{\lsISSN}{??}
+\newcommand{\lsISSNprint}{??}
+\newcommand{\lsISSNelectronic}{??}
 \newcommand{\lsISBNdigital}{000-0-000000-00-0}
 \newcommand{\lsISBNhardcover}{000-0-000000-00-0}
 \newcommand{\lsISBNsoftcover}{000-0-000000-00-0}
@@ -1011,7 +1013,11 @@
 
 \IfFileExists{\seriesinfopath \lsSeries-info.tex}{\input{\seriesinfopath\lsSeries-info}}{
   Series information: \seriesinfopath \lsSeries-info.tex not found!}
-
+  
+\IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
+  {}
+  {\vfill\hfill ISSN (print): \lsISSNprint\\
+         \hfill ISSN (electronic): \lsISSNelectronic\\} 
 \IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
   {}
   {\vfill\hfill ISSN: \lsISSN} 
@@ -1160,11 +1166,16 @@ ISBN: &
 }
 \end{tabular}
 
-\IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
+\IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
   {}
-  {ISSN: \lsISSN}
+  {ISSN (print): \lsISSNprint\\
+   ISSN (electronic): \lsISSNelectronic\\} 
+\IfStrEq{\lsISSN}{??}  
+  {}
+  {ISSN: \lsISSN} 
+ 
 
-\IfStrEq{\lsBookDOI}{??}    % \IfStrEq from xstring
+\IfStrEq{\lsBookDOI}{??}     
   {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}\\
 \IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%  
