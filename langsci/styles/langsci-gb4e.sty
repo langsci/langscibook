@@ -9,8 +9,8 @@
 %%   Licence: 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{langsci-gb4e}[2000/09/05]
-\def\gbVersion{4e} 
+\ProvidesPackage{langsci-gb4e}[2020/01/01]
+% \def\gbVersion{4e} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Format of examples: %
@@ -84,7 +84,7 @@
 % b. glossing line
 \newcommand{\glossfont}{\normalsize\upshape}
 % c. translation font
-\newcommand{\transfont}{\normalsize\upshape} % 08.01.2014 changed small to normalsize (Martin Haspelmath)
+\newcommand{\transfont}{\normalsize\upshape} 
 % d. example number
 \newcommand{\exnrfont}{\exfont\upshape}
 %
@@ -97,12 +97,6 @@
 \newcommand{\fntransfont}{\footnotesize\upshape}
 % d. example number
 \newcommand{\fnexnrfont}{\fnexfont\upshape}
-
-% Default value for first, second, and third lines
-\renewcommand{\eachwordone}{\exfont}
-\renewcommand{\eachwordtwo}{\glossfont}
-\renewcommand{\eachwordthree}{\glossfont} % same font for both gloss lines
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                     %%
@@ -152,7 +146,7 @@
 % use (1) on page, but (i) in footnotes
 \def\thexnumi
 {\if@noftnote%
-xxx\@arabic\@xsi{xnumi}%
+\@arabic\@xsi{xnumi}%
 \else%
 \@roman\@xsi{xnumi}%
 \fi%
@@ -209,6 +203,10 @@ xxx\@arabic\@xsi{xnumi}%
 % set initial sizes of example number and judgement sizes
 \exewidth{\exnrfont (35)}
 
+% how much should examples in footnotes be indented?
+\newlength{\footexindent}
+\setlength{\footexindent}{0pt}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                   %%
 %% 			example lists				     %%
@@ -220,6 +218,7 @@ xxx\@arabic\@xsi{xnumi}%
     %inserted by LangSci, for large example numbers
     \ifnum\value{equation}>98 \exewidth{(235)}\else\fi%      
     \@ifnextchar [{\@exe}{\@exe[\@exwidth]}}
+    
 \def\@exe[#1]{\ifnum \@xnumdepth >0%
                  \if@xrec\@exrecwarn\fi%
                  \if@noftnote\@exrecwarn\fi%
@@ -230,22 +229,14 @@ xxx\@arabic\@xsi{xnumi}%
                  \if@noftnote%
                         \begin{list}{(\thexnumi)}%
                         {\usecounter{xnumi}\@subex{#1}{\@gblabelsep}{0em}%
-                        \setcounter{xnumi}{\value{equation}}\nopagebreak}%
+                        \setcounter{xnumi}{\value{equation}}
+                        \nopagebreak}%
                  \else%
                         \begin{list}{(\roman{xnumi})}%
-                        % 1em is the indentation of footnotes in koma-script
-                        % if this does not work for everybody, use parameters ...
-                        {\usecounter{xnumi}\@subex{(iiv)}{\@gblabelsep}{1.5em}%
+                        {\usecounter{xnumi}\@subex{(iiv)}{\@gblabelsep}{\footexindent}%
                         \setcounter{xnumi}{\value{fnx}}}%
                  \fi}
 
-%                 \begin{list}{(\thexnumi)}%
-%                             {\usecounter{xnumi}\@subex{#1}{1em}%
-%                              \if@noftnote%
-%                                 \setcounter{xnumi}{\value{equation}}%
-%                              \else%
-%                                 \setcounter{xnumi}{\value{fnx}}%
-%                              \fi}}
 
 \def\endexe{\if@noftnote\setcounter{equation}{\value{xnumi}}%
                    \else\setcounter{fnx}{\value{xnumi}}%
@@ -418,29 +409,23 @@ xxx\@arabic\@xsi{xnumi}%
 }
  
 
-\newlength{\gltseparator}
-\setlength{\gltseparator}{.17\baselineskip}
-\def\glt{\nopagebreak\vskip{\gltseparator}\transfont\parindent0ex}
-
-% redefine \gltoffset to set off translation from ex and gloss
-\@ifundefined{gltoffset}{\def\gltoffset{0pt}}{}
-
-\def\glt{\ifhmode\\*[\gltoffset]\else\nobreak\vskip\gltoffset\nobreak\fi}
+\newlength{\gltoffset}
+\setlength{\gltoffset}{.17\baselineskip} 
+\newcommand{\nogltOffset}{\setlength{\gltoffset}{0pt}}
+\newcommand{\resetgltOffset}{\setlength{\gltoffset}{.17\baselineskip}}
+\def\glt{\ifhmode\\*[\gltoffset]\else\nobreak\vskip\gltoffset\nobreak\fi\transfont}
 
 
 % Introduces a translation
 \let\trans\glt
 
-\def\gln{\relax}
-      % Ends the gloss environment.
+% \def\gln{\relax}
+%       % Ends the gloss environment.
 
 % The following TeX code is adapted, with permission, from:
 % gloss.tex: Macros for vertically aligning words in consecutive sentences.
 % Version: 1.0  release: 26 November 1990
-% Copyright (c) 1991 Marcel R. van der Goot (marcel@cs.caltech.edu).
-% Original Midnight/gloss.tex and Midnight/gloss.doc are available from
-% csvax.cs.caltech.edu [131.215.131.131] in pub/tex
-% and many other anonymous ftp archives.
+% Copyright (c) 1991 Marcel R. van der Goot (marcel@cs.caltech.edu).  
 
 \newbox\lineone % boxes with words from first line
 \newbox\linetwo
