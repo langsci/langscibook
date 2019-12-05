@@ -37,7 +37,7 @@
 \tikzset{external/up to date check=simple}
 % for texlive: -shell-escape, for miktex -enable-write18
 % All externalized graphics go go the \externaldirectory
-%\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
+\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
 \tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 %\usepackage{morewrites}
 
@@ -60,7 +60,7 @@
 \forestset{
   declare dimen={child anchor yshift}{0pt},
   adjust childrens child anchors/.style={
-    if n children>1{
+    if n children>=2{
       before packing={
         tempdima/.max={max_y}{children},
         for children={
