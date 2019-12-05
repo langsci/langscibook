@@ -55,7 +55,7 @@
   \fi
   \endcenter\endgroup}
 
-\VerbatimFootnotes
+% \VerbatimFootnotes %breaks roman numbering for examples in footnotes
 
 
 % http://tex.stackexchange.com/questions/73464/inserting-rtl-text-in-verbatim-environment?rq=1
@@ -168,17 +168,24 @@
 \newcommand{\langsciseealso}{\par\addvspace{.1\baselineskip}\hspace*{1.4cm}\hangindent=1.4cm\seealso}
 \newcommand{\ilsa}[2]{\il{#1@\igobble | langsciseealso{#2}}}
 \newcommand{\issa}[2]{\is{#1@\igobble | langsciseealso{#2}}}
-\newcommand{\iasa}[2]{\ia{#1@\igobble | langsciseealso{#2}}}
+\newcommand{\iasa}[2]{\ia{#1{}@\igobble | langsciseealso{#2}}}
+
+
+\newcommand{\name}[3][]{%add person names to text and author index
+#2 %output first name
+\ifstrempty{#1}{%if no optional argument present
+\ia{#3, #2@#3, #2}%add lastname, firstname to index
+}{%if optional argument present
+\ia{#1@#1}% add optional argument to index
+}%
+#3}%output last name in text
+
 
 \usepackage{tabularx}
 \usepackage{array}
 \newenvironment{widetabular}[1][1]
   {\tabularx{#1\textwidth}}
   {\endtabularx}
-
-
-\newcommand{\citetv}[1]{\citeauthor{#1} (\citeyear*{#1} [this volume])}
-\newcommand{\citepv}[1]{(\citealt{#1} [this volume])}
 
 
 % Vowel chart tikz commands
@@ -213,7 +220,6 @@
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \newcolumntype{d}[1]{D{.}{.}{#1}} 
-\newcommand{\xxref}[2]{(\ref{#1}--\ref{#2})}
 
 
 % Underlining in gb4e-example Environments. Usual underlining commands that span multiple words do not work, because gb4e would parse it as one word. 
@@ -227,19 +233,34 @@
   \settowidth{\LSPTmp}{#1}%
   % several boxes are need to assure that words with ascending and descending letters are underlined at the same 
   % level, leading to the impression of a continuous stroke
-  \parbox[t]{\LSPTmp}{ %restrict first box to the length of first argument
+  \parbox[t]{\LSPTmp}{%restrict first box to the length of first argument
       \settowidth{\fulllength}{\parbox{\LSPTmp}{~}\parbox{#2mm}{~}} %inner box is larger than outerbox, so underlining will extend beyond length of outer box
       %             align parbox to bottom
       %              |           mbox to prevent hyphenation
-      \uline{\parbox[b]{\fulllength}{\mbox{#1}}}
-    }
+      \uline{\parbox[b]{\fulllength}{\mbox{#1}}}%
+    }%
 }
 
 \newcommand{\ule}[1]{%#1: stuff to underline, no extra length
-  \ulp{#1}{0}
+  \ulp{#1}{0}%
   }
   
-  
+\newlength{\fullllength}
+\newcommand{\soutp}[2]{%#1: stuff to underline, #2: extra length to skip the whitespace between to components
+  \settowidth{\LSPTmp}{#1}%
+  % several boxes are need to assure that words with ascending and descending letters are underlined at the same 
+  % level, leading to the impression of a continuous stroke
+  \parbox[t]{\LSPTmp}{%restrict first box to the length of first argument
+      \settowidth{\fullllength}{\parbox{\LSPTmp}{~}\parbox{#2mm}{~}}%inner box is larger than outerbox, so underlining will extend beyond length of outer box
+      %             align parbox to bottom
+      %              |           mbox to prevent hyphenation
+      \sout{\parbox[b]{\fullllength}{\mbox{#1}}}%
+    }%
+}
+
+\newcommand{\soute}[1]{%#1: stuff to underline, no extra length
+  \soutp{#1}{0}%
+  } 
 
 
 \newcommand{\longrule}{\rule{1em}{.3pt}}
@@ -363,46 +384,6 @@
 %%%%           %%%%%
 %%%%%%%%%%%%%%%%%%%%
  
-% \newcommand{\barplot}[4]{%
-%   \begin{tikzpicture}
-%     \begin{axis}[
-% 	xlabel={#1},  
-% 	ylabel={#2}, 
-% 	axis lines*=left, 
-%         width  = \textwidth,
-% 	height = .3\textheight,
-%     	nodes near coords, 
-% 	xtick=data,
-% 	x tick label style={},  
-% 	ymin=0,
-% 	symbolic x coords={#3},
-% 	]
-% 	\addplot+[ybar,lsRichGreen!80!black,fill=lsRichGreen] plot coordinates {
-% 	    #4
-% 	}; 
-%     \end{axis} 
-%   \end{tikzpicture} 
-% }
-% \usepackage{pgfmath,pgfplotstable}
-% \newcommand{\langsciplot}[2]{%% experimental
-%         \pgfplotstablegetcolsof{#1.csv}
-%         \pgfmathsetmacro{\langscicsvlength}{\pgfplotsretval-1}
-%         \begin{tikzpicture}[trim axis right,trim axis left]
-%             \begin{axis}[
-%                     #2,
-%                     xtick=data,
-%                     axis lines*=left,
-%                     nodes near coords,
-%                     ymin=0,
-%                     width=\textwidth]
-%             \foreach \i in {0,...,\langscicsvlength} {
-%                 \addplot[
-%                     /pgf/number format/read comma as period
-%                     ] table [x index={0},y index={\i}] {#1.csv};
-%             }
-%             \end{axis}    
-%         \end{tikzpicture}
-% }
 
 \newcommand{\LSfrac}[1]{{\addfontfeature{Fractions=On}#1}}% Use the fraction glyphs shipped with Libertine. The argument is n/m, where n and m are integers
 
@@ -437,3 +418,20 @@
 \hspace*{#1mm}%
 \mbox{#3}%
 }
+
+
+% commands moved here from cgloss
+\let\prmbrs=0
+\def\primebars{\let\prmbrs=1}
+\def\obar#1{\ifmmode#1^{0}\else#1$^{0}$\fi}  %% FIX
+\def\mbar#1{\ifmmode#1^{\mathrm{max}}\else#1\textsuperscript{max}\fi}
+\def\ibar#1{\ifx\prmbrs0%
+                 \ifmmode\overline{\mathrm{#1}}\else$\overline{\mbox{#1}}$\fi%
+            \else\ifmmode#1^{'}\else#1$^{'}$\fi\fi}
+\def\iibar#1{\ifx\prmbrs0%
+                  \ifmmode\overline{\overline{\mathrm{#1}}}%
+                  \else$\overline{\overline{\mbox{#1}}}$\fi%
+             \else #1P\fi}
+
+
+\def\spec#1{[Spec,#1]} %Def. of "Specifier of #1"

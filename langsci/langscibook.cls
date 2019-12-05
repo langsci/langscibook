@@ -44,10 +44,11 @@
 %   \- Indexes
 %   \- Hyperref
 %   \- Edited volumes (Collection)
+%   \- Colors
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2018/01/15 Language Science Press]
+\ProvidesClass{langscibook}[2019/06/05 Language Science Press]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Early load packages
@@ -66,9 +67,9 @@
 \newcommand{\logopath}{}
 \newcommand{\seriesinfopath}{}
 \newcommand{\localepath}{}
-\newcommand{\bstpath}{}
-\newcommand{\bbxpath}{}
-\newcommand{\cbxpath}{}
+\newcommand{\bibstylepath}{}
+% \newcommand{\bbxpath}{}
+% \newcommand{\cbxpath}{}
 \newcommand{\stylepath}{}
 % Paths can be overwritten with option "nonflat"
 
@@ -80,6 +81,8 @@
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
 \newcommand{\lsISSN}{??}
+\newcommand{\lsISSNprint}{??}
+\newcommand{\lsISSNelectronic}{??}
 \newcommand{\lsISBNdigital}{000-0-000000-00-0}
 \newcommand{\lsISBNhardcover}{000-0-000000-00-0}
 \newcommand{\lsISBNsoftcover}{000-0-000000-00-0}
@@ -177,11 +180,9 @@
 	\renewcommand{\logopath}{./langsci/graphics/}
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\localepath}{./langsci/locale/}
-	\renewcommand{\bstpath}{./langsci/bst/}
-	\renewcommand{\bbxpath}{\bstpath biblatex-sp-unified/bbx/}
-	% \renewcommand{\bbxpath}{\bstpath}
-	\renewcommand{\cbxpath}{\bstpath biblatex-sp-unified/cbx/}
-	% \renewcommand{\cbxpath}{\bstpath}
+	\renewcommand{\bibstylepath}{./langsci/}
+% 	\renewcommand{\bbxpath}{\bibstylepath langsci-unified/bbx/}
+% 	\renewcommand{\cbxpath}{\bibstylepath langsci-unified/cbx/}
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
@@ -260,6 +261,7 @@
   numbers=noenddot,   % no point after last number of chapters/sections
   toc=bibliography,
   index=totoc,
+  headings=optiontohead,
   %chapterprefix=true,
   %draft=yes,
   %appendixprefix
@@ -426,7 +428,7 @@
                   right,
                   text width=95mm,
                   anchor=north west]
-            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
+            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle~\lsSeriesNumber\par}};
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -585,7 +587,7 @@
 \fi
 
 \ifx\lsSeries\pmwe
- \renewcommand{\eachwordone}{\itshape}
+ \renewcommand{\eachwordone}{\normalfont}
 \fi
 
 \ifx\lsSeries\nc
@@ -728,71 +730,46 @@
 \usepackage{libertine}
 
 \setmonofont[
-	Ligatures={TeX},Scale=MatchLowercase,
-	BoldFont = DejaVuSansMono-Bold.ttf ,
-	SlantedFont = DejaVuSansMono-Oblique.ttf ,
-	BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
-	]{DejaVuSansMono.ttf}
+%   Ligatures={TeX},% not supported by ttf
+  Scale=MatchLowercase,
+  BoldFont = DejaVuSansMono-Bold.ttf ,
+  SlantedFont = DejaVuSansMono-Oblique.ttf ,
+  BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
+]{DejaVuSansMono.ttf}
+
+\setsansfont[
+  %Ligatures={TeX,Common},% not supported by ttf
+  Scale=MatchLowercase,
+  Path=\fontpath,
+  BoldFont = Arimo-Bold.ttf,
+  ItalicFont = Arimo-Italic.ttf,
+  BoldItalicFont = Arimo-BoldItalic.ttf
+]{Arimo-Regular.ttf}
 
 \iflsNewtxmath\else
-\setmathfont[AutoFakeBold]{libertinusmath-regular.otf}
+\setmathfont[AutoFakeBold,Path=\fontpath]{LibertinusMath-Regular.otf}
+\setmathfont[range={cal},StylisticSet=1,Path=\fontpath]{XITSMath-Regular.otf}
+\setmathfont[range={bfcal},StylisticSet=1,Path=\fontpath]{XITSMath-Bold.otf}
 \fi
 
-\iflsModfonts% use Langsci fonts
-  \iflsOldStyleNumbers
-    \defaultfontfeatures[LinLibertine_RZ_B.otf,LinLibertine_RI_B.otf,LinLibertine_RZI_B.otf,LinLibertine_R_B.otf]{SmallCapsFeatures={Numbers=OldStyle}}
-  \fi
-  \setsansfont[
-	  %Ligatures={TeX,Common},		% not supported by ttf
-	  Scale=MatchLowercase,
-	  Path=\fontpath,
-	  BoldFont = Arimo-Bold_B.ttf ,
-	  ItalicFont = Arimo-Italic_B.ttf ,
-	  BoldItalicFont = Arimo-BoldItalic_B.ttf
-	  ]{Arimo_B.ttf}
+\iflsOldStyleNumbers
+  \defaultfontfeatures[LibertinusSerif-Semibold.otf,LibertinusSerif-Italic.otf,LibertinusSerif-SemiboldItalic.otf,LibertinusSerif-Regular.otf]{SmallCapsFeatures={Numbers=OldStyle}}
+ \fi
 
-  \setmainfont[
-	  Ligatures={TeX,Common},
-	  Path=\fontpath,
-	  PunctuationSpace=0,
-	  Numbers={Proportional},
-	  BoldFont = LinLibertine_RZ_B.otf ,
-	  ItalicFont = LinLibertine_RI_B.otf ,
-	  BoldItalicFont = LinLibertine_RZI_B.otf,
-	  BoldSlantedFont = LinLibertine_RZ_B.otf,
-	  SlantedFont    = LinLibertine_R_B.otf,
-	  SlantedFeatures = {FakeSlant=0.25},
-	  BoldSlantedFeatures = {FakeSlant=0.25},
-	  SmallCapsFeatures = {FakeSlant=0},
-	  ]{LinLibertine_R_B.otf}
-\else % use standard fonts
-  \iflsOldStyleNumbers
-    \defaultfontfeatures[LinLibertine_RZ.otf,LinLibertine_RI.otf,LinLibertine_RZI.otf,LinLibertine_R.otf]{SmallCapsFeatures={Numbers=OldStyle}}
-  \fi
-  \setsansfont[
-	  %Ligatures={TeX,Common},		% not supported by ttf
-	  Scale=MatchLowercase,
-	  Path=\fontpath,
-	  BoldFont = Arimo-Bold.ttf ,
-	  ItalicFont = Arimo-Italic.ttf ,
-	  BoldItalicFont = Arimo-BoldItalic.ttf
-	  ]{Arimo-Regular.ttf}
-
-  \setmainfont[
-	  Ligatures={TeX,Common},
-	  Path=\fontpath,
-	  PunctuationSpace=0,
-	  Numbers={Proportional},
-	  BoldFont = LinLibertine_RZ.otf ,
-	  ItalicFont = LinLibertine_RI.otf ,
-	  BoldItalicFont = LinLibertine_RZI.otf,
-	  BoldSlantedFont = LinLibertine_RZ.otf,
-	  SlantedFont    = LinLibertine_R.otf,
-	  SlantedFeatures = {FakeSlant=0.25},
-	  BoldSlantedFeatures = {FakeSlant=0.25},
-	  SmallCapsFeatures = {FakeSlant=0},
-	  ]{LinLibertine_R.otf}
-\fi
+\setmainfont[
+  Ligatures={TeX,Common},
+  Path=\fontpath,
+  PunctuationSpace=0,
+  Numbers={Proportional},
+  BoldFont = LibertinusSerif-Semibold.otf,
+  ItalicFont = LibertinusSerif-Italic.otf,
+  BoldItalicFont = LibertinusSerif-SemiboldItalic.otf,
+  BoldSlantedFont = LibertinusSerif-Semibold.otf,
+  SlantedFont    = LibertinusSerif-Regular.otf,
+  SlantedFeatures = {FakeSlant=0.25},
+  BoldSlantedFeatures = {FakeSlant=0.25},
+  SmallCapsFeatures = {FakeSlant=0},
+]{LibertinusSerif-Regular.otf}
 
 %% Deprecated:
 \iflsNewtxmath		% some users have problems when installing newtxmath
@@ -1036,7 +1013,11 @@
 
 \IfFileExists{\seriesinfopath \lsSeries-info.tex}{\input{\seriesinfopath\lsSeries-info}}{
   Series information: \seriesinfopath \lsSeries-info.tex not found!}
-
+  
+\IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
+  {}
+  {\vfill\hfill ISSN (print): \lsISSNprint\\
+         \hfill ISSN (electronic): \lsISSNelectronic\\} 
 \IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
   {}
   {\vfill\hfill ISSN: \lsISSN} 
@@ -1094,6 +1075,7 @@
 \makeatletter
 \let\theauthor\@author 
 \makeatother
+\ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
 \renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
 \renewcommand{\lastand}{LASTAND} %expand for easier checking
 
@@ -1112,7 +1094,8 @@
       \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
       \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
       }
-    }  
+    }
+  }{}
 }
  
 
@@ -1126,9 +1109,10 @@
   {\lsImpressionCitationAuthor}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
   {\lsYear}. %
   \textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
-  (\lsSeriesTitle). %
+  (\lsSeriesTitle~\lsSeriesNumber). %
   Berlin: Language Science Press.
 }
+\newcommand{\lsImpressumExtra}{}%for legal notes required for revised theses ("... in fulfillment of ... ")
 \newcommand{\lsImpressum}{
 \thispagestyle{empty}
 \raggedright
@@ -1150,6 +1134,8 @@ http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{\logo
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
 http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{\logopath/ccbynd.eps}
 \fi
+
+{\lsImpressumExtra}
 
 \ifx\lsSeries\sidl 
 Indexed in EBSCO\smallskip
@@ -1180,11 +1166,16 @@ ISBN: &
 }
 \end{tabular}
 
-\IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
+\IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
   {}
-  {ISSN: \lsISSN}
+  {ISSN (print): \lsISSNprint\\
+   ISSN (electronic): \lsISSNelectronic\\} 
+\IfStrEq{\lsISSN}{??}  
+  {}
+  {ISSN: \lsISSN} 
+ 
 
-\IfStrEq{\lsBookDOI}{??}    % \IfStrEq from xstring
+\IfStrEq{\lsBookDOI}{??}     
   {{\color{red} no DOI}}
   {\doi{\lsBookDOI}}\\
 \IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%  
@@ -1215,7 +1206,7 @@ Proofreading:
 Open reviewing:
 \@openreviewer \\
 \fi
-Fonts: Linux Libertine, Libertinus Math, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
+Fonts: Libertinus, Arimo, DejaVu Sans Mono\lsAdditionalFontsImprint\\
 Typesetting software: \XeLaTeX
 
 \bigskip
@@ -1413,14 +1404,10 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[
-	natbib=true,
-	% \iflsUndecapitalize
-	% style=\bstpath biblatex-langsci-unified-undecap,
-	% \else
-	% style=\bstpath biblatex-langsci-unified,
-	% \fi
-	style=\bbxpath biblatex-sp-unified,
-	citestyle=\cbxpath sp-authoryear-comp,
+	natbib=true, 
+	style=\bibstylepath langsci-unified,
+	citestyle=\bibstylepath langsci-unified,
+	datamodel=\bibstylepath langsci   % add authauthor and autheditor as possible fields to bibtex entries
 	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1431,14 +1418,12 @@ Storage and cataloguing done by FU Berlin \\[3ex]
 	doi=false,
 	url=false,
 	eprint=false,
-        autolang=hyphen,
-        useprefix=true,
+	autolang=hyphen,
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\iflsCollection\else
-		toc=bib, 		% make bibliography appear in toc
-  \fi
-  datamodel=\bstpath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+		toc=bib, % make bibliography appear in toc
+	\fi
 ]{biblatex}
 
 % If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
@@ -1464,21 +1449,8 @@ Storage and cataloguing done by FU Berlin \\[3ex]
     {}}
 
 
-%% changes of citestyle (cbx) (FIXME: documentation missing)
-\renewcommand{\postnotedelim}{: }%
-\renewcommand{\multicitedelim}{\addsemicolon\space}%
-\renewcommand{\compcitedelim}{\multicitedelim}
-% \renewcommand{\nameyeardelim}{ }%
 
-%% changes of bibliography style (bbx)
-\DeclareFieldFormat{postnote}{#1}% display pages without page prefix (p., pp.)
-\DeclareBibliographyAlias{inbook}{incollection}% see https://github.com/semprag/biblatex-sp-unified/issues/35
-\DeclareFieldFormat[techreport,report,misc]{titlecase}{\MakeSentenceCase*{#1}}% techreport/report and misc are not genuinely supported by biblatex-sp-unified 
-%% The note field should appear at end of an entry just before the DOI, other than with the used bibliography style. It is therefore first removed, then again restored and included together with the DOI.
-\AtEveryBibitem{%
-  \savefield*{note}{\lsnote}%
-  \clearfield{note}%
-}
+
 %% DOIs are handled after hyperref.
 \defbibheading{references}{\chapter{References}\sloppy}
 \defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
@@ -1956,13 +1928,12 @@ width=.8\textwidth
     \protect\numberline{\thechapter}\fi
     \@title\ \newline{\normalfont\@author}}} % space between \@title and \newline is needed for bookmarks
 
+\newcommand{\localizedchaptestring}{Chapter}    
 \newcommand{\lsCollectionPaperTitle}{{%
   \renewcommand{\newlineTOC}{}
   \renewcommand{\newlineCover}{\\}
-%     \\[-1\baselineskip]
-%     \vspace*{-2\baselineskip}
   \renewcommand{\chapterheadstartvskip}{}
-  {\LARGE \noindent \hspace*{-.7cm} Chapter \thechapter}\\ %there must be a better way to undo this length than a hard value
+  {\LARGE \noindent \hspace*{-.7cm} \localizedchaptestring~\thechapter}\\ %there must be a better way to undo this length than a hard value
   \bigskip
   \@title}}
 
@@ -2061,6 +2032,71 @@ width=.8\textwidth
 %  \closeoutputstream{pages}
 % }
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Color definitions:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{lsLightBlue}{cmyk}{0.6,0.05,0.05,0}
+\definecolor{lsMidBlue}{cmyk}{0.75,0.15,0,0}
+\definecolor{lsMidDarkBlue}{cmyk}{0.9,0.4,0.05,0}
+\definecolor{lsDarkBlue}{cmyk}{0.9,0.5,0.15,0.3}
+\definecolor{lsNightBlue}{cmyk}{1,0.47,0.22,0.68}
+
+\definecolor{lsYellow}{cmyk}{0,0.25,1,0}
+\definecolor{lsLightOrange}{cmyk}{0,0.50,1,0}
+\definecolor{lsMidOrange}{cmyk}{0,0.64,1,0}
+\definecolor{lsDarkOrange}{cmyk}{0,0.78,1,0}
+\definecolor{lsRed}{cmyk}{0.05,1,0.8,0}
+
+\definecolor{lsLightWine}{cmyk}{0.3,1,0.6,0}
+\definecolor{lsMidWine}{cmyk}{0.54,1,0.65,0.1}
+\definecolor{lsDarkWine}{cmyk}{0.58,1,0.70,0.35}
+\definecolor{lsSoftGreen}{cmyk}{0.32,0.02,0.72,0}
+\definecolor{lsLightGreen}{cmyk}{0.4,0,1,0}
+
+\definecolor{lsMidGreen}{cmyk}{0.55,0,0.9,0.1}
+\definecolor{lsRichGreen}{cmyk}{0.6,0,0.9,0.35}
+\definecolor{lsDarkGreenOne}{cmyk}{0.85,0.02,0.95,0.38}
+\definecolor{lsDarkGreenTwo}{cmyk}{0.85,0.05,1,0.5}
+\definecolor{lsNightGreen}{cmyk}{0.88,0.15,1,0.66}
+
+\definecolor{lsLightGray}{cmyk}{0,0,0,0.17}
+\definecolor{lsGuidelinesGray}{cmyk}{0,0.04,0,0.45}
+
+\definecolor{lsDOIGray}{cmyk}{0,0,0,0.45}
+
+\definecolor{langscicol1}{cmyk}{0.6,0.05,0.05,0}
+\definecolor{langscicol2}{cmyk}{0.75,0.15,0,0}
+\definecolor{langscicol3}{cmyk}{0.9,0.4,0.05,0}
+\definecolor{langscicol4}{cmyk}{0.9,0.5,0.15,0.3}
+\definecolor{langscicol5}{cmyk}{1,0.47,0.22,0.68}
+\definecolor{langscicol6}{cmyk}{0,0.25,1,0}
+\definecolor{langscicol7}{cmyk}{0,0.50,1,0}
+\definecolor{langscicol8}{cmyk}{0,0.64,1,0}
+\definecolor{langscicol9}{cmyk}{0,0.78,1,0}
+\definecolor{langscicol10}{cmyk}{0.05,1,0.8,0}
+\definecolor{langscicol11}{cmyk}{0.3,1,0.6,0}
+\definecolor{langscicol12}{cmyk}{0.54,1,0.65,0.1}
+\definecolor{langscicol13}{cmyk}{0.58,1,0.70,0.35}
+\definecolor{langscicol14}{cmyk}{0.32,0.02,0.72,0}
+\definecolor{langscicol15}{cmyk}{0.4,0,1,0}
+\definecolor{langscicol16}{cmyk}{0.55,0,0.9,0.1}
+\definecolor{langscicol17}{cmyk}{0.6,0,0.9,0.35}
+\definecolor{langscicol18}{cmyk}{0.85,0.02,0.95,0.38}
+\definecolor{langscicol19}{cmyk}{0.85,0.05,1,0.5}
+\definecolor{langscicol20}{cmyk}{0.88,0.15,1,0.66}
+
+
+% \newcommand{\lsptable}[2]{
+% \resizebox{#1}{!}{
+% \begin{tabularx}{\textwidth}{XXXXXXXXXXXXXXXXXXXX}
+%  \cellcolor{langscicol1}&\cellcolor{langscicol2}&\cellcolor{langscicol3}&\cellcolor{langscicol4}&\cellcolor{langscicol5}&\cellcolor{langscicol6}&\cellcolor{langscicol7}&\cellcolor{langscicol8}&\cellcolor{langscicol9}&\cellcolor{langscicol10}&\cellcolor{langscicol11}&\cellcolor{langscicol12}&\cellcolor{langscicol13}&\cellcolor{langscicol14}&\cellcolor{langscicol15}&\cellcolor{langscicol16}&\cellcolor{langscicol17}&\cellcolor{langscicol18}&\cellcolor{langscicol19}&\cellcolor{langscicol20}
+%  \rule{0pt}{#2}
+% \end{tabularx}
+% }
+% }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Miscellaneous
