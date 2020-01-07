@@ -331,6 +331,12 @@
 % Control vertical space for examples in footnotes
 \def\zlast{\z\vspace{-\baselineskip}}
 \def\eafirst{\vspace{-1.5\baselineskip}\ea}
+
+%%%%%% control the alignment of exampleno. and (picture-)example
+%%%%%%         (by Lex Holt <lex@cogsci.ed.ac.uk>).
+\def\attop#1{\leavevmode\vtop{\strut\vskip-\baselineskip\vbox{#1}}}
+\def\atcenter#1{$\vcenter{#1}$}
+%%%%%%
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
