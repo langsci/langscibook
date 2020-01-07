@@ -10,6 +10,18 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ProvidesPackage{langsci-gb4e}[2020/01/01]
+
+\usepackage{etoolbox}
+
+\newtoggle{cgloss}
+\toggletrue{cgloss}
+\newtoggle{jambox}
+\toggletrue{jambox}
+\DeclareOption{nocgloss}{\togglefalse{cgloss}}
+\DeclareOption{nojambox}{\togglefalse{jambox}}
+\DeclareOption*{\PackageWarning{examplepackage}{Unknown option ‘\CurrentOption’}}
+\ProcessOptions\relax
+
 % \def\gbVersion{4e} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -332,6 +344,8 @@
 \newcommand{\xref}[1]{(\ref{#1})}
 \newcommand{\xxref}[2]{(\ref{#1}--\ref{#2})}
 
+
+\iftoggle{cgloss}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                   %%
 %%     CGLOSS starts here                                            %%
@@ -713,8 +727,9 @@
 
 % \leavevmode puts us back in horizontal mode, so that a \\ will work
 \def\gl@stop{{\hskip -\glossglue}\unhbox\gline\leavevmode \egroup}
+}{} %end toggle cgloss
 
-
+\iftoggle{jambox}{
 %BeGIN Jambox
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -786,4 +801,5 @@
 % Algorithm adapted from The TeXBook.
 %
 % The closing \par could be a problem if there is a \parskip...
+}{}
 \endinput
