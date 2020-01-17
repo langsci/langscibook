@@ -1212,8 +1212,9 @@ Typesetting software: \XeLaTeX
 \bigskip
 
 Language Science Press\\
-Unter den Linden 6\\
-10099 Berlin, Germany\\
+Xhain\\
+Grünberger Str. 16\\
+10243 Berlin, Germany\\
 \href{http://langsci-press.org}{langsci-press.org}
 
 \vfill
