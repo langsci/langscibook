@@ -55,3 +55,4 @@ name | type | descrition | usage
 paperappendix | env | Use appendices in papers in collected volumes | `\begin{paperappendix} \section{Title of Appendix} ... \end{paperappendix}`
 issueandeditor | cmd | print issue title in bibliography | `\PassOptionsToPackage{issueandeditor=true}{biblatex}`
 patch mkbibindexname | cmd | disable capitalisation of last names in the index | `\patchcmd{\mkbibindexname}{\ifdefvoid{#3}{}{\MakeCapital{#3} }}{\ifdefvoid{#3}{}{#3 }}{}{\AtEndDocument{\typeout{mkbibindexname could not be patched.}}}`
+nycot | cmd | sort bibliography by cite order  | `\ExecuteBibliographyOptions{sorting=nycot}`
