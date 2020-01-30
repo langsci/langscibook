@@ -108,6 +108,44 @@
      \mkbibnamefamily{#1}\isdot
      \ifdefvoid{#2}{}{\revsdnamepunct\bibnamedelimd\mkbibnamegiven{#2}\isdot}%
      \ifdefvoid{#4}{}{\addcomma\bibnamedelimd\mkbibnamesuffix{#4}\isdot}}
+     
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sort the bibliography, in particular pay
+% respect to the cite order
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\let\DeclareSortingTemplate\DeclareSortingScheme % Compatibility with older versions of biblatex
+\DeclareSortingTemplate{nycot}{%name-year-citeorder-title, based on nyt from biblatex.def
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \citeorder
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Various bibmacros used in producing the bibliography
