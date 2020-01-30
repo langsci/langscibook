@@ -40,14 +40,14 @@
 
 % If an @article entry contains Issuetitle and Editor information, we might
 % not want to print it. The Unified Style Sheet does not offer explicit
-% guidelines on this, but they don't have any examples where either of these
-% pieces of information are actually printed. Therefore, we can offer an option
-% for the user to decide whether to print it. The default will be not to print
-% it since the Unified Style Sheet does not have examples where this information
-% is printed. The user can print it by setting `issueandeditor=true` as a package
-% option when biblatex is called.
+% guidelines on this. It is often used if an article has no page numbers, 
+% but is supplied with an Article ID (some online-only journals do this).
+% But other users might not want it.
+% Therefore, we can offer an option for the user to decide whether to print it. 
+% The default will be to print it. The user can desable printing by setting 
+% `issueandeditor=false` as a package option when biblatex is called.
 \newtoggle{issueandeditor}
-\DeclareBibliographyOption{issueandeditor}[false]{%
+\DeclareBibliographyOption{issueandeditor}[true]{%
   \settoggle{issueandeditor}{#1}}
 
 % Formatting directives for name lists
@@ -114,7 +114,6 @@
 % respect to the cite order
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\let\DeclareSortingTemplate\DeclareSortingScheme % Compatibility with older versions of biblatex
 \DeclareSortingTemplate{nycot}{%name-year-citeorder-title, based on nyt from biblatex.def
   \sort{
     \field{presort}
