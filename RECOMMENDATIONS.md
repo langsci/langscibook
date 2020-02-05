@@ -12,6 +12,7 @@ package | recommmended? | reason
 -------|--------|---------
 forest | yes | versatile package with a useful, easy to read syntax
 xyling | no | complicated syntax, high computing times leading to significant increase in document compilation
+pst-jtree | no | 
 
 ## Proofs (sequential calculus)
 package | recommmended? | reason
