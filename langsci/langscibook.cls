@@ -727,8 +727,6 @@
 \fi
 
 \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
-\usepackage{dejavu}
-\usepackage{libertine}
 
 \setmonofont[
 %   Ligatures={TeX},% not supported by ttf
