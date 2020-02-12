@@ -33,7 +33,7 @@ collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
 copyright | **CC-BY** \| CC-BY-ND | choice of copyright
 draftmode | | switch to draft mode (adds: draft stamp, indication of overlong lines, date)
-modfonts | | use modified fonts
+minimal | | A speed-optimised mode - it disables generation of the cover and does not load font files. 
 multiauthors | | change editor suffix to `(eds.)`
 nobabel | | do not load the babel package (load it manually instead and include custom languages)
 nonflat | | switch paths when using the langsci folder
@@ -55,3 +55,4 @@ name | type | descrition | usage
 paperappendix | env | Use appendices in papers in collected volumes | `\begin{paperappendix} \section{Title of Appendix} ... \end{paperappendix}`
 issueandeditor | cmd | print issue title in bibliography | `\PassOptionsToPackage{issueandeditor=true}{biblatex}`
 patch mkbibindexname | cmd | disable capitalisation of last names in the index | `\patchcmd{\mkbibindexname}{\ifdefvoid{#3}{}{\MakeCapital{#3} }}{\ifdefvoid{#3}{}{#3 }}{}{\AtEndDocument{\typeout{mkbibindexname could not be patched.}}}`
+nycot | cmd | sort bibliography by cite order  | `\ExecuteBibliographyOptions{sorting=nycot}`
