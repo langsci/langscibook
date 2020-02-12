@@ -48,7 +48,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2019/06/05 Language Science Press]
+\ProvidesClass{langscibook}[2020/02/12 Language Science Press]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Early load packages
@@ -132,6 +132,7 @@
 \newif\iflsCollectionChapter \lsCollectionChapterfalse
 \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 \newif\iflsNewtxmath \lsNewtxmathfalse
+\newif\iflsMinimal \lsMinimalfalse
 \newif\iflsCover \lsCoverfalse %output format is cover
 % \newif\iflsUscover \lsUscoverfalse
 \newif\iflsModfonts \lsModfontsfalse
@@ -189,8 +190,6 @@
   \lsNoBabeltrue}
 \DeclareVoidOption{babelshorthands}{
   \lsBabelShorthandstrue}
-\DeclareVoidOption{modfonts}{
-    \lsModfontstrue}
 \DeclareVoidOption{multiauthors}{
     \lsMultiauthorstrue}
 \DeclareVoidOption{showindex}{
@@ -204,6 +203,8 @@
 	\lsNewtxmathfalse}
 \DeclareVoidOption{newtxmath}{
 	\lsNewtxmathtrue}
+\DeclareVoidOption{minimal}{
+	\lsMinimaltrue}
 \DeclareVoidOption{collection}{
 	\lsCollectiontrue}
 \DeclareVoidOption{collectionchapter}{
@@ -296,7 +297,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Print on demand macros
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\iflsMinimal\else % The minimal mode skips cover generation
 % Basic cover commands, including PGF layers
 \newcommand{\podsetup}{
   \lsCovertrue
@@ -431,7 +432,7 @@
                   anchor=north west]
             {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle~\lsSeriesNumber\par}};
 }
-
+\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -449,6 +450,7 @@
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
 \AtBeginDocument{
+\iflsMinimal\renewcommand{\maketitle}{You are using the minimal mode.}\else % The minimal mode skips cover generation
 \ifx\lsOutput\lsOutputPaper       % only if output==paper
   \usepackage{chngcntr}
   \counterwithout{figure}{chapter}
@@ -483,6 +485,7 @@
     {\lsBackPage}
     \null\newpage\thispagestyle{empty}
   }
+\fi
 \fi
 
 \ifx\lsOutput\lsOutputInprep          % only if output==inprep
@@ -692,6 +695,7 @@
 \usepackage{amssymb} % has to be loaded before other stuff
 \usepackage{amsmath} % has to be loaded before mathspec/unicode-math
 
+\iflsMinimal\else % The minimal mode skips font loading
 \iflsNewtxmath\else
 %% There is a known problem in the interplay between \binom, unicode-math, and OTF
 %% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
@@ -773,7 +777,6 @@
 %% Deprecated:
 \iflsNewtxmath		% some users have problems when installing newtxmath
 	\usepackage[libertine]{newtxmath}
-
 	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
 	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
   %% Unfortunately, this is NOT extensively tested!
@@ -805,6 +808,7 @@
 \newcommand{\lsBackBodyFont}{\lsInsideFont}
 \newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
 \newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
+\fi % end minimal mode
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 
@@ -1326,11 +1330,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %    Footnotes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifxetex
+\ifxetex\iflsMinimal\else
 \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}}      % numbers in footnotes
 %\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote labels
 %\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote references
-\fi
+\fi\fi
 
 \raggedbottom
 \deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}} % putting a space after footnotemark has undesirable side effects with footnotes that start with an empty line; instead use \xspace in the footnote definition below
