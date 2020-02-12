@@ -1989,7 +1989,7 @@ width=.8\textwidth
 
 \newcommand{\chapterfooterlogo}{langsci_spinelogo_nocolor.pdf}
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{
-  \includegraphics{\logopath\chapterfooterlogo}}%
+  \includegraphics{\logopath/langsci_spinelogo_nocolor.pdf}}%
   % \hspace{0.8em}%
   \hfill%
   \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{\logopath/ccby.pdf}}}
