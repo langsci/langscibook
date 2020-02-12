@@ -33,7 +33,7 @@ collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
 copyright | **CC-BY** \| CC-BY-ND | choice of copyright
 draftmode | | switch to draft mode (adds: draft stamp, indication of overlong lines, date)
-modfonts | | use modified fonts
+minimal | | A speed-optimised mode - it disables generation of the cover and does not load font files. 
 multiauthors | | change editor suffix to `(eds.)`
 nobabel | | do not load the babel package (load it manually instead and include custom languages)
 nonflat | | switch paths when using the langsci folder
