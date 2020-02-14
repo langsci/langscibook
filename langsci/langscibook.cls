@@ -422,7 +422,7 @@
           rectangle,
           fill=white,
           minimum size=17pt] (lspcls_square) {}; % This is the white square at the bottom left of the front cover
-  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{#1}\includegraphics{\logopath\spinelogo}}; % Print the Language Science press Logo
+  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{#1}\includegraphics{\logopath langsci_logo_nocolor.pdf}}; % Print the Language Science press Logo
   \path let \p1 = (lspcls_square.north east), % Calculate the exact coordinates for the Series Title to print.
             \p2 = (lspcls_covertitle.west)
             in node at (\x2,\y1) (lspcls_seriesinfo) [
