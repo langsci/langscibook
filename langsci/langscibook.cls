@@ -439,7 +439,6 @@
 
 % \newcommand{\lsOutputLong}{long}
 \newcommand{\lsOutputBook}{book}             % standard book
-\newcommand{\lsOutputInprep}{inprep}          % marks manuscript as in preparation
 \newcommand{\lsOutputPaper}{paper}            % paper in edited volume
 \newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
 \newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
@@ -486,13 +485,6 @@
     \null\newpage\thispagestyle{empty}
   }
 \fi
-\fi
-
-\ifx\lsOutput\lsOutputInprep          % only if output==inprep
-  {\renewcommand{\lsCoverBlockColor}{white}
-   \renewcommand{\lsCoverFontColor}{black}
-   \lsCoverBlock
-   \lsCoverTitleAuthor}
 \fi
 
 \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
@@ -559,11 +551,8 @@
 \lsInsideFont
 
 %% Imprint:
-\ifx\lsOutput\lsOutputInprep{}
-\else{
-  \ifx\lsOutput\lsOutputGuidelines{}
-  \else{\lsImpressum}
-  \fi}
+\ifx\lsOutput\lsOutputGuidelines{}
+\else{\lsImpressum}
 \fi
 %%%%%%%%%%%%%
 
@@ -675,14 +664,6 @@
   ,marginparwidth=50pt
   ]{geometry}
 \fi
-
-\usepackage[
-	absolute 		% for absolute positioning in titlepage
-	%,showboxes
-	]{textpos}
-\setlength{\TPHorizModule}{1mm}
-\setlength{\TPVertModule}{\TPHorizModule}
-\textblockorigin{0mm}{0mm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Fonts
@@ -844,89 +825,8 @@
 \else
 \fi
 
-\newcommand{\lsCoverBlock}{
-  \begin{textblock}{155}(7.6,7.5)
-  \color{\lsCoverBlockColor}
-  \raggedright\rule{155mm}{225mm}
-  \end{textblock}
-  \iflsDraft
-     \begin{textblock}{155}(30,80)
-     \color{lsLightGray}
-     \rotatebox{40}{
-      \begin{tabular}{c}
-      \scalebox{10}{DRAFT}\\
-      of \today, \currenttime
-      \end{tabular}}
-     \end{textblock}
-  \fi
-  \iflsOpenReview
-    \iflsDraft
-      \ClassError{langsci/langscibook}{Open review mode not compatible with draft mode. Please disable one of them}{}
-    \fi
-    \begin{textblock}{170}(-20,75)
-      \rotatebox{30}{
-      \colorbox{red}{
-      \parbox[c][15ex][c]{220mm}{\centering\lsCoverTitleFont\color{white}Open Review\\[-0.1ex]}
-      }
-      }
-     \end{textblock}
-  \fi
-%   \iflsUndecapitalize
-%     \begin{textblock}{170}(-20,75)
-%       \rotatebox{30}{
-%       \colorbox{red}{
-%       \parbox[c][15ex][c]{220mm}{\centering\lsCoverTitleFont\color{white}Undecapitalized\\[-0.1ex]}
-%       % \begin{tabular}{c}
-%       %   ~\\
-%       %   \scalebox{6}{\color{red}Open Review}\\[-0.5ex]
-%       %   ~%version of \today, \currenttime
-%       % \end{tabular}
-%       }
-%       }
-%      \end{textblock}
-%   \fi
-
-  }
-
-\newcommand{\lsCoverTitleAuthor}{
-  \renewcommand{\and}{\\}
-  \renewcommand{\lastand}{\\}
-  \renewcommand{\newlineCover}{\\}
-  \renewcommand{\newlineSpine}{}
-  \lsCoverBlock
-
-  \begin{textblock}{140}(15,17.5)
-  \color{\lsCoverFontColor}
-  \raggedright
-  {\lsCoverTitleFont{\@title\\}}
-
-  \ifx\@subtitle\empty
-  \else \vspace{8mm} {\lsCoverSubTitleFont \@subtitle\\}
-  \fi
-
-  \vspace{11.2mm} % 20mm - 25pt
-
-  \raggedright
-  {\lsCoverAuthorFont
-    \lsEditorPrefix\@author\\}
-  \end{textblock}}
-
-\newcommand{\lsCoverSeries}{
-  \begin{textblock}{95}(7.4,209)
-  \color{white}
-  \raggedright\rule{3.6mm}{3.5mm}
-  \color{\lsCoverFontColor}
-  \hspace{3mm}\parbox[t]{85mm}{\raggedright\lsCoverSeriesFont
-    \lsSeriesTitle\\}
-  \end{textblock}}
-
-\newcommand{\lsCoverLogo}{
-  \begin{textblock}{33}(124.6,205)
-    \raggedright\IfFileExists{\logopath langsci_logo_nocolor.pdf}{\includegraphics{\logopath langsci_logo_nocolor.pdf}}{langsci logo}
-  \end{textblock}}
-
-   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
-   \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+\pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+\pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
 
 \newcommand{\lsFrontPage}{% Front page
   \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
