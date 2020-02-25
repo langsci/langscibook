@@ -318,6 +318,7 @@
 
 \def\ea{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\raggedright\ex}
 \def\eal{\begin{exe}\exnrfont\ex\begin{xlist}[iv.]\raggedright}
+\def\eas{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\ex\begin{tabular}[t]{@{}p{\linewidth}@{}}}
 
 % allow hyphenation and justification
 \def\eanoraggedright{\ifnum\@xnumdepth=0\begin{exe}\else\begin{xlist}[iv.]\fi\ex}
@@ -326,7 +327,9 @@
 
 
 \def\z{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
-
+\def\zl{\end{xlist}\end{exe}}
+\def\zs{\end{tabular}\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
+\def\zllast{\end{xlist}\end{exe}\removelastskip}
 
 % Control vertical space for examples in footnotes
 \def\zlast{\z\vspace{-\baselineskip}}

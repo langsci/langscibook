@@ -33,12 +33,13 @@
 
 
 % does not work with forest v1.05 did not check later versions
-\usepackage[external,linguistics]{forest}
-\tikzset{external/up to date check=simple}
+\usepackage[linguistics]{forest}
+%\usepackage[external,linguistics]{forest}
+%\tikzset{external/up to date check=simple}
 % for texlive: -shell-escape, for miktex -enable-write18
 % All externalized graphics go go the \externaldirectory
-\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
-\tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
+%\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
+%\tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 %\usepackage{morewrites}
 
 
