@@ -130,7 +130,7 @@
 
 \newif\iflsDraft \lsDraftfalse
 \newif\iflsOpenReview \lsOpenReviewfalse
-\newif\iflsUndecapitalize \lsUndecapitalizefalse
+\newif\iflsResetCapitals \lsResetCapitalsfalse
 \newif\iflsShowIndex \lsShowIndexfalse
 \newif\iflsBiblatex \lsBiblatextrue
 \newif\iflsCollection \lsCollectionfalse
@@ -173,8 +173,8 @@
 		\renewcommand{\lsSpinewidth}{#1}}
 \DeclareVoidOption{smallfont}{
 	\renewcommand{\lsFontsize}{10pt}}
-\DeclareVoidOption{undecapitalize}{
-	\lsUndecapitalizetrue }
+\DeclareVoidOption{decapbib}{
+	\lsResetCapitalstrue }
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects
 	 \lsDrafttrue
 	 \overfullrule=5pt	}	% to indicate overfull hboxes
@@ -1335,6 +1335,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	url=false,
 	eprint=false,
 	autolang=hyphen,
+	\iflsResetCapitals
+        language=english,
+    \fi
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\iflsCollection\else
