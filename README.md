@@ -32,6 +32,7 @@ collection | | for making the book an edited volume
 collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
 copyright | **CC-BY** \| CC-BY-ND | choice of copyright
+decapbib | true / **false** | If you want to have a `booklanguage` other than English, but still have English language settings in your bibliography, e.g. if you have a lot of English sources and/or want to decapitalise the bibliography. (This assumes `biblatex=true`.
 draftmode | | switch to draft mode (adds: draft stamp, indication of overlong lines, date)
 minimal | | A speed-optimised mode - it disables generation of the cover and does not load font files. 
 multiauthors | | change editor suffix to `(eds.)`
