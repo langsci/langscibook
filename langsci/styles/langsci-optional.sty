@@ -1,14 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci-optional.sty
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-16 16:47:43 UTC 
-%%   Purpose: This file contains useful, but not essential, 
+%%      Date: 2016-01-16 16:47:43 UTC
+%%   Purpose: This file contains useful, but not essential,
 %%            macros for books using langscibook.cls
 %%  Language: LaTeX
-%%   Licence: 
+%%   Licence:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 % Heiko Oberdiek
 % http://tex.stackexchange.com/questions/136644/vertical-space-in-interaction-with-figure-center-environment
@@ -63,59 +61,6 @@
 
 %\DefineVerbatimEnvironment{rtlverbatim}{Verbatim}{commandchars=+\[\]}
 
-
-\newcommand{\ispackage}[1]{\if@noftnote%
-\is{package!{\scshape #1}}%
-\else%
-\is{package!{\scshape #1}|fn{*}}%
-\fi%
-}
-
-% breaks the index
-%\usepackage{doc}
-
-
-\newcommand{\ispackageb}[1]{
-\is{package!\texttt{#1}|(}
-}
-\newcommand{\ispackagee}[1]{
-\is{package!\texttt{#1}|)}
-}
-
-\newcommand{\isoption}[1]{\if@noftnote%
-\is{option!\texttt{#1}}%
-\else%
-\is{option!\texttt{#1}|fn{*}}%
-\fi%
-}
-
-\newcommand{\iscommand}[1]{\if@noftnote%
-\index{#1@{\ttfamily $\backslash$#1}}%
-\else%
-\is{{#1@\ttfamily $\backslash$#1}|fn{*}}%
-\fi%
-}
-
-
-\newcommand\displaycmd[2]{%
-  \DescribeMacro{#2}\centerline{\cmd{#1}}}
-  
-% \mex considered evil, as we need explicit reference to examples in XML
-% % The following allows for a quick reference to following or preceeding examples (\mex{1}) or
-% % (\mex{0}) but also (\mex{-1})
-% % taken from covington.sty (check)
-% \newcounter{lsptempcnt}
-% 
-% \newcommand{\mex}[1]{\setcounter{lsptempcnt}{\value{equation}}%
-% \addtocounter{lsptempcnt}{#1}%
-% \arabic{lsptempcnt}}%
-
-\newcommand{\fitpagewidth}[1]{
-  \resizebox{\textwidth}{!}{#1}
-}
-
-
-
 %add intonation bars over morphemes or words
 \newcommand{\intline}[2]{\settowidth{\LSPTmp}{#2}\raisebox{#1pt}{\parbox{.1mm}{\rule{\LSPTmp}{.5pt}}}#2}
 
@@ -138,7 +83,7 @@
 \setlength{\rotwidth}{#1}
 \setlength{\rotheight}{.85\rotwidth}
   \begin{rotate}{33}~ %nbsp shifts the content away from the line underneath
-   \parbox{\rotwidth}{\raggedright #2}   
+   \parbox{\rotwidth}{\raggedright #2}
   \end{rotate}%
   \rule{0pt}{\rotheight} %add zero width rule to get the right table height
 }
@@ -159,27 +104,10 @@
 \fi%
 #3)}\nopagebreak[4]\ignorespaces}
 
- 
+\newcommand{\fitpagewidth}[1]{
+  \resizebox{\textwidth}{!}{#1}
+}
 \newcommand{\fittable}[1]{\resizebox{\textwidth}{!}{#1}}
-
-
-% integrate see also in multiple indexes
-\def\igobble#1 {} 
-\newcommand{\langsciseealso}{\par\addvspace{.1\baselineskip}\hspace*{1.4cm}\hangindent=1.4cm\seealso}
-\newcommand{\ilsa}[2]{\il{#1@\igobble | langsciseealso{#2}}}
-\newcommand{\issa}[2]{\is{#1@\igobble | langsciseealso{#2}}}
-\newcommand{\iasa}[2]{\ia{#1{}@\igobble | langsciseealso{#2}}}
-
-
-\newcommand{\name}[3][]{%add person names to text and author index
-#2 %output first name
-\ifstrempty{#1}{%if no optional argument present
-\ia{#3, #2@#3, #2}%add lastname, firstname to index
-}{%if optional argument present
-\ia{#1@#1}% add optional argument to index
-}%
-#3}%output last name in text
-
 
 \usepackage{tabularx}
 \usepackage{array}
@@ -203,7 +131,7 @@
 	\node at (0.25,2) (e) {e};
 	\node at (2.75,2) (o) {o};
 	\node at (0.75,1) (E) {ε};
-	\node at (2.25,1) (O) {ɔ};	
+	\node at (2.25,1) (O) {ɔ};
 }
 
 %no hyphenation left alingned
@@ -219,19 +147,19 @@
 %no hyphenation right aligned fixed width
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-\newcolumntype{d}[1]{D{.}{.}{#1}} 
+\newcolumntype{d}[1]{D{.}{.}{#1}}
 
 
-% Underlining in gb4e-example Environments. Usual underlining commands that span multiple words do not work, because gb4e would parse it as one word. 
+% Underlining in gb4e-example Environments. Usual underlining commands that span multiple words do not work, because gb4e would parse it as one word.
 % Example: \underline{My example phrase} should become \ulp{My}{~~~~~} \ulp{example}{~~~~~} \ule{phrase}
-% Note: The 2nd Argument of the \ulp command is filled in by experience - if you are not familiar with the command, you should experiment a bit. Usually, five tildes are enough, but be sure to check the outcome. 
+% Note: The 2nd Argument of the \ulp command is filled in by experience - if you are not familiar with the command, you should experiment a bit. Usually, five tildes are enough, but be sure to check the outcome.
 % \ule is meant to be the last word in a phrase that is underlined. Therefore, \ule does not have an extra length.
-\usepackage[normalem]{ulem} 
+\usepackage[normalem]{ulem}
 \usepackage{calc}
 \newlength{\fulllength}
 \newcommand{\ulp}[2]{%#1: stuff to underline, #2: extra length to skip the whitespace between to components
   \settowidth{\LSPTmp}{#1}%
-  % several boxes are need to assure that words with ascending and descending letters are underlined at the same 
+  % several boxes are need to assure that words with ascending and descending letters are underlined at the same
   % level, leading to the impression of a continuous stroke
   \parbox[t]{\LSPTmp}{%restrict first box to the length of first argument
       \settowidth{\fulllength}{\parbox{\LSPTmp}{~}\parbox{#2mm}{~}} %inner box is larger than outerbox, so underlining will extend beyond length of outer box
@@ -244,11 +172,11 @@
 \newcommand{\ule}[1]{%#1: stuff to underline, no extra length
   \ulp{#1}{0}%
   }
-  
+
 \newlength{\fullllength}
 \newcommand{\soutp}[2]{%#1: stuff to underline, #2: extra length to skip the whitespace between to components
   \settowidth{\LSPTmp}{#1}%
-  % several boxes are need to assure that words with ascending and descending letters are underlined at the same 
+  % several boxes are need to assure that words with ascending and descending letters are underlined at the same
   % level, leading to the impression of a continuous stroke
   \parbox[t]{\LSPTmp}{%restrict first box to the length of first argument
       \settowidth{\fullllength}{\parbox{\LSPTmp}{~}\parbox{#2mm}{~}}%inner box is larger than outerbox, so underlining will extend beyond length of outer box
@@ -260,11 +188,10 @@
 
 \newcommand{\soute}[1]{%#1: stuff to underline, no extra length
   \soutp{#1}{0}%
-  } 
-
+  }
 
 \newcommand{\longrule}{\rule{1em}{.3pt}}
-\usepackage{colortbl} 
+\usepackage{colortbl}
 \newcommand{\shadecell}{\cellcolor{black!20!white}}
 
 % vertical alignment of  numbered  example
@@ -273,7 +200,7 @@
     \parbox[t]{.8\textwidth}{
       \vspace{#1}
       #2
-     } 
+     }
   \z
 }
 \newcommand{\exbox}[2][-.7\baselineskip]{
@@ -281,18 +208,13 @@
     \parbox[t]{.8\textwidth}{
       \vspace{#1}
       #2
-     }  
+     }
 }
 
 %fix \verb error in biblatex
-\makeatletter
-\def\blx@maxline{77}
-\makeatother
-
-
-\newcommand{\twodigitexamples}{\exewidth{(23)}}
-\newcommand{\threedigitexamples}{\exewidth{(234)}}
-\newcommand{\fourdigitexamples}{\exewidth{(2345)}}
+% \makeatletter
+% \def\blx@maxline{77}
+% \makeatother
 
 \newcommand{\rephrase}[2]{{\color{yellow!30!black}#2}\todo{replaced `#1'}}
 
@@ -301,34 +223,20 @@
 \newenvironment{indentquote}[1]%
   {\list{}{\leftmargin=#1\rightmargin=0pt}\item[]}%
   {\endlist}
-  
-  
+
+
 \newcommand{\phonrule}[3]{#1 $\to$ #2 / #3}
 \newcommand{\featurebox}[1]{$\left[\begin{tabular}{>{\scshape}c}#1\end{tabular}\right]$}
 
 
-\definecolor{RED}{cmyk}{0.05,1,0.8,0}
 
 %connect two elements with lines
 \newcommand{\connect}[2]{%
   \tikz[overlay,remember picture]{%
     \draw[-,thick] (#1) -- (#2) node   {};  %
   }
-} 
-
-\newcommand{\examplesroman}{
-  \let\eachwordone=\upshape
-  \exfont{\upshape}
-}
-\newcommand{\examplesitalics}{
-  \let\eachwordone=\itshape
-  \exfont{\itshape}
 }
 
-\newenvironment{modquote}[1][6mm]% slightly less indented quote for hyphenation issues
-  {\list{}{\leftmargin=#1\rightmargin=0mm}\item[]}%
-  {\endlist}
-  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Experimental feature for pointing out moving things. %%%%
 %%%% Buggy? Write to: kopeckyf@hu-berlin.de               %%%%
@@ -339,21 +247,21 @@
     \edef\lsConnectTempPosition{#2}%\edef expands the argument, which means reading the current value of the counter.
     {\tikz[remember picture,
            anchor=base, baseline,
-           inner xsep=0pt, 
+           inner xsep=0pt,
            inner ysep=-.5ex]\node (ConnectTempTail\lsConnectTempPosition) {\strut{}#1};}%\strut for baseline
 }
 \NewDocumentCommand\ConnectHead{s O{1ex} m O{\thelsConnectTempGroup}}{%read: star #1, optional argument (distance of arrow from text= std. one x-height), mand. arg. (node text), optional argument #2, the group specifier
     \edef\lsConnectTempPosition{#4}%
-    \stepcounter{lsConnectTempGroup}%We have a match, let's update the group counter   
+    \stepcounter{lsConnectTempGroup}%We have a match, let's update the group counter
     {\tikz[remember picture,
-           anchor=base, baseline, 
-           inner xsep=0pt, 
+           anchor=base, baseline,
+           inner xsep=0pt,
            inner ysep=-.5ex] \node (ConnectTempHead\lsConnectTempPosition) {\strut{}#3};%
      \tikz[remember picture] \draw[% we have a tail and a head, let's bring them together
                                 \IfBooleanTF#1{{Triangle[]}-}{-{Triangle[]}},% Check if the starred version is used. The starred version is right->left, the normal version left->right
                                 overlay] (ConnectTempTail\lsConnectTempPosition.south) -- ++(0,-#2) -| (ConnectTempHead\lsConnectTempPosition.south);
     }%
-} 
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -361,29 +269,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % for chapters without abstract
-\newcommand{\noabstract}{\vspace*{-2\baselineskip}} 
+\newcommand{\noabstract}{\vspace*{-2\baselineskip}}
 
-% for papers that have appendices, a replacement for \appendix.
-% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix
-%        Will result in "Appendix A: Title"
-%
-\newcounter{paperappendixsection}
-\newenvironment{paperappendix}{%
-    \let\oldthesection\thesection%
-    \let\oldsectionformat\sectionformat%
-    \setcounter{paperappendixsection}{0}%
-    \def\thesection{\Alph{paperappendixsection}}%
-    \def\sectionformat{\stepcounter{paperappendixsection}\appendixname\ \thesection:\enskip}%
-    }{%
-    \let\thesection\oldthesection%
-    \let\sectionformat\oldsectionformat}
-  
 %%%%%%%%%%%%%%%%%%%%
 %%%%           %%%%%
 %%%%   PLOTS   %%%%%
 %%%%           %%%%%
 %%%%%%%%%%%%%%%%%%%%
- 
+
 
 \newcommand{\LSfrac}[1]{{\addfontfeature{Fractions=On}#1}}% Use the fraction glyphs shipped with Libertine. The argument is n/m, where n and m are integers
 

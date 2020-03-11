@@ -1,12 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci-gb4e.sty
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-16 16:47:43 UTC 
+%%      Date: 2016-01-16 16:47:43 UTC
 %%   Purpose: This file contains an adapted version of the gb4e package
-%%            for typetting linguistic examples. It also includes 
+%%            for typetting linguistic examples. It also includes
 %%            adapted versions of the cgloss and jambox packages
 %%  Language: LaTeX
-%%   Licence: 
+%%   Licence:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ProvidesPackage{langsci-gb4e}[2020/01/01]
@@ -22,7 +22,7 @@
 \DeclareOption*{\PackageWarning{examplepackage}{Unknown option ‘\CurrentOption’}}
 \ProcessOptions\relax
 
-% \def\gbVersion{4e} 
+% \def\gbVersion{4e}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %  Format of examples: %
@@ -73,11 +73,11 @@
 
 %CGLOSS META
 % Modified version of cgloss4e.sty.  Hacked and renamed cgloss.sty
-% by Alexis Dimitriadis (alexis@babel.ling.upenn.edu). Integrated into 
+% by Alexis Dimitriadis (alexis@babel.ling.upenn.edu). Integrated into
 % langsci-gb4e.sty by Sebastian Nordhoff
 % EnD CGLOSS META
- 
- 
+
+
 
 \@ifundefined{new@fontshape}{\def\reset@font{}\let\mathrm\rm\let\mathit\mit}{}
 
@@ -96,7 +96,7 @@
 % b. glossing line
 \newcommand{\glossfont}{\normalsize\upshape}
 % c. translation font
-\newcommand{\transfont}{\normalsize\upshape} 
+\newcommand{\transfont}{\normalsize\upshape}
 % d. example number
 \newcommand{\exnrfont}{\exfont\upshape}
 %
@@ -109,6 +109,16 @@
 \newcommand{\fntransfont}{\footnotesize\upshape}
 % d. example number
 \newcommand{\fnexnrfont}{\fnexfont\upshape}
+
+\newcommand{\examplesroman}{
+  \let\eachwordone=\upshape
+  \exfont{\upshape}
+}
+\newcommand{\examplesitalics}{
+  \let\eachwordone=\itshape
+  \exfont{\itshape}
+}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                     %%
@@ -129,7 +139,7 @@
 
 \renewcommand\@footnotetext[1]{%
    \@noftnotefalse\setcounter{fnx}{0}%
-\begingroup% 
+\begingroup%
 \let\exfont\fnexfont%
 \let\glossfont\fnglossfont%
 \let\transfont\fntransfont%
@@ -148,7 +158,7 @@
 % start counters with 1
 \newcount\@xnumdepth \@xnumdepth = 0
 
-% define four levels of indentation 
+% define four levels of indentation
 \@definecounter{xnumi}
 \@definecounter{xnumii}
 \@definecounter{xnumiii}
@@ -206,6 +216,10 @@
 % Control the width of example identifiers
 \def\exewidth#1{\def\@exwidth{#1}}
 
+\newcommand{\twodigitexamples}{\exewidth{(23)}}
+\newcommand{\threedigitexamples}{\exewidth{(234)}}
+\newcommand{\fourdigitexamples}{\exewidth{(2345)}}
+
 \def\gblabelsep#1{\def\@gblabelsep{#1}}
 \gblabelsep{1em}
 
@@ -226,11 +240,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\exe{%
-    %\ifnum\value{equation}>9 \exewidth{(23)}\else\fi%      
+    %\ifnum\value{equation}>9 \exewidth{(23)}\else\fi%
     %inserted by LangSci, for large example numbers
-    \ifnum\value{equation}>98 \exewidth{(235)}\else\fi%      
+    \ifnum\value{equation}>98 \exewidth{(235)}\else\fi%
     \@ifnextchar [{\@exe}{\@exe[\@exwidth]}}
-    
+
 \def\@exe[#1]{\ifnum \@xnumdepth >0%
                  \if@xrec\@exrecwarn\fi%
                  \if@noftnote\@exrecwarn\fi%
@@ -340,7 +354,7 @@
 \def\attop#1{\leavevmode\vtop{\strut\vskip-\baselineskip\vbox{#1}}}
 \def\atcenter#1{$\vcenter{#1}$}
 %%%%%%
- 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                                                   %%
@@ -372,16 +386,16 @@
 \def\gll%                  % Introduces 2-line text-and-gloss.
    {\raggedright%
      \bgroup %\begin{flushleft}
-     \ifx\@gsingle1%           
-	 \def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	 \def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \twosent
 }
 
 \def\glll%                  % Introduces 3-line text-and-gloss.
    {\bgroup %\begin{flushleft}
-     \ifx\@gsingle1%        
-	\def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	\def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \threesent
 }
@@ -389,8 +403,8 @@
 
 \def\gllll%                  % Introduces 4-line text-and-gloss.
    {\bgroup %\begin{flushleft}
-     \ifx\@gsingle1%        
-	\def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	\def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \foursent
 }
@@ -398,8 +412,8 @@
 
 \def\glllll%                  % Introduces 5-line text-and-gloss.
    {\bgroup %\begin{flushleft}
-     \ifx\@gsingle1%        
-	\def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	\def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \fivesent
 }
@@ -407,8 +421,8 @@
 
 \def\gllllll%                  % Introduces 6-line text-and-gloss.
    {\bgroup %\begin{flushleft}
-     \ifx\@gsingle1%        
-	\def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	\def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \sixsent
 }
@@ -416,8 +430,8 @@
 
 \def\glllllll%                  % Introduces 7-line text-and-gloss.
    {\bgroup %\begin{flushleft}
-     \ifx\@gsingle1%        
-	\def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	\def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \sevensent
 }
@@ -425,15 +439,15 @@
 
 \def\gllllllll%                  % Introduces 8-line text-and-gloss.
    {\bgroup %\begin{flushleft}
-     \ifx\@gsingle1%        
-	\def\baselinestretch{1}\@selfnt\fi 
+     \ifx\@gsingle1%
+	\def\baselinestretch{1}\@selfnt\fi
     \bgroup
     \eightsent
 }
- 
+
 
 \newlength{\gltoffset}
-\setlength{\gltoffset}{.17\baselineskip} 
+\setlength{\gltoffset}{.17\baselineskip}
 \newcommand{\nogltOffset}{\setlength{\gltoffset}{0pt}}
 \newcommand{\resetgltOffset}{\setlength{\gltoffset}{.17\baselineskip}}
 \def\glt{\ifhmode\\*[\gltoffset]\else\nobreak\vskip\gltoffset\nobreak\fi\transfont}
@@ -448,7 +462,7 @@
 % The following TeX code is adapted, with permission, from:
 % gloss.tex: Macros for vertically aligning words in consecutive sentences.
 % Version: 1.0  release: 26 November 1990
-% Copyright (c) 1991 Marcel R. van der Goot (marcel@cs.caltech.edu).  
+% Copyright (c) 1991 Marcel R. van der Goot (marcel@cs.caltech.edu).
 
 \newbox\lineone % boxes with words from first line
 \newbox\linetwo

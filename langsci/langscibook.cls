@@ -44,6 +44,7 @@
 %   \- Indexes
 %   \- Hyperref
 %   \- Edited volumes (Collection)
+%   \- Localisation
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
@@ -56,7 +57,10 @@
 \RequirePackage[]{silence}
 \WarningsOff[hyperref]
 \WarningsOff[tocstyle]
-\typeout{Warnings are disabled in langscibook.cls for hyperref and tocstyle}
+\WarningsOff[microtype]
+\WarningFilter{microtype}{Unknown slot}
+\WarningFilter{scrbook}{package incompatibility}
+\typeout{Warnings are disabled in langscibook.cls for hyperref, tocstyle, microtype and scrbook package incompatibility}
 \usepackage{etoolbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,7 +95,6 @@
 \newcommand{\lsID}{000}
 \newcommand{\lsURL}{http://langsci-press.org/catalog/book/\lsID}
 \newcommand{\lsSeries}{eotms}
-% \newcommand{\lsSpineBreadth}{20mm}
 \newcommand{\lsOutput}{book}
 \newcommand{\lsBookLanguage}{english}
 \newcommand{\lsFontsize}{11pt}
@@ -138,14 +141,11 @@
 \newif\iflsNewtxmath \lsNewtxmathfalse
 \newif\iflsMinimal \lsMinimalfalse
 \newif\iflsCover \lsCoverfalse %output format is cover
-% \newif\iflsUscover \lsUscoverfalse
-\newif\iflsModfonts \lsModfontsfalse
 \newif\iflsNoBabel \lsNoBabelfalse
 \newif\iflsBabelShorthands \lsBabelShorthandsfalse
 \newif\iflsMultiauthors \lsMultiauthorsfalse
 \newif\iflsArseneau \lsArseneaufalse
 \newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -186,8 +186,6 @@
 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
 	\renewcommand{\localepath}{./langsci/locale/}
 	\renewcommand{\bibstylepath}{./langsci/}
-% 	\renewcommand{\bbxpath}{\bibstylepath langsci-unified/bbx/}
-% 	\renewcommand{\cbxpath}{\bibstylepath langsci-unified/cbx/}
 	\renewcommand{\stylepath}{./langsci/styles/}
 }
 \DeclareVoidOption{nobabel}{
@@ -530,7 +528,6 @@
   \fi
 
 
-%   ============================
 \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
   \podsetup
   \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
@@ -599,8 +596,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % For output type cover
-% \newlength{\csspine}   % CS spine width algorithm, when page count is known:  Total Page Number (excluding cover), usually (Total Page - 3) * 0.0572008 mm
-% \newlength{\bodspine}  % BoD spine width algorithm located at http://www.bod.de/hilfe/coverberechnung.html (German only, please contact LangSci for help)
+% CS spine width algorithm, when page count is known:  Total Page Number (excluding cover), usually (Total Page - 3) * 0.0572008 mm
+% BoD spine width algorithm located at http://www.bod.de/hilfe/coverberechnung.html (German only, please contact LangSci for help)
 \newlength{\bleed}
 \newlength{\seitenbreite}
 \newlength{\seitenhoehe}
@@ -679,119 +676,122 @@
 \usepackage{amsmath} % has to be loaded before mathspec/unicode-math
 
 \iflsMinimal\else % The minimal mode skips font loading
-\iflsNewtxmath\else
-%% There is a known problem in the interplay between \binom, unicode-math, and OTF
-%% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
-\ifx\Umathcode\@undefined\else
+    \iflsNewtxmath\else
+    %% There is a known problem in the interplay between \binom, unicode-math, and OTF
+    %% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
+    \ifx\Umathcode\@undefined\else
 
-\DeclareRobustCommand{\genfrac}[6]{%
-  \def\@tempa{#1#2}%
-  \edef\@tempb{\@nx\@genfrac\@mathstyle{#4}%
-    % just \over or \above never withdelims versions
-    \ifx @#3@\@@over\else\@@above\fi
-  }%
-  \ifx\@tempa\@empty \else
-  \bgroup % so mathord not mathinner
-  \left\ifx\relax#1\relax.\else#1\fi % assumes . is null delimiter
-  % otherwise add specified delimiter
-  \kern-\nulldelimiterspace % fractions add extra nulldelimiter space
-  \fi
-  \@tempb{#3}{\mathstrut{#5}}{\mathstrut{#6}}%
-  \ifx\@tempa\@empty \else
-  \kern-\nulldelimiterspace
-  \right\ifx\relax#2\relax.\else#2\fi
-  \egroup
-  \fi
-}
-\fi
-%% Provides \setmathfont
-\usepackage{unicode-math}
-\fi
+    \DeclareRobustCommand{\genfrac}[6]{%
+    \def\@tempa{#1#2}%
+    \edef\@tempb{\@nx\@genfrac\@mathstyle{#4}%
+        % just \over or \above never withdelims versions
+        \ifx @#3@\@@over\else\@@above\fi
+    }%
+    \ifx\@tempa\@empty \else
+    \bgroup % so mathord not mathinner
+    \left\ifx\relax#1\relax.\else#1\fi % assumes . is null delimiter
+    % otherwise add specified delimiter
+    \kern-\nulldelimiterspace % fractions add extra nulldelimiter space
+    \fi
+    \@tempb{#3}{\mathstrut{#5}}{\mathstrut{#6}}%
+    \ifx\@tempa\@empty \else
+    \kern-\nulldelimiterspace
+    \right\ifx\relax#2\relax.\else#2\fi
+    \egroup
+    \fi
+    }
+    \fi
+    %% Provides \setmathfont
+    \usepackage{unicode-math}
+    \fi
 
-\iflsNewtxmath
-%% Deprecated:
-\PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
-\fi
+    \iflsNewtxmath
+    %% Deprecated:
+    \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
+    \fi
 
-\usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
+    \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 
-\setmonofont[
-%   Ligatures={TeX},% not supported by ttf
-  Scale=MatchLowercase,
-  BoldFont = DejaVuSansMono-Bold.ttf ,
-  SlantedFont = DejaVuSansMono-Oblique.ttf ,
-  BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
-]{DejaVuSansMono.ttf}
+    \setmonofont[
+    %   Ligatures={TeX},% not supported by ttf
+    Scale=MatchLowercase,
+    BoldFont = DejaVuSansMono-Bold.ttf ,
+    SlantedFont = DejaVuSansMono-Oblique.ttf ,
+    BoldSlantedFont = DejaVuSansMono-BoldOblique.ttf
+    ]{DejaVuSansMono.ttf}
 
-\setsansfont[
-  %Ligatures={TeX,Common},% not supported by ttf
-  Scale=MatchLowercase,
-  Path=\fontpath,
-  BoldFont = Arimo-Bold.ttf,
-  ItalicFont = Arimo-Italic.ttf,
-  BoldItalicFont = Arimo-BoldItalic.ttf
-]{Arimo-Regular.ttf}
+    \setsansfont[
+    %Ligatures={TeX,Common},% not supported by ttf
+    Scale=MatchLowercase,
+    Path=\fontpath,
+    BoldFont = Arimo-Bold.ttf,
+    ItalicFont = Arimo-Italic.ttf,
+    BoldItalicFont = Arimo-BoldItalic.ttf
+    ]{Arimo-Regular.ttf}
 
-\iflsNewtxmath\else
-\setmathfont[AutoFakeBold,Path=\fontpath]{LibertinusMath-Regular.otf}
-\setmathfont[range={cal},StylisticSet=1,Path=\fontpath]{XITSMath-Regular.otf}
-\setmathfont[range={bfcal},StylisticSet=1,Path=\fontpath]{XITSMath-Bold.otf}
-\fi
+    \iflsNewtxmath\else
+    \setmathfont[AutoFakeBold,Path=\fontpath]{LibertinusMath-Regular.otf}
+    \setmathfont[range={cal},StylisticSet=1,Path=\fontpath]{XITSMath-Regular.otf}
+    \setmathfont[range={bfcal},StylisticSet=1,Path=\fontpath]{XITSMath-Bold.otf}
+    \fi
 
-\iflsOldStyleNumbers
-  \defaultfontfeatures[LibertinusSerif-Semibold.otf,LibertinusSerif-Italic.otf,LibertinusSerif-SemiboldItalic.otf,LibertinusSerif-Regular.otf]{SmallCapsFeatures={Numbers=OldStyle}}
- \fi
+    \iflsOldStyleNumbers
+    \defaultfontfeatures[LibertinusSerif-Semibold.otf,LibertinusSerif-Italic.otf,LibertinusSerif-SemiboldItalic.otf,LibertinusSerif-Regular.otf]{SmallCapsFeatures={Numbers=OldStyle}}
+    \fi
 
-\setmainfont[
-  Ligatures={TeX,Common},
-  Path=\fontpath,
-  PunctuationSpace=0,
-  Numbers={Proportional},
-  BoldFont = LibertinusSerif-Semibold.otf,
-  ItalicFont = LibertinusSerif-Italic.otf,
-  BoldItalicFont = LibertinusSerif-SemiboldItalic.otf,
-  BoldSlantedFont = LibertinusSerif-Semibold.otf,
-  SlantedFont    = LibertinusSerif-Regular.otf,
-  SlantedFeatures = {FakeSlant=0.25},
-  BoldSlantedFeatures = {FakeSlant=0.25},
-  SmallCapsFeatures = {FakeSlant=0},
-]{LibertinusSerif-Regular.otf}
+    \setmainfont[
+    Ligatures={TeX,Common},
+    Path=\fontpath,
+    PunctuationSpace=0,
+    Numbers={Proportional},
+    BoldFont = LibertinusSerif-Semibold.otf,
+    ItalicFont = LibertinusSerif-Italic.otf,
+    BoldItalicFont = LibertinusSerif-SemiboldItalic.otf,
+    BoldSlantedFont = LibertinusSerif-Semibold.otf,
+    SlantedFont    = LibertinusSerif-Regular.otf,
+    SlantedFeatures = {FakeSlant=0.25},
+    BoldSlantedFeatures = {FakeSlant=0.25},
+    SmallCapsFeatures = {FakeSlant=0},
+    ]{LibertinusSerif-Regular.otf}
 
-%% Deprecated:
-\iflsNewtxmath		% some users have problems when installing newtxmath
-	\usepackage[libertine]{newtxmath}
-	%% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
-	%% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
-  %% Unfortunately, this is NOT extensively tested!
-	\usepackage{xpatch}
-	\xpretocmd{\textsuperscript}
-	 {{\sbox0{$\textstyle x$}}}
-	 {}{}
-	\AtBeginDocument{%
-	  \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
-	  \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
-	}
-\fi
+    %% Deprecated:
+    \iflsNewtxmath		% some users have problems when installing newtxmath
+            \usepackage[libertine]{newtxmath}
+            %% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
+            %% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
+    %% Unfortunately, this is NOT extensively tested!
+            \usepackage{xpatch}
+            \xpretocmd{\textsuperscript}
+            {{\sbox0{$\textstyle x$}}}
+            {}{}
+            \AtBeginDocument{%
+            \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
+            \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
+            }
+    \fi
 
-\let\oldtabular\tabular	% number in tabulars
-\let\endoldtabular\endtabular
-\renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
+    \let\oldtabular\tabular	% number in tabulars
+    \let\endoldtabular\endtabular
+    \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
 
-\frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
-\usepackage[final]{microtype}
+    \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
+    \usepackage[final]{microtype}
 
-\newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{52pt}{17.25mm}\selectfont #1}
-\newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
-\newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
-\newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
-\newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
-\newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
-\newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
-\newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
-\newcommand{\lsBackBodyFont}{\lsInsideFont}
-\newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
-\newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
-\fi % end minimal mode
+    \newcommand{\lsCoverTitleFontSize}{52pt}
+    \newcommand{\lsCoverTitleFontBaselineskip}{17.25mm}
+    \newcommand{\lsCoverTitleSizes}[2]{\renewcommand{\lsCoverTitleFontSize}{#1}\renewcommand{\lsCoverTitleFontBaselineskip}{#2}}
+    \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{\lsCoverTitleFontSize}{17.25mm}\selectfont #1}
+    \newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
+    \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
+    \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
+    \newcommand{\lsCoverSeriesHistoryFont}{\sffamily\fontsize{10pt}{5mm}\selectfont}
+    \newcommand{\lsInsideFont}{}	% obsolete, see \setmainfont
+    \newcommand{\lsDedicationFont}{\fontsize{15pt}{10mm}\selectfont}
+    \newcommand{\lsBackTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
+    \newcommand{\lsBackBodyFont}{\lsInsideFont}
+    \newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
+    \newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
+\fi % end minimal mode switch from line ~677
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 
@@ -800,10 +800,8 @@
 %    Colors
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \usepackage{xcolor}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%    Color definitions:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \definecolor{lsLightBlue}{cmyk}{0.6,0.05,0.05,0}
 \definecolor{lsMidBlue}{cmyk}{0.75,0.15,0,0}
@@ -833,6 +831,7 @@
 \definecolor{lsGuidelinesGray}{cmyk}{0,0.04,0,0.45}
 
 \definecolor{lsDOIGray}{cmyk}{0,0,0,0.45}
+\definecolor{RED}{cmyk}{0.05,1,0.8,0}
 
 \definecolor{langscicol1}{cmyk}{0.6,0.05,0.05,0}
 \definecolor{langscicol2}{cmyk}{0.75,0.15,0,0}
@@ -865,6 +864,8 @@
 % }
 % }
 
+
+\input{\seriesinfopath langsci-series.def}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Cover
@@ -1318,6 +1319,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \ifx\footnote\nextToken\textsuperscript{,}\fi}
 
 
+\let\oldfootnotemark\footnotemark
+\renewcommand{\footnotemark}{\upshape\oldfootnotemark}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Quotes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1335,6 +1339,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \parsep        \z@ \@plus\p@}%
 \item\relax}
 {\endlist}
+
+\newenvironment{modquote}[1][6mm]% slightly less indented quote for hyphenation issues
+  {\list{}{\leftmargin=#1\rightmargin=0mm}\item[]}%
+  {\endlist}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1550,6 +1559,23 @@ width=.8\textwidth
 }
 
 
+% for papers that have appendices, a replacement for \appendix.
+% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix
+%        Will result in "Appendix A: Title"
+%
+\newcounter{paperappendixsection}
+\newenvironment{paperappendix}{%
+    \let\oldthesection\thesection%
+    \let\oldsectionformat\sectionformat%
+    \setcounter{paperappendixsection}{0}%
+    \def\thesection{\Alph{paperappendixsection}}%
+    \def\sectionformat{\stepcounter{paperappendixsection}\appendixname\ \thesection:\enskip}%
+    }{%
+    \let\thesection\oldthesection%
+    \let\sectionformat\oldsectionformat}
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Indexes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1585,57 +1611,6 @@ width=.8\textwidth
 	  \clearpage
   \fi
 }
-
-\newcommand{\lsIndexTitle}{Index}
-\newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
-\newcommand{\lsSubjectIndexTitle}{Subject index}
-\newcommand{\lsNameIndexTitle}{Name index}
-\newcommand{\lsPrefaceTitle}{Preface}
-\newcommand{\lsAcknowledgementTitle}{Acknowledgments}
-\newcommand{\lsAbbreviationsTitle}{Abbreviations}
-\newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
-\IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
-
-\ifx\lsBookLanguage\lsBookLanguageFrench
-\renewcommand{\lsIndexTitle}{Index}
-\renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
-\renewcommand{\lsSubjectIndexTitle}{Index des termes}
-\renewcommand{\lsLanguageIndexTitle}{Index des langues}
-\renewcommand{\lsPrefaceTitle}{Préface}
-\renewcommand{\lsAcknowledgementTitle}{Remerciements}
-\renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
-\renewcommand{\lsReferencesTitle}{french}
-  \iflsNoBabel
-  \else
-    \renewcommand\frenchfigurename{Figure}
-    \renewcommand\frenchtablename{Table}
-  \fi
-\IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
-\fi
-
-\ifx\lsBookLanguage\lsBookLanguageGerman
-\renewcommand{\lsIndexTitle}{Register}
-\renewcommand{\lsNameIndexTitle}{Autorenregister}
-\renewcommand{\lsSubjectIndexTitle}{Sachregister}
-\renewcommand{\lsLanguageIndexTitle}{Sprachregister}
-\renewcommand{\lsPrefaceTitle}{Vorwort}
-\renewcommand{\lsAcknowledgementTitle}{Danksagung}
-\renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
-\renewcommand{\lsReferencesTitle}{german}
-\IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
-\fi
-
-\ifx\lsBookLanguage\lsBookLanguagePortuguese
-\renewcommand{\lsIndexTitle}{Índices}
-\renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
-\renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
-\renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
-\renewcommand{\lsPrefaceTitle}{Prefácio}
-\renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
-\renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
-\renewcommand{\lsReferencesTitle}{portugese}
-\IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
-\fi
 
 % \AtBeginDocument{% FK 16-Jan-19: It is unclear why this was set. It conflicts with TikZ externalisation.
 	\makeindex
@@ -1699,6 +1674,10 @@ width=.8\textwidth
 \newif\ifshowindex \showindexfalse
 \usepackage{authorindex}
 
+\newcommand{\isi}[1]{\is{#1}#1}
+\newcommand{\iai}[1]{\ia{#1}#1}
+\newcommand{\ili}[1]{\il{#1}#1}
+
 \iflsShowIndex	% shows index commands in text
     \RequirePackage{soul}
 %     \RequirePackage[noadjust]{marginnote}
@@ -1714,6 +1693,22 @@ width=.8\textwidth
     \renewcommand{\ia}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=pink,size=\scriptsize]{\tiny#1}\iaold{#1}}}
 \fi
 
+% integrate see also in multiple indexes
+\def\igobble#1 {}
+\newcommand{\langsciseealso}{\par\addvspace{.1\baselineskip}\hspace*{1.4cm}\hangindent=1.4cm\seealso}
+\newcommand{\ilsa}[2]{\il{#1@\igobble | langsciseealso{#2}}}
+\newcommand{\issa}[2]{\is{#1@\igobble | langsciseealso{#2}}}
+\newcommand{\iasa}[2]{\ia{#1{}@\igobble | langsciseealso{#2}}}
+
+
+\newcommand{\name}[3][]{%add person names to text and author index
+#2 %output first name
+\ifstrempty{#1}{%if no optional argument present
+\ia{#3, #2@#3, #2}%add lastname, firstname to index
+}{%if optional argument present
+\ia{#1@#1}% add optional argument to index
+}%
+#3}%output last name in text
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Hyperref
@@ -1762,6 +1757,13 @@ width=.8\textwidth
 \renewcommand{\tableautorefname}{Table}%
 \renewcommand{\Hfootnoteautorefname}{Footnote}%
 \fi
+
+\newcommand{\sectref}[1]{§\ref{#1}}
+\newcommand{\chapref}[1]{Chapter~\ref{#1}}
+\newcommand{\partref}[1]{Part~\ref{#1}}
+\newcommand{\tabref}[1]{Table~\ref{#1}}
+\newcommand{\figref}[1]{Figure~\ref{#1}}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2001,6 +2003,15 @@ width=.8\textwidth
   \rohead{\lsCollectionPaperHeaderTitle}
 }
 
+\newcommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
+
+\newcommand{\markuptitle}[2]{
+  \title{\texorpdfstring{#1}{#2}}
+  \shorttitlerunninghead{#2}
+  \renewcommand{\lsChapterFooterSize}{\scriptsize}
+  \renewcommand{\lsCollectionPaperFooterTitle}{Add\noexpand\texttt{\textbackslash renewcommand\{\textbackslash lsCollectionPaperFooterTitle\}\{A new theory of \textbackslash noexpand\textbackslash textit\{This\} and \textbackslash noexpand\textbackslash textit\{that\}\}} to preamble}
+}
+
 
 %writeout page numbers for separation of chapters
 
@@ -2014,6 +2025,84 @@ width=.8\textwidth
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Localisation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\ifx\lsBookLanguage\lsBookLanguageFrench
+  \renewcommand{\chapref}[1]{Chapitre~\ref{#1}}
+  \renewcommand{\partref}[1]{Partie~\ref{#1}}
+  \renewcommand{\tabref}[1]{Tableau~\ref{#1}}
+  \renewcommand{\figref}[1]{Figure~\ref{#1}}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageGerman
+  \renewcommand{\chapref}[1]{Kapitel~\ref{#1}}
+  \renewcommand{\partref}[1]{Teil~\ref{#1}}
+  \renewcommand{\tabref}[1]{Tabelle~\ref{#1}}
+  \renewcommand{\figref}[1]{Abbildung~\ref{#1}}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguagePortuguese
+  \renewcommand{\chapref}[1]{Capítulo~\ref{#1}}
+  \renewcommand{\partref}[1]{Parte~\ref{#1}}
+  \renewcommand{\tabref}[1]{Tabela~\ref{#1}}
+  \renewcommand{\figref}[1]{Figura~\ref{#1}}
+\fi
+
+\newcommand{\lsIndexTitle}{Index}
+\newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
+\newcommand{\lsSubjectIndexTitle}{Subject index}
+\newcommand{\lsNameIndexTitle}{Name index}
+\newcommand{\lsPrefaceTitle}{Preface}
+\newcommand{\lsAcknowledgementTitle}{Acknowledgments}
+\newcommand{\lsAbbreviationsTitle}{Abbreviations}
+\newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
+\IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
+
+\ifx\lsBookLanguage\lsBookLanguageFrench
+\renewcommand{\lsIndexTitle}{Index}
+\renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
+\renewcommand{\lsSubjectIndexTitle}{Index des termes}
+\renewcommand{\lsLanguageIndexTitle}{Index des langues}
+\renewcommand{\lsPrefaceTitle}{Préface}
+\renewcommand{\lsAcknowledgementTitle}{Remerciements}
+\renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
+\renewcommand{\lsReferencesTitle}{french}
+  \iflsNoBabel
+  \else
+    \renewcommand\frenchfigurename{Figure}
+    \renewcommand\frenchtablename{Table}
+  \fi
+\IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageGerman
+\renewcommand{\lsIndexTitle}{Register}
+\renewcommand{\lsNameIndexTitle}{Autorenregister}
+\renewcommand{\lsSubjectIndexTitle}{Sachregister}
+\renewcommand{\lsLanguageIndexTitle}{Sprachregister}
+\renewcommand{\lsPrefaceTitle}{Vorwort}
+\renewcommand{\lsAcknowledgementTitle}{Danksagung}
+\renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
+\renewcommand{\lsReferencesTitle}{german}
+\IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguagePortuguese
+\renewcommand{\lsIndexTitle}{Índices}
+\renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
+\renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
+\renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+\renewcommand{\lsPrefaceTitle}{Prefácio}
+\renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
+\renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+\renewcommand{\lsReferencesTitle}{portugese}
+\IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
+\fi
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
