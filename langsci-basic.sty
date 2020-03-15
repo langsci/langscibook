@@ -8,10 +8,6 @@
 %%   Licence:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\lsptoprule}{\midrule\toprule}
-\newcommand{\lspbottomrule}{\bottomrule\midrule}
-
-\newcommand{\REF}[1]{(\ref{#1})}
 
 \newcommand{\ob}{{\upshape [}} %opening bracket
 \newcommand{\cb}{{\upshape ]}} %closing bracket
@@ -20,20 +16,15 @@
 \newcommand{\db}{\hspaceThis{[}} %dummy space for [ in IMT line
 % \newcommand{\rmfnm}{{\upshape\footnotemark}} %romanfootnotemark
 
-\newcommand{\citegen}[2][]{\citeauthor{#2}'s (\citeyear*[#1]{#2})}
-\newcommand{\citeapo}[2][]{\citeauthor{#2}' (\citeyear*[#1]{#2})}
-
-\newcommand{\protectedex}[1]{\noindent\parbox{\linewidth}{#1}}
-
-\newcommand{\largerpage}[1][1]{\enlargethispage{#1\baselineskip}}
-
 % old font commands
 \renewcommand{\it}{\itshape}
 \renewcommand{\bf}{\bfseries}
 \renewcommand{\sc}{\scshape}
 \renewcommand{\rm}{\upshape}
 
-% vertical space to structure tables
-\newcommand{\tablevspace}{\\[-.5em]}
 
-\newcommand{\biberror}[1]{{\color{red}#1}}
+% Default commands for loaded graphics
+\renewcommand{\includespinelogo}{\includegraphics{langsci_spinelogo_nocolor}}
+\renewcommand{\includestoragelogo}{\includegraphics[width=5cm]{storagelogo.pdf}}
+\renewcommand{\includepublisherlogo}{\includegraphics{langsci_logo_nocolor.pdf}}
+\renewcommand{\includechapterfooterlogo}{\includegraphics{langsci_spinelogo_nocolor.pdf}}

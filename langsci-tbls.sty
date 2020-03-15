@@ -20,8 +20,8 @@
         middlelinewidth=1.5pt,linecolor=\tblslinecolour,outerlinewidth=5mm,
 	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=0,
 	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, repeatframetitle=false,
-	firstextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
+	firstextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
+	singleextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
 
 \mdfdefinestyle{greyexercise}{%
@@ -32,9 +32,9 @@
         backgroundcolor=\tblsboxcolor,
         innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,
         frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
-        firstextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}
+        firstextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}
         };},
-        singleextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{langsci/graphics/tbls-\langscisymbol.pdf}
+        singleextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}
 };}
 }
 
@@ -111,7 +111,8 @@
     %add logo if requested
       \ifthenelse{\equal{#1}{}}{\bigskip}{
     \begin{flushleft}
-      \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{langsci/graphics/#1.eps}}
+      \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{tbls-#1.pdf}}
+%       \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{tbls-#1.eps}}
     \end{flushleft}}
     %add header
     \boxheader{#3}
@@ -189,7 +190,8 @@
   \begin{figure}
     \begin{flushleft}
       \hspace*{3.5mm}
-      \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{langsci/graphics/#1.eps}}} \\
+      \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{tbls-#1.pdf}}} \\
+%       \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{#1.eps}}} \\
     \end{flushleft}
     \color{lsYellow}\framebox[\textwidth]{%
       \color{black}

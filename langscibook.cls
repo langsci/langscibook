@@ -66,14 +66,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Paths
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\fontpath}{}
-\newcommand{\logopath}{}
-\newcommand{\seriesinfopath}{}
-\newcommand{\localepath}{}
-\newcommand{\bibstylepath}{}
+% \newcommand{\fontpath}{}
+% \newcommand{\logopath}{}
+% \newcommand{\seriesinfopath}{}
+% \newcommand{\localepath}{}
+% \newcommand{\bibstylepath}{}
 % \newcommand{\bbxpath}{}
 % \newcommand{\cbxpath}{}
-\newcommand{\stylepath}{}
+% \newcommand{\stylepath}{}
 % Paths can be overwritten with option "nonflat"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,10 +120,10 @@
 \newcommand{\SpineAuthor}[1]{\renewcommand{\lsSpineAuthor}{#1}}
 
 % Default commands for loaded graphics
-\newcommand{\includespinelogo}{\includegraphics{\logopath langsci_spinelogo_nocolor}}
-\newcommand{\includestoragelogo}{\includegraphics[width=5cm]{\logopath storagelogo.pdf}}
-\newcommand{\includepublisherlogo}{\includegraphics{\logopath langsci_logo_nocolor.pdf}}
-\newcommand{\includechapterfooterlogo}{\includegraphics{\logopath langsci_spinelogo_nocolor.pdf}}
+\newcommand{\includespinelogo}{}
+\newcommand{\includestoragelogo}{}
+\newcommand{\includepublisherlogo}{}
+\newcommand{\includechapterfooterlogo}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,14 +180,14 @@
 \DeclareVoidOption{openreview}{
 	\lsOpenReviewtrue%
 	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}}
-\DeclareVoidOption{nonflat}{
-	\renewcommand{\fontpath}{./langsci/fonts/}
-	\renewcommand{\logopath}{./langsci/graphics/}
-	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
-	\renewcommand{\localepath}{./langsci/locale/}
-	\renewcommand{\bibstylepath}{./langsci/}
-	\renewcommand{\stylepath}{./langsci/styles/}
-}
+% \DeclareVoidOption{nonflat}{
+% 	\renewcommand{\fontpath}{./langsci/fonts/}
+% 	\renewcommand{\logopath}{./langsci/graphics/}
+% 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
+% 	\renewcommand{\localepath}{./langsci/locale/}
+% 	\renewcommand{\bibstylepath}{./langsci/}
+% 	\renewcommand{\stylepath}{./langsci/styles/}
+% }
 \DeclareVoidOption{nobabel}{
   \lsNoBabeltrue}
 \DeclareVoidOption{babelshorthands}{
@@ -291,7 +291,7 @@
 
 
 %% standard commands
-\usepackage{\stylepath langsci-basic} % FIXME: contains important commands for the index (\isi etc.) which should be defined in the class
+\usepackage{langsci-basic}
 \usepackage{todonotes}
 
 
@@ -478,7 +478,7 @@
     \lsPageStyleEmpty
     \null\newpage\thispagestyle{empty}
     %% Advertisement:
-    {\lsAdvertisement}
+%     {\lsAdvertisement}
     \null\newpage\thispagestyle{empty}
     %% Back page:
     {\lsBackPage}
@@ -489,7 +489,7 @@
 
 \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
   {\setcounter{page}{-1}
-  \renewcommand{\lsAdvertisement}{}
+%   \renewcommand{\lsAdvertisement}{}
   %% First titlepage:
   {\lsFrontPage}
   }
@@ -723,16 +723,20 @@
     \setsansfont[
     %Ligatures={TeX,Common},% not supported by ttf
     Scale=MatchLowercase,
-    Path=\fontpath,
+%     Path=\fontpath,
     BoldFont = Arimo-Bold.ttf,
     ItalicFont = Arimo-Italic.ttf,
     BoldItalicFont = Arimo-BoldItalic.ttf
     ]{Arimo-Regular.ttf}
 
     \iflsNewtxmath\else
-    \setmathfont[AutoFakeBold,Path=\fontpath]{LibertinusMath-Regular.otf}
-    \setmathfont[range={cal},StylisticSet=1,Path=\fontpath]{XITSMath-Regular.otf}
-    \setmathfont[range={bfcal},StylisticSet=1,Path=\fontpath]{XITSMath-Bold.otf}
+    \setmathfont[AutoFakeBold
+%     ,Path=\fontpath
+    ]{LibertinusMath-Regular.otf}
+    \setmathfont[range={cal},StylisticSet=1%,Path=\fontpath
+    ]{XITSMath-Regular.otf}
+    \setmathfont[range={bfcal},StylisticSet=1%,Path=\fontpath
+    ]{XITSMath-Bold.otf}
     \fi
 
     \iflsOldStyleNumbers
@@ -741,7 +745,7 @@
 
     \setmainfont[
     Ligatures={TeX,Common},
-    Path=\fontpath,
+%     Path=\fontpath,
     PunctuationSpace=0,
     Numbers={Proportional},
     BoldFont = LibertinusSerif-Semibold.otf,
@@ -865,7 +869,7 @@
 % }
 
 
-\input{\seriesinfopath langsci-series.def}
+\input{langsci-series.def}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Cover
@@ -943,9 +947,9 @@
 }
 
 %\usepackage{pdfpages}
-\newcommand{\lsAdvertisement}{%
-  \include{\logopath langsci-advertisement}
-}
+% \newcommand{\lsAdvertisement}{%
+%   \include{\logopath langsci-advertisement}
+% }
 
 \newcommand{\lsBackPage}{%
   \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
@@ -979,8 +983,8 @@
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{\seriesinfopath \lsSeries-info.tex}{\input{\seriesinfopath\lsSeries-info}}{
-  Series information: \seriesinfopath \lsSeries-info.tex not found!}
+\IfFileExists{./\lsSeries-info.tex}{\input{./\lsSeries-info}}{
+  Series information:  \lsSeries-info.tex not found!}
 
 \IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
   {}
@@ -1109,10 +1113,10 @@ This title can be downloaded at:\\
 \newcommand{\ccby}{CC-BY}
 \ifx\lsCopyright\ccby
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
-http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{\logopath/ccby.pdf}
+http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{ccby.pdf}
 \else
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
-http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{\logopath/ccbynd.pdf}
+http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{ccbynd.pdf}
 \fi
 
 {\lsImpressumExtra}
@@ -1391,9 +1395,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \usepackage[
 	natbib=true,
-	style=\bibstylepath langsci-unified,
-	citestyle=\bibstylepath langsci-unified,
-	datamodel=\bibstylepath langsci   % add authauthor and autheditor as possible fields to bibtex entries
+	style=langsci-unified,
+	citestyle=langsci-unified,
+	datamodel=langsci,   % add authauthor and autheditor as possible fields to bibtex entries
 	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1960,7 +1964,7 @@ width=.8\textwidth
   \includechapterfooterlogo}%
   % \hspace{0.8em}%
   \hfill%
-  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{\logopath/ccby.pdf}}}
+  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}}
 \ifx\lsOutput\lsOutputPaper       % only if output==paper
 	\renewcommand{\lsCollectionPaperCitation}{Change with \string\papernote}
 \fi
@@ -2061,7 +2065,7 @@ width=.8\textwidth
 \newcommand{\lsAcknowledgementTitle}{Acknowledgments}
 \newcommand{\lsAbbreviationsTitle}{Abbreviations}
 \newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
-\IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
+% \IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
 \renewcommand{\lsIndexTitle}{Index}
@@ -2077,7 +2081,7 @@ width=.8\textwidth
     \renewcommand\frenchfigurename{Figure}
     \renewcommand\frenchtablename{Table}
   \fi
-\IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
+% \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -2089,7 +2093,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Danksagung}
 \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
 \renewcommand{\lsReferencesTitle}{german}
-\IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
+% \IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -2101,7 +2105,7 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
 \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
 \renewcommand{\lsReferencesTitle}{portugese}
-\IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
+% \IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
 \fi
 
 
