@@ -476,21 +476,13 @@
   \lsSchmutztitel}
   %%%%%%%%%%%%%%%%%%%%
   \AtEndDocument{
-    \lsPageStyleEmpty
-    \null\newpage\thispagestyle{empty}
-    %% Advertisement:
-%     {\lsAdvertisement}
-    \null\newpage\thispagestyle{empty}
-    %% Back page:
-    {\lsBackPage}
-    \null\newpage\thispagestyle{empty}
+        \lsPageStyleEmpty
+        \null\newpage\thispagestyle{empty} % add a final blank page
   }
 \fi
 
 \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
   {\setcounter{page}{-1}
-%   \renewcommand{\lsAdvertisement}{}
-  %% First titlepage:
   {\lsFrontPage}
   }
 
