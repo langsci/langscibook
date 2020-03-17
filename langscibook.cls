@@ -83,6 +83,7 @@
 \usepackage{xspace}
 \newcommand{\lsp}{Language Science Press\xspace}
 \newcommand{\lsSeriesNumber}{??}
+\newcommand{\lsSeriesText}{\color{red}{No series description provided}}
 \newcommand{\lsISSN}{??}
 \newcommand{\lsISSNprint}{??}
 \newcommand{\lsISSNelectronic}{??}
@@ -430,7 +431,7 @@
                   right,
                   text width=95mm,
                   anchor=north west]
-            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle~\lsSeriesNumber\par}};
+            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 }
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -982,9 +983,10 @@
 \color{black}
 \raggedright\lsCoverSeriesHistoryFont
 
-\IfFileExists{./\lsSeries-info.tex}{\input{./\lsSeries-info}}{
-  Series information:  \lsSeries-info.tex not found!}
+% \IfFileExists{./\lsSeries-info.tex}{\input{./\lsSeries-info}}{
+%   Series information:  \lsSeries-info.tex not found!}
 
+{\lsSeriesText}
 \IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
   {}
   {\vfill\hfill ISSN (print): \lsISSNprint\\
@@ -1080,7 +1082,7 @@
   {\lsImpressionCitationAuthor}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
   {\lsYear}. %
   \textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
-  (\lsSeriesTitle~\lsSeriesNumber). %
+  (\lsSeriesTitle). %
   Berlin: Language Science Press.
 }
 \newcommand{\lsImpressumExtra}{}%for legal notes required for revised theses ("... in fulfillment of ... ")
