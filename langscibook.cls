@@ -1677,9 +1677,9 @@ width=.8\textwidth
 \newif\ifshowindex \showindexfalse
 \usepackage{authorindex}
 
-\newcommand{\isi}[1]{\is{#1}#1}
-\newcommand{\iai}[1]{\ia{#1}#1}
-\newcommand{\ili}[1]{\il{#1}#1}
+\providecommand{\isi}[1]{\is{#1}#1}
+\providecommand{\iai}[1]{\ia{#1}#1}
+\providecommand{\ili}[1]{\il{#1}#1}
 
 \iflsShowIndex	% shows index commands in text
     \RequirePackage{soul}
@@ -1761,11 +1761,11 @@ width=.8\textwidth
 \renewcommand{\Hfootnoteautorefname}{Footnote}%
 \fi
 
-\newcommand{\sectref}[1]{§\ref{#1}}
-\newcommand{\chapref}[1]{Chapter~\ref{#1}}
-\newcommand{\partref}[1]{Part~\ref{#1}}
-\newcommand{\tabref}[1]{Table~\ref{#1}}
-\newcommand{\figref}[1]{Figure~\ref{#1}}
+\providecommand{\sectref}[1]{§\ref{#1}}
+\providecommand{\chapref}[1]{Chapter~\ref{#1}}
+\providecommand{\partref}[1]{Part~\ref{#1}}
+\providecommand{\tabref}[1]{Table~\ref{#1}}
+\providecommand{\figref}[1]{Figure~\ref{#1}}
 
 
 
@@ -2006,9 +2006,9 @@ width=.8\textwidth
   \rohead{\lsCollectionPaperHeaderTitle}
 }
 
-\newcommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
+\providecommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
 
-\newcommand{\markuptitle}[2]{
+\providecommand{\markuptitle}[2]{
   \title{\texorpdfstring{#1}{#2}}
   \shorttitlerunninghead{#2}
   \renewcommand{\lsChapterFooterSize}{\scriptsize}
