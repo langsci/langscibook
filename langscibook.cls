@@ -120,10 +120,10 @@
 \newcommand{\SpineAuthor}[1]{\renewcommand{\lsSpineAuthor}{#1}}
 
 % Default commands for loaded graphics
-\newcommand{\includespinelogo}{}
-\newcommand{\includestoragelogo}{}
-\newcommand{\includepublisherlogo}{}
-\newcommand{\includechapterfooterlogo}{}
+\newcommand{\includespinelogo}{~}
+\newcommand{\includestoragelogo}{~}
+\newcommand{\includepublisherlogo}{~}
+\newcommand{\includechapterfooterlogo}{~}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
