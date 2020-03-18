@@ -790,7 +790,7 @@
 \fi % end minimal mode switch from line ~677
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
-
+\setkomafont{descriptionlabel}{\normalfont\itshape}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Colors
