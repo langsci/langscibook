@@ -1,0 +1,61 @@
+def\easragged{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\raggedright\ex\begin{tabular}[t]{@{}b{\linewidth}@{}}}
+\def\eas{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\ex\begin{tabular}[t]{@{}p{\linewidth}@{}}}
+\def\eaa{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\raggedright\ex}
+\def\bu{\item[$\bullet$]}
+% without understanding anything:
+\def\exs#1{\item\begin{samepage}#1\end{samepage}}
+%-- en
+
+% for enforcing samepage we put stuff in a tabular environment
+\def\zs{\end{tabular}\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi}
+% %\def\zt{\ifnum\@xnumdepth=1\end{exe}\else\end{xlist}\fi\end{tabular}}
+\def\zl{\end{xlist}\end{exe}}
+\def\zllast{\end{xlist}\end{exe}\removelastskip}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   custom markup
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\ct#1{{\em #1\/}} %Citation of linguistic material with alternative style:
+%\def\ct#1{`#1'}
+\def\tx{\bf} %Introduction of technical terms with alternative style:
+%\def\tx{\em}
+
+\newcommand{\ispackage}[1]{\if@noftnote%
+\is{package!{\scshape #1}}%
+\else%
+\is{package!{\scshape #1}|fn{*}}%
+\fi%
+}
+
+% breaks the index
+%\usepackage{doc}
+
+
+\newcommand{\ispackageb}[1]{
+\is{package!\texttt{#1}|(}
+}
+\newcommand{\ispackagee}[1]{
+\is{package!\texttt{#1}|)}
+}
+
+\newcommand{\isoption}[1]{\if@noftnote%
+\is{option!\texttt{#1}}%
+\else%
+\is{option!\texttt{#1}|fn{*}}%
+\fi%
+}
+
+\newcommand{\iscommand}[1]{\if@noftnote%
+\index{#1@{\ttfamily $\backslash$#1}}%
+\else%
+\is{{#1@\ttfamily $\backslash$#1}|fn{*}}%
+\fi%
+}
+
+
+\newcommand\displaycmd[2]{%
+  \DescribeMacro{#2}\centerline{\cmd{#1}}}

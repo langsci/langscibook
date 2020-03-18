@@ -1,6 +1,6 @@
 \documentclass[output=book
-  ,nonflat
-  ,modfonts,
+%   ,nonflat
+%   ,modfonts,
   ,colorlinks
   ,undecapitalize
   ,collection
@@ -10,19 +10,18 @@
   ,nobabel
   ,booklanguage=french
   ,oldstylenumbers
-  ]{langsci/langscibook}
+  ]{../langscibook}
 
-\usepackage{./langsci/styles/langsci-basic}
-\usepackage{./langsci/styles/langsci-tbls}
-\usepackage{./langsci/styles/langsci-forest-setup}
-\usepackage{./langsci/styles/langsci-glyphs}
-\usepackage{./langsci/styles/langsci-linguex}
-\usepackage{./langsci/styles/jambox}
-\usepackage[nojssambox]{./langsci/styles/langsci-gb4e}
-\usepackage{./langsci/styles/langsci-optional}
-\usepackage{./langsci/styles/langsci-tobi}
-\usepackage{./langsci/styles/langsci-lgr}
-\usepackage{./langsci/styles/langsci-plots}
+% \usepackage{./langsci-basic}
+\usepackage{langsci-tbls}
+\usepackage{langsci-forest-setup}
+\usepackage{langsci-glyphs}
+\usepackage{langsci-linguex}
+\usepackage[nojssambox]{./langsci-gb4e}
+\usepackage{langsci-optional}
+\usepackage{langsci-tobi}
+\usepackage{langsci-lgr}
+\usepackage{langsci-plots}
 
 \usepackage{lipsum}
 \usepackage{multicol}
@@ -31,12 +30,12 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 
-\usepackage{./langsci/styles/avm}
-\avmoptions{center}
-\avmfont{\scshape}
-\avmvalfont{\normalfont}
-\avmsortfont{\normalfont\itshape}
-
+% % \usepackage{./langsci-avm}
+% \avmoptions{center}
+% \avmfont{\scshape}
+% \avmvalfont{\normalfont}
+% \avmsortfont{\normalfont\itshape}
+%
 \renewcommand{\lsISBNhardcover}{999-3-123456-99-9}
 \renewcommand{\lsISBNsoftcover}{999-3-123456-99-9}
 \renewcommand{\lsISBNdigital}{978-3-946234-65-4}
@@ -59,8 +58,9 @@ What causes a language to be the way it is? Some features are universal, some ar
 \renewcommand{\lsYear}{1999}
 
 
-\renewcommand{\lsSeries}{sidl}
+\renewcommand{\lsSeries}{scl}
 
+\lsCoverTitleSizes{40pt}{15mm}
 \begin{document}
 \renewcommand{\lsImpressumExtra}{Manuscript submitted in fulfillment of entering the Galactical Hall of Fame.}
 \maketitle
@@ -113,71 +113,71 @@ What causes a language to be the way it is? Some features are universal, some ar
 
 % \section{AVM}
 % \input{avm-tests/avm.tex}
-%
-% \section{Maths}
-% \input{math-tests/formulae}
-%
-% \section{Trees}
-% \input{forest-tests/simpletrees}
-%
-% \section{Fonts}
-% \input{font-tests/fonts.tex}
-% \input{font-tests/glyphs.tex}
-% \input{font-tests/tiebars.tex}
-% % \input{font-tests/numbers.tex} %please check in file
-%
-% \section{Figures}\label{sec:tables}
-%
-% \section{Tables}\label{sec:tables}
-% \input{table-tests/general}
-%
-% \section{Crossrefs}
-% \input{crossref-tests/general}
-%
-% \section{Bibliography}
-% \input{bib-tests/cite}
-% % \input{bib-tests/index}
-%
-% \printbibliography[notkeyword={techreport},notkeyword={website},title={References}]
-%
-% next thing up is list of standards, included with \verb+keywords={standard},+ in the bib file.
-%
-% \printbibliography[keyword={standard},title={Standards}]
-%
-%
-%
-% next thing up is list of websites, included with \verb+keywords={website},+ in the bib file.
-%
-% \printbibliography[keyword={website},title={Websites}]
-%
-%
-%
-% \section{Index}
-% \input{index-tests/indexes}
-%
-% \section{Diagrams}
-% \input{diagram-tests/plots}
-%
-% \section{Floats}
-% \input{float-tests/floats.tex}
-%
-%
-% % \input{intonation-tests/tobi}
-%
-% \section{Langsci-lgr tests}
-% \input{lgr-tests/lgr}
-%
-% \section{Langsci-basic tests}
-% % \input{package-tests/basic}
-%
-% \section{Langsci-optional tests}
-% % \input{package-tests/optional}
-%
-% \section{Textbooks tests}
-% \input{tbls-tests/bw}
-% \input{tbls-tests/color}
-% \input{tbls-tests/demo}
-%
+
+\section{Maths}
+\input{math-tests/formulae}
+
+\section{Trees}
+\input{forest-tests/simpletrees}
+
+\section{Fonts}
+\input{font-tests/fonts.tex}
+\input{font-tests/glyphs.tex}
+\input{font-tests/tiebars.tex}
+% \input{font-tests/numbers.tex} %please check in file
+
+\section{Figures}\label{sec:tables}
+
+\section{Tables}\label{sec:tables}
+\input{table-tests/general}
+
+\section{Crossrefs}
+\input{crossref-tests/general}
+
+\section{Bibliography}
+\input{bib-tests/cite}
+% \input{bib-tests/index}
+
+\printbibliography[notkeyword={techreport},notkeyword={website},title={References}]
+
+next thing up is list of standards, included with \verb+keywords={standard},+ in the bib file.
+
+\printbibliography[keyword={standard},title={Standards}]
+
+
+
+next thing up is list of websites, included with \verb+keywords={website},+ in the bib file.
+
+\printbibliography[keyword={website},title={Websites}]
+
+
+
+\section{Index}
+\input{index-tests/indexes}
+
+\section{Diagrams}
+\input{diagram-tests/plots}
+
+\section{Floats}
+\input{float-tests/floats.tex}
+
+
+% \input{intonation-tests/tobi}
+
+\section{Langsci-lgr tests}
+\input{lgr-tests/lgr}
+
+\section{Langsci-basic tests}
+% \input{package-tests/basic}
+
+\section{Langsci-optional tests}
+% \input{package-tests/optional}
+
+\section{Textbooks tests}
+\input{tbls-tests/bw}
+\input{tbls-tests/color}
+\input{tbls-tests/demo}
+
 % \section{Syntactic sugar}
 % \input{syntax-sugar-tests/langsci-optional}
 \include{backmatter}
