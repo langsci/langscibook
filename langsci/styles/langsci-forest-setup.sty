@@ -270,7 +270,10 @@ substitution/.style={edge={<-,dashed},l+=\baselineskip},
 %
 %
 typehierarchy/.style={for tree={parent anchor=south, child
-    anchor=north,align=center,base=top,font=\itshape,fit=rectangle}},
+% old version:
+%    anchor=north,align=center,base=top,font=\itshape,fit=rectangle}},
+% to get parallel lines:
+    anchor=north,align=center,base=top,font=\itshape,calign=fixed angles}},
 % if there are instances as leaves in the hiarchy
 instance/.style={edge=dotted},
 %
