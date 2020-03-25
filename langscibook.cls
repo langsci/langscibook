@@ -1391,7 +1391,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	style=langsci-unified,
 	citestyle=langsci-unified,
 	datamodel=langsci,   % add authauthor and autheditor as possible fields to bibtex entries
-	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
 	uniquename=false,
