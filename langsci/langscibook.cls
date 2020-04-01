@@ -1045,12 +1045,18 @@ This title can be downloaded at:\\
 © \lsYear, \iflsCollection the authors\else\@author\fi
 
 \newcommand{\ccby}{CC-BY}
+\newcommand{\ccbynd}{CC-BY-ND}
 \ifx\lsCopyright\ccby
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
 http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{\logopath/ccby.pdf}
 \else
+\ifx\lsCopyright\ccbynd
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
 http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{\logopath/ccbynd.pdf}
+\else
+Published under the Creative Commons Attribution-ShareAlike 4.0 Licence (CC BY-SA 4.0):
+http://creativecommons.org/licenses/by-sa/4.0/ \includegraphics[height=.75em]{\logopath/ccbysa.pdf}
+\fi
 \fi
 
 {\lsImpressumExtra}
