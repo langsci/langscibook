@@ -293,7 +293,7 @@
 
 
 %% standard commands
-\usepackage{langsci-basic}
+\usepackage{./langscibook/langsci-basic}
 \usepackage{todonotes}
 
 
@@ -791,7 +791,7 @@
 \fi % end minimal mode switch from line ~677
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
-
+\setkomafont{descriptionlabel}{\normalfont\itshape}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Colors
@@ -1105,12 +1105,18 @@ This title can be downloaded at:\\
 © \lsYear, \iflsCollection the authors\else\@author\fi
 
 \newcommand{\ccby}{CC-BY}
+\newcommand{\ccbynd}{CC-BY-ND}
 \ifx\lsCopyright\ccby
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
-http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{ccby.pdf}
+http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{langscibook/unchanged/ccby.pdf}
 \else
+\ifx\lsCopyright\ccbynd
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
-http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{ccbynd.pdf}
+http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{langscibook/unchanged/ccbynd.pdf}
+\else
+Published under the Creative Commons Attribution-ShareAlike 4.0 Licence (CC BY-SA 4.0):
+http://creativecommons.org/licenses/by-sa/4.0/ \includegraphics[height=.75em]{langscibook/unchanged/ccbysa.pdf}
+\fi
 \fi
 
 {\lsImpressumExtra}
@@ -1392,7 +1398,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	style=langsci-unified,
 	citestyle=langsci-unified,
 	datamodel=langsci,   % add authauthor and autheditor as possible fields to bibtex entries
-	useprefix = true, %sort von, van, de where they should appear
 	%refsection=chapter,
 	maxbibnames=99,
 	uniquename=false,
@@ -1958,7 +1963,7 @@ width=.8\textwidth
   \includechapterfooterlogo}%
   % \hspace{0.8em}%
   \hfill%
-  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}}
+  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{langscibook/unchanged/ccby.pdf}}}
 \ifx\lsOutput\lsOutputPaper       % only if output==paper
 	\renewcommand{\lsCollectionPaperCitation}{Change with \string\papernote}
 \fi

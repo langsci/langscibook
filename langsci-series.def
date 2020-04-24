@@ -68,6 +68,23 @@
 	\newcommand{\lsSeriesTitle}{Contact and Multilingualism}
 	\newcommand{\lsSeriesColor}{lsRed}
  	\renewcommand{\lsISSN}{}
+ 	\renewcommand{\lsSeriesText}{
+        {\large  Contact and Multilingualism}
+
+        \bigskip
+
+        Editors: Isabelle Léglise (CNRS SeDyL), Stefano Manfredi (CNRS SeDyL)  
+
+        \bigskip
+
+        In this series:
+
+        \begin{enumerate}
+          \item Lucas, Christopher \& Stefano Manfredi (eds.). Arabic and contact-induced change.
+          % % \item Hamikov.
+          % % \item Sánchez Moreano, Santiago \& Élodie Blestel. Prácticas lingüísticas heterogéneas: Nuevas perspectivas para el estudio del español en contacto con lenguas amerindias.
+        \end{enumerate}
+        }
 \fi
 
 \ifx\lsSeries\cib
@@ -560,6 +577,27 @@
 	\newcommand{\lsSeriesTitle}{Textbooks in Language Sciences}
 	\newcommand{\lsSeriesColor}{lsYellow}
 	\renewcommand{\lsISSN}{2364-6209}
+	\renewcommand{\lsSeriesText}{%
+             {\large Textbooks in Language Sciences}
+             
+             \bigskip
+             
+             Editors: Stefan Müller, Martin Haspelmath\\
+             Editorial Board: Claude Hagège, Marianne Mithun, Anatol Stefanowitsch, Foong Ha Yap
+             
+             \bigskip
+             
+             In this series:
+             
+             \begin{enumerate}
+             \item Müller, Stefan. Grammatical theory: From transformational grammar to constraint-based approaches.
+             \item Schäfer, Roland. Einführung in die grammatische Beschreibung des Deutschen.
+             \item Freitas, Maria João \& Ana Lúcia Santos (eds.). Aquisição de língua materna e não materna: Questões gerais e dados do português.
+             \item Roussarie, Laurent. Sémantique formelle: Introduction à la grammaire de Montague.
+             \item Kroeger, Paul. Analyzing meaning: An introduction to semantics and pragmatics.
+             \item Ferreira, Marcelo. Curso de semântica formal.
+             \item Stefanowitsch, Anatol. Corpus linguistics: A guide to the methodology.
+             \end{enumerate}
 \fi
 \ifx\lsSeries\tgdi
 	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse \newlineCover Interface}
@@ -617,7 +655,7 @@
             \item Moran, Steven \& Michael Cysouw. The Unicode cookbook for linguists: Managing writing systems using orthography profiles.
             \item Fantinuoli, Claudio (ed.). Interpreting and technology.
             \item Nitzke, Jean. Problem solving activities in post-editing and translation from scratch: A multi-method study.
-            % \item LVDV
+            \item Vandevoorde, Lore. Semantic differences in translation.
             \end{enumerate}
             }
 \fi
