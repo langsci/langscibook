@@ -1101,7 +1101,7 @@ ISBN: &
 
 \IfStrEq{\lsBookDOI}{??}
   {{\color{red} no DOI}}
-  {DOI: \href{https://doi.org/#1}{\nolinkurl{#1}}}\\
+  {DOI: \href{https://doi.org/\lsBookDOI}{\nolinkurl{\lsBookDOI}}}\\
 \IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%
 \githubtext\\
 \paperhivetext
