@@ -1161,7 +1161,7 @@ ISBN: &
 
 \IfStrEq{\lsBookDOI}{??}
   {{\color{red} no DOI}}
-  {\doi{\lsBookDOI}}\\
+  {DOI: \href{https://doi.org/\lsBookDOI}{\nolinkurl{\lsBookDOI}}}\\
 \IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%
 \githubtext\\
 \paperhivetext
@@ -1234,7 +1234,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{datetime}
-\usepackage{scrpage2}
+\usepackage{scrlayer-scrpage}
 \ohead{\headmark}
 \ihead{}
 \cfoot{}
@@ -1395,8 +1395,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \usepackage[
 	natbib=true,
-	style=langsci-unified,
-	citestyle=langsci-unified,
+	style=langscibook/langsci-unified,
+	citestyle=langscibook/langsci-unified,
 	datamodel=langsci,   % add authauthor and autheditor as possible fields to bibtex entries
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1404,7 +1404,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	mincrossrefs=99,
 	maxcitenames=2,
 	isbn=false,
-	doi=false,
 	url=false,
 	eprint=false,
 	autolang=hyphen,
@@ -1730,24 +1729,11 @@ width=.8\textwidth
 	pdfpagelayout=TwoPageRight,   % first page is separate
 	%ps2pdf=true
 	]{hyperref}
-
+	
 %% gets rid of the warnings:
 %% Failed to convert input string to UTF16
 %% http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto,bookmarksopenlevel=0}
-
-%% add hyperlinks for DOIs in bibliography; must appear after hyperref
-\usepackage{doi}
-\renewcommand{\doitext}{DOI:}
-\iflsBiblatex
-\renewbibmacro*{finentry}{\finentry
-	\iffieldundef{url}{}{ \url{\thefield{url}}\iffieldundef{urlday}{}{, accessed \thefield{urlyear}-\thefield{urlmonth}-\thefield{urlday}}.}
-  \restorefield{note}{\lsnote}
-  \iffieldundef{note}{}{\addspace{\thefield{note}\addperiod}}
-	\iffieldundef{doi}{}{ {\color{lsDOIGray}\doi{\thefield{doi}}}}
-}
-%\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
-\fi
 
 %% autoref (part of hyperref)
 \ifx\lsBookLanguage\lsBookLanguageEnglish
