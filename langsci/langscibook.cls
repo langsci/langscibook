@@ -1101,7 +1101,7 @@ ISBN: &
 
 \IfStrEq{\lsBookDOI}{??}
   {{\color{red} no DOI}}
-  {\doi{\lsBookDOI}}\\
+  {DOI: \href{https://doi.org/#1}{\nolinkurl{#1}}}\\
 \IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%
 \githubtext\\
 \paperhivetext
@@ -1682,19 +1682,6 @@ width=.8\textwidth
 %% Failed to convert input string to UTF16
 %% http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto,bookmarksopenlevel=0}
-
-%% add hyperlinks for DOIs in bibliography; must appear after hyperref
-\usepackage{doi}
-\renewcommand{\doitext}{DOI:}
-\iflsBiblatex
-\renewbibmacro*{finentry}{\finentry
-	\iffieldundef{url}{}{ \url{\thefield{url}}\iffieldundef{urlday}{}{, accessed \thefield{urlyear}-\thefield{urlmonth}-\thefield{urlday}}.}
-  \restorefield{note}{\lsnote}
-  \iffieldundef{note}{}{\addspace{\thefield{note}\addperiod}}
-	\iffieldundef{doi}{}{ {\color{lsDOIGray}\doi{\thefield{doi}}}}
-}
-%\DeclareFieldFormat{doi}{{\color{lsGuidelinesGray}\doi{#1}}}
-\fi
 
 %% autoref (part of hyperref)
 \ifx\lsBookLanguage\lsBookLanguageEnglish
