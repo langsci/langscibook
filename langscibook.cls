@@ -293,7 +293,7 @@
 
 
 %% standard commands
-\usepackage{./langscibook/langsci-basic}
+\usepackage{langsci-basic}
 \usepackage{todonotes}
 
 
@@ -662,7 +662,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
-\ifxetex\else\ClassError{langsci/langscibook}{Please use XeLaTeX!}{}\fi
+\ifxetex\else\ClassError{langscibook}{Please use XeLaTeX!}{}\fi
 
 %% Typesetting of mathematical formulas
 \usepackage{amssymb} % has to be loaded before other stuff
@@ -1108,14 +1108,14 @@ This title can be downloaded at:\\
 \newcommand{\ccbynd}{CC-BY-ND}
 \ifx\lsCopyright\ccby
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
-http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{langscibook/unchanged/ccby.pdf}
+http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{ccby.pdf}
 \else
 \ifx\lsCopyright\ccbynd
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
-http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{langscibook/unchanged/ccbynd.pdf}
+http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{ccbynd.pdf}
 \else
 Published under the Creative Commons Attribution-ShareAlike 4.0 Licence (CC BY-SA 4.0):
-http://creativecommons.org/licenses/by-sa/4.0/ \includegraphics[height=.75em]{langscibook/unchanged/ccbysa.pdf}
+http://creativecommons.org/licenses/by-sa/4.0/ \includegraphics[height=.75em]{ccbysa.pdf}
 \fi
 \fi
 
@@ -1395,8 +1395,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \usepackage[
 	natbib=true,
-	style=langscibook/langsci-unified,
-	citestyle=langscibook/langsci-unified,
+	style=langsci-unified,
+	citestyle=langsci-unified,
 	datamodel=langsci,   % add authauthor and autheditor as possible fields to bibtex entries
 	%refsection=chapter,
 	maxbibnames=99,
@@ -1729,7 +1729,7 @@ width=.8\textwidth
 	pdfpagelayout=TwoPageRight,   % first page is separate
 	%ps2pdf=true
 	]{hyperref}
-	
+
 %% gets rid of the warnings:
 %% Failed to convert input string to UTF16
 %% http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
@@ -1949,7 +1949,7 @@ width=.8\textwidth
   \includechapterfooterlogo}%
   % \hspace{0.8em}%
   \hfill%
-  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{langscibook/unchanged/ccby.pdf}}}
+  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}}
 \ifx\lsOutput\lsOutputPaper       % only if output==paper
 	\renewcommand{\lsCollectionPaperCitation}{Change with \string\papernote}
 \fi
