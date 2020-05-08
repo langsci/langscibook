@@ -774,6 +774,36 @@
     \let\endoldtabular\endtabular
     \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
 
+    % monospaced figures in the table of contents
+    % code transcribed from tabfigures.sty
+    \AtBeginDocument{
+        \def\tbfigures{\addfontfeatures{Numbers=Monospaced}}
+        \let\tabfig@@dottedtocline\@dottedtocline
+        \def\@dottedtocline#1#2#3#4#5{
+            \tabfig@@dottedtocline{#1}{#2}{#3}{#4}{\tbfigures{#5}}
+        }
+        \let\tabfig@numberline\numberline
+        \def\numberline#1{\tabfig@numberline{\tbfigures{#1}}}
+        \let\tabfig@l@part\l@part
+        \def\l@part#1#2{\tabfig@l@part{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@chapter\l@chapter
+        \def\l@chapter#1#2{\tabfig@l@chapter{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@section\l@section
+        \def\l@section#1#2{\tabfig@l@section{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@subsection\l@subsection
+        \def\l@subsection#1#2{\tabfig@l@subsection{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@subsubsection\l@subsubsection
+        \def\l@subsubsection#1#2{\tabfig@l@subsubsection{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@paragraph\l@paragraph
+        \def\l@paragraph#1#2{\tabfig@l@paragraph{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@subparagraph\l@subparagraph
+        \def\l@subparagraph#1#2{\tabfig@l@subparagraph{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@figure\l@figure
+        \def\l@figure#1#2{\tabfig@l@figure{#1}{\tbfigures{#2}}}
+        \let\tabfig@l@table\l@table
+        \def\l@table#1#2{\tabfig@l@table{#1}{\tbfigures{#2}}}
+    }
+
     \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
     \usepackage[final]{microtype}
 
