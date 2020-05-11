@@ -598,6 +598,7 @@
              \item Ferreira, Marcelo. Curso de semântica formal.
              \item Stefanowitsch, Anatol. Corpus linguistics: A guide to the methodology.
              \end{enumerate}
+             }
 \fi
 \ifx\lsSeries\tgdi
 	\newcommand{\lsSeriesTitle}{Topics at the Grammar-Discourse \newlineCover Interface}
