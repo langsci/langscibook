@@ -479,8 +479,11 @@
   \lsSchmutztitel}
   %%%%%%%%%%%%%%%%%%%%
   \AtEndDocument{
-        \lsPageStyleEmpty
-        \null\newpage\thispagestyle{empty} % add a final blank page
+    \lsPageStyleEmpty
+    \null\newpage\thispagestyle{empty} % add a final blank page
+	%% Back page:
+    {\lsBackPage}
+    \null\newpage\thispagestyle{empty}
   }
 \fi
 
@@ -1371,20 +1374,20 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	\else
 	\iflsBabelShorthands
 		\ifx\lsBookLanguage\lsBookLanguageEnglish
-		  \usepackage[ngerman,\lsBookLanguage]{babel}
-		  \addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
-	  \fi
-		\ifx\lsBookLanguage\lsBookLanguageFrench
-      \usepackage[ngerman,\lsBookLanguage]{babel}
-			\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
-    \fi
-    \ifx\lsBookLanguage\lsBookLanguageGerman
-      \usepackage[ngerman]{babel}% ngerman provides better hyphenation than german.
-    \fi
+	            \usepackage[\lsBookLanguage,ngerman]{babel}
+		    \addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
+	        \fi
+                \ifx\lsBookLanguage\lsBookLanguageFrench
+                    \usepackage[\lsBookLanguage,ngerman]{babel}
+		    \addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
+                \fi
+                \ifx\lsBookLanguage\lsBookLanguageGerman
+                    \usepackage[ngerman]{babel}% ngerman provides better hyphenation than german.
+                \fi
 		\ifx\lsBookLanguage\lsBookLanguagePortuguese
-      \usepackage[ngerman,\lsBookLanguage]{babel}
-			\addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
-    \fi
+                    \usepackage[\lsBookLanguage,ngerman]{babel}
+		    \addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
+                \fi
 	\else
 		\usepackage[\lsBookLanguage]{babel}
 	\fi
