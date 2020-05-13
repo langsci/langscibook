@@ -60,8 +60,10 @@
 \WarningsOff[microtype]
 \WarningFilter{microtype}{Unknown slot}
 \WarningFilter{scrbook}{package incompatibility}
+\WarningFilter{todonotes}{The length}
+\WarningFilter{biblatex}{'babel/polyglossia'}
 \hbadness=99999 % get rid of underfull box warnings
-\typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, tocstyle, microtype and scrbook package incompatibility}
+\typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, tocstyle, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
 \usepackage{etoolbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
