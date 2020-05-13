@@ -1337,9 +1337,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	mincrossrefs=99,
 	maxcitenames=2,
 	isbn=false,
-	doi=false,
-	url=false,
-	eprint=false,
 	autolang=hyphen,
 	\iflsResetCapitals
         language=english,
