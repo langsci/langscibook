@@ -56,14 +56,13 @@
 
 \RequirePackage[]{silence}
 \WarningsOff[hyperref]
-\WarningsOff[tocstyle]
 \WarningsOff[microtype]
 \WarningFilter{microtype}{Unknown slot}
 \WarningFilter{scrbook}{package incompatibility}
 \WarningFilter{todonotes}{The length}
 \WarningFilter{biblatex}{'babel/polyglossia'}
 \hbadness=99999 % get rid of underfull box warnings
-\typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, tocstyle, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
+\typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
 \usepackage{etoolbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1812,13 +1811,15 @@ width=.8\textwidth
 \renewcommand{\@dotsep}{2.5}		% space between dots
 \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
 \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
-\usepackage{tocstyle}
-\usetocstyle{standard}				%\usetocstyle{allwithdot}
-\settocfeature[toc]{raggedhook}{\raggedright}
-\iflsCollectionTOCLong\else
-	\setcounter{tocdepth}{0}\fi			% show only parts and chapters
-\settocstylefeature[-1]{pagenumberbox}{\csname @gobble\endcsname}	% parts without page number
-\settocstylefeature[-1]{leaders}{\hfill}							% parts without dots#
+\iflsCollectionTOCLong\else% show only parts and chapters
+  \setcounter{tocdepth}{0}
+\fi
+\DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
+  [
+    pagenumberbox={\csname @gobble\endcsname},
+    raggedentrytext=true,
+    linefill={\hfill}
+  ]{tocline}{part} 
 
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
