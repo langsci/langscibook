@@ -1,23 +1,6 @@
 # langscibook
 
-LaTeX class and additions for typesetting books to be published with Language Science Press
-
-This repository contains the most recent development build. See the [latex-skeletons](https://github.com/langsci/latex-skeletons) repository for ready to use templates.
-
-## submodules
-
-In order to ease the installation procedure, submodules are hardwired, i.e., the files of the following langsci repositories have been already copied to the respective directories:
-
- * [biblatex-sp-unified](https://github.com/langsci/biblatex-sp-unified) ==>  langsci/bst/biblatex-sp-unified
- * [langsci-fonts](https://github.com/langsci/langsci-fonts) ==> langsci/fonts
-
-We aim to keep repositories and directories identical.
-
-## installation
-
-In your terminal, you can clone the repository with the following command:
-
-`git clone --recursive https://github.com/langsci/latex.git`
+This repository contains the most recent development build of our LaTeX class. In normal circumstances, there is no need for book authors and editors to interact with this repository. If you'd like to start working on your monograph, edited volume, or paper in a collection, please have a look at our [latex-skeletons](https://github.com/langsci/latex-skeletons) repository, which containts ready-to-use templates.
 
 ## class options of langscibook.cls
 
