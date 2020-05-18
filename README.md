@@ -1,6 +1,6 @@
 # langscibook
 
-This repository contains the most recent development build of our LaTeX class. In normal circumstances, there is no need for book authors and editors to interact with this repository. If you'd like to start working on your monograph, edited volume, or paper in a collection, please have a look at our [latex-skeletons](https://github.com/langsci/latex-skeletons) repository, which containts ready-to-use templates.
+This repository contains the most recent development build of our LaTeX class. In normal circumstances, there is no need for book authors and editors to interact with this repository. If you'd like to start working on your monograph, edited volume, or paper in a collection, please have a look at our [latex-skeletons](https://github.com/langsci/latex-skeletons) repository, which contains ready-to-use templates.
 
 ## class options of langscibook.cls
 
