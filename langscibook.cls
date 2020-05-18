@@ -771,9 +771,29 @@
             }
     \fi
 
+    % Improve the appearance of numbers in tables and the TOC 
+    % In those places, they should come out monospaced, unlike in main text.
     \let\oldtabular\tabular	% number in tabulars
     \let\endoldtabular\endtabular
-    \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers=Lining}\selectfont\oldtabular}{\endoldtabular}
+    \renewenvironment{tabular}{\normalfont\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont\oldtabular}{\endoldtabular}
+    
+    \DeclareTOCStyleEntry
+      [  
+        entrynumberformat=\addfontfeature{Numbers={Monospaced,Lining}},
+        pagenumberformat=\addfontfeature{Numbers={Monospaced,Lining}}\bfseries,
+        raggedentrytext=true
+      ]
+      {tocline}
+      {chapter}
+      
+    \DeclareTOCStyleEntries
+      [
+        entrynumberformat=\addfontfeature{Numbers={Monospaced,Lining}},
+        pagenumberformat=\addfontfeature{Numbers={Monospaced,Lining}},
+        raggedentrytext=true
+      ]
+      {tocline}
+      {section,subsection,subsubsection,paragraph,subparagraph}
 
     \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
     \usepackage[final]{microtype}
