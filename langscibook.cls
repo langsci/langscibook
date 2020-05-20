@@ -801,7 +801,7 @@
     \newcommand{\lsCoverTitleFontSize}{52pt}
     \newcommand{\lsCoverTitleFontBaselineskip}{17.25mm}
     \newcommand{\lsCoverTitleSizes}[2]{\renewcommand{\lsCoverTitleFontSize}{#1}\renewcommand{\lsCoverTitleFontBaselineskip}{#2}}
-    \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{\lsCoverTitleFontSize}{17.25mm}\selectfont #1}
+    \newcommand{\lsCoverTitleFont}[1]{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{\lsCoverTitleFontSize}{\lsCoverTitleFontBaselineskip}\selectfont #1}
     \newcommand{\lsCoverSubTitleFont}{\sffamily\addfontfeatures{Scale=MatchUppercase}\fontsize{25pt}{10mm}\selectfont}
     \newcommand{\lsCoverAuthorFont}{\fontsize{25pt}{12.5mm}\selectfont}
     \newcommand{\lsCoverSeriesFont}{\sffamily\fontsize{17pt}{7.5mm}\selectfont}			% fontsize?
