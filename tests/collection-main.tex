@@ -4,11 +4,12 @@
   % ,undecapitalize
   ,biblatex
   ,multiauthors
-  ,nobabel
-  ,booklanguage=french
+%   ,nobabel
+%   ,booklanguage=ngerman
   ]{../langscibook}
 
-\usepackage[english]{babel}
+% \usepackage[english]{babel}
+\usepackage{kantlipsum}
 % \usepackage{./langsci-basic}
 \usepackage{langsci-tbls}
 \usepackage{langsci-optional}
@@ -43,10 +44,12 @@
 \begin{document}
 \maketitle
 \tableofcontents
+\mainmatter
 
 \part{Phonology}
 \renewcommand{\lsChapterFooterSize}{\footnotesize}
 \includepaper{collection-tests/01}
+% \includepaper{collection-tests/01}
 
 \part{Syntaxx}
 \part{Syntax}
