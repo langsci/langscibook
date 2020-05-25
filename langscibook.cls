@@ -255,6 +255,13 @@
 
 \ProcessKeyvalOptions{langscibook}
 
+% \newcommand{\lsOutputLong}{long}
+\newcommand{\lsOutputBook}{book}             % standard book
+\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
+\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
+\newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
+\newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements
+\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Class
@@ -269,9 +276,8 @@
   index=totoc,
   headings=optiontohead,
 % %   headings=normal,
-  \iflsCollection
-    chapterprefix=true,
-  \fi
+  \iflsCollection chapterprefix=true,\else
+    \ifx\lsOutput\lsOutputPaper  chapterprefix=true,\else \fi\fi
   %draft=yes,
   %appendixprefix
   ]{scrbook}
@@ -441,27 +447,19 @@
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputBook}{book}             % standard book
-\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
-\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
-\newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
-\newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements
-\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
-\AtBeginDocument{
+\ifx\lsOutput\lsOutputPaper
+% A paper differs in title generation from the other
+% output types, and it needs more input to produce
+% its title. This is why \maketitle for output==paper
+% is deffered until later. See the call to \includepaper@body.
+\else % only if output!=paper
+\AtBeginDocument{%
 \iflsMinimal\renewcommand{\maketitle}{You are using the minimal mode.}\else % The minimal mode skips cover generation
-\ifx\lsOutput\lsOutputPaper       % only if output==paper
-  \usepackage{chngcntr}
-  \counterwithout{figure}{chapter}
-  \counterwithout{table}{chapter}
-  \includepaper@body
-\else                 % only if output!=paper
 \renewcommand{\maketitle}{
 \begin{titlepage}
  \thispagestyle{empty}
@@ -566,7 +564,6 @@
 
 } %% \maketitle
 \fi
-\fi
 %% for those who like the example in numbered example sentences to be typeset in italics
 %% this is possible for a complete series only.
 \ifx\lsSeries\sidl
@@ -587,8 +584,8 @@
 \fi
 
 
-
 } %% \AtBeginDocument
+\fi %% end \else of if output == paper
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1880,6 +1877,7 @@ width=.8\textwidth
         \fi% If the paper is not within \includeonly, don't do anything.
 	\end{refsection}
 \egroup}
+\fi
 
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
@@ -1894,12 +1892,17 @@ width=.8\textwidth
   \onlyAuthor\@author}}
 
 \newcommand{\includepaper@body}{
-    \RenewDocumentCommand{\title}{O{##2} m O{##2}}{\newcommand{\titleToHead}{##1}\newcommand{\titleTemp}{##2}\newcommand{\titleToToC}{##3}}
+    \RenewDocumentCommand{\title}{O{##2} m O{##2}}{
+      \newcommand{\titleToHead}{##1}
+      \newcommand{\titleTemp}{##2}
+      \newcommand{\titleToToC}{##3}
+    }
     \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
     \RedeclareSectionCommand[afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]{chapter}
     \renewcommand*{\thesection}{\arabic{section}}
     \renewcommand{\maketitle}{
-      \chapter[tocentry={\titleToToC\newline{\normalfont \@author}}]{\titleTemp}
+      \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
+%         \chapter{\@title}
       \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
       \onlyAuthor
       \renewcommand{\newlineCover}{}
@@ -1920,7 +1923,6 @@ width=.8\textwidth
   \lehead{\lsCollectionPaperHeaderAuthor}
   \rohead{\lsCollectionPaperHeaderTitle}
  }
-\fi
 
 \newcommand{\onlyAuthor}{%    % collection paper
   \renewcommand{\and}{, }%
@@ -1933,50 +1935,7 @@ width=.8\textwidth
   \renewcommand{\lastand}{\newline\newline}
   \renewcommand{\affiliation}[1]{\\[0.5ex]{\normalsize ##1}}}
 
-% \newcommand{\lsCollectionPaperTOC}{{%
-%   \iflsCollectionChapter%
-%     \protect\numberline{\thechapter}\fi
-%     \@title\ \newline{\normalfont\@author}}} % space between \@title and \newline is needed for bookmarks
-
-% \newcommand{\lsCollectionPaperTitle}{{%
-%   \renewcommand{\newlineTOC}{}
-%   \renewcommand{\newlineCover}{\\}
-%   \renewcommand{\chapterheadstartvskip}{}
-%   {\LARGE \noindent \hspace*{-.7cm} \localizedchaptestring~\thechapter}\\ %there must be a better way to undo this length than a hard value
-%   \bigskip
-%   \@title}}
-
 \newcommand{\lsCollectionPaperFooterTitle}{\titleTemp}
-
-\newcommand{\lsCollectionPaperFrontmatterMode}{% %%% Sometimes, chapters like prefaces appear in edited volumes that need special treatment in their headers and TOC
-  \renewcommand{\lsCollectionPaperTitle}{{%
-  \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\}
-  \\[-1\baselineskip]
-  \noindent{\LARGE ~}\\
-  \bigskip
-  \noindent\@title}}
-
-  \renewcommand{\lsCollectionPaperTOC}{{%
-  \iflsCollectionChapter%
-    \protect\numberline{~}\fi
-  \@title\ \newline{\normalfont\@author}}}
-}
-
-\newcommand{\lsCollectionPaperMainmatterMode}{% %%% This resets the changes done by FrontmatterMode
-  \renewcommand{\lsCollectionPaperTitle}{{%
-  \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\}
-  \\[-1\baselineskip]
-% \vspace*{-2\baselineskip}
-  \noindent{\LARGE Chapter \thechapter}\\
-  \bigskip
-  \@title}}
-
-  \renewcommand{\lsCollectionPaperTOC}{{%
-  \iflsCollectionChapter%
-    \protect\numberline{\thechapter}\fi
-  \@title\ \newline{\normalfont\@author}}}}
 
 \newcommand{\lsCollectionPaperAuthor}{{%
   \renewcommand{\newlineTOC}{}
@@ -1999,12 +1958,15 @@ width=.8\textwidth
 
 \providecommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
 
-\providecommand{\markuptitle}[2]{
-  \title{\texorpdfstring{#1}{#2}}
-  \shorttitlerunninghead{#2}
-  \renewcommand{\lsChapterFooterSize}{\scriptsize}
-  \renewcommand{\lsCollectionPaperFooterTitle}{Add\noexpand\texttt{\textbackslash renewcommand\{\textbackslash lsCollectionPaperFooterTitle\}\{A new theory of \textbackslash noexpand\textbackslash textit\{This\} and \textbackslash noexpand\textbackslash textit\{that\}\}} to preamble}
-}
+% In output==paper, the title is generated with the info
+% collected by the commands above.
+\ifx\lsOutput\lsOutputPaper
+  \usepackage{chngcntr}
+  \counterwithout{figure}{chapter}
+  \counterwithout{table}{chapter}
+  \includepaper@body
+\else % only if output!=paper
+\fi
 
 
 %writeout page numbers for separation of chapters
@@ -2022,9 +1984,6 @@ width=.8\textwidth
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Localisation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
   \renewcommand{\chapref}[1]{Chapitre~\ref{#1}}
