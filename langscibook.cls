@@ -1884,7 +1884,7 @@ width=.8\textwidth
   \renewcommand{\newlineTOC}{}
   \iflsCollectionChapter%
     \thechapter\hspace{0.5em}\fi
-  \titleTemp}
+  \titleToHead}
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
   \renewcommand{\newlineCover}{}%
@@ -1902,12 +1902,10 @@ width=.8\textwidth
     \renewcommand*{\thesection}{\arabic{section}}
     \renewcommand{\maketitle}{
       \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
-%         \chapter{\@title}
       \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
       \onlyAuthor
       \renewcommand{\newlineCover}{}
       \renewcommand{\newlineTOC}{\\}
-%     \addcontentsline{toc}{chapter}{\lsCollectionPaperTOC}%
       \ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
       \lsCollectionPaperAuthor%
       \vspace*{\baselineskip}%
