@@ -456,7 +456,7 @@
 % A paper differs in title generation from the other
 % output types, and it needs more input to produce
 % its title. This is why \maketitle for output==paper
-% is deffered until later. See the call to \includepaper@body.
+% is deferred until later. See the call to \includepaper@body.
 \else % only if output!=paper
 \AtBeginDocument{%
 \iflsMinimal\renewcommand{\maketitle}{You are using the minimal mode.}\else % The minimal mode skips cover generation
