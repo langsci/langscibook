@@ -794,6 +794,17 @@
       ]
       {tocline}
       {section,subsection,subsubsection,paragraph,subparagraph}
+    
+    % In collected volumes, adjust the spacing for unnumbered chapters
+    \iflsCollection
+      \renewcommand{\addtocentrydefault}[3]{%
+        \ifstr{#2}{}{%
+          \addcontentsline{toc}{#1}{\protect\numberline{~}#3}%
+        }{%
+          \addcontentsline{toc}{#1}{\protect\numberline{#2}#3}%
+          }%
+      }%
+    \fi
 
     \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
     \usepackage[final]{microtype}
@@ -1883,8 +1894,8 @@ width=.8\textwidth
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
   \iflsCollectionChapter%
-    \ifnum\thechapter>0% Do not send chapter number "0" (fronmatter) to head.
-      \thechapter\hspace{0.5em}
+    \if@mainmatter%Only send the chapter num to head if in mainmatter.
+      \thechapter\hspace{0.5em}\else
     \fi
   \fi
   \titleToHead}
