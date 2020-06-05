@@ -1898,24 +1898,36 @@ width=.8\textwidth
       \newcommand{\titleToToC}{##3}
     }
     \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
-    \RedeclareSectionCommand[afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]{chapter}
     \renewcommand*{\thesection}{\arabic{section}}
+    \RedeclareSectionCommand
+      [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip,
+       beforeskip=0pt
+      ]{chapter}
     \renewcommand{\maketitle}{
+      % With \setchapterpreamble from scrbook, we ensure that the author(s),
+      % their affiliation, the abstract, etc., are part of the \chapter block.
+      \setchapterpreamble[u]{
+        \onlyAuthor
+        \lsCollectionPaperAuthor%
+        \vspace{\baselineskip}
+        \ifx\@epigram\empty%
+          \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
+              \epigram{}\epigramsource{}}%
+        \fi%
+        \begin{quote}
+          \small\lsCollectionPaperAbstract
+        \end{quote}
+        \vspace{\baselineskip}
+      }
       \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
       \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
-      \onlyAuthor
       \renewcommand{\newlineCover}{}
       \renewcommand{\newlineTOC}{\\}
       \ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
-      \lsCollectionPaperAuthor%
-      \vspace*{\baselineskip}%
-      \ifx\@epigram\empty%
-        \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
-            \epigram{}\epigramsource{}}%
-      \fi%
-      \begin{quote}
-        \small\lsCollectionPaperAbstract
-      \end{quote}
+      % The following ensure that a chapter is treated as a heading, which
+      % controls page break penalties and indentation following the heading.
+      \@afterindentfalse
+      \@afterheading
     }
   \ohead{}
   \lehead{\lsCollectionPaperHeaderAuthor}
