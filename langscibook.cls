@@ -255,6 +255,13 @@
 
 \ProcessKeyvalOptions{langscibook}
 
+% \newcommand{\lsOutputLong}{long}
+\newcommand{\lsOutputBook}{book}             % standard book
+\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
+\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
+\newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
+\newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements
+\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Class
@@ -268,7 +275,9 @@
   toc=bibliography,
   index=totoc,
   headings=optiontohead,
-  %chapterprefix=true,
+% %   headings=normal,
+  \iflsCollection chapterprefix=true,\else
+    \ifx\lsOutput\lsOutputPaper  chapterprefix=true,\else \fi\fi
   %draft=yes,
   %appendixprefix
   ]{scrbook}
@@ -438,27 +447,19 @@
 \fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputBook}{book}             % standard book
-\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
-\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
-\newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
-\newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements
-\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
-\AtBeginDocument{
+\ifx\lsOutput\lsOutputPaper
+% A paper differs in title generation from the other
+% output types, and it needs more input to produce
+% its title. This is why \maketitle for output==paper
+% is deferred until later. See the call to \includepaper@body.
+\else % only if output!=paper
+\AtBeginDocument{%
 \iflsMinimal\renewcommand{\maketitle}{You are using the minimal mode.}\else % The minimal mode skips cover generation
-\ifx\lsOutput\lsOutputPaper       % only if output==paper
-  \usepackage{chngcntr}
-  \counterwithout{figure}{chapter}
-  \counterwithout{table}{chapter}
-  \lsPaper
-\else                 % only if output!=paper
 \renewcommand{\maketitle}{
 \begin{titlepage}
  \thispagestyle{empty}
@@ -563,7 +564,6 @@
 
 } %% \maketitle
 \fi
-\fi
 %% for those who like the example in numbered example sentences to be typeset in italics
 %% this is possible for a complete series only.
 \ifx\lsSeries\sidl
@@ -584,8 +584,8 @@
 \fi
 
 
-
 } %% \AtBeginDocument
+\fi %% end \else of if output == paper
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -794,6 +794,17 @@
       ]
       {tocline}
       {section,subsection,subsubsection,paragraph,subparagraph}
+    
+    % In collected volumes, adjust the spacing for unnumbered chapters
+    \iflsCollection
+      \renewcommand{\addtocentrydefault}[3]{%
+        \ifstr{#2}{}{%
+          \addcontentsline{toc}{#1}{\protect\numberline{~}#3}%
+        }{%
+          \addcontentsline{toc}{#1}{\protect\numberline{#2}#3}%
+          }%
+      }%
+    \fi
 
     \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
     \usepackage[final]{microtype}
@@ -1812,15 +1823,15 @@ width=.8\textwidth
 	\fi
 
 
-\AtBeginDocument{	% for the citation in the footer
+\AtBeginDocument{% for the citation in the footer
 	\onlyAuthor
 	\renewcommand{\newlineCover}{}
 	\renewcommand{\newlineSpine}{}
-	\edef\lsCollectionTitle{\@title\ifx\@subtitle\empty\else{: \@subtitle}\fi}		% \edef immediately expands \@title
+	\edef\lsCollectionTitle{\@title\ifx\@subtitle\empty\else{: \@subtitle}\fi}% \edef immediately expands \@title
 	\edef\lsCollectionEditor{\@author}
 	\addbibresource{collection_tmp.bib}
 	\if@partsw\AfterEndDocument{\typeout{langscibook Warning: You are in includeonly mode.}\typeout{The bibliographical information for the chapters in this volume have not been updated}}\else% Check for \includeonly mode
-	\newwrite\tempfile						% open temporary bib file
+	\newwrite\tempfile% open temporary bib file
 	\immediate\openout\tempfile=collection_tmp.bib
 	\fi
 }
@@ -1839,45 +1850,25 @@ width=.8\textwidth
     pagenumberbox={\csname @gobble\endcsname},
     raggedentrytext=true,
     linefill={\hfill}
-  ]{tocline}{part} 
-
+  ]{tocline}{part}
+  
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 
-%% Modified code from:
-%% http://pastcounts.wordpress.com/2010/12/20/how-to-construct-a-collection-of-articles-with-latex/
-\newenvironment{collectionpaper}{
+\NewDocumentCommand{\includepaper}{m}{
+\bgroup
 	\renewcommand{\documentclass}[2][]{}%
 	\renewcommand{\usepackage}[2][]{}%
-	\renewenvironment{document}{\begingroup}{\endgroup}%
-
-	\renewcommand{\title}[1]{\renewcommand{\@title}{##1}}
-	\renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
-	%\renewcommand{\thanks}[1]{\symbolfootnote[1]{##1}}
-	\lsPaper
-	}
-	{}
-
-\newcommand{\includepaper}[1]{
-	\begin{collectionpaper}
+	\renewenvironment{document}{\begingroup}{\endgroup}
+	\includepaper@body
 	\begin{refsection}
-
-	\DeclareCiteCommand{\fullciteFooter}
-		{\defcounter{maxnames}{\blx@maxbibnames}%
-		  \usebibmacro{prenote}}
-		{\usedriver
-		   {\DeclareNameAlias{sortname}{default}}
-		   {\thefield{entrytype}}}
-		{\multicitedelim}
-		{\usebibmacro{postnote}}
 	\renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
-
 	\include{#1}%
-        \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
-          \addtocounter{page}{-1}
-	  \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \lsPaper
-          \addtocounter{page}{1}
+    \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
+    \addtocounter{page}{-1}
+    \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \includepaper@body
+    \addtocounter{page}{1}
 
 	%%% for citation in footer
 	%% preprocessing of author/editor names
@@ -1892,12 +1883,70 @@ width=.8\textwidth
 
 	%% write bib entry to file
 	%% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
-	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\lsCollectionPaperFooterTitle}},booktitle={{\lsCollectionTitle}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
-	\immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\lsCollectionPaperFooterTitle}},booktitle={{\lsCollectionTitle}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
+	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
+	\immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
         \fi% If the paper is not within \includeonly, don't do anything.
 	\end{refsection}
-	\end{collectionpaper}}
+\egroup}
 \fi
+
+\newcommand{\lsCollectionPaperHeaderTitle}{%
+  \renewcommand{\newlineCover}{}
+  \renewcommand{\newlineTOC}{}
+  \iflsCollectionChapter%
+    \if@mainmatter%Only send the chapter num to head if in mainmatter.
+      \thechapter\hspace{0.5em}\else
+    \fi
+  \fi
+  \titleToHead}
+  
+\newcommand{\lsCollectionPaperHeaderAuthor}{{%
+  \renewcommand{\newlineCover}{}%
+  \renewcommand{\newlineTOC}{}%
+  \onlyAuthor\@author}}
+
+\newcommand{\includepaper@body}{
+    \RenewDocumentCommand{\title}{O{##2} m O{##2}}{
+      \newcommand{\titleToHead}{##1}
+      \newcommand{\titleTemp}{##2}
+      \newcommand{\titleToToC}{##3}
+    }
+    \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
+    \renewcommand*{\thesection}{\arabic{section}}
+    \RedeclareSectionCommand
+      [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip,
+       beforeskip=0pt
+      ]{chapter}
+    \renewcommand{\maketitle}{
+      % With \setchapterpreamble from scrbook, we ensure that the author(s),
+      % their affiliation, the abstract, etc., are part of the \chapter block.
+      \setchapterpreamble[u]{
+        \onlyAuthor
+        \lsCollectionPaperAuthor%
+        \vspace{\baselineskip}
+        \ifx\@epigram\empty%
+          \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
+              \epigram{}\epigramsource{}}%
+        \fi%
+        \begin{quote}
+          \small\lsCollectionPaperAbstract
+        \end{quote}
+        \vspace{\baselineskip}
+      }
+      \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
+      \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
+      \renewcommand{\newlineCover}{}
+      \renewcommand{\newlineTOC}{\\}
+      \ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
+      % The following ensure that a chapter is treated as a heading, which
+      % controls page break penalties and indentation following the heading.
+      \@afterindentfalse
+      \@afterheading
+    }
+  \ohead{}
+  \lehead{\lsCollectionPaperHeaderAuthor}
+  \rohead{\lsCollectionPaperHeaderTitle}
+ }
 
 \newcommand{\onlyAuthor}{%    % collection paper
   \renewcommand{\and}{, }%
@@ -1910,63 +1959,7 @@ width=.8\textwidth
   \renewcommand{\lastand}{\newline\newline}
   \renewcommand{\affiliation}[1]{\\[0.5ex]{\normalsize ##1}}}
 
-\newcommand{\lsCollectionPaperHeaderAuthor}{{%
-  \renewcommand{\newlineCover}{}%
-  \renewcommand{\newlineTOC}{}%
-  \onlyAuthor\@author}}
-
-\newcommand{\lsCollectionPaperHeaderTitle}{%
-  \renewcommand{\newlineCover}{}
-  \renewcommand{\newlineTOC}{}
-  \iflsCollectionChapter%
-    \thechapter\hspace{0.5em}\fi
-  \@title}
-
-\newcommand{\lsCollectionPaperTOC}{{%
-  \iflsCollectionChapter%
-    \protect\numberline{\thechapter}\fi
-    \@title\ \newline{\normalfont\@author}}} % space between \@title and \newline is needed for bookmarks
-
-\newcommand{\localizedchaptestring}{Chapter}
-\newcommand{\lsCollectionPaperTitle}{{%
-  \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\}
-  \renewcommand{\chapterheadstartvskip}{}
-  {\LARGE \noindent \hspace*{-.7cm} \localizedchaptestring~\thechapter}\\ %there must be a better way to undo this length than a hard value
-  \bigskip
-  \@title}}
-
-\newcommand{\lsCollectionPaperFooterTitle}{\@title}
-
-\newcommand{\lsCollectionPaperFrontmatterMode}{% %%% Sometimes, chapters like prefaces appear in edited volumes that need special treatment in their headers and TOC
-  \renewcommand{\lsCollectionPaperTitle}{{%
-  \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\}
-  \\[-1\baselineskip]
-  \noindent{\LARGE ~}\\
-  \bigskip
-  \noindent\@title}}
-
-  \renewcommand{\lsCollectionPaperTOC}{{%
-  \iflsCollectionChapter%
-    \protect\numberline{~}\fi
-  \@title\ \newline{\normalfont\@author}}}
-}
-
-\newcommand{\lsCollectionPaperMainmatterMode}{% %%% This resets the changes done by FrontmatterMode
-  \renewcommand{\lsCollectionPaperTitle}{{%
-  \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\}
-  \\[-1\baselineskip]
-% \vspace*{-2\baselineskip}
-  \noindent{\LARGE Chapter \thechapter}\\
-  \bigskip
-  \@title}}
-
-  \renewcommand{\lsCollectionPaperTOC}{{%
-  \iflsCollectionChapter%
-    \protect\numberline{\thechapter}\fi
-  \@title\ \newline{\normalfont\@author}}}}
+\newcommand{\lsCollectionPaperFooterTitle}{\titleTemp}
 
 \newcommand{\lsCollectionPaperAuthor}{{%
   \renewcommand{\newlineTOC}{}
@@ -1987,47 +1980,17 @@ width=.8\textwidth
 \newcommand{\papernote}[1]{
   \renewcommand{\lsCollectionPaperCitation}{#1}}
 
-\newcommand{\lsPaper}{
-  \renewcommand{\maketitle}{
-    \refstepcounter{chapter}
-    \addchap*{\lsCollectionPaperTitle}
-    \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
-    \onlyAuthor
-    \renewcommand{\newlineCover}{}
-    \renewcommand{\newlineTOC}{\\}
-    \addcontentsline{toc}{chapter}{\lsCollectionPaperTOC}%
-    \ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
-    \vspace*{-2ex}
-    \lsCollectionPaperAuthor%
-    \vspace*{\baselineskip}%
-    \ifx\@epigram\empty%
-      \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
-          \epigram{}\epigramsource{}}%
-    \fi%
-    \begin{quote}
-    \small\lsCollectionPaperAbstract
-    \end{quote}
-  }
-
-  \renewcommand*{\thesection}{\arabic{section}}
-  \setcounter{section}{0}
-  \setcounter{footnote}{0}
-  \setcounter{figure}{0}
-  \setcounter{table}{0}
-  \setcounter{equation}{0}  % for examples
-  \ohead{}
-  \lehead{\lsCollectionPaperHeaderAuthor}
-  \rohead{\lsCollectionPaperHeaderTitle}
-}
-
 \providecommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
 
-\providecommand{\markuptitle}[2]{
-  \title{\texorpdfstring{#1}{#2}}
-  \shorttitlerunninghead{#2}
-  \renewcommand{\lsChapterFooterSize}{\scriptsize}
-  \renewcommand{\lsCollectionPaperFooterTitle}{Add\noexpand\texttt{\textbackslash renewcommand\{\textbackslash lsCollectionPaperFooterTitle\}\{A new theory of \textbackslash noexpand\textbackslash textit\{This\} and \textbackslash noexpand\textbackslash textit\{that\}\}} to preamble}
-}
+% In output==paper, the title is generated with the info
+% collected by the commands above.
+\ifx\lsOutput\lsOutputPaper
+  \usepackage{chngcntr}
+  \counterwithout{figure}{chapter}
+  \counterwithout{table}{chapter}
+  \includepaper@body
+\else % only if output!=paper
+\fi
 
 
 %writeout page numbers for separation of chapters
@@ -2045,9 +2008,6 @@ width=.8\textwidth
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Localisation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
   \renewcommand{\chapref}[1]{Chapitre~\ref{#1}}
