@@ -1883,7 +1883,10 @@ width=.8\textwidth
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
   \iflsCollectionChapter%
-    \thechapter\hspace{0.5em}\fi
+    \ifnum\thechapter>0% Do not send chapter number "0" (fronmatter) to head.
+      \thechapter\hspace{0.5em}
+    \fi
+  \fi
   \titleToHead}
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
