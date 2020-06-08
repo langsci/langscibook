@@ -66,8 +66,9 @@
 \fi
 \ifx\lsSeries\cam
 	\newcommand{\lsSeriesTitle}{Contact and Multilingualism}
-	\newcommand{\lsSeriesColor}{lsRed}
- 	\renewcommand{\lsISSN}{}
+	\newcommand{\lsSeriesColor}{lsRed} 
+	\renewcommand{\lsISSNelectronic}{2700-855X}
+ 	\renewcommand{\lsISSNprint}{2700-8541} 
  	\renewcommand{\lsSeriesText}{
         {\large  Contact and Multilingualism}
 
@@ -390,7 +391,8 @@
             \item Franco, Ludovico, Mihaela Marchis Moreno \& Matthew Reeve (eds.). Agreement, case and locality in the nominal and verbal domains.
             \item Bross, Fabian. The clausal syntax of German Sign Language: A cartographic approach.
             \item Smith, Peter W., Johannes Mursell \& Katharina Hartmann (eds.). Agree to Agree: Agreement in the Minimalist Programme.
-            \item  Pineda, Anna \& Jaume Mateu (eds.). Dative constructions in Romance and beyond.
+            \item Pineda, Anna \& Jaume Mateu (eds.). Dative constructions in Romance and beyond.
+            \item Kastner, Itamar. Voice at the interfaces: The syntax, semantics, and morphology of the Hebrew verb.
             \end{enumerate}
             }
 \fi
