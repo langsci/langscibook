@@ -176,13 +176,19 @@
 \DeclareVoidOption{smallfont}{
 	\renewcommand{\lsFontsize}{10pt}}
 \DeclareVoidOption{decapbib}{
-	\lsResetCapitalstrue }
+	\lsResetCapitalstrue}
+\newbool{draft}
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects
 	 \lsDrafttrue
-	 \overfullrule=5pt	}	% to indicate overfull hboxes
+	 \booltrue{draft}
+	 \overfullrule=5pt
+	 }	% to indicate overfull hboxes
+\newbool{openreview}
 \DeclareVoidOption{openreview}{
 	\lsOpenReviewtrue%
-	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}}
+	\booltrue{openreview}
+	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}
+	}
 % \DeclareVoidOption{nonflat}{
 % 	\renewcommand{\fontpath}{./langsci/fonts/}
 % 	\renewcommand{\logopath}{./langsci/graphics/}
@@ -248,6 +254,7 @@
 	\booltrue{collection}
 	\booltrue{collectionchapter}
 	}
+\newbool{collectiontoclong}
 \DeclareVoidOption{collectiontoclong}{
 	\lsCollectiontrue%
 	\lsCollectionTOCLongtrue
@@ -320,8 +327,13 @@
   index=totoc,
   headings=optiontohead,
 % %   headings=normal,
-  \iflsCollection chapterprefix=true,\else
-    \ifx\lsOutput\lsOutputPaper  chapterprefix=true,\else \fi\fi
+%  \ifbool{collection}{
+  \iflsCollection
+  chapterprefix=true,
+%   }
+  \else
+    \ifx\lsOutput\lsOutputPaper  chapterprefix=true,\else \fi
+    \fi
   %draft=yes,
   %appendixprefix
   ]{scrbook}
@@ -355,7 +367,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Print on demand macros
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iflsMinimal\else % The minimal mode skips cover generation
+% \iflsMinimal\else % The minimal mode skips cover generation
+\notbool{minimal}{
 % Basic cover commands, including PGF layers
 \newcommand{\podsetup}{
   \lsCovertrue
@@ -488,7 +501,8 @@
                   anchor=north west]
             {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 }
-\fi
+% \fi
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1889,9 +1903,11 @@ width=.8\textwidth
 \renewcommand{\@dotsep}{2.5}		% space between dots
 \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
 \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
-\iflsCollectionTOCLong\else% show only parts and chapters
+% \iflsCollectionTOCLong\else% show only parts and chapters
+\ifbool{collectiontoclong}{
   \setcounter{tocdepth}{0}
-\fi
+}
+% \fi
 \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
   [
     pagenumberbox={\csname @gobble\endcsname},
@@ -1940,11 +1956,13 @@ width=.8\textwidth
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
-  \iflsCollectionChapter%
+%   \iflsCollectionChapter%
+  \ifbool{collectionchapter}{
     \if@mainmatter%Only send the chapter num to head if in mainmatter.
       \thechapter\hspace{0.5em}\else
     \fi
-  \fi
+    }
+%   \fi
   \titleToHead}
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
@@ -2133,11 +2151,13 @@ width=.8\textwidth
 \renewcommand{\lsAcknowledgementTitle}{Remerciements}
 \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
 \renewcommand{\lsReferencesTitle}{french}
-  \iflsNoBabel
-  \else
+%   \iflsNoBabel
+%   \else
+  \ifbool{babel}{
     \renewcommand\frenchfigurename{Figure}
     \renewcommand\frenchtablename{Table}
-  \fi
+    }
+%   \fi
 % \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
@@ -2197,7 +2217,8 @@ width=.8\textwidth
 %%  {}* Can the boy who run fast can jump high?
 %% \zl
 
-\iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
+\ifbool{arseneau}{
+% \iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
 % With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
 \def\sloppybottom{%
   \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
@@ -2205,6 +2226,7 @@ width=.8\textwidth
   \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
 }
 \sloppybottom
-\fi
+% \fi
+}
 
 \endinput
