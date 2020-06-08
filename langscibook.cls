@@ -146,7 +146,7 @@
 \newif\iflsCover \lsCoverfalse %output format is cover
 \newif\iflsNoBabel \lsNoBabelfalse
 \newif\iflsBabelShorthands \lsBabelShorthandsfalse
-\newif\iflsMultiauthors \lsMultiauthorsfalse
+% \newif\iflsMultiauthors \lsMultiauthorsfalse
 \newif\iflsArseneau \lsArseneaufalse
 \newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
 
@@ -191,12 +191,21 @@
 % 	\renewcommand{\bibstylepath}{./langsci/}
 % 	\renewcommand{\stylepath}{./langsci/styles/}
 % }
+\newbool{babel}
 \DeclareVoidOption{nobabel}{
-  \lsNoBabeltrue}
+  \lsNoBabeltrue
+  \boolfalse{babel}
+  }
+\newbool{babelshorthands}
 \DeclareVoidOption{babelshorthands}{
-  \lsBabelShorthandstrue}
+  \lsBabelShorthandstrue
+  \booltrue{babelshorthands}
+  }
+\newbool{multiauthors}
 \DeclareVoidOption{multiauthors}{
-    \lsMultiauthorstrue}
+%     \lsMultiauthorstrue
+    \booltrue{multiauthors}
+}
 \DeclareVoidOption{showindex}{
 	\lsShowIndextrue}
 \DeclareVoidOption{biblatex}{
@@ -915,9 +924,12 @@
     \renewcommand{\newlineSpine}{}
     \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
     \renewcommand{\lsEditorSuffix}{(ed.)}
-      \iflsMultiauthors
+%       \iflsMultiauthors
+% 	\renewcommand{\lsEditorSuffix}{(eds.)}
+%       \fi
+      \ifbool{multiauthors}{
 	\renewcommand{\lsEditorSuffix}{(eds.)}
-      \fi
+      }{}
   }
 \else
 \fi
