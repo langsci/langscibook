@@ -196,39 +196,74 @@
   \lsNoBabeltrue
   \boolfalse{babel}
   }
+
 \newbool{babelshorthands}
 \DeclareVoidOption{babelshorthands}{
   \lsBabelShorthandstrue
   \booltrue{babelshorthands}
   }
+
 \newbool{multiauthors}
 \DeclareVoidOption{multiauthors}{
 %     \lsMultiauthorstrue
     \booltrue{multiauthors}
 }
+
+\newbool{showindex}
 \DeclareVoidOption{showindex}{
-	\lsShowIndextrue}
+	\lsShowIndextrue
+        \booltrue{showindex}
+	}
+\newbool{biblatex}
 \DeclareVoidOption{biblatex}{
-	\lsBiblatextrue}
-\DeclareVoidOption{bibtex}{
-  \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final version}
-	\lsBiblatexfalse}
+	\lsBiblatextrue
+	\booltrue{biblatex}
+	}
+% \DeclareVoidOption{bibtex}{
+%   \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final version}
+% 	\lsBiblatexfalse}
+\newbool{newtxmath}
 \DeclareVoidOption{nonewtxmath}{
-	\lsNewtxmathfalse}
+	\lsNewtxmathfalse
+	\boolfalse{newtxmath} %seems redundant
+	}
 \DeclareVoidOption{newtxmath}{
-	\lsNewtxmathtrue}
+        \lsNewtxmathtrue
+        \booltrue{newtxmath}
+        }
+\newbool{minimal}
 \DeclareVoidOption{minimal}{
-	\lsMinimaltrue}
+	\lsMinimaltrue
+	\booltrue{minimal}
+	}
+\newbool{collection}
 \DeclareVoidOption{collection}{
-	\lsCollectiontrue}
+	\lsCollectiontrue
+	\booltrue{collection}
+	}
+\newbool{collectionchapter}
 \DeclareVoidOption{collectionchapter}{
 	\lsCollectiontrue%
-	\lsCollectionChaptertrue}
+	\lsCollectionChaptertrue
+	\booltrue{collection}
+	\booltrue{collectionchapter}
+	}
 \DeclareVoidOption{collectiontoclong}{
 	\lsCollectiontrue%
-	\lsCollectionTOCLongtrue}
-\DeclareVoidOption{arseneau}{\lsArseneautrue}
-\DeclareVoidOption{oldstylenumbers}{\lsOldStyleNumberstrue}
+	\lsCollectionTOCLongtrue
+	\booltrue{collection}
+	\booltrue{collectiontoclong}
+	}
+\newbool{arseneau} %rename this option
+        \DeclareVoidOption{arseneau}{
+        \lsArseneautrue
+        \booltrue{arseneau}
+        }
+\newbool{oldstylenumbers}
+\DeclareVoidOption{oldstylenumbers}{
+        \lsOldStyleNumberstrue
+        \booltrue{oldstylenumbers}
+        }
 \DeclareVoidOption{chinesefont}{
 	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
 % 	\newcommand{\zh}[1]{{\cn #1}}
