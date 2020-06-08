@@ -250,14 +250,14 @@
 \newbool{collectionchapter}
 \DeclareVoidOption{collectionchapter}{
 	\lsCollectiontrue%
-	\lsCollectionChaptertrue
+% 	\lsCollectionChaptertrue
 	\booltrue{collection}
 	\booltrue{collectionchapter}
 	}
 \newbool{collectiontoclong}
 \DeclareVoidOption{collectiontoclong}{
 	\lsCollectiontrue%
-	\lsCollectionTOCLongtrue
+% 	\lsCollectionTOCLongtrue
 	\booltrue{collection}
 	\booltrue{collectiontoclong}
 	}
