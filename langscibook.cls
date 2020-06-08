@@ -134,21 +134,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newif\iflsDraft \lsDraftfalse
-\newif\iflsOpenReview \lsOpenReviewfalse
+% \newif\iflsOpenReview \lsOpenReviewfalse
 \newif\iflsResetCapitals \lsResetCapitalsfalse
-\newif\iflsShowIndex \lsShowIndexfalse
-\newif\iflsBiblatex \lsBiblatextrue
+% \newif\iflsShowIndex \lsShowIndexfalse
+% \newif\iflsBiblatex \lsBiblatextrue
 \newif\iflsCollection \lsCollectionfalse
-\newif\iflsCollectionChapter \lsCollectionChapterfalse
-\newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
-\newif\iflsNewtxmath \lsNewtxmathfalse
-\newif\iflsMinimal \lsMinimalfalse
+% \newif\iflsCollectionChapter \lsCollectionChapterfalse
+% \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
+% \newif\iflsNewtxmath \lsNewtxmathfalse
+% \newif\iflsMinimal \lsMinimalfalse
 \newif\iflsCover \lsCoverfalse %output format is cover
-\newif\iflsNoBabel \lsNoBabelfalse
-\newif\iflsBabelShorthands \lsBabelShorthandsfalse
+% \newif\iflsNoBabel \lsNoBabelfalse
+% \newif\iflsBabelShorthands \lsBabelShorthandsfalse
 % \newif\iflsMultiauthors \lsMultiauthorsfalse
-\newif\iflsArseneau \lsArseneaufalse
-\newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
+% \newif\iflsArseneau \lsArseneaufalse
+% \newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -185,7 +185,7 @@
 	 }	% to indicate overfull hboxes
 \newbool{openreview}
 \DeclareVoidOption{openreview}{
-	\lsOpenReviewtrue%
+% 	\lsOpenReviewtrue%
 	\booltrue{openreview}
 	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}
 	}
@@ -199,13 +199,13 @@
 % }
 \newbool{babel}
 \DeclareVoidOption{nobabel}{
-  \lsNoBabeltrue
+%   \lsNoBabeltrue
   \boolfalse{babel}
   }
 
 \newbool{babelshorthands}
 \DeclareVoidOption{babelshorthands}{
-  \lsBabelShorthandstrue
+%   \lsBabelShorthandstrue
   \booltrue{babelshorthands}
   }
 
@@ -217,12 +217,12 @@
 
 \newbool{showindex}
 \DeclareVoidOption{showindex}{
-	\lsShowIndextrue
+% 	\lsShowIndextrue
         \booltrue{showindex}
 	}
 \newbool{biblatex}
 \DeclareVoidOption{biblatex}{
-	\lsBiblatextrue
+% 	\lsBiblatextrue
 	\booltrue{biblatex}
 	}
 % \DeclareVoidOption{bibtex}{
@@ -230,16 +230,16 @@
 % 	\lsBiblatexfalse}
 \newbool{newtxmath}
 \DeclareVoidOption{nonewtxmath}{
-	\lsNewtxmathfalse
+% 	\lsNewtxmathfalse
 	\boolfalse{newtxmath} %seems redundant
 	}
 \DeclareVoidOption{newtxmath}{
-        \lsNewtxmathtrue
+%         \lsNewtxmathtrue
         \booltrue{newtxmath}
         }
 \newbool{minimal}
 \DeclareVoidOption{minimal}{
-	\lsMinimaltrue
+% 	\lsMinimaltrue
 	\booltrue{minimal}
 	}
 \newbool{collection}
@@ -263,12 +263,12 @@
 	}
 \newbool{arseneau} %rename this option
         \DeclareVoidOption{arseneau}{
-        \lsArseneautrue
+%         \lsArseneautrue
         \booltrue{arseneau}
         }
 \newbool{oldstylenumbers}
 \DeclareVoidOption{oldstylenumbers}{
-        \lsOldStyleNumberstrue
+%         \lsOldStyleNumberstrue
         \booltrue{oldstylenumbers}
         }
 \DeclareVoidOption{chinesefont}{
@@ -502,7 +502,7 @@
             {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
 }
 % \fi
-}
+}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -517,111 +517,118 @@
 % is deferred until later. See the call to \includepaper@body.
 \else % only if output!=paper
 \AtBeginDocument{%
-\iflsMinimal\renewcommand{\maketitle}{You are using the minimal mode.}\else % The minimal mode skips cover generation
-\renewcommand{\maketitle}{
-\begin{titlepage}
- \thispagestyle{empty}
-\ifx\lsOutput\lsOutputBook   % only if output==book
-  \setcounter{page}{-1}
-  %% First titlepage:
-  {\lsFrontPage}
-  %%%%%%%%%%%%%%%%%%%
-  \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
-  %% Series information:
-  {\lsSeriesHistory}
-  %%%%%%%%%%%%%%%%%%%%%
-  \clearpage%\thispagestyle{empty}
-  %% Schmutztitel:
-  {\renewcommand{\lsCoverBlockColor}{white}
-   \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
-  \lsSchmutztitel}
-  %%%%%%%%%%%%%%%%%%%%
-  \AtEndDocument{
-    \lsPageStyleEmpty
-    \null\newpage\thispagestyle{empty} % add a final blank page
-	%% Back page:
-    {\lsBackPage}
-    \null\newpage\thispagestyle{empty}
-  }
-\fi
+\ifbool{minimal}{
+    \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
+}
+% \fi
+% else
+{
+    \renewcommand{\maketitle}{
+        \begin{titlepage}
+        \thispagestyle{empty}
+        \ifx\lsOutput\lsOutputBook   % only if output==book
+        \setcounter{page}{-1}
+        %% First titlepage:
+        {\lsFrontPage}
+        %%%%%%%%%%%%%%%%%%%
+        \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
+        %% Series information:
+        {\lsSeriesHistory}
+        %%%%%%%%%%%%%%%%%%%%%
+        \clearpage%\thispagestyle{empty}
+        %% Schmutztitel:
+        {\renewcommand{\lsCoverBlockColor}{white}
+        \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+        \lsSchmutztitel}
+        %%%%%%%%%%%%%%%%%%%%
+        \AtEndDocument{
+            \lsPageStyleEmpty
+            \null\newpage\thispagestyle{empty} % add a final blank page
+                %% Back page:
+            {\lsBackPage}
+            \null\newpage\thispagestyle{empty}
+        }
+        \fi
 
-\ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
-  {\setcounter{page}{-1}
-  {\lsFrontPage}
-  }
+        \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
+        {\setcounter{page}{-1}
+        {\lsFrontPage}
+        }
 
-\fi
+        \fi
 
-\ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
-  \podsetup
-  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \podgeometry{24.2mm}{23.1cm}{15.5cm}
-    \podspine
-    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-    \podcoverbottomtext
-    \newcommand{\lsISBNcover}{\lsISBNhardcover}
-    \podbackcover{137mm}
-  \end{tikzpicture}
-  %exit the document right here
-  \end{titlepage}
-  \end{document}
-  \fi
-
-
-\ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
-  \podsetup
-  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \podgeometry{13.75mm}{23.1cm}{15.5cm}
-    \podspine
-    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-    \podcoverbottomtext
-    \newcommand{\lsISBNcover}{\lsISBNsoftcover}
-    \podbackcover{137mm}
-  \end{tikzpicture}
-  %exit the document right here
-  \end{titlepage}
-  \end{document}
-  \fi
+        \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
+        \podsetup
+        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+            \podgeometry{24.2mm}{23.1cm}{15.5cm}
+            \podspine
+            \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+            \podcoverbottomtext
+            \newcommand{\lsISBNcover}{\lsISBNhardcover}
+            \podbackcover{137mm}
+        \end{tikzpicture}
+        %exit the document right here
+        \end{titlepage}
+        \end{document}
+        \fi
 
 
-\ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
-  \podsetup
-  \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-    \podgeometry{10.675mm}{22.5cm}{15.5cm}
-    \podspine
-    \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-    \podcoverbottomtext
-% 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-    \podbackcover{140mm}
-  \end{tikzpicture}
-  %exit the document right here
-  \end{titlepage}
-  \end{document}
-\fi
-\end{titlepage}
+        \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
+        \podsetup
+        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+            \podgeometry{13.75mm}{23.1cm}{15.5cm}
+            \podspine
+            \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+            \podcoverbottomtext
+            \newcommand{\lsISBNcover}{\lsISBNsoftcover}
+            \podbackcover{137mm}
+        \end{tikzpicture}
+        %exit the document right here
+        \end{titlepage}
+        \end{document}
+        \fi
 
-% \null\newpage\thispagestyle{empty}
-\hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
-\color{black}
-\lsInsideFont
 
-%% Imprint:
-\ifx\lsOutput\lsOutputGuidelines{}
-\else{\lsImpressum}
-\fi
-%%%%%%%%%%%%%
+        \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
+        \podsetup
+        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+            \podgeometry{10.675mm}{22.5cm}{15.5cm}
+            \podspine
+            \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+            \podcoverbottomtext
+        % 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
+            \podbackcover{140mm}
+        \end{tikzpicture}
+        %exit the document right here
+        \end{titlepage}
+        \end{document}
+        \fi
+        \end{titlepage}
 
-% \null\newpage\thispagestyle{plain}
-%\pagenumbering{roman}    % or \frontmatter
+        % \null\newpage\thispagestyle{empty}
+        \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
+        \color{black}
+        \lsInsideFont
 
-%% Dedication:
-\ifx\@dedication\empty{}
-\else{\newpage\lsDedication}
-\fi
-%%%%%%%%%%%%%%%%
+        %% Imprint:
+        \ifx\lsOutput\lsOutputGuidelines{}
+        \else{\lsImpressum}
+        \fi
+        %%%%%%%%%%%%%
 
-} %% \maketitle
-\fi
+        % \null\newpage\thispagestyle{plain}
+        %\pagenumbering{roman}    % or \frontmatter
+
+        %% Dedication:
+        \ifx\@dedication\empty{}
+        \else{\newpage\lsDedication}
+        \fi
+        %%%%%%%%%%%%%%%%
+
+    } %% \maketitle
+    % \fi
+}
+
 %% for those who like the example in numbered example sentences to be typeset in italics
 %% this is possible for a complete series only.
 \ifx\lsSeries\sidl
@@ -640,7 +647,6 @@
 \ifx\lsSeries\nc
  \renewcommand{\eachwordone}{\itshape}
 \fi
-
 
 } %% \AtBeginDocument
 \fi %% end \else of if output == paper
@@ -730,40 +736,41 @@
 \usepackage{amssymb} % has to be loaded before other stuff
 \usepackage{amsmath} % has to be loaded before mathspec/unicode-math
 
-\iflsMinimal\else % The minimal mode skips font loading
-    \iflsNewtxmath\else
+% \iflsMinimal\else % The minimal mode skips font loading
+\notbool{minimal}{ % The minimal mode skips font loading
+%     \iflsNewtxmath\else
+    \notbool{newtxmath}{
+%     \iflsNewtxmath\else
     %% There is a known problem in the interplay between \binom, unicode-math, and OTF
     %% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
     \ifx\Umathcode\@undefined\else
-
-    \DeclareRobustCommand{\genfrac}[6]{%
-    \def\@tempa{#1#2}%
-    \edef\@tempb{\@nx\@genfrac\@mathstyle{#4}%
-        % just \over or \above never withdelims versions
-        \ifx @#3@\@@over\else\@@above\fi
-    }%
-    \ifx\@tempa\@empty \else
-    \bgroup % so mathord not mathinner
-    \left\ifx\relax#1\relax.\else#1\fi % assumes . is null delimiter
-    % otherwise add specified delimiter
-    \kern-\nulldelimiterspace % fractions add extra nulldelimiter space
-    \fi
-    \@tempb{#3}{\mathstrut{#5}}{\mathstrut{#6}}%
-    \ifx\@tempa\@empty \else
-    \kern-\nulldelimiterspace
-    \right\ifx\relax#2\relax.\else#2\fi
-    \egroup
-    \fi
-    }
-    \fi
+        \DeclareRobustCommand{\genfrac}[6]{%
+        \def\@tempa{#1#2}%
+        \edef\@tempb{\@nx\@genfrac\@mathstyle{#4}%
+            % just \over or \above never withdelims versions
+            \ifx @#3@\@@over\else\@@above\fi
+        }%
+        \ifx\@tempa\@empty \else
+            \bgroup % so mathord not mathinner
+            \left\ifx\relax#1\relax.\else#1\fi % assumes . is null delimiter
+            % otherwise add specified delimiter
+            \kern-\nulldelimiterspace % fractions add extra nulldelimiter space
+        \fi
+        \@tempb{#3}{\mathstrut{#5}}{\mathstrut{#6}}%
+        \ifx\@tempa\@empty \else
+            \kern-\nulldelimiterspace
+            \right\ifx\relax#2\relax.\else#2\fi
+            \egroup
+        \fi
+        }
+    \fi%umathcode
     %% Provides \setmathfont
     \usepackage{unicode-math}
-    \fi
-
-    \iflsNewtxmath
+%     \fi%newtxmath
+    }{%else newtxmath
     %% Deprecated:
     \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
-    \fi
+    }
 
     \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 
@@ -784,7 +791,8 @@
     BoldItalicFont = Arimo-BoldItalic.ttf
     ]{Arimo-Regular.ttf}
 
-    \iflsNewtxmath\else
+%     \iflsNewtxmath\else
+    \notbool{newtxmath}{
     \setmathfont[AutoFakeBold
 %     ,Path=\fontpath
     ]{LibertinusMath-Regular.otf}
@@ -792,12 +800,14 @@
     ]{XITSMath-Regular.otf}
     \setmathfont[range={bfcal},StylisticSet=1%,Path=\fontpath
     ]{XITSMath-Bold.otf}
-    \fi
+%     \fi%newtxmath
+    }{}
 
-    \iflsOldStyleNumbers
+%     \iflsOldStyleNumbers
+    \ifbool{oldstylenumbers}{
     \defaultfontfeatures[LibertinusSerif-Semibold.otf,LibertinusSerif-Italic.otf,LibertinusSerif-SemiboldItalic.otf,LibertinusSerif-Regular.otf]{SmallCapsFeatures={Numbers=OldStyle}}
-    \fi
-
+%     \fi
+    }{}
     \setmainfont[
     Ligatures={TeX,Common},
 %     Path=\fontpath,
@@ -814,7 +824,8 @@
     ]{LibertinusSerif-Regular.otf}
 
     %% Deprecated:
-    \iflsNewtxmath		% some users have problems when installing newtxmath
+    \ifbool{newtxmath}{
+%     \iflsNewtxmath		% some users have problems when installing newtxmath
             \usepackage[libertine]{newtxmath}
             %% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
             %% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
@@ -827,8 +838,8 @@
             \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
             \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
             }
-    \fi
-
+%     \fi
+    }{}
     % Improve the appearance of numbers in tables and the TOC 
     % In those places, they should come out monospaced, unlike in main text.
     \let\oldtabular\tabular	% number in tabulars
@@ -854,7 +865,8 @@
       {section,subsection,subsubsection,paragraph,subparagraph}
     
     % In collected volumes, adjust the spacing for unnumbered chapters
-    \iflsCollection
+%     \iflsCollection
+    \ifbool{collection}{
       \renewcommand{\addtocentrydefault}[3]{%
         \ifstr{#2}{}{%
           \addcontentsline{toc}{#1}{\protect\numberline{~}#3}%
@@ -862,8 +874,8 @@
           \addcontentsline{toc}{#1}{\protect\numberline{#2}#3}%
           }%
       }%
-    \fi
-
+%     \fi
+    }{}
     \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
     \usepackage[final]{microtype}
 
@@ -881,7 +893,8 @@
     \newcommand{\lsBackBodyFont}{\lsInsideFont}
     \newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
     \newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
-\fi % end minimal mode switch from line ~677
+% \fi % end minimal mode switch from line ~677
+}{}
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 \setkomafont{descriptionlabel}{\normalfont\itshape}
@@ -967,7 +980,8 @@
 
 \newcommand{\lsEditorPrefix}{}
 \newcommand{\lsEditorSuffix}{}
-\iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
+\ifbool{collection}{
+% \iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
   \AtBeginDocument{
     \renewcommand{\newlineCover}{}
     \renewcommand{\newlineSpine}{}
@@ -980,8 +994,9 @@
 	\renewcommand{\lsEditorSuffix}{(eds.)}
       }{}
   }
-\else
-\fi
+}{}
+% \else
+% \fi
 
 \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
 \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
@@ -1006,7 +1021,10 @@
   \podfrontcovertoptext{140mm}{51pt}
   \podcoverbottomtext
   \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
-  \iflsOpenReview \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime}; \fi
+%   \iflsOpenReview
+  \ifbool{openreview}{
+  \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime};}{}
+%   \fi
 %   \iflsUndecapitalize \node [rotate=45,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Undecapitalized}; \fi
 \end{tikzpicture}
 \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
@@ -1198,7 +1216,13 @@ Grünberger Str. 16\\
 This title can be downloaded at:\\
 \url{\lsURL}
 
-© \lsYear, \iflsCollection the authors\else\@author\fi
+© \lsYear,
+\ifbool{collection}{%
+% \iflsCollection
+the authors}{%
+% \else
+\@author}
+% \fi
 
 \newcommand{\ccby}{CC-BY}
 \newcommand{\ccbynd}{CC-BY-ND}
@@ -1338,9 +1362,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \iflsDraft
   \ifoot{Draft of \today, \currenttime}
 \fi
-\iflsOpenReview
+% \iflsOpenReview
+\ifbool{openreview}{
   \ifoot{{\color{lsRed}Open review version}. Final version at \url{\lsURL}.}
-\fi
+% \fi
+}{}
 
 \newcommand{\lsPageStyleEmpty}{
   \ohead{}
@@ -1395,11 +1421,15 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %    Footnotes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ifxetex\iflsMinimal\else
+\ifxetex
+\notbool{minimal}{
+% \iflsMinimal\else
 \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}}      % numbers in footnotes
 %\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote labels
 %\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote references
-\fi\fi
+% \fi
+}{}
+\fi
 
 \raggedbottom
 \deffootnote[1.5em]{1.5em}{\normalparindent}{\textsuperscript{\thefootnotemark}} % putting a space after footnotemark has undesirable side effects with footnotes that start with an empty line; instead use \xspace in the footnote definition below
@@ -1461,12 +1491,14 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsBookLanguageGerman}{german}
 \newcommand{\lsBookLanguageChinese}{chinese}
 
-\iflsNoBabel
-  \else
+% \iflsNoBabel
+%   \else
+\notbool{babel}{
   \ifx\lsBookLanguage\lsBookLanguageChinese
 	    \usepackage{xeCJK}%Chinese doesn't load babel, but xeCJK.
 	\else
-	 \iflsBabelShorthands
+% 	 \iflsBabelShorthands
+	 \ifbool{babelshorthands}{
 	    \ifx\lsBookLanguage\lsBookLanguageEnglish
 	            \usepackage[ngerman,main=\lsBookLanguage]{babel}
 				\addto\extrasenglish{\languageshorthands{german}\useshorthands{"}}
@@ -1482,11 +1514,13 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                     \usepackage[ngerman,main=\lsBookLanguage]{babel}
                     \addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
                 \fi
-	   \else
+	   }{%else babelshorthands
 		\usepackage[\lsBookLanguage]{babel}
-	   \fi%Close \iflsBabelShorthands
+% 	   \fi%Close \iflsBabelShorthands
+            }
      \fi%Close language=chinese
-\fi%Close \iflsNoBabel
+% \fi%Close \iflsNoBabel
+}{}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1510,9 +1544,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \fi
 	backend=\lsBiblatexBackend,
 	indexing=cite,
-	\iflsCollection\else
+	\notbool{collection}{
+% 	\iflsCollection\else
 		toc=bib, % make bibliography appear in toc
-	\fi
+        }{}
+% 	\fi
 ]{biblatex}
 
 % If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
@@ -1778,7 +1814,8 @@ width=.8\textwidth
 \providecommand{\iai}[1]{\ia{#1}#1}
 \providecommand{\ili}[1]{\il{#1}#1}
 
-\iflsShowIndex	% shows index commands in text
+% \iflsShowIndex	% shows index commands in text
+\ifbool{showindex}{
     \RequirePackage{soul}
 %     \RequirePackage[noadjust]{marginnote}
     \renewcommand{\marginpar}{\marginnote}
@@ -1791,7 +1828,8 @@ width=.8\textwidth
     \renewcommand{\il}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=yellow,size=\scriptsize]{\tiny#1}\ilold{#1}}}
     \renewcommand{\iai}[1]{\sethlcolor{pink}\hl{#1}\iaold{#1}}
     \renewcommand{\ia}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=pink,size=\scriptsize]{\tiny#1}\iaold{#1}}}
-\fi
+% \fi
+}{}
 
 % integrate see also in multiple indexes
 \def\igobble#1 {}
@@ -1878,11 +1916,14 @@ width=.8\textwidth
   }
 
 
-\iflsCollection
-	\iflsBiblatex\else
-		\ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
-	\fi
 
+% \iflsCollection
+\ifbool{collection}{
+	\notbool{biblatex}{
+% 	\iflsBiblatex\else
+		\ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
+% 	\fi
+        }{}
 
 \AtBeginDocument{% for the citation in the footer
 	\onlyAuthor
@@ -1906,7 +1947,7 @@ width=.8\textwidth
 % \iflsCollectionTOCLong\else% show only parts and chapters
 \ifbool{collectiontoclong}{
   \setcounter{tocdepth}{0}
-}
+}{}
 % \fi
 \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
   [
@@ -1951,7 +1992,8 @@ width=.8\textwidth
         \fi% If the paper is not within \includeonly, don't do anything.
 	\end{refsection}
 \egroup}
-\fi
+% \fi
+}{}
 
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
@@ -1961,7 +2003,7 @@ width=.8\textwidth
     \if@mainmatter%Only send the chapter num to head if in mainmatter.
       \thechapter\hspace{0.5em}\else
     \fi
-    }
+    }{}
 %   \fi
   \titleToHead}
   
@@ -2156,7 +2198,7 @@ width=.8\textwidth
   \ifbool{babel}{
     \renewcommand\frenchfigurename{Figure}
     \renewcommand\frenchtablename{Table}
-    }
+    }{}
 %   \fi
 % \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
@@ -2227,6 +2269,6 @@ width=.8\textwidth
 }
 \sloppybottom
 % \fi
-}
+}{}
 
 \endinput
