@@ -1,13 +1,22 @@
 %%% MDFRAMED STYLES DEFS %%%
 
 \usepackage[framemethod=tikz]{mdframed}
-\mdfsetup{skipabove=2\baselineskip,skipbelow=2\baselineskip,frametitlefont=\sffamily\bfseries\Large, needspace=4\baselineskip, splittopskip=1.5\baselineskip}
-\mdfsetup{apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}}
+\mdfsetup
+  {
+    skipabove=2\baselineskip,
+    skipbelow=2\baselineskip,
+    frametitlefont=\sffamily\bfseries\Large, 
+    needspace=4\baselineskip, 
+    splittopskip=\baselineskip,
+    apptotikzsetting={ \tikzset{mdfbackground/.append style={draw=none}} }
+  }
+
 \AtEndPreamble{% Check if the external library from tikz has been loaded in the preamble. If so, skip externalising for all mdframed boxes.
     \ifcsname tikz@library@external@loaded\endcsname
         \mdfsetup{settings={\tikzexternaldisable},endcode={\tikzexternalenable}}
     \fi
 }
+
 \newcommand{\langscisymbol}{book}
 \newlength{\trennlinie}
 \setlength{\trennlinie}{.8mm}
@@ -15,52 +24,116 @@
 \newcommand{\tblslinecolour}{lsYellow}
 
 \mdfdefinestyle{yellowexercise}{%
-	everyline=true,
-        ignorelastdescenders=true,
-        middlelinewidth=1.5pt,linecolor=\tblslinecolour,outerlinewidth=5mm,
-	innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=0,
-	frametitleaboveskip=15mm, frametitlebelowskip=10mm,frametitlerule=false, repeatframetitle=false,
-	firstextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
-	singleextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
+    everyline=true,
+    ignorelastdescenders=true,
+    middlelinewidth=1.5pt,
+    linecolor=\tblslinecolour,
+    outerlinewidth=5mm,
+    innerleftmargin=5mm, 
+    innerrightmargin=5mm, 
+    innerbottommargin=5mm, 
+    innertopmargin=5mm,
+    frametitleaboveskip=10mm, 
+    frametitlebelowskip=0mm,
+    frametitlerule=false, 
+    repeatframetitle=false,
+    firstextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};}, % if environment is on multiple pages, print this on the first page.
+    singleextra={\node[xshift=5mm,right,draw=\tblslinecolour, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblslinecolour}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};} % if env. does not span multiple pages, print the same.
 }
 
 \mdfdefinestyle{greyexercise}{%
-        everyline=true,
-        ignorelastdescenders=true,
-        middlelinewidth=0pt,linecolor=white,outerlinewidth=5mm,
-        leftline=false,rightline=false,bottomline=false,
-        backgroundcolor=\tblsboxcolor,
-        innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,
-        frametitleaboveskip=15mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false,
-        firstextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}
-        };},
-        singleextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}
-};}
+    everyline=true,
+    ignorelastdescenders=true,
+    middlelinewidth=0pt,
+    linecolor=white,
+    outerlinewidth=5mm,
+    leftline=false,
+    rightline=false,
+    bottomline=false,
+    backgroundcolor=\tblsboxcolor,
+    innerleftmargin=5mm, 
+    innerrightmargin=5mm, 
+    innerbottommargin=5mm, 
+    innertopmargin=5mm,
+    frametitleaboveskip=10mm, 
+    frametitlebelowskip=0mm,
+    frametitlerule=false, 
+    repeatframetitle=false,
+    firstextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};},
+    singleextra={\node[xshift=5mm,right,draw=\tblsboxcolor, line width=1.5pt,rectangle, minimum size=10mm, fill=white] at (P-|O) {\color{\tblsboxcolor}\includegraphics[width=10mm]{tbls-\langscisymbol.pdf}};}
 }
 
 
 \mdfdefinestyle{tblsbox}{%
-	leftline=false, rightline=false, frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm,innerleftmargin=0mm,innerrightmargin=0
+	leftline=false, 
+	rightline=false, 
+	frametitleaboveskip=5mm, 
+	frametitlebelowskip=0mm,
+	frametitlerule=false, 
+	repeatframetitle=false, 
+	linewidth=\trennlinie, 
+	linecolor=\tblslinecolour, 
+	innerbottommargin=5mm, 
+	innertopmargin=5mm,
+	innerleftmargin=0mm,
+	innerrightmargin=0mm
 	}
 
 \mdfdefinestyle{tblsframedbox}{%
-	frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblslinecolour, innerbottommargin=5mm, innertopmargin=5mm
+	frametitleaboveskip=5mm, 
+	frametitlebelowskip=0mm,
+	frametitlerule=false, 
+	repeatframetitle=false, 
+	linewidth=\trennlinie, 
+	linecolor=\tblslinecolour, 
+	innerbottommargin=5mm, 
+	innertopmargin=5mm
 }
 
 \newcommand{\tblsfillcolour}{black!12}
+
 \mdfdefinestyle{tblsfilledbox}{%
-	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm
+	hidealllines=true, 
+	backgroundcolor=\tblsfillcolour, 
+	frametitleaboveskip=5mm, 
+	frametitlebelowskip=0mm,
+	frametitlerule=false, 
+	repeatframetitle=false, 
+	innerleftmargin=5mm, 
+	innerrightmargin=5mm, 
+	innerbottommargin=5mm, 
+	innertopmargin=5mm
 }
 
 \mdfdefinestyle{tblsfilledcolumnbox}{% % Copy of tblsfilledbox with multicols
-	hidealllines=true, backgroundcolor=\tblsfillcolour, frametitleaboveskip=5mm, frametitlebelowskip=0mm,frametitlerule=false, repeatframetitle=false, innerleftmargin=5mm, innerrightmargin=5mm, innerbottommargin=5mm, innertopmargin=5mm,startinnercode={\begin{multicols}{2}},endinnercode={\end{multicols}}
+	hidealllines=true, 
+	backgroundcolor=\tblsfillcolour, 
+	frametitleaboveskip=5mm, 
+	frametitlebelowskip=0mm,
+	frametitlerule=false, 
+	repeatframetitle=false, 
+	innerleftmargin=5mm, 
+	innerrightmargin=5mm, 
+	innerbottommargin=5mm, 
+	innertopmargin=5mm,
+	startinnercode={\begin{multicols}{2}},
+	endinnercode={\end{multicols}}
 }
 
 \mdfdefinestyle{tblsframedcolumnbox}{%
-	frametitleaboveskip=10mm, frametitlebelowskip=5mm,frametitlerule=false, repeatframetitle=false, linewidth=\trennlinie, linecolor=\tblsboxcolor, innerbottommargin=5mm, innertopmargin=5mm, startinnercode={\begin{multicols}{2}},endinnercode={\end{multicols}}
+	frametitleaboveskip=10mm, 
+	frametitlebelowskip=0mm,
+	frametitlerule=false, 
+	repeatframetitle=false, 
+	linewidth=\trennlinie, 
+	linecolor=\tblsboxcolor, 
+	innerbottommargin=5mm, 
+	innertopmargin=5mm, 
+	startinnercode={\begin{multicols}{2}},
+	endinnercode={\end{multicols}}
 }
 
-%%% MDFRAMED COMMANDS %%%
+%%% MDFRAMED DOCUMENT COMMANDS %%%
 
 \newcommand{\tblssy}[4][black!12]{% Use like this \tblsfr[colour]{book|bulb|glass|law}{title}{text}, where [colour] is optional
   \renewcommand{\langscisymbol}{#2}\renewcommand{\tblsboxcolor}{#1}
