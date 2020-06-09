@@ -133,7 +133,7 @@
 %     Conditionals
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newif\iflsDraft \lsDraftfalse
+% \newif\iflsDraft \lsDraftfalse
 % \newif\iflsOpenReview \lsOpenReviewfalse
 \newif\iflsResetCapitals \lsResetCapitalsfalse
 % \newif\iflsShowIndex \lsShowIndexfalse
@@ -143,7 +143,8 @@
 % \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 % \newif\iflsNewtxmath \lsNewtxmathfalse
 % \newif\iflsMinimal \lsMinimalfalse
-\newif\iflsCover \lsCoverfalse %output format is cover
+% \newif\iflsCover \lsCoverfalse %output format is cover
+\newbool{cover}
 % \newif\iflsNoBabel \lsNoBabelfalse
 % \newif\iflsBabelShorthands \lsBabelShorthandsfalse
 % \newif\iflsMultiauthors \lsMultiauthorsfalse
@@ -179,7 +180,7 @@
 	\lsResetCapitalstrue}
 \newbool{draft}
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects
-	 \lsDrafttrue
+% 	 \lsDrafttrue
 	 \booltrue{draft}
 	 \overfullrule=5pt
 	 }	% to indicate overfull hboxes
@@ -371,7 +372,8 @@
 \notbool{minimal}{
 % Basic cover commands, including PGF layers
 \newcommand{\podsetup}{
-  \lsCovertrue
+  \booltrue{cover}
+%   \lsCovertrue
   \renewcommand{\maketitle}{}  %no need for this
   \pagestyle{empty}
   \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
@@ -670,7 +672,8 @@
 \usepackage{calc}
 
  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version
-    \lsCovertrue
+    \booltrue{cover}
+%     \lsCovertrue
     \setlength{\bleed}{3.175mm}
     \setlength{\seitenbreite}{169.9mm}
     \setlength{\seitenhoehe}{244.1mm}
@@ -681,7 +684,8 @@
 \fi
 
 \ifx\lsOutput\lsOutputCoverBODhc
-  \lsCovertrue
+  \booltrue{cover}
+%   \lsCovertrue
   \newlength{\bodfold}
   \newlength{\totalspine}
   \setlength{\bodfold}{8mm}
@@ -698,7 +702,8 @@
 
 
 \ifx\lsOutput\lsOutputCoverBODsc
-  \lsCovertrue
+  \booltrue{cover}
+%   \lsCovertrue
   \newlength{\totalspine}
   \setlength{\seitenbreite}{170mm}
   \setlength{\seitenhoehe}{240mm} % For BOD: Softcover, papier 80g/m², weiß, Papier 17x24cm
@@ -712,9 +717,10 @@
 
 %Page size and text area if not cover
 
-\iflsCover
+% \iflsCover
+\notbool{cover}{
 %output types cover have already been handled
-\else % output != cover
+% \else % output != cover
   \usepackage[
   papersize={170mm,240mm}
   ,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
@@ -723,7 +729,8 @@
   %,showframe,pass
   ,marginparwidth=50pt
   ]{geometry}
-\fi
+% \fi
+}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Fonts
@@ -1020,7 +1027,8 @@
   \end{pgfonlayer}
   \podfrontcovertoptext{140mm}{51pt}
   \podcoverbottomtext
-  \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
+%   \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
+  \ifbool{draft}{\node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime};}{}
 %   \iflsOpenReview
   \ifbool{openreview}{
   \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime};}{}
@@ -1359,9 +1367,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \ihead{}
 \cfoot{}
 \ofoot[]{\pagemark}
-\iflsDraft
+\ifbool{draft}{
+% \iflsDraft
   \ifoot{Draft of \today, \currenttime}
-\fi
+}{}
+% \fi
 % \iflsOpenReview
 \ifbool{openreview}{
   \ifoot{{\color{lsRed}Open review version}. Final version at \url{\lsURL}.}
@@ -2044,7 +2054,10 @@ width=.8\textwidth
       \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
       \renewcommand{\newlineCover}{}
       \renewcommand{\newlineTOC}{\\}
-      \ifoot[\lsCollectionPaperCitation]{\iflsDraft Draft of \today, \currenttime \fi}
+      \ifoot[\lsCollectionPaperCitation]{
+        \ifbool{draft}{Draft of \today, \currenttime}{}
+%         \iflsDraft Draft of \today, \currenttime \fi
+            }
       % The following ensure that a chapter is treated as a heading, which
       % controls page break penalties and indentation following the heading.
       \@afterindentfalse
