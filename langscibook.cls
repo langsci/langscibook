@@ -382,6 +382,7 @@
 \notbool{minimal}{
     % Basic cover commands, including PGF layers
     \newcommand{\podsetup}{
+        \typeout{123}
         \booltrue{cover}
         %   \lsCovertrue
         \renewcommand{\maketitle}{}  %no need for this
@@ -525,171 +526,181 @@
 \newbool{coverBODsc}
 \newbool{coverCS}
 
-\ifx\lsOutput\lsOutputBook{\booltrue{book}}\fi
-\ifx\lsOutput\lsOutputPaper{\booltrue{paper}}\fi
-\ifx\lsOutput\lsOutputGuidelines{\booltrue{guidelines}}\fi
-\ifx\lsOutput\lsOutputCoverBODhc{\booltrue{coverBODhc}}\fi
-\ifx\lsOutput\lsOutputCoverBODsc{\booltrue{coverBODsc}}\fi
-\ifx\lsOutput\lsOutputCoverCS{\booltrue{coverCS}}\fi
+\ifx\lsOutput\lsOutputBook{\global\booltrue{book}}\fi
+\ifx\lsOutput\lsOutputPaper{\global\booltrue{paper}}\fi
+\ifx\lsOutput\lsOutputGuidelines{\global\booltrue{guidelines}}\fi
+\ifx\lsOutput\lsOutputCoverBODhc{\global\booltrue{coverBODhc}}\fi
+\ifx\lsOutput\lsOutputCoverBODsc{\global\booltrue{coverBODsc}}\fi
+\ifx\lsOutput\lsOutputCoverCS{\global\booltrue{coverCS}}\fi
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
-% \ifx\lsOutput\lsOutputPaper
-\ifbool{paper}{
-% A paper differs in title generation from the other
-% output types, and it needs more input to produce
-% its title. This is why \maketitle for output==paper
-% is deferred until later. See the call to \includepaper@body.
-}{ %else paper
-% \else % only if output!=paper
-\AtBeginDocument{%
-    \ifbool{minimal}{
-        \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
-    }
-    % \fi
-    % else minimal
-    {
-        \renewcommand{\maketitle}{
+\newcommand{\setuptitle}{
+    \renewcommand{\maketitle}{
+        %first we treat covers to get them out of the way
+        %         \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
+        \ifbool{coverBODhc}{
             \begin{titlepage}
             \thispagestyle{empty}
-            \ifx\lsOutput\lsOutputBook   % only if output==book
-            \ifbool{book}{
-                \setcounter{page}{-1}
-                %% First titlepage:
-                {\lsFrontPage}
-                %%%%%%%%%%%%%%%%%%%
-                \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
-                %% Series information:
-                {\lsSeriesHistory}
-                %%%%%%%%%%%%%%%%%%%%%
-                \clearpage%\thispagestyle{empty}
-                %% Schmutztitel:
-                {\renewcommand{\lsCoverBlockColor}{white}
-                \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
-                \lsSchmutztitel}
-                %%%%%%%%%%%%%%%%%%%%
-                \AtEndDocument{
-                    \lsPageStyleEmpty
-                    \null\newpage\thispagestyle{empty} % add a final blank page
-                        %% Back page:
-                    {\lsBackPage}
-                    \null\newpage\thispagestyle{empty}
-                }
-        %         \fi
-            }{} %end book
-
-    %         \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
-            \ifbool{guidelines}{
-                {\setcounter{page}{-1}
-                {\lsFrontPage}
-            }
-            }{} %end guidlines
-    %         \fi
-
-
-    %         \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
-            \ifbool{coverBODhc}{
-                \podsetup
-                \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-                    \podgeometry{24.2mm}{23.1cm}{15.5cm}
-                    \podspine
-                    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-                    \podcoverbottomtext
-                    \newcommand{\lsISBNcover}{\lsISBNhardcover}
-                    \podbackcover{137mm}
-                \end{tikzpicture}
-                %exit the document right here
-                \end{titlepage}
-                \end{document}
-        %         \fi
-            }{} %end coverbodhc
-
-
-    %         \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
-            \ifbool{coverBODsc}{
-                \podsetup
-                \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-                    \podgeometry{13.75mm}{23.1cm}{15.5cm}
-                    \podspine
-                    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-                    \podcoverbottomtext
-                    \newcommand{\lsISBNcover}{\lsISBNsoftcover}
-                    \podbackcover{137mm}
-                \end{tikzpicture}
-                %exit the document right here
-                \end{titlepage}
-                \end{document}
-        %         \fi
-            }{}
-
-
-    %         \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
-            \ifbool{coverCS}{
-                \podsetup
-                \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-                    \podgeometry{10.675mm}{22.5cm}{15.5cm}
-                    \podspine
-                    \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-                    \podcoverbottomtext
-                % 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-                    \podbackcover{140mm}
-                \end{tikzpicture}
-                %exit the document right here
-                \end{titlepage}
-                \end{document}
-        %         \fi
-            }{} %end cover cs
-
+            \podsetup
+            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                \podgeometry{24.2mm}{23.1cm}{15.5cm}
+                \podspine
+                \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                \podcoverbottomtext
+                \newcommand{\lsISBNcover}{\lsISBNhardcover}
+                \podbackcover{137mm}
+            \end{tikzpicture}
+            %exit the document right here
             \end{titlepage}
-
-            % \null\newpage\thispagestyle{empty}
-            \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
-            \color{black}
-            \lsInsideFont
-
-            %% Imprint:
-            \notbool{guidelines}{
-    %         \ifx\lsOutput\lsOutputGuidelines{}
-    %         \else
-                {\lsImpressum}
+            \end{document}
     %         \fi
-            }{} %end guidlines
-            %%%%%%%%%%%%%
+        }{} %end coverbodhc
 
-            % \null\newpage\thispagestyle{plain}
-            %\pagenumbering{roman}    % or \frontmatter
 
-            %% Dedication:
-            \ifx\@dedication\empty{}
-            \else{\newpage\lsDedication}
-            \fi
-            %%%%%%%%%%%%%%%%
+%         \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
+        \ifbool{coverBODsc}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \podsetup
+            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                \podgeometry{13.75mm}{23.1cm}{15.5cm}
+                \podspine
+                \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                \podcoverbottomtext
+                \newcommand{\lsISBNcover}{\lsISBNsoftcover}
+                \podbackcover{137mm}
+            \end{tikzpicture}
+            %exit the document right here
+            \end{titlepage}
+            \end{document}
+    %         \fi
+        }{}
 
-        } %% \maketitle
+
+%         \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
+        \ifbool{coverCS}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \podsetup
+            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                \podgeometry{10.675mm}{22.5cm}{15.5cm}
+                \podspine
+                \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                \podcoverbottomtext
+            % 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
+                \podbackcover{140mm}
+            \end{tikzpicture}
+            %exit the document right here
+            \end{titlepage}
+            \end{document}
+    %         \fi
+        }{} %end cover cs
+
+
+%             \ifx\lsOutput\lsOutputBook   % only if output==book
+        \ifbool{book}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \setcounter{page}{-1}
+            %% First titlepage:
+            {\lsFrontPage}
+            %%%%%%%%%%%%%%%%%%%
+            \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
+            %% Series information:
+            {\lsSeriesHistory}
+            %%%%%%%%%%%%%%%%%%%%%
+            \clearpage%\thispagestyle{empty}
+            %% Schmutztitel:
+            {\renewcommand{\lsCoverBlockColor}{white}
+            \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+            \lsSchmutztitel}
+            %%%%%%%%%%%%%%%%%%%%
+            \AtEndDocument{
+                \lsPageStyleEmpty
+                \null\newpage\thispagestyle{empty} % add a final blank page
+                    %% Back page:
+                {\lsBackPage}
+                \null\newpage\thispagestyle{empty}
+            }
+            \end{titlepage}
+    %         \fi
+        }{} %end book
+
+%         \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
+        \ifbool{guidelines}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            {\setcounter{page}{-1}
+            {\lsFrontPage}
+            }
+            \end{titlepage}
+        }{} %end guidelines
+
+        % \null\newpage\thispagestyle{empty}
+        \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
+        \color{black}
+        \lsInsideFont
+
+        %% Imprint:
+        \notbool{guidelines}{
+%         \ifx\lsOutput\lsOutputGuidelines{}
+%         \else
+            {\lsImpressum}
+%         \fi
+        }{} %end guidlines
+        %%%%%%%%%%%%%
+
+        % \null\newpage\thispagestyle{plain}
+        %\pagenumbering{roman}    % or \frontmatter
+
+        %% Dedication:
+        \ifx\@dedication\empty{}
+        \else{\newpage\lsDedication}
+        \fi
+        %%%%%%%%%%%%%%%%
+    } %% \maketitle
+    % \fi
+} %\setuptitle
+
+
+% \ifx\lsOutput\lsOutputPaper
+\notbool{paper}{
+    % A paper differs in title generation from the other
+    % output types, and it needs more input to produce
+    % its title. This is why \maketitle for output==paper
+    % is deferred until later. See the call to \includepaper@body.
+    \AtBeginDocument{%
+        \ifbool{minimal}{
+            \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
+        }
         % \fi
-    }
+        % else minimal
+        {
+            \setuptitle
+        }
 
-    %% for those who like the example in numbered example sentences to be typeset in italics
-    %% this is possible for a complete series only.
-    \ifx\lsSeries\sidl
-    %\def\exfont{\normalsize\itshape}
-    \renewcommand{\eachwordone}{\itshape} % only \gll
+        %% for those who like the example in numbered example sentences to be typeset in italics
+        %% this is possible for a complete series only.
+        \ifx\lsSeries\sidl
+        %\def\exfont{\normalsize\itshape}
+        \renewcommand{\eachwordone}{\itshape} % only \gll
 
-    \let\oldtable\table   % footnotes in tables without horizontal line
-    \let\endoldtable\endtable
-    \renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable}
-    \fi
+        \let\oldtable\table   % footnotes in tables without horizontal line
+        \let\endoldtable\endtable
+        \renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable}
+        \fi
 
-    \ifx\lsSeries\pmwe
-    \renewcommand{\eachwordone}{\normalfont}
-    \fi
+        \ifx\lsSeries\pmwe
+        \renewcommand{\eachwordone}{\normalfont}
+        \fi
 
-    \ifx\lsSeries\nc
-    \renewcommand{\eachwordone}{\itshape}
-    \fi
+        \ifx\lsSeries\nc
+        \renewcommand{\eachwordone}{\itshape}
+        \fi
 
     } %% \AtBeginDocument
-}
+}{} %notbool paper
 % \fi %% end \else of if output == paper
 
 
