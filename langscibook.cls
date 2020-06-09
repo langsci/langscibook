@@ -382,7 +382,6 @@
 \notbool{minimal}{
     % Basic cover commands, including PGF layers
     \newcommand{\podsetup}{
-        \typeout{123}
         \booltrue{cover}
         %   \lsCovertrue
         \renewcommand{\maketitle}{}  %no need for this
