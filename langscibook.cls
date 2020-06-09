@@ -135,21 +135,36 @@
 
 % \newif\iflsDraft \lsDraftfalse
 % \newif\iflsOpenReview \lsOpenReviewfalse
-\newif\iflsResetCapitals \lsResetCapitalsfalse
+% \newif\iflsResetCapitals \lsResetCapitalsfalse
 % \newif\iflsShowIndex \lsShowIndexfalse
 % \newif\iflsBiblatex \lsBiblatextrue
-\newif\iflsCollection \lsCollectionfalse
+% \newif\iflsCollection \lsCollectionfalse
 % \newif\iflsCollectionChapter \lsCollectionChapterfalse
 % \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
 % \newif\iflsNewtxmath \lsNewtxmathfalse
 % \newif\iflsMinimal \lsMinimalfalse
 % \newif\iflsCover \lsCoverfalse %output format is cover
-\newbool{cover}
 % \newif\iflsNoBabel \lsNoBabelfalse
 % \newif\iflsBabelShorthands \lsBabelShorthandsfalse
 % \newif\iflsMultiauthors \lsMultiauthorsfalse
 % \newif\iflsArseneau \lsArseneaufalse
 % \newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
+\newbool{cover}
+\newbool{resetcapitals}
+\newbool{draft}
+\newbool{openreview}
+\newbool{babel}
+\newbool{babelshorthands}
+\newbool{multiauthors}
+\newbool{showindex}
+\newbool{biblatex}
+\newbool{newtxmath}
+\newbool{minimal}
+\newbool{collection}
+\newbool{collectionchapter}
+\newbool{collectiontoclong}
+\newbool{arseneau} %rename this option
+\newbool{oldstylenumbers}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -177,14 +192,14 @@
 \DeclareVoidOption{smallfont}{
 	\renewcommand{\lsFontsize}{10pt}}
 \DeclareVoidOption{decapbib}{
-	\lsResetCapitalstrue}
-\newbool{draft}
+        \booltrue{resetcapitals}
+% 	\lsResetCapitalstrue
+	}
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects
 % 	 \lsDrafttrue
 	 \booltrue{draft}
 	 \overfullrule=5pt
 	 }	% to indicate overfull hboxes
-\newbool{openreview}
 \DeclareVoidOption{openreview}{
 % 	\lsOpenReviewtrue%
 	\booltrue{openreview}
@@ -198,30 +213,27 @@
 % 	\renewcommand{\bibstylepath}{./langsci/}
 % 	\renewcommand{\stylepath}{./langsci/styles/}
 % }
-\newbool{babel}
 \DeclareVoidOption{nobabel}{
 %   \lsNoBabeltrue
   \boolfalse{babel}
   }
 
-\newbool{babelshorthands}
 \DeclareVoidOption{babelshorthands}{
 %   \lsBabelShorthandstrue
   \booltrue{babelshorthands}
   }
 
-\newbool{multiauthors}
 \DeclareVoidOption{multiauthors}{
 %     \lsMultiauthorstrue
     \booltrue{multiauthors}
 }
 
-\newbool{showindex}
 \DeclareVoidOption{showindex}{
 % 	\lsShowIndextrue
         \booltrue{showindex}
 	}
-\newbool{biblatex}
+\booltrue{biblatex}
+
 \DeclareVoidOption{biblatex}{
 % 	\lsBiblatextrue
 	\booltrue{biblatex}
@@ -229,7 +241,6 @@
 % \DeclareVoidOption{bibtex}{
 %   \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final version}
 % 	\lsBiblatexfalse}
-\newbool{newtxmath}
 \DeclareVoidOption{nonewtxmath}{
 % 	\lsNewtxmathfalse
 	\boolfalse{newtxmath} %seems redundant
@@ -238,36 +249,30 @@
 %         \lsNewtxmathtrue
         \booltrue{newtxmath}
         }
-\newbool{minimal}
 \DeclareVoidOption{minimal}{
 % 	\lsMinimaltrue
 	\booltrue{minimal}
 	}
-\newbool{collection}
 \DeclareVoidOption{collection}{
-	\lsCollectiontrue
+% 	\lsCollectiontrue
 	\booltrue{collection}
 	}
-\newbool{collectionchapter}
 \DeclareVoidOption{collectionchapter}{
-	\lsCollectiontrue%
+% 	\lsCollectiontrue%
 % 	\lsCollectionChaptertrue
 	\booltrue{collection}
 	\booltrue{collectionchapter}
 	}
-\newbool{collectiontoclong}
 \DeclareVoidOption{collectiontoclong}{
-	\lsCollectiontrue%
+% 	\lsCollectiontrue%
 % 	\lsCollectionTOCLongtrue
 	\booltrue{collection}
 	\booltrue{collectiontoclong}
 	}
-\newbool{arseneau} %rename this option
         \DeclareVoidOption{arseneau}{
 %         \lsArseneautrue
         \booltrue{arseneau}
         }
-\newbool{oldstylenumbers}
 \DeclareVoidOption{oldstylenumbers}{
 %         \lsOldStyleNumberstrue
         \booltrue{oldstylenumbers}
@@ -328,13 +333,13 @@
   index=totoc,
   headings=optiontohead,
 % %   headings=normal,
-%  \ifbool{collection}{
-  \iflsCollection
-  chapterprefix=true,
-%   }
-  \else
+ \ifbool{collection}{
+%   \iflsCollection
+  chapterprefix=true,}{
+%   \else
     \ifx\lsOutput\lsOutputPaper  chapterprefix=true,\else \fi
-    \fi
+    }
+%     \fi
   %draft=yes,
   %appendixprefix
   ]{scrbook}
@@ -509,26 +514,42 @@
 %      Output types
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newbool{book}
+\newbool{paper}
+\newbool{guidelines}
+\newbool{coverBODhc}
+\newbool{coverBODsc}
+\newbool{coverCS}
+
+\ifx\lsOutput\lsOutputBook{\booltrue{book}}\fi
+\ifx\lsOutput\lsOutputPaper{\booltrue{paper}}\fi
+\ifx\lsOutput\lsOutputGuidelines{\booltrue{guidelines}}\fi
+\ifx\lsOutput\lsOutputCoverBODhc{\booltrue{coverBODhc}}\fi
+\ifx\lsOutput\lsOutputCoverBODsc{\booltrue{coverBODsc}}\fi
+\ifx\lsOutput\lsOutputCoverCS{\booltrue{coverCS}}\fi
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
-\ifx\lsOutput\lsOutputPaper
+% \ifx\lsOutput\lsOutputPaper
+\ifbool{paper}{
 % A paper differs in title generation from the other
 % output types, and it needs more input to produce
 % its title. This is why \maketitle for output==paper
 % is deferred until later. See the call to \includepaper@body.
-\else % only if output!=paper
+}{ %else paper
+% \else % only if output!=paper
 \AtBeginDocument{%
 \ifbool{minimal}{
     \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
 }
 % \fi
-% else
+% else minimal
 {
     \renewcommand{\maketitle}{
         \begin{titlepage}
         \thispagestyle{empty}
         \ifx\lsOutput\lsOutputBook   % only if output==book
+        \ifbool{book}{
         \setcounter{page}{-1}
         %% First titlepage:
         {\lsFrontPage}
@@ -550,16 +571,20 @@
             {\lsBackPage}
             \null\newpage\thispagestyle{empty}
         }
-        \fi
+%         \fi
+        }{} %end book
 
-        \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
+%         \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
+        \ifbool{guidelines}{
         {\setcounter{page}{-1}
         {\lsFrontPage}
         }
+        }{} %end guidlines
+%         \fi
 
-        \fi
 
-        \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
+%         \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
+        \ifbool{coverBODhc}{
         \podsetup
         \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
             \podgeometry{24.2mm}{23.1cm}{15.5cm}
@@ -572,10 +597,12 @@
         %exit the document right here
         \end{titlepage}
         \end{document}
-        \fi
+%         \fi
+        }{} %end coverbodhc
 
 
-        \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
+%         \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
+        \ifbool{coverBODsc}{
         \podsetup
         \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
             \podgeometry{13.75mm}{23.1cm}{15.5cm}
@@ -588,10 +615,12 @@
         %exit the document right here
         \end{titlepage}
         \end{document}
-        \fi
+%         \fi
+        }{}
 
 
-        \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
+%         \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
+        \ifbool{coverCS}{
         \podsetup
         \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
             \podgeometry{10.675mm}{22.5cm}{15.5cm}
@@ -604,7 +633,9 @@
         %exit the document right here
         \end{titlepage}
         \end{document}
-        \fi
+%         \fi
+        }{} %end cover cs
+
         \end{titlepage}
 
         % \null\newpage\thispagestyle{empty}
@@ -613,9 +644,12 @@
         \lsInsideFont
 
         %% Imprint:
-        \ifx\lsOutput\lsOutputGuidelines{}
-        \else{\lsImpressum}
-        \fi
+        \notbool{guidelines}{
+%         \ifx\lsOutput\lsOutputGuidelines{}
+%         \else
+        {\lsImpressum}
+%         \fi
+        }{} %end guidlines
         %%%%%%%%%%%%%
 
         % \null\newpage\thispagestyle{plain}
@@ -651,7 +685,8 @@
 \fi
 
 } %% \AtBeginDocument
-\fi %% end \else of if output == paper
+}
+% \fi %% end \else of if output == paper
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -671,7 +706,8 @@
 \setlength{\spinewidth}{\lsSpinewidth} % Create Space Version
 \usepackage{calc}
 
- \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version
+%  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version
+\ifbool{coverCS}{
     \booltrue{cover}
 %     \lsCovertrue
     \setlength{\bleed}{3.175mm}
@@ -681,9 +717,11 @@
     \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
     \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
     \hyphenpenalty 750
-\fi
+% \fi
+} %end covercs
 
-\ifx\lsOutput\lsOutputCoverBODhc
+% \ifx\lsOutput\lsOutputCoverBODhc
+\ifbool{coverBODhc}{
   \booltrue{cover}
 %   \lsCovertrue
   \newlength{\bodfold}
@@ -698,10 +736,11 @@
   \setlength{\totalheight}{\seitenhoehe}
   \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
   \hyphenpenalty 750
-\fi
+% \fi
+}{}
 
-
-\ifx\lsOutput\lsOutputCoverBODsc
+% \ifx\lsOutput\lsOutputCoverBODsc
+\ifbool{coverBODsc}{
   \booltrue{cover}
 %   \lsCovertrue
   \newlength{\totalspine}
@@ -713,7 +752,8 @@
   \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
   \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
   \hyphenpenalty 750
-\fi
+% \fi
+}{} %end coverbodsc
 
 %Page size and text area if not cover
 
@@ -1549,9 +1589,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	maxcitenames=2,
 	isbn=false,
 	autolang=hyphen,
-	\iflsResetCapitals
-        language=english,
-    \fi
+	\ifbool{resetcapitals}{
+% 	\iflsResetCapitals
+        language=english,}{}
+%     \fi
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\notbool{collection}{
@@ -2091,9 +2132,12 @@ width=.8\textwidth
   % \hspace{0.8em}%
   \hfill%
   \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}}
-\ifx\lsOutput\lsOutputPaper       % only if output==paper
+
+% \ifx\lsOutput\lsOutputPaper       % only if output==paper
+\ifbool{paper}{
 	\renewcommand{\lsCollectionPaperCitation}{Change with \string\papernote}
-\fi
+% \fi
+}{} %end paper
 
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 
@@ -2104,13 +2148,15 @@ width=.8\textwidth
 
 % In output==paper, the title is generated with the info
 % collected by the commands above.
-\ifx\lsOutput\lsOutputPaper
+% \ifx\lsOutput\lsOutputPaper
+\ifbool{paper}{
   \usepackage{chngcntr}
   \counterwithout{figure}{chapter}
   \counterwithout{table}{chapter}
   \includepaper@body
-\else % only if output!=paper
-\fi
+% \else % only if output!=paper
+% \fi
+}{} %end paper
 
 
 %writeout page numbers for separation of chapters
