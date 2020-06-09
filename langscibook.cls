@@ -375,140 +375,139 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \iflsMinimal\else % The minimal mode skips cover generation
 \notbool{minimal}{
-% Basic cover commands, including PGF layers
-\newcommand{\podsetup}{
-  \booltrue{cover}
-%   \lsCovertrue
-  \renewcommand{\maketitle}{}  %no need for this
-  \pagestyle{empty}
-  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
-  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-  \renewcommand{\and}{, }%
-  \renewcommand{\lastand}{ \& }%
-  \renewcommand{\affiliation}[1]{}
-}
+    % Basic cover commands, including PGF layers
+    \newcommand{\podsetup}{
+        \booltrue{cover}
+        %   \lsCovertrue
+        \renewcommand{\maketitle}{}  %no need for this
+        \pagestyle{empty}
+        \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+        \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+        \renewcommand{\and}{, }%
+        \renewcommand{\lastand}{ \& }%
+        \renewcommand{\affiliation}[1]{}
+    }
 
-% Content creation for the spine. Including Logo, author, title, and volume number on spine.
-\newcommand{\podspine}{
-  \renewcommand{\newlineCover}{}
-  \renewcommand{\and}{, }
-  \renewcommand{\lastand}{ \& }
-  \node [above = 0mm of CoverSpine.south, anchor=base] (lspcls_spinelogo) {\color{\lsSeriesColor}\includespinelogo};
-\node [below = 0mm of CoverSpine.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor}
-  {\parbox{.47cm}{
-   \centering
-    \sffamily
-    \huge
-    \lsSeriesNumber
-  }
-  }
-};
+    % Content creation for the spine. Including Logo, author, title, and volume number on spine.
+    \newcommand{\podspine}{
+        \renewcommand{\newlineCover}{}
+        \renewcommand{\and}{, }
+        \renewcommand{\lastand}{ \& }
+        \node [above = 0mm of CoverSpine.south, anchor=base] (lspcls_spinelogo) {\color{\lsSeriesColor}\includespinelogo};
+        \node [below = 0mm of CoverSpine.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor}
+            {\parbox{.47cm}{
+            \centering
+                \sffamily
+                \huge
+                \lsSeriesNumber
+            }}
+        };
 
-  \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_spinelogo.north, rotate=270] (lspcls_spinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
-  \renewcommand{\newlineCover}{\\}
-}
+        \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_spinelogo.north, rotate=270] (lspcls_spinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
+        \renewcommand{\newlineCover}{\\}
+    }
 
-% Fill the canvas for the cover with coloured areas on back and front cover
-% Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
-% Argument 2: Height of the coloured title and backtitle form and of the spine. Input: 12.45cm
-% Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
-\newcommand{\podgeometry}[3]{
-    \begin{pgfonlayer}{lspcls_bg} % Draw on the background layer
-      \node [ bg, % Draw the coloured background on the front cover
-	      left = #1 of current page.east,
-	      fill=\lsSeriesColor,
-	      minimum height=#2,
-	      minimum width=#3
-	     ] (CoverColouredRectangleFront) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
-      \node [ bg, % Draw the coloured background on the back cover
-              right = #1 of current page.west,
-              fill=\lsSeriesColor,
-              minimum height=#2,
-              minimum width=#3
-            ] (CoverColouredRectangleBack) {};
-      \node at (current page.center) [ % Create a reference node for the spine
-              bg,
-              minimum height=#2,
-              minimum width=\spinewidth,dashed
-            ] (CoverSpine) {}; % add [draw] option for preview mode
-    \end{pgfonlayer}
-}
+    % Fill the canvas for the cover with coloured areas on back and front cover
+    % Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
+    % Argument 2: Height of the coloured title and backtitle form and of the spine. Input: 12.45cm
+    % Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
+    \newcommand{\podgeometry}[3]{
+        \begin{pgfonlayer}{lspcls_bg} % Draw on the background layer
+        \node [ bg, % Draw the coloured background on the front cover
+                left = #1 of current page.east,
+                fill=\lsSeriesColor,
+                minimum height=#2,
+                minimum width=#3
+                ] (CoverColouredRectangleFront) {}; % Die können wir noch dynamisch bestimmen % 7.5mm -> 10.675mm for bleed
+        \node [ bg, % Draw the coloured background on the back cover
+                right = #1 of current page.west,
+                fill=\lsSeriesColor,
+                minimum height=#2,
+                minimum width=#3
+                ] (CoverColouredRectangleBack) {};
+        \node at (current page.center) [ % Create a reference node for the spine
+                bg,
+                minimum height=#2,
+                minimum width=\spinewidth,dashed
+                ] (CoverSpine) {}; % add [draw] option for preview mode
+        \end{pgfonlayer}
+    }
 
-% Generates the content of the back cover
-% Argument 1: Text width, corresponding to Argument 1 of \podfrontcovertoptext
-\newcommand{\podbackcover}[1]{
-  \node [ font=\fontsize{25pt}{10mm}\selectfont,
-          right,
-          below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
-          text width=#1
-         ] (lspcls_backtitle) {\color{white}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
-  \node [ below = 10mm of lspcls_backtitle,
-          text width=#1,
-          align=justify
-        ] {\color{white}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
- \node [  below right = 192.5mm and 97.5mm of CoverColouredRectangleBack.north west,
-          text width=4cm] {%
-    \colorbox{white}{
-      \begin{pspicture}(0,0)(4.1,1in)
-        \psbarcode[transx=.4,transy=.3]{\lsISBNcover}{includetext height=.7}{isbn}%
-      \end{pspicture}
-      }
-    };
-}
+    % Generates the content of the back cover
+    % Argument 1: Text width, corresponding to Argument 1 of \podfrontcovertoptext
+    \newcommand{\podbackcover}[1]{
+    \node [ font=\fontsize{25pt}{10mm}\selectfont,
+            right,
+            below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
+            text width=#1
+            ] (lspcls_backtitle) {\color{white}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
+    \node [ below = 10mm of lspcls_backtitle,
+            text width=#1,
+            align=justify
+            ] {\color{white}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
+    \node [  below right = 192.5mm and 97.5mm of CoverColouredRectangleBack.north west,
+            text width=4cm] {%
+        \colorbox{white}{
+            \begin{pspicture}(0,0)(4.1,1in)
+                \psbarcode[transx=.4,transy=.3]{\lsISBNcover}{includetext height=.7}{isbn}%
+            \end{pspicture}
+        }
+        };
+    }
 
-% Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
-% Argument 1: Text width on the front cover. Input: 12.34mm
-% Argument 2: Font size on the front cover. Adjust to compensate varying text width. Input: 12.34pt
-\newcommand{\podfrontcovertoptext}[3][white]{
-  \renewcommand{\and}{\\}
-  \renewcommand{\lastand}{\\}
-  \renewcommand{\newlineCover}{\\}
+    % Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
+    % Argument 1: Text width on the front cover. Input: 12.34mm
+    % Argument 2: Font size on the front cover. Adjust to compensate varying text width. Input: 12.34pt
+    \newcommand{\podfrontcovertoptext}[3][white]{
+    \renewcommand{\and}{\\}
+    \renewcommand{\lastand}{\\}
+    \renewcommand{\newlineCover}{\\}
 
-  \node [ execute at begin node={},
-          font=\fontsize{#3}{17.25mm}\selectfont,
-          below right = 10mm and 7.5mm of CoverColouredRectangleFront.north west,
-          text width=#2,
-          align=left
-        ] (lspcls_covertitle) {\color{#1}\lsCoverTitleFont{\raggedright\@title\par}};
+    \node [ execute at begin node={},
+            font=\fontsize{#3}{17.25mm}\selectfont,
+            below right = 10mm and 7.5mm of CoverColouredRectangleFront.north west,
+            text width=#2,
+            align=left
+            ] (lspcls_covertitle) {\color{#1}\lsCoverTitleFont{\raggedright\@title\par}};
 
-  \ifx\@subtitle\empty  % Is there a subtitle? If no, just print the author.
-  \node [ font=\fontsize{25pt}{12.5mm}\selectfont,
-          right,
-          below = 11.2mm of lspcls_covertitle.south,
-          text width=#2
-        ] {\color{#1}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
-  \else % If yes, create a node for subtitle and author
-  \node [ font=\fontsize{25pt}{10mm}\selectfont,
-          below = 8mm of lspcls_covertitle.south,
-          text width=#2,
-          align=left
-        ] (lspcls_coversubtitle) {\color{#1}\lsCoverSubTitleFont{\raggedright\@subtitle\par}};
-  \node [
-          font=\fontsize{25pt}{12.5mm}\selectfont,
-          right,
-          below = 11.2mm of lspcls_coversubtitle.south,
-          text width=#2
-        ] {\color{#1}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
-  \fi
-}
+    \ifx\@subtitle\empty  % Is there a subtitle? If no, just print the author.
+    \node [ font=\fontsize{25pt}{12.5mm}\selectfont,
+            right,
+            below = 11.2mm of lspcls_covertitle.south,
+            text width=#2
+            ] {\color{#1}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
+    \else % If yes, create a node for subtitle and author
+    \node [ font=\fontsize{25pt}{10mm}\selectfont,
+            below = 8mm of lspcls_covertitle.south,
+            text width=#2,
+            align=left
+            ] (lspcls_coversubtitle) {\color{#1}\lsCoverSubTitleFont{\raggedright\@subtitle\par}};
+    \node [
+            font=\fontsize{25pt}{12.5mm}\selectfont,
+            right,
+            below = 11.2mm of lspcls_coversubtitle.south,
+            text width=#2
+            ] {\color{#1}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
+    \fi
+    }
 
-% Generates the bottom half of the front cover content: series, series number, logo.
-\newcommand{\podcoverbottomtext}[1][white]{
-  \node [ above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west,
-          rectangle,
-          fill=white,
-          minimum size=17pt] (lspcls_square) {}; % This is the white square at the bottom left of the front cover
-  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{#1}\includepublisherlogo}; % Print the Language Science press Logo
-  \path let \p1 = (lspcls_square.north east), % Calculate the exact coordinates for the Series Title to print.
-            \p2 = (lspcls_covertitle.west)
-            in node at (\x2,\y1) (lspcls_seriesinfo) [
-                  font=\fontsize{17pt}{7.5mm}\selectfont,
-                  right,
-                  text width=95mm,
-                  anchor=north west]
-            {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
-}
-% \fi
+    % Generates the bottom half of the front cover content: series, series number, logo.
+    \newcommand{\podcoverbottomtext}[1][white]{
+    \node [ above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west,
+            rectangle,
+            fill=white,
+            minimum size=17pt] (lspcls_square) {}; % This is the white square at the bottom left of the front cover
+    \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{#1}\includepublisherlogo}; % Print the Language Science press Logo
+    \path let \p1 = (lspcls_square.north east), % Calculate the exact coordinates for the Series Title to print.
+                \p2 = (lspcls_covertitle.west)
+                in node at (\x2,\y1) (lspcls_seriesinfo) [
+                    font=\fontsize{17pt}{7.5mm}\selectfont,
+                    right,
+                    text width=95mm,
+                    anchor=north west]
+                {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle\par}};
+    }
+    % \fi
 }{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
@@ -539,152 +538,152 @@
 }{ %else paper
 % \else % only if output!=paper
 \AtBeginDocument{%
-\ifbool{minimal}{
-    \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
-}
-% \fi
-% else minimal
-{
-    \renewcommand{\maketitle}{
-        \begin{titlepage}
-        \thispagestyle{empty}
-        \ifx\lsOutput\lsOutputBook   % only if output==book
-        \ifbool{book}{
-        \setcounter{page}{-1}
-        %% First titlepage:
-        {\lsFrontPage}
-        %%%%%%%%%%%%%%%%%%%
-        \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
-        %% Series information:
-        {\lsSeriesHistory}
-        %%%%%%%%%%%%%%%%%%%%%
-        \clearpage%\thispagestyle{empty}
-        %% Schmutztitel:
-        {\renewcommand{\lsCoverBlockColor}{white}
-        \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
-        \lsSchmutztitel}
-        %%%%%%%%%%%%%%%%%%%%
-        \AtEndDocument{
-            \lsPageStyleEmpty
-            \null\newpage\thispagestyle{empty} % add a final blank page
-                %% Back page:
-            {\lsBackPage}
-            \null\newpage\thispagestyle{empty}
-        }
-%         \fi
-        }{} %end book
-
-%         \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
-        \ifbool{guidelines}{
-        {\setcounter{page}{-1}
-        {\lsFrontPage}
-        }
-        }{} %end guidlines
-%         \fi
-
-
-%         \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
-        \ifbool{coverBODhc}{
-        \podsetup
-        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-            \podgeometry{24.2mm}{23.1cm}{15.5cm}
-            \podspine
-            \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-            \podcoverbottomtext
-            \newcommand{\lsISBNcover}{\lsISBNhardcover}
-            \podbackcover{137mm}
-        \end{tikzpicture}
-        %exit the document right here
-        \end{titlepage}
-        \end{document}
-%         \fi
-        }{} %end coverbodhc
-
-
-%         \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
-        \ifbool{coverBODsc}{
-        \podsetup
-        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-            \podgeometry{13.75mm}{23.1cm}{15.5cm}
-            \podspine
-            \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-            \podcoverbottomtext
-            \newcommand{\lsISBNcover}{\lsISBNsoftcover}
-            \podbackcover{137mm}
-        \end{tikzpicture}
-        %exit the document right here
-        \end{titlepage}
-        \end{document}
-%         \fi
-        }{}
-
-
-%         \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
-        \ifbool{coverCS}{
-        \podsetup
-        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-            \podgeometry{10.675mm}{22.5cm}{15.5cm}
-            \podspine
-            \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-            \podcoverbottomtext
-        % 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-            \podbackcover{140mm}
-        \end{tikzpicture}
-        %exit the document right here
-        \end{titlepage}
-        \end{document}
-%         \fi
-        }{} %end cover cs
-
-        \end{titlepage}
-
-        % \null\newpage\thispagestyle{empty}
-        \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
-        \color{black}
-        \lsInsideFont
-
-        %% Imprint:
-        \notbool{guidelines}{
-%         \ifx\lsOutput\lsOutputGuidelines{}
-%         \else
-        {\lsImpressum}
-%         \fi
-        }{} %end guidlines
-        %%%%%%%%%%%%%
-
-        % \null\newpage\thispagestyle{plain}
-        %\pagenumbering{roman}    % or \frontmatter
-
-        %% Dedication:
-        \ifx\@dedication\empty{}
-        \else{\newpage\lsDedication}
-        \fi
-        %%%%%%%%%%%%%%%%
-
-    } %% \maketitle
+    \ifbool{minimal}{
+        \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
+    }
     % \fi
-}
+    % else minimal
+    {
+        \renewcommand{\maketitle}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \ifx\lsOutput\lsOutputBook   % only if output==book
+            \ifbool{book}{
+                \setcounter{page}{-1}
+                %% First titlepage:
+                {\lsFrontPage}
+                %%%%%%%%%%%%%%%%%%%
+                \pagenumbering{roman}\clearpage\thispagestyle{empty} % We use roman pagenumbering here instead of \frontmatter because scrbook's frontmatter command issues a \clear(double)page, which is unnec. in digital publications.
+                %% Series information:
+                {\lsSeriesHistory}
+                %%%%%%%%%%%%%%%%%%%%%
+                \clearpage%\thispagestyle{empty}
+                %% Schmutztitel:
+                {\renewcommand{\lsCoverBlockColor}{white}
+                \renewcommand{\lsCoverFontColor}{\lsSeriesColor}
+                \lsSchmutztitel}
+                %%%%%%%%%%%%%%%%%%%%
+                \AtEndDocument{
+                    \lsPageStyleEmpty
+                    \null\newpage\thispagestyle{empty} % add a final blank page
+                        %% Back page:
+                    {\lsBackPage}
+                    \null\newpage\thispagestyle{empty}
+                }
+        %         \fi
+            }{} %end book
 
-%% for those who like the example in numbered example sentences to be typeset in italics
-%% this is possible for a complete series only.
-\ifx\lsSeries\sidl
-  %\def\exfont{\normalsize\itshape}
-  \renewcommand{\eachwordone}{\itshape} % only \gll
+    %         \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
+            \ifbool{guidelines}{
+                {\setcounter{page}{-1}
+                {\lsFrontPage}
+            }
+            }{} %end guidlines
+    %         \fi
 
-  \let\oldtable\table   % footnotes in tables without horizontal line
-  \let\endoldtable\endtable
-  \renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable}
-\fi
 
-\ifx\lsSeries\pmwe
- \renewcommand{\eachwordone}{\normalfont}
-\fi
+    %         \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
+            \ifbool{coverBODhc}{
+                \podsetup
+                \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                    \podgeometry{24.2mm}{23.1cm}{15.5cm}
+                    \podspine
+                    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                    \podcoverbottomtext
+                    \newcommand{\lsISBNcover}{\lsISBNhardcover}
+                    \podbackcover{137mm}
+                \end{tikzpicture}
+                %exit the document right here
+                \end{titlepage}
+                \end{document}
+        %         \fi
+            }{} %end coverbodhc
 
-\ifx\lsSeries\nc
- \renewcommand{\eachwordone}{\itshape}
-\fi
 
-} %% \AtBeginDocument
+    %         \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
+            \ifbool{coverBODsc}{
+                \podsetup
+                \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                    \podgeometry{13.75mm}{23.1cm}{15.5cm}
+                    \podspine
+                    \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                    \podcoverbottomtext
+                    \newcommand{\lsISBNcover}{\lsISBNsoftcover}
+                    \podbackcover{137mm}
+                \end{tikzpicture}
+                %exit the document right here
+                \end{titlepage}
+                \end{document}
+        %         \fi
+            }{}
+
+
+    %         \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
+            \ifbool{coverCS}{
+                \podsetup
+                \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                    \podgeometry{10.675mm}{22.5cm}{15.5cm}
+                    \podspine
+                    \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                    \podcoverbottomtext
+                % 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
+                    \podbackcover{140mm}
+                \end{tikzpicture}
+                %exit the document right here
+                \end{titlepage}
+                \end{document}
+        %         \fi
+            }{} %end cover cs
+
+            \end{titlepage}
+
+            % \null\newpage\thispagestyle{empty}
+            \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
+            \color{black}
+            \lsInsideFont
+
+            %% Imprint:
+            \notbool{guidelines}{
+    %         \ifx\lsOutput\lsOutputGuidelines{}
+    %         \else
+                {\lsImpressum}
+    %         \fi
+            }{} %end guidlines
+            %%%%%%%%%%%%%
+
+            % \null\newpage\thispagestyle{plain}
+            %\pagenumbering{roman}    % or \frontmatter
+
+            %% Dedication:
+            \ifx\@dedication\empty{}
+            \else{\newpage\lsDedication}
+            \fi
+            %%%%%%%%%%%%%%%%
+
+        } %% \maketitle
+        % \fi
+    }
+
+    %% for those who like the example in numbered example sentences to be typeset in italics
+    %% this is possible for a complete series only.
+    \ifx\lsSeries\sidl
+    %\def\exfont{\normalsize\itshape}
+    \renewcommand{\eachwordone}{\itshape} % only \gll
+
+    \let\oldtable\table   % footnotes in tables without horizontal line
+    \let\endoldtable\endtable
+    \renewenvironment{table}{\setfootnoterule{0pt}\oldtable}{\endoldtable}
+    \fi
+
+    \ifx\lsSeries\pmwe
+    \renewcommand{\eachwordone}{\normalfont}
+    \fi
+
+    \ifx\lsSeries\nc
+    \renewcommand{\eachwordone}{\itshape}
+    \fi
+
+    } %% \AtBeginDocument
 }
 % \fi %% end \else of if output == paper
 
@@ -940,8 +939,8 @@
     \newcommand{\lsBackBodyFont}{\lsInsideFont}
     \newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
     \newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
-% \fi % end minimal mode switch from line ~677
-}{}
+% \fi % end minimal mode switch from line ~786
+}{} %end else minimal
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
 \setkomafont{descriptionlabel}{\normalfont\itshape}
@@ -1040,8 +1039,8 @@
       \ifbool{multiauthors}{
 	\renewcommand{\lsEditorSuffix}{(eds.)}
       }{}
-  }
-}{}
+  } %end AtBeginDocument
+}{} %end collection
 % \else
 % \fi
 
@@ -1049,57 +1048,57 @@
 \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
 
 \newcommand{\lsFrontPage}{% Front page
-  \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
-  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
-  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-  \thispagestyle{empty}
-  \renewcommand{\and}{, }%
-  \renewcommand{\lastand}{ \& }%
-  \renewcommand{\affiliation}[1]{}
-\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-  \begin{pgfonlayer}{lspcls_bg}
-    \node [ bg,
-	    left=7.5mm of current page.east,
-	    fill=\lsSeriesColor,
-	    minimum width=155mm,
-	    minimum height=225mm
-	    ] (CoverColouredRectangleFront) {};
-  \end{pgfonlayer}
-  \podfrontcovertoptext{140mm}{51pt}
-  \podcoverbottomtext
-%   \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
-  \ifbool{draft}{\node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime};}{}
-%   \iflsOpenReview
-  \ifbool{openreview}{
-  \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime};}{}
-%   \fi
-%   \iflsUndecapitalize \node [rotate=45,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Undecapitalized}; \fi
-\end{tikzpicture}
-\ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
-}
+    \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
+    \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+    \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+    \thispagestyle{empty}
+    \renewcommand{\and}{, }%
+    \renewcommand{\lastand}{ \& }%
+    \renewcommand{\affiliation}[1]{}
+    \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+        \begin{pgfonlayer}{lspcls_bg}
+            \node [ bg,
+                    left=7.5mm of current page.east,
+                    fill=\lsSeriesColor,
+                    minimum width=155mm,
+                    minimum height=225mm
+                    ] (CoverColouredRectangleFront) {};
+        \end{pgfonlayer}
+        \podfrontcovertoptext{140mm}{51pt}
+        \podcoverbottomtext
+        %   \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
+        \ifbool{draft}{\node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime};}{}
+        %   \iflsOpenReview
+        \ifbool{openreview}{
+        \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime};}{}
+        %   \fi
+        %   \iflsUndecapitalize \node [rotate=45,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Undecapitalized}; \fi
+    \end{tikzpicture}
+    \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
+} % end lsFrontPage
 
 \newcommand{\lsSchmutztitel}{% Schmutztitel
-  \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
-  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
-  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-  \thispagestyle{empty}
-  \renewcommand{\and}{, }%
-  \renewcommand{\lastand}{ \& }%
-  \renewcommand{\affiliation}[1]{}%
-\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-  \begin{pgfonlayer}{lspcls_bg}
-    \node [ bg,
-	    left=7.5mm of current page.east,
-	    fill=white,
-	    minimum width=155mm,
-	    minimum height=225mm
-	    ] (CoverColouredRectangleFront) {};
-  \end{pgfonlayer}
-  \podfrontcovertoptext[\lsSeriesColor]{140mm}{51pt}
-  \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsSeriesColor}\includepublisherlogo}; % Print the Language Science press Logo
-\end{tikzpicture}
-\ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
-}
+    \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
+    \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+    \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+    \thispagestyle{empty}
+    \renewcommand{\and}{, }%
+    \renewcommand{\lastand}{ \& }%
+    \renewcommand{\affiliation}[1]{}%
+    \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+        \begin{pgfonlayer}{lspcls_bg}
+            \node [ bg,
+                    left=7.5mm of current page.east,
+                    fill=white,
+                    minimum width=155mm,
+                    minimum height=225mm
+                    ] (CoverColouredRectangleFront) {};
+        \end{pgfonlayer}
+        \podfrontcovertoptext[\lsSeriesColor]{140mm}{51pt}
+        \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsSeriesColor}\includepublisherlogo}; % Print the Language Science press Logo
+    \end{tikzpicture}
+    \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
+} %end Schmutztitel
 
 %\usepackage{pdfpages}
 % \newcommand{\lsAdvertisement}{%
@@ -1107,25 +1106,25 @@
 % }
 
 \newcommand{\lsBackPage}{%
-  \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
-  \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
-  \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
-  \pagestyle{empty}
-  \renewcommand{\and}{, }%
-  \renewcommand{\lastand}{ \& }%
-  \renewcommand{\affiliation}[1]{}
-  \newcommand{\lsISBNcover}{\lsISBNdigital}
-\begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-  \begin{pgfonlayer}{lspcls_bg}
-    \node [ bg,
-	    right=7.5mm of current page.west,
-	    fill=\lsSeriesColor,
-	    minimum width=155mm,
-	    minimum height=225mm
-	    ] (CoverColouredRectangleBack) {};
-  \end{pgfonlayer}
-  \podbackcover{137mm}
-  \end{tikzpicture}
+    \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
+    \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
+    \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
+    \pagestyle{empty}
+    \renewcommand{\and}{, }%
+    \renewcommand{\lastand}{ \& }%
+    \renewcommand{\affiliation}[1]{}
+    \newcommand{\lsISBNcover}{\lsISBNdigital}
+        \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+        \begin{pgfonlayer}{lspcls_bg}
+            \node [ bg,
+                    right=7.5mm of current page.west,
+                    fill=\lsSeriesColor,
+                    minimum width=155mm,
+                    minimum height=225mm
+                    ] (CoverColouredRectangleBack) {};
+        \end{pgfonlayer}
+        \podbackcover{137mm}
+    \end{tikzpicture}
   \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
   }
 
@@ -1135,21 +1134,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\lsSeriesHistory}{
-\color{black}
-\raggedright\lsCoverSeriesHistoryFont
+    \color{black}
+    \raggedright\lsCoverSeriesHistoryFont
 
-% \IfFileExists{./\lsSeries-info.tex}{\input{./\lsSeries-info}}{
-%   Series information:  \lsSeries-info.tex not found!}
+    % \IfFileExists{./\lsSeries-info.tex}{\input{./\lsSeries-info}}{
+    %   Series information:  \lsSeries-info.tex not found!}
 
-{\lsSeriesText}
-\IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
-  {}
-  {\vfill\hfill ISSN (print): \lsISSNprint\\
-         \hfill ISSN (electronic): \lsISSNelectronic\\}
-\IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
-  {}
-  {\vfill\hfill ISSN: \lsISSN}
-}
+    {\lsSeriesText}
+    \IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
+    {}
+    {\vfill\hfill ISSN (print): \lsISSNprint\\
+            \hfill ISSN (electronic): \lsISSNelectronic\\}
+    \IfStrEq{\lsISSN}{??}   % \IfStrEq from xstring
+    {}
+    {\vfill\hfill ISSN: \lsISSN}
+} %end lsSeriesHistory
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Imprint
@@ -1200,35 +1199,36 @@
 
 
 \AtBeginDocument{
-\makeatletter
-\let\theauthor\@author
-\makeatother
-\ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
-\renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
-\renewcommand{\lastand}{LASTAND} %expand for easier checking
+    \makeatletter
+    \let\theauthor\@author
+    \makeatother
+    \ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
+        \renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
+        \renewcommand{\lastand}{LASTAND} %expand for easier checking
 
-\IfSubStr{\theauthor}{NONLASTAND}{%2+authors
-  \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
-  \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-  \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
-  \renewcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }}
-  }{%else
-    \IfSubStr{\theauthor}{LASTAND}{%less than two authors, more than one
-    \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\lastand }}
-    \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-    \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\lastand }}
-    \renewcommand{\lsNonFirstAuthorsString}{\lastand\StrBehind{\theauthor}{\lastand }}
-    }{%else exactly one author
-      \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-      \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
-      }
-    }
-  }{}
+        \IfSubStr{\theauthor}{NONLASTAND}{%2+authors
+            \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
+            \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
+            \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
+            \renewcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }}
+        }{%else
+            \IfSubStr{\theauthor}{LASTAND}{%less than two authors, more than one
+                \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\lastand }}
+                \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
+                \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\lastand }}
+                \renewcommand{\lsNonFirstAuthorsString}{\lastand\StrBehind{\theauthor}{\lastand }}
+            }{%else exactly one author
+                \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
+                \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
+            }
+        }
+    }{}
 }
 
 
 \newcommand{\lsImpressionCitationAuthor}{
-\lsFirstAuthorLastName, \lsFirstAuthorFirstName \lsNonFirstAuthorsString}
+    \lsFirstAuthorLastName, \lsFirstAuthorFirstName \lsNonFirstAuthorsString
+}
 
 \newcommand{\lsImpressumCitationText}{
   \onlyAuthor
@@ -1266,10 +1266,11 @@ This title can be downloaded at:\\
 
 © \lsYear,
 \ifbool{collection}{%
-% \iflsCollection
-the authors}{%
-% \else
-\@author}
+    % \iflsCollection
+    the authors}{%
+    % \else
+    \@author
+}
 % \fi
 
 \newcommand{\ccby}{CC-BY}
@@ -1277,14 +1278,14 @@ the authors}{%
 \ifx\lsCopyright\ccby
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
 http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{ccby.pdf}
-\else
+\fi
 \ifx\lsCopyright\ccbynd
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
 http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{ccbynd.pdf}
-\else
+\fi
+\ifx\lsCopyright\ccbynd
 Published under the Creative Commons Attribution-ShareAlike 4.0 Licence (CC BY-SA 4.0):
 http://creativecommons.org/licenses/by-sa/4.0/ \includegraphics[height=.75em]{ccbysa.pdf}
-\fi
 \fi
 
 {\lsImpressumExtra}
@@ -1298,9 +1299,9 @@ Indexed in EBSCO\smallskip
 \begin{tabular}{@{}l@{~}l}
 ISBN: &
 \IfStrEq{\lsISBNdigital}{000-0-000000-00-0}{%no digital ISBN, issue warning
-  \color{red}no digital ISBN
+    \color{red}no digital ISBN
 }{%digital ISBN present, write ISBN
-  \lsISBNdigital~(Digital)
+    \lsISBNdigital~(Digital)
 }
 \\
 \IfStrEq{\lsISBNhardcover}{000-0-000000-00-0}{ %hardcover ISBN not present
@@ -1309,30 +1310,38 @@ ISBN: &
 }
 
 \IfStrEq{\lsISBNsoftcover}{000-0-000000-00-0}{ %softcover ISBN not present
-  \IfStrEq{\lsISBNhardcover}{000-0-000000-00-0}{ %neither hardcover nor softcover, issue warning
-    \color{red} no print ISBNs!
-  }{%hardcover present, no warning
-  }
+    \IfStrEq{\lsISBNhardcover}{000-0-000000-00-0}{ %neither hardcover nor softcover, issue warning
+        \color{red} no print ISBNs!
+    }{%hardcover present, no warning
+    }
 }{%only softcover present, write ISBN
-  &\lsISBNsoftcover~(Softcover)\\
+    &\lsISBNsoftcover~(Softcover)\\
 }
 \end{tabular}
 
 \IfStrEq{\lsISSNprint}{??}   % \IfStrEq from xstring
   {}
-  {ISSN (print): \lsISSNprint\\
-   ISSN (electronic): \lsISSNelectronic\\}
+  {%else
+    ISSN (print): \lsISSNprint\\
+    ISSN (electronic): \lsISSNelectronic\\
+  }
 \IfStrEq{\lsISSN}{??}
   {}
-  {ISSN: \lsISSN}
+  {%else
+    ISSN: \lsISSN
+  }
 
 
-\IfStrEq{\lsBookDOI}{??}
-  {{\color{red} no DOI}}
-  {DOI: \href{https://doi.org/\lsBookDOI}{\nolinkurl{\lsBookDOI}}}\\
-\IfStrEq{\lsID}{000}{\color{red} ID not assigned!}{%
-\githubtext\\
-\paperhivetext
+\IfStrEq{\lsBookDOI}{??}{
+    {\color{red} no DOI}
+}{ %else
+    DOI: \href{https://doi.org/\lsBookDOI}{\nolinkurl{\lsBookDOI}}
+}\\
+\IfStrEq{\lsID}{000}{
+    \color{red} ID not assigned!
+}{%else
+    \githubtext\\
+    \paperhivetext
 }%
 \bigskip
 
@@ -1387,14 +1396,16 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %    Dedication
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\lsDedication}{\thispagestyle{empty}
+\newcommand{\lsDedication}{%
+        \thispagestyle{empty}
 	\vspace*{\fill}
 	\begin{center}
 	{\lsDedicationFont
 	\@dedication\par}
 	\end{center}
 	\vspace*{\fill}
-	\clearpage}
+	\clearpage
+}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1473,11 +1484,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \ifxetex
 \notbool{minimal}{
-% \iflsMinimal\else
-\addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}}      % numbers in footnotes
-%\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote labels
-%\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote references
-% \fi
+    % \iflsMinimal\else
+    \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}}      % numbers in footnotes
+    %\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote labels
+    %\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote references
+    % \fi
 }{}
 \fi
 
@@ -1716,11 +1727,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \usepackage{caption}
 % \captionsetup{labelfont=bf}
 \captionsetup{%
-font={%
-stretch=.8%
-,small%
-},%
-width=.8\textwidth
+    font={%
+        stretch=.8%
+        ,small%
+    },%
+    width=.8\textwidth
 }
 
 \setcapindent{0pt}
@@ -1964,86 +1975,87 @@ width=.8\textwidth
   \chapterheadendvskip
   \@afterindentfalse
   \@afterheading
-  }
+}
 
 
 
 % \iflsCollection
 \ifbool{collection}{
-	\notbool{biblatex}{
+    \notbool{biblatex}{
 % 	\iflsBiblatex\else
-		\ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
+            \ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
 % 	\fi
-        }{}
+    }{}
 
-\AtBeginDocument{% for the citation in the footer
-	\onlyAuthor
-	\renewcommand{\newlineCover}{}
-	\renewcommand{\newlineSpine}{}
-	\edef\lsCollectionTitle{\@title\ifx\@subtitle\empty\else{: \@subtitle}\fi}% \edef immediately expands \@title
-	\edef\lsCollectionEditor{\@author}
-	\addbibresource{collection_tmp.bib}
-	\if@partsw\AfterEndDocument{\typeout{langscibook Warning: You are in includeonly mode.}\typeout{The bibliographical information for the chapters in this volume have not been updated}}\else% Check for \includeonly mode
-	\newwrite\tempfile% open temporary bib file
-	\immediate\openout\tempfile=collection_tmp.bib
-	\fi
-}
-% Only touch the \tempfile if we are NOT in \includeonly mode, prevent flushing of the file
-\AtEndDocument{\if@partsw\else\immediate\closeout\tempfile\fi}% close temporary bib file
+    \AtBeginDocument{% for the citation in the footer
+            \onlyAuthor
+            \renewcommand{\newlineCover}{}
+            \renewcommand{\newlineSpine}{}
+            \edef\lsCollectionTitle{\@title\ifx\@subtitle\empty\else{: \@subtitle}\fi}% \edef immediately expands \@title
+            \edef\lsCollectionEditor{\@author}
+            \addbibresource{collection_tmp.bib}
+            \if@partsw\AfterEndDocument{\typeout{langscibook Warning: You are in includeonly mode.}\typeout{The bibliographical information for the chapters in this volume have not been updated}}\else% Check for \includeonly mode
+            \newwrite\tempfile% open temporary bib file
+            \immediate\openout\tempfile=collection_tmp.bib
+            \fi
+    }%end AtBeginDocument
+    % Only touch the \tempfile if we are NOT in \includeonly mode, prevent flushing of the file
+    \AtEndDocument{\if@partsw\else\immediate\closeout\tempfile\fi}% close temporary bib file
 
-%% customize \tableofcontents
-\renewcommand{\@dotsep}{2.5}		% space between dots
-\renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
-\renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
-% \iflsCollectionTOCLong\else% show only parts and chapters
-\ifbool{collectiontoclong}{
-  \setcounter{tocdepth}{0}
-}{}
-% \fi
-\DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
-  [
-    pagenumberbox={\csname @gobble\endcsname},
-    raggedentrytext=true,
-    linefill={\hfill}
-  ]{tocline}{part}
-  
-\usepackage{chngcntr}
-\counterwithout{figure}{chapter}
-\counterwithout{table}{chapter}
+    %% customize \tableofcontents
+    \renewcommand{\@dotsep}{2.5}		% space between dots
+    \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
+    \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
+    % \iflsCollectionTOCLong\else% show only parts and chapters
+    \ifbool{collectiontoclong}{
+        \setcounter{tocdepth}{0}
+    }{}
+    % \fi
+    \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
+    [
+        pagenumberbox={\csname @gobble\endcsname},
+        raggedentrytext=true,
+        linefill={\hfill}
+    ]{tocline}{part}
 
-\NewDocumentCommand{\includepaper}{m}{
-\bgroup
-	\renewcommand{\documentclass}[2][]{}%
-	\renewcommand{\usepackage}[2][]{}%
-	\renewenvironment{document}{\begingroup}{\endgroup}
-	\includepaper@body
-	\begin{refsection}
-	\renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
-	\include{#1}%
-    \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
-    \addtocounter{page}{-1}
-    \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \includepaper@body
-    \addtocounter{page}{1}
+    \usepackage{chngcntr}
+    \counterwithout{figure}{chapter}
+    \counterwithout{table}{chapter}
 
-	%%% for citation in footer
-	%% preprocessing of author/editor names
-	\onlyAuthor
-	\renewcommand{\newlineCover}{}
-	\renewcommand{\newlineSpine}{}
-	\renewcommand{\newlineTOC}{}
-	\StrSubstitute{\@author}{,}{ and }[\authorTemp]
-	\StrSubstitute{\authorTemp}{\&}{ and }[\authorTemp]
-	\StrSubstitute{\lsCollectionEditor}{,}{ and }[\editorTemp]
-	\StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
+    \NewDocumentCommand{\includepaper}{m}{
+        \bgroup
+                \renewcommand{\documentclass}[2][]{}%
+                \renewcommand{\usepackage}[2][]{}%
+                \renewenvironment{document}{\begingroup}{\endgroup}
+                \includepaper@body
+                \begin{refsection}
+                \renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
+                \include{#1}%
+            \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
+            \addtocounter{page}{-1}
+            \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \includepaper@body
+            \addtocounter{page}{1}
 
-	%% write bib entry to file
-	%% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
-	\immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
-	\immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
-        \fi% If the paper is not within \includeonly, don't do anything.
-	\end{refsection}
-\egroup}
-% \fi
+                %%% for citation in footer
+                %% preprocessing of author/editor names
+                \onlyAuthor
+                \renewcommand{\newlineCover}{}
+                \renewcommand{\newlineSpine}{}
+                \renewcommand{\newlineTOC}{}
+                \StrSubstitute{\@author}{,}{ and }[\authorTemp]
+                \StrSubstitute{\authorTemp}{\&}{ and }[\authorTemp]
+                \StrSubstitute{\lsCollectionEditor}{,}{ and }[\editorTemp]
+                \StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
+
+                %% write bib entry to file
+                %% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
+                \immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
+                \immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
+                \fi% If the paper is not within \includeonly, don't do anything.
+                \end{refsection}
+        \egroup
+    } %end NewDocumentCommand
+    % \fi
 }{}
 
 \newcommand{\lsCollectionPaperHeaderTitle}{%
@@ -2056,82 +2068,87 @@ width=.8\textwidth
     \fi
     }{}
 %   \fi
-  \titleToHead}
+  \titleToHead
+}
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
   \renewcommand{\newlineCover}{}%
   \renewcommand{\newlineTOC}{}%
-  \onlyAuthor\@author}}
+  \onlyAuthor\@author}
+}
 
 \newcommand{\includepaper@body}{
-    \RenewDocumentCommand{\title}{O{##2} m O{##2}}{
-      \newcommand{\titleToHead}{##1}
-      \newcommand{\titleTemp}{##2}
-      \newcommand{\titleToToC}{##3}
-    }
-    \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
-    \renewcommand*{\thesection}{\arabic{section}}
-    \RedeclareSectionCommand
-      [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip,
-       beforeskip=0pt
-      ]{chapter}
-    \renewcommand{\maketitle}{
-      % With \setchapterpreamble from scrbook, we ensure that the author(s),
-      % their affiliation, the abstract, etc., are part of the \chapter block.
-      \setchapterpreamble[u]{
-        \onlyAuthor
-        \lsCollectionPaperAuthor%
-        \vspace{\baselineskip}
-        \ifx\@epigram\empty%
-          \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
-              \epigram{}\epigramsource{}}%
-        \fi%
-        \begin{quote}
-          \small\lsCollectionPaperAbstract
-        \end{quote}
-        \vspace{\baselineskip}
-      }
-      \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
-      \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
-      \renewcommand{\newlineCover}{}
-      \renewcommand{\newlineTOC}{\\}
-      \ifoot[\lsCollectionPaperCitation]{
-        \ifbool{draft}{Draft of \today, \currenttime}{}
-%         \iflsDraft Draft of \today, \currenttime \fi
+        \RenewDocumentCommand{\title}{O{##2} m O{##2}}{
+            \newcommand{\titleToHead}{##1}
+            \newcommand{\titleTemp}{##2}
+            \newcommand{\titleToToC}{##3}
+        }
+        \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
+        \renewcommand*{\thesection}{\arabic{section}}
+        \RedeclareSectionCommand
+            [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip,
+            beforeskip=0pt
+        ]{chapter}
+        \renewcommand{\maketitle}{
+            % With \setchapterpreamble from scrbook, we ensure that the author(s),
+            % their affiliation, the abstract, etc., are part of the \chapter block.
+            \setchapterpreamble[u]{
+                \onlyAuthor
+                \lsCollectionPaperAuthor%
+                \vspace{\baselineskip}
+                \ifx\@epigram\empty%
+                \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
+                    \epigram{}\epigramsource{}}%
+                \fi%
+                \begin{quote}
+                \small\lsCollectionPaperAbstract
+                \end{quote}
+                \vspace{\baselineskip}
             }
-      % The following ensure that a chapter is treated as a heading, which
-      % controls page break penalties and indentation following the heading.
-      \@afterindentfalse
-      \@afterheading
-    }
-  \ohead{}
-  \lehead{\lsCollectionPaperHeaderAuthor}
-  \rohead{\lsCollectionPaperHeaderTitle}
- }
+            \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
+            \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
+            \renewcommand{\newlineCover}{}
+            \renewcommand{\newlineTOC}{\\}
+            \ifoot[\lsCollectionPaperCitation]{
+                \ifbool{draft}{Draft of \today, \currenttime}{}
+        %         \iflsDraft Draft of \today, \currenttime \fi
+                    }
+            % The following ensure that a chapter is treated as a heading, which
+            % controls page break penalties and indentation following the heading.
+            \@afterindentfalse
+            \@afterheading
+        }
+        \ohead{}
+        \lehead{\lsCollectionPaperHeaderAuthor}
+        \rohead{\lsCollectionPaperHeaderTitle}
+}%end includepaper
 
 \newcommand{\onlyAuthor}{%    % collection paper
-  \renewcommand{\and}{, }%
-  \renewcommand{\lastand}{ \& }%
-  \renewcommand{\affiliation}[1]{}
-  }
+    \renewcommand{\and}{, }%
+    \renewcommand{\lastand}{ \& }%
+    \renewcommand{\affiliation}[1]{}
+}
 
 \newcommand{\AuthorAffiliation}{
-  \renewcommand{\and}{\newline\newline}
-  \renewcommand{\lastand}{\newline\newline}
-  \renewcommand{\affiliation}[1]{\\[0.5ex]{\normalsize ##1}}}
+    \renewcommand{\and}{\newline\newline}
+    \renewcommand{\lastand}{\newline\newline}
+    \renewcommand{\affiliation}[1]{\\[0.5ex]{\normalsize ##1}}
+}
 
 \newcommand{\lsCollectionPaperFooterTitle}{\titleTemp}
 
 \newcommand{\lsCollectionPaperAuthor}{{%
-  \renewcommand{\newlineTOC}{}
-  \renewcommand{\newlineCover}{\\[0.5ex]}
-  \AuthorAffiliation\Large\@author}}
+    \renewcommand{\newlineTOC}{}
+    \renewcommand{\newlineCover}{\\[0.5ex]}
+    \AuthorAffiliation\Large\@author}
+}
 
 \newcommand{\lsCollectionPaperCitation}{\scalebox{1.2}{%
-  \includechapterfooterlogo}%
-  % \hspace{0.8em}%
-  \hfill%
-  \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}}
+    \includechapterfooterlogo}%
+    % \hspace{0.8em}%
+    \hfill%
+    \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}
+}
 
 % \ifx\lsOutput\lsOutputPaper       % only if output==paper
 \ifbool{paper}{
@@ -2142,7 +2159,8 @@ width=.8\textwidth
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
 
 \newcommand{\papernote}[1]{
-  \renewcommand{\lsCollectionPaperCitation}{#1}}
+    \renewcommand{\lsCollectionPaperCitation}{#1}
+}
 
 \providecommand\shorttitlerunninghead[1]{\rohead{\thechapter\hspace{.5em} #1}}
 
@@ -2150,10 +2168,10 @@ width=.8\textwidth
 % collected by the commands above.
 % \ifx\lsOutput\lsOutputPaper
 \ifbool{paper}{
-  \usepackage{chngcntr}
-  \counterwithout{figure}{chapter}
-  \counterwithout{table}{chapter}
-  \includepaper@body
+    \usepackage{chngcntr}
+    \counterwithout{figure}{chapter}
+    \counterwithout{table}{chapter}
+    \includepaper@body
 % \else % only if output!=paper
 % \fi
 }{} %end paper
@@ -2176,24 +2194,24 @@ width=.8\textwidth
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
-  \renewcommand{\chapref}[1]{Chapitre~\ref{#1}}
-  \renewcommand{\partref}[1]{Partie~\ref{#1}}
-  \renewcommand{\tabref}[1]{Tableau~\ref{#1}}
-  \renewcommand{\figref}[1]{Figure~\ref{#1}}
+    \renewcommand{\chapref}[1]{Chapitre~\ref{#1}}
+    \renewcommand{\partref}[1]{Partie~\ref{#1}}
+    \renewcommand{\tabref}[1]{Tableau~\ref{#1}}
+    \renewcommand{\figref}[1]{Figure~\ref{#1}}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
-  \renewcommand{\chapref}[1]{Kapitel~\ref{#1}}
-  \renewcommand{\partref}[1]{Teil~\ref{#1}}
-  \renewcommand{\tabref}[1]{Tabelle~\ref{#1}}
-  \renewcommand{\figref}[1]{Abbildung~\ref{#1}}
+    \renewcommand{\chapref}[1]{Kapitel~\ref{#1}}
+    \renewcommand{\partref}[1]{Teil~\ref{#1}}
+    \renewcommand{\tabref}[1]{Tabelle~\ref{#1}}
+    \renewcommand{\figref}[1]{Abbildung~\ref{#1}}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
-  \renewcommand{\chapref}[1]{Capítulo~\ref{#1}}
-  \renewcommand{\partref}[1]{Parte~\ref{#1}}
-  \renewcommand{\tabref}[1]{Tabela~\ref{#1}}
-  \renewcommand{\figref}[1]{Figura~\ref{#1}}
+    \renewcommand{\chapref}[1]{Capítulo~\ref{#1}}
+    \renewcommand{\partref}[1]{Parte~\ref{#1}}
+    \renewcommand{\tabref}[1]{Tabela~\ref{#1}}
+    \renewcommand{\figref}[1]{Figura~\ref{#1}}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
@@ -2244,56 +2262,56 @@ width=.8\textwidth
 % \IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
-\renewcommand{\lsIndexTitle}{Index}
-\renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
-\renewcommand{\lsSubjectIndexTitle}{Index des termes}
-\renewcommand{\lsLanguageIndexTitle}{Index des langues}
-\renewcommand{\lsPrefaceTitle}{Préface}
-\renewcommand{\lsAcknowledgementTitle}{Remerciements}
-\renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
-\renewcommand{\lsReferencesTitle}{french}
-%   \iflsNoBabel
-%   \else
-  \ifbool{babel}{
-    \renewcommand\frenchfigurename{Figure}
-    \renewcommand\frenchtablename{Table}
+    \renewcommand{\lsIndexTitle}{Index}
+    \renewcommand{\lsNameIndexTitle}{Index des auteurs cités}
+    \renewcommand{\lsSubjectIndexTitle}{Index des termes}
+    \renewcommand{\lsLanguageIndexTitle}{Index des langues}
+    \renewcommand{\lsPrefaceTitle}{Préface}
+    \renewcommand{\lsAcknowledgementTitle}{Remerciements}
+    \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
+    \renewcommand{\lsReferencesTitle}{french}
+    %   \iflsNoBabel
+    %   \else
+    \ifbool{babel}{
+        \renewcommand\frenchfigurename{Figure}
+        \renewcommand\frenchtablename{Table}
     }{}
-%   \fi
-% \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
+    %   \fi
+    % \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
-\renewcommand{\lsIndexTitle}{Register}
-\renewcommand{\lsNameIndexTitle}{Autorenregister}
-\renewcommand{\lsSubjectIndexTitle}{Sachregister}
-\renewcommand{\lsLanguageIndexTitle}{Sprachregister}
-\renewcommand{\lsPrefaceTitle}{Vorwort}
-\renewcommand{\lsAcknowledgementTitle}{Danksagung}
-\renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
-\renewcommand{\lsReferencesTitle}{german}
-% \IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
+    \renewcommand{\lsIndexTitle}{Register}
+    \renewcommand{\lsNameIndexTitle}{Autorenregister}
+    \renewcommand{\lsSubjectIndexTitle}{Sachregister}
+    \renewcommand{\lsLanguageIndexTitle}{Sprachregister}
+    \renewcommand{\lsPrefaceTitle}{Vorwort}
+    \renewcommand{\lsAcknowledgementTitle}{Danksagung}
+    \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
+    \renewcommand{\lsReferencesTitle}{german}
+    % \IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
-\renewcommand{\lsIndexTitle}{Índices}
-\renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
-\renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
-\renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
-\renewcommand{\lsPrefaceTitle}{Prefácio}
-\renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
-\renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
-\renewcommand{\lsReferencesTitle}{portugese}
-% \IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
+    \renewcommand{\lsIndexTitle}{Índices}
+    \renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
+    \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
+    \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+    \renewcommand{\lsPrefaceTitle}{Prefácio}
+    \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
+    \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+    \renewcommand{\lsReferencesTitle}{portugese}
+    % \IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
-\renewcommand{\lsIndexTitle}{索引}
-\renewcommand{\lsNameIndexTitle}{人名索引}
-\renewcommand{\lsSubjectIndexTitle}{术语索引}
-\renewcommand{\lsLanguageIndexTitle}{语言索引}
-\renewcommand{\lsPrefaceTitle}{前言}
-\renewcommand{\lsAcknowledgementTitle}{致谢}
-\renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+    \renewcommand{\lsIndexTitle}{索引}
+    \renewcommand{\lsNameIndexTitle}{人名索引}
+    \renewcommand{\lsSubjectIndexTitle}{术语索引}
+    \renewcommand{\lsLanguageIndexTitle}{语言索引}
+    \renewcommand{\lsPrefaceTitle}{前言}
+    \renewcommand{\lsAcknowledgementTitle}{致谢}
+    \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
 \fi
 
 
@@ -2319,15 +2337,15 @@ width=.8\textwidth
 %% \zl
 
 \ifbool{arseneau}{
-% \iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
-% With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
-\def\sloppybottom{%
-  \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
-  \topskip=1\topskip \@plus 0.625\topskip \@minus .95\topskip%
-  \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
-}
-\sloppybottom
-% \fi
+    % \iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
+    % With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
+    \def\sloppybottom{%
+    \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
+    \topskip=1\topskip \@plus 0.625\topskip \@minus .95\topskip%
+    \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
+    }
+    \sloppybottom
+    % \fi
 }{}
 
 \endinput
