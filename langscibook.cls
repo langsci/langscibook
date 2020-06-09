@@ -65,6 +65,8 @@
 \typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
 \usepackage{etoolbox}
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Paths
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -348,6 +350,9 @@
 %     Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% secret hook to insert package which want to be loaded before all other packages
+\IfFileExists{./langsci-earlyload.def}{\input{langsci-earlyload.def}}{}
+
 \usepackage{morewrites} %more helper files to write to
 \usepackage{etex}
 \reserveinserts{18}
@@ -367,7 +372,7 @@
 %% standard commands
 \usepackage{langsci-basic}
 \usepackage{todonotes}
-
+\usepackage{tabularx}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
