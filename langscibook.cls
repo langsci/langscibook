@@ -165,7 +165,7 @@
 \newbool{collection}
 \newbool{collectionchapter}
 \newbool{collectiontoclong}
-\newbool{arseneau} %rename this option
+\newbool{uniformtopskip}
 \newbool{oldstylenumbers}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,10 +271,10 @@
 	\booltrue{collection}
 	\booltrue{collectiontoclong}
 	}
-        \DeclareVoidOption{arseneau}{
+\DeclareVoidOption{uniformtopskip}{
 %         \lsArseneautrue
-        \booltrue{arseneau}
-        }
+    \booltrue{uniformtopskip}
+    }
 \DeclareVoidOption{oldstylenumbers}{
 %         \lsOldStyleNumberstrue
         \booltrue{oldstylenumbers}
@@ -2351,8 +2351,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%  {}* Can the boy who run fast can jump high?
 %% \zl
 
-\ifbool{arseneau}{
-    % \iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
+\ifbool{uniformtopskip}{}{% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
     % With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
     \def\sloppybottom{%
     \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
@@ -2360,7 +2359,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
     }
     \sloppybottom
-    % \fi
-}{}
+}
 
 \endinput
