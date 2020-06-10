@@ -279,23 +279,45 @@
 %         \lsOldStyleNumberstrue
         \booltrue{oldstylenumbers}
         }
+
 \DeclareVoidOption{chinesefont}{
-	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
-% 	\newcommand{\zh}[1]{{\cn #1}}
+  \AtEndPreamble{
+	\newfontfamily\cn
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=SourceHanSerif-Bold.otf
+      ]
+      {SourceHanSerif-Regular.otf}
+    \AdditionalFontImprint{Source Han Serif ZH}
 	\XeTeXlinebreaklocale 'zh'
 	\XeTeXlinebreakskip = 0pt plus 1pt
-	\AdditionalFontImprint{UMing}
+  }
 }
 \DeclareVoidOption{japanesefont}{
-	  \newfontfamily\jpn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{TakaoPGothic} %Japanese
-% 	  \newcommand{\jp}[1]{{{\jpn #1}}}
-	  \XeTeXlinebreaklocale 'ja'
-	  \AdditionalFontImprint{TakaoPGothic}
+  \AtEndPreamble{
+	\newfontfamily\jpn
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=SourceHanSerif-Bold.otf
+      ]
+      {SourceHanSerif-Regular.otf}
+    \AdditionalFontImprint{Source Han Serif JA}
+    \XeTeXlinebreaklocale 'ja'
+  }
 }
-% \DeclareVoidOption{koreanfont}{
-% 	\newfontfamily\hangul[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{./SourceHanSerifK.otf}
-% 	\newcommand{\kr}[1]{{\sffamily #1}}
-% 	\AdditionalFontImprint{Korean}}
+\DeclareVoidOption{koreanfont}{
+  \AtEndPreamble{
+	\newfontfamily\krn
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=SourceHanSerif-Bold.otf
+      ]
+      {SourceHanSerif-Regular.otf}
+    \AdditionalFontImprint{Source Han Serif KO}
+    \XeTeXlinebreaklocale 'ko'
+  }
+}
+
 \DeclareVoidOption{arabicfont}{
 	\newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{arabtype.ttf}
 % 	\newcommand{\textarabic}[1]{{\arabicfont #1}}
