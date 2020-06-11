@@ -534,6 +534,7 @@
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
+%we define a command to better encapsulate the logic
 \newcommand{\setuptitle}{
     \renewcommand{\maketitle}{
         %first we treat covers to get them out of the way
