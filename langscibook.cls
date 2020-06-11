@@ -165,7 +165,7 @@
 \newbool{collection}
 \newbool{collectionchapter}
 \newbool{collectiontoclong}
-\newbool{arseneau} %rename this option
+\newbool{uniformtopskip}
 \newbool{oldstylenumbers}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,31 +271,53 @@
 	\booltrue{collection}
 	\booltrue{collectiontoclong}
 	}
-        \DeclareVoidOption{arseneau}{
+\DeclareVoidOption{uniformtopskip}{
 %         \lsArseneautrue
-        \booltrue{arseneau}
-        }
+    \booltrue{uniformtopskip}
+    }
 \DeclareVoidOption{oldstylenumbers}{
 %         \lsOldStyleNumberstrue
         \booltrue{oldstylenumbers}
         }
+
 \DeclareVoidOption{chinesefont}{
-	\newfontfamily\cn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{AR PL UMing CN}
-% 	\newcommand{\zh}[1]{{\cn #1}}
+  \AtEndPreamble{
+	\newfontfamily\cn
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=SourceHanSerif-Bold.otf
+      ]
+      {SourceHanSerif-Regular.otf}
+    \AdditionalFontImprint{Source Han Serif ZH}
 	\XeTeXlinebreaklocale 'zh'
 	\XeTeXlinebreakskip = 0pt plus 1pt
-	\AdditionalFontImprint{UMing}
+  }
 }
 \DeclareVoidOption{japanesefont}{
-	  \newfontfamily\jpn[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{TakaoPGothic} %Japanese
-% 	  \newcommand{\jp}[1]{{{\jpn #1}}}
-	  \XeTeXlinebreaklocale 'ja'
-	  \AdditionalFontImprint{TakaoPGothic}
+  \AtEndPreamble{
+	\newfontfamily\jpn
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=SourceHanSerif-Bold.otf
+      ]
+      {SourceHanSerif-Regular.otf}
+    \AdditionalFontImprint{Source Han Serif JA}
+    \XeTeXlinebreaklocale 'ja'
+  }
 }
-% \DeclareVoidOption{koreanfont}{
-% 	\newfontfamily\hangul[Mapping=tex-text,Ligatures=Common,Scale=MatchUppercase]{./SourceHanSerifK.otf}
-% 	\newcommand{\kr}[1]{{\sffamily #1}}
-% 	\AdditionalFontImprint{Korean}}
+\DeclareVoidOption{koreanfont}{
+  \AtEndPreamble{
+	\newfontfamily\krn
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=SourceHanSerif-Bold.otf
+      ]
+      {SourceHanSerif-Regular.otf}
+    \AdditionalFontImprint{Source Han Serif KO}
+    \XeTeXlinebreaklocale 'ko'
+  }
+}
+
 \DeclareVoidOption{arabicfont}{
 	\newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{arabtype.ttf}
 % 	\newcommand{\textarabic}[1]{{\arabicfont #1}}
@@ -2352,8 +2374,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%  {}* Can the boy who run fast can jump high?
 %% \zl
 
-\ifbool{arseneau}{
-    % \iflsArseneau% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
+\ifbool{uniformtopskip}{}{% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
     % With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
     \def\sloppybottom{%
     \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
@@ -2361,7 +2382,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
     }
     \sloppybottom
-    % \fi
-}{}
+}
 
 \endinput

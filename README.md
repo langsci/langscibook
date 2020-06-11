@@ -5,8 +5,7 @@ This repository contains the most recent development build of our LaTeX class. I
 ## class options of langscibook.cls
 
 option | values (defaults in bold face) | meaning
--------|--------|---------
-arseneau | | use Donald Arseneau's procedure for automatic widow and orphan control. *This feature is experimental.*
+-------|--------|--------- 
 babelshorthands | | use shorthands defined for German
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **biber** \| bibtex  | the backend of BibLaTeX
@@ -32,6 +31,7 @@ showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 spinewidth | | the width of the spine, used for cover creation
 undecapitalize | | do not change the casing of titles in the list of references
+uniformtopskip | | disable Donald Arseneau's procedure for automatic widow and orphan control. This procedure results in different `\topskip`s on different pages. This is undesirable when you want each page to have exactly the same number of lines in the type area.
 
 ## defined environments, commands, etc.
 name | type | descrition | usage
