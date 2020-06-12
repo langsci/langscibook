@@ -255,8 +255,7 @@
                  \if@noftnote%
                         \begin{list}{(\thexnumi)}%
                         {\usecounter{xnumi}\@subex{#1}{\@gblabelsep}{0em}%
-                        \setcounter{xnumi}{\value{equation}}
-                        \nopagebreak}%
+                        \setcounter{xnumi}{\value{equation}}}%
                  \else%
                         \begin{list}{(\roman{xnumi})}%
                         {\usecounter{xnumi}\@subex{(iiv)}{\@gblabelsep}{\footexindent}%
@@ -313,7 +312,7 @@
 %%% the example-items
 \def\ex{\@ifnextchar [{\@ex}{\item}}
 \def\@ex[#1]#2{\item\@exj[#1]{#2}}
-\def\@exj[#1]#2{\@exjbg{#1} #2 \end{list}\nopagebreak}
+\def\@exj[#1]#2{\@exjbg{#1} #2 \end{list}}
 \def\exi#1{\item[#1]\@ifnextchar [{\@exj}{}}
 \def\judgewidth#1{\def\@jwidth{#1}}
 \judgewidth{??}

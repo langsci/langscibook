@@ -21,6 +21,7 @@
 %   \- Default values of variables
 %   \- Definition of conditionals
 %   \- Option handling
+%   \- Output variables
 %   \- MAIN CLASS
 %   \- General packages
 %   \- print on demand macros
@@ -345,28 +346,49 @@
 \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Output variables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newbool{book}
+\newbool{paper}
+\newbool{guidelines}
+\newbool{coverBODhc}
+\newbool{coverBODsc}
+\newbool{coverCS}
+\ifx\lsOutput\lsOutputPaper{\global\booltrue{paper}}\fi
+\ifx\lsOutput\lsOutputBook{\global\booltrue{book}}\fi
+\ifx\lsOutput\lsOutputGuidelines{\global\booltrue{guidelines}}\fi
+\ifx\lsOutput\lsOutputCoverBODhc{\global\booltrue{coverBODhc}}\fi
+\ifx\lsOutput\lsOutputCoverBODsc{\global\booltrue{coverBODsc}}\fi
+\ifx\lsOutput\lsOutputCoverCS{\global\booltrue{coverCS}}\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\lsChapterPrefixString}{} %this conditional cannot be put
+% directly into the LoadClass, so we compute the value and store it in a command
+ \ifbool{collection}{
+    \renewcommand{\lsChapterPrefixString}{chapterprefix=true,}
+  }{
+%   \else
+    \ifbool{paper}{
+        \renewcommand{\lsChapterPrefixString}{chapterprefix=true,}
+    }{}
+}
 
 \LoadClass[
-  fontsize=\lsFontsize, % default is 11pt
-  footnotes=multiple,
-  numbers=noenddot,   % no point after last number of chapters/sections
-  toc=bibliography,
-  index=totoc,
-  headings=optiontohead,
-% %   headings=normal,
- \ifbool{collection}{
-%   \iflsCollection
-  chapterprefix=true,}{
-%   \else
-    \ifx\lsOutput\lsOutputPaper  chapterprefix=true,\else \fi
-    }
-%     \fi
-  %draft=yes,
-  %appendixprefix
-  ]{scrbook}
+    fontsize=\lsFontsize, % default is 11pt
+    footnotes=multiple,
+    numbers=noenddot,   % no point after last number of chapters/sections
+    toc=bibliography,
+    index=totoc,
+    headings=optiontohead,
+    % %   headings=normal,
+    \lsChapterPrefixString
+    %draft=yes,
+    %appendixprefix
+    ]{scrbook}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Packages
@@ -540,19 +562,7 @@
 %      Output types
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newbool{book}
-\newbool{paper}
-\newbool{guidelines}
-\newbool{coverBODhc}
-\newbool{coverBODsc}
-\newbool{coverCS}
 
-\ifx\lsOutput\lsOutputBook{\global\booltrue{book}}\fi
-\ifx\lsOutput\lsOutputPaper{\global\booltrue{paper}}\fi
-\ifx\lsOutput\lsOutputGuidelines{\global\booltrue{guidelines}}\fi
-\ifx\lsOutput\lsOutputCoverBODhc{\global\booltrue{coverBODhc}}\fi
-\ifx\lsOutput\lsOutputCoverBODsc{\global\booltrue{coverBODsc}}\fi
-\ifx\lsOutput\lsOutputCoverCS{\global\booltrue{coverCS}}\fi
 
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
