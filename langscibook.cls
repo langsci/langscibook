@@ -2055,9 +2055,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
     \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
     % \iflsCollectionTOCLong\else% show only parts and chapters
-    \ifbool{collectiontoclong}{
-        \setcounter{tocdepth}{0}
-    }{}
+    \ifbool{collectiontoclong}{}{\setcounter{tocdepth}{0}}
     % \fi
     \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
     [
