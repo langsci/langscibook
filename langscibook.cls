@@ -1807,7 +1807,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 % For papers that have appendices, a replacement for \appendix.
 % Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix}
-\renewenvironment{paperappendix}{%
+\newenvironment{paperappendix}{%
     \newcommand*{\appendixmore}{%
     \renewcommand*\thesection{\Alph{section}}
     \renewcommand*{\sectionformat}{%
