@@ -1805,20 +1805,17 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 }
 
 
-% for papers that have appendices, a replacement for \appendix.
-% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix
-%        Will result in "Appendix A: Title"
-%
-\newcounter{paperappendixsection}
-\newenvironment{paperappendix}{%
-    \let\oldthesection\thesection%
-    \let\oldsectionformat\sectionformat%
-    \setcounter{paperappendixsection}{0}%
-    \def\thesection{\Alph{paperappendixsection}}%
-    \def\sectionformat{\stepcounter{paperappendixsection}\appendixname\ \thesection:\enskip}%
-    }{%
-    \let\thesection\oldthesection%
-    \let\sectionformat\oldsectionformat}
+% For papers that have appendices, a replacement for \appendix.
+% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix}
+\renewenvironment{paperappendix}{%
+    \newcommand*{\appendixmore}{%
+    \renewcommand*\thesection{\Alph{section}}
+    \renewcommand*{\sectionformat}{%
+    \appendixname~\thesection\autodot\enskip}%
+    \renewcommand*{\sectionmarkformat}{%
+    \appendixname~\thesection\autodot\enskip}}
+    \appendix
+}{}
 
 
 
