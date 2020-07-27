@@ -2062,8 +2062,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     ]{tocline}{part}
 
     \usepackage{chngcntr}
-    \counterwithout{figure}{chapter}
-    \counterwithout{table}{chapter}
+    \counterwithin{figure}{chapter}
+    \counterwithin{table}{chapter}
 
     \NewDocumentCommand{\includepaper}{m}{
         \bgroup
