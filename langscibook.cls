@@ -1461,7 +1461,13 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{datetime}
-\usepackage{scrlayer-scrpage}
+\usepackage[autoenlargeheadfoot=off]{scrlayer-scrpage}
+% This option explicitely increases the size of the footer in plain pages.
+% This ensures there is enough space to print the citation in collected vols.
+% This setting does not influence the composition of the typearea.
+\AddToLayerPageStyleOptions{plain.scrheadings}
+    {onselect={\setlength{\footheight}{3\baselineskip}}}
+    
 \ohead{\headmark}
 \ihead{}
 \cfoot{}
