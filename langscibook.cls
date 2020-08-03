@@ -2135,9 +2135,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
         \renewcommand*{\thesection}{\arabic{section}}
         \RedeclareSectionCommand
-            [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip,
-            beforeskip=0pt
-        ]{chapter}
+            [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]
+            {chapter}
         \renewcommand{\maketitle}{
             % With \setchapterpreamble from scrbook, we ensure that the author(s),
             % their affiliation, the abstract, etc., are part of the \chapter block.
