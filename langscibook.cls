@@ -2165,6 +2165,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
               \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}
                 \epigram{}\epigramsource{}}%
             \fi
+            \enlargethispage{-1\baselineskip}
         }
         \ohead{}
         \lehead{\lsCollectionPaperHeaderAuthor}
