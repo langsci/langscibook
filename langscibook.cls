@@ -1292,7 +1292,7 @@
 
 \newcommand{\publisherstreetaddress}{%
 Language Science Press\\
-Xhain\\
+xHain\\
 Grünberger Str. 16\\
 10243 Berlin, Germany}
 \newcommand{\publisherurl}{\href{http://langsci-press.org}{langsci-press.org}}
