@@ -242,7 +242,7 @@
 \def\exe{%
     %\ifnum\value{equation}>9 \exewidth{(23)}\else\fi%
     %inserted by LangSci, for large example numbers
-    \ifnum\value{equation}>98 \exewidth{(235)}\else\fi%
+    \ifnum\value{equation}>998 \exewidth{(1235)}\else\ifnum\value{equation}>98 \exewidth{(235)}\fi\fi%
     \@ifnextchar [{\@exe}{\@exe[\@exwidth]}}
 
 \def\@exe[#1]{\ifnum \@xnumdepth >0%
