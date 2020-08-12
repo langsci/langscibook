@@ -8,7 +8,7 @@
     frametitlefont=\sffamily\bfseries\Large, 
     needspace=4\baselineskip, 
     splittopskip=\baselineskip,
-    apptotikzsetting={ \tikzset{mdfbackground/.append style={draw=none}} }
+    apptotikzsetting={\tikzset{mdfbackground/.append style={draw=none}}}
   }
 
 \AtEndPreamble{% Check if the external library from tikz has been loaded in the preamble. If so, skip externalising for all mdframed boxes.
@@ -42,7 +42,6 @@
 }
 
 \mdfdefinestyle{greyexercise}{%
-    everyline=true,
     ignorelastdescenders=true,
     middlelinewidth=0pt,
     linecolor=white,

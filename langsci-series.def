@@ -145,6 +145,7 @@
             \item Müller, Stefan. {A lexicalist account of argument structure: Template-based phrasal LFG approaches and a lexical HPSG alternative}.
             \item Schmidtke-Bode, Karsten,  Natalia Levshina, Susanne Maria Michaelis \& Ilja A. Seržant (eds.).  Explanation in typology: Diachronic sources, functional motivations and the nature of the evidence.
             \item Morley, Rebecca L. Sound structure and sound change: A modeling approach.
+	    \item Asoulin, Eran. Language and scientific explanation: Where does semantics fit in?
             \end{enumerate}
 
             }
@@ -221,8 +222,8 @@
             \item Bowern, Claire, Laurence Horn \& Raffaella Zanuttini (eds.). On looking into words (and beyond): Structures, Relations, Analyses
             \item Bonami, Olivier, Gilles Boyé, Georgette Dal, Hélène Giraudo \& Fiammetta Namer. The lexeme in descriptive and theoretical morphology.
             \item Guzmán Naranjo, Matías. Analogical classification in formal grammar.
+            \item Flick, Johanna. Die Entwicklung des Definitartikels im Althochdeutschen: Eine kognitiv-linguistische Korpusuntersuchung.
             \end{enumerate}
-
             }
 \fi
 \ifx\lsSeries\eotmsig
@@ -413,6 +414,7 @@
             \item Smith, Peter W., Johannes Mursell \& Katharina Hartmann (eds.). Agree to Agree: Agreement in the Minimalist Programme.
             \item Pineda, Anna \& Jaume Mateu (eds.). Dative constructions in Romance and beyond.
             \item Kastner, Itamar. Voice at the interfaces: The syntax, semantics, and morphology of the Hebrew verb.
+            \item Bárány, András, Theresa Biberauer, Jamie Douglas \& Sten Vikner (eds.). Syntactic architecture and its consequences I: Syntax inside the grammar.
             \end{enumerate}
             }
 \fi
@@ -645,6 +647,7 @@
             \item Müller, Sonja. Distribution und Interpretation von Modalpartikel-Kombinationen.
             \item Bueno Holle, Juan José. Information structure in Isthmus Zapotec narrative and conversation.
             \item Parikh, Prashant. Communication and content.
+            \item Gergel, Remus \& Jonathan Watkins (eds.). Quantification and scales in change.
             \end{enumerate}
 
             }

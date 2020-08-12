@@ -1461,7 +1461,13 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{datetime}
-\usepackage{scrlayer-scrpage}
+\usepackage[autoenlargeheadfoot=off]{scrlayer-scrpage}
+% This option explicitely increases the size of the footer in plain pages.
+% This ensures there is enough space to print the citation in collected vols.
+% This setting does not influence the composition of the typearea.
+\AddToLayerPageStyleOptions{plain.scrheadings}
+    {onselect={\setlength{\footheight}{3\baselineskip}}}
+    
 \ohead{\headmark}
 \ihead{}
 \cfoot{}
@@ -1523,7 +1529,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \usepackage{epigraph}
 \setlength{\epigraphrule}{0pt}
 \renewcommand{\textflush}{flushepinormal}
-%\setlength{\epigraphwidth}{.2\textwidth}
+\setlength{\epigraphwidth}{.618\textwidth} % Set to the longer part of golden ratio
 \setlength{\afterepigraphskip}{0\baselineskip}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1805,20 +1811,17 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 }
 
 
-% for papers that have appendices, a replacement for \appendix.
-% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix
-%        Will result in "Appendix A: Title"
-%
-\newcounter{paperappendixsection}
+% For papers that have appendices, a replacement for \appendix.
+% Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix}
 \newenvironment{paperappendix}{%
-    \let\oldthesection\thesection%
-    \let\oldsectionformat\sectionformat%
-    \setcounter{paperappendixsection}{0}%
-    \def\thesection{\Alph{paperappendixsection}}%
-    \def\sectionformat{\stepcounter{paperappendixsection}\appendixname\ \thesection:\enskip}%
-    }{%
-    \let\thesection\oldthesection%
-    \let\sectionformat\oldsectionformat}
+    \newcommand*{\appendixmore}{%
+    \renewcommand*\thesection{\Alph{section}}
+    \renewcommand*{\sectionformat}{%
+    \appendixname~\thesection\autodot\enskip}%
+    \renewcommand*{\sectionmarkformat}{%
+    \appendixname~\thesection\autodot\enskip}}
+    \appendix
+}{}
 
 
 
@@ -2055,9 +2058,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
     \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
     % \iflsCollectionTOCLong\else% show only parts and chapters
-    \ifbool{collectiontoclong}{
-        \setcounter{tocdepth}{0}
-    }{}
+    \ifbool{collectiontoclong}{}{\setcounter{tocdepth}{0}}
     % \fi
     \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
     [
@@ -2067,8 +2068,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     ]{tocline}{part}
 
     \usepackage{chngcntr}
-    \counterwithout{figure}{chapter}
-    \counterwithout{table}{chapter}
+    \counterwithin{figure}{chapter}
+    \counterwithin{table}{chapter}
 
     \NewDocumentCommand{\includepaper}{m}{
         \bgroup
@@ -2134,9 +2135,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
         \renewcommand*{\thesection}{\arabic{section}}
         \RedeclareSectionCommand
-            [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip,
-            beforeskip=0pt
-        ]{chapter}
+            [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]
+            {chapter}
         \renewcommand{\maketitle}{
             % With \setchapterpreamble from scrbook, we ensure that the author(s),
             % their affiliation, the abstract, etc., are part of the \chapter block.
@@ -2144,10 +2144,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                 \onlyAuthor
                 \lsCollectionPaperAuthor%
                 \vspace{\baselineskip}
-                \ifx\@epigram\empty%
-                \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}%
-                    \epigram{}\epigramsource{}}%
-                \fi%
                 \begin{quote}
                 \small\lsCollectionPaperAbstract
                 \end{quote}
@@ -2165,6 +2161,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             % controls page break penalties and indentation following the heading.
             \@afterindentfalse
             \@afterheading
+            \ifx\@epigram\empty%
+              \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}
+                \epigram{}\epigramsource{}}%
+            \fi
+            \enlargethispage{-1\baselineskip}
         }
         \ohead{}
         \lehead{\lsCollectionPaperHeaderAuthor}
