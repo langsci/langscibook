@@ -2073,6 +2073,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
     \NewDocumentCommand{\includepaper}{m}{
         \bgroup
+		\renewcommand{\newlineCover}{\\}
                 \renewcommand{\documentclass}[2][]{}%
                 \renewcommand{\usepackage}[2][]{}%
                 \renewenvironment{document}{\begingroup}{\endgroup}
