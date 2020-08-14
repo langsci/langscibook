@@ -1,4 +1,4 @@
-def\easragged{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\raggedright\ex\begin{tabular}[t]{@{}b{\linewidth}@{}}}
+\def\easragged{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\raggedright\ex\begin{tabular}[t]{@{}b{\linewidth}@{}}}
 \def\eas{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\ex\begin{tabular}[t]{@{}p{\linewidth}@{}}}
 \def\eaa{\ifnum\@xnumdepth=0\begin{exe}[(\theequation)]\else\begin{xlist}[iv.]\fi\raggedright\ex}
 \def\bu{\item[$\bullet$]}
@@ -59,3 +59,116 @@ def\easragged{\ifnum\@xnumdepth=0\begin{exe}[(34)]\else\begin{xlist}[iv.]\fi\rag
 
 \newcommand\displaycmd[2]{%
   \DescribeMacro{#2}\centerline{\cmd{#1}}}
+
+  
+% Stefan's TBLS commands
+
+
+\newcommand{\tblsbwbox}[4][]{%
+\\
+  \noindent
+  \colorbox{#2}{
+\parbox{.97\textwidth}{
+\centering
+\parbox{.9\textwidth}{
+
+    %add logo if requested
+      \ifthenelse{\equal{#1}{}}{\bigskip}{
+    \begin{flushleft}
+      \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{tbls-#1.pdf}}
+%       \hspace*{3.5mm} \raisebox{0mm}[0mm][0mm]{\color{white}\includegraphics[width=10mm]{tbls-#1.eps}}
+    \end{flushleft}}
+    %add header
+    \boxheader{#3}
+    \begin{multicols*}{2}
+    #4
+    \end{multicols*}
+    \bigskip
+    }
+}
+}
+\\[1em]
+}
+
+
+
+\newcommand{\tblsbwboxdark}[3][]{%
+  \noindent
+  \tblsbwbox[#1]{gray}{#2}{#3}
+}
+
+\newcommand{\tblsbwboxlight}[3][]{%
+  \noindent
+  \tblsbwbox[#1]{lightgray}{#2}{#3}
+}
+
+\newcommand{\tblscolboxdark}[3][]{%
+  \tblsbwboxdark[#1]{#2}{#3}
+}
+
+\newcommand{\tblscolboxlight}[3][]{%
+  \tblsbwboxlight[#1]{#2}{#3}
+}
+
+
+\newcommand{\tblsthinline}{\rule{\textwidth}{.8mm}}
+\newcommand{\tblsthickline}{{\color{gray}\rule{\textwidth}{1.5mm}}}
+\newcommand{\tblsthickcolorline}{{\color{lsYellow}\rule{\textwidth}{1.5mm}}}
+
+\newcommand{\tblssandwich}[3]{
+% \\
+
+\medskip
+\noindent
+#1
+\\[2em]
+\boxheader{#2}
+\\[1em]
+\noindent%
+#3
+\smallskip
+\noindent
+#1
+\\[1em]
+}
+
+\newcommand{\tblsbwthinsandwich}[2]{
+   \tblssandwich{\tblsthinline}{#1}{#2}
+}
+
+\newcommand{\tblsbwthicksandwich}[2]{
+   \tblssandwich{\tblsthickline}{#1}{#2}
+}
+
+\newcommand{\tblscolthicksandwich}[2]{
+   \tblssandwich{\tblsthickcolorline}{#1}{#2}
+}
+
+\newcommand{\tblscolthinsandwich}[2]{
+   \tblssandwich{\tblsthinline}{#1}{#2}
+}
+
+\newcommand{\tblscolframebox}[3][]{
+  \fboxrule.8mm
+  \noindent
+  \begin{figure}
+    \begin{flushleft}
+      \hspace*{3.5mm}
+      \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{tbls-#1.pdf}}} \\
+%       \raisebox{-10mm}[0mm][0mm]{\ifthenelse{\equal{#1}{}}{}{\includegraphics[width=10mm]{#1.eps}}} \\
+    \end{flushleft}
+    \color{lsYellow}\framebox[\textwidth]{%
+      \color{black}
+      \parbox{.92\textwidth}{%
+	\vspace*{.5cm}
+	\boxheader{#2}
+	\begin{multicols*}{2}
+	  #3
+	\end{multicols*}
+      }
+    }
+  \end{figure}
+}
+
+\newcommand{\boxheader}[1]{\medskip{\Large\bfseries\sffamily #1}}
+% End Stefan's TBLS commands
