@@ -17,14 +17,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Structure of this file:
 %   \- Early load packages
-%   \- Paths
 %   \- Default values of variables
 %   \- Definition of conditionals
 %   \- Option handling
 %   \- Output variables
 %   \- MAIN CLASS
 %   \- General packages
-%   \- print on demand macros
+%   \- Covers
 %   \- Output types (book, draft, cover)
 %   \- Page geometry
 %   \- Fonts
@@ -65,21 +64,6 @@
 \hbadness=99999 % get rid of underfull box warnings
 \typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
 \usepackage{etoolbox}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%     Paths
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \newcommand{\fontpath}{}
-% \newcommand{\logopath}{}
-% \newcommand{\seriesinfopath}{}
-% \newcommand{\localepath}{}
-% \newcommand{\bibstylepath}{}
-% \newcommand{\bbxpath}{}
-% \newcommand{\cbxpath}{}
-% \newcommand{\stylepath}{}
-% Paths can be overwritten with option "nonflat"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Default values
@@ -136,22 +120,6 @@
 %     Conditionals
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \newif\iflsDraft \lsDraftfalse
-% \newif\iflsOpenReview \lsOpenReviewfalse
-% \newif\iflsResetCapitals \lsResetCapitalsfalse
-% \newif\iflsShowIndex \lsShowIndexfalse
-% \newif\iflsBiblatex \lsBiblatextrue
-% \newif\iflsCollection \lsCollectionfalse
-% \newif\iflsCollectionChapter \lsCollectionChapterfalse
-% \newif\iflsCollectionTOCLong \lsCollectionTOCLongfalse
-% \newif\iflsNewtxmath \lsNewtxmathfalse
-% \newif\iflsMinimal \lsMinimalfalse
-% \newif\iflsCover \lsCoverfalse %output format is cover
-% \newif\iflsNoBabel \lsNoBabelfalse
-% \newif\iflsBabelShorthands \lsBabelShorthandsfalse
-% \newif\iflsMultiauthors \lsMultiauthorsfalse
-% \newif\iflsArseneau \lsArseneaufalse
-% \newif\iflsOldStyleNumbers \lsOldStyleNumbersfalse
 \newbool{cover}
 \newbool{resetcapitals}
 \newbool{draft}
@@ -199,85 +167,57 @@
 % 	\lsResetCapitalstrue
 	}
 \DeclareVoidOption{draftmode}{	% 'draftmode' instead of 'draft' due to undesirable side efects
-% 	 \lsDrafttrue
 	 \booltrue{draft}
 	 \overfullrule=5pt
 	 }	% to indicate overfull hboxes
 \DeclareVoidOption{openreview}{
-% 	\lsOpenReviewtrue%
 	\booltrue{openreview}
 	\AtBeginDocument{\renewcommand{\lsISBNdigital}{000-0-000000-00-0}}
 	}
-% \DeclareVoidOption{nonflat}{
-% 	\renewcommand{\fontpath}{./langsci/fonts/}
-% 	\renewcommand{\logopath}{./langsci/graphics/}
-% 	\renewcommand{\seriesinfopath}{./langsci/seriesinfo/}
-% 	\renewcommand{\localepath}{./langsci/locale/}
-% 	\renewcommand{\bibstylepath}{./langsci/}
-% 	\renewcommand{\stylepath}{./langsci/styles/}
-% }
 \DeclareVoidOption{nobabel}{
-%   \lsNoBabeltrue
   \boolfalse{babel}
   }
 
 \DeclareVoidOption{babelshorthands}{
-%   \lsBabelShorthandstrue
   \booltrue{babelshorthands}
   }
 
 \DeclareVoidOption{multiauthors}{
-%     \lsMultiauthorstrue
     \booltrue{multiauthors}
 }
 
 \DeclareVoidOption{showindex}{
-% 	\lsShowIndextrue
         \booltrue{showindex}
 	}
 \booltrue{biblatex}
 
 \DeclareVoidOption{biblatex}{
-% 	\lsBiblatextrue
 	\booltrue{biblatex}
 	}
-% \DeclareVoidOption{bibtex}{
-%   \ClassWarningNoLine{langscibook}{BibTeX frontend deprecated. Please use BibLaTeX in the final version}
-% 	\lsBiblatexfalse}
 \DeclareVoidOption{nonewtxmath}{
-% 	\lsNewtxmathfalse
 	\boolfalse{newtxmath} %seems redundant
 	}
 \DeclareVoidOption{newtxmath}{
-%         \lsNewtxmathtrue
         \booltrue{newtxmath}
         }
 \DeclareVoidOption{minimal}{
-% 	\lsMinimaltrue
 	\booltrue{minimal}
 	}
 \DeclareVoidOption{collection}{
-% 	\lsCollectiontrue
 	\booltrue{collection}
 	}
 \DeclareVoidOption{collectionchapter}{
-% 	\lsCollectiontrue%
-% 	\lsCollectionChaptertrue
 	\booltrue{collection}
 	\booltrue{collectionchapter}
 	}
 \DeclareVoidOption{collectiontoclong}{
-% 	\lsCollectiontrue%
-% 	\lsCollectionTOCLongtrue
 	\booltrue{collection}
 	\booltrue{collectiontoclong}
 	}
 \DeclareVoidOption{uniformtopskip}{
-%         \lsArseneautrue
     \booltrue{uniformtopskip}
     }
 \DeclareVoidOption{oldstylenumbers}{
-%         \lsOldStyleNumberstrue
         \booltrue{oldstylenumbers}
         }
 
@@ -420,9 +360,8 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%      Print on demand macros
+%      Covers
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \iflsMinimal\else % The minimal mode skips cover generation
 \notbool{minimal}{
     % Basic cover commands, including PGF layers
     \newcommand{\coversetup}{
@@ -595,7 +534,6 @@
     %         \fi
         }{} %end book
 
-%         \ifx\lsOutput\lsOutputGuidelines        % only if output==guidelines
         \ifbool{guidelines}{
             \begin{titlepage}
             \thispagestyle{empty}
@@ -612,10 +550,7 @@
 
         %% Imprint:
         \notbool{guidelines}{
-%         \ifx\lsOutput\lsOutputGuidelines{}
-%         \else
             {\lsImpressum}
-%         \fi
         }{} %end guidlines
         %%%%%%%%%%%%%
 
@@ -728,11 +663,8 @@
 \usepackage{amssymb} % has to be loaded before other stuff
 \usepackage{amsmath} % has to be loaded before mathspec/unicode-math
 
-% \iflsMinimal\else % The minimal mode skips font loading
 \notbool{minimal}{ % The minimal mode skips font loading
-%     \iflsNewtxmath\else
     \notbool{newtxmath}{
-%     \iflsNewtxmath\else
     %% There is a known problem in the interplay between \binom, unicode-math, and OTF
     %% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
     \ifx\Umathcode\@undefined\else
@@ -758,7 +690,6 @@
     \fi%umathcode
     %% Provides \setmathfont
     \usepackage{unicode-math}
-%     \fi%newtxmath
     }{%else newtxmath
     %% Deprecated:
     \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
@@ -777,32 +708,22 @@
     \setsansfont[
     %Ligatures={TeX,Common},% not supported by ttf
     Scale=MatchLowercase,
-%     Path=\fontpath,
     BoldFont = Arimo-Bold.ttf,
     ItalicFont = Arimo-Italic.ttf,
     BoldItalicFont = Arimo-BoldItalic.ttf
     ]{Arimo-Regular.ttf}
 
-%     \iflsNewtxmath\else
     \notbool{newtxmath}{
-    \setmathfont[AutoFakeBold
-%     ,Path=\fontpath
-    ]{LibertinusMath-Regular.otf}
-    \setmathfont[range={cal},StylisticSet=1%,Path=\fontpath
-    ]{XITSMath-Regular.otf}
-    \setmathfont[range={bfcal},StylisticSet=1%,Path=\fontpath
-    ]{XITSMath-Bold.otf}
-%     \fi%newtxmath
+    \setmathfont[AutoFakeBold]{LibertinusMath-Regular.otf}
+    \setmathfont[range={cal},StylisticSet=1]{XITSMath-Regular.otf}
+    \setmathfont[range={bfcal},StylisticSet=1]{XITSMath-Bold.otf}
     }{}
 
-%     \iflsOldStyleNumbers
     \ifbool{oldstylenumbers}{
     \defaultfontfeatures[LibertinusSerif-Semibold.otf,LibertinusSerif-Italic.otf,LibertinusSerif-SemiboldItalic.otf,LibertinusSerif-Regular.otf]{SmallCapsFeatures={Numbers=OldStyle}}
-%     \fi
     }{}
     \setmainfont[
     Ligatures={TeX,Common},
-%     Path=\fontpath,
     PunctuationSpace=0,
     Numbers={Proportional},
     BoldFont = LibertinusSerif-Semibold.otf,
@@ -968,15 +889,11 @@
 \newcommand{\lsEditorPrefix}{}
 \newcommand{\lsEditorSuffix}{}
 \ifbool{collection}{
-% \iflsCollection   % for collections: set \lsEditorSuffix depending on \@author
   \AtBeginDocument{
     \renewcommand{\newlineCover}{}
     \renewcommand{\newlineSpine}{}
     \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
     \renewcommand{\lsEditorSuffix}{(ed.)}
-%       \iflsMultiauthors
-% 	\renewcommand{\lsEditorSuffix}{(eds.)}
-%       \fi
       \ifbool{multiauthors}{
 	\renewcommand{\lsEditorSuffix}{(eds.)}
       }{}
@@ -1005,13 +922,9 @@
         \end{pgfonlayer}
         \frontcovertoptext{140mm}{51pt}
         \coverbottomtext
-        %   \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
         \ifbool{draft}{\node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime};}{}
-        %   \iflsOpenReview
         \ifbool{openreview}{
         \node [rotate=45,align=center,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Open Review\\Version of \today, \currenttime};}{}
-        %   \fi
-        %   \iflsUndecapitalize \node [rotate=45,scale=1.5,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Undecapitalized}; \fi
     \end{tikzpicture}
     \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
 } % end lsFrontPage
@@ -1039,10 +952,7 @@
     \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
 } %end Schmutztitel
 
-%\usepackage{pdfpages}
-% \newcommand{\lsAdvertisement}{%
-%   \include{\logopath langsci-advertisement}
-% }
+
 
 \newcommand{\lsBackPage}{%
     \ifcsname tikz@library@external@loaded\endcsname\tikzexternaldisable\fi
@@ -1538,16 +1448,12 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	isbn=false,
 	autolang=hyphen,
 	\ifbool{resetcapitals}{
-% 	\iflsResetCapitals
         language=english,}{}
-%     \fi
 	backend=\lsBiblatexBackend,
 	indexing=cite,
 	\notbool{collection}{
-% 	\iflsCollection\else
 		toc=bib, % make bibliography appear in toc
         }{}
-% 	\fi
 ]{biblatex}
 
 % If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
@@ -1912,12 +1818,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 
 
-% \iflsCollection
 \ifbool{collection}{
     \notbool{biblatex}{
-% 	\iflsBiblatex\else
             \ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
-% 	\fi
     }{}
 
     \AtBeginDocument{% for the citation in the footer
@@ -1985,7 +1888,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                 \end{refsection}
         \egroup
     } %end NewDocumentCommand
-    % \fi
 }{}
 
 \newcommand{\lsCollectionPaperHeaderTitle}{%
@@ -2034,7 +1936,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             \renewcommand{\newlineTOC}{\\}
             \ifoot[\lsCollectionPaperCitation]{
                 \ifbool{draft}{Draft of \today, \currenttime}{}
-        %         \iflsDraft Draft of \today, \currenttime \fi
                     }
             % The following ensure that a chapter is treated as a heading, which
             % controls page break penalties and indentation following the heading.
@@ -2147,17 +2048,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \ifx\lsBookLanguage\lsBookLanguageChinese
     %%Fonts for Chinese typesetting. If booklanguage=chinese, then 
     %%xeCJK is loaded, which provides the font commands below.
-    \setCJKmainfont[
-%       Path=\fontpath,
-      BoldFont = SourceHanSerifSC-Semibold.otf
-      ]
-      {SourceHanSerifSC-Regular.otf}
+    \setCJKmainfont[BoldFont = SourceHanSerifSC-Semibold.otf]{SourceHanSerifSC-Regular.otf}
 
-    \setCJKsansfont[
-%       Path=\fontpath,
-      BoldFont = SourceHanSansSC-Bold.otf
-      ]
-      {SourceHanSansSC-Regular.otf}
+    \setCJKsansfont[BoldFont = SourceHanSansSC-Bold.otf]{SourceHanSansSC-Regular.otf}
       
       %% Settings for Punctuation
       \xeCJKsetup{CheckFullRight=true}
@@ -2189,7 +2082,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsAcknowledgementTitle}{Acknowledgments}
 \newcommand{\lsAbbreviationsTitle}{Abbreviations}
 \newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
-% \IfFileExists{{\localepath langsci-hyphenation-universal}}{\input{\localepath langsci-hyphenation-universal}}{}
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
     \renewcommand{\lsIndexTitle}{Index}
@@ -2200,14 +2092,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsAcknowledgementTitle}{Remerciements}
     \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
     \renewcommand{\lsReferencesTitle}{french}
-    %   \iflsNoBabel
-    %   \else
     \ifbool{babel}{
         \renewcommand\frenchfigurename{Figure}
         \renewcommand\frenchtablename{Table}
     }{}
-    %   \fi
-    % \IfFileExists{{\localepath langsci-hyphenation-fr}}{\input{\localepath langsci-hyphenation-fr}}{}
 \fi
 
 % \ifx\lsBookLanguage\lsBookLanguageSpanish
@@ -2230,7 +2118,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsAcknowledgementTitle}{Danksagung}
     \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
     \renewcommand{\lsReferencesTitle}{german}
-    % \IfFileExists{{\localepath langsci-hyphenation-de}}{\input{\localepath langsci-hyphenation-de}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -2242,7 +2129,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
     \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
     \renewcommand{\lsReferencesTitle}{portugese}
-    % \IfFileExists{{\localepath langsci-hyphenation-pt}}{\input{\localepath langsci-hyphenation-pt}}{}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
@@ -2260,22 +2146,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %    Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[figuresright]{rotating}
-
-%% hspace over width of something without showing it
 \newlength{\LSPTmp}
-\newcommand*{\hspaceThis}[1]{\settowidth{\LSPTmp}{#1}\hspace*{\LSPTmp}}
-
-% no this does add vertical space instead of horizontal St. Mü. 04.03.2018
-% \newcommand*{\hspaceThis}[1]{\hphantom{#1}} %should be equivalent
-
-% in this example
-%% \eal
-%% \ex \hspaceThis{*~}The boy who is running fast can jump high. $\to$\\
-%%  {}* Is the boy who running fast can jump high?
-%% \ex \hspaceThis{*~}The boy who can run fast can jump high. $\to$\\
-%%  {}* Can the boy who run fast can jump high?
-%% \zl
+\usepackage[figuresright]{rotating}
 
 \ifbool{uniformtopskip}{}{% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
     % With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
