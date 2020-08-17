@@ -539,7 +539,6 @@
                     anchor=north west]
                 {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle~\lsSeriesNumber\par}};
     }
-    % \fi
 }{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Output types
@@ -629,11 +628,9 @@
         \fi
         %%%%%%%%%%%%%%%%
     } %% \maketitle
-    % \fi
 } %\setuptitle
 
 
-% \ifx\lsOutput\lsOutputPaper
 \notbool{paper}{
     % A paper differs in title generation from the other
     % output types, and it needs more input to produce
@@ -643,7 +640,6 @@
         \ifbool{minimal}{
             \renewcommand{\maketitle}{You are using the minimal mode.} % The minimal mode skips cover generation
         }
-        % \fi
         % else minimal
         {
             \setuptitle
@@ -670,7 +666,6 @@
 
     } %% \AtBeginDocument
 }{} %notbool paper
-% \fi %% end \else of if output == paper
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -720,7 +715,6 @@
   %,showframe,pass
   ,marginparwidth=50pt
   ]{geometry}
-% \fi
 }{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -823,7 +817,6 @@
 
     %% Deprecated:
     \ifbool{newtxmath}{
-%     \iflsNewtxmath		% some users have problems when installing newtxmath
             \usepackage[libertine]{newtxmath}
             %% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
             %% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
@@ -836,7 +829,6 @@
             \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
             \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
             }
-%     \fi
     }{}
     % Improve the appearance of numbers in tables and the TOC 
     % In those places, they should come out monospaced, unlike in main text.
@@ -863,7 +855,6 @@
       {section,subsection,subsubsection,paragraph,subparagraph}
     
     % In collected volumes, adjust the spacing for unnumbered chapters
-%     \iflsCollection
     \ifbool{collection}{
       \renewcommand{\addtocentrydefault}[3]{%
         \ifstr{#2}{}{%
@@ -872,7 +863,6 @@
           \addcontentsline{toc}{#1}{\protect\numberline{#2}#3}%
           }%
       }%
-%     \fi
     }{}
     \frenchspacing	%see https://en.wikipedia.org/wiki/Sentence_spacing#Typography
     \usepackage[final]{microtype}
@@ -891,7 +881,6 @@
     \newcommand{\lsBackBodyFont}{\lsInsideFont}
     \newcommand{\lsSpineAuthorFont}{\bfseries\fontsize{16pt}{14pt}\selectfont}
     \newcommand{\lsSpineTitleFont}{\sffamily\bfseries\fontsize{18pt}{14pt}\selectfont}
-% \fi % end minimal mode switch from line ~786
 }{} %end else minimal
 
 \setkomafont{sectioning}{\normalcolor\bfseries}
@@ -993,8 +982,6 @@
       }{}
   } %end AtBeginDocument
 }{} %end collection
-% \else
-% \fi
 
 \pgfdeclarelayer{lspcls_bg}    % Create a background layer that serves as the canvas for the coloured rectangles.
 \pgfsetlayers{lspcls_bg,main}  % Order the background layer behind the main layer of TikZ.
@@ -1218,12 +1205,10 @@ This title can be downloaded at:\\
 
 © \lsYear,
 \ifbool{collection}{%
-    % \iflsCollection
     the authors}{%
     % \else
     \@author
 }
-% \fi
 
 \newcommand{\ccby}{CC-BY}
 \newcommand{\ccbynd}{CC-BY-ND}
@@ -1377,14 +1362,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \cfoot{}
 \ofoot[]{\pagemark}
 \ifbool{draft}{
-% \iflsDraft
   \ifoot{Draft of \today, \currenttime}
 }{}
-% \fi
-% \iflsOpenReview
 \ifbool{openreview}{
   \ifoot{{\color{lsRed}Open review version}. Final version at \url{\lsURL}.}
-% \fi
 }{}
 
 \newcommand{\lsPageStyleEmpty}{
@@ -1442,11 +1423,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \ifxetex
 \notbool{minimal}{
-    % \iflsMinimal\else
     \addtokomafont{footnote}{\addfontfeatures{Numbers=Lining}}      % numbers in footnotes
     %\addtokomafont{footnotelabel}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote labels
     %\addtokomafont{footnotereference}{\addfontfeatures{Numbers=Lining}}  % numbers in footnote references
-    % \fi
 }{}
 \fi
 
@@ -1511,13 +1490,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsBookLanguageGerman}{german}
 \newcommand{\lsBookLanguageChinese}{chinese}
 
-% \iflsNoBabel
-%   \else
 \notbool{babel}{
   \ifx\lsBookLanguage\lsBookLanguageChinese
 	    \usepackage{xeCJK}%Chinese doesn't load babel, but xeCJK.
 	\else
-% 	 \iflsBabelShorthands
 	 \ifbool{babelshorthands}{
 	    \ifx\lsBookLanguage\lsBookLanguageEnglish
 	            \usepackage[ngerman,main=\lsBookLanguage]{babel}
@@ -1540,10 +1516,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                 \fi
 	   }{%else babelshorthands
 		\usepackage[\lsBookLanguage]{babel}
-% 	   \fi%Close \iflsBabelShorthands
             }
      \fi%Close language=chinese
-% \fi%Close \iflsNoBabel
 }{}
 
 
@@ -1837,7 +1811,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \providecommand{\iai}[1]{\ia{#1}#1}
 \providecommand{\ili}[1]{\il{#1}#1}
 
-% \iflsShowIndex	% shows index commands in text
 \ifbool{showindex}{
     \RequirePackage{soul}
 %     \RequirePackage[noadjust]{marginnote}
@@ -1851,7 +1824,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\il}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=yellow,size=\scriptsize]{\tiny#1}\ilold{#1}}}
     \renewcommand{\iai}[1]{\sethlcolor{pink}\hl{#1}\iaold{#1}}
     \renewcommand{\ia}[1]{{\tikzstyle{notestyleraw} += [text width=1.5cm]\todo[color=pink,size=\scriptsize]{\tiny#1}\iaold{#1}}}
-% \fi
 }{}
 
 % integrate see also in multiple indexes
@@ -1967,9 +1939,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\@dotsep}{2.5}		% space between dots
     \renewcommand{\@tocrmarg}{1.5em}	% right margin for leader
     \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
-    % \iflsCollectionTOCLong\else% show only parts and chapters
     \ifbool{collectiontoclong}{}{\setcounter{tocdepth}{0}}
-    % \fi
     \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
     [
         pagenumberbox={\csname @gobble\endcsname},
@@ -2021,13 +1991,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
-%   \iflsCollectionChapter%
   \ifbool{collectionchapter}{
     \if@mainmatter%Only send the chapter num to head if in mainmatter.
       \thechapter\hspace{0.5em}\else
     \fi
     }{}
-%   \fi
   \titleToHead
 }
   
@@ -2110,10 +2078,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}
 }
 
-% \ifx\lsOutput\lsOutputPaper       % only if output==paper
 \ifbool{paper}{
 	\renewcommand{\lsCollectionPaperCitation}{Change with \string\papernote}
-% \fi
 }{} %end paper
 
 \newcommand{\lsCollectionPaperCitationText}{\string\lsCollectionPaperCitationText.}
@@ -2126,14 +2092,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 % In output==paper, the title is generated with the info
 % collected by the commands above.
-% \ifx\lsOutput\lsOutputPaper
 \ifbool{paper}{
     \usepackage{chngcntr}
     \counterwithout{figure}{chapter}
     \counterwithout{table}{chapter}
     \includepaper@body
-% \else % only if output!=paper
-% \fi
 }{} %end paper
 
 
