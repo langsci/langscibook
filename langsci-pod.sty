@@ -1,0 +1,103 @@
+\newcommand{\csgeometry}{
+    \setlength{\bleed}{3.175mm}
+    \setlength{\seitenbreite}{169.9mm}
+    \setlength{\seitenhoehe}{244.1mm}
+    \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
+    \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
+    \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
+    \hyphenpenalty 750
+}
+
+\newcommand{\bodscgeometry}{
+  \newlength{\totalspine}
+  \setlength{\seitenbreite}{170mm}
+  \setlength{\seitenhoehe}{240mm} % For BOD: Softcover, papier 80g/m², weiß, Papier 17x24cm
+  \setlength{\bleed}{5mm}
+  \setlength{\totalspine}{\spinewidth}
+  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
+  \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
+  \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
+  \hyphenpenalty 750
+}
+
+\newcommand{\bodhcgeometry}{
+  \newlength{\bodfold}
+  \newlength{\totalspine}
+  \setlength{\bodfold}{8mm}
+  \setlength{\seitenbreite}{192mm}
+  \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Runder Rücken, Kaschiert, papier 80g/m², weiß, Papier 17x24cm
+  \setlength{\totalspine}{\spinewidth}
+  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
+  \setlength{\totalheight}{\seitenhoehe}
+  \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
+  \hyphenpenalty 750
+}
+
+
+% Content creation for the spine. Including Logo, author, title, and volume number on spine.
+\newcommand{\podspine}{
+    \renewcommand{\newlineCover}{}
+    \renewcommand{\and}{, }
+    \renewcommand{\lastand}{ \& }
+    \node [above = 0mm of CoverSpine.south, anchor=base] (lspcls_spinelogo) {\color{\lsSeriesColor}\includespinelogo};
+    \node [below = 0mm of CoverSpine.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor}
+        {\parbox{.47cm}{
+        \centering
+            \sffamily
+            \huge
+            \lsSeriesNumber
+        }}
+    };
+
+    \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_spinelogo.north, rotate=270] (lspcls_spinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
+    \renewcommand{\newlineCover}{\\}
+}
+
+\newcommand{\bodHCcover}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \coversetup
+            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                \covergeometry{24.2mm}{23.1cm}{15.5cm}
+                \podspine
+                \frontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                \coverbottomtext
+                \newcommand{\lsISBNcover}{\lsISBNhardcover}
+                \backcover{137mm}
+            \end{tikzpicture}
+            %exit the document right here
+            \end{titlepage}
+}
+
+
+\newcommand{\bodSCcover}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \coversetup
+            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                \covergeometry{13.75mm}{23.1cm}{15.5cm}
+                \podspine
+                \frontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                \coverbottomtext
+                \newcommand{\lsISBNcover}{\lsISBNsoftcover}
+                \backcover{137mm}
+            \end{tikzpicture}
+            %exit the document right here
+            \end{titlepage}
+    }
+
+\newcommand{\amazonKindleCover}{
+            \begin{titlepage}
+            \thispagestyle{empty}
+            \coversetup
+            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
+                \covergeometry{10.675mm}{22.5cm}{15.5cm}
+                \podspine
+                \frontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
+                \coverbottomtext
+                \backcover{140mm}
+            \end{tikzpicture}
+            %exit the document right here
+            \end{titlepage}
+            \end{document}
+            }

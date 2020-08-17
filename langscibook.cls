@@ -425,7 +425,7 @@
 % \iflsMinimal\else % The minimal mode skips cover generation
 \notbool{minimal}{
     % Basic cover commands, including PGF layers
-    \newcommand{\podsetup}{
+    \newcommand{\coversetup}{
         \booltrue{cover}
         %   \lsCovertrue
         \renewcommand{\maketitle}{}  %no need for this
@@ -437,30 +437,13 @@
         \renewcommand{\affiliation}[1]{}
     }
 
-    % Content creation for the spine. Including Logo, author, title, and volume number on spine.
-    \newcommand{\podspine}{
-        \renewcommand{\newlineCover}{}
-        \renewcommand{\and}{, }
-        \renewcommand{\lastand}{ \& }
-        \node [above = 0mm of CoverSpine.south, anchor=base] (lspcls_spinelogo) {\color{\lsSeriesColor}\includespinelogo};
-        \node [below = 0mm of CoverSpine.north, anchor=north] (lspcls_splinenumber)  {\color{\lsSeriesColor}
-            {\parbox{.47cm}{
-            \centering
-                \sffamily
-                \huge
-                \lsSeriesNumber
-            }}
-        };
 
-        \node [font=\fontsize{18pt}{14pt}\selectfont, above left = 15mm and 4mm of lspcls_spinelogo.north, rotate=270] (lspcls_spinetitle) {\color{\lsSeriesColor} \lsSpineAuthorFont{\lsSpineAuthor\xspace\lsEditorSuffix} \hspace{13mm} \lsSpineTitleFont{\lsSpineTitle}};
-        \renewcommand{\newlineCover}{\\}
-    }
 
     % Fill the canvas for the cover with coloured areas on back and front cover
     % Argument 1: White margin that encompasses the coloured title and backtitle form. Input: 12.34mm
     % Argument 2: Height of the coloured title and backtitle form and of the spine. Input: 12.45cm
     % Argument 3: Width  of the coloured title and backtitle form. Input: 12.45cm
-    \newcommand{\podgeometry}[3]{
+    \newcommand{\covergeometry}[3]{
         \begin{pgfonlayer}{lspcls_bg} % Draw on the background layer
         \node [ bg, % Draw the coloured background on the front cover
                 left = #1 of current page.east,
@@ -483,8 +466,8 @@
     }
 
     % Generates the content of the back cover
-    % Argument 1: Text width, corresponding to Argument 1 of \podfrontcovertoptext
-    \newcommand{\podbackcover}[1]{
+    % Argument 1: Text width, corresponding to Argument 1 of \frontcovertoptext
+    \newcommand{\backcover}[1]{
     \node [ font=\fontsize{25pt}{10mm}\selectfont,
             right,
             below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
@@ -507,7 +490,7 @@
     % Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
     % Argument 1: Text width on the front cover. Input: 12.34mm
     % Argument 2: Font size on the front cover. Adjust to compensate varying text width. Input: 12.34pt
-    \newcommand{\podfrontcovertoptext}[3][white]{
+    \newcommand{\frontcovertoptext}[3][white]{
     \renewcommand{\and}{\\}
     \renewcommand{\lastand}{\\}
     \renewcommand{\newlineCover}{\\}
@@ -541,7 +524,7 @@
     }
 
     % Generates the bottom half of the front cover content: series, series number, logo.
-    \newcommand{\podcoverbottomtext}[1][white]{
+    \newcommand{\coverbottomtext}[1][white]{
     \node [ above right = 18.5mm and -.1mm of CoverColouredRectangleFront.south west,
             rectangle,
             fill=white,
@@ -563,74 +546,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 %% Output types are defined with \newcommand above so they can be used with geometry.
 
 %we define a command to better encapsulate the logic
 \newcommand{\setuptitle}{
     \renewcommand{\maketitle}{
         %first we treat covers to get them out of the way
-        %         \ifx\lsOutput\lsOutputCoverBODhc         % only if output==cover
         \ifbool{coverBODhc}{
-            \begin{titlepage}
-            \thispagestyle{empty}
-            \podsetup
-            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-                \podgeometry{24.2mm}{23.1cm}{15.5cm}
-                \podspine
-                \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-                \podcoverbottomtext
-                \newcommand{\lsISBNcover}{\lsISBNhardcover}
-                \podbackcover{137mm}
-            \end{tikzpicture}
-            %exit the document right here
-            \end{titlepage}
+            \bodHCcover
             \end{document}
-    %         \fi
-        }{} %end coverbodhc
+        }{}
 
-
-%         \ifx\lsOutput\lsOutputCoverBODsc         % only if output==cover
         \ifbool{coverBODsc}{
-            \begin{titlepage}
-            \thispagestyle{empty}
-            \podsetup
-            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-                \podgeometry{13.75mm}{23.1cm}{15.5cm}
-                \podspine
-                \podfrontcovertoptext{140mm}{51pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-                \podcoverbottomtext
-                \newcommand{\lsISBNcover}{\lsISBNsoftcover}
-                \podbackcover{137mm}
-            \end{tikzpicture}
-            %exit the document right here
-            \end{titlepage}
+            \bodSCcover
             \end{document}
-    %         \fi
+        }{}
+
+        \ifbool{coverCS}{
+           \amazonKindleCover
+            \end{document}
         }{}
 
 
-%         \ifx\lsOutput\lsOutputCoverCS        % only if output==covercs
-        \ifbool{coverCS}{
-            \begin{titlepage}
-            \thispagestyle{empty}
-            \podsetup
-            \begin{tikzpicture}[remember picture, overlay,bg/.style={outer sep=0}]
-                \podgeometry{10.675mm}{22.5cm}{15.5cm}
-                \podspine
-                \podfrontcovertoptext{140mm}{52pt} % Due to different cover sizes, the text size was adjusted so that the difference in line breaks would be minimal between hard and softcover books.
-                \podcoverbottomtext
-            % 	\iflsUscover\newcommand{\lsISBNcover}{\lsISBNsoftcoverus}\else\newcommand{\lsISBNcover}{\lsISBNsoftcover}\fi
-                \podbackcover{140mm}
-            \end{tikzpicture}
-            %exit the document right here
-            \end{titlepage}
-            \end{document}
-    %         \fi
-        }{} %end cover cs
-
-
-%             \ifx\lsOutput\lsOutputBook   % only if output==book
         \ifbool{book}{
             \begin{titlepage}
             \thispagestyle{empty}
@@ -753,61 +690,28 @@
 \setlength{\spinewidth}{\lsSpinewidth} % Create Space Version
 \usepackage{calc}
 
-%  \ifx\lsOutput\lsOutputCoverCS % if output = cover; This is the CreateSpace Version
 \ifbool{coverCS}{
-    \booltrue{cover}
-%     \lsCovertrue
-    \setlength{\bleed}{3.175mm}
-    \setlength{\seitenbreite}{169.9mm}
-    \setlength{\seitenhoehe}{244.1mm}
-    \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
-    \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
-    \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
-    \hyphenpenalty 750
-% \fi
+  \booltrue{cover}
+  \usepackage{langsci-pod}
+  \csgeometry
 } %end covercs
 
-% \ifx\lsOutput\lsOutputCoverBODhc
 \ifbool{coverBODhc}{
   \booltrue{cover}
-%   \lsCovertrue
-  \newlength{\bodfold}
-  \newlength{\totalspine}
-  \setlength{\bodfold}{8mm}
-  \setlength{\seitenbreite}{192mm}
-  \setlength{\seitenhoehe}{280mm} % For BOD: Hardcover, Runder Rücken, Kaschiert, papier 80g/m², weiß, Papier 17x24cm
-%   \setlength{\spinewidth}{\bodspine}
-%   \setlength{\totalspine}{\spinewidth+\bodfold+\bodfold}
-  \setlength{\totalspine}{\spinewidth}
-  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite}
-  \setlength{\totalheight}{\seitenhoehe}
-  \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
-  \hyphenpenalty 750
-% \fi
+  \usepackage{langsci-pod}
+  \bodhcgeometry
 }{}
 
-% \ifx\lsOutput\lsOutputCoverBODsc
 \ifbool{coverBODsc}{
   \booltrue{cover}
-%   \lsCovertrue
-  \newlength{\totalspine}
-  \setlength{\seitenbreite}{170mm}
-  \setlength{\seitenhoehe}{240mm} % For BOD: Softcover, papier 80g/m², weiß, Papier 17x24cm
-  \setlength{\bleed}{5mm}
-  \setlength{\totalspine}{\spinewidth}
-  \setlength{\totalwidth}{\spinewidth+\seitenbreite+\seitenbreite+\bleed+\bleed}
-  \setlength{\totalheight}{\seitenhoehe+\bleed+\bleed}
-  \usepackage[paperheight=\totalheight, paperwidth=\totalwidth]{geometry}
-  \hyphenpenalty 750
-% \fi
-}{} %end coverbodsc
+  \usepackage{langsci-pod}
+  \bodscgeometry
+}{}
 
 %Page size and text area if not cover
 
-% \iflsCover
 \notbool{cover}{
 %output types cover have already been handled
-% \else % output != cover
   \usepackage[
   papersize={170mm,240mm}
   ,top=27.4mm % TODO nachgemessen, nach Vermassung eigentlich 30mm-16pt = 25.8mm
@@ -1112,8 +1016,8 @@
                     minimum height=225mm
                     ] (CoverColouredRectangleFront) {};
         \end{pgfonlayer}
-        \podfrontcovertoptext{140mm}{51pt}
-        \podcoverbottomtext
+        \frontcovertoptext{140mm}{51pt}
+        \coverbottomtext
         %   \iflsDraft \node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime}; \fi
         \ifbool{draft}{\node [rotate=45,align=center,scale=3,color=white,text opacity=.75] at (current page.center) {\lsCoverTitleFont Draft\\of \today, \currenttime};}{}
         %   \iflsOpenReview
@@ -1142,7 +1046,7 @@
                     minimum height=225mm
                     ] (CoverColouredRectangleFront) {};
         \end{pgfonlayer}
-        \podfrontcovertoptext[\lsSeriesColor]{140mm}{51pt}
+        \frontcovertoptext[\lsSeriesColor]{140mm}{51pt}
         \node [ above left = 10mm and 7.5mm of CoverColouredRectangleFront.south east] {\color{\lsSeriesColor}\includepublisherlogo}; % Print the Language Science press Logo
     \end{tikzpicture}
     \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
@@ -1171,7 +1075,7 @@
                     minimum height=225mm
                     ] (CoverColouredRectangleBack) {};
         \end{pgfonlayer}
-        \podbackcover{137mm}
+        \backcover{137mm}
     \end{tikzpicture}
   \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
   }
