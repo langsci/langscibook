@@ -16,7 +16,120 @@
         langsci-tbls now expects you to choose a method. It defaults to `tcolorbox`.
         If you'd like to use `mdframed` instead, please specify `mdframed` as a
         package option.
-      }}
+      }
+    }
+    \RequirePackage{tcolorbox}
+    \tcbuselibrary{breakable, skins, xparse}
+    \tcbset
+      {
+        skin = empty,
+        width = \linewidth,
+        breakable = true,
+        fonttitle = \sffamily\bfseries\Large,
+        coltitle = black,
+        graphical environment = tikzpicture,
+        sharp corners = all,
+        no shadow,
+        before upper = {\parindent=10.95pt\@afterheading\@afterindentfalse},
+        before = {\par\vskip\baselineskip\pagebreak[0]},
+        after = {\par}
+      }
+    \DeclareTColorBox{tblslineshorizontal}{m O{0.8mm} O{\lsSeriesColor}}
+      {
+        graphical environment = tikzpicture,
+        title = #1,
+        boxsep = 0pt,
+        toptitle = 5mm,
+        top = 5mm,
+        bottom = 5mm,
+        left = 0mm,
+        right = 0mm,
+        borderline horizontal = {#2}{0pt}{#3}
+      }
+    \DeclareTColorBox{tblsfilled}{m O{black!12}}
+      {
+        graphical environment = tikzpicture,
+        title = #1,
+        boxsep = 0pt,
+        toptitle = 5mm,
+        top = 5mm,
+        bottom = 5mm,
+        left = 5mm,
+        right = 5mm,
+        frame engine = path,
+        frame style = {fill=#2},
+        sharp corners = all
+      }
+    \DeclareTColorBox{tblsframed}{m O{0.8mm} O{\lsSeriesColor}}
+      {
+        graphical environment = tikzpicture,
+        title = #1,
+        boxsep = 0pt,
+        toptitle = 5mm,
+        top = 5mm,
+        bottom = 5mm,
+        left = 5mm,
+        right = 5mm,
+        borderline = {#2}{0pt}{#3}
+      }
+    \DeclareTColorBox{tblsfilledsymbol}{m O{black!12} m}
+      {
+        skin = enhanced,
+        graphical environment = tikzpicture,
+        title = #1,
+        boxsep = 0pt,
+        toptitle = 10mm,
+        top = 5mm,
+        bottom = 5mm,
+        left = 5mm,
+        right = 5mm,
+        frame style = {fill=#2},
+        interior hidden,
+        sharp corners = all,
+        enlarge top initially by = 5mm,
+        underlay unbroken and first = 
+          {
+            \node 
+              [
+                anchor = base,
+                xshift = 11.3mm,
+                yshift = -5mm,
+                fill = white,
+                draw = #2,
+                inner sep = 1mm,
+                line width = 0.8mm
+              ] at (frame.north west) 
+              {{\color{#2}\includegraphics[width=10mm]{tbls-#3.pdf}}};
+          }
+      }
+    \DeclareTColorBox{tblsframedsymbol}{m O{\lsSeriesColor} O{0.8mm} m}
+      {
+        graphical environment = tikzpicture,
+        title = #1,
+        boxsep = 0pt,
+        toptitle = 10mm,
+        top = 5mm,
+        bottom = 5mm,
+        left = 5mm,
+        right = 5mm,
+        borderline = {#3}{0pt}{#2},
+        interior hidden,
+        enlarge top initially by = 5mm,
+        underlay unbroken and first = 
+          {
+            \node 
+              [
+                anchor = base,
+                xshift = 11.3mm,
+                inner sep = 1mm,
+                yshift = -5mm,
+                fill = white,
+                draw = #2,
+                line width = #3
+              ] at (frame.north west) 
+              {{\color{#2}\includegraphics[width=10mm]{tbls-#4.pdf}}};
+          }
+      }
   }
 
 \notbool{langsci@tbls@tcolorbox}
@@ -186,5 +299,3 @@
     \end{mdframed}
     }
   }{}
-
-%%% MDFRAMED END %%%
