@@ -9,3 +9,166 @@
   \caption{Ratio of fixation time in the caption area in relation to fixation time to the whole screen}
   \label{fig:barplot}
 \end{figure}
+
+
+\langsciplot{data}{}
+
+\langsciplot{data}{ybar}
+
+\langsciplot{data}{xbar}
+
+
+\begin{tikzpicture}[trim axis right,trim axis left]
+    \begin{axis}[
+        xlabel={TMNLP},
+        ylabel={blue},
+        axis lines*=left,
+        width  = \textwidth,
+        height = .3\textheight,
+        nodes near coords,
+        xtick=data,
+        x tick label style={},
+        ybar,
+        bar width=.4cm,
+        ymin=0,
+        symbolic x coords={A,B,C}
+        ]
+        \addplot[ybar,tmnlpone!80!black,fill=tmnlpone] plot coordinates {
+            (A,6)
+            (B,2)
+            (C,1)
+            };
+        \addplot[ybar,tmnlptwo!80!black,fill=tmnlptwo] plot coordinates {
+            (A,3)
+            (B,4)
+            (C,2)
+            };
+        \addplot[ybar,tmnlpthree!80!black,fill=tmnlpthree] plot coordinates {
+            (A,4)
+            (B,3)
+            (C,5)
+        };
+        \addplot[ybar,tmnlpfour!80!black,fill=tmnlpfour] plot coordinates {
+            (A,5)
+            (B,2)
+            (C,1)
+        };
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[trim axis right,trim axis left]
+    \begin{axis}[
+        xlabel={SIDL},
+        ylabel={green},
+        axis lines*=left,
+        width  = \textwidth,
+        height = .3\textheight,
+        nodes near coords,
+        xtick=data,
+        x tick label style={},
+        ybar,
+        bar width=.3cm,
+        ymin=0,
+        symbolic x coords={A,B,C}
+        ]
+        \addplot[ybar,sidlone!80!black,fill=sidlone] plot coordinates {
+            (A,6)
+            (B,2)
+            (C,1)
+            };
+        \addplot[ybar,sidltwo!80!black,fill=sidltwo] plot coordinates {
+            (A,3)
+            (B,4)
+            (C,2)
+            };
+        \addplot[ybar,sidlthree!80!black,fill=sidlthree] plot coordinates {
+            (A,4)
+            (B,3)
+            (C,5)
+        };
+        \addplot[ybar,sidlfour!80!black,fill=sidlfour] plot coordinates {
+            (A,5)
+            (B,2)
+            (C,1)
+        };
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[trim axis right,trim axis left]
+    \begin{axis}[
+        xlabel={SILP},
+        ylabel={red},
+        axis lines*=left,
+        width  = \textwidth,
+        height = .3\textheight,
+        nodes near coords,
+        xtick=data,
+        x tick label style={},
+        ybar,
+        bar width=.4cm,
+        ymin=0,
+        symbolic x coords={A,B,C}
+        ]
+        \addplot[ybar,silpone!80!black,fill=silpone] plot coordinates {
+            (A,6)
+            (B,2)
+            (C,1)
+            };
+        \addplot[ybar,silptwo!80!black,fill=silptwo] plot coordinates {
+            (A,3)
+            (B,4)
+            (C,2)
+            };
+        \addplot[ybar,silpthree!80!black,fill=silpthree] plot coordinates {
+            (A,4)
+            (B,3)
+            (C,5)
+        };
+        \addplot[ybar,silpfour!80!black,fill=silpfour] plot coordinates {
+            (A,5)
+            (B,2)
+            (C,1)
+        };
+    \end{axis}
+\end{tikzpicture}
+
+
+\begin{tikzpicture}[trim axis right,trim axis left]
+    \begin{axis}[
+        xlabel={LV},
+        ylabel={brown},
+        axis lines*=left,
+        width  = \textwidth,
+        height = .3\textheight,
+        nodes near coords,
+        xtick=data,
+        x tick label style={},
+        ybar,
+        bar width=.4cm,
+        ymin=0,
+        symbolic x coords={A,B,C}
+        ]
+        \addplot[ybar,lvone!80!black,fill=lvone] plot coordinates {
+            (A,6)
+            (B,2)
+            (C,1)
+            };
+        \addplot[ybar,lvtwo!80!black,fill=lvtwo] plot coordinates {
+            (A,3)
+            (B,4)
+            (C,2)
+            };
+        \addplot[ybar,lvthree!80!black,fill=lvthree] plot coordinates {
+            (A,4)
+            (B,3)
+            (C,5)
+        };
+        \addplot[ybar,lvfour!80!black,fill=lvfour] plot coordinates {
+            (A,5)
+            (B,2)
+            (C,1)
+        };
+    \end{axis}
+\end{tikzpicture}
