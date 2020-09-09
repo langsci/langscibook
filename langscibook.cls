@@ -407,15 +407,16 @@
     % Generates the content of the back cover
     % Argument 1: Text width, corresponding to Argument 1 of \frontcovertoptext
     \newcommand{\backcover}[1]{
-    \node [ font=\fontsize{25pt}{10mm}\selectfont,
+    \node [ font=\lsBackTitleFont,
             right,
             below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
             text width=#1
-            ] (lspcls_backtitle) {\color{white}\lsBackTitleFont{\raggedright\lsBackTitle\par}};
-    \node [ below = 10mm of lspcls_backtitle,
+            ] (lspcls_backtitle) {\color{white}\raggedright\lsBackTitle\par};
+    \node [ font=\lsBackBodyFont,
+            below = 10mm of lspcls_backtitle,
             text width=#1,
             align=justify
-            ] {\color{white}\lsBackBodyFont{\parindent=15pt\lsBackBody}};
+            ] {\color{white}\parindent=15pt\lsBackBody};
     \node [  below right = 192.5mm and 97.5mm of CoverColouredRectangleBack.north west,
             text width=4cm] {%
         \colorbox{white}{
@@ -434,31 +435,30 @@
     \renewcommand{\lastand}{\\}
     \renewcommand{\newlineCover}{\\}
 
-    \node [ execute at begin node={},
-            font=\fontsize{#3}{17.25mm}\selectfont,
+    \node [ font=\lsCoverTitleFont,
             below right = 10mm and 7.5mm of CoverColouredRectangleFront.north west,
             text width=#2,
             align=left
-            ] (lspcls_covertitle) {\color{#1}\lsCoverTitleFont{\raggedright\@title\par}};
+            ] (lspcls_covertitle) {\color{#1}\raggedright\@title\par};
 
     \ifx\@subtitle\empty  % Is there a subtitle? If no, just print the author.
-    \node [ font=\fontsize{25pt}{12.5mm}\selectfont,
+    \node [ font=\lsCoverAuthorFont,
             right,
             below = 11.2mm of lspcls_covertitle.south,
             text width=#2
-            ] {\color{#1}\lsCoverAuthorFont\nohyphens{\lsEditorPrefix\@author\par}};
+            ] {\color{#1}\nohyphens{\lsEditorPrefix\@author\par}};
     \else % If yes, create a node for subtitle and author
-    \node [ font=\fontsize{25pt}{10mm}\selectfont,
+    \node [ font=\lsCoverSubTitleFont,
             below = 8mm of lspcls_covertitle.south,
             text width=#2,
             align=left
-            ] (lspcls_coversubtitle) {\color{#1}\lsCoverSubTitleFont{\raggedright\@subtitle\par}};
+            ] (lspcls_coversubtitle) {\color{#1}\raggedright\@subtitle\par};
     \node [
-            font=\fontsize{25pt}{12.5mm}\selectfont,
+            font=\lsCoverAuthorFont,
             right,
             below = 11.2mm of lspcls_coversubtitle.south,
             text width=#2
-            ] {\color{#1}\lsCoverAuthorFont{\nohyphens{\lsEditorPrefix\@author\par}}};
+            ] {\color{#1}\nohyphens{\lsEditorPrefix\@author\par}};
     \fi
     }
 
@@ -472,11 +472,11 @@
     \path let \p1 = (lspcls_square.north east), % Calculate the exact coordinates for the Series Title to print.
                 \p2 = (lspcls_covertitle.west)
                 in node at (\x2,\y1) (lspcls_seriesinfo) [
-                    font=\fontsize{17pt}{7.5mm}\selectfont,
+                    font=\lsCoverSeriesFont,
                     right,
                     text width=95mm,
                     anchor=north west]
-                {\color{#1}\lsCoverSeriesFont{\lsSeriesTitle~\lsSeriesNumber\par}};
+                {\color{#1}\lsSeriesTitle~\lsSeriesNumber\par};
     }
 }{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
