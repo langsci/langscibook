@@ -136,6 +136,7 @@
 \newbool{collectiontoclong}
 \newbool{uniformtopskip}
 \newbool{oldstylenumbers}
+\newbool{tblseight}%for chinesefonts in tbls series page
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -273,6 +274,10 @@
 	\newfontfamily\syriacfont[Script=Syriac]{EstrangeloEdessa.ttf}
 % 	\newcommand{\textsyriac}[1]{{\syriacfont #1}}
 	\AdditionalFontImprint{Estrangelo Edessa}
+}
+
+\DeclareVoidOption{tblseight}{
+    \booltrue{tblseight}
 }
 
 \ProcessKeyvalOptions{langscibook}
@@ -982,6 +987,15 @@
 %    Series history
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\tblseight}{{\color{red} Chinese fonts for TBLS 8 not loaded! Please set the option \textsc{tblseight} in main.tex for final production}}
+\ifbool{tblseight}{
+\newfontfamily\cn
+    [
+    Scale=MatchLowercase,
+    BoldFont=SourceHanSerifSC-Bold.otf
+]
+{SourceHanSerifSC-Regular.otf}
+\renewcommand{\tblseight}{{\cn 语法理论: 从转换语法到基于约束的理论}}}{}
 \newcommand{\lsSeriesHistory}{
     \color{black}
     \raggedright\lsCoverSeriesHistoryFont
