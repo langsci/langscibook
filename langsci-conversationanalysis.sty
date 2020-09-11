@@ -1,0 +1,24 @@
+\newlength{\calength} %tmp length to store the space a) until [, b) until ]
+
+%first argument speaker ID, second argument text. Optional argument left margin indicator (arrow or similar)
+\newcommand{\cabox}[3][]{\parbox{0mm}{\hspace*{-1cm}#1}%
+\parbox{1.5cm}{#2}%
+\parbox{9.6cm}{#3}\\%
+}
+
+%translation. First parbox is empty, second parbox takes the translation text
+\newcommand{\trsbox}[1]{\parbox{1.5cm}{~}%
+\parbox{9.6cm}{\itshape #1}\\%
+}
+
+%store the width of a string.
+\newcommand{\settablength}[1]{\settowidth{\calength}{#1}\global\calength=\calength}
+
+%print string and store its width
+\newcommand{\inittab}[1]{#1\settablength{#1}}
+
+%insert horizontal white space equivalent to the stored width
+\newcommand{\skiptab}{\parbox{\calength}{~}}
+
+%print the argument and fill up with horizontal white space until the stored width is reached.
+\newcommand{\filledtab}[1]{\parbox{\calength}{#1}}
