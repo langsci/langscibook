@@ -335,6 +335,8 @@
     %appendixprefix
     ]{scrbook}
 
+
+\KOMAoptions{draft=false} %no rulers in draftmode
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1359,6 +1361,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \AtBeginDocument{\setlength{\normalparindent}{\parindent}}
 
 \KOMAoptions{footnotes=multiple}
+
 
 %% http://tex.stackexchange.com/questions/28465/multiple-footnotes-at-one-point/71015#71015
 \let\oldFootnote\footnote
