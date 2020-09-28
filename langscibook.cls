@@ -335,8 +335,6 @@
     %appendixprefix
     ]{scrbook}
 
-
-\KOMAoptions{draft=false} %no rulers in draftmode
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1276,7 +1274,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{datetime}
-\usepackage[autoenlargeheadfoot=off]{scrlayer-scrpage}
+\usepackage[autoenlargeheadfoot=off, draft=false]{scrlayer-scrpage}
 % This option explicitely increases the size of the footer in plain pages.
 % This ensures there is enough space to print the citation in collected vols.
 % This setting does not influence the composition of the typearea.
