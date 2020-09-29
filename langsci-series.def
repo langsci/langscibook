@@ -29,6 +29,7 @@
 \newcommand{\tbls}{tbls}	%Textbooks in Language Sciences
 \newcommand{\tgdi}{tgdi}	%Topics at the  Grammar-Discourse Interface
 \newcommand{\tmnlp}{tmnlp}
+\newcommand{\tpd}{tpd}
 
 \newcommand{\dummyseries}{dummyseries}
 \newcommand{\guidelines}{guidelines}
@@ -652,7 +653,8 @@
             \item Müller, Sonja. Distribution und Interpretation von Modalpartikel-Kombinationen.
             \item Bueno Holle, Juan José. Information structure in Isthmus Zapotec narrative and conversation.
             \item Parikh, Prashant. Communication and content.
-            \item Gergel, Remus \& Jonathan Watkins (eds.). Quantification and scales in change.
+            \item Balogh, Kata, Anja Latrouite \& Robert D. Van Valin‚ Jr. (eds.) Nominal anchoring: Specificity, definiteness and article systems across languages.
+            \item Næss, Åshild, Anna Margetts & Yvonne Treis (eds.). Demonstratives in discourse.
             \end{enumerate}
 
             }
@@ -690,6 +692,29 @@
             \item Vandevoorde, Lore. Semantic differences in translation.
             \end{enumerate}
             }
+\fi
+\ifx\lsSeries\tpd
+	\newcommand{\lsSeriesTitle}{Topics in Phonological Diversity}
+	\newcommand{\lsSeriesColor}{lsDarkBlue}
+	\renewcommand{\lsSeriesText}{
+            {\large {Topics in Phonological Diversity}
+
+            \bigskip
+
+            Editors:     Natalia Kuznetsova (Università Cattolica del Sacro Cuore / Institute for Linguistic Studies, Russian Academy of Sciences)
+            Cormac Anderson (MPI-SHH, Jena)
+            Shelece Easterday (University of Hawai'i, Mānoa)
+
+
+            \bigskip
+
+            In this series:
+
+            \begin{enumerate}
+            \item ~
+            \end{enumerate}
+            }
+        }
 \fi
 \ifx\lsSeries\dummyseries
 	\newcommand{\lsSeriesTitle}{~}
