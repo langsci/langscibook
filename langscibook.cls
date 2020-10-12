@@ -1504,41 +1504,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \defbibheading{portuguese}{\chapter{Referências}\sloppy}
 \defbibheading{chinese}{\chapter{参考文献}\sloppy}
 
-
-% fix \citep* et.al.
-% unclear why it was overwritten, these are the definitions from blx-natbib.def
-\renewrobustcmd*{\citet}{%
-  \@ifstar
-    {\AtNextCite{\AtEachCitekey{\defcounter{maxnames}{999}}}%
-     \textcite}
-    {\textcite}}
-
-\renewrobustcmd*{\citep}{%
-  \@ifstar
-    {\AtNextCite{\AtEachCitekey{\defcounter{maxnames}{999}}}%
-     \parencite}
-    {\parencite}}
-
-\renewrobustcmd*{\citealt}{%
-  \@ifstar
-    {\AtNextCite{%
-       \def\nameyeardelim{\addspace}%
-       \AtEachCitekey{\defcounter{maxnames}{999}}}%
-     \orgcite}
-    {\AtNextCite{\def\nameyeardelim{\addspace}}%
-     \orgcite}}
-
-\renewrobustcmd*{\citealp}{%
-  \@ifstar
-    {\AtNextCite{\AtEachCitekey{\defcounter{maxnames}{999}}}%
-     \orgcite}
-    {\orgcite}}
-
-\let\citew\citet
-
-\let\orgcite=\cite
-\let\cite=\citet 	% in order to prevent inconsistencies between \cite and \citet
-
 %% penalties against widows and orphans in bibliography
 %% http://tex.stackexchange.com/questions/297705/atbeginenvironment-does-not-work-with-natbib/297721#297721
 \apptocmd{\thebibliography}{%
