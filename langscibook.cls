@@ -589,7 +589,7 @@
         %% this is possible for a complete series only.
         \ifx\lsSeries\sidl
         %\def\exfont{\normalsize\itshape}
-        \renewcommand{\eachwordone}{\itshape} % only \gll
+        \providecommand{\eachwordone}{\itshape} % only \gll
 
         \let\oldtable\table   % footnotes in tables without horizontal line
         \let\endoldtable\endtable
@@ -597,11 +597,11 @@
         \fi
 
         \ifx\lsSeries\pmwe
-        \renewcommand{\eachwordone}{\normalfont}
+        \providecommand{\eachwordone}{\normalfont}
         \fi
 
         \ifx\lsSeries\nc
-        \renewcommand{\eachwordone}{\itshape}
+        \providecommand{\eachwordone}{\itshape}
         \fi
 
     } %% \AtBeginDocument
