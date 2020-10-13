@@ -1899,28 +1899,26 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]
             {chapter}
         \renewcommand{\maketitle}{
-            % With \setchapterpreamble from scrbook, we ensure that the author(s),
-            % their affiliation, the abstract, etc., are part of the \chapter block.
+            % With \setchapterpreamble from scrbook, we ensure that the author(s)
+            % and their affiliation(s) are part of the \chapter block.
             \setchapterpreamble[u]{
                 \onlyAuthor
                 \lsCollectionPaperAuthor%
-                \vspace{\baselineskip}
-                \begin{quote}
-                \small\lsCollectionPaperAbstract
-                \end{quote}
-                \vspace{\baselineskip}
             }
             \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
-            \global\edef\lsCollectionPaperFirstPage{\thepage} % for citation in footer
+            \vspace{\baselineskip}
+            \begin{quote}
+                \small\lsCollectionPaperAbstract
+            \end{quote}
+            \vspace{\baselineskip}
+            % Save the current page for the bibliographical information in the 
+            % chapter footer
+            \global\edef\lsCollectionPaperFirstPage{\thepage}
             \renewcommand{\newlineCover}{}
             \renewcommand{\newlineTOC}{\\}
             \ifoot[\lsCollectionPaperCitation]{
                 \ifbool{draft}{Draft of \today, \currenttime}{}
                     }
-            % The following ensure that a chapter is treated as a heading, which
-            % controls page break penalties and indentation following the heading.
-            \@afterindentfalse
-            \@afterheading
             \ifx\@epigram\empty%
               \else {\epigraph{\@epigram\\[-5ex]}{\@epigramsource}
                 \epigram{}\epigramsource{}}%
@@ -1930,7 +1928,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         \ohead{}
         \lehead{\lsCollectionPaperHeaderAuthor}
         \rohead{\lsCollectionPaperHeaderTitle}
-}%end includepaper
+        % The following ensure that a chapter is treated as a heading, which
+        % controls page break penalties and indentation following the heading.
+        \@afterindentfalse\@afterheading
+}
 
 \newcommand{\onlyAuthor}{%    % collection paper
     \renewcommand{\and}{, }%
