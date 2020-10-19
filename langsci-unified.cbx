@@ -342,21 +342,6 @@
                                      {\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\textcites}{\textcite}{}
 
-\renewcommand*{\nameyeardelim}{\addspace}
-
-\newcommand{\pgcitep}[2]{(\cite{#1}:~#2)}
-\newcommand{\pgcitealt}[2]{\cite{#1}:~#2}
-\newcommand{\pgcitet}[2]{\citeauthor{#1} (\citeyear{#1}:~#2)}
-\newcommand{\pgposscitet}[2]{\citeauthor{#1}'s (\citeyear{#1}:~#2)}
-\newcommand{\seccitealt}[2]{\cite{#1}:~$\S$#2}
-\newcommand{\seccitep}[2]{(\cite{#1}:~$\S$#2)}
-\newcommand{\seccitet}[2]{\citeauthor{#1} (\citeyear{#1}:~$\S$#2)}
-\newcommand{\secposscitet}[2]{\citeauthor{#1}'s (\citeyear{#1}:~$\S$#2)}
-
-\renewcommand*{\postnotedelim}{\addcolon\space}
-\DeclareFieldFormat{postnote}{#1}
-\DeclareFieldFormat{multipostnote}{#1}
-
 \DeclareCiteCommand{\citeauthor}
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
@@ -405,12 +390,12 @@
   {}
   {}
 
-\renewcommand*{\multicitedelim}{\addcomma\space}
-
 %% changes of citestyle (cbx) (FIXME: documentation missing)
-\renewcommand{\postnotedelim}{: }%
+\renewcommand*{\nameyeardelim}{\addspace}
+\renewcommand*{\postnotedelim}{\addcolon\space}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
 \renewcommand{\multicitedelim}{\addsemicolon\space}%
 \renewcommand{\compcitedelim}{\multicitedelim}
-% \renewcommand{\nameyeardelim}{ }%
 
 \endinput
