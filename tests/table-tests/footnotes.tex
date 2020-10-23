@@ -1,15 +1,20 @@
-\begin{table}
-  Footnote not in a tabular\footnote{I am not in a tabular}
+
+
+  Footnote not in a tabular\footnote{I am the first one}
+
+
+\begin{table}[h]
+  Footnote not in a tabular\footnote{I am  in a table, but not in any tabular environment}
 
   \begin{tabular}{|l|}
   \hline
-    Footnote  in a tabular\footnote{I am in a tabular}\\
+    Footnote  in a tabular\footnote{I am in a tabular in a table}\\
   \hline
   \end{tabular}
 
   \begin{tabularx}{\textwidth}{|l|}
   \hline
-    Footnote  in a tabularx\footnote{I am in a tabular}\\
+    Footnote  in a tabularx\footnote{I am in a tabularx in a table}\\
   \hline
   \end{tabularx}
   \caption{Footnotes in tables}
@@ -17,19 +22,19 @@
 
 The following text is not in a float:
 
-  Footnote not in a tabular\footnote{I am not in a tabular}
+Footnote not in a tabular\footnote{I am not in a tabular}
 
-  \begin{tabular}{|l|}
-  \hline
-    Footnote  in a tabular\footnote{I am in a tabular}\\
-  \hline
-  \end{tabular}
+\begin{tabular}{|l|}
+\hline
+Footnote  in a tabular\footnote{I am in a tabular, but not in a table}\\
+\hline
+\end{tabular}
 
-  \begin{tabularx}{\textwidth}{|l|}
-  \hline
-    Footnote  in a tabularx\footnote{I am in a tabular}\\
-  \hline
-  \end{tabularx}
+\begin{tabularx}{\textwidth}{|l|}
+\hline
+Footnote  in a tabularx\footnote{I am in a tabularx, but not in a table}\\
+\hline
+\end{tabularx}
 
   Footnote at the very end\footnote{I am the last one!}
   \newpage

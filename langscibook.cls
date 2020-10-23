@@ -361,7 +361,6 @@
 %% standard commands
 \usepackage{langsci-basic}
 \usepackage{todonotes}
-\usepackage{tabularx}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1771,6 +1770,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \providecommand{\figref}[1]{Figure~\ref{#1}}
 
 
+
+\usepackage{tabularx} %must be loaded after hyperref. Maybe all float commands should be loaded here.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Collection (edited volume):
