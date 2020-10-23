@@ -1689,7 +1689,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 % \fi
 
 %% this is required by authorindex
-\newif\ifshowindex \showindexfalse
+% \newif\ifshowindex \showindexfalse
 \usepackage{authorindex}
 
 \providecommand{\isi}[1]{\is{#1}#1}
