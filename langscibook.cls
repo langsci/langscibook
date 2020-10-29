@@ -311,6 +311,9 @@
 %     Class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\RequirePackage{etex}
+\reserveinserts{18} % to prevent "no room for a new count error"
+
 \newcommand{\lsChapterPrefixString}{} %this conditional cannot be put
 % directly into the LoadClass, so we compute the value and store it in a command
  \ifbool{collection}{
@@ -321,6 +324,7 @@
         \renewcommand{\lsChapterPrefixString}{chapterprefix=true,}
     }{}
 }
+
 
 \LoadClass[
     fontsize=\lsFontsize, % default is 11pt
@@ -343,8 +347,8 @@
 \IfFileExists{./langsci-earlyload.def}{\input{langsci-earlyload.def}}{}
 
 \usepackage{morewrites} %more helper files to write to
-\usepackage{etex}
-\reserveinserts{18}
+% \usepackage{etex}
+% \reserveinserts{28}
 \usepackage{xstring}
 \usepackage{graphicx}
 \usepackage{hyphenat}
