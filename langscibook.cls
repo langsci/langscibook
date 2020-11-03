@@ -283,12 +283,12 @@
 \ProcessKeyvalOptions{langscibook}
 
 % \newcommand{\lsOutputLong}{long}
-\newcommand{\lsOutputBook}{book}             % standard book
-\newcommand{\lsOutputPaper}{paper}            % paper in edited volume
-\newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
-\newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
-\newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements
-\newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
+% \newcommand{\lsOutputBook}{book}             % standard book
+% \newcommand{\lsOutputPaper}{paper}            % paper in edited volume
+% \newcommand{\lsOutputGuidelines}{guidelines}  % guidelines
+% \newcommand{\lsOutputCoverBODsc}{coverbodsc}      % cover with BoD measurements
+% \newcommand{\lsOutputCoverBODhc}{coverbodhc}      % cover with BoD measurements
+% \newcommand{\lsOutputCoverCS}{covercreatespace} % cover with CreateSpace measurements
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Output variables
@@ -300,6 +300,14 @@
 \newbool{coverBODhc}
 \newbool{coverBODsc}
 \newbool{coverCS}
+
+\newcommand{\lsOutputPaper}{paper}
+\newcommand{\lsOutputBook}{book}
+\newcommand{\lsOutputGuidelines}{guidelines}
+\newcommand{\lsOutputCoverBODhc}{coverbodhc}
+\newcommand{\lsOutputCoverBODsc}{coverbodsc}
+\newcommand{\lsOutputCoverCS}{amazoncover}
+
 \ifx\lsOutput\lsOutputPaper{\global\booltrue{paper}}\fi
 \ifx\lsOutput\lsOutputBook{\global\booltrue{book}}\fi
 \ifx\lsOutput\lsOutputGuidelines{\global\booltrue{guidelines}}\fi
