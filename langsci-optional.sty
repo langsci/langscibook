@@ -8,6 +8,9 @@
 %%   Licence:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{pbox}   % boxes with maximum width
+\usepackage{todonotes}
+
 % Heiko Oberdiek
 % http://tex.stackexchange.com/questions/136644/vertical-space-in-interaction-with-figure-center-environment
 \newcommand{\oneline}[1]{%
@@ -109,7 +112,6 @@
 }
 \newcommand{\fittable}[1]{\resizebox{\textwidth}{!}{#1}}
 
-\usepackage{tabularx}
 \usepackage{array}
 \newenvironment{widetabular}[1][1]
   {\tabularx{#1\textwidth}}
@@ -134,6 +136,7 @@
 	\node at (2.25,1) (O) {ɔ};
 }
 
+\usepackage{tabularx} 
 %no hyphenation left alingned
 \newcolumntype{Q}{>{\raggedright\arraybackslash}X}
 %no hyphenation right aligned
@@ -146,9 +149,6 @@
 \newcolumntype{Z}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %no hyphenation right aligned fixed width
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-\newcolumntype{d}[1]{D{.}{.}{#1}}
-
 
 % Underlining in gb4e-example Environments. Usual underlining commands that span multiple words do not work, because gb4e would parse it as one word.
 % Example: \underline{My example phrase} should become \ulp{My}{~~~~~} \ulp{example}{~~~~~} \ule{phrase}
