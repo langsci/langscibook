@@ -574,7 +574,7 @@
 	\newcommand{\lsSeriesColor}{lsLightWine}
 	\renewcommand{\lsISSN}{2363-5576}
 	\renewcommand{\lsSeriesText}{
-            {\raggedleft\IfFileExists{./langsci/seriesinfo/labphon-logo.pdf}{\includegraphics[width=5cm]{./langsci/seriesinfo/labphon-logo.pdf}}{LabPhon-Logo}}
+            {\raggedleft\IfFileExists{labphon-logo.pdf}{\includegraphics[width=5cm]{labphon-logo.pdf}}{LabPhon-Logo}}
 
             \bigskip
 
@@ -601,6 +601,7 @@
             \item Tilsen, Sam. Syntax with oscillators and energy levels.
             \item Ben Hedia, Sonia. Gemination and degemination in English affixation: Investigating the interplay between morphology, phonology and phonetics.
             \item Easterday, Shelece. Highly complex syllable structure: A typological and diachronic study.
+            \item Roessig, Simon. Categoriality and continuity in prosodic prominence.
             \end{enumerate}
 
             }
