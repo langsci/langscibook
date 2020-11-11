@@ -791,7 +791,7 @@
     % In collected volumes, adjust the spacing for unnumbered chapters
     \ifbool{collection}{
       \renewcommand{\addtocentrydefault}[3]{%
-        \ifstr{#2}{}{%
+        \Ifstr{#2}{}{%
           \addcontentsline{toc}{#1}{\protect\numberline{~}#3}%
         }{%
           \addcontentsline{toc}{#1}{\protect\numberline{#2}#3}%
@@ -1580,7 +1580,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	}
 	%% format of the TOC entry
 	\renewcommand{\addchaptertocentry}[2]{
-		\ifstr{#1}{}{%
+		\Ifstr{#1}{}{%
 		\addtocentrydefault{chapter}{}{#2}%
 		}{%
 		\addtocentrydefault{chapter}{}{\chapapp~#1: #2}%
