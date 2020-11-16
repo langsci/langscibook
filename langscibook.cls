@@ -1529,8 +1529,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \usepackage{floatrow}	% For adjusting the position of the caption (default is below).
 \floatsetup[table]{capposition=top} 	% As for tables, the caption appears above.
 %% This sets the default for the positioning of floats
-\renewcommand{\fps@figure}{htbp}
-\renewcommand{\fps@table}{htbp}
 \usepackage[figuresright]{rotating}
 \usepackage{booktabs} % for nicer lines
 
