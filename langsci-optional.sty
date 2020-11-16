@@ -9,8 +9,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{pbox}   % boxes with maximum width
-\usepackage{todonotes}
-
 % Heiko Oberdiek
 % http://tex.stackexchange.com/questions/136644/vertical-space-in-interaction-with-figure-center-environment
 \newcommand{\oneline}[1]{%
@@ -216,8 +214,8 @@
 % \def\blx@maxline{77}
 % \makeatother
 
+\usepackage{todonotes}
 \newcommand{\rephrase}[2]{{\color{yellow!30!black}#2}\todo{replaced `#1'}}
-
 \newcommand{\missref}[2][]{\todo[#1]{missing reference #2}}
 
 \newenvironment{indentquote}[1]%
@@ -269,7 +267,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % for chapters without abstract
-\newcommand{\noabstract}{\vspace*{-2\baselineskip}}
+\newcommand{\noabstract}{\relax}
 
 %%%%%%%%%%%%%%%%%%%%
 %%%%           %%%%%
@@ -277,9 +275,7 @@
 %%%%           %%%%%
 %%%%%%%%%%%%%%%%%%%%
 
-
 \newcommand{\LSfrac}[1]{{\addfontfeature{Fractions=On}#1}}% Use the fraction glyphs shipped with Libertine. The argument is n/m, where n and m are integers
-
 
 % Provide a raised tie bar for diphthongs and affricates with ascenders
 \newcommand{\hitie}[2]{%
