@@ -1805,15 +1805,18 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     } %end NewDocumentCommand
 }{}
 
+\newcommand{\titleToHead}{}
+\newcommand{\titleTemp}{}
+\newcommand{\titleToToC}{}
+
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
   \ifbool{collectionchapter}{
     \if@mainmatter%Only send the chapter num to head if in mainmatter.
-      \thechapter\hspace{0.5em}\else
+      \thechapter\hspace{0.5em}\titleToHead\else\titleToHead
     \fi
     }{}
-  \titleToHead
 }
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
@@ -1824,9 +1827,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \newcommand{\includepaper@body}{%
         \RenewDocumentCommand{\title}{O{##2} m O{##2}}{
-            \newcommand{\titleToHead}{##1}
-            \newcommand{\titleTemp}{##2}
-            \newcommand{\titleToToC}{##3}
+            \renewcommand{\titleToHead}{##1}
+            \renewcommand{\titleTemp}{##2}
+            \renewcommand{\titleToToC}{##3}
         }
         \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
         \renewcommand*{\thesection}{\arabic{section}}
