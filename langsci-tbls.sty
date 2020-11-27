@@ -1,4 +1,4 @@
-\ProvidesPackage{langsci-tbls}[2020/08/14 langsci-tbls]
+\ProvidesPackage{langsci-tbls}[2020/11/27 langsci-tbls]
 
 \RequirePackage{etoolbox}
 \newbool{langsci@tbls@tcolorbox}
@@ -11,12 +11,9 @@
 
 \ifbool{langsci@tbls@tcolorbox}
   {
-    \AtEndDocument{\PackageWarning{langsci-tbls}
-      {
-        langsci-tbls now expects you to choose a method. It defaults to `tcolorbox`.
-        If you'd like to use `mdframed` instead, please specify `mdframed` as a
-        package option.
-      }
+    \PackageInfo{langsci-tbls}
+    {
+        langsci-tbls loaded with option `tcolorbox`.
     }
     \RequirePackage{tcolorbox}
     \tcbuselibrary{breakable, skins, xparse}
@@ -134,6 +131,10 @@
 
 \notbool{langsci@tbls@tcolorbox}
   {
+    \PackageInfo{langsci-tbls}
+    {
+        langsci-tbls loaded with option `mdframed`.
+    }
     \usepackage[framemethod=tikz]{mdframed}
     \mdfsetup
       {
