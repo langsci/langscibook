@@ -336,7 +336,8 @@
   
 \DeclareCiteCommand{\fullciteImprint}
   {\defcounter{maxnames}{\blx@maxbibnames}%
-    \usebibmacro{prenote}}
+    \usebibmacro{prenote}%
+    \DeclarePunctuationPairs{colon}{*}}
   {\usedriver
      {\DeclareNameAlias{sortname}{default}}
      {\thefield{entrytype}}}
