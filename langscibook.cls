@@ -1017,58 +1017,36 @@
 \newcommand{\SeriesNumber}[1]{\renewcommand{\lsSeriesNumber}{#1}}
 \newcommand{\BookDOI}[1]{\renewcommand{\lsBookDOI}{#1}}
 
-%invert names of first author for citation on impressum page
-\newcommand{\lsFirstAuthorFullName}{}%temporary, will be overwritten
-\newcommand{\lsFirstAuthorFirstName}{}%temporary, will be overwritten
-\newcommand{\lsFirstAuthorLastName}{}%temporary, will be overwritten
-\newcommand{\lsFirstAuthorString}{\lsFirstAuthorLastName, \lsFirstAuthorFirstName} %can be customized in localmetadata.tex
-\newcommand{\lsNonFirstAuthorsString}{}  %default, will be overwritten iff more than one author
-% \newcommand{\lsImpressionCitationAuthor}{\lsFirstAuthorString \lsNonFirstAuthorsString}
-
-\AtBeginDocument
+\ifbool{paper}
+  {}
   {%
-    \makeatletter
-    \let\theauthor\@author
-    \makeatother
-    \ifdefempty{\lsFirstAuthorFirstName}{% Check if the \lsFirstAuthorFirstName is given in localmetadata.tex (or somewhere else).
-        \renewcommand{\and}{NONLASTAND} %expand for easier checking. Might need to be undone later on
-        \renewcommand{\lastand}{LASTAND} %expand for easier checking
-
-        \IfSubStr{\theauthor}{NONLASTAND}{%2+authors
-            \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\and }}
-            \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-            \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\and }}
-            \renewcommand{\lsNonFirstAuthorsString}{\and\StrBehind{\theauthor}{\and }}
-        }{%else
-            \IfSubStr{\theauthor}{LASTAND}{%less than two authors, more than one
-                \renewcommand{\lsFirstAuthorFullName}{\StrBefore{\theauthor}{\lastand }}
-                \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-                \renewcommand{\lsFirstAuthorLastName}{\StrBetween{\theauthor}{ }{\lastand }}
-                \renewcommand{\lsNonFirstAuthorsString}{\lastand\StrBehind{\theauthor}{\lastand }}
-            }{%else exactly one author
-                \renewcommand{\lsFirstAuthorFirstName}{\StrBefore{\theauthor}{ }}
-                \renewcommand{\lsFirstAuthorLastName}{\StrBehind{\theauthor}{ }}
-            }
+    \AtBeginDocument
+      {%
+        \newwrite\metadatafile
+        \immediate\openout\metadatafile=langscitmp.bib
+        \immediate\write\metadatafile{%
+          @book{langsci-current-book,
+            \ifbool{collection}
+              {editor = {\unexpanded\expandafter{\@author}},}
+              {author = {\unexpanded\expandafter{\@author}},}
+            title = {\unexpanded\expandafter{\@title}},
+            \if\@subtitle\empty\else subtitle = {\unexpanded\expandafter{\@subtitle}},\fi
+            year = {\lsYear},
+            series = {\lsSeriesTitle},
+            number = {\lsSeriesNumber},
+            location = {Berlin},
+            publisher = {Language Science Press},
+            options = {dataonly=true}
+          }
         }
-    }{}
-  }
-
-
-\newcommand{\lsImpressionCitationAuthor}
-  {%
-    \lsFirstAuthorLastName, \lsFirstAuthorFirstName \lsNonFirstAuthorsString
+        \immediate\closeout\metadatafile
+        \addbibresource{langscitmp.bib}
+      }
   }
 
 \newcommand{\lsImpressumCitationText}
   {
-    \onlyAuthor
-    \renewcommand{\newlineCover}{}
-    \renewcommand{\newlineSpine}{}
-    {\lsImpressionCitationAuthor}\if\lsEditorSuffix\empty\else\ \lsEditorSuffix\fi. %
-    {\lsYear}. %
-    \textit{\@title}\if\@subtitle\empty\else: \textit{\@subtitle}\fi\ %
-    (\lsSeriesTitle~\lsSeriesNumber). %
-    Berlin: Language Science Press.
+    \fullciteImprint{langsci-current-book}
   }
 
 \newcommand{\lsImpressumExtra}{}%for legal notes required for revised theses ("... in fulfillment of ... ")
@@ -1101,7 +1079,7 @@ This title can be downloaded at:\\
 \ifbool{collection}{%
     the authors}{%
     % \else
-    \@author
+    \CiteFullAuthorList{langsci-current-book}
 }
 
 \newcommand{\ccby}{CC-BY}
@@ -1771,39 +1749,40 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
     \NewDocumentCommand{\includepaper}{m}{
         \bgroup
-		\renewcommand{\newlineCover}{\\}
-                \renewcommand{\documentclass}[2][]{}%
-                \renewcommand{\usepackage}[2][]{}%
-                \renewenvironment{document}{\begingroup}{\endgroup}
-                \includepaper@body
-                \begin{refsection}
-                \renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
-                \include{#1}%
+		  \renewcommand{\newlineCover}{\\}
+          \renewcommand{\documentclass}[2][]{}%
+          \renewcommand{\usepackage}[2][]{}%
+          \renewenvironment{document}{\begingroup}{\endgroup}
+          \includepaper@body
+          \begin{refsection}
+            \renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
+            \include{#1}%
             \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
             \addtocounter{page}{-1}
             \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \includepaper@body
             \addtocounter{page}{1}
-
-                %%% for citation in footer
-                %% preprocessing of author/editor names
-                \onlyAuthor
-                \renewcommand{\newlineCover}{}
-                \renewcommand{\newlineSpine}{}
-                \renewcommand{\newlineTOC}{}
-                \StrSubstitute{\@author}{,}{ and }[\authorTemp]
-                \StrSubstitute{\authorTemp}{\&}{ and }[\authorTemp]
-                \StrSubstitute{\lsCollectionEditor}{,}{ and }[\editorTemp]
-                \StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
-
-                %% write bib entry to file
-                %% FIXME: the publisher field needs a final period, since this is not provided by \fullciteFooter together with DOIs.
-                \immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
-                \immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
-                \fi% If the paper is not within \includeonly, don't do anything.
-                \end{refsection}
+            \lsCollectionMetadataToBibliography{#1}
+          \end{refsection}
         \egroup
     } %end NewDocumentCommand
 }{}
+
+\newcommand{\lsCollectionMetadataToBibliography}[1]{%
+  %% preprocessing of author/editor names
+  \onlyAuthor
+  \renewcommand{\newlineCover}{}
+  \renewcommand{\newlineSpine}{}
+  \renewcommand{\newlineTOC}{}
+  \StrSubstitute{\@author}{,}{ and }[\authorTemp]
+  \StrSubstitute{\authorTemp}{\&}{ and }[\authorTemp]
+  \StrSubstitute{\lsCollectionEditor}{,}{ and }[\editorTemp]
+  \StrSubstitute{\editorTemp}{\&}{ and }[\editorTemp]
+  
+  %% write bib entry to file
+  \immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
+  \immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
+  \fi% If the paper is not within \includeonly, don't do anything.
+}
 
 \newcommand{\titleToHead}{}
 \newcommand{\titleTemp}{}

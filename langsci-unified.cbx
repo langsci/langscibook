@@ -333,6 +333,25 @@
      {\thefield{entrytype}}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+  
+\DeclareCiteCommand{\fullciteImprint}
+  {\defcounter{maxnames}{\blx@maxbibnames}%
+    \usebibmacro{prenote}}
+  {\usedriver
+     {\DeclareNameAlias{sortname}{default}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}\adddot}
+  
+\DeclareCiteCommand{\CiteFullAuthorList}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \defcounter{maxnames}{\blx@maxbibnames}%
+   \usebibmacro{prenote}}
+  {\DeclareNameAlias{labelname}{first-last}%%
+   \printnames{labelname}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
 
 \DeclareMultiCiteCommand{\cites}{\cite}{\setunit{\multicitedelim}}
 \DeclareMultiCiteCommand{\parencites}[\mkbibparens]{\parencite}{\setunit{\multicitedelim}}
