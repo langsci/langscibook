@@ -1,4 +1,4 @@
-\ProvidesPackage{langsci-tbls}[2020/11/27 langsci-tbls]
+\ProvidesPackage{langsci-tbls}[2021/01/06 langsci-tbls]
 
 \RequirePackage{etoolbox}
 \newbool{langsci@tbls@tcolorbox}
@@ -41,7 +41,8 @@
         bottom = 5mm,
         left = 0mm,
         right = 0mm,
-        borderline horizontal = {#2}{0pt}{#3}
+        borderline horizontal = {#2}{0pt}{#3},
+        beforeafter skip balanced = \baselineskip
       }
     \DeclareTColorBox{tblsfilled}{m O{black!12}}
       {
@@ -67,7 +68,8 @@
         bottom = 5mm,
         left = 5mm,
         right = 5mm,
-        borderline = {#2}{0pt}{#3}
+        borderline = {#2}{0pt}{#3},
+        beforeafter skip balanced = \baselineskip
       }
     \DeclareTColorBox{tblsfilledsymbol}{m O{black!12} m}
       {
