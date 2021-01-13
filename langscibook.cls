@@ -1758,10 +1758,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             \renewcommand{\lsCollectionPaperCitationText}{\fullciteFooter{#1footer}}
             \include{#1}%
             \if@partsw\relax\else% This switch controls whether the included chapter is in the range of \includeonly. It's from source2e.
-            \addtocounter{page}{-1}
-            \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \includepaper@body
-            \addtocounter{page}{1}
-            \lsCollectionMetadataToBibliography{#1}
+              \addtocounter{page}{-1}
+              \edef\lsCollectionPaperLastPage{\thepage}	% \lsCollectionPaperFirstPage is defined in \includepaper@body
+              \addtocounter{page}{1}
+              \lsCollectionMetadataToBibliography{#1}
+            \fi% If the paper is not within \includeonly, don't do anything.
           \end{refsection}
         \egroup
     } %end NewDocumentCommand
@@ -1781,7 +1782,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   %% write bib entry to file
   \immediate\write\tempfile{@incollection{#1,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
   \immediate\write\tempfile{@incollection{#1footer,author={\authorTemp},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\editorTemp},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
-  \fi% If the paper is not within \includeonly, don't do anything.
 }
 
 \newcommand{\titleToHead}{}
