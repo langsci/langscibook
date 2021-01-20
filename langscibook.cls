@@ -133,6 +133,7 @@
 \newbool{newtxmath}
 \newbool{minimal}
 \newbool{collection}
+\newbool{collectionchapter}
 \newbool{collectiontoclong}
 \newbool{uniformtopskip}
 \newbool{oldstylenumbers}
@@ -185,6 +186,10 @@
   {
     \AtEndPreamble{\usepackage[switch, pagewise]{lineno}}
     \AtBeginDocument{\linenumbers}
+  }
+\DeclareVoidOption{collectionchapter}
+  {
+    \booltrue{collection}\booltrue{collectionchapter}
   }
 \DeclareVoidOption{collectiontoclong}
   {
@@ -1707,7 +1712,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 
 \ifbool{collection}{
-\usepackage{affiliations}
     \notbool{biblatex}{
             \ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
     }{}
@@ -1787,9 +1791,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
-  \if@mainmatter%Only send the chapter num to head if in mainmatter.
-    \thechapter\hspace{0.5em}\titleToHead\else\titleToHead
-  \fi
+  \ifbool{collectionchapter}{
+    \if@mainmatter%Only send the chapter num to head if in mainmatter.
+      \thechapter\hspace{0.5em}\titleToHead\else\titleToHead
+    \fi
+    }{}
 }
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
@@ -1812,7 +1818,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         \renewcommand{\maketitle}{%
             % With \setchapterpreamble from scrbook, we ensure that the author(s)
             % and their affiliation(s) are part of the \chapter block.
-            \setchapterpreamble[u]{\Author{\@author}}
+            \setchapterpreamble[u]{\onlyAuthor\lsCollectionPaperAuthor}
             \chapter[tocentry={\titleToToC~\newline{\normalfont \@author}}]{\titleTemp}
             \vspace{\baselineskip}
             \begin{quote}
