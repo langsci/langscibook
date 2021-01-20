@@ -133,7 +133,6 @@
 \newbool{newtxmath}
 \newbool{minimal}
 \newbool{collection}
-\newbool{collectionchapter}
 \newbool{collectiontoclong}
 \newbool{uniformtopskip}
 \newbool{oldstylenumbers}
@@ -186,10 +185,6 @@
   {
     \AtEndPreamble{\usepackage[switch, pagewise]{lineno}}
     \AtBeginDocument{\linenumbers}
-  }
-\DeclareVoidOption{collectionchapter}
-  {
-    \booltrue{collection}\booltrue{collectionchapter}
   }
 \DeclareVoidOption{collectiontoclong}
   {
@@ -1791,11 +1786,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
   \renewcommand{\newlineTOC}{}
-  \ifbool{collectionchapter}{
-    \if@mainmatter%Only send the chapter num to head if in mainmatter.
-      \thechapter\hspace{0.5em}\titleToHead\else\titleToHead
-    \fi
-    }{}
+  \if@mainmatter%Only send the chapter num to head if in mainmatter.
+    \thechapter\hspace{0.5em}\titleToHead\else\titleToHead
+  \fi
 }
   
 \newcommand{\lsCollectionPaperHeaderAuthor}{{%
