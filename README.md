@@ -11,7 +11,6 @@ biblatex | | use BibLaTeX (default)
 biblatexbackend | **biber** \| bibtex  | the backend of BibLaTeX
 booklanguage | **english** \| chinese \| french \| german \| portuguese | language the book is written in
 collection | | for making the book an edited volume
-collectionchapter | | add chapter prefix to each contribution
 collectiontoclong | | more detailed table of content in edited volumes
 copyright | **CC-BY** \| CC-BY-ND \| CC-BY-SA | choice of copyright
 decapbib | true / **false** | If you want to have a `booklanguage` other than English, but still have English language settings in your bibliography, e.g. if you have a lot of English sources and/or want to decapitalise the bibliography. (This assumes `biblatex=true`).
