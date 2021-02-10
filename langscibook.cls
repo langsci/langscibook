@@ -2051,10 +2051,19 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newlength{\LSPTmp}
 \ifbool{uniformtopskip}{}{% Donald Arseneau's automatic handling of page breaking from comp.text.tex: https://groups.google.com/d/topic/comp.text.tex/3eehwzortPg/discussion
     % With the optimisations from the memoir class. The memoir class has relative instead of absolute values.
+    \let\lsSaveValueTopSkip\topskip
+    \let\lsSaveValueTextTop\@texttop
+    \let\lsSaveValueTextBottom\@textbottom
+    \def\restorebottom{%
+      \topskip=\lsSaveValueTopSkip
+      \let\@texttop\lsSaveValueTextTop
+      \let\@textbottom\lsSaveValueTextBottom
+    }
+    
     \def\sloppybottom{%
-    \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
-    \topskip=1\topskip \@plus 0.625\topskip \@minus .95\topskip%
-    \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
+      \def\@textbottom{\vskip \z@ \@plus.0001fil \@minus .95\topskip}%
+      \topskip=1\topskip \@plus 0.625\topskip \@minus .95\topskip%
+      \def\@texttop{\vskip \z@ \@plus -0.625\topskip \@minus -0.95\topskip}%
     }
     \sloppybottom
 }
