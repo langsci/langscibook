@@ -1039,8 +1039,8 @@
             \ifbool{collection}
               {editor = {\unexpanded\expandafter{\@author}},}
               {author = {\unexpanded\expandafter{\@author}},}
-            title = {\unexpanded\expandafter{\@title}},
-            \if\@subtitle\empty\else subtitle = {\unexpanded\expandafter{\@subtitle}},\fi
+            title = {{\unexpanded\expandafter{\@title}}},
+            \if\@subtitle\empty\else subtitle = {{\unexpanded\expandafter{\@subtitle}}},\fi
             year = {\lsYear},
             series = {\lsSeriesTitle},
             number = {\lsSeriesNumber},
