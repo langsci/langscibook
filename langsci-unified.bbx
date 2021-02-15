@@ -148,7 +148,7 @@
 % Various bibmacros used in producing the bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewbibmacro*{date+extradate}{%
+\newbibmacro*{date+extradate}{%
   \iffieldundef{labelyear}
     {}
     {\printtext{\printlabeldateextra}}}%     Took out the parentheses around the year
