@@ -683,8 +683,7 @@
             \bigskip
 
             In this series:
-
-            \begin{enumerate}
+            \begin{enumerate}\itemsep=0pt
             \item Fantinuoli, Claudio \& Federico Zanettin (eds.). New directions in corpus-based translation studies.
             \item Hansen-Schirra, Silvia \& Sambor Grucza (eds.). Eyetracking and Applied Linguistics.
             \item Neumann, Stella, Oliver Čulo \& Silvia Hansen-Schirra (eds.). Annotation, exploitation and evaluation of parallel corpora: TC3\,I.
@@ -698,7 +697,8 @@
             \item Fantinuoli, Claudio (ed.). Interpreting and technology.
             \item Nitzke, Jean. Problem solving activities in post-editing and translation from scratch: A multi-method study.
             \item Vandevoorde, Lore. Semantic differences in translation.
-             \item Bisiada, Mario (ed.).Empirical studies in translation and discourse.
+            \item Bisiada, Mario (ed.).Empirical studies in translation and discourse.
+            \item Tra\&Co Group (ed.). Translation, interpreting, cognition: The way out of the box.
             \end{enumerate}
             }
 \fi
