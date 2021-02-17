@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      File: langscibook.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2018-08-29 13:12 UTC
+%%      Date: 2020-02-17 18:00 CET
 %%   Purpose: This file defines the basic document class
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -48,7 +48,7 @@
 %   \_ Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2020/02/12 Language Science Press]
+\ProvidesClass{langscibook}[2020/02/17 Language Science Press]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Early load packages
