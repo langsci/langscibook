@@ -10,6 +10,7 @@
 \newcommand{\cam}{cam}
 \newcommand{\cib}{cib}
 \newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
+\newcommand{\cgl}{cgl}	%SIDL-CGL
 \newcommand{\classics}{classics}
 \newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
 \newcommand{\eotms}{eotms}
@@ -23,6 +24,7 @@
 \newcommand{\ogs}{ogs}		%Open Generative Syntax
 \newcommand{\osl}{osl}		%Open Slavic Linguistics
 \newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
+\newcommand{\rcg}{rcg} %
 \newcommand{\scl}{scl}
 \newcommand{\sidl}{sidl}
 \newcommand{\silp}{silp}	%Studies in Laboratory Phonology
@@ -151,6 +153,11 @@
             \end{enumerate}
 
             }
+\fi
+\ifx\lsSeries\cgl
+	\newcommand{\lsSeriesTitle}{Comprehensive Grammar Library}
+	\newcommand{\lsSeriesColor}{lsNightBlue}
+% 	\renewcommand{\lsISSN}{}
 \fi
 \ifx\lsSeries\classics
 	\newcommand{\lsSeriesTitle}{Classics in Linguistics}
@@ -487,6 +494,15 @@
 
 
             }
+\fi
+\ifx\lsSeries\rcg
+	\newcommand{\lsSeriesTitle}{Research on Comparative Grammar}
+	\newcommand{\lsSeriesColor}{lsDarkOrange}
+	\renewcommand{\lsISSNelectronic}{ } %online
+	\renewcommand{\lsISSNprint}{} %Print
+	\renewcommand{\lsSeriesText}{
+            {\large Research on Comparative Grammar }
+         }
 \fi
 \ifx\lsSeries\scl
 	\newcommand{\lsSeriesTitle}{Studies in Caribbean Languages}
