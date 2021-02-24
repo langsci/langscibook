@@ -157,6 +157,36 @@
 \ifx\lsSeries\cgl
 	\newcommand{\lsSeriesTitle}{Comprehensive Grammar Library}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsSeriesText}{
+            {\large Comprehensive Grammar Library}
+
+            \bigskip
+            Editor: Martin Haspelmath
+
+            \bigskip
+            In this series:
+
+            \begin{enumerate}
+            \item Jacques, Guillaume. A grammar of Japhug.
+            \end{enumerate}
+
+
+            This  series grew out of  the grammars published in \textit{Studies in Diversity Linguistics}, which are proudly mentioned:
+
+            \begin{enumerate}
+            \item[4.] Berghäll, Liisa. A grammar of Mauwake.
+            \item[5.] Wilbur, Joshua. A grammar of Pite Saami.
+            \item[7.] Schackow, Diana.    A grammar of Yakkha.
+            \item[8.] Liljegren, Henrik. A grammar of Palula.
+            \item[9.] Shimelman, Aviva. A grammar of Yauyos Quechua.
+            \item[11.] Kluge, Angela. A grammar of Papuan Malay.
+            \item[12.] Kieviet, Paulus. A grammar of Rapa Nui.
+            \item[22.] Döhler, Christian. A grammar of Komnzo.
+            \item[23.] Yakpo, Kofi. A grammar of Pichi.
+            \end{enumerate}
+
+
+            }
 % 	\renewcommand{\lsISSN}{}
 \fi
 \ifx\lsSeries\classics
