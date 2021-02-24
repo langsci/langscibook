@@ -1064,7 +1064,9 @@
   }
 
 \newcommand{\lsImpressumCitationText}
-  {
+  {%
+    \renewcommand{\newlineCover}{}%
+    \renewcommand{\newlineSpine}{}%
     \fullciteImprint{langsci-current-book}
   }
 
