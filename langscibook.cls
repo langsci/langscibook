@@ -768,7 +768,10 @@
     % In collected volumes, adjust the spacing for unnumbered chapters
     \ifbool{collection}{
     \BeforeStartingTOC[toc]{\SetupAffiliations{output affiliation=false,
-                                               output authors font=\normalfont}}
+                                               output authors font=\normalfont},
+                                               separator between two={~\&~},
+                                               separator between multiple={,~},
+                                               separator between final two={~\&~}}
       \renewcommand{\addtocentrydefault}[3]{%
         \Ifstr{#2}{}{%
           \addcontentsline{toc}{#1}{\protect\numberline{~}#3}%
@@ -1064,7 +1067,9 @@
   }
 
 \newcommand{\lsImpressumCitationText}
-  {
+  {%
+    \renewcommand{\newlineCover}{}%
+    \renewcommand{\newlineSpine}{}%
     \fullciteImprint{langsci-current-book}
   }
 
@@ -1836,7 +1841,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         }
         \ohead{}
         \lehead{\ResolveAffiliations[output affiliation=false,
-                                     output authors font=\normalfont\slshape]{\@author}}
+                                     output authors font=\normalfont\slshape,
+                                     separator between two={~\&~},
+                                     separator between multiple={,~},
+                                     separator between final two={~\&~}
+                                    ]{\@author}}
         \rohead{\lsCollectionPaperHeaderTitle}
         % The following ensure that a chapter is treated as a heading, which
         % controls page break penalties and indentation following the heading.
