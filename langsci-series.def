@@ -41,6 +41,22 @@
 \ifx\lsSeries\algad
 	\newcommand{\lsSeriesTitle}{African Language Grammars \newlineCover and Dictionaries}
 	\newcommand{\lsSeriesColor}{lsLightOrange}
+	\renewcommand{\lsISSN}{2512-4862}
+	\renewcommand{\lsSeriesText}{
+            Chief Editor:    Adams Bodomo \\
+            Editor:        Firmin Ahoua
+
+            \bigskip
+
+            In this series:
+
+            \begin{enumerate}
+            \item Schrock, Terrill B. The Ik language: Dictionary and grammar sketch.
+            \item Brindle, Jonathan. A dictionary and grammatical outline of Chakali.
+            \item Friesen, Dianne. A grammar of Moloko.
+            \item Ali, Mark, Scott Grimm \& Adams Bodomo. A dictionary and  grammatical sketch of Dagaare.
+            \end{enumerate}
+        }
 \fi
 \ifx\lsSeries\calseries %\cal is already taken as a command
 	\newcommand{\lsSeriesTitle}{Contemporary African Linguistics}
