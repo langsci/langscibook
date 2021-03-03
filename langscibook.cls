@@ -768,10 +768,11 @@
     % In collected volumes, adjust the spacing for unnumbered chapters
     \ifbool{collection}{
     \BeforeStartingTOC[toc]{\SetupAffiliations{output affiliation=false,
-                                               output authors font=\normalfont},
+                                               output authors font=\normalfont,
                                                separator between two={~\&~},
                                                separator between multiple={,~},
                                                separator between final two={~\&~}}
+                                               }
       \renewcommand{\addtocentrydefault}[3]{%
         \Ifstr{#2}{}{%
           \addcontentsline{toc}{#1}{\protect\numberline{~}#3}%
