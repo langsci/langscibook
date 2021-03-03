@@ -25,3 +25,4 @@ bussproofs | no | does not align well in examples, insufficient means for custom
 package | recommmended? | reason
 -------|--------|---------
 mathtools | ~ | watch out for the re-definitions in `\overbrace` etc.
+wrapfigure | no | Figures wrapped around the main text are incompatible with our house style and should never be used.
