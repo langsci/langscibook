@@ -112,6 +112,26 @@
 	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism}
 	\newcommand{\lsSeriesColor}{lsLightGreen}
 % 	\renewcommand{\lsISSN}{}
+ 	\renewcommand{\lsSeriesText}{
+        {\large  Current Issues in Bilingualism}
+
+        \bigskip
+
+        Editors:     Andrea C. Schalley (Karlstad University, Sweden) [editor-in-chief],\\
+    M Carmen Parafita Couto (Leiden University, Netherlands) [editor-in-chief],\\
+    Susana Eisenchlas (Griffith University, Australia),\\
+    Galina Putjata (Europa-Universität Flensburg, Germany),\\
+    Jorge Valdés Kroff (University of Florida, USA).
+
+
+        \bigskip
+
+        In this series:
+
+        \begin{enumerate}
+          \item Shim, Ji Young. OV and VO variation in code-switching.
+        \end{enumerate}
+        }
 \fi
 \ifx\lsSeries\cfls
 	\newcommand{\lsSeriesTitle}{Conceptual Foundations of \newlineCover Language Science}
