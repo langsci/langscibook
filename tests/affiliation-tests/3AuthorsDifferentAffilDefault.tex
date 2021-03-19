@@ -1,0 +1,23 @@
+\documentclass{langscibook}
+\title{3 Authors, different affils, LSP default}
+\author{Author A  \affiliation{Universität Leipzig} and 
+        Author B\affiliation{HU} and
+        Author C \affiliation{FU} }
+
+\abstract{\kant[5]}
+
+\begin{document}
+% NOTE: \SetupAffiliations must go between \begin{document} and \maketitle.
+% -- Since the info must be available before the title is made.
+\SetupAffiliations{output in groups = false, 
+                   separator between two = {\bigskip\\},
+                   separator between multiple = {\bigskip\\},
+                   separator between final two = {\bigskip\\}
+                   }
+\maketitle
+%% Default settings for langsci-affiliations with un-grouped style
+%% This is how LSP books looked prior to v2020-2.0.
+
+\kant[1-10]
+
+\end{document}

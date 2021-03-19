@@ -1,0 +1,17 @@
+\documentclass{langscibook}
+\title{3 Authors, overlapping affils}
+\author{Author A  \affiliation{Universität Leipzig; HU} and 
+        Author B\affiliation{Universität Leipzig} and
+        Author C \affiliation{HU} }
+
+\abstract{\kant[5]}
+
+\begin{document}
+% NOTE: \SetupAffiliations must go between \begin{document} and \maketitle.
+% -- Since the info must be available before the title is made.
+\SetupAffiliations{output in groups=true}
+\maketitle
+
+\kant[1-10]
+
+\end{document}

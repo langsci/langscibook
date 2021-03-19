@@ -1,0 +1,15 @@
+\documentclass{langscibook}
+\title{2 Authors, new default, mirrored affils}
+\author{Author A  \affiliation{HU; FU} and Author B\affiliation{FU; HU}}
+
+\abstract{\kant[5]}
+
+\begin{document}
+\SetupAffiliations{output in groups=true}
+% NOTE: \SetupAffiliations must go between \begin{document} and \maketitle.
+% -- Since the info must be available before the title is made.
+\maketitle
+
+\kant[1-10]
+
+\end{document}

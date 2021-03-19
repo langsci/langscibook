@@ -1,0 +1,17 @@
+\documentclass{langscibook}
+\title{3 Authors, different affils, with indexes}
+\author{Author A  \affiliation{Universität Leipzig} and 
+        Author B\affiliation{HU} and
+        Author C \affiliation{FU} }
+
+\abstract{\kant[5]}
+
+\begin{document}
+% NOTE: \SetupAffiliations must go between \begin{document} and \maketitle.
+% -- Since the info must be available before the title is made.
+\SetupAffiliations{output in groups=true}
+\maketitle
+
+\kant[1-10]
+
+\end{document}

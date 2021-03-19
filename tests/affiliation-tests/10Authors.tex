@@ -1,0 +1,24 @@
+\documentclass{langscibook}
+\title{10 Authors}
+\author{Author A  \affiliation{Universität Leipzig; HU} and 
+        Author B\affiliation{Universität Leipzig} and
+        Author C\affiliation{UPenn} and
+        Author D\affiliation{University of Groningen} and
+        Author E\affiliation{FU; UPenn} and
+        Author F and
+        Author G \affiliation{Karolinska Institutet; University of Groningen} and 
+        Author H \affiliation{FU} and
+        Author I \affiliation{Private Company ABC} and
+        Author J \affiliation{Universät Leipzig; UPenn; FU; HU}}
+
+\abstract{\kant[5]}
+
+\begin{document}
+% NOTE: \SetupAffiliations must go between \begin{document} and \maketitle.
+% -- Since the info must be available before the title is made.
+\SetupAffiliations{output in groups=true}
+\maketitle
+
+\kant[1-10]
+
+\end{document}
