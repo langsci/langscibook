@@ -111,7 +111,8 @@
 \ifx\lsSeries\cib
 	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism}
 	\newcommand{\lsSeriesColor}{lsLightGreen}
-% 	\renewcommand{\lsISSN}{}
+	\renewcommand{\lsISSNelectronic}{2747-9927}
+ 	\renewcommand{\lsISSNprint}{2747-9919} 
  	\renewcommand{\lsSeriesText}{
         {\large  Current Issues in Bilingualism}
 
