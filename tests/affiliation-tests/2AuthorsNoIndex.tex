@@ -1,0 +1,17 @@
+\documentclass{langscibook}
+\title{2 Authors without indexes}
+\author{Author A  \affiliation{Universität Leipzig} and 
+        Author B\affiliation{Universität Leipzig}}
+
+\abstract{\kant[5]}
+
+\begin{document}
+% NOTE: \SetupAffiliations must go between \begin{document} and \maketitle.
+% -- Since the info must be available before the title is made.
+\SetupAffiliations{output in groups=true,
+                   mark style=none}
+\maketitle
+
+\kant[1-10]
+
+\end{document}

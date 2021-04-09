@@ -10,7 +10,7 @@
 \newcommand{\cam}{cam}
 \newcommand{\cib}{cib}
 \newcommand{\cfls}{cfls}	%Conceptual Foundation of the Language Sciences
-\newcommand{\cgl}{cgl}	%SIDL-CGL
+\newcommand{\cogl}{cogl}	%SIDL-CoGL
 \newcommand{\classics}{classics}
 \newcommand{\cmle}{cmle}	%Computational Models of Language Evolution
 \newcommand{\eotms}{eotms}
@@ -111,7 +111,8 @@
 \ifx\lsSeries\cib
 	\newcommand{\lsSeriesTitle}{Current Issues in Bilingualism}
 	\newcommand{\lsSeriesColor}{lsLightGreen}
-% 	\renewcommand{\lsISSN}{}
+	\renewcommand{\lsISSNelectronic}{2747-9927}
+ 	\renewcommand{\lsISSNprint}{2747-9919} 
  	\renewcommand{\lsSeriesText}{
         {\large  Current Issues in Bilingualism}
 
@@ -190,7 +191,7 @@
 
             }
 \fi
-\ifx\lsSeries\cgl
+\ifx\lsSeries\cogl
 	\newcommand{\lsSeriesTitle}{Comprehensive Grammar Library}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
 	\renewcommand{\lsSeriesText}{
@@ -299,7 +300,8 @@
             \item Bonami, Olivier, Gilles Boyé, Georgette Dal, Hélène Giraudo \& Fiammetta Namer. The lexeme in descriptive and theoretical morphology.
             \item Guzmán Naranjo, Matías. Analogical classification in formal grammar.
             \item Flick, Johanna. Die Entwicklung des Definitartikels im Althochdeutschen: Eine kognitiv-linguistische Korpusuntersuchung.
-            \item Zinova, Yulia. Russian verbal prefixation: A frame semantic analysis.
+            \item Crysmann, Berthold \& Manfred Sailer (eds.). One-to-many relations in morphology, syntax, and semantics.
+            %%%\item Zinova, Yulia. Russian verbal prefixation: A frame semantic analysis.
             \end{enumerate}
             }
 \fi

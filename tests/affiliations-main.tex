@@ -1,0 +1,46 @@
+\documentclass[output=book,collection]{langscibook}
+
+\usepackage{kantlipsum}
+% \usepackage{./langsci-basic}
+\usepackage{langsci-optional}
+\usepackage{langsci-affiliations}
+\bibliography{localbibliography}
+
+%opening
+\title{Test for the langsci-* packages}
+\author{Language and Science and Press}
+\SetupAffiliations{output in groups=false}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\mainmatter
+
+\part{1 Author}
+
+\includepaper{affiliation-tests/1AuthorDefault}
+\includepaper{affiliation-tests/1Author}
+
+\part{2 Authors}
+
+\includepaper{affiliation-tests/2AuthorsDefault}
+\includepaper{affiliation-tests/2AuthorsNoIndex}
+\includepaper{affiliation-tests/2Authors}
+\includepaper{affiliation-tests/2AuthorsMirrored}
+
+\part{3 Authors}
+\includepaper{affiliation-tests/3AuthorsDefault}
+\includepaper{affiliation-tests/3AuthorsSameAffil}
+\includepaper{affiliation-tests/3AuthorsSameAffilNoIndex}
+
+\includepaper{affiliation-tests/3AuthorsDifferentAffilDefault}
+\includepaper{affiliation-tests/3AuthorsDifferentAffil}
+
+\includepaper{affiliation-tests/3AuthorsOverlapping}
+
+\part{10 Authors}
+\includepaper{affiliation-tests/10Authors}
+ 
+
+\end{document}
