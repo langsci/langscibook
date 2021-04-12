@@ -15,6 +15,11 @@ tikz-qtree | yes | can be used, but is less preferrable compared to `forest`
 xyling | no | complicated syntax, high computing times leading to significant increase in document compilation
 pst-jtree | no | 
 
+## Other linguistic packages
+package | recommmended? | reason
+-------|--------|---------
+tipa | no | please use Unicode instead. You can take a look at our [`langsci-textipa`](https://github.com/langsci/langscibook/blob/master/langsci-textipa.sty) sub-package for TeX macro bindings to Unicode chars. Please also load `ot-tableau` without tipa: `\usepackage[notipa]{ot-tableau}`.
+
 ## Proofs (sequential calculus)
 package | recommmended? | reason
 -------|--------|---------
