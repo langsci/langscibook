@@ -572,7 +572,7 @@
         %% this is possible for a complete series only.
         \ifx\lsSeries\sidl
         %\def\exfont{\normalsize\itshape}
-        \providecommand{\eachwordone}{\itshape} % only \gll
+        \let\eachwordone=\itshape % only \gll
 
         \let\oldtable\table   % footnotes in tables without horizontal line
         \let\endoldtable\endtable
@@ -580,13 +580,16 @@
         \fi
 
         \ifx\lsSeries\pmwe
-        \providecommand{\eachwordone}{\normalfont}
+        \let\eachwordone=\normalfont
         \fi
 
         \ifx\lsSeries\nc
-        \providecommand{\eachwordone}{\itshape}
+        \let\eachwordone=\itshape
         \fi
-
+        
+        \ifx\lsSeries\cogl
+        \let\eachwordone=\itshape
+        \fi
     } %% \AtBeginDocument
 }{} %notbool paper
 
