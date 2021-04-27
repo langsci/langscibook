@@ -590,6 +590,10 @@
         \ifx\lsSeries\cogl
         \let\eachwordone=\itshape
         \fi
+        
+        \ifx\lsSeries\eotms
+        \renewcommand{\sectref}[1]{Section~\ref{#1}}
+        \fi
     } %% \AtBeginDocument
 }{} %notbool paper
 
