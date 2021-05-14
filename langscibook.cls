@@ -145,6 +145,8 @@
 \newbool{oldstylenumbers}
 \newbool{tblseight}%for chinesefonts in tbls series page
 \newbool{lsISBNTwoDigitAddon}
+\newbool{lsFloatCounterWithoutChapter}
+    \booltrue{lsFloatCounterWithoutChapter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -201,6 +203,7 @@
   }
 \DeclareVoidOption{uniformtopskip}{\booltrue{uniformtopskip}}
 \DeclareVoidOption{oldstylenumbers}{\booltrue{oldstylenumbers}}
+\DeclareVoidOption{classicfloatnumbers}{\boolfalse{lsFloatCounterWithoutChapter}}
 
 \DeclareVoidOption{chinesefont}{
   \AtEndPreamble{
@@ -1769,8 +1772,13 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \usepackage{chngcntr}
     \counterwithin{figure}{chapter}
     \counterwithin{table}{chapter}
+    \ifbool{lsFloatCounterWithoutChapter}{
+      \renewcommand{\thefigure}{\arabic{figure}}
+      \renewcommand{\thetable}{\arabic{table}}
+      \renewcommand{\theequation}{\arabic{equation}}
+    }{}
 
-    \NewDocumentCommand{\includepaper}{m}{
+    \NewDocumentCommand{\includepaper}{m}{%
         \bgroup
 		  \renewcommand{\newlineCover}{\\}
           \renewcommand{\documentclass}[2][]{}%
