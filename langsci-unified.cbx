@@ -410,12 +410,13 @@
   {}
   {}
 
-%% changes of citestyle (cbx) (FIXME: documentation missing)
+% These commands govern the punctuation between parts of citations, such as 
+% between author and year, year and pages, or multiple citations.
 \renewcommand*{\nameyeardelim}{\addspace}
 \renewcommand*{\postnotedelim}{\addcolon\space}
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
-\renewcommand{\multicitedelim}{\addsemicolon\space}%
+\renewcommand{\multicitedelim}{\addcomma\space}%
 \renewcommand{\compcitedelim}{\multicitedelim}
 
 \endinput
