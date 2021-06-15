@@ -1,0 +1,6 @@
+\DeclareDatamodelFields[type=list, datatype=name]
+  {%
+     indexauthor,
+     indexeditor
+  }
+\DeclareDatamodelEntryfields{indexauthor,indexeditor}

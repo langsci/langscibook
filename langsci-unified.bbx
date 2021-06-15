@@ -144,14 +144,37 @@
   }
 }  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Various bibmacros used in producing the bibliography
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Thanks to moeve, https://tex.stackexchange.com/a/402702,
+%% One case added by Stefan Müller
+\renewbibmacro*{citeindex}{%
+  \ifciteindex
+    {\iffieldequalstr{labelnamesource}{shortauthor} 
+      {\ifnameundef{indexauthor}                     
+        {\indexnames{author}}                       
+        {\indexnames{indexauthor}}}                  
+      {\iffieldequalstr{labelnamesource}{author}    
+        {\ifnameundef{indexauthor}                   
+          {\indexnames{author}}
+          {\indexnames{indexauthor}}} 
+        {\iffieldequalstr{labelnamesource}{shorteditor} 
+          {\ifnameundef{indexeditor}                     
+            {\indexnames{editor}}                       
+            {\indexnames{indexeditor}}}                  
+          {\iffieldequalstr{labelnamesource}{editor}    
+            {\ifnameundef{indexeditor}
+              {\indexnames{editor}}
+              {\indexnames{indexeditor}}}} 
+          {\indexnames{labelname}}}}} 
+    {}}
 
 \newbibmacro*{date+extradate}{%
   \iffieldundef{labelyear}
     {}
-    {\printtext{\printlabeldateextra}}}%     Took out the parentheses around the year
+    {\printtext{\printlabeldateextra}}}% Took out the parentheses around the year
 
 \renewbibmacro*{author}{%
   \ifboolexpr{
