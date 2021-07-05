@@ -22,6 +22,7 @@
 \newcommand{\mi}{mi}
 \newcommand{\nc}{nc}		%Niger Congo
 \newcommand{\ogs}{ogs}		%Open Generative Syntax
+\newcommand{\ogl}{ogl}      %  Open Germanic Linguistics
 \newcommand{\osl}{osl}		%Open Slavic Linguistics
 \newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
 \newcommand{\rcg}{rcg} %
@@ -468,6 +469,31 @@
 
 
             }
+\fi
+\ifx\lsSeries\ogl
+	\newcommand{\lsSeriesTitle}{Open Germanic Linguistics}
+	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+	\renewcommand{\lsISSNelectronic}{} %online
+	\renewcommand{\lsISSNprint}{} %Print
+	\renewcommand{\lsSeriesText}{
+            {\large  Open Germanic Linguistics
+            
+            \bigskip
+            
+            Editors: 
+            Michael T. Putnam,
+            B. Richard Page,
+            Laura Catharine Smith
+            
+            \bigskip
+            
+            In this series:
+            
+            \begin{enumerate}
+            \item Lemke, Robin. Experimental investigations on the syntax and usage of fragments.
+            \end{enumerate}
+ }
+         }
 \fi
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax}
