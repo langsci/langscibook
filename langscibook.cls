@@ -299,13 +299,6 @@
 %     Class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\lsChapterPrefixString}{} 
-% this conditional cannot be put
-% directly into the LoadClass, so we compute the value and store it in a command
-\ifbool{collection}
- {\renewcommand{\lsChapterPrefixString}{chapterprefix=true,}}
- {\ifbool{paper}{\renewcommand{\lsChapterPrefixString}{chapterprefix=true,}}{}}
-
 
 \LoadClass[
     fontsize=\lsFontsize,% default is 11pt
@@ -314,9 +307,20 @@
     toc=bibliography,
     index=totoc,
     headings=optiontohead,
-    \lsChapterPrefixString,
     footnotes=multiple
     ]{scrbook}
+
+\ifbool{collection}
+  {% In collected volumes, write "Chapter n" instead of "n" in the header
+    \KOMAoptions{chapterprefix=true}
+  }
+  {
+    \ifbool{paper}
+      {% The same is applied to papers.
+        \KOMAoptions{chapterprefix=true}
+      }
+      {}
+  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Packages
