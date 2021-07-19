@@ -995,8 +995,8 @@
 % A command to output a limited number of items on the series history page.
 % This is useful in case there are too many items in a series history.
 % The number of maximum items are passed to the first, optional argument
-% to the command. Its default is 20.
-\NewDocumentCommand{\lsSeriesHistoryWheel}{O{20} m}
+% to the command. Its default is 15.
+\NewDocumentCommand{\lsSeriesHistoryWheel}{O{15} m}
   {%
     \begin{enumerate}
     \langsci_wheel:nn {#1} {#2}
@@ -1014,7 +1014,7 @@
     % first item, which will be empty.
     \seq_set_split:Nnn \langsci_wheel_seq {\item} {#2}
     \seq_pop_left:NNTF \langsci_wheel_seq \langsci__wheel_wastebin_tl {} {}
-    % The offset is calculated by (length of input - maximum input)
+    % The offset is calculated by (length of input - maximum output)
     \int_set:Nn \langsci_wheel_output_difference_int 
       {
         \seq_count:N \langsci_wheel_seq - #1
