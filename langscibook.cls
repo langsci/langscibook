@@ -990,6 +990,50 @@
 
     \renewcommand{\tblseight}{{\cn 语法理论: 从转换语法到基于约束的理论}}
   }{}
+  
+\ExplSyntaxOn
+% A command to output a limited number of items on the series history page.
+% This is useful in case there are too many items in a series history.
+% The number of maximum items are passed to the first, optional argument
+% to the command. Its default is 20.
+\NewDocumentCommand{\lsSeriesHistoryWheel}{O{20} m}
+  {%
+    \begin{enumerate}
+    \langsci_wheel:nn {#1} {#2}
+    \end{enumerate}
+  }
+
+% Setup of data
+\seq_new:N \langsci_wheel_seq
+\int_new:N \langsci_wheel_loop_count_int
+\int_new:N \langsci_wheel_output_difference_int
+\tl_new:N \langsci__wheel_wastebin_tl
+\cs_new:Npn \langsci_wheel:nn #1#2
+  {
+    % Let's split the input at each \item. From the result, remove the 
+    % first item, which will be empty.
+    \seq_set_split:Nnn \langsci_wheel_seq {\item} {#2}
+    \seq_pop_left:NNTF \langsci_wheel_seq \langsci__wheel_wastebin_tl {} {}
+    % The offset is calculated by (length of input - maximum input)
+    \int_set:Nn \langsci_wheel_output_difference_int 
+      {
+        \seq_count:N \langsci_wheel_seq - #1
+      }
+    % An integer used for counting inside the loop.
+    \int_zero:N \langsci_wheel_loop_count_int
+    % Loop over the input and determine, for each item, whether to output
+    % it. The item is output when its number is greater than the difference 
+    % between actual length and maximum.
+    \seq_map_inline:Nn \langsci_wheel_seq 
+      {
+        \int_incr:N \langsci_wheel_loop_count_int
+        \int_compare:nNnTF 
+          \langsci_wheel_loop_count_int > \langsci_wheel_output_difference_int
+          {\item[\int_use:N \langsci_wheel_loop_count_int.] ##1}
+          {}
+      }
+  }
+\ExplSyntaxOff
 
 \newcommand{\lsSeriesHistory}{
     \color{black}
