@@ -1828,13 +1828,14 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   \renewcommand{\newlineSpine}{}
   \renewcommand{\newlineTOC}{}  
   %% write bib entry to file
-  \immediate\write\tempfile{@incollection{#1,author={\@author},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
-  \immediate\write\tempfile{@incollection{#1footer,author={\@author},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
+  \immediate\write\tempfile{@incollection{#1,author={\authorToBib},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
+  \immediate\write\tempfile{@incollection{#1footer,author={\authorToBib},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
 }
 
 \newcommand{\titleToHead}{}
 \newcommand{\titleTemp}{}
 \newcommand{\titleToToC}{}
+\newcommand{\authorToBib}{}
 
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
@@ -1850,7 +1851,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             \renewcommand{\titleTemp}{##2}
             \renewcommand{\titleToToC}{##3}
         }
-        \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
+        \RenewDocumentCommand{\author}{O{##2} m}{
+          \renewcommand{\authorToBib}{##1}
+          \renewcommand{\@author}{##2}
+        }
         \renewcommand*{\thesection}{\arabic{section}}
         \RedeclareSectionCommand
             [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]
