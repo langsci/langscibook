@@ -299,13 +299,6 @@
 %     Class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\lsChapterPrefixString}{} 
-% this conditional cannot be put
-% directly into the LoadClass, so we compute the value and store it in a command
-\ifbool{collection}
- {\renewcommand{\lsChapterPrefixString}{chapterprefix=true,}}
- {\ifbool{paper}{\renewcommand{\lsChapterPrefixString}{chapterprefix=true,}}{}}
-
 
 \LoadClass[
     fontsize=\lsFontsize,% default is 11pt
@@ -314,9 +307,20 @@
     toc=bibliography,
     index=totoc,
     headings=optiontohead,
-    \lsChapterPrefixString,
     footnotes=multiple
     ]{scrbook}
+
+\ifbool{collection}
+  {% In collected volumes, write "Chapter n" instead of "n" in the header
+    \KOMAoptions{chapterprefix=true}
+  }
+  {
+    \ifbool{paper}
+      {% The same is applied to papers.
+        \KOMAoptions{chapterprefix=true}
+      }
+      {}
+  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Packages
@@ -986,6 +990,50 @@
 
     \renewcommand{\tblseight}{{\cn 语法理论: 从转换语法到基于约束的理论}}
   }{}
+  
+\ExplSyntaxOn
+% A command to output a limited number of items on the series history page.
+% This is useful in case there are too many items in a series history.
+% The number of maximum items are passed to the first, optional argument
+% to the command. Its default is 15.
+\NewDocumentCommand{\lsSeriesHistoryWheel}{O{15} m}
+  {%
+    \begin{enumerate}
+    \langsci_wheel:nn {#1} {#2}
+    \end{enumerate}
+  }
+
+% Setup of data
+\seq_new:N \langsci_wheel_seq
+\int_new:N \langsci_wheel_loop_count_int
+\int_new:N \langsci_wheel_output_difference_int
+\tl_new:N \langsci__wheel_wastebin_tl
+\cs_new:Npn \langsci_wheel:nn #1#2
+  {
+    % Let's split the input at each \item. From the result, remove the 
+    % first item, which will be empty.
+    \seq_set_split:Nnn \langsci_wheel_seq {\item} {#2}
+    \seq_pop_left:NNTF \langsci_wheel_seq \langsci__wheel_wastebin_tl {} {}
+    % The offset is calculated by (length of input - maximum output)
+    \int_set:Nn \langsci_wheel_output_difference_int 
+      {
+        \seq_count:N \langsci_wheel_seq - #1
+      }
+    % An integer used for counting inside the loop.
+    \int_zero:N \langsci_wheel_loop_count_int
+    % Loop over the input and determine, for each item, whether to output
+    % it. The item is output when its number is greater than the difference 
+    % between actual length and maximum.
+    \seq_map_inline:Nn \langsci_wheel_seq 
+      {
+        \int_incr:N \langsci_wheel_loop_count_int
+        \int_compare:nNnTF 
+          \langsci_wheel_loop_count_int > \langsci_wheel_output_difference_int
+          {\item[\int_use:N \langsci_wheel_loop_count_int.] ##1}
+          {}
+      }
+  }
+\ExplSyntaxOff
 
 \newcommand{\lsSeriesHistory}{
     \color{black}
@@ -1414,8 +1462,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \usepackage[
 	natbib=true,
 	style=langsci-unified,
-	citestyle=langsci-unified,
-	datamodel=langsci,   % add authauthor and autheditor as possible fields to bibtex entries
 	%refsection=chapter,
 	maxbibnames=99,
 	uniquename=false,
@@ -1430,28 +1476,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 		toc=bib, % make bibliography appear in toc
         }{}
 ]{biblatex}
-
-% If the user provided a shortauthor in the bibtex entry, we use the authentic author (as with the
-% authorindex package) if it is defined, otherwise we use the author.
-% This gets F/T as shorthand right and puts the guys in the index.
-
-\renewbibmacro*{citeindex}{%
-  \ifciteindex
-    {\iffieldequalstr{labelnamesource}{shortauthor} % If biblatex uses shortauthor as the label of a bibitem
-      {\ifnameundef{authauthor}                     % we check whether there is something in authauthor
-        {\indexnames{author}}                       % if not, we use author
-        {\indexnames{authauthor}}}                  % if yes, we use authauthor
-      {\iffieldequalstr{labelnamesource}{author}    % if biblatex uses author we similarly test for
-                                                    % authauthor and use this field
-        {\ifnameundef{authauthor}% if defined use authauthor
-          {\indexnames{author}}
-          {\indexnames{authauthor}}} % if defined use this field
-        {\iffieldequalstr{labelnamesource}{shorteditor} % same for editor
-          {\ifnameundef{autheditor}
-            {\indexnames{editor}}
-            {\indexnames{autheditor}}}
-          {\indexnames{labelname}}}}}               % as a fallback we index on whatever biblatex used.
-    {}}
 
 %% DOIs are handled after hyperref.
 \defbibheading{references}{\chapter{References}\sloppy}
@@ -1804,13 +1828,14 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   \renewcommand{\newlineSpine}{}
   \renewcommand{\newlineTOC}{}  
   %% write bib entry to file
-  \immediate\write\tempfile{@incollection{#1,author={\@author},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
-  \immediate\write\tempfile{@incollection{#1footer,author={\@author},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
+  \immediate\write\tempfile{@incollection{#1,author={\authorToBib},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},keywords={withinvolume}}}
+  \immediate\write\tempfile{@incollection{#1footer,author={\authorToBib},title={{\expandonce{\titleTemp}}},booktitle={{\expandonce{\lsCollectionTitle}}},editor={\lsCollectionEditor},publisher={Language Science Press.},Address={Berlin},year={\lsYear},pages={\lsCollectionPaperFirstPage --\lsCollectionPaperLastPage},doi={\lsChapterDOI},options={dataonly=true}}}
 }
 
 \newcommand{\titleToHead}{}
 \newcommand{\titleTemp}{}
 \newcommand{\titleToToC}{}
+\newcommand{\authorToBib}{}
 
 \newcommand{\lsCollectionPaperHeaderTitle}{%
   \renewcommand{\newlineCover}{}
@@ -1826,7 +1851,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             \renewcommand{\titleTemp}{##2}
             \renewcommand{\titleToToC}{##3}
         }
-        \renewcommand{\author}[1]{\renewcommand{\@author}{##1}}
+        \RenewDocumentCommand{\author}{O{##2} m}{
+          \renewcommand{\authorToBib}{##1}
+          \renewcommand{\@author}{##2}
+        }
         \renewcommand*{\thesection}{\arabic{section}}
         \RedeclareSectionCommand
             [afterskip=1.15\baselineskip plus .1\baselineskip minus .167\baselineskip]

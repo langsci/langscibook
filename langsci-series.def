@@ -22,6 +22,7 @@
 \newcommand{\mi}{mi}
 \newcommand{\nc}{nc}		%Niger Congo
 \newcommand{\ogs}{ogs}		%Open Generative Syntax
+\newcommand{\ogl}{ogl}      %  Open Germanic Linguistics
 \newcommand{\osl}{osl}		%Open Slavic Linguistics
 \newcommand{\pmwe}{pmwe}		%Phraseology and Multi-Word Expressions
 \newcommand{\rcg}{rcg} %
@@ -321,9 +322,10 @@
 
             \bigskip
 
-            Editor: Gabriele Pallotti\\
+            Editor: 
+            Amanda Edmonds, Université Côte d'Azur\\
             Associate editors:
-            Amanda Edmonds, Université de Montpellier;
+            Gabriele Pallotti, University of Modena and Reggio Emilia
             Ineke Vedder, University of Amsterdam
 
             \bigskip
@@ -410,9 +412,10 @@
             \begin{enumerate}
             \item Côté, Marie-Hélène, Remco Knooihuizen and John Nerbonne (eds.).  The future of dialects.
             \item Schäfer, Lea. Sprachliche Imitation: Jiddisch in der deutschsprachigen Literatur (18.–20. Jahrhundert).
-            Press.
             \item Juskan, Martin. Sound change, priming, salience: Producing and perceiving variation in Liverpool English.
             \item Dellert, Johannes. Information-theoretic causal inference of lexical flow.
+            \item Zimmer, Christian (ed.). German(ic) in language contact: Grammatical and sociolinguistic dynamics.
+            \item Tahmasebi, Nina, Lars Borin, Adam Jatowt, Yang Xu and Simon Hengchen (eds.). Computational approaches to semantic change.
             \end{enumerate}
             }
 \fi
@@ -469,6 +472,31 @@
 
 
             }
+\fi
+\ifx\lsSeries\ogl
+	\newcommand{\lsSeriesTitle}{Open Germanic Linguistics}
+	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+	\renewcommand{\lsISSNelectronic}{} %online
+	\renewcommand{\lsISSNprint}{} %Print
+	\renewcommand{\lsSeriesText}{
+            {\large  Open Germanic Linguistics
+            
+            \bigskip
+            
+            Editors: 
+            Michael T. Putnam,
+            B. Richard Page,
+            Laura Catharine Smith
+            
+            \bigskip
+            
+            In this series:
+            
+            \begin{enumerate}
+            \item Lemke, Robin. Experimental investigations on the syntax and usage of fragments.
+            \end{enumerate}
+ }
+         }
 \fi
 \ifx\lsSeries\ogs
 	\newcommand{\lsSeriesTitle}{Open Generative Syntax}
@@ -529,10 +557,10 @@
             \item Lenertová, Denisa, Roland Meyer, Radek Šimík \& Luka Szucsich (Eds.). Advances in formal Slavic linguistics 2016.
             \item Wiland, Bartosz. The spell-out algorithm and lexicalization patterns: Slavic verbs and complementizers.
             \item Marušič, Franc, Petra Mišmaš  \& Rok Žaucer (eds.).  Advances in formal Slavic linguistics 2017.
-            \item Dočekal, Mojmír \& Marcin Wągiel.   Formal approaches to number in Slavic and beyond.
+            \item Blümel, Andreas, Jovana Gajić, Ljudmila Geist, Uwe Junghanns \&  Hagen Pitsch (eds.). Advances in formal Slavic linguistics 2018.
+            \item Dočekal, Mojmír \& Marcin Wągiel (eds.). Formal approaches to number in Slavic and beyond.
             \item Wągiel, Marcin. Subatomic quantification.
             \end{enumerate}
-
             }
 \fi
 \ifx\lsSeries\pmwe
@@ -544,7 +572,7 @@
 
             \bigskip
 
-            \textbf{Series editors}\\
+            Series editors:
                 Agata Savary (University of Tours, Blois, France),
                 Manfred Sailer (Goethe University Frankfurt a.\,M., Germany),
                 Yannick Parmentier (University of Lorraine, France),
@@ -624,16 +652,9 @@
 
 
             \bigskip
-            In this series:
+            In this series (see the complete series history at \url{https://langsci-press.org/catalog/series/sidl}): 
 
-
-
-
-
-            \begin{multicols}{2}
-            \footnotesize
-
-            \begin{enumerate}
+            \lsSeriesHistoryWheel{
             \item Handschuh, Corinna. A typology of marked-S languages.
             \item Rießler, Michael. Adjective attribution.
             \item Klamer, Marian (ed.). The Alor-Pantar languages: History and typology.
@@ -658,15 +679,15 @@
             \item Döhler, Christian. A grammar of Komnzo.
             \item Yakpo, Kofi. A Grammar of Pichi.
             \item Guérin Valérie (ed.). Bridging constructions.
-            \item Aguilar-Guevara, Ana,   Julia Pozas Loyo \&  Violeta Vázquez-Rojas Maldonado *eds.). Definiteness across languages.
+            \item Aguilar-Guevara, Ana,   Julia Pozas Loyo \&  Violeta Vázquez-Rojas Maldonado (eds.). Definiteness across languages.
             \item Di Garbo, Francesca, Bruno Olsson \& Bernhard Wälchli (eds.). Grammatical gender and linguistic complexity: Volume I: General issues and specific studies.
             \item Di Garbo, Francesca, Bruno Olsson \& Bernhard Wälchli (eds.). Grammatical gender and linguistic complexity: Volume II: World-wide comparative studies.
             \item Unterladstetter, Volker. Multi-verb constructions in Eastern Indonesia.
             \item Edwards, Owen. Metathesis and unmetathesis in Amarasi.
             \item Bergqvist, Henrik \& Seppo Kittilä (eds). Evidentiality, egophoricity, and engagement.
             \item Floyd, Simeon, Giovanni Rossi \& N. J. Enfield (eds.). Getting others to do things: A pragmatic typology of recruitments.
-            \end{enumerate}
-            \end{multicols}
+            \item Enke, Dankmar W., Larry M. Hyman, Johanna Nichols, Guido Seiler \& Thilo Weber (eds.). Language change for the worse.
+            }
 
             }
 \fi

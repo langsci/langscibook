@@ -172,3 +172,14 @@
 
 \newcommand{\boxheader}[1]{\medskip{\Large\bfseries\sffamily #1}}
 % End Stefan's TBLS commands
+
+%% A mapping from the auth* fields to the index* fields from langsci-unfied.dbx
+%%https://tex.stackexchange.com/q/220619
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map{
+      \step[fieldsource=authauthor,fieldtarget=indexauthor]
+      \step[fieldsource=autheditor,fieldtarget=indexeditor]
+    }
+  }
+}
