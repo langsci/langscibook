@@ -751,3 +751,4 @@
 \DeclareFieldFormat{postnote}{#1}% display pages without page prefix (p., pp.)
 \DeclareBibliographyAlias{inbook}{incollection}% see https://github.com/semprag/biblatex-sp-unified/issues/35
 \DeclareFieldFormat[techreport,report,misc]{titlecase}{\MakeSentenceCase*{#1}}% techreport/report and misc are not genuinely supported by biblatex-sp-unified 
+\AtBeginBibliography{\sloppy}
