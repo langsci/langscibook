@@ -195,6 +195,8 @@
 \ifx\lsSeries\cogl
 	\newcommand{\lsSeriesTitle}{Comprehensive Grammar Library}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsISSNelectronic}{2749-7798}
+ 	\renewcommand{\lsISSNprint}{2748-971X} 
 	\renewcommand{\lsSeriesText}{
             {\large Comprehensive Grammar Library}
 
@@ -597,8 +599,8 @@
 \ifx\lsSeries\rcg
 	\newcommand{\lsSeriesTitle}{Research on Comparative Grammar}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
-	\renewcommand{\lsISSNelectronic}{ } %online
-	\renewcommand{\lsISSNprint}{} %Print
+	\renewcommand{\lsISSNelectronic}{2749-781X} %online
+	\renewcommand{\lsISSNprint}{2749-7801} %Print
 	\renewcommand{\lsSeriesText}{
             {\large Research on Comparative Grammar }
 
