@@ -197,6 +197,8 @@
 \ifx\lsSeries\cogl
 	\newcommand{\lsSeriesTitle}{Comprehensive Grammar Library}
 	\newcommand{\lsSeriesColor}{lsNightBlue}
+	\renewcommand{\lsISSNelectronic}{2749-7798}
+ 	\renewcommand{\lsISSNprint}{2748-971X} 
 	\renewcommand{\lsSeriesText}{
             {\large Comprehensive Grammar Library}
 
@@ -306,7 +308,8 @@
             \item Guzmán Naranjo, Matías. Analogical classification in formal grammar.
             \item Flick, Johanna. Die Entwicklung des Definitartikels im Althochdeutschen: Eine kognitiv-linguistische Korpusuntersuchung.
             \item Crysmann, Berthold \& Manfred Sailer (eds.). One-to-many relations in morphology, syntax, and semantics.
-            %%%\item Zinova, Yulia. Russian verbal prefixation: A frame semantic analysis.
+            \item Zinova, Yulia. Russian verbal prefixation: A frame semantic analysis.
+            \item Diewald, Gabriele \& Katja Politt (eds.). Paradigms regained: Theoretical and empirical arguments for the reassessment of the notion of paradigm.
             \end{enumerate}
             }
 \fi
@@ -325,9 +328,9 @@
             \bigskip
 
             Editor: 
-            Amanda Edmonds, Université Côte d'Azur\\
-            Associate editors:
-            Gabriele Pallotti, University of Modena and Reggio Emilia
+            Amanda Edmonds, Université Côte d'Azur\smallskip\\
+            Associate editors:\\
+            Gabriele Pallotti, University of Modena and Reggio Emilia\\
             Ineke Vedder, University of Amsterdam
 
             \bigskip
@@ -337,8 +340,9 @@
             \begin{enumerate}
             \item Pérez Vidal, Carmen, Sonia López-Serrano, Jennifer Ament \& Dakota J. Thomas-Wilhelm (eds.).  Learning context effects: Study abroad, formal instruction and international immersion classrooms
             \item Saturno, Jacopo. Utterance structure in initial L2 acquisition.
-	    \item Bardel, Camilla \& Laura Sánchez (eds.). Third language acquisition: Age, proficiency and multilingualism.
-	    \item  Edmonds, Amanda, Pascale Leclercq \& Aarnes Gudmestad (eds.), Interpreting  language-learning data.
+            \item Bardel, Camilla \& Laura Sánchez (eds.). Third language acquisition: Age, proficiency and multilingualism.
+            \item  Edmonds, Amanda, Pascale Leclercq \& Aarnes Gudmestad (eds.), Interpreting  language-learning data.
+            \item Berthele, Raphael \& Isabelle Udry (eds.). Individual differences in early instructed language learning: The role of language aptitude, cognition, and motivation.
             \end{enumerate}
 	}
 \fi
@@ -533,6 +537,7 @@
             \item Bárány, András, Theresa Biberauer, Jamie Douglas \& Sten Vikner (eds.). Syntactic architecture and its consequences I: Syntax inside the grammar.
             \item Bárány, András, Theresa Biberauer, Jamie Douglas \& Sten Vikner (eds.). Syntactic architecture and its consequences II: Between syntax and morphology.
             \item Bárány, András, Theresa Biberauer, Jamie Douglas \& Sten Vikner (eds.). Syntactic architecture and its consequences III: Inside syntax.
+            \item Laszakovits, Sabine \& Zheng Shen (eds.). The size of things I: Structure building.
             \end{enumerate}
             }
 \fi
@@ -598,8 +603,8 @@
 \ifx\lsSeries\rcg
 	\newcommand{\lsSeriesTitle}{Research on Comparative Grammar}
 	\newcommand{\lsSeriesColor}{lsDarkOrange}
-	\renewcommand{\lsISSNelectronic}{ } %online
-	\renewcommand{\lsISSNprint}{} %Print
+	\renewcommand{\lsISSNelectronic}{2749-781X} %online
+	\renewcommand{\lsISSNprint}{2749-7801} %Print
 	\renewcommand{\lsSeriesText}{
             {\large Research on Comparative Grammar }
 
