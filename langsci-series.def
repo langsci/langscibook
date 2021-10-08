@@ -57,6 +57,7 @@
             \item Friesen, Dianne. A grammar of Moloko.
             \item Ali, Mark, Scott Grimm \& Adams Bodomo. A dictionary and  grammatical sketch of Dagaare.
             \end{enumerate}
+            \item  Namyalo, Saudah,   Alena Witzlack-Makarevich,   Anatole Kiriggwajjo,   Amos Atuhairwe,   Zarina Molochieva,   Ruth Gimbo Mukama   \& Margaret Zellers. A dictionary and grammatical sketch of Ruruuli-Lunyala.
         }
 \fi
 \ifx\lsSeries\calseries %\cal is already taken as a command
@@ -189,6 +190,7 @@
             \item Morley, Rebecca L. Sound structure and sound change: A modeling approach.
 	    \item Asoulin, Eran. Language and scientific explanation: Where does semantics fit in?
             \end{enumerate}
+            \item Boeckx, Cedric. Reflections on language evolution: From minimalism to pluralism.
 
             }
 \fi
@@ -364,6 +366,7 @@
             \item Aussant, Émilie \& Jean-Michel Fortis. Historical journey in a linguistic archipelago: Case studies on concepts, fields, and commitments.
             \item McElvenny, James \& Ploder, Andrea. Holisms of communication: The early history of audio-visual sequence analysis.
             \end{enumerate}
+            \item Anderson, Stephen R. Phonology in the Twentieth Century : Second edition, revised and expanded.
 
             }
 \fi
