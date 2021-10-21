@@ -14,6 +14,7 @@ forest | yes | versatile package with a useful, easy to read syntax
 tikz-qtree | yes | can be used, but is less preferrable compared to `forest`
 xyling | no | complicated syntax, high computing times leading to significant increase in document compilation
 pst-jtree | no | 
+tree-dvips | no | compatibility issues with core `langscibook` components
 
 ## Other linguistic packages
 package | recommmended? | reason
