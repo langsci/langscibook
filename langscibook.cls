@@ -1103,6 +1103,9 @@
   {%
     \AtBeginDocument
       {%
+        \bgroup
+        \renewcommand{\newlineCover}{}
+        \renewcommand{\newlineSpine}{}
         \newwrite\metadatafile
         \immediate\openout\metadatafile=langscitmp.bib
         \immediate\write\metadatafile{%
@@ -1121,6 +1124,7 @@
           }
         }
         \immediate\closeout\metadatafile
+        \egroup
         \addbibresource{langscitmp.bib}
       }
   }
