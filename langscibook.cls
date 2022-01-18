@@ -57,6 +57,11 @@
 \RequirePackage[]{silence}
 \WarningsOff[hyperref]
 \WarningsOff[microtype]
+
+\WarningFilter{latex}{Command \mark} %markboth/markright
+\WarningFilter{scrbook}{\float@addtolist}
+\WarningFilter{biblatex}{Macro 'date+extradate}
+
 \WarningFilter{microtype}{Unknown slot}
 \WarningFilter{scrbook}{package incompatibility}
 \WarningFilter{todonotes}{The length}
