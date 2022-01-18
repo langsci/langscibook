@@ -364,3 +364,28 @@
 \renewcommand{\sc}{\scshape}
 \renewcommand{\rm}{\upshape}
 
+% Shortcuts to langsci-affiliation styles
+% These commands allow switching between two frequently used output styles
+% for authors and affiliations:
+% The first command does not produce any superscripted indexes for affiliations.
+% Authors are output in their own line (not grouped in one line), with their
+% affiliations following in the line directly below their names.
+\NewDocumentCommand{\AffiliationsWithoutIndexing}{}
+  {%
+    \SetupAffiliations{output in groups = false,
+                       separator between two = {\bigskip\\},
+                       separator between multiple = {\bigskip\\},
+                       separator between final two = {\bigskip\\}
+                      }
+  }
+% This commands reverts to the standards in langsci-affiliations: authors are 
+% grouped in one line, with indexes pointing to their affiliations. Affiliations
+% are resolved in the line below.  
+\NewDocumentCommand{\AffiliationsWithIndexing}{}
+  {%
+    \SetupAffiliations{output in groups = true,
+                       separator between two = {~\&~},
+                       separator between multiple = {,~},
+                       separator between final two = {~\&~}
+                      }
+  }

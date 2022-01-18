@@ -107,7 +107,7 @@
           \item Lucas, Christopher \& Stefano Manfredi (eds.). Arabic and contact-induced change.
           \item Pinto, Jorge \& Nélia Alexandre (eds.).  Multilingualism and third language acquisition: Learning and teaching trends.
           \item Hakimov, Nikolay. Explaining Russian-German code-mixing: A usage-based approach.
-          % % \item Sánchez Moreano, Santiago \& Élodie Blestel. Prácticas lingüísticas heterogéneas: Nuevas perspectivas para el estudio del español en contacto con lenguas amerindias.
+          \item Sánchez Moreano, Santiago \& Élodie Blestel. Prácticas lingüísticas heterogéneas: Nuevas perspectivas para el estudio del español en contacto con lenguas amerindias.
         \end{enumerate}
         }
 \fi
@@ -295,8 +295,8 @@
 
             \bigskip
 
-            Chief Editor: Stefan Müller \\
-            Consulting Editors: Berthold Crysmann, Laura Kallmeyer
+            Chief Editor: Stefan Müller\\
+            Consulting Editors: Berthold Crysmann, Ana R. Luís
 
             \bigskip
 
@@ -486,8 +486,8 @@
 \ifx\lsSeries\ogl
 	\newcommand{\lsSeriesTitle}{Open Germanic Linguistics}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
-	\renewcommand{\lsISSNelectronic}{} %online
-	\renewcommand{\lsISSNprint}{} %Print
+	\renewcommand{\lsISSNelectronic}{ISSN 2750-557X} %online
+	\renewcommand{\lsISSNprint}{2750-5588} %Print
 	\renewcommand{\lsSeriesText}{
             {\large  Open Germanic Linguistics
             
