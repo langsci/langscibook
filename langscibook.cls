@@ -1151,13 +1151,7 @@
 \newcommand{\lsImpressumExtra}{}%for legal notes required for revised theses ("... in fulfillment of ... ")
 
 \newcommand{\publisherstreetaddress}
-  {%
-%     Language Science Press\\
-%     xHain\\
-%     Grünberger Str. 16\\
-%     10243 Berlin, Germany
-redefine \textbackslash publisherstreetaddress
-  }
+  {redefine \textbackslash publisherstreetaddress}
 
 \newcommand{\publisherurl}{<redefine \textbackslash publisherurl>}
 
