@@ -1162,8 +1162,8 @@ redefine \textbackslash publisherstreetaddress
 \newcommand{\publisherurl}{redefine \textbackslash publisherurl}
 
 \newcommand{\storageinstitution}{redefine \textbackslash storageinstitution}
-\newcommand{\githubtext}{}
-\newcommand{\paperhivetext}{}
+\newcommand{\githubtext}{~}
+\newcommand{\paperhivetext}{~}
 
 \newcommand{\lsImpressum}{%
 \thispagestyle{empty}
