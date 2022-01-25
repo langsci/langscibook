@@ -382,33 +382,42 @@
         \end{pgfonlayer}
     }
 
-    % Generates the content of the back cover
-    % Argument 1: Text width, corresponding to Argument 1 of \frontcovertoptext
-    \newcommand{\backcover}[1]{%
-    \node [ font=\lsBackTitleFont,
-            right,
-            below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
-            text width=#1
-            ] (lspcls_backtitle) {\color{white}\raggedright\lsBackTitle\par};
-    \node [ font=\lsBackBodyFont,
-            below = 10mm of lspcls_backtitle,
-            text width=#1,
-            align=justify
-            ] {\color{white}\parindent=15pt\lsBackBody};
-    \node [ above left = 10mm and 7.5mm of CoverColouredRectangleBack.south east ] {%
-        \colorbox{white}{%
-            \ifbool{lsISBNTwoDigitAddon}{%
-              \begin{pspicture}(0,0)(5.25,1in)
-                \psbarcode[transx=.4,transy=.3]{\lsISBNcover\ \lsISBNhardcoverTwoDigitAddon}{includetext guardwhitespace height=.7}{isbn}
-              \end{pspicture}%
-            }{%
-              \begin{pspicture}(0,0)(4.15,1in)
-                  \psbarcode[transx=.4,transy=.3]{\lsISBNcover}{includetext height=.7}{isbn}%
-              \end{pspicture}%
-            }%
-        }%
-        };
-    }
+    % Generates the content of the back cover. The starred variant \backcover*
+    % does not print the ISBN on the back. By default, we use \backcover if 
+    % we are in a cover generation mode, and backcover* otherwise.
+    % Mandatory argument: Text width, corresponding to Argument 1 of \frontcovertoptext
+    \NewDocumentCommand \backcover {s m}
+      {%
+        \node [ font=\lsBackTitleFont,
+                right,
+                below right = 10mm and 7.5mm of CoverColouredRectangleBack.north west,
+                text width=#2
+                ] (lspcls_backtitle) {\color{white}\raggedright\lsBackTitle\par};
+        \node [ font=\lsBackBodyFont,
+                below = 10mm of lspcls_backtitle,
+                text width=#2,
+                align=justify
+                ] {\color{white}\parindent=15pt\lsBackBody};
+        \node [ above left = 10mm and 7.5mm of CoverColouredRectangleBack.south east ] {%
+          \IfBooleanF {#1}
+            {%
+              \colorbox{white}{%
+                \ifbool{lsISBNTwoDigitAddon}{%
+                  \begin{pspicture}(0,0)(5.25,1in)
+                    \psbarcode[transx=.4,transy=.3]
+                              {\lsISBNcover\ \lsISBNhardcoverTwoDigitAddon}
+                              {includetext guardwhitespace height=.7}{isbn}
+                  \end{pspicture}%
+                }{%
+                  \begin{pspicture}(0,0)(4.15,1in)
+                      \psbarcode[transx=.4,transy=.3]
+                                {\lsISBNcover}
+                                {includetext height=.7}{isbn}%
+                  \end{pspicture}%
+                }%
+              }%
+            }};
+      }
 
     % Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
     % Argument 1: Text width on the front cover. Input: 12.34mm
@@ -968,7 +977,7 @@
                     minimum height=225mm
                     ] (CoverColouredRectangleBack) {};
         \end{pgfonlayer}
-        \backcover{137mm}
+        \ifbool{cover}{\backcover{137mm}}{\backcover*{137mm}}
     \end{tikzpicture}
   \ifcsname tikz@library@external@loaded\endcsname\tikzexternalenable\fi
   }
