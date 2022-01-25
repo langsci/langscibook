@@ -543,14 +543,14 @@
   \usebibmacro{byeditor+others}%
   \newunit\newblock
   \printfield{edition}%
-  \newunit
+  \setunit{\addcomma\space}
   \iffieldundef{maintitle}
     {\printfield{volume}%
      \printfield{part}}
     {}%
-  \newunit
+  \setunit{\addcomma\space}
   \printfield{volumes}%
-  \setunit{\addspace}%                         crucial difference from standard.bbx: space and then (Series + number)
+  \setunit{\addspace}%
   \usebibmacro{series+number}%
   \newunit\newblock
   \printfield{note}%
