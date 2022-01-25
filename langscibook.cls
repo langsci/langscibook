@@ -88,7 +88,7 @@
 \newcommand{\lsBookDOI}{??}
 \newcommand{\lsChapterDOI}{??}
 \newcommand{\lsID}{000}
-\newcommand{\lsURL}{redefine \ lsURL}
+\newcommand{\lsURL}{redefine \textbackslash lsURL}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsOutput}{book}
 \newcommand{\lsBookLanguage}{english}
@@ -120,10 +120,10 @@
 \newcommand{\SpineAuthor}[1]{\renewcommand{\lsSpineAuthor}{#1}}
 
 % Default commands for loaded graphics
-\newcommand{\includespinelogo}{~}
-\newcommand{\includestoragelogo}{~}
-\newcommand{\includepublisherlogo}{~}
-\newcommand{\includechapterfooterlogo}{~}
+\newcommand{\includespinelogo}{<Customize your spine logo in the class file>}
+\newcommand{\includestoragelogo}{<Customize your storage logo in the class file>}
+\newcommand{\includepublisherlogo}{<Customize your logo in the class file>}
+\newcommand{\includechapterfooterlogo}{<Customize your footer icon in the class file>}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -934,7 +934,7 @@
                     fill=\lsSeriesColor,
                     minimum width=155mm,
                     minimum height=225mm
-                    ] (CoverColouredRectangleFront) {};
+                  ] (CoverColouredRectangleFront) {};
         \end{pgfonlayer}
         \frontcovertoptext{140mm}{51pt}
         \coverbottomtext
@@ -1159,11 +1159,11 @@
 redefine \textbackslash publisherstreetaddress
   }
 
-\newcommand{\publisherurl}{redefine \textbackslash publisherurl}
+\newcommand{\publisherurl}{<redefine \textbackslash publisherurl>}
 
-\newcommand{\storageinstitution}{redefine \textbackslash storageinstitution}
-\newcommand{\githubtext}{}
-\newcommand{\paperhivetext}{}
+\newcommand{\storageinstitution}{<redefine \textbackslash storageinstitution>}
+\newcommand{\githubtext}{<customize your \textbackslash githubtext>}
+\newcommand{\paperhivetext}{<customize your \textbackslash paperhivetext>}
 
 \newcommand{\lsImpressum}{%
 \thispagestyle{empty}
