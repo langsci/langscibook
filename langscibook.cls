@@ -57,6 +57,9 @@
 \RequirePackage[]{silence}
 \WarningsOff[hyperref]
 \WarningsOff[microtype]
+\WarningFilter{latex}{Command \mark} %markboth/markright
+\WarningFilter{scrbook}{\float@addtolist}
+\WarningFilter{biblatex}{Macro 'date+extradate}
 \WarningFilter{microtype}{Unknown slot}
 \WarningFilter{scrbook}{package incompatibility}
 \WarningFilter{todonotes}{The length}
@@ -85,7 +88,7 @@
 \newcommand{\lsBookDOI}{??}
 \newcommand{\lsChapterDOI}{??}
 \newcommand{\lsID}{000}
-\newcommand{\lsURL}{redefine \textbackslash lsURL}
+\newcommand{\lsURL}{redefine \ lsURL}
 \newcommand{\lsSeries}{eotms}
 \newcommand{\lsOutput}{book}
 \newcommand{\lsBookLanguage}{english}
@@ -341,7 +344,7 @@
 \urlstyle{same}
 
 %% standard commands
-\usepackage{langsci-basic}
+% \usepackage{langsci-basic}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Covers
