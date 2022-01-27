@@ -1436,11 +1436,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %% languages
 \newcommand{\lsBookLanguageEnglish}{english}
 \newcommand{\lsBookLanguageFrench}{french}
-% \newcommand{\lsBookLanguageSpanish}{spanish}
+\newcommand{\lsBookLanguageSpanish}{spanish}
 \newcommand{\lsBookLanguagePortuguese}{portuguese}
 \newcommand{\lsBookLanguageGerman}{german}
 \newcommand{\lsBookLanguageChinese}{chinese}
-
+\typeout{\lsBookLanguage}
 \notbool{babel}{
   \ifx\lsBookLanguage\lsBookLanguageChinese
 	    \usepackage{xeCJK}%Chinese doesn't load babel, but xeCJK.
@@ -1454,10 +1454,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                     \usepackage[ngerman,main=\lsBookLanguage]{babel}
 					\addto\extrasfrench{\languageshorthands{german}\useshorthands{"}}
                 \fi
-% 		\ifx\lsBookLanguage\lsBookLanguageSpanish
-%                     \usepackage[ngerman,main=\lsBookLanguage]{babel}
-% 					\addto\extrasspanish{\languageshorthands{german}\useshorthands{"}}
-%                 \fi
+		\ifx\lsBookLanguage\lsBookLanguageSpanish
+                    \usepackage[ngerman,main=\lsBookLanguage,es-minimal]{babel}
+					\addto\extrasspanish{\languageshorthands{german}\useshorthands{"}}
+                \fi
 		\ifx\lsBookLanguage\lsBookLanguageGerman
                     \usepackage[ngerman]{babel}
                 \fi
@@ -1466,7 +1466,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                     \addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
                 \fi
 	   }{%else babelshorthands
-		\usepackage[\lsBookLanguage]{babel}
+		\ifx\lsBookLanguage\lsBookLanguageSpanish
+                    %the Spanish option does not work out of the box
+                    \usepackage[\lsBookLanguage,es-minimal]{babel}
+                \else
+                    \usepackage[\lsBookLanguage]{babel}
             }
      \fi%Close language=chinese
 }{}
@@ -1496,8 +1500,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 %% DOIs are handled after hyperref.
 \defbibheading{references}{\chapter{References}\sloppy}
+\defbibheading{english}{\chapter{References}\sloppy}
 \defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
-% \defbibheading{spanish}{\chapter{Referencias bibliográficas}\sloppy}
+\defbibheading{spanish}{\chapter{Referencias bibliográficas}\sloppy}
 \defbibheading{german}{\chapter{Literaturverzeichnis}\sloppy}
 \defbibheading{portuguese}{\chapter{Referências}\sloppy}
 \defbibheading{chinese}{\chapter{参考文献}\sloppy}
@@ -1973,12 +1978,12 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\figref}[1]{Figure~\ref{#1}}
 \fi
 
-% \ifx\lsBookLanguage\lsBookLanguageSpanish
-%     \renewcommand{\chapref}[1]{Capítulo~\ref{#1}}
-%     \renewcommand{\partref}[1]{Parte~\ref{#1}}
-%     \renewcommand{\tabref}[1]{Tabla~\ref{#1}}
-%     \renewcommand{\figref}[1]{Figura~\ref{#1}}
-% \fi
+\ifx\lsBookLanguage\lsBookLanguageSpanish
+    \renewcommand{\chapref}[1]{Capítulo~\ref{#1}}
+    \renewcommand{\partref}[1]{Parte~\ref{#1}}
+    \renewcommand{\tabref}[1]{Tabla~\ref{#1}}
+    \renewcommand{\figref}[1]{Figura~\ref{#1}}
+\fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
     \renewcommand{\chapref}[1]{Kapitel~\ref{#1}}
@@ -2047,16 +2052,16 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     }{}
 \fi
 
-% \ifx\lsBookLanguage\lsBookLanguageSpanish
-%     \renewcommand{\lsIndexTitle}{Índices}
-%     \renewcommand{\lsNameIndexTitle}{Índice nominal}
-%     \renewcommand{\lsSubjectIndexTitle}{Índice temático}
-%     \renewcommand{\lsLanguageIndexTitle}{Índice de idiomas}
-%     \renewcommand{\lsPrefaceTitle}{Prefacio}
-%     \renewcommand{\lsAcknowledgementTitle}{Agradecimientos}
-%     \renewcommand{\lsAbbreviationsTitle}{Abreviaciones}
-%     \renewcommand{\lsReferencesTitle}{spanish}
-% \fi
+\ifx\lsBookLanguage\lsBookLanguageSpanish
+    \renewcommand{\lsIndexTitle}{Índices}
+    \renewcommand{\lsNameIndexTitle}{Índice nominal}
+    \renewcommand{\lsSubjectIndexTitle}{Índice temático}
+    \renewcommand{\lsLanguageIndexTitle}{Índice de idiomas}
+    \renewcommand{\lsPrefaceTitle}{Prefacio}
+    \renewcommand{\lsAcknowledgementTitle}{Agradecimientos}
+    \renewcommand{\lsAbbreviationsTitle}{Abreviaciones}
+    \renewcommand{\lsReferencesTitle}{spanish}
+\fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
     \renewcommand{\lsIndexTitle}{Register}

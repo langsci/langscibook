@@ -1,13 +1,10 @@
 % This file contains instances of code which showed unintended behaviour in the past which is fixed now. Make sure that the unintended behaviour does not resurface
 
-\documentclass[]{article}
-\usepackage{../langsci-gb4e}
-\begin{document}
 \section{Footnotes inherit font specs from calling string}
 
 This is a text in \textit{italics\footnote{This footnote should not be in italics}} which has a footnote which should not be in italics
 % \url{https://github.com/langsci/langscibook/issues/135}
 
 \emph{Blabla\footnote{Footnote.} bla.}
-\end{document}
+
 
