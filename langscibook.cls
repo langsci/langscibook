@@ -1475,7 +1475,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsBookLanguagePortuguese}{portuguese}
 \newcommand{\lsBookLanguageGerman}{german}
 \newcommand{\lsBookLanguageChinese}{chinese}
-\typeout{\lsBookLanguage}
+
 \notbool{babel}{
   \ifx\lsBookLanguage\lsBookLanguageChinese
 	    \usepackage{xeCJK}%Chinese doesn't load babel, but xeCJK.
@@ -1588,7 +1588,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \usepackage{setspace}
 \usepackage{caption}
-% \captionsetup{labelfont=bf}
 \captionsetup{font={stretch=.8,small},width=.8\textwidth}
 \setcapindent{0pt}
 
