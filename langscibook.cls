@@ -1651,7 +1651,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   \parindent\z@
   \parskip\z@ \@plus .3\p@\relax
   \let\item\@idxitem
-  \providecommand*\seealso[2]{\emph{see also} ##1}
+  \providecommand*\seealso[2]{\emph{\lsSeeAlsoTerm{}} ##1}
 }{%
   \if@restonecol
 	  \onecolumn
@@ -1799,6 +1799,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \providecommand{\partref}[1]{Part~\ref{#1}}
 \providecommand{\tabref}[1]{Table~\ref{#1}}
 \providecommand{\figref}[1]{Figure~\ref{#1}}
+\providecommand{\lsSeeAlsoTerm}{see also}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Collection (edited volume):
@@ -2010,6 +2011,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\partref}[1]{Partie~\ref{#1}}
     \renewcommand{\tabref}[1]{Tableau~\ref{#1}}
     \renewcommand{\figref}[1]{Figure~\ref{#1}}
+    \renewcommand{\lsSeeAlsoTerm}{voir aussi}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageSpanish
@@ -2017,6 +2019,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\partref}[1]{Parte~\ref{#1}}
     \renewcommand{\tabref}[1]{Tabla~\ref{#1}}
     \renewcommand{\figref}[1]{Figura~\ref{#1}}
+    \renewcommand{\lsSeeAlsoTerm}{véase también}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -2024,6 +2027,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\partref}[1]{Teil~\ref{#1}}
     \renewcommand{\tabref}[1]{Tabelle~\ref{#1}}
     \renewcommand{\figref}[1]{Abbildung~\ref{#1}}
+    \renewcommand{\lsSeeAlsoTerm}{siehe auch}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -2031,6 +2035,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\partref}[1]{Parte~\ref{#1}}
     \renewcommand{\tabref}[1]{Tabela~\ref{#1}}
     \renewcommand{\figref}[1]{Figura~\ref{#1}}
+    \renewcommand{\lsSeeAlsoTerm}{ver tambem}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
