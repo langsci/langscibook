@@ -1,6 +1,7 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      File: langscibook.cls
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%      
+%%      File: langscibook.cls
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2021-02-17 18:00 CET
+%%      Date: 2022-02-08 14:00 CET
 %%   Purpose: This file defines the basic document class
 %%            for books published with Language Science Press.
 %%  Language: LaTeX
@@ -14,7 +15,7 @@
 %%  version 2005/12/01 or later.
 %%% This work has the LPPL maintenance status `maintained'.
 %%% The Current Maintainer of this work is Sebastian Nordhoff.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Structure of this file:
 %   \- Early load packages
 %   \- Default values of variables
@@ -45,12 +46,12 @@
 %   \- Hyperref
 %   \- Edited volumes (Collection)
 %   \- Localisation
-%   \_ Miscellaneous
+%   \- Miscellaneous
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{langscibook}[2021/02/17 Language Science Press]
+\ProvidesClass{langscibook}[2022/02/08 Language Science Press]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Early load packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -905,6 +906,15 @@
 \newcommand{\lsCoverFontColor}{white}
 \newcommand{\lsCoverBlockColor}{\lsSeriesColor}
 
+\ExplSyntaxOn
+\NewDocumentCommand{\lsDetermineMultiauthors}{}
+  {%
+    \int_compare:nNnTF
+        {\g__affiliations_num_authors_int} > {1}
+        {\booltrue{multiauthors}} {\boolfalse{multiauthors}}
+  }
+\ExplSyntaxOff
+
 \newcommand{\lsEditorPrefix}{}
 \newcommand{\lsEditorSuffix}{}
 \ifbool{collection}{
@@ -913,9 +923,9 @@
     \renewcommand{\newlineSpine}{}
     \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
     \renewcommand{\lsEditorSuffix}{(ed.)}
-      \ifbool{multiauthors}{
-	\renewcommand{\lsEditorSuffix}{(eds.)}
-      }{}
+    \CountAuthorsFromAffiliations{\@author}
+    \lsDetermineMultiauthors{}
+    \ifbool{multiauthors}{\renewcommand{\lsEditorSuffix}{(eds.)}}{}
   } %end AtBeginDocument
 }{} %end collection
 
