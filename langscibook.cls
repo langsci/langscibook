@@ -911,7 +911,7 @@
   {%
     \int_compare:nNnTF
         {\g__affiliations_num_authors_int} > {1}
-        {\booltrue{multiauthors}} {\boolfalse{multiauthors}}
+        {\booltrue{multiauthors}} {}
   }
 \ExplSyntaxOff
 
