@@ -125,7 +125,7 @@
 \newcommand{\includestoragelogo}{~}
 \newcommand{\includepublisherlogo}{~}
 \newcommand{\includechapterfooterlogo}{~}
-
+\newcommand{\lsLicenseInformation}[1]{~}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Conditionals
@@ -1189,17 +1189,18 @@ This title can be downloaded at:\\
 
 \newcommand{\ccby}{CC-BY}
 \newcommand{\ccbynd}{CC-BY-ND}
+\newcommand{\ccbysa}{CC-BY-SA}
 \ifx\lsCopyright\ccby
 Published under the Creative Commons Attribution 4.0 Licence (CC BY 4.0):
-http://creativecommons.org/licenses/by/4.0/ \includegraphics[height=.75em]{ccby.pdf}
+http://creativecommons.org/licenses/by/4.0/ \lsLicenseInformation{ccby}
 \fi
 \ifx\lsCopyright\ccbynd
 Published under the Creative Commons Attribution-NoDerivatives 4.0 Licence (CC BY-ND 4.0):
-http://creativecommons.org/licenses/by-nd/4.0/ \includegraphics[height=.75em]{ccbynd.pdf}
+http://creativecommons.org/licenses/by-nd/4.0/ \lsLicenseInformation{ccbynd}
 \fi
-\ifx\lsCopyright\ccbynd
+\ifx\lsCopyright\ccbysa
 Published under the Creative Commons Attribution-ShareAlike 4.0 Licence (CC BY-SA 4.0):
-http://creativecommons.org/licenses/by-sa/4.0/ \includegraphics[height=.75em]{ccbysa.pdf}
+http://creativecommons.org/licenses/by-sa/4.0/ \lsLicenseInformation{ccbysa}
 \fi
 
 {\lsImpressumExtra}
@@ -1854,11 +1855,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\@pnumwidth}{1.5em}	% width of page numbers
     \ifbool{collectiontoclong}{}{\setcounter{tocdepth}{0}}
     \DeclareTOCStyleEntry%Settings for parts in the TOC of collected volumes
-    [
+      [
         pagenumberbox={\csname @gobble\endcsname},
         raggedentrytext=true,
         linefill={\hfill}
-    ]{tocline}{part}
+      ]{tocline}{part}
 
     \usepackage{chngcntr}
     \counterwithin{figure}{chapter}
@@ -1975,7 +1976,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \includechapterfooterlogo}%
     % \hspace{0.8em}%
     \hfill%
-    \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \includegraphics[height=.75em]{ccby.pdf}}
+    \parbox[b]{.87\textwidth}{\linespread{0.8}\lsChapterFooterSize\normalfont\lsCollectionPaperCitationText \lsLicenseInformation{ccby}}
 }
 
 \ifbool{paper}{
