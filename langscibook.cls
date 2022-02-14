@@ -499,6 +499,7 @@
 %we define a command to better encapsulate the logic
 \newcommand{\setuptitle}{%
     \renewcommand{\maketitle}{%first we treat covers to get them out of the way
+
         \ifbool{coverBODhc}{%
             \bodHCcover
             \end{document}
@@ -539,7 +540,6 @@
                 \null\newpage\thispagestyle{empty}
             }
             \end{titlepage}
-    %         \fi
         }{} %end book
 
         \ifbool{guidelines}{%
@@ -551,8 +551,6 @@
             \end{titlepage}
         }{} %end guidelines
 
-        % \null\newpage\thispagestyle{empty}
-        \hypersetup{colorlinks=false, citecolor=brown, pdfborder={0 0 0}}  % for hyperref
         \color{black}
         \lsInsideFont
 
@@ -1774,16 +1772,17 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[
-	bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,%
+	bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,
 	bookmarksdepth=5,
 	bookmarksnumbered=true,
-	hyperindex=true,%
+	hyperindex=true,
 	breaklinks=true,
 	draft=false,
 	plainpages=false,
-	pdfusetitle=true,  % puts author and title in automatically, maybe only in final mode?
+	pdfborder={0 0 0},
+	pdfusetitle=true,
 	pdfkeywords={},
-	pdfpagelayout=TwoPageRight,   % first page is separate
+	pdfpagelayout=TwoPageRight,% first page is separate
 	hyperfootnotes=false,
 	%ps2pdf=true
 	]{hyperref}
