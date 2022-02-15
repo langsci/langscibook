@@ -1795,6 +1795,17 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %% http://tex.stackexchange.com/questions/66722/tex-live-2012-xelatex-moderncv-error-failed-to-convert-input-string-to-utf1
 \hypersetup{unicode,pdfencoding=auto,bookmarksopenlevel=0}
 
+%% Reset sections in the Backmatter to the top level.
+\usepackage{bookmark}
+\apptocmd{\backmatter}
+         {\bookmarksetup{startatroot}}
+         {}
+         {%
+           \AtEndDocument{\typeout{langscibook Warning:}
+                          \typeout{It was not possible to set option 'staratroot'}
+                          \typeout{for bookmarks in the backmatter.}}
+         }
+
 %% autoref (part of hyperref)
 \ifx\lsBookLanguage\lsBookLanguageEnglish
 \renewcommand{\partautorefname}{Part}%
