@@ -895,6 +895,9 @@
 % }
 
 \input{langsci-series.def}
+\ifbool{guidelines}
+  {\let\lsSeries\guidelines}
+  {}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Cover
