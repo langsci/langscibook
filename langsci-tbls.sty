@@ -42,7 +42,17 @@
         left = 0mm,
         right = 0mm,
         borderline horizontal = {#2}{0pt}{#3},
-        beforeafter skip balanced = \baselineskip
+        beforeafter skip balanced = \baselineskip,
+        subtitle style = 
+          {
+            top = 3.25ex,
+            boxrule = 0pt,
+            colback = white,
+            enhanced,
+            interior hidden,
+            frame hidden,
+            fontupper = \normalfont\sffamily\bfseries\large
+          } 
       }
     \DeclareTColorBox{tblsfilled}{m O{black!12}}
       {
@@ -56,7 +66,17 @@
         right = 5mm,
         frame engine = path,
         frame style = {fill=#2},
-        sharp corners = all
+        sharp corners = all,
+        subtitle style = 
+          {
+            top = 3.25ex,
+            boxrule = 0pt,
+            colback = #2,
+            enhanced,
+            interior hidden,
+            frame hidden,
+            fontupper = \normalfont\sffamily\bfseries\large
+          } 
       }
     \DeclareTColorBox{tblsframed}{m O{0.8mm} O{\lsSeriesColor}}
       {
@@ -69,7 +89,17 @@
         left = 5mm,
         right = 5mm,
         borderline = {#2}{0pt}{#3},
-        beforeafter skip balanced = \baselineskip
+        beforeafter skip balanced = \baselineskip,
+        subtitle style = 
+          {
+            top = 3.25ex,
+            boxrule = 0pt,
+            colback = white,
+            enhanced,
+            interior hidden,
+            frame hidden,
+            fontupper = \normalfont\sffamily\bfseries\large
+          } 
       }
     \DeclareTColorBox{tblsfilledsymbol}{m O{black!12} m}
       {
@@ -99,7 +129,17 @@
                 line width = 0.8mm
               ] at (frame.north west) 
               {{\color{#2}\includegraphics[width=10mm]{tbls-#3.pdf}}};
-          }
+          },
+        subtitle style = 
+          {
+            top = 3.25ex,
+            boxrule = 0pt,
+            colback = #2,
+            enhanced,
+            interior hidden,
+            frame hidden,
+            fontupper = \normalfont\sffamily\bfseries\large
+          } 
       }
     \DeclareTColorBox{tblsframedsymbol}{m O{\lsSeriesColor} O{0.8mm} m}
       {
@@ -127,7 +167,17 @@
                 line width = #3
               ] at (frame.north west) 
               {{\color{#2}\includegraphics[width=10mm]{tbls-#4.pdf}}};
-          }
+          },
+        subtitle style = 
+          {
+            top = 3.25ex,
+            boxrule = 0pt,
+            colback = white,
+            enhanced,
+            interior hidden,
+            frame hidden,
+            fontupper = \normalfont\sffamily\bfseries\large
+          } 
       }
   }
 
