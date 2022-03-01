@@ -1625,19 +1625,16 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 % For papers that have appendices, a replacement for \appendix.
 % Usage: \begin{paperappendix} \section{Title} ... \end{paperappendix}
-\newenvironment{paperappendix}{%
-    \newcommand*{\appendixmore}{%
-    \renewcommand*\thesection{\Alph{section}}
-    \renewcommand*{\sectionformat}{%
-    \appendixname~\thesection\autodot\enskip}%
-    \renewcommand*{\sectionmarkformat}{%
-    \appendixname~\thesection\autodot\enskip}}
-    \appendix
-}{}
+\newenvironment{paperappendix}
+  {%
+    \let\section\appendixsection
+    \let\subsection\appendixsubsection
+  }
+  {}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Indexes
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{index} %% Wie im Stylefile, aber ohne \MakeUppercase
 \renewenvironment{theindex}{%
