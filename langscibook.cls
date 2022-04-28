@@ -611,6 +611,10 @@
         \let\eachwordone=\itshape
         \fi
         
+        \ifx\lsSeries\rcg
+        \let\eachwordone=\itshape
+        \fi
+        
         \ifx\lsSeries\eotms
         \renewcommand{\sectref}[1]{Section~\ref{#1}}
         \fi
