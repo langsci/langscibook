@@ -249,13 +249,16 @@
   }
 }
 
+
 \DeclareVoidOption{arabicfont}
   {
-	\newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{arabtype.ttf}
-% 	\newcommand{\textarabic}[1]{{\arabicfont #1}}
+  \AtEndPreamble{
+        \newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{ScheherazadeRegOT_Jazm.ttf}
 	\AdditionalFontImprint{Arabtype}
+	\usepackage{langsci-bidi}
+%         \newcommand{\textarab}[1]{\RL{\arabicfont #1}} %has to be moved to localcommands
   }
-
+}
 \DeclareVoidOption{hebrewfont}
   {
 	\newfontfamily\hebrewfont[Script=Hebrew,ItalicFont=*, Scale=0.9]{SBLHebrew.ttf}
