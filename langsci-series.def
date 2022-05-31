@@ -16,6 +16,7 @@
 \newcommand{\eotms}{eotms}
 \newcommand{\eotmsig}{eotmsig}
 \newcommand{\eurosla}{eurosla}
+\newcommand{\ela}{ela}
 \newcommand{\hpls}{hpls}
 \newcommand{\loc}{loc}
 \newcommand{\lv}{lv}            %Language Variation
@@ -332,7 +333,7 @@
 
             \bigskip
 
-            Editor: 
+            Editor:
             Amanda Edmonds, Université Côte d'Azur\smallskip\\
             Associate editors:\\
             Gabriele Pallotti, University of Modena and Reggio Emilia\\
@@ -349,6 +350,33 @@
             \item  Edmonds, Amanda, Pascale Leclercq \& Aarnes Gudmestad (eds.), Interpreting  language-learning data.
             \item Berthele, Raphael \& Isabelle Udry (eds.). Individual differences in early instructed language learning: The role of language aptitude, cognition, and motivation.
             \end{enumerate}
+	}
+\fi
+\ifx\lsSeries\ela
+        \newcommand{\elatitle}{Estudios de Lingüística Amerindia}
+        \newcommand{\elaeditor}{Editores:}
+        \newcommand{\elainthisseries}{En esta serie:}
+	\newcommand{\lsSeriesTitle}{\elatitle}
+	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
+
+	\renewcommand{\lsSeriesText}{
+            {\large  \elatitle}
+
+            \bigskip
+
+            \elaeditor
+
+    Carolina González. Florida State University\\
+    Siri Tuttle. Navajo Technical University in New Mexico\\
+    Thiago Chacon. University of Brasilia\\
+    Heriberto Avelino. National Institute for Anthropology and History\\
+
+            \bigskip
+
+            \elainthisseries
+
+            %\begin{enumerate}
+            %\end{enumerate}
 	}
 \fi
 \ifx\lsSeries\hpls
