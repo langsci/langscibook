@@ -57,8 +57,9 @@
             \item Brindle, Jonathan. A dictionary and grammatical outline of Chakali.
             \item Friesen, Dianne. A grammar of Moloko.
             \item Ali, Mark, Scott Grimm \& Adams Bodomo. A dictionary and  grammatical sketch of Dagaare.
-            \end{enumerate}
             \item  Namyalo, Saudah,   Alena Witzlack-Makarevich,   Anatole Kiriggwajjo,   Amos Atuhairwe,   Zarina Molochieva,   Ruth Gimbo Mukama   \& Margaret Zellers. A dictionary and grammatical sketch of Ruruuli-Lunyala.
+            \item Gunnink, Hilde. A grammar of Fwe.
+            \end{enumerate}
         }
 \fi
 \ifx\lsSeries\calseries %\cal is already taken as a command
