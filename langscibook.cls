@@ -2023,8 +2023,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \NewDocumentCommand{\lsConditionalSetupForPaper}{O{localbibliography.bib}}
   {%
     \ifbool{lsImportPackagesWhenStandalone}
-           {\input{localmetadata.tex}
-            \input{localpackages.tex}
+           {\input{localpackages.tex}
             \input{localhyphenation.tex}
             \input{localcommands.tex}
             \addbibresource{#1}}
