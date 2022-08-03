@@ -151,6 +151,7 @@
 \newbool{lsISBNTwoDigitAddon}
 \newbool{lsFloatCounterWithoutChapter}
     \booltrue{lsFloatCounterWithoutChapter}
+\newbool{lsImportPackagesWhenStandalone}    
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -327,6 +328,7 @@
     \ifbool{paper}
       {% The same is applied to papers.
         \KOMAoptions{chapterprefix=true}
+        \booltrue{lsImportPackagesWhenStandalone}
       }
       {}
   }
@@ -2015,6 +2017,19 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \counterwithout{table}{chapter}
     \includepaper@body
 }{} %end paper
+
+
+% A command that imports the files localpackages.tex, but only if output==paper
+\NewDocumentCommand{\lsConditionalSetupForPaper}{O{localbibliography.bib}}
+  {%
+    \ifbool{lsImportPackagesWhenStandalone}
+           {\input{localmetadata.tex}
+            \input{localpackages.tex}
+            \input{localhyphenation.tex}
+            \input{localcommands.tex}
+            \addbibresource{#1}}
+           {}
+  }
 
 
 %writeout page numbers for separation of chapters
