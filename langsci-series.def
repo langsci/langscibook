@@ -519,7 +519,7 @@
 \ifx\lsSeries\ogl
 	\newcommand{\lsSeriesTitle}{Open Germanic Linguistics}
 	\newcommand{\lsSeriesColor}{lsMidDarkBlue}
-	\renewcommand{\lsISSNelectronic}{ISSN 2750-557X} %online
+	\renewcommand{\lsISSNelectronic}{2750-557X} %online
 	\renewcommand{\lsISSNprint}{2750-5588} %Print
 	\renewcommand{\lsSeriesText}{
             {\large  Open Germanic Linguistics
