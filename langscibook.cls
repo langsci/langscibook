@@ -1769,9 +1769,9 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\name}[3][]{%add person names to text and author index
 #2 %output first name
 \ifstrempty{#1}{%if no optional argument present
-\ia{#3, #2@#3, #2}%add lastname, firstname to index
+\ia{#3, #2}%add lastname, firstname to index
 }{%if optional argument present
-\ia{#1@#1}% add optional argument to index
+\ia{#1}% add optional argument to index
 }%
 #3}%output last name in text
 
