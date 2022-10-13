@@ -17,10 +17,10 @@
 %% langsci-affiliations was developed at Language Science Press to help in the
 %% production of scientific texts in linguistics.
 %% 
-%% Copyright (C) 2021 by Felix Kopecky, Language Science Press
+%% Copyright (C) 2022 by Felix Kopecky, Language Science Press
 %% 
 %% This work consists of the file  langsci-affiliations.dtx
-%%           and the derived files langsci-affiliations.ins,
+%%           and the derived files langsci-affiliations.sty,
 %%                                 langsci-affiliations.pdf.
 %% 
 %% It may be distributed and/or modified under the conditions of the
@@ -45,9 +45,10 @@
 
 
 
+
 \RequirePackage{xparse}
 \ProvidesExplPackage {langsci-affiliations}
-{2021-11-30} {1.0.4}
+{2022-10-11} {1.1}
 {A LaTeX3 package to collect and order authors and affiliations}
 
 \NewDocumentCommand{\ResolveAffiliations}{ O{} +m }
@@ -57,6 +58,8 @@
     \exp_args:No \affiliations_resolve:n { #2 }%
     \group_end:
   }
+
+\ProvideDocumentCommand{\LinkToORCIDinAffiliations}{ +m }{ #1 }
 
 \NewExpandableDocumentCommand{\CountAuthorsFromAffiliations}{ O{} +m }
   {%
@@ -80,6 +83,10 @@
         = \l__affiliations_output_affiliation_bool,
     output~affiliation .initial:n
         = { true },
+    orcid~placement .tl_set:N
+        = \l__affiliations_orcid_place_tl,
+    orcid~placement .initial:n
+        = { none },
     output~in~groups .bool_set:N
         = \l__affiliations_output_grouped_bool,
     output~in~groups .initial:n
@@ -126,17 +133,20 @@
 \clist_new:N \l__affiliations_tmpa_clist
 \int_new:N \l__affiliations_tmpa_int
 \int_new:N \g__affiliations_num_authors_int
-\prop_new:N \l__affiliations_tmpa_prop
 \seq_new:N \l__affiliations_affiliations_seq
 \seq_new:N \l__affiliations_authors_seq
 \seq_new:N \l__affiliations_names_seq
 \seq_new:N \l__affiliations_tmpa_seq
 \seq_new:N \l__affiliations_tmpb_seq
+\seq_new:N \l__affiliations_tmp_affil_seq
+\seq_new:N \l__affiliations_tmp_orcid_seq
 \tl_new:N \l__affiliations_tmpa_tl
 \tl_new:N \l__affiliations_tmpb_tl
 \tl_new:N \l__affiliations_tmpc_tl
+\prop_new:N \l__affiliations_tmpa_prop
 \prop_new:N \l__affiliations_output_prop
 \prop_new:N \l__affiliations_affiliations_prop
+\prop_new:N \l__affiliations_orcids_prop
 \prop_const_from_keyval:Nn \l__affiliations_icons_prop
   {
      0 = \char"2460,  1 = \char"2461,  2 = \char"2462,  3 = \char"2463,
@@ -242,10 +252,34 @@
             \seq_use:Nn \l__affiliations_tmpb_seq
                         {\l__affiliations_afil_separator_tl}
           }
-        \seq_put_right:Nx \l__affiliations_tmpa_seq
+        \str_case_e:nn { \l__affiliations_orcid_place_tl }
           {
-            \tl_rescan:nn {} {##1}
-            \exp_not:N \textsuperscript{\tl_use:N \l__affiliations_tmpb_tl}
+            {none}
+            {
+              \seq_put_right:Nx \l__affiliations_tmpa_seq
+                {
+                  \tl_rescan:nn {} {##1}
+                  \exp_not:N \textsuperscript{\tl_use:N \l__affiliations_tmpb_tl}
+                }
+            }
+            {before}
+            {
+              \seq_put_right:Nx \l__affiliations_tmpa_seq
+                {
+                  \exp_not:N \__affiliations_recover_orcid:n { ##1 }
+                  \tl_rescan:nn {} {##1}
+                  \exp_not:N \textsuperscript{\tl_use:N \l__affiliations_tmpb_tl}
+                }
+            }
+            {after}
+            {
+              \seq_put_right:Nx \l__affiliations_tmpa_seq
+                {
+                  \tl_rescan:nn {} {##1}
+                  \exp_not:N \__affiliations_recover_orcid:n { ##1 }
+                  \exp_not:N \textsuperscript{\tl_use:N \l__affiliations_tmpb_tl}
+                }
+            }
           }
       }
     \seq_use:Nnnn \l__affiliations_tmpa_seq
@@ -265,12 +299,36 @@
                        \l__affiliations_tmpc_tl
     \seq_map_inline:Nn \l__affiliations_names_seq
       {
-        \seq_clear_new:N \l__affiliations_names_tmp_seq
-        \seq_set_split:Nnn \l__affiliations_names_tmp_seq { \affiliation }
-                           { ##1 }
+        \tl_clear_new:N \l__affiliations_names_tmp_tl
+        \tl_set:Nn \l__affiliations_names_tmp_tl { ##1 }
+
+
+        \regex_extract_once:nnN
+          {\c{affiliation} \cB. (\c[^BE].*) \cE.}
+          { ##1 }
+          \l__affiliations_tmp_affil_seq
+
+        \regex_extract_once:nnN
+          {\c{orcid} \cB. (\c[^BE].*) \cE.}
+          { ##1 }
+          \l__affiliations_tmp_orcid_seq
+
+
+        \regex_replace_all:nnN {\c{orcid} \cB. (\c[^BE].*) \cE.}
+                               {}
+                               \l__affiliations_names_tmp_tl
+        \regex_replace_all:nnN {\c{affiliation} \cB. (\c[^BE].*) \cE.}
+                               {}
+                               \l__affiliations_names_tmp_tl
+
+
         \prop_put:Nxx \l__affiliations_tmpa_prop
-        { \seq_item:Nn \l__affiliations_names_tmp_seq {1} }
-        { \seq_item:Nn \l__affiliations_names_tmp_seq {2} }
+        { \tl_use:N \l__affiliations_names_tmp_tl }
+        { \seq_item:Nn \l__affiliations_tmp_affil_seq {2} }
+
+        \prop_put:Nxx \l__affiliations_orcids_prop
+        { \tl_use:N \l__affiliations_names_tmp_tl }
+        { \seq_item:Nn \l__affiliations_tmp_orcid_seq {2} }
       }
     \bool_if:NTF \l__affiliations_output_affiliation_bool
       {
@@ -291,16 +349,52 @@
             \seq_clear:N \l__affiliations_tmpa_seq
             \prop_map_inline:Nn \l__affiliations_tmpa_prop
               {
-                \seq_put_right:Nx \l__affiliations_tmpa_seq
+                \str_case_e:nn { \l__affiliations_orcid_place_tl }
                   {
-                    \group_begin:
-                      \exp_not:N \__affiliations_output_authors_font:
-                      \tl_rescan:nn {} {##1}\\[0.5ex]
-                    \group_end:
-                    \group_begin:
-                      \exp_not:N \__affiliations_output_affiliation_font:
-                      \tl_rescan:nn {} {##2}
-                    \group_end:
+                    {none}
+                    {
+                      \seq_put_right:Nx \l__affiliations_tmpa_seq
+                        {
+                          \group_begin:
+                            \exp_not:N \__affiliations_output_authors_font:
+                            \tl_rescan:nn {} {##1}\\[0.5ex]
+                          \group_end:
+                          \group_begin:
+                            \exp_not:N \__affiliations_output_affiliation_font:
+                            \tl_rescan:nn {} {##2}
+                          \group_end:
+                        }
+                    }
+                    {before}
+                    {
+                      \seq_put_right:Nx \l__affiliations_tmpa_seq
+                        {
+                          \group_begin:
+                            \exp_not:N \__affiliations_output_authors_font:
+                            \exp_not:N \__affiliations_recover_orcid:n { ##1 }
+                            \tl_rescan:nn {} {##1}\\[0.5ex]
+                          \group_end:
+                          \group_begin:
+                            \exp_not:N \__affiliations_output_affiliation_font:
+                            \tl_rescan:nn {} {##2}
+                          \group_end:
+                        }
+                    }
+                    {after}
+                    {
+                      \seq_put_right:Nx \l__affiliations_tmpa_seq
+                        {
+                          \group_begin:
+                            \exp_not:N \__affiliations_output_authors_font:
+                            \tl_rescan:nn {} {##1}
+                            \exp_not:N \__affiliations_recover_orcid:n { ##1 }\\[0.5ex]
+                          \group_end:
+                          \group_begin:
+                            \exp_not:N \__affiliations_output_affiliation_font:
+                            \tl_rescan:nn {} {##2}
+                          \group_end:
+                        }
+                    }
                   }
               }
             \seq_use:Nnnn \l__affiliations_tmpa_seq
@@ -315,8 +409,30 @@
         \seq_clear:N \l__affiliations_tmpa_seq
         \prop_map_inline:Nn \l__affiliations_tmpa_prop
           {
-            \seq_put_right:Nx \l__affiliations_tmpa_seq
-                              {\tl_rescan:nn {} {##1} }
+            \str_case_e:nn { \l__affiliations_orcid_place_tl }
+              {
+                {none}
+                  {
+                    \seq_put_right:Nx \l__affiliations_tmpa_seq
+                                      { \tl_rescan:nn {} {##1} }
+                  }
+                {before}
+                  {
+                    \seq_put_right:Nx \l__affiliations_tmpa_seq
+                                      {
+                                        \exp_not:N \__affiliations_recover_orcid:n { ##1 }
+                                        \tl_rescan:nn {} {##1}
+                                      }
+                  }
+                {after}
+                  {
+                    \seq_put_right:Nx \l__affiliations_tmpa_seq
+                                      {
+                                        \tl_rescan:nn {} {##1}
+                                        \exp_not:N \__affiliations_recover_orcid:n { ##1 }
+                                      }
+                  }
+                }
           }
         \seq_use:Nnnn \l__affiliations_tmpa_seq
                         {\l__affiliations_separator_between_two_tl}
@@ -336,6 +452,21 @@
                        \l__affiliations_tmpc_tl
     \int_gset:Nn \g__affiliations_num_authors_int
       {  \seq_count:N \l__affiliations_names_seq  }
+  }
+\cs_new:Npn \__affiliations_recover_orcid:n #1
+  {
+    \prop_get:NnNTF \l__affiliations_orcids_prop { #1 }
+      \l__affiliations_tmpd_tl
+      {
+        \tl_if_empty:NTF \l__affiliations_tmpd_tl
+          % No ORCID present; no action done.
+          { }
+          {
+            \LinkToORCIDinAffiliations{\tl_use:N \l__affiliations_tmpd_tl}
+          }
+      }
+      % No database entry for author; no action done.
+      { }
   }
 
 %% 
