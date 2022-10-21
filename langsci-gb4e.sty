@@ -1,15 +1,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%      File: langsci-gb4e.sty
 %%    Author: Language Science Press (http://langsci-press.org)
-%%      Date: 2016-01-16 16:47:43 UTC
+%%      Date: 2022-10-21
 %%   Purpose: This file contains an adapted version of the gb4e package
 %%            for typetting linguistic examples. It also includes
 %%            adapted versions of the cgloss and jambox packages
 %%  Language: LaTeX
-%%   Licence:
+%%   Licence: The LaTeX Project Public License, Version 1.3c
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\ProvidesPackage{langsci-gb4e}[2020/01/01]
+\ProvidesPackage{langsci-gb4e}[2022/10/21]
 
 \usepackage{etoolbox}
 
@@ -17,8 +17,10 @@
 \toggletrue{cgloss}
 \newtoggle{jambox}
 \toggletrue{jambox}
+\newtoggle{gb4eLowerPenalty}
 \DeclareOption{nocgloss}{\togglefalse{cgloss}}
 \DeclareOption{nojambox}{\togglefalse{jambox}}
+\DeclareOption{lowerpenalty}{\toggletrue{gb4eLowerPenalty}}
 \DeclareOption*{\PackageWarning{langsci-gb4e}{Unknown option ‘\CurrentOption’}}
 \ProcessOptions\relax
 
@@ -256,10 +258,12 @@
                         \begin{list}{(\thexnumi)}%
                         {\usecounter{xnumi}\@subex{#1}{\@gblabelsep}{0em}%
                         \setcounter{xnumi}{\value{equation}}}%
+                        \iftoggle{gb4eLowerPenalty}{\@itempenalty-1000}{}
                  \else%
                         \begin{list}{(\roman{xnumi})}%
                         {\usecounter{xnumi}\@subex{(iiv)}{\@gblabelsep}{\footexindent}%
                         \setcounter{xnumi}{\value{fnx}}}%
+                        \iftoggle{gb4eLowerPenalty}{\@itempenalty-1000}{}
                  \fi}
 
 
