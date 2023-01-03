@@ -151,7 +151,8 @@
 \newbool{lsISBNTwoDigitAddon}
 \newbool{lsFloatCounterWithoutChapter}
     \booltrue{lsFloatCounterWithoutChapter}
-\newbool{lsImportPackagesWhenStandalone}    
+\newbool{lsImportPackagesWhenStandalone}
+\newbool{infn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     Option handling
@@ -275,6 +276,7 @@
   }
 
 \DeclareVoidOption{tblseight}{\booltrue{tblseight}}
+\DeclareVoidOption{infn}{\booltrue{infn}}
 
 \ProcessKeyvalOptions*
 
@@ -1689,15 +1691,25 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \indexproofstyle{\setlength{\overfullrule}{0pt}\raggedright\footnotesize}
 
 %% \index inside footnote
-\def\infn#1#2{% 	\hyperpage{#2}n#1%  99n2
-% 	\hyperpage{#2}*%   99*
-	\hyperpage{#2}\textsuperscript{#1}%  99²
-}%
-\newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
-\newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
-\newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
-\newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
-
+\ifbool{infn}{
+  \def\infn#1#2{% 	\hyperpage{#2}n#1%  99n2
+  % 	\hyperpage{#2}*%   99*
+          \hyperpage{#2}\textsuperscript{#1}%  99²
+  }%
+  \newcommand{\footnoteindex}[2]{\index{#2|infn{#1}}}
+  \newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2|infn{#1}}}
+  \newcommand{\footnoteindex@lan}[2]{\index[lan]{#2|infn{#1}}}
+  \newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2|infn{#1}}}
+}{%else
+  \def\infn#1#2{% 	\hyperpage{#2}n#1%  99n2
+  % 	\hyperpage{#2}*%   99*
+          \hyperpage{#2}\textsuperscript{#1}%  99²
+  }%
+  \newcommand{\footnoteindex}[2]{\index{#2}}
+  \newcommand{\footnoteindex@sbj}[2]{\index[sbj]{#2}}
+  \newcommand{\footnoteindex@lan}[2]{\index[lan]{#2}}
+  \newcommand{\footnoteindex@wrd}[2]{\index[wrd]{#2}}
+}
 
 % Author index
 \newcommand{\ia}[1]{%
