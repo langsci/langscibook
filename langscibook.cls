@@ -311,7 +311,7 @@
 
 
 \PassOptionsToClass{
-	fontsize=\lsFontsize,% default is 11pt
+    fontsize=\lsFontsize,% default is 11pt
     footnotes=multiple,
     numbers=noenddot,% no point after last number of chapters/sections
     index=totoc,
@@ -320,7 +320,7 @@
 }{scrbook}
 
 \notbool{collection}{
-	\PassOptionsToClass{toc=bib}{scrbook} % make bibliography appear in toc
+    \PassOptionsToClass{toc=bib}{scrbook} % make bibliography appear in toc
 }{}
 
 
