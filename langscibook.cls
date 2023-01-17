@@ -310,17 +310,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\LoadClass[
-    fontsize=\lsFontsize,% default is 11pt
+\PassOptionsToClass{
+	fontsize=\lsFontsize,% default is 11pt
     footnotes=multiple,
     numbers=noenddot,% no point after last number of chapters/sections
-    \notbool{collection}{
-      toc=bib, % make bibliography appear in toc
-    }{}
     index=totoc,
     headings=optiontohead,
     footnotes=multiple
-    ]{scrbook}
+}{scrbook}
+
+\notbool{collection}{
+	\PassOptionsToClass{toc=bib}{scrbook} % make bibliography appear in toc
+}{}
+
+
+\LoadClass{scrbook}
 
 \ifbool{collection}
   {% In collected volumes, write "Chapter n" instead of "n" in the header
