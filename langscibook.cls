@@ -140,8 +140,6 @@
 \newbool{babelshorthands}
 \newbool{multiauthors}
 \newbool{showindex}
-\newbool{biblatex}
-    \booltrue{biblatex}
 \newbool{newtxmath}
 \newbool{minimal}
 \newbool{collection}
@@ -193,7 +191,6 @@
 \DeclareVoidOption{babelshorthands}{\booltrue{babelshorthands}}
 \DeclareVoidOption{multiauthors}{\booltrue{multiauthors}}
 \DeclareVoidOption{showindex}{\booltrue{showindex}}
-\DeclareVoidOption{biblatex}{\booltrue{biblatex}}
 \DeclareVoidOption{nonewtxmath}{\boolfalse{newtxmath}}
 \DeclareVoidOption{newtxmath}{\booltrue{newtxmath}}
 \DeclareVoidOption{minimal}{\booltrue{minimal}}
@@ -1865,9 +1862,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 }
 
 \ifbool{collection}{
-    \notbool{biblatex}{
-            \ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
-    }{}
 
     \AtBeginDocument{% for the citation in the footer
             \renewcommand{\newlineCover}{}
