@@ -1,10 +1,7 @@
 \documentclass[output=book
   ,collection
-%   ,collectionchapter
   ,decapbib
   % ,undecapitalize
-  ,biblatex
-  ,multiauthors
   ,tblseight
 %   ,nobabel
 %   ,booklanguage=ngerman
@@ -16,25 +13,13 @@
 \usepackage{langsci-tbls}
 \usepackage{langsci-optional}
 \usepackage{langsci-gb4e}
-\usepackage{langsci-tobi}
+% % \usepackage{langsci-tobi}
 \usepackage{langsci-lgr}
 \usepackage{lipsum}
 \usepackage{multicol}
 \usepackage{minibox}
 \usepackage{forest}
-% \usepackage{authorindex}
 \bibliography{localbibliography}
-
-% The following is langsci.cls specific. langsci-gb4e.sty should not make reference to this without providing the command \il
-% \newindex{lan}{ldx}{lnd}{Language index}
-% \newcommand{\il}[1]{%
-% \if@noftnote%
-% \index[lan]{#1}%
-% \else%
-% \index[lan]{#1|fn{*}}%
-% \fi%
-% }
-% %end il
 
 
 %opening
@@ -51,9 +36,7 @@
 \part{Phonology}
 \renewcommand{\lsChapterFooterSize}{\footnotesize}
 \includepaper{collection-tests/01}
-% \includepaper{collection-tests/01}
 
-\part{Syntaxx}
 \part{Syntax}
 \renewcommand{\lsChapterFooterSize}{\small}
 \includepaper{collection-tests/02}
