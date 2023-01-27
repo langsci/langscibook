@@ -115,6 +115,7 @@
 \newcommand{\lsSpineAuthor}
   {%
     \ResolveAffiliations[output affiliation=false, 
+                         orcid placement=none,
                          output authors font=\lsSpineAuthorFont]{\@author}%
   }
 \newcommand{\SpineTitle}[1]{\renewcommand{\lsSpineTitle}{#1}}
@@ -450,6 +451,7 @@
             \lsEditorPrefix%
             \ResolveAffiliations[output in groups=false, 
                                  output affiliation=false, 
+                                 orcid placement=none,
                                  output authors font=\lsCoverAuthorFont,
                                  separator between two=\\,
                                  separator between multiple=\\,
@@ -470,6 +472,7 @@
             \lsEditorPrefix%
             \ResolveAffiliations[output in groups=false, 
                                  output affiliation=false, 
+                                 orcid placement=none,
                                  output authors font=\lsCoverAuthorFont,
                                  separator between two=\\,
                                  separator between multiple=\\,
@@ -804,6 +807,7 @@
     % In collected volumes, adjust the spacing for unnumbered chapters
     \ifbool{collection}{
     \BeforeStartingTOC[toc]{\SetupAffiliations{output affiliation=false,
+                                               orcid placement=none,
                                                output authors font=\normalfont,
                                                separator between two={~\&~},
                                                separator between multiple={,~},
@@ -1971,6 +1975,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         }
         \ohead{}
         \lehead{\ResolveAffiliations[output affiliation=false,
+                                     orcid placement=none,
                                      output authors font=\normalfont\slshape,
                                      separator between two={~\&~},
                                      separator between multiple={,~},
