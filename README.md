@@ -9,7 +9,7 @@ option | values (defaults in bold face) | meaning
 babelshorthands | | use shorthands defined for German
 biblatex | | use BibLaTeX (default)
 biblatexbackend | **biber** \| bibtex  | the backend of BibLaTeX
-booklanguage | **english** \| chinese \| french \| german \| portuguese | language the book is written in
+booklanguage | **english** \| chinese \| french \| german \| portuguese \| spanish | language the book is written in
 classicfloatnumbers | true / **false** | Restore float and equation numbering to `<chapter no>.<id>` in edited volumes. If set to `false` (default) the label will just be `<id>`. Only applied in edited volumes.
 collection | | for making the book an edited volume
 collectiontoclong | | more detailed table of content in edited volumes
