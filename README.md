@@ -24,11 +24,9 @@ oldstylenumbers | | Global option for old style ("lowercase", "medieval") numera
 openreview | | switch to open review mode
 output | **book** \| inprep \| paper \| guidelines \| cover \| coverbodsc\| coverbodhc \| covercreatespace | different output formats
 proofs | | show line numbers in the margin of the output PDF
-series | sidl \| __eotms__ \| ... | the series code (see series.def for a list of abbreviations)
 showindex | | show index commands on margin
 smallfont | | use 10pt as fontsize
 spinewidth | | the width of the spine, used for cover creation
-undecapitalize | | do not change the casing of titles in the list of references
 uniformtopskip | | disable Donald Arseneau's procedure for automatic widow and orphan control. This procedure results in different `\topskip`s on different pages. This is undesirable when you want each page to have exactly the same number of lines in the type area.
 
 ## defined environments, commands, etc.
