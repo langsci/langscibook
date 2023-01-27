@@ -20,7 +20,6 @@ multiauthors | (automatically determined) | manually change editor suffix to `(e
 nobabel | | do not load the babel package (load it manually instead and include custom languages)
 nonewtxmath | | suppress newtxmath (default)
 newtxmath | | activate newtxmath
-number | \<number\> | number of the book within the series
 oldstylenumbers | | Global option for old style ("lowercase", "medieval") numerals within the scope of serif \textsc and \scshape
 openreview | | switch to open review mode
 output | **book** \| inprep \| paper \| guidelines \| cover \| coverbodsc\| coverbodhc \| covercreatespace | different output formats
