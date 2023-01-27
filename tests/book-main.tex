@@ -1,6 +1,4 @@
 \documentclass[output=book
-%   ,nonflat
-%   ,modfonts,
   ,colorlinks
 %   ,collection
   ,showindex
@@ -10,18 +8,13 @@
 %   ,booklanguage=italian
 %   ,oldstylenumbers
 %   ,multiauthors
-%   ,biblatex
-  ,tblseight
-  ,nobabel
-    ,booklanguage=spanish
+    ,tblseight
+%   ,booklanguage=german
   ]{langscibook}
 
-
-% \usepackage{langsci-glyphs}
 \usepackage{langsci-tbls}
-\usepackage{langsci-forest-setup}
 \usepackage{langsci-linguex}
-\usepackage[nojambox]{langsci-gb4e}
+\usepackage{langsci-gb4e}
 \usepackage{langsci-optional}
 % \usepackage{langsci-tobi}
 \usepackage[danger]{langsci-lgr}
@@ -32,7 +25,7 @@
 \usepackage{lipsum}
 \usepackage{multicol}
 \usepackage{minibox}
-\usepackage{forest}
+\usepackage[linguistics,edges]{forest}
 \usepackage{tikz}
 \usepackage{pgfplots}
 
@@ -62,7 +55,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 \renewcommand{\lsSeries}{tbls}
 
 \lsCoverTitleSizes{40pt}{15mm}
-% \usepackage{../langsci-branding}
+% % \usepackage{../langsci-branding}
 \begin{document}
 \renewcommand{\lsImpressumExtra}{Manuscript submitted in fulfillment of entering the Galactical Hall of Fame.}
 
@@ -87,8 +80,8 @@ What causes a language to be the way it is? Some features are universal, some ar
 \input{gb4e-tests/parbox}
 \input{gb4e-tests/glttests}
 \input{linguex-tests/linguex}
-
-
+% 
+% 
 \subsection{Glosses}
 \input{gb4e-tests/gll}
 \input{gb4e-tests/glll}
@@ -99,13 +92,13 @@ What causes a language to be the way it is? Some features are universal, some ar
 \subsection{Footnotes}
 \input{gb4e-tests/footnote}
 \input{gb4e-tests/footnotemark}
-% \input{gb4e-tests/exinfn}
+\input{gb4e-tests/exinfn}
 \subsection{Metadata}
 \input{gb4e-tests/languageinfo}
 \subsection{Boxing}
 \input{gb4e-tests/xbox}
 \subsection{Jambox}
-% \input{gb4e-tests/jambox}
+\input{gb4e-tests/jambox}
 \subsection{XPs}
 \input{gb4e-tests/bars}
 \input{gb4e-tests/crossrefref}
@@ -117,8 +110,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 \input{gb4e-tests/underlinedexample}
 
 \section{AVM}
-% \input{avm-tests/avm.tex}
-% \input{avm-tests/langsci-avm.tex}
+\input{avm-tests/langsci-avm.tex}
 
 \section{Maths}
 \input{math-tests/formulae}
@@ -128,11 +120,7 @@ What causes a language to be the way it is? Some features are universal, some ar
 
 \section{Fonts}
 \input{font-tests/fonts.tex}
-% \input{font-tests/glyphs.tex}
 \input{font-tests/tiebars.tex}
-% \input{font-tests/numbers.tex} %please check in file
-
-\section{Figures}\label{sec:tables}
 
 \section{Tables}\label{sec:tables}
 \input{table-tests/general}
@@ -143,7 +131,6 @@ What causes a language to be the way it is? Some features are universal, some ar
 
 \section{Bibliography}
 \input{bib-tests/cite}
-% \input{bib-tests/index}
 
 \printbibliography[notkeyword={techreport},notkeyword={website},title={References}]
 
@@ -175,12 +162,6 @@ next thing up is list of websites, included with \verb+keywords={website},+ in t
 %
 \section{Langsci-lgr tests}
 \input{lgr-tests/lgr}
-
-\section{Langsci-basic tests}
-% \input{package-tests/basic}
-
-\section{Langsci-optional tests}
-% \input{package-tests/optional}
 
 \section{Textbooks tests}
 % \input{tbls-tests/mdframed} %% Tests for \usepackage[mdframed]{langsci-tbls}
