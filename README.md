@@ -16,7 +16,7 @@ copyright | **CC-BY** \| CC-BY-ND \| CC-BY-SA | choice of copyright
 decapbib | true / **false** | If you want to have a `booklanguage` other than English, but still have English language settings in your bibliography, e.g. if you have a lot of English sources and/or want to decapitalise the bibliography. (This assumes `biblatex=true`).
 draftmode | | switch to draft mode (adds: draft stamp, indication of overlong lines, date)
 minimal | | A speed-optimised mode - it disables generation of the cover and does not load font files. 
-multiauthors | | change editor suffix to `(eds.)`
+multiauthors | (automatically determined) | manually change editor suffix to `(eds.)`. Usually no user action required as the value is obtained automatically.
 nobabel | | do not load the babel package (load it manually instead and include custom languages)
 nonflat | | switch paths when using the langsci folder
 nonewtxmath | | suppress newtxmath (default)
