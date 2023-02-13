@@ -115,6 +115,7 @@
 \newcommand{\lsSpineAuthor}
   {%
     \ResolveAffiliations[output affiliation=false, 
+                         orcid placement=none,
                          output authors font=\lsSpineAuthorFont]{\@author}%
   }
 \newcommand{\SpineTitle}[1]{\renewcommand{\lsSpineTitle}{#1}}
@@ -139,8 +140,6 @@
 \newbool{babelshorthands}
 \newbool{multiauthors}
 \newbool{showindex}
-\newbool{biblatex}
-    \booltrue{biblatex}
 \newbool{newtxmath}
 \newbool{minimal}
 \newbool{collection}
@@ -192,7 +191,6 @@
 \DeclareVoidOption{babelshorthands}{\booltrue{babelshorthands}}
 \DeclareVoidOption{multiauthors}{\booltrue{multiauthors}}
 \DeclareVoidOption{showindex}{\booltrue{showindex}}
-\DeclareVoidOption{biblatex}{\booltrue{biblatex}}
 \DeclareVoidOption{nonewtxmath}{\boolfalse{newtxmath}}
 \DeclareVoidOption{newtxmath}{\booltrue{newtxmath}}
 \DeclareVoidOption{minimal}{\booltrue{minimal}}
@@ -452,6 +450,7 @@
             \lsEditorPrefix%
             \ResolveAffiliations[output in groups=false, 
                                  output affiliation=false, 
+                                 orcid placement=none,
                                  output authors font=\lsCoverAuthorFont,
                                  separator between two=\\,
                                  separator between multiple=\\,
@@ -472,6 +471,7 @@
             \lsEditorPrefix%
             \ResolveAffiliations[output in groups=false, 
                                  output affiliation=false, 
+                                 orcid placement=none,
                                  output authors font=\lsCoverAuthorFont,
                                  separator between two=\\,
                                  separator between multiple=\\,
@@ -806,6 +806,7 @@
     % In collected volumes, adjust the spacing for unnumbered chapters
     \ifbool{collection}{
     \BeforeStartingTOC[toc]{\SetupAffiliations{output affiliation=false,
+                                               orcid placement=none,
                                                output authors font=\normalfont,
                                                separator between two={~\&~},
                                                separator between multiple={,~},
@@ -1861,9 +1862,6 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 }
 
 \ifbool{collection}{
-    \notbool{biblatex}{
-            \ClassError{langsci/langscibook}{Collection option not compatible with plain BibTeX. Please use biblatex option}{}
-    }{}
 
     \AtBeginDocument{% for the citation in the footer
             \renewcommand{\newlineCover}{}
@@ -1983,6 +1981,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         }
         \ohead{}
         \lehead{\ResolveAffiliations[output affiliation=false,
+                                     orcid placement=none,
                                      output authors font=\normalfont\slshape,
                                      separator between two={~\&~},
                                      separator between multiple={,~},
