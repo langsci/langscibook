@@ -23,7 +23,8 @@
 % http://en.wikibooks.org/wiki/LaTeX/Linguistics#Syntactic_trees
 \usepackage{tikz-dependency}
 
-\usetikzlibrary{tikzmark} % saves positions in tikz pictures, allows to connect arbitrary text
+% dangerous, use at own risk
+%\usetikzlibrary{tikzmark} % saves positions in tikz pictures, allows to connect arbitrary text
 
 
 % http://tex.stackexchange.com/questions/256280/drawing-complex-dependency-diagrams-with-tikz-forest
@@ -32,23 +33,19 @@
 \tikzset{deparrow/.style={-Latex}}%,blue}}
 
 
-% does not work with forest v1.05 did not check later versions
+% externalization works with package memoize
 \usepackage[linguistics]{forest}
-%\usepackage[external,linguistics]{forest}
-%\tikzset{external/up to date check=simple}
-% for texlive: -shell-escape, for miktex -enable-write18
-% All externalized graphics go go the \externaldirectory
-%\tikzexternalize[prefix=external-figures/,shell escape=-shell-escape]
-%\tikzset{external/system call={xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource"}}
 %\usepackage{morewrites}
-
 
 
 
 % specification for all trees, "default preamble" appends to existing specification.
 % The version with apostrophe replaces it.
 \forestset{default preamble'={
-    for tree={align=center,parent anchor=south, child anchor=north,anchor=north,base=bottom},
+    for tree={align=center,parent anchor=south, child anchor=north,anchor=north,base=bottom},   
+% anchor=north was introduced to get alignments of AVMs right.
+% used to be anchor=north but this fails on trees in \ea \z examples, St. Mü. 02.05.2020 or may be not
+%
 % This would align trees to the baseline. We do not want this for TAG
 % where several trees have to be aligned with respect to their center.
 %    before drawing tree={
@@ -268,12 +265,6 @@ no word baseline/.style={for tree={parent anchor=south, child anchor=north,align
 substitution/.style={edge={<-,dashed},l+=\baselineskip},
 %
 %
-%
-typehierarchy/.style={for tree={parent anchor=south, child
-    anchor=north,align=center,base=top,font=\itshape,fit=rectangle}},
-% if there are instances as leaves in the hiarchy
-instance/.style={edge=dotted},
-%
 % auxiliary nodes without node label
 %empty nodes/.style={
 %  delay={where content={}{shape=coordinate,for parent={for children={anchor=north}}}{}}}
@@ -294,4 +285,112 @@ instance/.style={edge=dotted},
      empty nodes/.style={
      delay={where content={}{shape=coordinate,for siblings={anchor=north}}{}}
      }
+   }
+
+\forestset{
+  % Easy extra edges
+  edge to'/.style 2 args={
+    tikz+={\path[#2](#1.parent anchor)--(.child anchor);}
+  },
+  edge to/.style={
+    edge to'/.expanded={\unexpanded{#1}}{\forestoption{edge}},
+  },
+  edge from'/.style 2 args={
+    tikz+={\path[#2](.parent anchor)--(#1.child anchor);}
+  },
+  edge from/.style={
+    edge from'/.process=_O{#1}{#1.edge},
+  },
+  % Identify two (adjacent, vertically aligned) nodes
+  forget@node@boundary/.code={%
+    \forestolet{positive@edge@#1}\relax
+    \forestolet{negative@edge@#1}\relax
+  },
+  identify/.style={
+    phantom,
+    temptoksa/.option=#1.name,
+    before typesetting nodes/.process=Rw1{temptoksa}{
+      content/.option=##1.content,
+      content format/.option=##1.content format,
+      node format/.option=##1.node format,
+    },
+    for parent/.process=Ow1{n}{
+      after packing node={
+        for ##1={
+          ignore,ignore edge,forget@node@boundary/.option=grow,
+        },
+      },
+    },
+    for nodewalk/.process=Rw1Ow1{temptoksa}{name=##1}{!u.name}{edge to={##1}},
+  },
+  % Uniformly spread any sequence of nodes
+  spread/.style n args=4{
+    % #1 = coordinate (x,y,s,l)
+    % #2 = nodewalk to spread
+    % #3 = relative node name of the node with the final coordinate
+    % #4 = final coordinate shift
+    for nodewalk={
+      tempcounta'=-1,
+      #2,
+      tempdima/.pgfmath={(#1("#3")+#4-#1(""))/tempcounta()}
+    }{tempcounta'+=1},
+    tempdimb'=0pt,
+    for nodewalk={#2}{
+      #1'+/.register=tempdimb,
+      tempdimb'+/.register=tempdima,
+    },
+  },
 }
+
+% The old type hierarchy style
+\forestset{
+typehierarchy/.style={for tree={parent anchor=south, child
+% old version:
+%    anchor=north,align=center,base=top,font=\itshape,fit=rectangle}},
+% to get parallel lines:
+    anchor=north,align=center,base=top,font=\itshape,calign=fixed angles}},
+% if there are instances as leaves in the hiarchy
+instance/.style={edge=dotted}
+}
+
+% Type hierarchy (Saso 2020)
+\forestset{
+  type hierarchy/.style={
+    for tree={
+      anchor=base,
+%anchor=north,
+      content format={\noexpand\type{\unexpanded{#1}\forestoption{content}}},
+    },
+  },
+  partition/.style={
+    content format={\noexpand\textsc{\forestoption{content}}},
+    draw,
+  },
+  instance/.style={
+    gray,edge={gray,dashed}
+  },
+  % if all leaves in the hierarchy are instances, we can declare this as follows:
+  % nodes which do not have children (n children=0) are drawn in gray and edges leading to them are dashed 
+  instances/.style={
+      for tree={
+      s sep=0,
+      if n children=0{
+        gray,
+        edge={dashed,gray},
+      }{},
+  }},
+}
+
+% AVM helper
+\forestset{
+  avm/.style={
+    content format={%
+      \noexpand\avmoptions{#1}%
+      \noexpand\begin{avm}%
+        \forestoption{content}%
+      \noexpand\end{avm}%
+    },
+  },
+}
+
+
