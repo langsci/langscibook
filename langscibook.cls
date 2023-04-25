@@ -928,6 +928,19 @@
         {\g__affiliations_num_authors_int} > {1}
         {\booltrue{multiauthors}} {}
   }
+  
+\NewDocumentCommand{\lsDeterminePaperAuthorAffiliationIndexing}{}
+  {%
+    \int_compare:nNnT
+        {\g__affiliations_num_authors_int} = {1}
+        {
+          \SetupAffiliations
+            {
+              mark~style = none, 
+              separator~between~affiliations=\&
+            }
+        } 
+  }
 \ExplSyntaxOff
 
 \newcommand{\lsEditorPrefix}{}
@@ -1886,7 +1899,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
       [
         pagenumberbox={\csname @gobble\endcsname},
         raggedentrytext=true,
-        linefill={\hfill}
+        linefill={\hfill},
+        dynnumwidth=true
       ]{tocline}{part}
 
     \usepackage{chngcntr}
@@ -1958,6 +1972,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
         \renewcommand{\maketitle}{%
             % With \setchapterpreamble from scrbook, we ensure that the author(s)
             % and their affiliation(s) are part of the \chapter block.
+            \CountAuthorsFromAffiliations{\@author}
+            \lsDeterminePaperAuthorAffiliationIndexing{}
             \setchapterpreamble[u]{\ResolveAffiliations{\@author}\\}
             \chapter
             [tocentry={\titleToToC~\newline{\normalfont\ResolveAffiliations{\@author}}}]
