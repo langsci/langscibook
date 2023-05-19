@@ -151,6 +151,7 @@
 \newbool{lsFloatCounterWithoutChapter}
     \booltrue{lsFloatCounterWithoutChapter}
 \newbool{lsImportPackagesWhenStandalone}
+\newbool{lsSpineWidthUserConfigured}
 \newbool{infn}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -173,7 +174,8 @@
 		\renewcommand{\lsBiblatexBackend}{#1}}
 \DeclareStringOption{spinewidth}[20mm]
 	\define@key{langscibook}{spinewidth}{%
-		\renewcommand{\lsSpinewidth}{#1}}
+		\renewcommand{\lsSpinewidth}{#1}%
+		\booltrue{lsSpineWidthUserConfigured}}
 \DeclareVoidOption{smallfont}{\renewcommand{\lsFontsize}{10pt}}
 \DeclareVoidOption{decapbib}{
         \booltrue{resetcapitals}
@@ -644,6 +646,40 @@
 \newlength{\totalheight}
 \setlength{\bleed}{3.175mm}
 \setlength{\spinewidth}{\lsSpinewidth} % Create Space Version
+\ExplSyntaxOn
+% Integers and floats needed for automatic spine width calculation (BoD).
+\int_new:N \l__langsci_bookblock_page_count
+\int_new:N \l_langsci_spine_width_modifier
+\fp_new:N \l__langsci_spine_width
+
+\NewExpandableDocumentCommand{\lsDetermineSpineWidth}{O{Bookblock.pdf} m}
+  {% Collect the page count from input file.
+    \int_set:Nn \l__langsci_bookblock_page_count
+    {\the\XeTeXpdfpagecount"#1"}
+    
+    \str_case:nn {#2}
+      {
+      	{hardcover} % Determine 
+      	  {
+        	\int_compare:nTF 
+		      { \l__langsci_bookblock_page_count < 300 }
+		      { \int_set:Nn \l_langsci_spine_width_modifier {5} } 
+		      { \int_set:Nn \l_langsci_spine_width_modifier {6} }
+      	  }
+      	{softcover}
+      	  {
+        	\int_set:Nn \l_langsci_spine_width_modifier {0}
+      	  }
+      }
+     
+   	\fp_set:Nn \l__langsci_spine_width
+   	  {
+  	    \l__langsci_bookblock_page_count / 2 * 0.12
+  	    + \l_langsci_spine_width_modifier
+   	  }
+    \setlength{\spinewidth}{\fp_use:N \l__langsci_spine_width mm}
+  }
+\ExplSyntaxOff
 \usepackage{calc}
 
 \ifbool{coverCS}{
@@ -655,13 +691,19 @@
 \ifbool{coverBODhc}{
   \booltrue{cover}
   \usepackage{langsci-pod}
-  \bodhcgeometry
+  \ifbool{lsSpineWidthUserConfigured}
+         {}
+         {\lsDetermineSpineWidth{hardcover}}
+  \bodhcgeometry{}
 }{}
 
 \ifbool{coverBODsc}{
   \booltrue{cover}
   \usepackage{langsci-pod}
-  \bodscgeometry
+    \ifbool{lsSpineWidthUserConfigured}
+         {}
+         {\lsDetermineSpineWidth{softcover}}
+  \bodscgeometry{}
 }{}
 
 %Page size and text area if not cover
