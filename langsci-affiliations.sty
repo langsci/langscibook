@@ -17,7 +17,7 @@
 %% langsci-affiliations was developed at Language Science Press to help in the
 %% production of scientific texts in linguistics.
 %% 
-%% Copyright (C) 2022 by Felix Kopecky, Language Science Press
+%% Copyright (C) 2023 by Felix Kopecky, Language Science Press
 %% 
 %% This work consists of the file  langsci-affiliations.dtx
 %%           and the derived files langsci-affiliations.sty,
@@ -45,10 +45,9 @@
 
 
 
-
 \RequirePackage{xparse}
 \ProvidesExplPackage {langsci-affiliations}
-{2022-10-11} {1.1}
+{2023-10-12} {1.2}
 {A LaTeX3 package to collect and order authors and affiliations}
 
 \NewDocumentCommand{\ResolveAffiliations}{ O{} +m }
@@ -103,10 +102,14 @@
         = \l__affiliations_separator_between_last_two_tl,
     separator~between~final~two .initial:n
         = {~\&~},
+    separator~between~indices .tl_set:N
+        = \l__affiliations_indices_separator_tl,
+    separator~between~indices .initial:n
+        = {,},
     separator~between~affiliations .tl_set:N
         = \l__affiliations_afil_separator_tl,
     separator~between~affiliations .initial:n
-        = {,},
+        = {~},
     output~authors~font .cs_set:Np
         = \__affiliations_output_authors_font:,
     output~authors~font .initial:n
@@ -212,7 +215,12 @@
               }
             {none} { }
           }
-        \tl_rescan:nn {} {##1} ~
+        \tl_rescan:nn {} {##1}
+        \int_compare:nNnT
+          { \int_eval:n {\l__affiliations_tmpa_int + 1} }
+          <
+          { \prop_count:N \l__affiliations_affiliations_prop }
+          { \tl_use:N \l__affiliations_afil_separator_tl }
       }
   }
 \cs_new:Npn \__affiliations_return_afil_text:n #1
@@ -250,7 +258,7 @@
         \tl_set:Nn \l__affiliations_tmpb_tl
           {
             \seq_use:Nn \l__affiliations_tmpb_seq
-                        {\l__affiliations_afil_separator_tl}
+                        {\l__affiliations_indices_separator_tl}
           }
         \str_case_e:nn { \l__affiliations_orcid_place_tl }
           {

@@ -979,7 +979,7 @@
           \SetupAffiliations
             {
               mark~style = none, 
-              separator~between~affiliations=\&
+              separator~between~affiliations={~\&~}
             }
         } 
   }
@@ -2197,7 +2197,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsReferencesTitle}{french}
     \ifbool{babel}{
         \renewcommand\frenchfigurename{Figure}
-        \renewcommand\frenchtablename{Table}
+        \renewcommand\frenchtablename{Tableau}
     }{}
 \fi
 
