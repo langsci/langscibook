@@ -627,6 +627,9 @@
         \ifx\lsSeries\eotms
         \renewcommand{\sectref}[1]{Section~\ref{#1}}
         \fi
+        \ifx\lsSeries\ahl
+        \renewcommand{\sectref}[1]{Section~\ref{#1}}
+        \fi
     } %% \AtBeginDocument
 }{} %notbool paper
 
