@@ -823,9 +823,9 @@
     }{}
     % Improve the appearance of numbers in tables and the TOC 
     % In those places, they should come out monospaced, unlike in main text.
-    \AtBeginEnvironment{tabular}{\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont}
-    \AtBeginEnvironment{tabularx}{\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont}
-    \AtBeginEnvironment{longtable}{\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont}
+    \AtBeginEnvironment{tabular}{\ifmmode\else\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont\fi}
+    \AtBeginEnvironment{tabularx}{\ifmmode\else\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont\fi}
+    \AtBeginEnvironment{longtable}{\ifmmode\else\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont\fi}
     
     \DeclareTOCStyleEntry
       [  
