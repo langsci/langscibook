@@ -18,8 +18,6 @@ draftmode | | switch to draft mode (adds: draft stamp, indication of overlong li
 minimal | | A speed-optimised mode - it disables generation of the cover and does not load font files. 
 multiauthors | (automatically determined) | manually change editor suffix to `(eds.)`. Usually no user action required as the value is obtained automatically.
 nobabel | | do not load the babel package (load it manually instead and include custom languages)
-nonewtxmath | | suppress newtxmath (default)
-newtxmath | | activate newtxmath
 oldstylenumbers | | Global option for old style ("lowercase", "medieval") numerals within the scope of serif \textsc and \scshape
 openreview | | switch to open review mode
 output | **book** \| inprep \| paper \| guidelines \| cover \| coverbodsc\| coverbodhc \| covercreatespace | different output formats

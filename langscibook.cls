@@ -140,7 +140,6 @@
 \newbool{babelshorthands}
 \newbool{multiauthors}
 \newbool{showindex}
-\newbool{newtxmath}
 \newbool{minimal}
 \newbool{collection}
 \newbool{collectiontoclong}
@@ -193,8 +192,6 @@
 \DeclareVoidOption{babelshorthands}{\booltrue{babelshorthands}}
 \DeclareVoidOption{multiauthors}{\booltrue{multiauthors}}
 \DeclareVoidOption{showindex}{\booltrue{showindex}}
-\DeclareVoidOption{nonewtxmath}{\boolfalse{newtxmath}}
-\DeclareVoidOption{newtxmath}{\booltrue{newtxmath}}
 \DeclareVoidOption{minimal}{\booltrue{minimal}}
 \DeclareVoidOption{collection}{\booltrue{collection}}
 \DeclareVoidOption{proofs}
@@ -735,7 +732,6 @@
 \usepackage{amsmath} % has to be loaded before mathspec/unicode-math
 
 \notbool{minimal}{% The minimal mode skips font loading
-    \notbool{newtxmath}{
     %% There is a known problem in the interplay between \binom, unicode-math, and OTF
     %% https://tex.stackexchange.com/questions/269980/wrong-parentheses-size-in-binom-with-xelatex-and-unicode-math-in-displaystyle
     \ifx\Umathcode\@undefined\else
@@ -761,10 +757,6 @@
     \fi%umathcode
     %% Provides \setmathfont
     \usepackage{unicode-math}
-    }{%else newtxmath
-    %% Deprecated:
-    \PassOptionsToPackage{no-math}{fontspec} % must appear before metalogo or any fontspec stuff; deactivates fontspec's math settings, which is necessary to let newtxmath do the job
-    }
 
     \usepackage{metalogo}\newcommand{\xelatex}{\XeLaTeX\xspace}
 
@@ -783,12 +775,10 @@
     ItalicFont = Arimo-Italic.ttf,
     BoldItalicFont = Arimo-BoldItalic.ttf
     ]{Arimo-Regular.ttf}
-
-    \notbool{newtxmath}{
+    
     \setmathfont[AutoFakeBold]{LibertinusMath-Regular.otf}
     \setmathfont[range={cal},StylisticSet=1]{XITSMath-Regular.otf}
     \setmathfont[range={bfcal},StylisticSet=1]{XITSMath-Bold.otf}
-    }{}
 
     \ifbool{oldstylenumbers}{
     \defaultfontfeatures[LibertinusSerif-Semibold.otf,LibertinusSerif-Italic.otf,LibertinusSerif-SemiboldItalic.otf,LibertinusSerif-Regular.otf]{SmallCapsFeatures={Numbers=OldStyle}}
@@ -809,21 +799,6 @@
       ]
       {LibertinusSerif-Regular.otf}
 
-    %% Deprecated:
-    \ifbool{newtxmath}{
-            \usepackage[libertine]{newtxmath}
-            %% following http://tex.stackexchange.com/questions/297328/xelatex-does-not-load-newtxmath-with-linuxlibertine-sometimes
-            %% due to a bug in XeTeX. This also seems to fix an issue with \url in footnotes.
-    %% Unfortunately, this is NOT extensively tested!
-            \usepackage{xpatch}
-            \xpretocmd{\textsuperscript}
-            {{\sbox0{$\textstyle x$}}}
-            {}{}
-            \AtBeginDocument{%
-            \DeclareSymbolFont{operators}{\encodingdefault}{\familydefault}{m}{n}%
-            \SetSymbolFont{operators}{bold}{\encodingdefault}{\familydefault}{b}{n}%
-            }
-    }{}
     % Improve the appearance of numbers in tables and the TOC 
     % In those places, they should come out monospaced, unlike in main text.
     \AtBeginEnvironment{tabular}{\ifmmode\else\addfontfeatures{Numbers={Monospaced,Lining}}\selectfont\fi}
