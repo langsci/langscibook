@@ -1496,12 +1496,12 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \def\epigramsource#1{\gdef\@epigramsource{#1}}
 \epigramsource{}
 
-\usepackage{epigraph}
-\setlength{\epigraphrule}{0pt}
-\renewcommand{\textflush}{flushepinormal}
-\setlength{\epigraphwidth}{.618\textwidth}% Set to the longer part of golden ratio
-\setlength{\afterepigraphskip}{0\baselineskip}
-\setlength{\beforeepigraphskip}{0\baselineskip}
+% Apply settings to dictum from scrbook
+\setkomafont{dictum}{\normalfont\small}
+\setkomafont{dictumauthor}{\normalfont\small}
+\renewcommand*{\dictumauthorformat}[1]{#1}
+\renewcommand{\dictumwidth}{.618\textwidth} % longer part of golden ratio
+\renewcommand*{\dictumrule}{\smallskip\par}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Footnotes
@@ -2035,8 +2035,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
                 \ifbool{draft}{Draft of \today, \currenttime}{}
                     }
             \ifx\@epigram\empty
-              \else {\epigraph{\@epigram\\[-2\baselineskip]}{\@epigramsource}
-                \epigram{}\epigramsource{}}
+                  \else \dictum[\@epigramsource]{\@epigram}%
+                        \epigram{}\epigramsource{}
             \fi
             \enlargethispage{-1\baselineskip}
         }
