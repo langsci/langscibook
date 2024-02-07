@@ -145,7 +145,6 @@
 \newbool{collectiontoclong}
 \newbool{uniformtopskip}
 \newbool{oldstylenumbers}
-\newbool{tblseight}%for chinesefonts in tbls series page
 \newbool{lsISBNTwoDigitAddon}
 \newbool{lsFloatCounterWithoutChapter}
     \booltrue{lsFloatCounterWithoutChapter}
@@ -272,7 +271,6 @@
 	\AdditionalFontImprint{Estrangelo Edessa}
   }
 
-\DeclareVoidOption{tblseight}{\booltrue{tblseight}}
 \DeclareVoidOption{infn}{\booltrue{infn}}
 
 \ProcessKeyvalOptions*
@@ -1047,19 +1045,10 @@
 %    Series history
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\tblseight}{{\color{red}Chinese fonts for TBLS 8 not loaded! Please set the option \textsc{tblseight} in main.tex for final production}}
-
-\ifbool{tblseight}
-  {
-    \newfontfamily\cn
-      [
-        Scale=MatchLowercase,
-        BoldFont=SourceHanSerifSC-Bold.otf
-      ]
-      {SourceHanSerifSC-Regular.otf}
-
-    \renewcommand{\tblseight}{{\cn 语法理论: 从转换语法到基于约束的理论}}
-  }{}
+% Load Chinese font for TBLS history display (from CTAN package "fandol")
+\ifx\lsSeries\tbls
+  \newfontfamily{\lsSeriesHistoryFandolSong}{FandolSong-Regular.otf}
+\fi
   
 \ExplSyntaxOn
 % A command to output a limited number of items on the series history page.
