@@ -662,14 +662,14 @@
     
     \str_case:nn {#2}
       {
-      	{hardcover} % Determine 
+      	{hardcover} % Determine hardcover spine dimensions with 90g white paper
       	  {
         	\int_compare:nTF 
 		      { \l__langsci_bookblock_page_count < 300 }
 		      { \int_set:Nn \l_langsci_spine_width_modifier {5} } 
 		      { \int_set:Nn \l_langsci_spine_width_modifier {6} }
       	  }
-      	{softcover}
+      	{softcover} % Determine softcover spine dimensions with 90g white paper
       	  {
         	\int_set:Nn \l_langsci_spine_width_modifier {0}
       	  }
