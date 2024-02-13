@@ -109,7 +109,8 @@
 \newcommand{\newlineCover}{\\}  % \newline only on cover
 \newcommand{\newlineSpine}{\\}  % \newline only on spine
 \newcommand{\newlineTOC}{\\}    % \newline only in TOC entry
-\newcommand{\affiliation}[1]{}     % A dummy command to process the affiliation info.
+\newcommand{\affiliation}[1]{}  % A dummy command to process the affiliation info.
+\newcommand{\orcid}[1]{}        % A dummy command to process ORCiDs.
 
 \newcommand{\lsSpineTitle}{\@title}
 \newcommand{\lsSpineAuthor}
