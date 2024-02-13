@@ -1635,6 +1635,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \usepackage{caption}
 \captionsetup{font={stretch=.8,small},width=.8\textwidth}
 \setcapindent{0pt}
+\AtBeginEnvironment{floatrow}{\captionsetup{margin=.05\linewidth}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
