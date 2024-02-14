@@ -1047,9 +1047,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load Chinese font for TBLS history display (from CTAN package "fandol")
-\ifx\lsSeries\tbls
-  \newfontfamily{\lsSeriesHistoryFandolSong}{FandolSong-Regular.otf}
-\fi
+\AtEndPreamble
+  {%
+    \ifx\lsSeries\tbls
+      \newfontfamily{\lsSeriesHistoryFandolSong}{FandolSong-Regular.otf}
+    \fi
+  }
   
 \ExplSyntaxOn
 % A command to output a limited number of items on the series history page.
