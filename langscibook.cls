@@ -2213,7 +2213,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsLanguageIndexTitle}{语言索引}
     \renewcommand{\lsPrefaceTitle}{前言}
     \renewcommand{\lsAcknowledgementTitle}{致谢}
-    \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+    \renewcommand{\lsAbbreviationsTitle}{缩写}
 \fi
 
 
