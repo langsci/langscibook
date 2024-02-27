@@ -1988,10 +1988,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             % and their affiliation(s) are part of the \chapter block.
             \CountAuthorsFromAffiliations{\@author}
             \lsDeterminePaperAuthorAffiliationIndexing{}
-            \setchapterpreamble[u]{\ResolveAffiliations{\@author}\\}
+            \setchapterpreamble[u]{\ResolveAffiliations{\@author}}
             \chapter
             [tocentry={\titleToToC~\newline{\normalfont\ResolveAffiliations{\@author}}}]
             {\titleTemp}
+            \vskip1.15\baselineskip plus .1\baselineskip minus .167\baselineskip
             \begin{quote}
                 \small\lsCollectionPaperAbstract
             \end{quote}
