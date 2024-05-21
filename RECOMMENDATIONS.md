@@ -31,5 +31,6 @@ bussproofs | no | does not align well in examples, insufficient means for custom
 package | recommmended? | reason
 -------|--------|---------
 mathtools | ~ | watch out for the re-definitions in `\overbrace` etc.
+soul    | no | Uses font `ectt1000`, which does not have many non-ASCII characters (IPA, etc)
 tocloft | no | Can clash with the Table of ... settings from `scrbook`. Use methods shipped with `scrbook` instead.
 wrapfigure | no | Figures wrapped around the main text are incompatible with our house style and should never be used.
