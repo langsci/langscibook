@@ -15,11 +15,14 @@
 
 \newtoggle{cgloss}
 \toggletrue{cgloss}
+\DeclareOption{nocgloss}{\togglefalse{cgloss}}
 \newtoggle{jambox}
 \toggletrue{jambox}
-\newtoggle{gb4eLowerPenalty}
-\DeclareOption{nocgloss}{\togglefalse{cgloss}}
 \DeclareOption{nojambox}{\togglefalse{jambox}}
+\newtoggle{autoexewidth}
+\toggletrue{autoexewidth}
+\DeclareOption{manualexewidth}{\togglefalse{autoexewidth}}
+\newtoggle{gb4eLowerPenalty}
 \DeclareOption{lowerpenalty}{\toggletrue{gb4eLowerPenalty}}
 \DeclareOption*{\PackageWarning{langsci-gb4e}{Unknown option ‘\CurrentOption’}}
 \ProcessOptions\relax
@@ -242,10 +245,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\exe{%
+    \iftoggle{autoexewidth}{%
     %\ifnum\value{equation}>9 \exewidth{(23)}\else\fi%
     %inserted by LangSci, for large example numbers
-    \ifnum\value{equation}>998 \exewidth{(1235)}\else\ifnum\value{equation}>98 \exewidth{(235)}\fi\fi%
-    \@ifnextchar [{\@exe}{\@exe[\@exwidth]}}
+    \ifnum\value{equation}>998%
+       \exewidth{(1235)}%
+    \else\ifnum\value{equation}>98%
+       \exewidth{(235)}%
+    \fi\fi%
+    }{}%
+    \@ifnextchar [{\@exe}{\@exe[\@exwidth]}%
+}
 
 \def\@exe[#1]{\ifnum \@xnumdepth >0%
                  \if@xrec\@exrecwarn\fi%

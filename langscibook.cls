@@ -1582,24 +1582,14 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	indexing=cite
 ]{biblatex}
 
-%% DOIs are handled after hyperref.
-\defbibheading{references}{\chapter{References}\sloppy}
-\defbibheading{english}{\chapter{References}\sloppy}
-\defbibheading{french}{\chapter{Références bibliographiques}\sloppy}
-\defbibheading{spanish}{\chapter{Referencias bibliográficas}\sloppy}
-\defbibheading{german}{\chapter{Literaturverzeichnis}\sloppy}
-\defbibheading{portuguese}{\chapter{Referências}\sloppy}
-\defbibheading{chinese}{\chapter{参考文献}\sloppy}
-
-%% penalties against widows and orphans in bibliography
-%% http://tex.stackexchange.com/questions/297705/atbeginenvironment-does-not-work-with-natbib/297721#297721
-\apptocmd{\thebibliography}{%
-\clubpenalty\@M
-\@clubpenalty\clubpenalty
-\widowpenalty\@M
+\defbibheading{references}[\lsReferencesTitle]{%
+  \addchap{#1}
+  \markdouble{#1}
+  \clubpenalty\@M
+  \@clubpenalty\clubpenalty
+  \widowpenalty\@M
+  \emergencystretch=3em
 }
-{}{}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Floats
@@ -1988,10 +1978,11 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
             % and their affiliation(s) are part of the \chapter block.
             \CountAuthorsFromAffiliations{\@author}
             \lsDeterminePaperAuthorAffiliationIndexing{}
-            \setchapterpreamble[u]{\ResolveAffiliations{\@author}\\}
+            \setchapterpreamble[u]{\ResolveAffiliations{\@author}}
             \chapter
             [tocentry={\titleToToC~\newline{\normalfont\ResolveAffiliations{\@author}}}]
             {\titleTemp}
+            \vskip1.15\baselineskip plus .1\baselineskip minus .167\baselineskip
             \begin{quote}
                 \small\lsCollectionPaperAbstract
             \end{quote}
@@ -2156,7 +2147,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsPrefaceTitle}{Preface}
 \newcommand{\lsAcknowledgementTitle}{Acknowledgments}
 \newcommand{\lsAbbreviationsTitle}{Abbreviations}
-\newcommand{\lsReferencesTitle}{references} % This aligns with \defbibheading
+\newcommand{\lsReferencesTitle}{References} % This aligns with \defbibheading
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
     \renewcommand{\lsIndexTitle}{Index}
@@ -2166,7 +2157,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsPrefaceTitle}{Préface}
     \renewcommand{\lsAcknowledgementTitle}{Remerciements}
     \renewcommand{\lsAbbreviationsTitle}{Liste des abréviations utilisées dans les gloses des exemples}
-    \renewcommand{\lsReferencesTitle}{french}
+    \renewcommand{\lsReferencesTitle}{Références bibliographiques}
     \ifbool{babel}{
         \renewcommand\frenchfigurename{Figure}
         \renewcommand\frenchtablename{Tableau}
@@ -2181,7 +2172,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsPrefaceTitle}{Prefacio}
     \renewcommand{\lsAcknowledgementTitle}{Agradecimientos}
     \renewcommand{\lsAbbreviationsTitle}{Abreviaciones}
-    \renewcommand{\lsReferencesTitle}{spanish}
+    \renewcommand{\lsReferencesTitle}{Referencias bibliográficas}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -2192,7 +2183,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsPrefaceTitle}{Vorwort}
     \renewcommand{\lsAcknowledgementTitle}{Danksagung}
     \renewcommand{\lsAbbreviationsTitle}{Abkürzungsverzeichnis}
-    \renewcommand{\lsReferencesTitle}{german}
+    \renewcommand{\lsReferencesTitle}{Literaturverzeichnis}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguagePortuguese
@@ -2203,7 +2194,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsPrefaceTitle}{Prefácio}
     \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
     \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
-    \renewcommand{\lsReferencesTitle}{portugese}
+    \renewcommand{\lsReferencesTitle}{Referências}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
@@ -2213,7 +2204,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsLanguageIndexTitle}{语言索引}
     \renewcommand{\lsPrefaceTitle}{前言}
     \renewcommand{\lsAcknowledgementTitle}{致谢}
-    \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+    \renewcommand{\lsAbbreviationsTitle}{缩写}
+    \renewcommand{\lsReferencesTitle}{参考文献}
 \fi
 
 
