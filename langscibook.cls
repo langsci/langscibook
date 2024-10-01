@@ -593,10 +593,12 @@
             \setuptitle
           }
 
-        %% for those who like the example in numbered example sentences to be typeset in italics
-        %% this is possible for a complete series only.
+        %% Series-specific layout settings, governs the entire series
+        %% In SIDL, COGL and RCG, examples are put in italics. Sections are
+        %% referenced using the section sign “§”.
+        
         \ifx\lsSeries\sidl
-        %\def\exfont{\normalsize\itshape}
+        \renewcommand{\sectref}[1]{§\ref{#1}}
         \let\eachwordone=\itshape % only \gll
 
         \let\oldtable\table   % footnotes in tables without horizontal line
@@ -614,17 +616,12 @@
         
         \ifx\lsSeries\cogl
         \let\eachwordone=\itshape
+        \renewcommand{\sectref}[1]{§\ref{#1}}
         \fi
         
         \ifx\lsSeries\rcg
         \let\eachwordone=\itshape
-        \fi
-        
-        \ifx\lsSeries\eotms
-        \renewcommand{\sectref}[1]{Section~\ref{#1}}
-        \fi
-        \ifx\lsSeries\ahl
-        \renewcommand{\sectref}[1]{Section~\ref{#1}}
+        \renewcommand{\sectref}[1]{§\ref{#1}}
         \fi
     } %% \AtBeginDocument
 }{} %notbool paper
@@ -1853,7 +1850,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \renewcommand{\Hfootnoteautorefname}{Footnote}%
 \fi
 
-\providecommand{\sectref}[1]{§\ref{#1}}
+\providecommand{\sectref}[1]{Section~\ref{#1}}
 \providecommand{\chapref}[1]{Chapter~\ref{#1}}
 \providecommand{\partref}[1]{Part~\ref{#1}}
 \providecommand{\tabref}[1]{Table~\ref{#1}}
