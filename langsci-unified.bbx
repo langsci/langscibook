@@ -48,6 +48,23 @@
 \newtoggle{issueandeditor}
 \DeclareBibliographyOption{issueandeditor}[true]{%
   \settoggle{issueandeditor}{#1}}
+  
+%  Automated capitalisation after colons
+%  Copies from apa.bbx, which copied and adapted from ieee.bbx
+% {<process>} {*} {<text>}
+\newcommand*{\bbx@colon@search}[3]{%
+  \bbx@colon@search@aux#1#2\empty#3: \stop
+}
+\long\def\bbx@colon@search@aux#1#2#3: #4\stop{%
+  \expandafter#1\expandafter#2\expandafter{#3}%
+  \ifblank{#4}
+    {}
+    {%
+      : %
+      \bbx@colon@search@aux#1#2\empty#4\stop
+    }%
+}
+%
 
 % Formatting directives for name lists
 % ------------------------------------------------------------------
@@ -463,7 +480,7 @@
 }
 
 % basically everything is in sentence case, other than journals and book series (recurring titles)
-\DeclareFieldFormat[article,book,collection,inbook,incollection,inproceedings,thesis,unpublished]{titlecase}{\MakeSentenceCase*{#1}}%
+\DeclareFieldFormat[article,book,collection,inbook,incollection,inproceedings,thesis,unpublished]{titlecase}{\bbx@colon@search\MakeSentenceCase*{#1}}
 
 % No quotes around titles
 \DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]{title}{#1}
