@@ -210,12 +210,22 @@
 \newbibmacro*{cite:labelyear+extradate}{%
   \iffieldundef{labelyear}
     {}
-    {\printtext[bibhyperref]{\printlabeldateextra}}}
+    {\printtext[bibhyperref]{\printlabeldateextra}}%
+     \usebibmacro{cite:thisvolume}%
+    }
 
 \newbibmacro*{cite:extradate}{%
   \iffieldundef{extradate}
     {}
-    {\printtext[bibhyperref]{\printfield{extradate}}}}
+    {\printtext[bibhyperref]{\printfield{extradate}}}%
+     \usebibmacro{cite:thisvolume}%
+  }
+
+\newbibmacro*{cite:thisvolume}{%
+  \ifkeyword{LSPWithinVolume}
+    {\addspace\printtext[bibhyperref]{[this volume]}}
+    {}%
+}
 
 \newbibmacro*{textcite:postnote}{%
   \usebibmacro{postnote}%
@@ -294,39 +304,11 @@
   {}
   {\usebibmacro{textcite:postnote}}
   
-% "This volume" citation commands
-\DeclareCiteCommand{\citetv}
-  {\usebibmacro{prenote}}
-  {\ifciteindex
-     {\indexnames{labelname}}
-     {}%
-   \printtext[bibhyperref]{\printnames{labelname}\addspace\printfield{year}}}
-  {\multicitedelim}
-  {\printtext[bibhyperref]{\usebibmacro{postnote}\addspace[this volume]}}
-  
-\DeclareCiteCommand{\textcitetv}
-  {\usebibmacro{prenote}}
-  {\ifciteindex
-     {\indexnames{labelname}}
-     {}%
-   \printtext[bibhyperref]{\printnames{labelname}\addspace\bibopenparen\printfield{year}}}
-  {\multicitedelim}
-  {\printtext[bibhyperref]{\usebibmacro{postnote}\addspace[this volume]\bibcloseparen}}
-  
-\DeclareCiteCommand{\parencitetv}
-  {\usebibmacro{prenote}}
-  {\ifciteindex
-     {\indexnames{labelname}}
-     {}%
-   \printtext[bibhyperref]{\bibopenparen\printnames{labelname}\addspace\printfield{year}}}
-  {\multicitedelim}
-  {\printtext[bibhyperref]{\usebibmacro{postnote}\addspace[this volume]\bibcloseparen}}
-  
-\DeclareCiteCommand{\citeyeartv}
-  {\boolfalse{citetracker}\boolfalse{pagetracker}\usebibmacro{prenote}}
-  {\printtext[bibhyperref]{\iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}}}
-  {\multicitedelim}
-  {\usebibmacro{postnote}\addspace[this volume]}
+% Legacy "his volume" citation commands
+\newrobustcmd*{\citetv}{\cite}
+\newrobustcmd*{\textcitetv}{\textcite}
+\newrobustcmd*{\parencitetv}{\parencite}
+\newrobustcmd*{\citeyeartv}{\citeyear}
   
 % A cite command to produce the full reference in the footer of the landing page of 
 % a paper in an edited volume
@@ -383,7 +365,7 @@
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \usebibmacro{prenote}}
-  {\printtext[bibhyperref]{\iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}}}
+  {\printtext[bibhyperref]{\iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}\usebibmacro{cite:thisvolume}}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
@@ -391,7 +373,7 @@
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \usebibmacro{prenote}}
-  {\printtext[bibhyperref]{\iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}}}
+  {\printtext[bibhyperref]{\iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}\usebibmacro{cite:thisvolume}}}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
@@ -405,7 +387,7 @@
 \DeclareCiteCommand{\posscitealt}
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}}
-  {\printtext[bibhyperref]{\printnames{labelname}'s \iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}}}
+  {\printtext[bibhyperref]{\printnames{labelname}'s \iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}\usebibmacro{cite:thisvolume}}}
   {}
   {}
 
