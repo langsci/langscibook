@@ -308,7 +308,6 @@
 \newrobustcmd*{\citetv}{\cite}
 \newrobustcmd*{\textcitetv}{\textcite}
 \newrobustcmd*{\parencitetv}{\parencite}
-\newrobustcmd*{\citeyeartv}{\citeyear}
   
 % A cite command to produce the full reference in the footer of the landing page of 
 % a paper in an edited volume
@@ -362,6 +361,14 @@
   {\usebibmacro{postnote}}
 
 \DeclareCiteCommand{\citeyear}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\printtext[bibhyperref]{\iffieldundef{year}{\printfield{labelyear}}{\printfield{year}}\printfield{extradate}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+  
+\DeclareCiteCommand{\citeyeartv}
   {\boolfalse{citetracker}%
    \boolfalse{pagetracker}%
    \usebibmacro{prenote}}
