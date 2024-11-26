@@ -310,9 +310,7 @@
     fontsize=\lsFontsize,% default is 11pt
     footnotes=multiple,
     numbers=noenddot,% no point after last number of chapters/sections
-    \notbool{collection}{
-      toc=bib, % make bibliography appear in toc
-    }{}
+    toc=bib, % make bibliography appear in toc
     index=totoc,
     headings=optiontohead,
     footnotes=multiple
