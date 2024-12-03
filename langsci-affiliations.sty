@@ -46,7 +46,7 @@
 
 
 \RequirePackage{xparse}
-\ProvidesExplPackage {langsci-affiliations} {2024-02-27} {1.3}
+\ProvidesExplPackage {langsci-affiliations} {2024-04-09} {1.4}
 {A LaTeX3 package to collect and order authors and affiliations}
 
 \NewDocumentCommand{\ResolveAffiliations}{ O{} +m }
@@ -132,7 +132,11 @@
     input~affiliation~separator .tl_set:N
         = \l_affiliations_input_afil_sep_tl,
     input~affiliation~separator .initial:n
-        = {;}
+        = {;},
+    author~affiliation~skip .dim_set:N
+        = \l__author_affil_sep_dim,
+    author~affiliation~skip .initial:n
+        = {0.5ex}
   }
 
 \cs_generate_variant:Nn \prop_put:Nnn { Nxx }
@@ -364,8 +368,10 @@
                   \__affiliations_output_authors_font:
                   \__affiliations_output_authors:
                 }
-            \group_end:\smallskip\\
+            \group_end:
+            \skip_vertical:N \l__author_affil_sep_dim
             \group_begin:
+              \noindent
               \parbox {\linewidth}
                 {
                   \__affiliations_output_affiliation_paragraph_format:
@@ -387,7 +393,7 @@
                           \group_begin:
                             \exp_not:N \__affiliations_output_authors_font:
                             \tl_rescan:nn {} {##1}
-                          \group_end:\\[0.5ex]
+                          \group_end:\\[\dim_use:N \l__author_affil_sep_dim]
                           \group_begin:
                             \exp_not:N \__affiliations_output_affiliation_font:
                             \tl_rescan:nn {} {##2}
@@ -401,7 +407,7 @@
                           \group_begin:
                             \exp_not:N \__affiliations_output_authors_font:
                             \exp_not:N \__affiliations_recover_orcid:n { ##1 }
-                            \tl_rescan:nn {} {##1}\\[0.5ex]
+                            \tl_rescan:nn {} {##1}\\[\dim_use:N \l__author_affil_sep_dim]
                           \group_end:
                           \group_begin:
                             \exp_not:N \__affiliations_output_affiliation_font:
@@ -417,7 +423,7 @@
                             \exp_not:N \__affiliations_output_authors_font:
                             \tl_rescan:nn {} {##1}
                             \exp_not:N \__affiliations_recover_orcid:n { ##1 }
-                            \\[0.5ex]
+                            \\[\dim_use:N \l__author_affil_sep_dim]
                           \group_end:
                           \group_begin:
                             \exp_not:N \__affiliations_output_affiliation_font:
