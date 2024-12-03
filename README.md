@@ -28,7 +28,7 @@ spinewidth | | the width of the spine, used for cover creation
 uniformtopskip | | disable Donald Arseneau's procedure for automatic widow and orphan control. This procedure results in different `\topskip`s on different pages. This is undesirable when you want each page to have exactly the same number of lines in the type area.
 
 ## defined environments, commands, etc.
-name | type | descrition | usage
+name | type | description | usage
 -------|--------|---------|---------
 issueandeditor | cmd | print issue title in bibliography | `\PassOptionsToPackage{issueandeditor=true}{biblatex}`
 patch mkbibindexname | cmd | disable capitalisation of last names in the index | `\patchcmd{\mkbibindexname}{\ifdefvoid{#3}{}{\MakeCapital{#3} }}{\ifdefvoid{#3}{}{#3 }}{}{\AtEndDocument{\typeout{mkbibindexname could not be patched.}}}`
