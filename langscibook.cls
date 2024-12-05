@@ -1449,6 +1449,22 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     style = section
   ]
   {appendixsubsection}
+  
+\DeclareNewSectionCommand
+  [
+    counterwithin = appendixsubsection,
+    beforeskip=-3.25ex plus -1ex minus -.2ex,
+    afterskip=1.5ex plus .2ex,
+    indent = 0pt,
+    font = \usekomafont{subsubsection},
+    level = 3,
+    tocindent = 7.0em,
+    toclevel = 3,
+    tocnumwidth = 4.1em,
+    tocstyle = section,
+    style = section,
+  ]
+  {appendixsubsubsection}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Epigrams
