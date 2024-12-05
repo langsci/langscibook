@@ -1437,8 +1437,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \DeclareNewSectionCommand
   [
     counterwithin = appendixsection,
-    beforeskip=-10pt,
-    afterskip=1sp,
+    beforeskip=-3.25ex plus -1ex minus -.2ex,
+    afterskip=1.5ex plus .2ex,
     indent = 0pt,
     font = \usekomafont{subsection},
     level = 2,
