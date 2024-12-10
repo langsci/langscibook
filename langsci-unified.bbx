@@ -474,9 +474,32 @@
 \renewcommand*{\subtitlepunct}{\addcolon\space}
 \renewcommand*{\bibpagespunct}{\newunitpunct}  % No comma before pages, just the usual new unit period
 
+\NewBibliographyString{thisvolume}
+
 \DefineBibliographyStrings{english}{%
   edition          = {edn\adddot},
   phdthesis        = {Doctoral dissertation},
+  thisvolume       = {this volume}
+}
+
+\DefineBibliographyStrings{german}{%
+  thisvolume       = {in diesem Band}
+}
+
+\DefineBibliographyStrings{french}{%
+  thisvolume       = {dans ce tome}
+}
+
+\DefineBibliographyStrings{spanish}{%
+  thisvolume       = {en este tomo}
+}
+
+\DefineBibliographyStrings{portuguese}{%
+  thisvolume       = {neste tomo}
+}
+
+\DefineBibliographyStrings{italian}{%
+  thisvolume       = {in questo tomo}
 }
 
 % basically everything is in sentence case, other than journals and book series (recurring titles)
