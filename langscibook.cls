@@ -719,7 +719,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{ifxetex}
-\ifxetex\else\ClassError{langscibook}{Please use XeLaTeX!}{}\fi
+\RequireXeTeX{}
 
 %% Typesetting of mathematical formulas
 \usepackage{amssymb} % has to be loaded before other stuff
