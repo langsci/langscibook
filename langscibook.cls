@@ -24,6 +24,7 @@
 %   \- Output variables
 %   \- MAIN CLASS
 %   \- General packages
+%   \- Parameters for paragraph composition
 %   \- Covers
 %   \- Output types (book, draft, cover)
 %   \- Page geometry
@@ -68,8 +69,9 @@
 \WarningFilter{scrbook}{package incompatibility}
 \WarningFilter{todonotes}{The length}
 \WarningFilter{biblatex}{'babel/polyglossia'}
-\hbadness=99999 % get rid of underfull box warnings
-\typeout{Warnings are disabled in langscibook.cls for underfull boxes, hyperref, microtype and scrbook package incompatibility, todonotes length and babel/polyglossia csquotes}
+\typeout{Warnings are disabled in langscibook.cls for hyperref, microtype and 
+         scrbook package incompatibility, todonotes length and babel/polyglossia 
+         csquotes}
 \usepackage{etoolbox}
 \RequirePackage{xparse}
 \usepackage{langsci-affiliations}
@@ -352,6 +354,18 @@
 
 %% standard commands
 % \usepackage{langsci-basic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Parameters for paragraph composition
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Default values for paragraph composition parameters. These mostly follow 
+% Philip Taylor's (1993) recommendations in TUGboat 14(2), pp. 138–140.
+\pretolerance=150
+\tolerance=250
+\hbadness=3000
+\hfuzz=0.5pt
+\emergencystretch=1em
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %      Covers
@@ -1599,6 +1613,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   \@clubpenalty\clubpenalty
   \widowpenalty\@M
   \emergencystretch=3em
+  \hbadness=10000
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
