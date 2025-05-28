@@ -625,6 +625,10 @@
         \let\eachwordone=\normalfont
         \fi
 
+        \ifx\lsSeries\cicl
+        \let\eachwordone=\normalfont
+        \fi
+
         \ifx\lsSeries\nc
         \let\eachwordone=\itshape
         \fi
