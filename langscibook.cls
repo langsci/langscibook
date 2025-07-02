@@ -443,54 +443,100 @@
             }};
       }
 
-    % Generates the content on the front cover, including title, author, subtitle. See below for remaining commands
+    % Generates the top half of the front cover: title, subtitle, author/editor, other contribution
     % Argument 1: Text width on the front cover. Input: 12.34mm
     % Argument 2: Font size on the front cover. Adjust to compensate varying text width. Input: 12.34pt
     \newcommand{\frontcovertoptext}[3][white]{%
-    \renewcommand{\newlineCover}{\\}
-    \node [ font=\lsCoverTitleFont,
-            below right = 10mm and 7.5mm of CoverColouredRectangleFront.north west,
+        \renewcommand{\newlineCover}{\\}
+        % Print title block: title and optional subtitle
+        \coordinate (lspcls_titleblockbottom) at (CoverColouredRectangleFront.north west); % initialize position
+        % Print title
+        \node [ %draw, %debug
+            font=\lsCoverTitleFont,
+            below right=10mm and 7.5mm of CoverColouredRectangleFront.north west,
             text width=#2,
             align=left
             ] (lspcls_covertitle) {\color{#1}\raggedright\@title\par};
-
-    \ifx\@subtitle\empty  % Is there a subtitle? If no, just print the author.
-    \node [ font=\lsCoverAuthorFont,
-            right,
-            below = 11.2mm of lspcls_covertitle.south,
-            text width=#2
-            ] {\color{#1}\nohyphens{%
-            \lsEditorPrefix%
-            \ResolveAffiliations[output in groups=false, 
-                                 output affiliation=false, 
-                                 orcid placement=none,
-                                 output authors font=\lsCoverAuthorFont,
-                                 separator between two=\\,
-                                 separator between multiple=\\,
-                                 separator between final two=\\]
-                                 {\@author}\par}};
-    \else % If yes, create a node for subtitle and author
-    \node [ font=\lsCoverSubTitleFont,
-            below = 8mm of lspcls_covertitle.south,
-            text width=#2,
-            align=left
-            ] (lspcls_coversubtitle) {\color{#1}\raggedright\@subtitle\par};
-    \node [
-            font=\lsCoverAuthorFont,
-            right,
-            below = 11.2mm of lspcls_coversubtitle.south,
-            text width=#2
-            ] {\color{#1}\nohyphens{%
-            \lsEditorPrefix%
-            \ResolveAffiliations[output in groups=false, 
-                                 output affiliation=false, 
-                                 orcid placement=none,
-                                 output authors font=\lsCoverAuthorFont,
-                                 separator between two=\\,
-                                 separator between multiple=\\,
-                                 separator between final two=\\]
-                                 {\@author}\par}};
-    \fi
+        \ifx\@subtitle\empty  % Is there a subtitle? 
+        % No subtitle. Set position of title block below title
+            \coordinate (lspcls_titleblockbottom) at (lspcls_covertitle.south);
+        \else 
+        % Print subtitle
+            \node [ %draw, %debug
+                font=\lsCoverSubTitleFont,
+                below=8mm of lspcls_covertitle.south,
+                text width=#2,
+                align=left
+                ] (lspcls_coversubtitle) {\color{#1}\raggedright\@subtitle\par};
+        % Set position of title block below subtitle
+            \coordinate (lspcls_titleblockbottom) at (lspcls_coversubtitle.south);					
+        \fi
+        % Add space between title block and author block 
+        \coordinate (lspcls_authorblocktop) at ([yshift=-11.2mm]lspcls_titleblockbottom); % vertical space between titleblock and authorblock
+        % Print author block: author OR "Edited by" editor. In either case, author/editor names are in \@author.
+        \coordinate (lspcls_authorblockbottom) at (lspcls_authorblocktop); % initialize position
+        \ifbool{collection}{
+        % Collected volume. Print editor: "Edited by" \@author
+            \node [ %draw, %debug
+                font=\lsDedicationFont, % use smaller font?
+                below=0mm of lspcls_authorblocktop.south,
+                text width=#2,
+                align=left
+                ] (lspcls_covereditedby) {\color{#1}Edited by}; % localisation?
+            \node [ %draw, %debug
+                font=\lsCoverAuthorFont,
+%                right, % delete?
+                below=2.5mm of lspcls_covereditedby.south,
+                text width=#2
+                ] (lspcls_covereditor) {%
+                    \color{#1}\nohyphens{%
+                        \ResolveAffiliations[%
+                             output in groups=false, 
+                             output affiliation=false, 
+                             orcid placement=none,
+                             output authors font=\lsCoverAuthorFont,
+                             separator between two=\\,
+                             separator between multiple=\\,
+                             separator between final two=\\
+                        ]{\@author}\par%
+                    }%
+                };
+            \coordinate (lspcls_authorblockbottom) at (lspcls_covereditor.south);
+        }{
+        % Monograph. Print author: \@author
+            \node [ %draw, %debug
+                 font=\lsCoverAuthorFont,
+%                 right, % delete?
+                 below=0mm of lspcls_authorblocktop.south,
+                 text width=#2
+                 ] (lspcls_coverauthor) {%
+                     \color{#1}\nohyphens{%
+                         \ResolveAffiliations[%
+                             output in groups=false, 
+                             output affiliation=false, 
+                             orcid placement=none,
+                             output authors font=\lsCoverAuthorFont,
+                             separator between two=\\,
+                             separator between multiple=\\,
+                             separator between final two=\\
+                         ]{\@author}\par%
+                    }%
+                };
+            \coordinate (lspcls_authorblockbottom) at (lspcls_coverauthor.south);
+        }
+        % Print (optional) contribution below lspcls_authorblockbottom, e.g. "With an introduction by", or \renewcommand{\frontcovertoptext} in localmedata.tex
+%        \node [ %draw, %debug
+%            font=\lsDedicationFont, % use smaller font
+%            below=2.5mm of lspcls_authorblockbottom,
+%            text width=#2,
+%            align=left
+%           ] (lspcls_covercontribution) {\color{#1}With an introuction by};
+%	\node [ %draw, %debug
+%            font=\lsCoverAuthorFont,
+%            right, % delete?
+%            below=2.5mm of lspcls_covercontribution.south,
+%            text width=#2
+%            ] (lspcls_covercontributor) {\color{#1}Ferdinand de Saussure};
     }
 
     % Generates the bottom half of the front cover content: series, series number, logo.
