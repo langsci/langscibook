@@ -2143,6 +2143,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \ifx\lsBookLanguage\lsBookLanguageFrench
     \renewcommand{\chapref}[1]{Chapitre~\ref{#1}}
+    \renewcommand{\sectref}[1]{Section~\ref{#1}}
     \renewcommand{\partref}[1]{Partie~\ref{#1}}
     \renewcommand{\tabref}[1]{Tableau~\ref{#1}}
     \renewcommand{\figref}[1]{Figure~\ref{#1}}
@@ -2151,6 +2152,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \ifx\lsBookLanguage\lsBookLanguageSpanish
     \renewcommand{\chapref}[1]{Capítulo~\ref{#1}}
+    \renewcommand{\sectref}[1]{Sección~\ref{#1}}
     \renewcommand{\partref}[1]{Parte~\ref{#1}}
     \renewcommand{\tabref}[1]{Tabla~\ref{#1}}
     \renewcommand{\figref}[1]{Figura~\ref{#1}}
@@ -2159,6 +2161,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
     \renewcommand{\chapref}[1]{Kapitel~\ref{#1}}
+    \renewcommand{\sectref}[1]{Abschnitt~\ref{#1}}
     \renewcommand{\partref}[1]{Teil~\ref{#1}}
     \renewcommand{\tabref}[1]{Tabelle~\ref{#1}}
     \renewcommand{\figref}[1]{Abbildung~\ref{#1}}
