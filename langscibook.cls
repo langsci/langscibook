@@ -139,7 +139,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newbool{cover}
-\newbool{resetcapitals}
+% \newbool{resetcapitals}
 \newbool{draft}
 \newbool{openreview}
 \newbool{babel}
@@ -181,10 +181,10 @@
 		\renewcommand{\lsSpinewidth}{#1}%
 		\booltrue{lsSpineWidthUserConfigured}}
 \DeclareVoidOption{smallfont}{\renewcommand{\lsFontsize}{10pt}}
-\DeclareVoidOption{decapbib}{
-        \booltrue{resetcapitals}
+% \DeclareVoidOption{decapbib}{
+%         \booltrue{resetcapitals}
 % 	\lsResetCapitalstrue
-	}
+% 	}
 \DeclareVoidOption{draftmode}{% 'draftmode' instead of 'draft' due to undesirable side efects
 	 \booltrue{draft}
 	 \overfullrule=5pt
@@ -1639,7 +1639,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 	maxcitenames=2,
 	isbn=false,
 	autolang=hyphen,
-	\ifbool{resetcapitals}{language=english,}{}
+% 	\ifbool{resetcapitals}{language=english,}{}
 	backend=\lsBiblatexBackend,
 	indexing=cite
 ]{biblatex}
