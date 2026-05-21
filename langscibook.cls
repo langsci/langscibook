@@ -127,6 +127,10 @@
 \newcommand{\SpineTitle}[1]{\renewcommand{\lsSpineTitle}{#1}}
 \newcommand{\SpineAuthor}[1]{\renewcommand{\lsSpineAuthor}{#1}}
 
+
+\newcommand{\lsCoverExtra}{}
+\newcommand{\lsCoverExtraContributor}{}
+
 % Default commands for loaded graphics
 \newcommand{\includespinelogo}{~}
 \newcommand{\includestoragelogo}{~}
@@ -506,24 +510,24 @@
         \coordinate (lspcls_current) at (lspcls_coverauthor.south west);
 %        % Print (optional) contribution
 %        % Add space
-%        \coordinate (lspcls_current) at ($(lspcls_current) + (0,-2.5mm)$);
-%        % Print e.g. "With an introduction by" in small font
-%        \node [ %draw, %debug
-%            font=\lsDedicationFont, % use smaller font
-%            anchor=north west,
-%            text width=#2,
-%            align=left
-%        ] (lspcls_covercontribution) at (lspcls_current) {\color{#1}With an introduction by};
-%        \coordinate (lspcls_current) at (lspcls_covercontribution.south west);
-%        % Add space
-%        \coordinate (lspcls_current) at ($(lspcls_current) + (0,-2.5mm)$); 
-%        % Print e.g. "Ferdinand de Saussure" in font size for author
-%        \node [ %draw, %debug
-%            font=\lsCoverAuthorFont,
-%            anchor=north west,
-%            text width=#2
-%        ] (lspcls_covercontributor) at (lspcls_current) {\color{#1}Ferdinand de Saussure};
-%        \coordinate (lspcls_current) at (lspcls_covercontributor.south west); 
+       \coordinate (lspcls_current) at ($(lspcls_current) + (0,-2.5mm)$);
+       % Print e.g. "With an introduction by" in small font
+       \node [ %draw, %debug
+           font=\lsDedicationFont, % use smaller font
+           anchor=north west,
+           text width=#2,
+           align=left
+       ] (lspcls_covercontribution) at (lspcls_current) {\color{#1}\lsCoverExtra};
+       \coordinate (lspcls_current) at (lspcls_covercontribution.south west);
+       % Add space
+       \coordinate (lspcls_current) at ($(lspcls_current) + (0,-2.5mm)$);
+       % Print e.g. "Ferdinand de Saussure" in font size for author
+       \node [ %draw, %debug
+           font=\lsCoverAuthorFont,
+           anchor=north west,
+           text width=#2
+       ] (lspcls_covercontributor) at (lspcls_current) {\color{#1}\lsCoverExtraContributor};
+       \coordinate (lspcls_current) at (lspcls_covercontributor.south west);
     } %\frontcovertoptext
 
     % Generates the bottom half of the front cover content: series, series number, logo.
