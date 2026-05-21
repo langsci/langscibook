@@ -18,7 +18,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Structure of this file:
 %   \- Early load packages
-%   \- Default values of variables
+%   \- Default values of variablesF
 %   \- Definition of conditionals
 %   \- Option handling
 %   \- Output variables
@@ -1446,19 +1446,45 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setcounter{secnumdepth}{4}
+%
+% \def\subsubsubsection{\@startsection{paragraph}{3}{\z@}{-3.25ex plus
+% -1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+% \let\subsubsubsectionmark\@gobble%
 
-\def\subsubsubsection{\@startsection{paragraph}{3}{\z@}{-3.25ex plus
--1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+\DeclareNewSectionCommand[
+  level=4,
+  style=section,
+  beforeskip=-3.25ex plus -1ex minus -.2ex,
+  afterskip=1.5ex plus .2ex,
+  font=\normalsize
+]{subsubsubsection}
 
-\let\subsubsubsectionmark\@gobble%
 
-\def\subsubsubsubsection{\@startsection{subparagraph}{3}{\z@}{-3.25ex plus
--1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+% \def\subsubsubsubsection{\@startsection{subparagraph}{3}{\z@}{-3.25ex plus
+% -1ex minus-.2ex}{1.5ex plus.2ex}{\reset@font\normalsize}}
+%
+% \let\subsubsubsubsectionmark\@gobble
 
-\let\subsubsubsubsectionmark\@gobble
+\DeclareNewSectionCommand[
+  level=5,
+  style=section,
+  beforeskip=-3.25ex plus -1ex minus -.2ex,
+  afterskip=1.5ex plus .2ex,
+  font=\normalsize
+]{subsubsubsubsection}
+
+\renewcommand*\thesubsubsubsection{%
+  \thesubsubsection.\arabic{subsubsubsection}%
+}
+
+\renewcommand*\thesubsubsubsubsection{%
+  \thesubsubsubsection.\arabic{subsubsubsubsection}%
+}
+
 
 %% needed for hyperref
 \def\toclevel@subsubsubsection{4}
+\def\toclevel@subsubsubsubsection{5}
 
 % Commands for Sections in Appendices:
 % Use as \appendixsection and \appendixsubsection. 
