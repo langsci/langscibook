@@ -264,20 +264,20 @@
         \newfontfamily\arabicfont[Script=Arabic,ItalicFont=*,Scale=1.4]{ScheherazadeRegOT_Jazm.ttf}
 	\AdditionalFontImprint{Arabtype}
 	\usepackage{langsci-bidi}
-%         \newcommand{\textarab}[1]{\RL{\arabicfont #1}} %has to be moved to localcommands
+        \newcommand{\textarab}[1]{{\RL{\arabicfont ##1}}\normalfont} %has to be moved to localcommands
   }
 }
 \DeclareVoidOption{hebrewfont}
   {
 	\newfontfamily\hebrewfont[Script=Hebrew,ItalicFont=*, Scale=0.9]{SBLHebrew.ttf}
-% 	\newcommand{\texthebrew}[1]{{\hebrewfont #1}}
+	\newcommand{\texthebrew}[1]{{\hebrewfont ##1}}
 	\AdditionalFontImprint{SBLHebrew}
   }
 
 \DeclareVoidOption{syriacfont}
   {
 	\newfontfamily\syriacfont[Script=Syriac]{EstrangeloEdessa.ttf}
-% 	\newcommand{\textsyriac}[1]{{\syriacfont #1}}
+	\newcommand{\textsyriac}[1]{{\syriacfont ##1}}
 	\AdditionalFontImprint{Estrangelo Edessa}
   }
 
