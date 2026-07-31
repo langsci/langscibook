@@ -281,6 +281,13 @@
 	\AdditionalFontImprint{Estrangelo Edessa}
   }
 
+\DeclareVoidOption{amharicfont}
+  {
+	\newfontfamily\amharicfont{AbyssinicaSIL-Regular.ttf}
+	\newcommand{\textamharic}[1]{{\amharicfont #1}}
+	\AdditionalFontImprint{Abyssinica SIL}
+  }
+
 \DeclareVoidOption{infn}{\booltrue{infn}}
 
 \ProcessKeyvalOptions*
