@@ -288,6 +288,45 @@
 	\AdditionalFontImprint{Abyssinica SIL}
   }
 
+
+
+\DeclareVoidOption{georgianfont}{
+  \AtEndPreamble{
+	\newfontfamily\georgianfont
+	  [
+	    Scale=MatchLowercase,
+	    BoldFont=NotoSerifGeorgian-SemiBold.ttf
+      ]
+      {NotoSerifGeorgian-Regular.ttf}
+    \AdditionalFontImprint{Noto Serif Georgian}
+  }
+}
+
+\DeclareVoidOption{tamilfont}{
+  \AtEndPreamble{
+% 	\newfontfamily\tamilfont
+% 	  [
+% 	    Scale=MatchLowercase
+	    % ,BoldFont=NotoSerifTamil-SemiBold.ttf
+%      ]
+%       {NotoSerifTamil-Regular.ttf}
+	\AdditionalFontImprint{Noto Serif Tamil}
+  }
+}
+
+\DeclareVoidOption{hindifont}{
+  \AtEndPreamble{
+% 	\newfontfamily\hindifont
+% 	  [
+% 	    Scale=MatchLowercase
+	    % ,ItalicFont=TiroDevanagariHindi-Italic.ttf
+%      ]
+%       {TiroDevanagariHindi-Regular.ttf}
+\AdditionalFontImprint{Tiro Devanagari Hindi}
+  }
+}
+
+
 \DeclareVoidOption{infn}{\booltrue{infn}}
 
 \ProcessKeyvalOptions*
