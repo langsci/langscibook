@@ -284,7 +284,7 @@
 \DeclareVoidOption{amharicfont}
   {
 	\newfontfamily\amharicfont{AbyssinicaSIL-Regular.ttf}
-	\newcommand{\textamharic}[1]{{\amharicfont #1}}
+	\newcommand{\textamharic}[1]{{\amharicfont ##1}}
 	\AdditionalFontImprint{Abyssinica SIL}
   }
 
@@ -536,7 +536,7 @@
                   anchor=north west,
                   text width=#2,
                   align=left
-             ] (lspcls_covereditedby) at (lspcls_current) {\color{#1}Edited by};
+             ] (lspcls_covereditedby) at (lspcls_current) {\color{#1}\lsEditorPrefix};
              \coordinate (lspcls_current) at (lspcls_covereditedby.south west); 
              \coordinate (lspcls_current) at ($(lspcls_current) + (0,-2.5mm)$);
         }{}
@@ -1066,6 +1066,10 @@
     \renewcommand{\newlineSpine}{}
     \renewcommand{\lsEditorPrefix}{{\Large Edited by\\}}
     \renewcommand{\lsEditorSuffix}{(ed.)}
+    \ifx\lsBookLanguage\lsBookLanguageItalian
+        \renewcommand{\lsEditorPrefix}{A cura di}
+        \renewcommand{\lsEditorSuffix}{cur.}
+    \fi
     \CountAuthorsFromAffiliations{\@author}
     \lsDetermineMultiauthors{}
     \ifbool{multiauthors}{\renewcommand{\lsEditorSuffix}{(eds.)}}{}
@@ -1661,6 +1665,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \newcommand{\lsBookLanguageFrench}{french}
 \newcommand{\lsBookLanguageSpanish}{spanish}
 \newcommand{\lsBookLanguagePortuguese}{portuguese}
+\newcommand{\lsBookLanguageItalian}{italian}
 \newcommand{\lsBookLanguageGerman}{german}
 \newcommand{\lsBookLanguageChinese}{chinese}
 
@@ -1687,6 +1692,10 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 		\ifx\lsBookLanguage\lsBookLanguagePortuguese
                     \usepackage[ngerman,main=\lsBookLanguage]{babel}
                     \addto\extrasportuges{\languageshorthands{german}\useshorthands{"}}
+                \fi
+		\ifx\lsBookLanguage\lsBookLanguageItalian
+                    \usepackage[ngerman,main=\lsBookLanguage]{babel}
+                    \addto\extrasitalian{\languageshorthands{german}\useshorthands{"}}
                 \fi
 	   }{%else babelshorthands
 		\ifx\lsBookLanguage\lsBookLanguageSpanish
@@ -1838,6 +1847,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 
 % \AtBeginDocument{% FK 16-Jan-19: It is unclear why this was set. It conflicts with TikZ externalisation.
 	\makeindex
+	\newcommand{\lsIndexTitle}{Index}
 	\newindex{lan}{ldx}{lnd}{\lsLanguageIndexTitle}
 	\newindex{sbj}{sdx}{snd}{\lsSubjectIndexTitle}
 	\renewindex{default}{adx}{and}{\lsNameIndexTitle} %biblatex can only deal with the default index
@@ -2234,6 +2244,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\tabref}[1]{Tabla~\ref{#1}}
     \renewcommand{\figref}[1]{Figura~\ref{#1}}
     \renewcommand{\lsSeeAlsoTerm}{véase también}
+    \renewcommand{\lsIndexTitle}{Índice}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageGerman
@@ -2251,6 +2262,17 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\tabref}[1]{Tabela~\ref{#1}}
     \renewcommand{\figref}[1]{Figura~\ref{#1}}
     \renewcommand{\lsSeeAlsoTerm}{ver tambem}
+    \renewcommand{\lsIndexTitle}{Índice}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageItalian
+    \renewcommand{\chapref}[1]{Capitulo~\ref{#1}}
+    \renewcommand{\partref}[1]{Parte~\ref{#1}}
+    \renewcommand{\tabref}[1]{Tabella~\ref{#1}}
+    \renewcommand{\figref}[1]{Figura~\ref{#1}}
+    \renewcommand{\lsSeeAlsoTerm}{vedi anche}
+    \renewcommand{\lsIndexTitle}{Indice}
+    \renewcommand{\contentsname}{Sommario}%to avoid clash with standard LaTeX "Indice" for toc
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
@@ -2282,7 +2304,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
       \renewcommand*{\sectionformat}{\thesection\hspace{10pt}}
 \fi
 
-\newcommand{\lsIndexTitle}{Index}
+% \newcommand{\lsIndexTitle}{Index}
 \newcommand{\lsLanguageIndexTitle}{Language index}	% This can be changed according to the language.
 \newcommand{\lsSubjectIndexTitle}{Subject index}
 \newcommand{\lsNameIndexTitle}{Name index}
@@ -2337,6 +2359,28 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
     \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
     \renewcommand{\lsReferencesTitle}{Referências}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguagePortuguese
+    \renewcommand{\lsIndexTitle}{Índices}
+    \renewcommand{\lsNameIndexTitle}{Índice remissivo de autores citados}
+    \renewcommand{\lsSubjectIndexTitle}{Índice remissivo temático}
+    \renewcommand{\lsLanguageIndexTitle}{Índice remissivo de línguas}
+    \renewcommand{\lsPrefaceTitle}{Prefácio}
+    \renewcommand{\lsAcknowledgementTitle}{Agradecimentos}
+    \renewcommand{\lsAbbreviationsTitle}{\colorbox{red}{Translation info for Abbv missing}}
+    \renewcommand{\lsReferencesTitle}{Referências}
+\fi
+
+\ifx\lsBookLanguage\lsBookLanguageItalian
+    \renewcommand{\lsIndexTitle}{Indice}
+    \renewcommand{\lsNameIndexTitle}{Indice dei nomi}
+    \renewcommand{\lsSubjectIndexTitle}{Indice analitico}
+    \renewcommand{\lsLanguageIndexTitle}{Indice delle lingue}
+    \renewcommand{\lsPrefaceTitle}{Prefazione}
+    \renewcommand{\lsAcknowledgementTitle}{Ringraziamenti}
+    \renewcommand{\lsAbbreviationsTitle}{Elenco delle abbreviazioni}
+    \renewcommand{\lsReferencesTitle}{Bibliografia}
 \fi
 
 \ifx\lsBookLanguage\lsBookLanguageChinese
