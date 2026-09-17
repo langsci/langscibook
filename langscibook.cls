@@ -1495,6 +1495,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \pagestyle{scrheadings}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %    Sectioning
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1510,7 +1511,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   style=section,
   beforeskip=-3.25ex plus -1ex minus -.2ex,
   afterskip=1.5ex plus .2ex,
-  font=\normalsize
+  font=\normalsize,
+  counterwithin=subsubsection,
 ]{subsubsubsection}
 
 
@@ -1524,7 +1526,8 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
   style=section,
   beforeskip=-3.25ex plus -1ex minus -.2ex,
   afterskip=1.5ex plus .2ex,
-  font=\normalsize
+  font=\normalsize,
+  counterwithin=subsubsubsection,
 ]{subsubsubsubsection}
 
 \renewcommand*\thesubsubsubsection{%
@@ -1541,7 +1544,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
 \def\toclevel@subsubsubsubsection{5}
 
 % Commands for Sections in Appendices:
-% Use as \appendixsection and \appendixsubsection. 
+% Use as \appendixsection and \appendixsubsection.
 % Further commands for lower levels can be defined following this pattern.
 \DeclareNewSectionCommand
   [
@@ -1580,7 +1583,7 @@ Storage and cataloguing done by \storageinstitution\\[3ex]
     style = section
   ]
   {appendixsubsection}
-  
+
 \DeclareNewSectionCommand
   [
     counterwithin = appendixsubsection,
